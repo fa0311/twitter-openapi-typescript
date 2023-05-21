@@ -1,0 +1,15 @@
+openapi: 3.0.3
+info:
+  title: Twitter OpenAPI
+  version: 0.0.1
+
+paths:
+  /2/search/adaptive.json:
+    get:
+      operationId: getSearchAdaptive
+      description: get search adaptive
+      responses:
+        "200":
+          description: Successful operation
+      tags:
+        - "v2.0-get"

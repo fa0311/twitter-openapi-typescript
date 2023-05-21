@@ -1,0 +1,94 @@
+openapi: 3.0.3
+info:
+  title: Twitter OpenAPI
+  version: 0.0.1
+
+paths:
+  /graphql/{{queryId}}/UserTweets:
+    get:
+      operationId: getUserTweets
+      description: "get user tweets"
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserTweetsResponse"
+      tags:
+        - "tweet"
+
+  /graphql/{{queryId}}/UserTweetsAndReplies:
+    get:
+      operationId: getUserTweetsAndReplies
+      description: "get user replies tweets"
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserTweetsResponse"
+      tags:
+        - "tweet"
+
+  /graphql/{{queryId}}/UserMedia:
+    get:
+      operationId: getUserMedia
+      description: "get user media tweets"
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserTweetsResponse"
+      tags:
+        - "tweet"
+
+  /graphql/{{queryId}}/Likes:
+    get:
+      operationId: getLikes
+      description: "get user likes tweets"
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserTweetsResponse"
+      tags:
+        - "tweet"
+
+components:
+  schemas:
+    UserTweetsResponse:
+      required:
+        - "data"
+      properties:
+        data:
+          $ref: "#/components/schemas/UserTweetsData"
+
+    UserTweetsData:
+      required:
+        - "user"
+      properties:
+        user:
+          $ref: "#/components/schemas/UserTweetsUser"
+
+    UserTweetsUser:
+      required:
+        - "result"
+      properties:
+        result:
+          $ref: "#/components/schemas/UserTweetsResult"
+
+    UserTweetsResult:
+      required:
+        - "__typename"
+        - "timeline_v2"
+      properties:
+        __typename:
+          $ref: "./../schemas/typename.yaml#/components/schemas/TypeName" # User
+        timeline_v2:
+          $ref: "./../schemas/timeline.yaml#/components/schemas/TimelineV2"

@@ -1,0 +1,25 @@
+openapi: 3.0.3
+info:
+  title: Twitter OpenAPI
+  version: 0.0.1
+
+paths:
+  /1.1/friendships/create.json:
+    post:
+      operationId: postCreateFriendships
+      description: post create friendships
+      responses:
+        "200":
+          description: Successful operation
+      tags:
+        - "v1.1-post"
+
+  /1.1/friendships/destroy.json:
+    post:
+      operationId: postDestroyFriendships
+      description: post destroy friendships
+      responses:
+        "200":
+          description: Successful operation
+      tags:
+        - "v1.1-post"

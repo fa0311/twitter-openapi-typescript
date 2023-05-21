@@ -1,0 +1,35 @@
+openapi: 3.0.3
+info:
+  title: Twitter OpenAPI
+  version: 0.0.1
+
+paths:
+  /graphql/{{queryId}}/UserByScreenName:
+    get:
+      operationId: getUserByScreenName
+      description: "get user by screen name"
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UserResponse"
+      tags:
+        - "user"
+
+components:
+  schemas:
+    UserResponse:
+      required:
+        - "data"
+      properties:
+        data:
+          $ref: "#/components/schemas/UserResponseData"
+
+    UserResponseData:
+      required:
+        - "user"
+      properties:
+        user:
+          $ref: "./../schemas/user.yaml#/components/schemas/UserResults"

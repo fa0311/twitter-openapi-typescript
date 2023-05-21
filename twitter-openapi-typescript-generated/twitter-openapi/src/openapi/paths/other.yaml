@@ -1,0 +1,103 @@
+openapi: 3.0.3
+info:
+  title: Twitter OpenAPI
+  version: 0.0.1
+
+paths:
+  /other:
+    get:
+      operationId: other
+      description: This is not an actual endpoint
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/OtherResponse"
+      tags:
+        - "other"
+
+components:
+  schemas:
+    OtherResponse:
+      type: object
+      required:
+        - "session"
+      properties:
+        session:
+          $ref: "#/components/schemas/Session" # window.__INITIAL_STATE__
+    Session:
+      type: object
+      required:
+        - "country"
+        - "communitiesActions"
+        - "isActiveCreator"
+        - "isRestrictedSession"
+        - "guestId"
+        - "hasCommunityMemberships"
+        - "language"
+        - "oneFactorLoginEligibility"
+        - "ssoInitTokens"
+        - "superFollowersCount"
+        - "superFollowsApplicationStatus"
+        - "user_id"
+        - "userFeatures"
+        - "isSuperFollowSubscriber"
+      properties:
+        country:
+          type: string
+          pattern: "^[A-Z]{2}$"
+        communitiesActions:
+          $ref: "#/components/schemas/CommunitiesActions"
+        isActiveCreator:
+          type: boolean
+        isRestrictedSession:
+          type: boolean
+        guestId:
+          type: string
+          pattern: "^[0-9]+$"
+        hasCommunityMemberships:
+          type: boolean
+        language:
+          type: string
+          pattern: "^[a-z]{2}$"
+        oneFactorLoginEligibility:
+          $ref: "#/components/schemas/OneFactorLoginEligibility"
+        SsoInitTokens:
+          type: object
+        superFollowersCount:
+          type: integer
+        superFollowsApplicationStatus:
+          type: string # enum: NotStarted
+        user_id:
+          type: string
+          pattern: "^[0-9]+$"
+        userFeatures:
+          $ref: "#/components/schemas/UserFeatures"
+        isSuperFollowSubscriber:
+          type: boolean
+
+    CommunitiesActions:
+      type: object
+      required:
+        - "create"
+      properties:
+        create:
+          type: boolean
+
+    OneFactorLoginEligibility:
+      type: object
+      required:
+        - "fetchStatus"
+      properties:
+        fetchStatus:
+          type: string # enum: none
+
+    UserFeatures:
+      type: object
+      required:
+        - "mediatool_studio_library"
+      properties:
+        mediatool_studio_library:
+          type: boolean

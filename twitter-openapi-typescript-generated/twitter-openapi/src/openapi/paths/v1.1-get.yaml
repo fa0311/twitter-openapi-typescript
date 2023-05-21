@@ -1,0 +1,25 @@
+openapi: 3.0.3
+info:
+  title: Twitter OpenAPI
+  version: 0.0.1
+
+paths:
+  /1.1/friends/following/list.json:
+    get:
+      operationId: getFriendsFollowingList
+      description: get friends following list
+      responses:
+        "200":
+          description: Successful operation
+      tags:
+        - "v1.1-get"
+
+  /1.1/search/typeahead.json:
+    get:
+      operationId: getSearchTypeahead
+      description: get search typeahead
+      responses:
+        "200":
+          description: Successful operation
+      tags:
+        - "v1.1-get"

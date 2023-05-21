@@ -1,0 +1,61 @@
+openapi: 3.0.3
+info:
+  title: Twitter OpenAPI
+  version: 0.0.1
+paths:
+  /parameters:
+    get:
+      parameters:
+        - name: user-agent
+          in: header
+          required: true
+          schema:
+            type: string
+            default: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+            description: "UserAgent, some APIs may be rejected if changed."
+        - name: authorization
+          in: header
+          required: true
+          schema:
+            type: string
+            default: "Bearer AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA"
+            description: "It is a constant value and does not need to be changed."
+        - name: x-twitter-active-user
+          in: header
+          required: true
+          schema:
+            type: string
+            default: "yes"
+            description: "Unknown what this value means."
+        - name: x-twitter-client-language
+          in: header
+          required: true
+          schema:
+            type: string
+            default: "en"
+            description: "language code."
+      responses:
+        "200":
+          description: ""
+
+components:
+  securitySchemes:
+    UserAgent:
+      description: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36"
+      in: header
+      name: user-agent
+      type: apiKey
+    BearerAuth:
+      description: AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA
+      scheme: bearer
+      type: http
+    ActiveUser:
+      description: "yes"
+      in: header
+      name: x-twitter-active-user
+      type: apiKey
+    ClientLanguage:
+      description: en
+      in: header
+      name: x-twitter-client-language
+      type: apiKey

@@ -1,0 +1,246 @@
+openapi: 3.0.3
+info:
+  title: Twitter OpenAPI
+  version: 0.0.1
+
+paths:
+  /graphql/{{queryId}}/FavoriteTweet:
+    post:
+      operationId: postFavoriteTweet
+      description: favorite Tweet
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/FavoriteTweetResponseData"
+      tags:
+        - "post"
+
+  /graphql/{{queryId}}/UnfavoriteTweet:
+    post:
+      operationId: postUnfavoriteTweet
+      description: unfavorite Tweet
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/UnfavoriteTweetResponseData"
+      tags:
+        - "post"
+
+  /graphql/{{queryId}}/CreateRetweet:
+    post:
+      operationId: postCreateRetweet
+      description: create Retweet
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreateRetweetResponse"
+      tags:
+        - "post"
+
+  /graphql/{{queryId}}/DeleteRetweet:
+    post:
+      operationId: postDeleteRetweet
+      description: delete Retweet
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DeleteRetweetResponse"
+      tags:
+        - "post"
+
+  /graphql/{{queryId}}/CreateTweet:
+    post:
+      operationId: postCreateTweet
+      description: create Tweet
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CreateTweetResponse"
+      tags:
+        - "post"
+
+  /graphql/{{queryId}}/DeleteTweet:
+    post:
+      operationId: postDeleteTweet
+      description: delete Retweet
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DeleteTweetResponse"
+      tags:
+        - "post"
+
+components:
+  schemas:
+    FavoriteTweetResponseData:
+      required:
+        - "data"
+      properties:
+        data:
+          $ref: "#/components/schemas/FavoriteTweet"
+
+    FavoriteTweet:
+      required:
+        - "favorite_tweet"
+      properties:
+        favorite_tweet:
+          type: string
+
+    UnfavoriteTweetResponseData:
+      required:
+        - "data"
+      properties:
+        data:
+          $ref: "#/components/schemas/UnfavoriteTweet"
+
+    UnfavoriteTweet:
+      required:
+        - "unfavorite_tweet"
+      properties:
+        unfavorite_tweet:
+          type: string
+
+    # ---Retweet---
+
+    CreateRetweetResponse:
+      required:
+        - "data"
+      properties:
+        data:
+          $ref: "#/components/schemas/CreateRetweetResponseData"
+
+    CreateRetweetResponseData:
+      required:
+        - "create_retweet"
+      properties:
+        create_retweet:
+          $ref: "#/components/schemas/CreateRetweetResponseResult"
+
+    CreateRetweetResponseResult:
+      required:
+        - "retweet_results"
+      properties:
+        retweet_results:
+          $ref: "#/components/schemas/CreateRetweet"
+
+    CreateRetweet:
+      required:
+        - "result"
+      properties:
+        result:
+          $ref: "#/components/schemas/Retweet"
+
+    Retweet:
+      required:
+        - "rest_id"
+        - "legacy"
+      properties:
+        rest_id:
+          type: string
+          pattern: "^[0-9]+$"
+        legacy:
+          type: object
+          required:
+            - "full_text"
+          properties:
+            full_text:
+              type: string
+
+    DeleteRetweetResponse:
+      required:
+        - "data"
+      properties:
+        data:
+          $ref: "#/components/schemas/DeleteRetweetResponseData"
+
+    DeleteRetweetResponseData:
+      required:
+        - "unretweet"
+      properties:
+        create_retweet:
+          $ref: "#/components/schemas/CreateRetweetResponseResult"
+
+    DeleteRetweetResponseResult:
+      required:
+        - "source_tweet_results"
+      properties:
+        retweet_results:
+          $ref: "#/components/schemas/DeleteRetweet"
+
+    DeleteRetweet:
+      required:
+        - "result"
+      properties:
+        result:
+          type: object
+          items:
+            $ref: "#/components/schemas/Retweet"
+
+    # ---Tweet---
+
+    CreateTweetResponse:
+      required:
+        - "data"
+      properties:
+        data:
+          $ref: "#/components/schemas/CreateTweetResponseData"
+
+    CreateTweetResponseData:
+      required:
+        - "create_tweet"
+      properties:
+        create_tweet:
+          $ref: "#/components/schemas/CreateTweetResponseResult"
+
+    CreateTweetResponseResult:
+      required:
+        - "tweet_results"
+      properties:
+        tweet_results:
+          $ref: "#/components/schemas/CreateTweet"
+
+    CreateTweet:
+      required:
+        - "result"
+      properties:
+        result:
+          $ref: "./../schemas/tweet.yaml#/components/schemas/Tweet"
+
+    DeleteTweetResponse:
+      required:
+        - "data"
+      properties:
+        data:
+          $ref: "#/components/schemas/DeleteTweetResponseData"
+
+    DeleteTweetResponseData:
+      required:
+        - "delete_tweet"
+      properties:
+        delete_retweet:
+          $ref: "#/components/schemas/DeleteTweetResponseResult"
+
+    DeleteTweetResponseResult:
+      required:
+        - "tweet_results"
+      properties:
+        tweet_results:
+          type: object

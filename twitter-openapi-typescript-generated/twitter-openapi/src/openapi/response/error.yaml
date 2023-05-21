@@ -1,0 +1,97 @@
+openapi: 3.0.3
+info:
+  title: Twitter OpenAPI
+  version: 0.0.1
+
+paths: {}
+
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      required:
+        - errors
+        - data
+      properties:
+        errors:
+          $ref: "#/components/schemas/Errors"
+
+    Errors:
+      type: array
+      items:
+        $ref: "#/components/schemas/Error"
+
+    Error:
+      type: object
+      required:
+        - message
+        - locations
+        - path
+        - extensions
+        - code
+        - kind
+        - name
+        - source
+        - tracing
+      properties:
+        message:
+          type: string
+        locations:
+          type: array
+          items:
+            $ref: "#/components/schemas/Location"
+        path:
+          type: array
+          items:
+            type: string
+        extensions:
+          $ref: "#/components/schemas/Extensions"
+        code:
+          type: integer
+        kind:
+          type: string
+        name:
+          type: string
+        source:
+          type: string
+        tracing:
+          $ref: "#/components/schemas/Tracing"
+
+    Location:
+      type: object
+      required:
+        - line
+        - column
+      properties:
+        line:
+          type: integer
+        column:
+          type: integer
+
+    Extensions:
+      type: object
+      required:
+        - name
+        - source
+        - code
+        - kind
+        - tracing
+      properties:
+        name:
+          type: string
+        source:
+          type: string
+        code:
+          type: integer
+        kind:
+          type: string
+        tracing:
+          $ref: "#/components/schemas/Tracing"
+
+    Tracing:
+      type: object
+      required:
+        - trace_id
+      properties:
+        trace_id:
+          type: string

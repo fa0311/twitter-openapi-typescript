@@ -1,0 +1,71 @@
+openapi: 3.0.3
+info:
+  title: Twitter OpenAPI
+  description: |-
+    Twitter OpenAPI(Swagger) specification
+  termsOfService: https://github.com/fa0311
+  contact:
+    email: yuki@yuki0311.com
+  license:
+    name: GNU Affero General Public License v3.
+    url: https://raw.githubusercontent.com/fa0311/twitter-openapi/main/LICENSE.txt
+  version: 0.0.1
+servers:
+  - url: https://twitter.com/i/api
+
+paths: {}
+components:
+  schemas: {}
+
+  securitySchemes:
+    CsrfToken:
+      type: apiKey
+      in: header
+      name: x-csrf-token
+      description: "document.cookie.split('; ').find(row => row.startsWith('ct0='));"
+
+    CookieCt0:
+      type: apiKey
+      in: cookie
+      name: ct0
+      description: "document.cookie.split('; ').find(row => row.startsWith('ct0='));"
+
+    CookieAuthToken:
+      type: apiKey
+      in: cookie
+      name: auth_token
+      description: "HttpOnly cookie"
+
+    authType:
+      type: apiKey
+      in: header
+      name: x-twitter-auth-type
+      description: "OAuth2Session if you are logged in"
+
+security:
+  - bearerAuth: []
+  - CsrfToken: []
+  - ActiveUser: []
+  - AuthType: []
+  - ClientLanguage: []
+  - CookieAuthToken: []
+  - CookieCt0: []
+tags:
+  - name: user
+    description: response User
+  - name: user-list
+    description: response User list
+  - name: tweet
+    description: response tweet
+  - name: post
+    description: post
+  - name: v1.1-get
+    description: legacy APIs get
+  - name: v1.1-post
+    description: legacy APIs post
+  - name: v2.0-get
+    description: legacy APIs get
+  - name: v2.0-post
+    description: legacy APIs post
+  - name: other
+    description: other

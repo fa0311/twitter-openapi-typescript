@@ -1,0 +1,27 @@
+openapi: 3.0.3
+info:
+  title: Twitter OpenAPI
+  version: 0.0.1
+
+paths: {}
+components:
+  schemas:
+    TimelineV2:
+      required:
+        - "timeline"
+      properties:
+        timeline:
+          $ref: "#/components/schemas/Timeline"
+
+    Timeline:
+      required:
+        - "instructions"
+      properties:
+        instructions:
+          type: array
+          items:
+            $ref: "./../schemas/instruction.yaml#/components/schemas/InstructionUnion"
+        metadata:
+          type: object # todo
+        responseObjects:
+          type: object # todo

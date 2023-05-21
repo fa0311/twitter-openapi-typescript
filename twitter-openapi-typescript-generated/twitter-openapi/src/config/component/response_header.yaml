@@ -1,0 +1,32 @@
+openapi: 3.0.3
+info:
+  title: Twitter OpenAPI
+  version: 0.0.1
+paths: {}
+
+components:
+  headers:
+    x-connection-hash:
+      schema:
+        type: string
+    x-rate-limit-limit:
+      schema:
+        type: integer
+    x-rate-limit-remaining:
+      schema:
+        type: integer
+    x-rate-limit-reset:
+      schema:
+        type: integer
+    x-response-time:
+      schema:
+        type: integer
+    x-tfe-preserve-body:
+      schema:
+        type: boolean
+    x-transaction-id:
+      schema:
+        type: string
+    x-twitter-response-tags:
+      schema:
+        type: string

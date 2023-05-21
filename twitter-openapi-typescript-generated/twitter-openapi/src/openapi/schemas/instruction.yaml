@@ -1,0 +1,90 @@
+openapi: 3.0.3
+info:
+  title: Twitter OpenAPI
+  version: 0.0.1
+
+paths: {}
+components:
+  schemas:
+    InstructionUnion:
+      oneOf:
+        - $ref: "#/components/schemas/TimelineAddEntries"
+        - $ref: "#/components/schemas/TimelineClearCache"
+        - $ref: "#/components/schemas/TimelinePinEntry"
+        - $ref: "#/components/schemas/TimelineTerminateTimeline"
+      discriminator:
+        propertyName: type
+        mapping": # deprecated
+          TimelineAddEntries: "#/components/schemas/TimelineAddEntries"
+          TimelineClearCache: "#/components/schemas/TimelineClearCache"
+          TimelinePinEntry: "#/components/schemas/TimelinePinEntry"
+          TimelineTerminateTimeline: "#/components/schemas/TimelineTerminateTimeline"
+
+    InstructionType:
+      type: string
+      enum:
+        [
+          TimelineAddEntries,
+          TimelineClearCache,
+          TimelinePinEntry,
+          TimelineTerminateTimeline,
+        ]
+
+    TimelineAddEntries:
+      required:
+        - type
+        - entries
+      properties:
+        type:
+          type: string
+          $ref: "#/components/schemas/InstructionType" # TimelineAddEntries
+        entries:
+          type: array
+          items:
+            $ref: "#/components/schemas/TimelineAddEntry"
+
+    TimelineClearCache:
+      required:
+        - type
+      properties:
+        type:
+          type: string
+          $ref: "#/components/schemas/InstructionType" # TimelineClearCache
+
+    TimelinePinEntry:
+      required:
+        - type
+        - entry
+      properties:
+        type:
+          type: string
+          $ref: "#/components/schemas/InstructionType" # TimelinePinEntry
+        entry:
+          $ref: "#/components/schemas/TimelineAddEntry"
+
+    TimelineTerminateTimeline:
+      required:
+        - type
+        - direction
+      properties:
+        type:
+          type: string
+          $ref: "#/components/schemas/InstructionType" # TimelineTerminateTimeline
+        direction:
+          type: string
+          enum: [Top, Bottom]
+
+    TimelineAddEntry:
+      required:
+        - "content"
+        - "entryId"
+        - "sortIndex"
+      properties:
+        content:
+          $ref: "./content.yaml#/components/schemas/ContentUnion"
+        entryId:
+          type: string
+          pattern: '^[a-z\-]+[0-9]+$'
+        sortIndex:
+          type: string
+          pattern: "[0-9]+$"

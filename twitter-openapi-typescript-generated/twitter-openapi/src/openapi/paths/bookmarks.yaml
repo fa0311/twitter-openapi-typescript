@@ -1,0 +1,42 @@
+openapi: 3.0.3
+info:
+  title: Twitter OpenAPI
+  version: 0.0.1
+
+paths:
+  /graphql/{{queryId}}/Bookmarks:
+    get:
+      operationId: getBookmarks
+      description: get bookmarks
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BookmarksResponse"
+      tags:
+        - "tweet"
+
+components:
+  schemas:
+    BookmarksResponse:
+      required:
+        - "data"
+      properties:
+        data:
+          $ref: "#/components/schemas/BookmarksResponseData"
+
+    BookmarksResponseData:
+      required:
+        - "bookmark_timeline_v2"
+      properties:
+        bookmark_timeline_v2:
+          $ref: "#/components/schemas/BookmarksTimeline"
+
+    BookmarksTimeline:
+      required:
+        - "timeline"
+      properties:
+        timeline:
+          $ref: "./../schemas/timeline.yaml#/components/schemas/Timeline"

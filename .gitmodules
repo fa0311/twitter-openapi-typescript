@@ -1,0 +1,3 @@
+[submodule "twitter-openapi-typescript-generated/twitter-openapi"]
+	path = twitter-openapi-typescript-generated/twitter-openapi
+	url = https://github.com/fa0311/twitter-openapi

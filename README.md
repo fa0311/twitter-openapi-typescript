@@ -42,7 +42,7 @@ Plan to release it in v1.0.0 with npm.
 
 ```shell
 git clone https://github.com/fa0311/twitter-openapi-typescript
-npm install twitter-openapi-typescript/twitter-openapi-typescript
+npm install ./twitter-openapi-typescript/twitter-openapi-typescript
 ```
 
 ### Usage

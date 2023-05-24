@@ -2,8 +2,8 @@
 
 ## Table of Contents
 
-- [twitter-openapi-typescript](./twitter-openapi-typescript) Package for human-friendly Dart
-- [twitter-openapi-typescript-generated](./twitter-openapi-typescript-generated) Dart package automatically generated from [twitter-openapi](https://github.com/fa0311/twitter-openapi) by OpenAPI generator
+- [twitter-openapi-typescript](./twitter-openapi-typescript) Package for human-friendly TypeScript
+- [twitter-openapi-typescript-generated](./twitter-openapi-typescript-generated) TypeScript package automatically generated from [twitter-openapi](https://github.com/fa0311/twitter-openapi) by OpenAPI generator
 
 ```mermaid
 graph LR

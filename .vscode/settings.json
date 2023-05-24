@@ -1,5 +1,4 @@
 {
-  "dart.analysisExcludedFolders": ["twitter-openapi-typescript-generated/lib"],
   "markdownlint.ignore": ["twitter-openapi-typescript-generated/**/*.md"],
   "markdownlint.config": {
     "MD033": false,

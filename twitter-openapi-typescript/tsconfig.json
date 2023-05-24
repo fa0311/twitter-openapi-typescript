@@ -3,7 +3,7 @@
     "target": "es2019",
     "module": "commonjs",
     "strict": true,
-    "rootDir": "./src",
+    "rootDir": "./",
     "esModuleInterop": true,
     "typeRoots": ["node_modules/@types"],
     "baseUrl": "./",

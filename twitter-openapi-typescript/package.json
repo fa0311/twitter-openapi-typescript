@@ -10,10 +10,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "twitter-openapi-typescript-generated": "link:..\\twitter-openapi-typescript-generated"
+    "dotenv": "^16.0.3",
+    "fetch-cookie": "^2.1.0",
+    "node-fetch": "^2.0.0",
+    "twitter-openapi-typescript-generated": "link:..\\twitter-openapi-typescript-generated",
+    "typescript": "^4.0.0"
   },
   "devDependencies": {
     "@types/jest": "^28.0.0",
+    "@types/node-fetch": "^2.0.0",
     "jest": "^28.0.0",
     "ts-jest": "^28.0.0"
   }

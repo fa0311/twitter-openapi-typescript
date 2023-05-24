@@ -39,7 +39,6 @@ npm run build
 
 It cannot be installed from npm.  
 Plan to release it in v1.0.0 with npm.  
-Recommend adding the latest commit hash after #ref as many destructive changes are made.
 
 ```shell
 git clone https://github.com/fa0311/twitter-openapi-typescript

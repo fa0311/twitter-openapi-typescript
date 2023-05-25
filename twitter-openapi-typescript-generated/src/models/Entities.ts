@@ -37,7 +37,7 @@ export interface Entities {
      * @type {Array<Media>}
      * @memberof Entities
      */
-    media: Array<Media>;
+    media?: Array<Media>;
     /**
      * 
      * @type {Array<object>}
@@ -64,7 +64,6 @@ export interface Entities {
 export function instanceOfEntities(value: object): boolean {
     let isInstance = true;
     isInstance = isInstance && "hashtags" in value;
-    isInstance = isInstance && "media" in value;
     isInstance = isInstance && "symbols" in value;
     isInstance = isInstance && "urls" in value;
     isInstance = isInstance && "userMentions" in value;
@@ -83,7 +82,7 @@ export function EntitiesFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
     return {
         
         'hashtags': json['hashtags'],
-        'media': ((json['media'] as Array<any>).map(MediaFromJSON)),
+        'media': !exists(json, 'media') ? undefined : ((json['media'] as Array<any>).map(MediaFromJSON)),
         'symbols': json['symbols'],
         'urls': json['urls'],
         'userMentions': json['user_mentions'],
@@ -100,7 +99,7 @@ export function EntitiesToJSON(value?: Entities | null): any {
     return {
         
         'hashtags': value.hashtags,
-        'media': ((value.media as Array<any>).map(MediaToJSON)),
+        'media': value.media === undefined ? undefined : ((value.media as Array<any>).map(MediaToJSON)),
         'symbols': value.symbols,
         'urls': value.urls,
         'user_mentions': value.userMentions,

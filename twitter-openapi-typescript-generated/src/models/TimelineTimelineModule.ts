@@ -79,7 +79,7 @@ export interface TimelineTimelineModule {
      * @type {Array<ModuleItem>}
      * @memberof TimelineTimelineModule
      */
-    items: Array<ModuleItem>;
+    items?: Array<ModuleItem>;
 }
 
 /**
@@ -91,7 +91,6 @@ export function instanceOfTimelineTimelineModule(value: object): boolean {
     isInstance = isInstance && "clientEventInfo" in value;
     isInstance = isInstance && "displayType" in value;
     isInstance = isInstance && "entryType" in value;
-    isInstance = isInstance && "items" in value;
 
     return isInstance;
 }
@@ -112,7 +111,7 @@ export function TimelineTimelineModuleFromJSONTyped(json: any, ignoreDiscriminat
         'entryType': ContentEntryTypeFromJSON(json['entryType']),
         'footer': !exists(json, 'footer') ? undefined : json['footer'],
         'header': !exists(json, 'header') ? undefined : json['header'],
-        'items': ((json['items'] as Array<any>).map(ModuleItemFromJSON)),
+        'items': !exists(json, 'items') ? undefined : ((json['items'] as Array<any>).map(ModuleItemFromJSON)),
     };
 }
 
@@ -131,7 +130,7 @@ export function TimelineTimelineModuleToJSON(value?: TimelineTimelineModule | nu
         'entryType': ContentEntryTypeToJSON(value.entryType),
         'footer': value.footer,
         'header': value.header,
-        'items': ((value.items as Array<any>).map(ModuleItemToJSON)),
+        'items': value.items === undefined ? undefined : ((value.items as Array<any>).map(ModuleItemToJSON)),
     };
 }
 

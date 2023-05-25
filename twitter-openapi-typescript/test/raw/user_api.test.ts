@@ -6,7 +6,19 @@ import {
 } from 'twitter-openapi-typescript-generated/src';
 import fetch from 'node-fetch';
 import * as dotenv from 'dotenv';
+import log4js from 'log4js';
+
 dotenv.config();
+const logger = log4js
+  .configure({
+    appenders: {
+      system: { type: 'file', filename: 'logs/test.log' },
+    },
+    categories: {
+      default: { appenders: ['system'], level: 'all' },
+    },
+  })
+  .getLogger('Test');
 
 export interface GlobalWithCognitoFix extends Global {
   fetch: any;
@@ -77,6 +89,8 @@ test('test', async () => {
     variables: JSON.stringify(args.variables),
     features: JSON.stringify(args.features),
   });
+  logger.debug(response);
+  response.data.home.homeTimelineUrt.instructions;
 
   expect(0).toBe(0);
 });

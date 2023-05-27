@@ -8,14 +8,17 @@ export const instructionToEntry = (item: i.InstructionUnion[]): i.TimelineAddEnt
     .entries;
 };
 
-export const tweetEntriesConverter = (item: i.TimelineAddEntry[]): i.ItemResult[] => {
+export const tweetEntriesConverter = (item: i.TimelineAddEntry[]): TweetApiUtils[] => {
   return item
     .map((e) => {
       if (e.content.entryType == i.ContentEntryType.TimelineTimelineItem) {
         const item = (e.content as i.TimelineTimelineItem).itemContent;
         const timeline = item.itemType == i.ContentItemType.TimelineTweet ? (item as i.TimelineTweet) : null;
         if (timeline == null) return null;
-        return timeline.tweetResults;
+        return buildTweetApiUtils({
+          result: timeline.tweetResults,
+          promotedMetadata: timeline.promotedMetadata,
+        });
       } else if (e.content.entryType == i.ContentEntryType.TimelineTimelineModule) {
         const item = (e.content as i.TimelineTimelineModule).items ?? [];
         const timelineList = item
@@ -23,7 +26,11 @@ export const tweetEntriesConverter = (item: i.TimelineAddEntry[]): i.ItemResult[
           .map((e) => e.item.itemContent as i.TimelineTweet);
         if (timelineList.length == 0) return null;
         const timeline = timelineList[0];
-        return timeline.tweetResults;
+        return buildTweetApiUtils({
+          result: timeline.tweetResults,
+          promotedMetadata: timeline.promotedMetadata,
+          reply: timelineList.slice(1),
+        });
       }
     })
     .filter((e): e is NonNullable<typeof e> => e != null);

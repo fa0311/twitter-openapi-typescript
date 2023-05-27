@@ -1,4 +1,9 @@
-import { Configuration, ConfigurationParameters, TweetApi, HTTPHeaders } from 'twitter-openapi-typescript-generated';
+import {
+  Configuration,
+  ConfigurationParameters,
+  TweetApi,
+  HTTPHeaders,
+} from 'twitter-openapi-typescript-generated/src';
 import fetch from 'node-fetch';
 import * as dotenv from 'dotenv';
 import log4js from 'log4js';

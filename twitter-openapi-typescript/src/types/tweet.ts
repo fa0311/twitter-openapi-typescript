@@ -3,7 +3,7 @@ import { CursorApiUtilsResponse, ApiUtilsRaw } from '../types/timeline';
 
 export type TweetListApiUtilsResponse = {
   raw: ApiUtilsRaw;
-  header: ApiUtilsHeader;
+  // header: ApiUtilsHeader;
   cursor: CursorApiUtilsResponse;
   data: TweetApiUtils[];
 };

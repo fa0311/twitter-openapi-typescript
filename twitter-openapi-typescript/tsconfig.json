@@ -8,7 +8,7 @@
     "typeRoots": ["node_modules/@types"],
     "baseUrl": "./",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["src/*"]
     },
     "outDir": "./dist/"
   },

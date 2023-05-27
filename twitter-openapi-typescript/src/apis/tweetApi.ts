@@ -9,7 +9,13 @@ type requestParam<T> = {
   apiFn: ApiFunction<T>;
   convertFn: ConvertInstructionsFunction<T>;
   key: string;
-  param: Map<String, any>;
+  param: { [key: string]: any };
+};
+
+type getHomeTimelineParam = {
+  couser?: string;
+  count?: number;
+  extraParam?: { [key: string]: any };
 };
 
 export class TweetApiUtils {
@@ -23,10 +29,11 @@ export class TweetApiUtils {
 
   async request<T>(param: requestParam<T>): Promise<TweetListApiUtilsResponse> {
     const response = await param.apiFn({
+      queryId: this.flag[param.key]['queryId'],
       variables: JSON.stringify({ ...this.flag[param.key]['variables'], ...param }),
       features: JSON.stringify(this.flag[param.key]['features']),
     });
-    const instruction = param.convertFn(response as T);
+    const instruction = param.convertFn(response.value() as T);
     const entry = instructionToEntry(instruction);
     const data = tweetEntriesConverter(entry);
 
@@ -41,5 +48,22 @@ export class TweetApiUtils {
       cursor: entriesCursor(entry),
       data: data,
     };
+  }
+
+  async getHomeTimeline(param: getHomeTimelineParam): Promise<TweetListApiUtilsResponse> {
+    const args = {
+      ...(param.count == null ? {} : { count: param.count }),
+      ...(param.couser == null ? {} : { couser: param.couser }),
+      ...param.extraParam,
+    };
+    console.log(args);
+
+    const response = await this.request({
+      apiFn: this.api.getHomeTimelineRaw,
+      convertFn: (e) => e.data.home.homeTimelineUrt.instructions,
+      key: 'HomeTimeline',
+      param: args,
+    });
+    return response;
   }
 }

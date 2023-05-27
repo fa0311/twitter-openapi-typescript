@@ -48,3 +48,11 @@ test('getHomeTimelineRaw', async () => {
 
   expect(0).toBe(0);
 });
+
+test('getHomeTimeline', async () => {
+  const client = await getClient();
+  const response = await client.getTweetApi().getHomeTimeline({});
+  logger.debug(response);
+
+  expect(0).toBe(0);
+});

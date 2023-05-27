@@ -1,4 +1,4 @@
-import * as i from 'twitter-openapi-typescript-generated';
+import * as i from 'twitter-openapi-typescript-generated/src';
 import {
   DefaultApiUtils,
   InitialStateApiUtils,

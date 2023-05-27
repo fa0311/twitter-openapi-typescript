@@ -31,7 +31,7 @@ export interface OtherResponse {
      * @type {Session}
      * @memberof OtherResponse
      */
-    session: Session;
+    session?: Session;
 }
 
 /**
@@ -39,7 +39,6 @@ export interface OtherResponse {
  */
 export function instanceOfOtherResponse(value: object): boolean {
     let isInstance = true;
-    isInstance = isInstance && "session" in value;
 
     return isInstance;
 }
@@ -54,7 +53,7 @@ export function OtherResponseFromJSONTyped(json: any, ignoreDiscriminator: boole
     }
     return {
         
-        'session': SessionFromJSON(json['session']),
+        'session': !exists(json, 'Session') ? undefined : SessionFromJSON(json['Session']),
     };
 }
 
@@ -67,7 +66,7 @@ export function OtherResponseToJSON(value?: OtherResponse | null): any {
     }
     return {
         
-        'session': SessionToJSON(value.session),
+        'Session': SessionToJSON(value.session),
     };
 }
 

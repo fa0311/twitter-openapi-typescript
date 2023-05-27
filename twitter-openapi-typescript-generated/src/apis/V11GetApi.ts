@@ -16,32 +16,32 @@
 import * as runtime from '../runtime';
 
 export interface GetFriendsFollowingListRequest {
-    includeProfileInterstitialType: object;
-    includeBlocking: object;
-    includeBlockedBy: object;
-    includeFollowedBy: object;
-    includeWantRetweets: object;
-    includeMuteEdge: object;
-    includeCanDm: object;
-    includeCanMediaTag: object;
-    includeExtHasNftAvatar: object;
-    includeExtIsBlueVerified: object;
-    includeExtVerifiedType: object;
-    includeExtProfileImageShape: object;
-    skipStatus: object;
-    cursor: object;
-    userId: object;
-    count: object;
-    withTotalCount: object;
+    includeProfileInterstitialType: number;
+    includeBlocking: number;
+    includeBlockedBy: number;
+    includeFollowedBy: number;
+    includeWantRetweets: number;
+    includeMuteEdge: number;
+    includeCanDm: number;
+    includeCanMediaTag: number;
+    includeExtHasNftAvatar: number;
+    includeExtIsBlueVerified: number;
+    includeExtVerifiedType: number;
+    includeExtProfileImageShape: number;
+    skipStatus: number;
+    cursor: number;
+    userId: string;
+    count: number;
+    withTotalCount: boolean;
 }
 
 export interface GetSearchTypeaheadRequest {
-    includeExtIsBlueVerified: object;
-    includeExtVerifiedType: object;
-    includeExtProfileImageShape: object;
-    q: object;
-    src: object;
-    resultType: object;
+    includeExtIsBlueVerified: number;
+    includeExtVerifiedType: number;
+    includeExtProfileImageShape: number;
+    q: string;
+    src: string;
+    resultType: string;
 }
 
 /**

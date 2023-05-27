@@ -58,6 +58,17 @@ src/models/ModuleEntry.ts
 src/models/ModuleItem.ts
 src/models/OneFactorLoginEligibility.ts
 src/models/OtherResponse.ts
+src/models/PostCreateRetweetRequest.ts
+src/models/PostCreateTweetRequest.ts
+src/models/PostCreateTweetRequestFeatures.ts
+src/models/PostCreateTweetRequestVariables.ts
+src/models/PostCreateTweetRequestVariablesMedia.ts
+src/models/PostDeleteRetweetRequest.ts
+src/models/PostDeleteRetweetRequestVariables.ts
+src/models/PostDeleteTweetRequest.ts
+src/models/PostDeleteTweetRequestVariables.ts
+src/models/PostFavoriteTweetRequest.ts
+src/models/PostUnfavoriteTweetRequest.ts
 src/models/ProfileResponse.ts
 src/models/ProfileResponseData.ts
 src/models/Retweet.ts

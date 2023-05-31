@@ -39,7 +39,7 @@ import {
  * 
  * @export
  */
-export type ContentUnion = TimelineTimelineCursor | TimelineTimelineItem | TimelineTimelineModule;
+export type ContentUnion = { entryType: 'TimelineTimelineCursor' } & TimelineTimelineCursor | { entryType: 'TimelineTimelineItem' } & TimelineTimelineItem | { entryType: 'TimelineTimelineModule' } & TimelineTimelineModule;
 
 export function ContentUnionFromJSON(json: any): ContentUnion {
     return ContentUnionFromJSONTyped(json, false);
@@ -49,7 +49,16 @@ export function ContentUnionFromJSONTyped(json: any, ignoreDiscriminator: boolea
     if ((json === undefined) || (json === null)) {
         return json;
     }
-    return { ...TimelineTimelineCursorFromJSONTyped(json, true), ...TimelineTimelineItemFromJSONTyped(json, true), ...TimelineTimelineModuleFromJSONTyped(json, true) };
+    switch (json['entryType']) {
+        case 'TimelineTimelineCursor':
+            return {...TimelineTimelineCursorFromJSONTyped(json, true), entryType: 'TimelineTimelineCursor'};
+        case 'TimelineTimelineItem':
+            return {...TimelineTimelineItemFromJSONTyped(json, true), entryType: 'TimelineTimelineItem'};
+        case 'TimelineTimelineModule':
+            return {...TimelineTimelineModuleFromJSONTyped(json, true), entryType: 'TimelineTimelineModule'};
+        default:
+            throw new Error(`No variant of ContentUnion exists with 'entryType=${json['entryType']}'`);
+    }
 }
 
 export function ContentUnionToJSON(value?: ContentUnion | null): any {
@@ -59,17 +68,16 @@ export function ContentUnionToJSON(value?: ContentUnion | null): any {
     if (value === null) {
         return null;
     }
+    switch (value['entryType']) {
+        case 'TimelineTimelineCursor':
+            return TimelineTimelineCursorToJSON(value);
+        case 'TimelineTimelineItem':
+            return TimelineTimelineItemToJSON(value);
+        case 'TimelineTimelineModule':
+            return TimelineTimelineModuleToJSON(value);
+        default:
+            throw new Error(`No variant of ContentUnion exists with 'entryType=${value['entryType']}'`);
+    }
 
-    if (instanceOfTimelineTimelineCursor(value)) {
-        return TimelineTimelineCursorToJSON(value as TimelineTimelineCursor);
-    }
-    if (instanceOfTimelineTimelineItem(value)) {
-        return TimelineTimelineItemToJSON(value as TimelineTimelineItem);
-    }
-    if (instanceOfTimelineTimelineModule(value)) {
-        return TimelineTimelineModuleToJSON(value as TimelineTimelineModule);
-    }
-
-    return {};
 }
 

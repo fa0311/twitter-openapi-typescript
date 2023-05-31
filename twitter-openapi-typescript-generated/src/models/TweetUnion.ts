@@ -39,7 +39,7 @@ import {
  * 
  * @export
  */
-export type TweetUnion = Tweet | TweetTombstone | TweetWithVisibilityResults;
+export type TweetUnion = { typename: 'Tweet' } & Tweet | { typename: 'TweetTombstone' } & TweetTombstone | { typename: 'TweetWithVisibilityResults' } & TweetWithVisibilityResults;
 
 export function TweetUnionFromJSON(json: any): TweetUnion {
     return TweetUnionFromJSONTyped(json, false);
@@ -49,7 +49,16 @@ export function TweetUnionFromJSONTyped(json: any, ignoreDiscriminator: boolean)
     if ((json === undefined) || (json === null)) {
         return json;
     }
-    return { ...TweetFromJSONTyped(json, true), ...TweetTombstoneFromJSONTyped(json, true), ...TweetWithVisibilityResultsFromJSONTyped(json, true) };
+    switch (json['typename']) {
+        case 'Tweet':
+            return {...TweetFromJSONTyped(json, true), typename: 'Tweet'};
+        case 'TweetTombstone':
+            return {...TweetTombstoneFromJSONTyped(json, true), typename: 'TweetTombstone'};
+        case 'TweetWithVisibilityResults':
+            return {...TweetWithVisibilityResultsFromJSONTyped(json, true), typename: 'TweetWithVisibilityResults'};
+        default:
+            throw new Error(`No variant of TweetUnion exists with 'typename=${json['typename']}'`);
+    }
 }
 
 export function TweetUnionToJSON(value?: TweetUnion | null): any {
@@ -59,17 +68,16 @@ export function TweetUnionToJSON(value?: TweetUnion | null): any {
     if (value === null) {
         return null;
     }
+    switch (value['typename']) {
+        case 'Tweet':
+            return TweetToJSON(value);
+        case 'TweetTombstone':
+            return TweetTombstoneToJSON(value);
+        case 'TweetWithVisibilityResults':
+            return TweetWithVisibilityResultsToJSON(value);
+        default:
+            throw new Error(`No variant of TweetUnion exists with 'typename=${value['typename']}'`);
+    }
 
-    if (instanceOfTweet(value)) {
-        return TweetToJSON(value as Tweet);
-    }
-    if (instanceOfTweetTombstone(value)) {
-        return TweetTombstoneToJSON(value as TweetTombstone);
-    }
-    if (instanceOfTweetWithVisibilityResults(value)) {
-        return TweetWithVisibilityResultsToJSON(value as TweetWithVisibilityResults);
-    }
-
-    return {};
 }
 

@@ -46,7 +46,7 @@ import {
  * 
  * @export
  */
-export type InstructionUnion = TimelineAddEntries | TimelineClearCache | TimelinePinEntry | TimelineTerminateTimeline;
+export type InstructionUnion = { type: 'TimelineAddEntries' } & TimelineAddEntries | { type: 'TimelineClearCache' } & TimelineClearCache | { type: 'TimelinePinEntry' } & TimelinePinEntry | { type: 'TimelineTerminateTimeline' } & TimelineTerminateTimeline;
 
 export function InstructionUnionFromJSON(json: any): InstructionUnion {
     return InstructionUnionFromJSONTyped(json, false);
@@ -56,7 +56,18 @@ export function InstructionUnionFromJSONTyped(json: any, ignoreDiscriminator: bo
     if ((json === undefined) || (json === null)) {
         return json;
     }
-    return { ...TimelineAddEntriesFromJSONTyped(json, true), ...TimelineClearCacheFromJSONTyped(json, true), ...TimelinePinEntryFromJSONTyped(json, true), ...TimelineTerminateTimelineFromJSONTyped(json, true) };
+    switch (json['type']) {
+        case 'TimelineAddEntries':
+            return {...TimelineAddEntriesFromJSONTyped(json, true), type: 'TimelineAddEntries'};
+        case 'TimelineClearCache':
+            return {...TimelineClearCacheFromJSONTyped(json, true), type: 'TimelineClearCache'};
+        case 'TimelinePinEntry':
+            return {...TimelinePinEntryFromJSONTyped(json, true), type: 'TimelinePinEntry'};
+        case 'TimelineTerminateTimeline':
+            return {...TimelineTerminateTimelineFromJSONTyped(json, true), type: 'TimelineTerminateTimeline'};
+        default:
+            throw new Error(`No variant of InstructionUnion exists with 'type=${json['type']}'`);
+    }
 }
 
 export function InstructionUnionToJSON(value?: InstructionUnion | null): any {
@@ -66,20 +77,18 @@ export function InstructionUnionToJSON(value?: InstructionUnion | null): any {
     if (value === null) {
         return null;
     }
+    switch (value['type']) {
+        case 'TimelineAddEntries':
+            return TimelineAddEntriesToJSON(value);
+        case 'TimelineClearCache':
+            return TimelineClearCacheToJSON(value);
+        case 'TimelinePinEntry':
+            return TimelinePinEntryToJSON(value);
+        case 'TimelineTerminateTimeline':
+            return TimelineTerminateTimelineToJSON(value);
+        default:
+            throw new Error(`No variant of InstructionUnion exists with 'type=${value['type']}'`);
+    }
 
-    if (instanceOfTimelineAddEntries(value)) {
-        return TimelineAddEntriesToJSON(value as TimelineAddEntries);
-    }
-    if (instanceOfTimelineClearCache(value)) {
-        return TimelineClearCacheToJSON(value as TimelineClearCache);
-    }
-    if (instanceOfTimelinePinEntry(value)) {
-        return TimelinePinEntryToJSON(value as TimelinePinEntry);
-    }
-    if (instanceOfTimelineTerminateTimeline(value)) {
-        return TimelineTerminateTimelineToJSON(value as TimelineTerminateTimeline);
-    }
-
-    return {};
 }
 

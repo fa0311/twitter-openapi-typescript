@@ -39,7 +39,7 @@ import {
  * 
  * @export
  */
-export type ItemContentUnion = TimelineTimelineCursor | TimelineTweet | TimelineUser;
+export type ItemContentUnion = { itemType: 'TimelineTimelineCursor' } & TimelineTimelineCursor | { itemType: 'TimelineTweet' } & TimelineTweet | { itemType: 'TimelineUser' } & TimelineUser;
 
 export function ItemContentUnionFromJSON(json: any): ItemContentUnion {
     return ItemContentUnionFromJSONTyped(json, false);
@@ -49,7 +49,16 @@ export function ItemContentUnionFromJSONTyped(json: any, ignoreDiscriminator: bo
     if ((json === undefined) || (json === null)) {
         return json;
     }
-    return { ...TimelineTimelineCursorFromJSONTyped(json, true), ...TimelineTweetFromJSONTyped(json, true), ...TimelineUserFromJSONTyped(json, true) };
+    switch (json['itemType']) {
+        case 'TimelineTimelineCursor':
+            return {...TimelineTimelineCursorFromJSONTyped(json, true), itemType: 'TimelineTimelineCursor'};
+        case 'TimelineTweet':
+            return {...TimelineTweetFromJSONTyped(json, true), itemType: 'TimelineTweet'};
+        case 'TimelineUser':
+            return {...TimelineUserFromJSONTyped(json, true), itemType: 'TimelineUser'};
+        default:
+            throw new Error(`No variant of ItemContentUnion exists with 'itemType=${json['itemType']}'`);
+    }
 }
 
 export function ItemContentUnionToJSON(value?: ItemContentUnion | null): any {
@@ -59,17 +68,16 @@ export function ItemContentUnionToJSON(value?: ItemContentUnion | null): any {
     if (value === null) {
         return null;
     }
+    switch (value['itemType']) {
+        case 'TimelineTimelineCursor':
+            return TimelineTimelineCursorToJSON(value);
+        case 'TimelineTweet':
+            return TimelineTweetToJSON(value);
+        case 'TimelineUser':
+            return TimelineUserToJSON(value);
+        default:
+            throw new Error(`No variant of ItemContentUnion exists with 'itemType=${value['itemType']}'`);
+    }
 
-    if (instanceOfTimelineTimelineCursor(value)) {
-        return TimelineTimelineCursorToJSON(value as TimelineTimelineCursor);
-    }
-    if (instanceOfTimelineTweet(value)) {
-        return TimelineTweetToJSON(value as TimelineTweet);
-    }
-    if (instanceOfTimelineUser(value)) {
-        return TimelineUserToJSON(value as TimelineUser);
-    }
-
-    return {};
 }
 

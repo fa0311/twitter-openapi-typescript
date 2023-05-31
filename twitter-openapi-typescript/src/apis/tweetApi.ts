@@ -4,16 +4,71 @@ import { ApiFunction, ConvertInstructionsFunction } from '@/util/type';
 import { TweetListApiUtilsResponse } from '@/types/tweet';
 import { ApiUtilsRaw } from '@/types/timeline';
 import { buildCursor, entriesCursor, instructionToEntry, tweetEntriesConverter } from '@/util/api';
+import { type } from 'os';
 
-type requestParam<T> = {
+type RequestParam<T> = {
   apiFn: ApiFunction<T>;
   convertFn: ConvertInstructionsFunction<T>;
   key: string;
   param: { [key: string]: any };
 };
 
-type getHomeTimelineParam = {
+type GetTweetDetailParam = {
+  focalTweetId: string;
+  cursor?: string;
+  controllerData?: string;
+  extraParam?: { [key: string]: any };
+};
+
+type GetHomeTimelineParam = {
   couser?: string;
+  count?: number;
+  extraParam?: { [key: string]: any };
+};
+
+type GetHomeLatestTimelineParam = {
+  cursor?: string;
+  count?: number;
+  extraParam?: { [key: string]: any };
+};
+
+type GetListLatestTweetsTimelineParam = {
+  listId: string;
+  cursor?: string;
+  count?: number;
+  extraParam?: { [key: string]: any };
+};
+
+type GetUserTweetsParam = {
+  userId: string;
+  cursor?: string;
+  count?: number;
+  extraParam?: { [key: string]: any };
+};
+
+type GetUserTweetsAndRepliesParam = {
+  userId: string;
+  cursor?: string;
+  count?: number;
+  extraParam?: { [key: string]: any };
+};
+
+type GetUserMediaParam = {
+  userId: string;
+  cursor?: string;
+  count?: number;
+  extraParam?: { [key: string]: any };
+};
+
+type GetLikesParam = {
+  userId: string;
+  cursor?: string;
+  count?: number;
+  extraParam?: { [key: string]: any };
+};
+
+type GetBookmarksParam = {
+  cursor?: string;
   count?: number;
   extraParam?: { [key: string]: any };
 };
@@ -27,7 +82,7 @@ export class TweetApiUtils {
     this.flag = flag;
   }
 
-  async request<T>(param: requestParam<T>): Promise<TweetListApiUtilsResponse> {
+  async request<T>(param: RequestParam<T>): Promise<TweetListApiUtilsResponse> {
     const response = await param.apiFn({
       queryId: this.flag[param.key]['queryId'],
       variables: JSON.stringify({ ...this.flag[param.key]['variables'], ...param }),
@@ -50,18 +105,149 @@ export class TweetApiUtils {
     };
   }
 
-  async getHomeTimeline(param: getHomeTimelineParam): Promise<TweetListApiUtilsResponse> {
+  async getTweetDetail(param: GetTweetDetailParam): Promise<TweetListApiUtilsResponse> {
+    const args = {
+      focalTweetId: param.focalTweetId,
+      ...(param.cursor == null ? {} : { cursor: param.cursor }),
+      ...(param.controllerData == null ? {} : { controller_data: param.controllerData }),
+      ...param.extraParam,
+    };
+
+    const response = await this.request({
+      apiFn: this.api.getTweetDetailRaw,
+      convertFn: (e) => e.data.threadedConversationWithInjectionsV2.instructions,
+      key: 'TweetDetail',
+      param: args,
+    });
+    return response;
+  }
+
+  async getHomeTimeline(param: GetHomeTimelineParam): Promise<TweetListApiUtilsResponse> {
     const args = {
       ...(param.count == null ? {} : { count: param.count }),
       ...(param.couser == null ? {} : { couser: param.couser }),
       ...param.extraParam,
     };
-    console.log(args);
 
     const response = await this.request({
       apiFn: this.api.getHomeTimelineRaw,
       convertFn: (e) => e.data.home.homeTimelineUrt.instructions,
       key: 'HomeTimeline',
+      param: args,
+    });
+    return response;
+  }
+
+  async getHomeLatestTimeline(param: GetHomeLatestTimelineParam): Promise<TweetListApiUtilsResponse> {
+    const args = {
+      ...(param.count == null ? {} : { count: param.count }),
+      ...(param.cursor == null ? {} : { cursor: param.cursor }),
+      ...param.extraParam,
+    };
+
+    const response = await this.request({
+      apiFn: this.api.getHomeLatestTimelineRaw,
+      convertFn: (e) => e.data.home.homeTimelineUrt.instructions,
+      key: 'HomeLatestTimeline',
+      param: args,
+    });
+    return response;
+  }
+
+  async getListLatestTweetsTimeline(param: GetListLatestTweetsTimelineParam): Promise<TweetListApiUtilsResponse> {
+    const args = {
+      listId: param.listId,
+      ...(param.count == null ? {} : { count: param.count }),
+      ...(param.cursor == null ? {} : { cursor: param.cursor }),
+      ...param.extraParam,
+    };
+
+    const response = await this.request({
+      apiFn: this.api.getListLatestTweetsTimelineRaw,
+      convertFn: (e) => e.data.list.tweetsTimeline.timeline.instructions,
+      key: 'ListLatestTweetsTimeline',
+      param: args,
+    });
+    return response;
+  }
+
+  async getUserTweets(param: GetUserTweetsParam): Promise<TweetListApiUtilsResponse> {
+    const args = {
+      userId: param.userId,
+      ...(param.count == null ? {} : { count: param.count }),
+      ...(param.cursor == null ? {} : { cursor: param.cursor }),
+      ...param.extraParam,
+    };
+
+    const response = await this.request({
+      apiFn: this.api.getUserTweetsRaw,
+      convertFn: (e) => e.data.user.result.timelineV2.timeline.instructions,
+      key: 'UserTweets',
+      param: args,
+    });
+    return response;
+  }
+
+  async getUserTweetsAndReplies(param: GetUserTweetsAndRepliesParam): Promise<TweetListApiUtilsResponse> {
+    const args = {
+      userId: param.userId,
+      ...(param.count == null ? {} : { count: param.count }),
+      ...(param.cursor == null ? {} : { cursor: param.cursor }),
+      ...param.extraParam,
+    };
+
+    const response = await this.request({
+      apiFn: this.api.getUserTweetsAndRepliesRaw,
+      convertFn: (e) => e.data.user.result.timelineV2.timeline.instructions,
+      key: 'UserTweetsAndReplies',
+      param: args,
+    });
+    return response;
+  }
+
+  async getUserMedia(param: GetUserMediaParam): Promise<TweetListApiUtilsResponse> {
+    const args = {
+      userId: param.userId,
+      ...(param.count == null ? {} : { count: param.count }),
+      ...(param.cursor == null ? {} : { cursor: param.cursor }),
+      ...param.extraParam,
+    };
+
+    const response = await this.request({
+      apiFn: this.api.getUserMediaRaw,
+      convertFn: (e) => e.data.user.result.timelineV2.timeline.instructions,
+      key: 'UserMedia',
+      param: args,
+    });
+    return response;
+  }
+  async getLikes(param: GetLikesParam): Promise<TweetListApiUtilsResponse> {
+    const args = {
+      userId: param.userId,
+      ...(param.count == null ? {} : { count: param.count }),
+      ...(param.cursor == null ? {} : { cursor: param.cursor }),
+      ...param.extraParam,
+    };
+
+    const response = await this.request({
+      apiFn: this.api.getLikesRaw,
+      convertFn: (e) => e.data.user.result.timelineV2.timeline.instructions,
+      key: 'Likes',
+      param: args,
+    });
+    return response;
+  }
+  async getBookmarks(param: GetBookmarksParam): Promise<TweetListApiUtilsResponse> {
+    const args = {
+      ...(param.count == null ? {} : { count: param.count }),
+      ...(param.cursor == null ? {} : { cursor: param.cursor }),
+      ...param.extraParam,
+    };
+
+    const response = await this.request({
+      apiFn: this.api.getBookmarksRaw,
+      convertFn: (e) => e.data.bookmarkTimelineV2.timeline.instructions,
+      key: 'Bookmarks',
       param: args,
     });
     return response;

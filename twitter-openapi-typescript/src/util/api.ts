@@ -1,4 +1,4 @@
-import * as i from 'twitter-openapi-typescript-generated/src';
+import * as i from 'twitter-openapi-typescript-generated/SRC';
 import { TweetApiUtils } from '../types/tweet';
 import { UserApiUtils } from '../types/user_list';
 import { CursorApiUtilsResponse } from '../types/timeline';
@@ -60,12 +60,13 @@ export const buildTweetApiUtils = (args: buildTweetApiUtilsArgs): TweetApiUtils 
 };
 
 export const tweetResultsConverter = (tweetResults: i.ItemResult): i.Tweet | undefined => {
-  if (tweetResults.typename == i.TypeName.Tweet) {
-    return tweetResults.result as i.Tweet;
-  } else if (tweetResults.typename == i.TypeName.TweetWithVisibilityResults) {
-    return (tweetResults.result as i.TweetWithVisibilityResults).tweet;
-  } else if (tweetResults.typename == i.TypeName.TweetTombstone) {
-    return undefined;
+  switch (tweetResults.result.typename) {
+    case i.TypeName.Tweet:
+      return tweetResults.result as i.Tweet;
+    case i.TypeName.TweetWithVisibilityResults:
+      return (tweetResults.result as i.TweetWithVisibilityResults).tweet;
+    case i.TypeName.TweetTombstone:
+      return undefined;
   }
   throw Error();
 };

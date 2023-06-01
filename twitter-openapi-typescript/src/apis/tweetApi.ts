@@ -88,7 +88,7 @@ export class TweetApiUtils {
       variables: JSON.stringify({ ...this.flag[param.key]['variables'], ...param }),
       features: JSON.stringify(this.flag[param.key]['features']),
     });
-    const instruction = param.convertFn(response.value() as T);
+    const instruction = param.convertFn((await response.value()) as T);
     const entry = instructionToEntry(instruction);
     const data = tweetEntriesConverter(entry);
 
@@ -122,7 +122,7 @@ export class TweetApiUtils {
     return response;
   }
 
-  async getHomeTimeline(param: GetHomeTimelineParam): Promise<TweetListApiUtilsResponse> {
+  async getHomeTimeline(param: GetHomeTimelineParam = {}): Promise<TweetListApiUtilsResponse> {
     const args = {
       ...(param.count == null ? {} : { count: param.count }),
       ...(param.couser == null ? {} : { couser: param.couser }),
@@ -138,7 +138,7 @@ export class TweetApiUtils {
     return response;
   }
 
-  async getHomeLatestTimeline(param: GetHomeLatestTimelineParam): Promise<TweetListApiUtilsResponse> {
+  async getHomeLatestTimeline(param: GetHomeLatestTimelineParam = {}): Promise<TweetListApiUtilsResponse> {
     const args = {
       ...(param.count == null ? {} : { count: param.count }),
       ...(param.cursor == null ? {} : { cursor: param.cursor }),
@@ -237,7 +237,7 @@ export class TweetApiUtils {
     });
     return response;
   }
-  async getBookmarks(param: GetBookmarksParam): Promise<TweetListApiUtilsResponse> {
+  async getBookmarks(param: GetBookmarksParam = {}): Promise<TweetListApiUtilsResponse> {
     const args = {
       ...(param.count == null ? {} : { count: param.count }),
       ...(param.cursor == null ? {} : { cursor: param.cursor }),

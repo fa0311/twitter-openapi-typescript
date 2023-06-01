@@ -1,4 +1,4 @@
-import { ItemResult, Tweet, User } from 'twitter-openapi-typescript-generated/src';
+import { ItemResult, Tweet, User } from 'twitter-openapi-typescript-generated/dist';
 import { CursorApiUtilsResponse, ApiUtilsRaw } from '../types/timeline';
 
 export type TweetListApiUtilsResponse = {

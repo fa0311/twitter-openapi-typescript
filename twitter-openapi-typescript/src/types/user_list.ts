@@ -1,4 +1,4 @@
-import { TimelineUser, User } from 'twitter-openapi-typescript-generated/src';
+import { TimelineUser, User } from 'twitter-openapi-typescript-generated/dist';
 import { ApiUtilsRaw, CursorApiUtilsResponse } from './timeline';
 
 export type UserListApiUtilsResponse = {

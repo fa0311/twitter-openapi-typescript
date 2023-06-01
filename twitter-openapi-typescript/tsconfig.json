@@ -1,17 +1,22 @@
 {
   "compilerOptions": {
-    "target": "es2019",
+    "declaration": true,
+    "target": "es5",
     "module": "commonjs",
-    "strict": true,
-    "rootDir": "./",
-    "esModuleInterop": true,
+    "moduleResolution": "node",
+    "outDir": "dist",
+    "lib": ["es6", "dom"],
     "typeRoots": ["node_modules/@types"],
+
+    "allowSyntheticDefaultImports": true,
     "baseUrl": "./",
     "paths": {
       "@/*": ["src/*"],
       "@test/*": ["test/*"]
-    },
-    "outDir": "./dist/"
+    }
   },
-  "exclude": ["node_modules"]
+  "exclude": ["dist", "node_modules", "test"],
+  "exports": {
+    ".": "./dist/index.js"
+  }
 }

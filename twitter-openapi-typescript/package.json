@@ -4,7 +4,7 @@
   "description": "Implementation of Twitter internal API in TypeScript",
   "scripts": {
     "test": "jest",
-    "build": "tsc",
+    "build": "tsc && npx tscpaths -p tsconfig.json -s . -o ./dist",
     "prepare": "npm run build"
   },
   "keywords": [],

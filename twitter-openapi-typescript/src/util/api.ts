@@ -111,3 +111,20 @@ export const buildCursor = (cursorList: i.TimelineTimelineCursor[]): CursorApiUt
     bottom: cursorList.find((e) => e.cursorType == i.TimelineTimelineCursorCursorTypeEnum.Bottom),
   };
 };
+
+export const buildHeader = (headers: Headers): ApiUtilsHeader => {
+  return {
+    raw: headers,
+    connectionHash: headers.get('x-connection-hash'),
+    contentTypeOptions: headers.get('x-content-type-options'),
+    frameOptions: headers.get('x-frame-options'),
+    rateLimitLimit: Number(headers.get('x-rate-limit-limit')),
+    rateLimitRemaining: Number(headers.get('x-rate-limit-remaining')),
+    rateLimitReset: Number(headers.get('x-rate-limit-reset')),
+    responseTime: Number(headers.get('x-response-time')),
+    tfePreserveBody: headers.get('x-tfe-preserve-body') == 'true',
+    transactionId: headers.get('x-transaction-id'),
+    twitterResponseTags: headers.get('x-twitter-response-tags'),
+    xssProtection: Number(headers.get('x-xss-protection')),
+  };
+};

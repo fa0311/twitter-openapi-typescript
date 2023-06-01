@@ -3,8 +3,7 @@ import { DefaultFlag } from '@/types/flag';
 import { ApiFunction, ConvertInstructionsFunction } from '@/util/type';
 import { TweetListApiUtilsResponse } from '@/types/tweet';
 import { ApiUtilsRaw } from '@/types/timeline';
-import { buildCursor, entriesCursor, instructionToEntry, tweetEntriesConverter } from '@/util/api';
-import { type } from 'os';
+import { buildHeader, entriesCursor, instructionToEntry, tweetEntriesConverter } from '@/util/api';
 
 type RequestParam<T> = {
   apiFn: ApiFunction<T>;
@@ -93,13 +92,13 @@ export class TweetApiUtils {
     const data = tweetEntriesConverter(entry);
 
     const raw: ApiUtilsRaw = {
-      // response: response,
+      response: response.raw,
       instruction: instruction,
       entry: entry,
     };
     return {
       raw: raw,
-      // header: response.headers,
+      header: buildHeader(response.raw.headers),
       cursor: entriesCursor(entry),
       data: data,
     };

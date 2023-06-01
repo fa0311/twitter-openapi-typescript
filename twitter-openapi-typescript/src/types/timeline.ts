@@ -6,7 +6,7 @@ export type CursorApiUtilsResponse = {
 };
 
 export type ApiUtilsRaw = {
-  // response: Response;
+  response: Response;
   instruction: InstructionUnion[];
   entry: TimelineAddEntry[];
 };

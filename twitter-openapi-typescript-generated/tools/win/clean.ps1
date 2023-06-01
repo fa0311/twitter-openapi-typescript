@@ -15,3 +15,7 @@ Remove-Item -Recurse .npmignore
 Remove-Item -Recurse package.json
 Remove-Item -Recurse README.md
 Remove-Item -Recurse tsconfig.json
+
+# Remove-Item -Recurse package-lock.json
+# Remove-Item -Recurse node_modules
+# Remove-Item -Recurse dist

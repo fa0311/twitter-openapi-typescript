@@ -6,4 +6,11 @@ export type ApiFunction<T> = (requestParameters: {
   features: string;
 }) => Promise<i.ApiResponse<T>>;
 
-export type ConvertInstructionsFunction<T> = (arg0: T) => i.InstructionUnion[];
+export type RequestParam<T1, T2> = {
+  apiFn: ApiFunction<T2>;
+  convertFn: ConvertFunction<T1, T2>;
+  key: string;
+  param: { [key: string]: any };
+};
+
+export type ConvertFunction<T1, T2> = (arg0: T2) => T1;

@@ -1,7 +1,7 @@
-import * as i from 'twitter-openapi-typescript-generated/SRC';
-import { TweetApiUtils } from '../types/tweet';
-import { UserApiUtils } from '../types/user_list';
-import { CursorApiUtilsResponse } from '../types/timeline';
+import * as i from 'twitter-openapi-typescript-generated/src';
+import { TweetApiUtils } from '@/types/tweet';
+import { UserApiUtils } from '@/types/user_list';
+import { CursorApiUtilsResponse } from '@/types/timeline';
 
 export const instructionToEntry = (item: i.InstructionUnion[]): i.TimelineAddEntry[] => {
   return item.flatMap((e) => (e.type == i.InstructionType.TimelineAddEntries ? [e as i.TimelineAddEntries] : []))[0]

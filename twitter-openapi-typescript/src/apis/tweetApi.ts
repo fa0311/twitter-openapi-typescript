@@ -1,16 +1,9 @@
 import * as i from 'twitter-openapi-typescript-generated/src';
 import { DefaultFlag } from '@/types/flag';
-import { ApiFunction, ConvertInstructionsFunction } from '@/models/type';
+import { ApiFunction, RequestParam } from '@/models/type';
 import { TweetListApiUtilsResponse } from '@/types/tweet';
 import { ApiUtilsRaw } from '@/types/timeline';
 import { buildHeader, entriesCursor, instructionToEntry, tweetEntriesConverter } from '@/models/api';
-
-type RequestParam<T> = {
-  apiFn: ApiFunction<T>;
-  convertFn: ConvertInstructionsFunction<T>;
-  key: string;
-  param: { [key: string]: any };
-};
 
 type GetTweetDetailParam = {
   focalTweetId: string;
@@ -81,7 +74,7 @@ export class TweetApiUtils {
     this.flag = flag;
   }
 
-  async request<T>(param: RequestParam<T>): Promise<TweetListApiUtilsResponse> {
+  async request<T>(param: RequestParam<i.InstructionUnion[], T>): Promise<TweetListApiUtilsResponse> {
     const response = await param.apiFn.bind(this.api)({
       queryId: this.flag[param.key]['queryId'],
       variables: JSON.stringify({ ...this.flag[param.key]['variables'], ...param }),
@@ -90,7 +83,6 @@ export class TweetApiUtils {
     const instruction = param.convertFn((await response.value()) as T);
     const entry = instructionToEntry(instruction);
     const data = tweetEntriesConverter(entry);
-
     const raw: ApiUtilsRaw = {
       response: response.raw,
       instruction: instruction,

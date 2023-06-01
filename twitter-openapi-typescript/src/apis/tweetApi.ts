@@ -1,9 +1,9 @@
 import * as i from 'twitter-openapi-typescript-generated/src';
 import { DefaultFlag } from '@/types/flag';
-import { ApiFunction, ConvertInstructionsFunction } from '@/util/type';
+import { ApiFunction, ConvertInstructionsFunction } from '@/models/type';
 import { TweetListApiUtilsResponse } from '@/types/tweet';
 import { ApiUtilsRaw } from '@/types/timeline';
-import { buildHeader, entriesCursor, instructionToEntry, tweetEntriesConverter } from '@/util/api';
+import { buildHeader, entriesCursor, instructionToEntry, tweetEntriesConverter } from '@/models/api';
 
 type RequestParam<T> = {
   apiFn: ApiFunction<T>;

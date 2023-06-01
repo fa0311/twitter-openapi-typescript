@@ -4,7 +4,7 @@
   "description": "Implementation of Twitter internal API in TypeScript",
   "scripts": {
     "test": "jest",
-    "build": "tsc && npx tscpaths -p tsconfig.json -s . -o ./dist",
+    "build": "tsc -p tsconfig.build.json && npx tscpaths -p tsconfig.build.json -s . -o ./dist",
     "prepare": "npm run build"
   },
   "keywords": [],
@@ -17,11 +17,6 @@
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
   "dependencies": {
-    "dotenv": "^16.0.0",
-    "jest": "^28.0.0",
-    "log4js": "^6.9.1",
-    "node-fetch": "^2.0.0",
-    "ts-jest": "^28.0.0",
     "twitter-openapi-typescript-generated": "file:../twitter-openapi-typescript-generated"
   },
   "devDependencies": {
@@ -35,6 +30,11 @@
     "eslint-plugin-import": "^2.25.0",
     "eslint-plugin-n": "^15.0.0",
     "eslint-plugin-promise": "^6.0.0",
-    "typescript": "^4.0"
+    "typescript": "^4.0",
+    "dotenv": "^16.0.0",
+    "jest": "^28.0.0",
+    "log4js": "^6.9.1",
+    "node-fetch": "^2.0.0",
+    "ts-jest": "^28.0.0"
   }
 }

@@ -49,7 +49,7 @@ export function TweetUnionFromJSONTyped(json: any, ignoreDiscriminator: boolean)
     if ((json === undefined) || (json === null)) {
         return json;
     }
-    switch (json['typename']) {
+    switch (json['__typename']) {
         case 'Tweet':
             return {...TweetFromJSONTyped(json, true), typename: 'Tweet'};
         case 'TweetTombstone':
@@ -57,7 +57,7 @@ export function TweetUnionFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         case 'TweetWithVisibilityResults':
             return {...TweetWithVisibilityResultsFromJSONTyped(json, true), typename: 'TweetWithVisibilityResults'};
         default:
-            throw new Error(`No variant of TweetUnion exists with 'typename=${json['typename']}'`);
+            throw new Error(`No variant of TweetUnion exists with 'typename=${json['__typename']}'`);
     }
 }
 

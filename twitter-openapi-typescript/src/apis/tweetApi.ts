@@ -1,9 +1,6 @@
 import * as i from 'twitter-openapi-typescript-generated';
-import { DefaultFlag } from '@/types/flag';
-import { ApiFunction, RequestParam } from '@/models/type';
-import { TweetListApiUtilsResponse } from '@/types/tweet';
-import { ApiUtilsRaw } from '@/types/timeline';
-import { buildHeader, entriesCursor, instructionToEntry, tweetEntriesConverter } from '@/models/api';
+import { DefaultFlag, TweetListApiUtilsResponse, ApiUtilsRaw } from '@/types';
+import { RequestParam, buildHeader, entriesCursor, instructionToEntry, tweetEntriesConverter } from '@/models';
 
 type GetTweetDetailParam = {
   focalTweetId: string;

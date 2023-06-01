@@ -1,7 +1,5 @@
 import * as i from 'twitter-openapi-typescript-generated';
-import { TweetApiUtils } from '@/types/tweet';
-import { UserApiUtils } from '@/types/user_list';
-import { CursorApiUtilsResponse } from '@/types/timeline';
+import { TweetApiUtilsData, UserApiUtilsData, CursorApiUtilsResponse, ApiUtilsHeader } from '@/types';
 
 export const instructionToEntry = (item: i.InstructionUnion[]): i.TimelineAddEntry[] => {
   return item
@@ -9,7 +7,7 @@ export const instructionToEntry = (item: i.InstructionUnion[]): i.TimelineAddEnt
     .find((e) => e).entries;
 };
 
-export const tweetEntriesConverter = (item: i.TimelineAddEntry[]): TweetApiUtils[] => {
+export const tweetEntriesConverter = (item: i.TimelineAddEntry[]): TweetApiUtilsData[] => {
   return item
     .map((e) => {
       if (e.content.entryType == i.ContentEntryType.TimelineTimelineItem) {
@@ -42,7 +40,7 @@ type buildTweetApiUtilsArgs = {
   promotedMetadata?: any;
   reply?: i.TimelineTweet[];
 };
-export const buildTweetApiUtils = (args: buildTweetApiUtilsArgs): TweetApiUtils | undefined => {
+export const buildTweetApiUtils = (args: buildTweetApiUtilsArgs): TweetApiUtilsData | undefined => {
   const tweet = tweetResultsConverter(args.result);
   if (tweet == null) return undefined;
   const quoted = tweet.quotedStatusResult;
@@ -83,7 +81,7 @@ export const userEntriesConverter = (item: i.TimelineAddEntry[]): i.TimelineUser
     .filter((e): e is NonNullable<typeof e> => e != null);
 };
 
-export const buildUserResponse = (user: i.TimelineUser): UserApiUtils => {
+export const buildUserResponse = (user: i.TimelineUser): UserApiUtilsData => {
   return {
     raw: user,
     user: user.userResults.result,

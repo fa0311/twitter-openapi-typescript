@@ -4,8 +4,9 @@ import { UserApiUtils } from '@/types/user_list';
 import { CursorApiUtilsResponse } from '@/types/timeline';
 
 export const instructionToEntry = (item: i.InstructionUnion[]): i.TimelineAddEntry[] => {
-  return item.flatMap((e) => (e.type == i.InstructionType.TimelineAddEntries ? [e as i.TimelineAddEntries] : []))[0]
-    .entries;
+  return item
+    .map((e) => (e.type == i.InstructionType.TimelineAddEntries ? (e as i.TimelineAddEntries) : null))
+    .find((e) => e).entries;
 };
 
 export const tweetEntriesConverter = (item: i.TimelineAddEntry[]): TweetApiUtils[] => {

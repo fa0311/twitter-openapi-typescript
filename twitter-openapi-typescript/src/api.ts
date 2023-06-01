@@ -10,7 +10,7 @@ import {
   V11PostApiUtils,
   V20GetApiUtils,
 } from '@/apis';
-import { DefaultFlag } from './types/flag';
+import { DefaultFlag } from '@/types/flag';
 
 type TwitterOpenApiParams = {
   lang?: string;

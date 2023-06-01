@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "target": "es5",
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "outDir": "dist",
+    "lib": ["es6", "dom"],
+    "typeRoots": ["node_modules/@types"],
+    "allowSyntheticDefaultImports": true,
+    "rootDir": "./",
+    "baseUrl": "./",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@test/*": ["./test/*"]
+    }
+  },
+  "exclude": ["dist", "node_modules", "test"],
+  "exports": {
+    ".": "./dist/index.js"
+  }
+}

@@ -1,21 +1,27 @@
 {
   "name": "twitter-openapi-typescript",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Implementation of Twitter internal API in TypeScript",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "build": "tsc",
+    "prepare": "npm run build"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "fa0311",
+  "license": "LGPL-3.0-only",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fa0311/twitter-openapi-typescript.git"
+  },
+  "main": "./dist/index.js",
+  "typings": "./dist/index.d.ts",
   "dependencies": {
     "dotenv": "^16.0.0",
     "fetch-cookie": "^2.1.0",
     "log4js": "^6.9.1",
     "node-fetch": "^2.0.0",
-    "twitter-openapi-typescript-generated": "https://gitpkg.now.sh/fa0311/twitter-openapi-typescript/twitter-openapi-typescript-generated",
-    "typescript": "^4.0.0"
+    "twitter-openapi-typescript-generated": "https://gitpkg.now.sh/fa0311/twitter-openapi-typescript/twitter-openapi-typescript-generated?master&scripts.postinstall=npm%20run%20build"
   },
   "devDependencies": {
     "@types/jest": "^28.0.0",
@@ -29,6 +35,7 @@
     "eslint-plugin-n": "^15.0.0",
     "eslint-plugin-promise": "^6.0.0",
     "jest": "^28.0.0",
-    "ts-jest": "^28.0.0"
+    "ts-jest": "^28.0.0",
+    "typescript": "^4.0"
   }
 }

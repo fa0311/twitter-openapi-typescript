@@ -1,12 +1,12 @@
-import { InstructionUnion, TimelineAddEntry, TimelineTimelineCursor } from 'twitter-openapi-typescript-generated/dist';
+import * as i from 'twitter-openapi-typescript-generated';
 
 export type CursorApiUtilsResponse = {
-  bottom?: TimelineTimelineCursor;
-  top?: TimelineTimelineCursor;
+  bottom?: i.TimelineTimelineCursor;
+  top?: i.TimelineTimelineCursor;
 };
 
 export type ApiUtilsRaw = {
   response: Response;
-  instruction: InstructionUnion[];
-  entry: TimelineAddEntry[];
+  instruction: i.InstructionUnion[];
+  entry: i.TimelineAddEntry[];
 };

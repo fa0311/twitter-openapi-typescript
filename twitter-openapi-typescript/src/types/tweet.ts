@@ -1,5 +1,5 @@
-import { ItemResult, Tweet, User } from 'twitter-openapi-typescript-generated/dist';
-import { CursorApiUtilsResponse, ApiUtilsRaw } from '../types/timeline';
+import * as i from 'twitter-openapi-typescript-generated';
+import { CursorApiUtilsResponse, ApiUtilsRaw } from '@/types/timeline';
 
 export type TweetListApiUtilsResponse = {
   raw: ApiUtilsRaw;
@@ -9,9 +9,9 @@ export type TweetListApiUtilsResponse = {
 };
 
 export type TweetApiUtils = {
-  raw: ItemResult;
-  tweet: Tweet;
-  user: User;
+  raw: i.ItemResult;
+  tweet: i.Tweet;
+  user: i.User;
   reply: TweetApiUtils[];
   quoted?: TweetApiUtils;
   retweeted?: TweetApiUtils;

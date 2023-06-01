@@ -1,5 +1,5 @@
-import { TimelineUser, User } from 'twitter-openapi-typescript-generated/dist';
-import { ApiUtilsRaw, CursorApiUtilsResponse } from './timeline';
+import * as i from 'twitter-openapi-typescript-generated';
+import { ApiUtilsRaw, CursorApiUtilsResponse } from '@/types/timeline';
 
 export type UserListApiUtilsResponse = {
   raw: ApiUtilsRaw;
@@ -9,6 +9,6 @@ export type UserListApiUtilsResponse = {
 };
 
 export type UserApiUtils = {
-  raw: TimelineUser;
-  user: User;
+  raw: i.TimelineUser;
+  user: i.User;
 };

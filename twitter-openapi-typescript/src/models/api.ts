@@ -1,4 +1,4 @@
-import * as i from 'twitter-openapi-typescript-generated/dist';
+import * as i from 'twitter-openapi-typescript-generated';
 import { TweetApiUtils } from '@/types/tweet';
 import { UserApiUtils } from '@/types/user_list';
 import { CursorApiUtilsResponse } from '@/types/timeline';

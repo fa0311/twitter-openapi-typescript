@@ -1,4 +1,4 @@
-import * as i from 'twitter-openapi-typescript-generated/dist';
+import * as i from 'twitter-openapi-typescript-generated';
 
 export type UserApiUtilsResponse = {
   raw: UserApiUtilsRaw;

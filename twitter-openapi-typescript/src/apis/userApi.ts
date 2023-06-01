@@ -1,5 +1,5 @@
-import { UserApiUtilsRaw } from './../types/user';
-import * as i from 'twitter-openapi-typescript-generated/dist';
+import { UserApiUtilsRaw } from '@/types/user';
+import * as i from 'twitter-openapi-typescript-generated';
 import { DefaultFlag } from '@/types/flag';
 import { ApiFunction, RequestParam } from '@/models/type';
 import { TweetListApiUtilsResponse } from '@/types/tweet';

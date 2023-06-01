@@ -1,4 +1,4 @@
-import * as i from 'twitter-openapi-typescript-generated/dist';
+import * as i from 'twitter-openapi-typescript-generated';
 import { DefaultFlag } from '@/types/flag';
 
 export class V11PostApiUtils {

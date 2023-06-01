@@ -14,7 +14,7 @@
     "fetch-cookie": "^2.1.0",
     "log4js": "^6.9.1",
     "node-fetch": "^2.0.0",
-    "twitter-openapi-typescript-generated": "link:..\\twitter-openapi-typescript-generated",
+    "twitter-openapi-typescript-generated": "https://gitpkg.now.sh/fa0311/twitter-openapi-typescript/twitter-openapi-typescript-generated",
     "typescript": "^4.0.0"
   },
   "devDependencies": {

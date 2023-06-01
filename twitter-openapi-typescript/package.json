@@ -17,12 +17,12 @@
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
   "dependencies": {
-    "node-fetch": "^2.0.0",
-    "twitter-openapi-typescript-generated": "https://gitpkg.now.sh/fa0311/twitter-openapi-typescript/twitter-openapi-typescript-generated?master&scripts.postinstall=npm%20run%20build",
-    "jest": "^28.0.0",
-    "ts-jest": "^28.0.0",
     "dotenv": "^16.0.0",
-    "log4js": "^6.9.1"
+    "jest": "^28.0.0",
+    "log4js": "^6.9.1",
+    "node-fetch": "^2.0.0",
+    "ts-jest": "^28.0.0",
+    "twitter-openapi-typescript-generated": "file:../twitter-openapi-typescript-generated"
   },
   "devDependencies": {
     "@types/jest": "^28.0.0",

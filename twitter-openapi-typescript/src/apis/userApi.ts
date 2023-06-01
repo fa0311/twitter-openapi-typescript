@@ -1,10 +1,9 @@
-import { UserApiUtilsRaw } from '@/types/user';
 import * as i from 'twitter-openapi-typescript-generated';
+import { UserApiUtilsRaw } from '@/types/user';
 import { DefaultFlag } from '@/types/flag';
-import { ApiFunction, RequestParam } from '@/models/type';
-import { TweetListApiUtilsResponse } from '@/types/tweet';
+import { RequestParam } from '@/models/type';
 import { UserApiUtilsResponse } from '@/types/user';
-import { buildHeader, instructionToEntry } from '@/models/api';
+import { buildHeader } from '@/models/api';
 
 type getUserByScreenNameParam = {
   screenName: string;

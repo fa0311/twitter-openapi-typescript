@@ -1,4 +1,4 @@
-type ApiUtilsHeader = {
+export type ApiUtilsHeader = {
   raw: Headers;
   connectionHash: string | null;
   contentTypeOptions: string | null;

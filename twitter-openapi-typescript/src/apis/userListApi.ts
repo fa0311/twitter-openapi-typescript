@@ -60,7 +60,7 @@ export class UserListApiUtils {
     return await this.request({
       apiFn: this.api.getFollowersRaw,
       convertFn: (e) => e.data.user.result.timeline.timeline.instructions,
-      key: 'getFollowers',
+      key: 'Followers',
       param: param,
     });
   }
@@ -68,7 +68,7 @@ export class UserListApiUtils {
     return await this.request({
       apiFn: this.api.getFollowingRaw,
       convertFn: (e) => e.data.user.result.timeline.timeline.instructions,
-      key: 'getFollowing',
+      key: 'Following',
       param: param,
     });
   }

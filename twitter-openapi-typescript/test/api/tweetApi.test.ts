@@ -1,64 +1,74 @@
 import { getClient, logger } from '@test/init';
+import { printTweet } from '@test/util';
 
 test('getTweetDetail', async () => {
+  logger.log('getTweetDetail');
   const client = await getClient();
   const response = await client.getTweetApi().getTweetDetail({ focalTweetId: '1349129669258448897' });
-  logger.debug(response);
+  response.data.filter((e) => !e.promotedMetadata).forEach((e) => printTweet(e));
   expect(0).toBe(0);
 });
 
 test('getHomeTimeline', async () => {
+  logger.log('getHomeTimeline');
   const client = await getClient();
   const response = await client.getTweetApi().getHomeTimeline();
-  logger.debug(response);
+  response.data.filter((e) => !e.promotedMetadata).forEach((e) => printTweet(e));
   expect(0).toBe(0);
 });
 
 test('getHomeLatestTimeline', async () => {
+  logger.log('getHomeLatestTimeline');
   const client = await getClient();
   const response = await client.getTweetApi().getHomeLatestTimeline();
-  logger.debug(response);
+  response.data.filter((e) => !e.promotedMetadata).forEach((e) => printTweet(e));
   expect(0).toBe(0);
 });
 
 test('getListLatestTweetsTimeline', async () => {
+  logger.log('getListLatestTweetsTimeline');
   const client = await getClient();
   const response = await client.getTweetApi().getListLatestTweetsTimeline({ listId: '1141162794290520064' });
-  logger.debug(response);
+  response.data.filter((e) => !e.promotedMetadata).forEach((e) => printTweet(e));
   expect(0).toBe(0);
 });
 
 test('getUserTweets', async () => {
+  logger.log('getUserTweets');
   const client = await getClient();
   const response = await client.getTweetApi().getUserTweets({ userId: '44196397' });
-  logger.debug(response);
+  response.data.filter((e) => !e.promotedMetadata).forEach((e) => printTweet(e));
   expect(0).toBe(0);
 });
 
 test('getUserTweetsAndReplies', async () => {
+  logger.log('getUserTweetsAndReplies');
   const client = await getClient();
   const response = await client.getTweetApi().getUserTweetsAndReplies({ userId: '44196397' });
-  logger.debug(response);
+  response.data.filter((e) => !e.promotedMetadata).forEach((e) => printTweet(e));
   expect(0).toBe(0);
 });
 
 test('getUserMedia', async () => {
+  logger.log('getUserMedia');
   const client = await getClient();
   const response = await client.getTweetApi().getUserMedia({ userId: '44196397' });
-  logger.debug(response);
+  response.data.filter((e) => !e.promotedMetadata).forEach((e) => printTweet(e));
   expect(0).toBe(0);
 });
 
 test('getLikes', async () => {
+  logger.log('getLikes');
   const client = await getClient();
   const response = await client.getTweetApi().getLikes({ userId: '44196397' });
-  logger.debug(response);
+  response.data.filter((e) => !e.promotedMetadata).forEach((e) => printTweet(e));
   expect(0).toBe(0);
 });
 
 test('getBookmarks', async () => {
+  logger.log('getBookmarks');
   const client = await getClient();
   const response = await client.getTweetApi().getBookmarks();
-  logger.debug(response);
+  response.data.filter((e) => !e.promotedMetadata).forEach((e) => printTweet(e));
   expect(0).toBe(0);
 });

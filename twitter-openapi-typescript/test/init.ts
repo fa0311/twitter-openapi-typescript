@@ -14,7 +14,14 @@ const ct0 = process.env.CSRF_TOKEN as string;
 export const logger = log4js
   .configure({
     appenders: {
-      system: { type: 'file', filename: 'logs/test.log' },
+      system: {
+        type: 'file',
+        filename: 'logs/test.log',
+        layout: {
+          type: 'pattern',
+          pattern: '[%d{hh:mm:ss}] [%p] %m',
+        },
+      },
     },
     categories: {
       default: { appenders: ['system'], level: 'all' },

@@ -33,7 +33,8 @@ export class UserListApiUtils {
   }
 
   async request<T>(param: RequestParam<i.InstructionUnion[], T>): Promise<UserListApiUtilsResponse> {
-    const response = await param.apiFn.bind(this.api)({
+    const apiFn: typeof param.apiFn = param.apiFn.bind(this.api);
+    const response = await apiFn.bind(this.api)({
       queryId: this.flag[param.key]['queryId'],
       variables: JSON.stringify({ ...this.flag[param.key]['variables'], ...param }),
       features: JSON.stringify(this.flag[param.key]['features']),
@@ -57,19 +58,33 @@ export class UserListApiUtils {
   }
 
   async getFollowers(param: GetFollowers): Promise<UserListApiUtilsResponse> {
-    return await this.request({
+    const args = {
+      userId: param.userId,
+      ...(param.cursor == null ? {} : { cursor: param.cursor }),
+      ...(param.count == null ? {} : { count: param.count }),
+      ...param.extraParam,
+    };
+    const response = await this.request({
       apiFn: this.api.getFollowersRaw,
       convertFn: (e) => e.data.user.result.timeline.timeline.instructions,
       key: 'Followers',
-      param: param,
+      param: args,
     });
+    return response;
   }
   async getFollowing(param: GetFollowing): Promise<UserListApiUtilsResponse> {
-    return await this.request({
+    const args = {
+      userId: param.userId,
+      ...(param.cursor == null ? {} : { cursor: param.cursor }),
+      ...(param.count == null ? {} : { count: param.count }),
+      ...param.extraParam,
+    };
+    const response = await this.request({
       apiFn: this.api.getFollowingRaw,
       convertFn: (e) => e.data.user.result.timeline.timeline.instructions,
       key: 'Following',
-      param: param,
+      param: args,
     });
+    return response;
   }
 }

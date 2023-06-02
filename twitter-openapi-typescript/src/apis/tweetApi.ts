@@ -72,7 +72,8 @@ export class TweetApiUtils {
   }
 
   async request<T>(param: RequestParam<i.InstructionUnion[], T>): Promise<TweetListApiUtilsResponse> {
-    const response = await param.apiFn.bind(this.api)({
+    const apiFn: typeof param.apiFn = param.apiFn.bind(this.api);
+    const response = await apiFn.bind(this.api)({
       queryId: this.flag[param.key]['queryId'],
       variables: JSON.stringify({ ...this.flag[param.key]['variables'], ...param }),
       features: JSON.stringify(this.flag[param.key]['features']),

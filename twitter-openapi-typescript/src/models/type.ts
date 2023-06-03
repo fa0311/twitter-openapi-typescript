@@ -6,12 +6,6 @@ export type ApiFunction<T> = (requestParameters: {
   features: string;
 }) => Promise<i.ApiResponse<T>>;
 
-export type RequestParamDefault<T> = {
-  apiFn: ApiFunction<T>;
-  key: string;
-  param: { [key: string]: any };
-};
-
 export type RequestParam<T1, T2> = {
   apiFn: ApiFunction<T2>;
   convertFn: ConvertFunction<T1, T2>;

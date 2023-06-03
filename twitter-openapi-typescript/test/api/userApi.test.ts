@@ -9,5 +9,5 @@ test('getUserByScreenName', async () => {
   logger.log(`followedBy: ${legacy.followedBy} following: ${legacy.following}`);
   logger.log(`friendsCount: ${legacy.friendsCount} followersCount: ${legacy.followersCount}`);
   logger.log('┄'.repeat(50));
-  expect(0).toBe(0);
+  expect(response.raw.response.ok).toBe(true);
 });

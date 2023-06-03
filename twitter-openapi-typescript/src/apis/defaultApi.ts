@@ -1,6 +1,7 @@
 import * as i from 'twitter-openapi-typescript-generated';
 import { DefaultFlag } from '@/types';
-import { RequestParamDefault } from '@/models';
+import { RequestParam, buildHeader } from '@/models';
+import { TwitterApiUtilsResponse } from '@/types/response';
 
 export type ProfileSpotlightsQueryParam = {
   screenName: string;
@@ -16,26 +17,35 @@ export class DefaultApiUtils {
     this.flag = flag;
   }
 
-  async request<T>(param: RequestParamDefault<T>): Promise<T> {
+  async request<T1, T2>(param: RequestParam<T1, T2>): Promise<TwitterApiUtilsResponse<T1>> {
     const apiFn: typeof param.apiFn = param.apiFn.bind(this.api);
     const response = await apiFn({
       queryId: this.flag[param.key]['queryId'],
       variables: JSON.stringify({ ...this.flag[param.key]['variables'], ...param }),
       features: JSON.stringify(this.flag[param.key]['features']),
     });
-    return response.value() as T;
+    const data = param.convertFn(await response.value());
+    return {
+      raw: { response: response.raw },
+      header: buildHeader(response.raw.headers),
+      data: data,
+    };
   }
 
-  async gettProfileSpotlightsQuery(param: ProfileSpotlightsQueryParam): Promise<i.UserResultByScreenName> {
+  async getProfileSpotlightsQuery(
+    param: ProfileSpotlightsQueryParam,
+  ): Promise<TwitterApiUtilsResponse<i.UserResultByScreenName>> {
     const args = {
       screenName: param.screenName,
       ...param.extraParam,
     };
-    const response = this.request({
+    const response = await this.request({
       key: 'ProfileSpotlightsQuery',
       apiFn: this.api.getProfileSpotlightsQueryRaw,
+      convertFn: (value) => value.data.userResultByScreenName,
       param: args,
     });
-    return (await response).data.userResultByScreenName;
+
+    return response;
   }
 }

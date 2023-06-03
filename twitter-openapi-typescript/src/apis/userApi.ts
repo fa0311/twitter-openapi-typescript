@@ -18,17 +18,14 @@ export class UserApiUtils {
 
   async request<T>(param: RequestParam<i.UserResults, T>): Promise<UserApiUtilsResponse> {
     const apiFn: typeof param.apiFn = param.apiFn.bind(this.api);
-    const response = await apiFn.bind(this.api)({
+    const response = await apiFn({
       queryId: this.flag[param.key]['queryId'],
       variables: JSON.stringify({ ...this.flag[param.key]['variables'], ...param }),
       features: JSON.stringify(this.flag[param.key]['features']),
     });
-    const user = param.convertFn((await response.value()) as T);
-    const raw: UserApiUtilsRaw = {
-      response: response.raw,
-    };
+    const user = param.convertFn(await response.value());
     return {
-      raw: raw,
+      raw: { response: response.raw },
       header: buildHeader(response.raw.headers),
       data: user.result,
     };

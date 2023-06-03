@@ -73,12 +73,12 @@ export class TweetApiUtils {
 
   async request<T>(param: RequestParam<i.InstructionUnion[], T>): Promise<TweetListApiUtilsResponse> {
     const apiFn: typeof param.apiFn = param.apiFn.bind(this.api);
-    const response = await apiFn.bind(this.api)({
+    const response = await apiFn({
       queryId: this.flag[param.key]['queryId'],
       variables: JSON.stringify({ ...this.flag[param.key]['variables'], ...param }),
       features: JSON.stringify(this.flag[param.key]['features']),
     });
-    const instruction = param.convertFn((await response.value()) as T);
+    const instruction = param.convertFn(await response.value());
     const entry = instructionToEntry(instruction);
     const data = tweetEntriesConverter(entry);
     const raw: ApiUtilsRaw = {

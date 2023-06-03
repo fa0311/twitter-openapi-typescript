@@ -1,13 +1,13 @@
 import { getClient, logger } from '@test/init';
 import { printTweet } from '@test/util';
 
-test('gettProfileSpotlightsQuery', async () => {
-  logger.log('gettProfileSpotlightsQuery');
+test('getProfileSpotlightsQuery', async () => {
+  logger.log('getProfileSpotlightsQuery');
   const client = await getClient();
-  const response = await client.getDefaultApi().gettProfileSpotlightsQuery({ screenName: 'elonmusk' });
-  const legacy = response.result.legacy;
+  const response = await client.getDefaultApi().getProfileSpotlightsQuery({ screenName: 'elonmusk' });
+  const legacy = response.data.result.legacy;
   logger.log(legacy.screenName);
   logger.log(`followedBy: ${legacy.followedBy} following: ${legacy.following}`);
   logger.log('┄'.repeat(50));
-  expect(0).toBe(0);
+  expect(response.raw.response.ok).toBe(true);
 });

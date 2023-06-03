@@ -1,9 +1,7 @@
 import * as i from 'twitter-openapi-typescript-generated';
 import { DefaultFlag } from '@/types';
-import { buildHeader, entriesCursor } from '@/models/api';
-import { TwitterApiUtilsResponse } from '@/types/response';
-
-type Response<T> = Promise<TwitterApiUtilsResponse<T>>;
+import { buildHeader, entriesCursor } from '@/models';
+import { TwitterApiUtilsResponse } from '@/types';
 
 type PostCreateTweetParam = {
   tweetText: string;

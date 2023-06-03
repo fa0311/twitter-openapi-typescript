@@ -5,9 +5,6 @@ import * as log4js from 'log4js';
 
 dotenv.config();
 
-declare const global: GlobalWithCognitoFix;
-global.fetch = fetch;
-
 const authToken = process.env.AUTH_TOKEN as string;
 const ct0 = process.env.CSRF_TOKEN as string;
 
@@ -29,11 +26,9 @@ export const logger = log4js
   })
   .getLogger('Test');
 
-export interface GlobalWithCognitoFix extends Global {
-  fetch: any;
-}
 export const getClient = async () => {
   const api = new TwitterOpenApi();
+  api.setFetchApi(fetch as any);
   const client = await api.getClientFromCookies(ct0, authToken);
   return client;
 };

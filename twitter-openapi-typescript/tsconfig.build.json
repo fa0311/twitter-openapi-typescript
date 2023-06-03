@@ -13,7 +13,9 @@
     "paths": {
       "@/*": ["./src/*"],
       "@test/*": ["./test/*"]
-    }
+    },
+    "declarationMap": true,
+    "sourceMap": true
   },
   "exclude": ["dist", "node_modules", "test"],
   "exports": {

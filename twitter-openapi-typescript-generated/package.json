@@ -1,19 +1,12 @@
 {
   "name": "twitter-openapi-typescript-generated",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "OpenAPI client for twitter-openapi-typescript-generated",
-  "author": "OpenAPI-Generator",
   "author": "fa0311",
-  "license": "LGPL-3.0-only",
   "repository": {
     "type": "git",
     "url": "https://github.com/fa0311/twitter-openapi-typescript.git"
   },
-  "keywords": [
-    "twitter",
-    "api",
-    "typescript"
-  ],
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
   "scripts": {
@@ -22,5 +15,11 @@
   },
   "devDependencies": {
     "typescript": "^4.0"
-  }
+  },
+  "license": "LGPL-3.0-only",
+  "keywords": [
+    "twitter",
+    "api",
+    "typescript"
+  ]
 }

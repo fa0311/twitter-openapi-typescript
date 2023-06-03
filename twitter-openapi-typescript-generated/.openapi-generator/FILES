@@ -1,5 +1,4 @@
 .gitignore
-.npmignore
 README.md
 package.json
 src/apis/DefaultApi.ts

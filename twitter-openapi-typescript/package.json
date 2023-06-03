@@ -31,7 +31,7 @@
     "@typescript-eslint/parser": "^5.53.0",
     "dotenv": "^16.0.0",
     "eslint": "^8.0.0",
-    "eslint-config-standard-with-typescript": "^34.0.0",
+    "eslint-config-standard-with-typescript": "^35.0.0",
     "eslint-plugin-import": "^2.25.0",
     "eslint-plugin-n": "^15.0.0",
     "eslint-plugin-promise": "^6.0.0",

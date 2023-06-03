@@ -7,4 +7,4 @@ npmVersion: 0.0.1
 legacyDiscriminatorBehavior: false
 # modelPropertyNaming: original
 # stringEnums: true
-paramNaming: original
+# paramNaming: original

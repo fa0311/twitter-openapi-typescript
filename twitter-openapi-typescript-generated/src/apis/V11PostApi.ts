@@ -16,37 +16,37 @@
 import * as runtime from '../runtime';
 
 export interface PostCreateFriendshipsRequest {
-    include_blocked_by: number;
-    include_blocking: number;
-    include_can_dm: number;
-    include_can_media_tag: number;
-    include_ext_has_nft_avatar: number;
-    include_ext_is_blue_verified: number;
-    include_ext_profile_image_shape: number;
-    include_ext_verified_type: number;
-    include_followed_by: number;
-    include_mute_edge: number;
-    include_profile_interstitial_type: number;
-    include_want_retweets: number;
-    skip_status: number;
-    user_id: string;
+    includeBlockedBy: number;
+    includeBlocking: number;
+    includeCanDm: number;
+    includeCanMediaTag: number;
+    includeExtHasNftAvatar: number;
+    includeExtIsBlueVerified: number;
+    includeExtProfileImageShape: number;
+    includeExtVerifiedType: number;
+    includeFollowedBy: number;
+    includeMuteEdge: number;
+    includeProfileInterstitialType: number;
+    includeWantRetweets: number;
+    skipStatus: number;
+    userId: string;
 }
 
 export interface PostDestroyFriendshipsRequest {
-    include_blocked_by: number;
-    include_blocking: number;
-    include_can_dm: number;
-    include_can_media_tag: number;
-    include_ext_has_nft_avatar: number;
-    include_ext_is_blue_verified: number;
-    include_ext_profile_image_shape: number;
-    include_ext_verified_type: number;
-    include_followed_by: number;
-    include_mute_edge: number;
-    include_profile_interstitial_type: number;
-    include_want_retweets: number;
-    skip_status: number;
-    user_id: string;
+    includeBlockedBy: number;
+    includeBlocking: number;
+    includeCanDm: number;
+    includeCanMediaTag: number;
+    includeExtHasNftAvatar: number;
+    includeExtIsBlueVerified: number;
+    includeExtProfileImageShape: number;
+    includeExtVerifiedType: number;
+    includeFollowedBy: number;
+    includeMuteEdge: number;
+    includeProfileInterstitialType: number;
+    includeWantRetweets: number;
+    skipStatus: number;
+    userId: string;
 }
 
 /**
@@ -58,60 +58,60 @@ export class V11PostApi extends runtime.BaseAPI {
      * post create friendships
      */
     async postCreateFriendshipsRaw(requestParameters: PostCreateFriendshipsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.include_blocked_by === null || requestParameters.include_blocked_by === undefined) {
-            throw new runtime.RequiredError('include_blocked_by','Required parameter requestParameters.include_blocked_by was null or undefined when calling postCreateFriendships.');
+        if (requestParameters.includeBlockedBy === null || requestParameters.includeBlockedBy === undefined) {
+            throw new runtime.RequiredError('includeBlockedBy','Required parameter requestParameters.includeBlockedBy was null or undefined when calling postCreateFriendships.');
         }
 
-        if (requestParameters.include_blocking === null || requestParameters.include_blocking === undefined) {
-            throw new runtime.RequiredError('include_blocking','Required parameter requestParameters.include_blocking was null or undefined when calling postCreateFriendships.');
+        if (requestParameters.includeBlocking === null || requestParameters.includeBlocking === undefined) {
+            throw new runtime.RequiredError('includeBlocking','Required parameter requestParameters.includeBlocking was null or undefined when calling postCreateFriendships.');
         }
 
-        if (requestParameters.include_can_dm === null || requestParameters.include_can_dm === undefined) {
-            throw new runtime.RequiredError('include_can_dm','Required parameter requestParameters.include_can_dm was null or undefined when calling postCreateFriendships.');
+        if (requestParameters.includeCanDm === null || requestParameters.includeCanDm === undefined) {
+            throw new runtime.RequiredError('includeCanDm','Required parameter requestParameters.includeCanDm was null or undefined when calling postCreateFriendships.');
         }
 
-        if (requestParameters.include_can_media_tag === null || requestParameters.include_can_media_tag === undefined) {
-            throw new runtime.RequiredError('include_can_media_tag','Required parameter requestParameters.include_can_media_tag was null or undefined when calling postCreateFriendships.');
+        if (requestParameters.includeCanMediaTag === null || requestParameters.includeCanMediaTag === undefined) {
+            throw new runtime.RequiredError('includeCanMediaTag','Required parameter requestParameters.includeCanMediaTag was null or undefined when calling postCreateFriendships.');
         }
 
-        if (requestParameters.include_ext_has_nft_avatar === null || requestParameters.include_ext_has_nft_avatar === undefined) {
-            throw new runtime.RequiredError('include_ext_has_nft_avatar','Required parameter requestParameters.include_ext_has_nft_avatar was null or undefined when calling postCreateFriendships.');
+        if (requestParameters.includeExtHasNftAvatar === null || requestParameters.includeExtHasNftAvatar === undefined) {
+            throw new runtime.RequiredError('includeExtHasNftAvatar','Required parameter requestParameters.includeExtHasNftAvatar was null or undefined when calling postCreateFriendships.');
         }
 
-        if (requestParameters.include_ext_is_blue_verified === null || requestParameters.include_ext_is_blue_verified === undefined) {
-            throw new runtime.RequiredError('include_ext_is_blue_verified','Required parameter requestParameters.include_ext_is_blue_verified was null or undefined when calling postCreateFriendships.');
+        if (requestParameters.includeExtIsBlueVerified === null || requestParameters.includeExtIsBlueVerified === undefined) {
+            throw new runtime.RequiredError('includeExtIsBlueVerified','Required parameter requestParameters.includeExtIsBlueVerified was null or undefined when calling postCreateFriendships.');
         }
 
-        if (requestParameters.include_ext_profile_image_shape === null || requestParameters.include_ext_profile_image_shape === undefined) {
-            throw new runtime.RequiredError('include_ext_profile_image_shape','Required parameter requestParameters.include_ext_profile_image_shape was null or undefined when calling postCreateFriendships.');
+        if (requestParameters.includeExtProfileImageShape === null || requestParameters.includeExtProfileImageShape === undefined) {
+            throw new runtime.RequiredError('includeExtProfileImageShape','Required parameter requestParameters.includeExtProfileImageShape was null or undefined when calling postCreateFriendships.');
         }
 
-        if (requestParameters.include_ext_verified_type === null || requestParameters.include_ext_verified_type === undefined) {
-            throw new runtime.RequiredError('include_ext_verified_type','Required parameter requestParameters.include_ext_verified_type was null or undefined when calling postCreateFriendships.');
+        if (requestParameters.includeExtVerifiedType === null || requestParameters.includeExtVerifiedType === undefined) {
+            throw new runtime.RequiredError('includeExtVerifiedType','Required parameter requestParameters.includeExtVerifiedType was null or undefined when calling postCreateFriendships.');
         }
 
-        if (requestParameters.include_followed_by === null || requestParameters.include_followed_by === undefined) {
-            throw new runtime.RequiredError('include_followed_by','Required parameter requestParameters.include_followed_by was null or undefined when calling postCreateFriendships.');
+        if (requestParameters.includeFollowedBy === null || requestParameters.includeFollowedBy === undefined) {
+            throw new runtime.RequiredError('includeFollowedBy','Required parameter requestParameters.includeFollowedBy was null or undefined when calling postCreateFriendships.');
         }
 
-        if (requestParameters.include_mute_edge === null || requestParameters.include_mute_edge === undefined) {
-            throw new runtime.RequiredError('include_mute_edge','Required parameter requestParameters.include_mute_edge was null or undefined when calling postCreateFriendships.');
+        if (requestParameters.includeMuteEdge === null || requestParameters.includeMuteEdge === undefined) {
+            throw new runtime.RequiredError('includeMuteEdge','Required parameter requestParameters.includeMuteEdge was null or undefined when calling postCreateFriendships.');
         }
 
-        if (requestParameters.include_profile_interstitial_type === null || requestParameters.include_profile_interstitial_type === undefined) {
-            throw new runtime.RequiredError('include_profile_interstitial_type','Required parameter requestParameters.include_profile_interstitial_type was null or undefined when calling postCreateFriendships.');
+        if (requestParameters.includeProfileInterstitialType === null || requestParameters.includeProfileInterstitialType === undefined) {
+            throw new runtime.RequiredError('includeProfileInterstitialType','Required parameter requestParameters.includeProfileInterstitialType was null or undefined when calling postCreateFriendships.');
         }
 
-        if (requestParameters.include_want_retweets === null || requestParameters.include_want_retweets === undefined) {
-            throw new runtime.RequiredError('include_want_retweets','Required parameter requestParameters.include_want_retweets was null or undefined when calling postCreateFriendships.');
+        if (requestParameters.includeWantRetweets === null || requestParameters.includeWantRetweets === undefined) {
+            throw new runtime.RequiredError('includeWantRetweets','Required parameter requestParameters.includeWantRetweets was null or undefined when calling postCreateFriendships.');
         }
 
-        if (requestParameters.skip_status === null || requestParameters.skip_status === undefined) {
-            throw new runtime.RequiredError('skip_status','Required parameter requestParameters.skip_status was null or undefined when calling postCreateFriendships.');
+        if (requestParameters.skipStatus === null || requestParameters.skipStatus === undefined) {
+            throw new runtime.RequiredError('skipStatus','Required parameter requestParameters.skipStatus was null or undefined when calling postCreateFriendships.');
         }
 
-        if (requestParameters.user_id === null || requestParameters.user_id === undefined) {
-            throw new runtime.RequiredError('user_id','Required parameter requestParameters.user_id was null or undefined when calling postCreateFriendships.');
+        if (requestParameters.userId === null || requestParameters.userId === undefined) {
+            throw new runtime.RequiredError('userId','Required parameter requestParameters.userId was null or undefined when calling postCreateFriendships.');
         }
 
         const queryParameters: any = {};
@@ -160,60 +160,60 @@ export class V11PostApi extends runtime.BaseAPI {
             formParams = new URLSearchParams();
         }
 
-        if (requestParameters.include_blocked_by !== undefined) {
-            formParams.append('include_blocked_by', requestParameters.include_blocked_by as any);
+        if (requestParameters.includeBlockedBy !== undefined) {
+            formParams.append('include_blocked_by', requestParameters.includeBlockedBy as any);
         }
 
-        if (requestParameters.include_blocking !== undefined) {
-            formParams.append('include_blocking', requestParameters.include_blocking as any);
+        if (requestParameters.includeBlocking !== undefined) {
+            formParams.append('include_blocking', requestParameters.includeBlocking as any);
         }
 
-        if (requestParameters.include_can_dm !== undefined) {
-            formParams.append('include_can_dm', requestParameters.include_can_dm as any);
+        if (requestParameters.includeCanDm !== undefined) {
+            formParams.append('include_can_dm', requestParameters.includeCanDm as any);
         }
 
-        if (requestParameters.include_can_media_tag !== undefined) {
-            formParams.append('include_can_media_tag', requestParameters.include_can_media_tag as any);
+        if (requestParameters.includeCanMediaTag !== undefined) {
+            formParams.append('include_can_media_tag', requestParameters.includeCanMediaTag as any);
         }
 
-        if (requestParameters.include_ext_has_nft_avatar !== undefined) {
-            formParams.append('include_ext_has_nft_avatar', requestParameters.include_ext_has_nft_avatar as any);
+        if (requestParameters.includeExtHasNftAvatar !== undefined) {
+            formParams.append('include_ext_has_nft_avatar', requestParameters.includeExtHasNftAvatar as any);
         }
 
-        if (requestParameters.include_ext_is_blue_verified !== undefined) {
-            formParams.append('include_ext_is_blue_verified', requestParameters.include_ext_is_blue_verified as any);
+        if (requestParameters.includeExtIsBlueVerified !== undefined) {
+            formParams.append('include_ext_is_blue_verified', requestParameters.includeExtIsBlueVerified as any);
         }
 
-        if (requestParameters.include_ext_profile_image_shape !== undefined) {
-            formParams.append('include_ext_profile_image_shape', requestParameters.include_ext_profile_image_shape as any);
+        if (requestParameters.includeExtProfileImageShape !== undefined) {
+            formParams.append('include_ext_profile_image_shape', requestParameters.includeExtProfileImageShape as any);
         }
 
-        if (requestParameters.include_ext_verified_type !== undefined) {
-            formParams.append('include_ext_verified_type', requestParameters.include_ext_verified_type as any);
+        if (requestParameters.includeExtVerifiedType !== undefined) {
+            formParams.append('include_ext_verified_type', requestParameters.includeExtVerifiedType as any);
         }
 
-        if (requestParameters.include_followed_by !== undefined) {
-            formParams.append('include_followed_by', requestParameters.include_followed_by as any);
+        if (requestParameters.includeFollowedBy !== undefined) {
+            formParams.append('include_followed_by', requestParameters.includeFollowedBy as any);
         }
 
-        if (requestParameters.include_mute_edge !== undefined) {
-            formParams.append('include_mute_edge', requestParameters.include_mute_edge as any);
+        if (requestParameters.includeMuteEdge !== undefined) {
+            formParams.append('include_mute_edge', requestParameters.includeMuteEdge as any);
         }
 
-        if (requestParameters.include_profile_interstitial_type !== undefined) {
-            formParams.append('include_profile_interstitial_type', requestParameters.include_profile_interstitial_type as any);
+        if (requestParameters.includeProfileInterstitialType !== undefined) {
+            formParams.append('include_profile_interstitial_type', requestParameters.includeProfileInterstitialType as any);
         }
 
-        if (requestParameters.include_want_retweets !== undefined) {
-            formParams.append('include_want_retweets', requestParameters.include_want_retweets as any);
+        if (requestParameters.includeWantRetweets !== undefined) {
+            formParams.append('include_want_retweets', requestParameters.includeWantRetweets as any);
         }
 
-        if (requestParameters.skip_status !== undefined) {
-            formParams.append('skip_status', requestParameters.skip_status as any);
+        if (requestParameters.skipStatus !== undefined) {
+            formParams.append('skip_status', requestParameters.skipStatus as any);
         }
 
-        if (requestParameters.user_id !== undefined) {
-            formParams.append('user_id', requestParameters.user_id as any);
+        if (requestParameters.userId !== undefined) {
+            formParams.append('user_id', requestParameters.userId as any);
         }
 
         const response = await this.request({
@@ -238,60 +238,60 @@ export class V11PostApi extends runtime.BaseAPI {
      * post destroy friendships
      */
     async postDestroyFriendshipsRaw(requestParameters: PostDestroyFriendshipsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.include_blocked_by === null || requestParameters.include_blocked_by === undefined) {
-            throw new runtime.RequiredError('include_blocked_by','Required parameter requestParameters.include_blocked_by was null or undefined when calling postDestroyFriendships.');
+        if (requestParameters.includeBlockedBy === null || requestParameters.includeBlockedBy === undefined) {
+            throw new runtime.RequiredError('includeBlockedBy','Required parameter requestParameters.includeBlockedBy was null or undefined when calling postDestroyFriendships.');
         }
 
-        if (requestParameters.include_blocking === null || requestParameters.include_blocking === undefined) {
-            throw new runtime.RequiredError('include_blocking','Required parameter requestParameters.include_blocking was null or undefined when calling postDestroyFriendships.');
+        if (requestParameters.includeBlocking === null || requestParameters.includeBlocking === undefined) {
+            throw new runtime.RequiredError('includeBlocking','Required parameter requestParameters.includeBlocking was null or undefined when calling postDestroyFriendships.');
         }
 
-        if (requestParameters.include_can_dm === null || requestParameters.include_can_dm === undefined) {
-            throw new runtime.RequiredError('include_can_dm','Required parameter requestParameters.include_can_dm was null or undefined when calling postDestroyFriendships.');
+        if (requestParameters.includeCanDm === null || requestParameters.includeCanDm === undefined) {
+            throw new runtime.RequiredError('includeCanDm','Required parameter requestParameters.includeCanDm was null or undefined when calling postDestroyFriendships.');
         }
 
-        if (requestParameters.include_can_media_tag === null || requestParameters.include_can_media_tag === undefined) {
-            throw new runtime.RequiredError('include_can_media_tag','Required parameter requestParameters.include_can_media_tag was null or undefined when calling postDestroyFriendships.');
+        if (requestParameters.includeCanMediaTag === null || requestParameters.includeCanMediaTag === undefined) {
+            throw new runtime.RequiredError('includeCanMediaTag','Required parameter requestParameters.includeCanMediaTag was null or undefined when calling postDestroyFriendships.');
         }
 
-        if (requestParameters.include_ext_has_nft_avatar === null || requestParameters.include_ext_has_nft_avatar === undefined) {
-            throw new runtime.RequiredError('include_ext_has_nft_avatar','Required parameter requestParameters.include_ext_has_nft_avatar was null or undefined when calling postDestroyFriendships.');
+        if (requestParameters.includeExtHasNftAvatar === null || requestParameters.includeExtHasNftAvatar === undefined) {
+            throw new runtime.RequiredError('includeExtHasNftAvatar','Required parameter requestParameters.includeExtHasNftAvatar was null or undefined when calling postDestroyFriendships.');
         }
 
-        if (requestParameters.include_ext_is_blue_verified === null || requestParameters.include_ext_is_blue_verified === undefined) {
-            throw new runtime.RequiredError('include_ext_is_blue_verified','Required parameter requestParameters.include_ext_is_blue_verified was null or undefined when calling postDestroyFriendships.');
+        if (requestParameters.includeExtIsBlueVerified === null || requestParameters.includeExtIsBlueVerified === undefined) {
+            throw new runtime.RequiredError('includeExtIsBlueVerified','Required parameter requestParameters.includeExtIsBlueVerified was null or undefined when calling postDestroyFriendships.');
         }
 
-        if (requestParameters.include_ext_profile_image_shape === null || requestParameters.include_ext_profile_image_shape === undefined) {
-            throw new runtime.RequiredError('include_ext_profile_image_shape','Required parameter requestParameters.include_ext_profile_image_shape was null or undefined when calling postDestroyFriendships.');
+        if (requestParameters.includeExtProfileImageShape === null || requestParameters.includeExtProfileImageShape === undefined) {
+            throw new runtime.RequiredError('includeExtProfileImageShape','Required parameter requestParameters.includeExtProfileImageShape was null or undefined when calling postDestroyFriendships.');
         }
 
-        if (requestParameters.include_ext_verified_type === null || requestParameters.include_ext_verified_type === undefined) {
-            throw new runtime.RequiredError('include_ext_verified_type','Required parameter requestParameters.include_ext_verified_type was null or undefined when calling postDestroyFriendships.');
+        if (requestParameters.includeExtVerifiedType === null || requestParameters.includeExtVerifiedType === undefined) {
+            throw new runtime.RequiredError('includeExtVerifiedType','Required parameter requestParameters.includeExtVerifiedType was null or undefined when calling postDestroyFriendships.');
         }
 
-        if (requestParameters.include_followed_by === null || requestParameters.include_followed_by === undefined) {
-            throw new runtime.RequiredError('include_followed_by','Required parameter requestParameters.include_followed_by was null or undefined when calling postDestroyFriendships.');
+        if (requestParameters.includeFollowedBy === null || requestParameters.includeFollowedBy === undefined) {
+            throw new runtime.RequiredError('includeFollowedBy','Required parameter requestParameters.includeFollowedBy was null or undefined when calling postDestroyFriendships.');
         }
 
-        if (requestParameters.include_mute_edge === null || requestParameters.include_mute_edge === undefined) {
-            throw new runtime.RequiredError('include_mute_edge','Required parameter requestParameters.include_mute_edge was null or undefined when calling postDestroyFriendships.');
+        if (requestParameters.includeMuteEdge === null || requestParameters.includeMuteEdge === undefined) {
+            throw new runtime.RequiredError('includeMuteEdge','Required parameter requestParameters.includeMuteEdge was null or undefined when calling postDestroyFriendships.');
         }
 
-        if (requestParameters.include_profile_interstitial_type === null || requestParameters.include_profile_interstitial_type === undefined) {
-            throw new runtime.RequiredError('include_profile_interstitial_type','Required parameter requestParameters.include_profile_interstitial_type was null or undefined when calling postDestroyFriendships.');
+        if (requestParameters.includeProfileInterstitialType === null || requestParameters.includeProfileInterstitialType === undefined) {
+            throw new runtime.RequiredError('includeProfileInterstitialType','Required parameter requestParameters.includeProfileInterstitialType was null or undefined when calling postDestroyFriendships.');
         }
 
-        if (requestParameters.include_want_retweets === null || requestParameters.include_want_retweets === undefined) {
-            throw new runtime.RequiredError('include_want_retweets','Required parameter requestParameters.include_want_retweets was null or undefined when calling postDestroyFriendships.');
+        if (requestParameters.includeWantRetweets === null || requestParameters.includeWantRetweets === undefined) {
+            throw new runtime.RequiredError('includeWantRetweets','Required parameter requestParameters.includeWantRetweets was null or undefined when calling postDestroyFriendships.');
         }
 
-        if (requestParameters.skip_status === null || requestParameters.skip_status === undefined) {
-            throw new runtime.RequiredError('skip_status','Required parameter requestParameters.skip_status was null or undefined when calling postDestroyFriendships.');
+        if (requestParameters.skipStatus === null || requestParameters.skipStatus === undefined) {
+            throw new runtime.RequiredError('skipStatus','Required parameter requestParameters.skipStatus was null or undefined when calling postDestroyFriendships.');
         }
 
-        if (requestParameters.user_id === null || requestParameters.user_id === undefined) {
-            throw new runtime.RequiredError('user_id','Required parameter requestParameters.user_id was null or undefined when calling postDestroyFriendships.');
+        if (requestParameters.userId === null || requestParameters.userId === undefined) {
+            throw new runtime.RequiredError('userId','Required parameter requestParameters.userId was null or undefined when calling postDestroyFriendships.');
         }
 
         const queryParameters: any = {};
@@ -340,60 +340,60 @@ export class V11PostApi extends runtime.BaseAPI {
             formParams = new URLSearchParams();
         }
 
-        if (requestParameters.include_blocked_by !== undefined) {
-            formParams.append('include_blocked_by', requestParameters.include_blocked_by as any);
+        if (requestParameters.includeBlockedBy !== undefined) {
+            formParams.append('include_blocked_by', requestParameters.includeBlockedBy as any);
         }
 
-        if (requestParameters.include_blocking !== undefined) {
-            formParams.append('include_blocking', requestParameters.include_blocking as any);
+        if (requestParameters.includeBlocking !== undefined) {
+            formParams.append('include_blocking', requestParameters.includeBlocking as any);
         }
 
-        if (requestParameters.include_can_dm !== undefined) {
-            formParams.append('include_can_dm', requestParameters.include_can_dm as any);
+        if (requestParameters.includeCanDm !== undefined) {
+            formParams.append('include_can_dm', requestParameters.includeCanDm as any);
         }
 
-        if (requestParameters.include_can_media_tag !== undefined) {
-            formParams.append('include_can_media_tag', requestParameters.include_can_media_tag as any);
+        if (requestParameters.includeCanMediaTag !== undefined) {
+            formParams.append('include_can_media_tag', requestParameters.includeCanMediaTag as any);
         }
 
-        if (requestParameters.include_ext_has_nft_avatar !== undefined) {
-            formParams.append('include_ext_has_nft_avatar', requestParameters.include_ext_has_nft_avatar as any);
+        if (requestParameters.includeExtHasNftAvatar !== undefined) {
+            formParams.append('include_ext_has_nft_avatar', requestParameters.includeExtHasNftAvatar as any);
         }
 
-        if (requestParameters.include_ext_is_blue_verified !== undefined) {
-            formParams.append('include_ext_is_blue_verified', requestParameters.include_ext_is_blue_verified as any);
+        if (requestParameters.includeExtIsBlueVerified !== undefined) {
+            formParams.append('include_ext_is_blue_verified', requestParameters.includeExtIsBlueVerified as any);
         }
 
-        if (requestParameters.include_ext_profile_image_shape !== undefined) {
-            formParams.append('include_ext_profile_image_shape', requestParameters.include_ext_profile_image_shape as any);
+        if (requestParameters.includeExtProfileImageShape !== undefined) {
+            formParams.append('include_ext_profile_image_shape', requestParameters.includeExtProfileImageShape as any);
         }
 
-        if (requestParameters.include_ext_verified_type !== undefined) {
-            formParams.append('include_ext_verified_type', requestParameters.include_ext_verified_type as any);
+        if (requestParameters.includeExtVerifiedType !== undefined) {
+            formParams.append('include_ext_verified_type', requestParameters.includeExtVerifiedType as any);
         }
 
-        if (requestParameters.include_followed_by !== undefined) {
-            formParams.append('include_followed_by', requestParameters.include_followed_by as any);
+        if (requestParameters.includeFollowedBy !== undefined) {
+            formParams.append('include_followed_by', requestParameters.includeFollowedBy as any);
         }
 
-        if (requestParameters.include_mute_edge !== undefined) {
-            formParams.append('include_mute_edge', requestParameters.include_mute_edge as any);
+        if (requestParameters.includeMuteEdge !== undefined) {
+            formParams.append('include_mute_edge', requestParameters.includeMuteEdge as any);
         }
 
-        if (requestParameters.include_profile_interstitial_type !== undefined) {
-            formParams.append('include_profile_interstitial_type', requestParameters.include_profile_interstitial_type as any);
+        if (requestParameters.includeProfileInterstitialType !== undefined) {
+            formParams.append('include_profile_interstitial_type', requestParameters.includeProfileInterstitialType as any);
         }
 
-        if (requestParameters.include_want_retweets !== undefined) {
-            formParams.append('include_want_retweets', requestParameters.include_want_retweets as any);
+        if (requestParameters.includeWantRetweets !== undefined) {
+            formParams.append('include_want_retweets', requestParameters.includeWantRetweets as any);
         }
 
-        if (requestParameters.skip_status !== undefined) {
-            formParams.append('skip_status', requestParameters.skip_status as any);
+        if (requestParameters.skipStatus !== undefined) {
+            formParams.append('skip_status', requestParameters.skipStatus as any);
         }
 
-        if (requestParameters.user_id !== undefined) {
-            formParams.append('user_id', requestParameters.user_id as any);
+        if (requestParameters.userId !== undefined) {
+            formParams.append('user_id', requestParameters.userId as any);
         }
 
         const response = await this.request({

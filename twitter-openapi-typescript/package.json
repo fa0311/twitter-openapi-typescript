@@ -7,15 +7,19 @@
     "build": "tsc -p tsconfig.build.json && npx tscpaths -p tsconfig.build.json -s . -o ./dist",
     "prepare": "npm run build"
   },
-  "keywords": [],
+  "keywords": [
+    "twitter",
+    "api",
+    "typescript"
+  ],
   "author": "fa0311",
   "license": "LGPL-3.0-only",
   "repository": {
     "type": "git",
     "url": "https://github.com/fa0311/twitter-openapi-typescript.git"
   },
-  "main": "./dist/index.js",
-  "typings": "./dist/index.d.ts",
+  "main": "./dist/src/index.js",
+  "typings": "./dist/src/index.d.ts",
   "dependencies": {
     "twitter-openapi-typescript-generated": "file:../twitter-openapi-typescript-generated"
   },

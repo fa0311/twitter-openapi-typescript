@@ -56,27 +56,27 @@ import {
 } from '../models';
 
 export interface PostCreateRetweetOperationRequest {
-    postCreateRetweetRequest: PostCreateRetweetRequest;
+    PostCreateRetweetRequest: PostCreateRetweetRequest;
 }
 
 export interface PostCreateTweetOperationRequest {
-    postCreateTweetRequest: PostCreateTweetRequest;
+    PostCreateTweetRequest: PostCreateTweetRequest;
 }
 
 export interface PostDeleteRetweetOperationRequest {
-    postDeleteRetweetRequest: PostDeleteRetweetRequest;
+    PostDeleteRetweetRequest: PostDeleteRetweetRequest;
 }
 
 export interface PostDeleteTweetOperationRequest {
-    postDeleteTweetRequest: PostDeleteTweetRequest;
+    PostDeleteTweetRequest: PostDeleteTweetRequest;
 }
 
 export interface PostFavoriteTweetOperationRequest {
-    postFavoriteTweetRequest: PostFavoriteTweetRequest;
+    PostFavoriteTweetRequest: PostFavoriteTweetRequest;
 }
 
 export interface PostUnfavoriteTweetOperationRequest {
-    postUnfavoriteTweetRequest: PostUnfavoriteTweetRequest;
+    PostUnfavoriteTweetRequest: PostUnfavoriteTweetRequest;
 }
 
 /**
@@ -88,8 +88,8 @@ export class PostApi extends runtime.BaseAPI {
      * create Retweet
      */
     async postCreateRetweetRaw(requestParameters: PostCreateRetweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateRetweetResponse>> {
-        if (requestParameters.postCreateRetweetRequest === null || requestParameters.postCreateRetweetRequest === undefined) {
-            throw new runtime.RequiredError('postCreateRetweetRequest','Required parameter requestParameters.postCreateRetweetRequest was null or undefined when calling postCreateRetweet.');
+        if (requestParameters.PostCreateRetweetRequest === null || requestParameters.PostCreateRetweetRequest === undefined) {
+            throw new runtime.RequiredError('PostCreateRetweetRequest','Required parameter requestParameters.PostCreateRetweetRequest was null or undefined when calling postCreateRetweet.');
         }
 
         const queryParameters: any = {};
@@ -131,7 +131,7 @@ export class PostApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: PostCreateRetweetRequestToJSON(requestParameters.postCreateRetweetRequest),
+            body: PostCreateRetweetRequestToJSON(requestParameters.PostCreateRetweetRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateRetweetResponseFromJSON(jsonValue));
@@ -149,8 +149,8 @@ export class PostApi extends runtime.BaseAPI {
      * create Tweet
      */
     async postCreateTweetRaw(requestParameters: PostCreateTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateTweetResponse>> {
-        if (requestParameters.postCreateTweetRequest === null || requestParameters.postCreateTweetRequest === undefined) {
-            throw new runtime.RequiredError('postCreateTweetRequest','Required parameter requestParameters.postCreateTweetRequest was null or undefined when calling postCreateTweet.');
+        if (requestParameters.PostCreateTweetRequest === null || requestParameters.PostCreateTweetRequest === undefined) {
+            throw new runtime.RequiredError('PostCreateTweetRequest','Required parameter requestParameters.PostCreateTweetRequest was null or undefined when calling postCreateTweet.');
         }
 
         const queryParameters: any = {};
@@ -192,7 +192,7 @@ export class PostApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: PostCreateTweetRequestToJSON(requestParameters.postCreateTweetRequest),
+            body: PostCreateTweetRequestToJSON(requestParameters.PostCreateTweetRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => CreateTweetResponseFromJSON(jsonValue));
@@ -210,8 +210,8 @@ export class PostApi extends runtime.BaseAPI {
      * delete Retweet
      */
     async postDeleteRetweetRaw(requestParameters: PostDeleteRetweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeleteRetweetResponse>> {
-        if (requestParameters.postDeleteRetweetRequest === null || requestParameters.postDeleteRetweetRequest === undefined) {
-            throw new runtime.RequiredError('postDeleteRetweetRequest','Required parameter requestParameters.postDeleteRetweetRequest was null or undefined when calling postDeleteRetweet.');
+        if (requestParameters.PostDeleteRetweetRequest === null || requestParameters.PostDeleteRetweetRequest === undefined) {
+            throw new runtime.RequiredError('PostDeleteRetweetRequest','Required parameter requestParameters.PostDeleteRetweetRequest was null or undefined when calling postDeleteRetweet.');
         }
 
         const queryParameters: any = {};
@@ -253,7 +253,7 @@ export class PostApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: PostDeleteRetweetRequestToJSON(requestParameters.postDeleteRetweetRequest),
+            body: PostDeleteRetweetRequestToJSON(requestParameters.PostDeleteRetweetRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => DeleteRetweetResponseFromJSON(jsonValue));
@@ -271,8 +271,8 @@ export class PostApi extends runtime.BaseAPI {
      * delete Retweet
      */
     async postDeleteTweetRaw(requestParameters: PostDeleteTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeleteTweetResponse>> {
-        if (requestParameters.postDeleteTweetRequest === null || requestParameters.postDeleteTweetRequest === undefined) {
-            throw new runtime.RequiredError('postDeleteTweetRequest','Required parameter requestParameters.postDeleteTweetRequest was null or undefined when calling postDeleteTweet.');
+        if (requestParameters.PostDeleteTweetRequest === null || requestParameters.PostDeleteTweetRequest === undefined) {
+            throw new runtime.RequiredError('PostDeleteTweetRequest','Required parameter requestParameters.PostDeleteTweetRequest was null or undefined when calling postDeleteTweet.');
         }
 
         const queryParameters: any = {};
@@ -314,7 +314,7 @@ export class PostApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: PostDeleteTweetRequestToJSON(requestParameters.postDeleteTweetRequest),
+            body: PostDeleteTweetRequestToJSON(requestParameters.PostDeleteTweetRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => DeleteTweetResponseFromJSON(jsonValue));
@@ -332,8 +332,8 @@ export class PostApi extends runtime.BaseAPI {
      * favorite Tweet
      */
     async postFavoriteTweetRaw(requestParameters: PostFavoriteTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FavoriteTweetResponseData>> {
-        if (requestParameters.postFavoriteTweetRequest === null || requestParameters.postFavoriteTweetRequest === undefined) {
-            throw new runtime.RequiredError('postFavoriteTweetRequest','Required parameter requestParameters.postFavoriteTweetRequest was null or undefined when calling postFavoriteTweet.');
+        if (requestParameters.PostFavoriteTweetRequest === null || requestParameters.PostFavoriteTweetRequest === undefined) {
+            throw new runtime.RequiredError('PostFavoriteTweetRequest','Required parameter requestParameters.PostFavoriteTweetRequest was null or undefined when calling postFavoriteTweet.');
         }
 
         const queryParameters: any = {};
@@ -375,7 +375,7 @@ export class PostApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: PostFavoriteTweetRequestToJSON(requestParameters.postFavoriteTweetRequest),
+            body: PostFavoriteTweetRequestToJSON(requestParameters.PostFavoriteTweetRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => FavoriteTweetResponseDataFromJSON(jsonValue));
@@ -393,8 +393,8 @@ export class PostApi extends runtime.BaseAPI {
      * unfavorite Tweet
      */
     async postUnfavoriteTweetRaw(requestParameters: PostUnfavoriteTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UnfavoriteTweetResponseData>> {
-        if (requestParameters.postUnfavoriteTweetRequest === null || requestParameters.postUnfavoriteTweetRequest === undefined) {
-            throw new runtime.RequiredError('postUnfavoriteTweetRequest','Required parameter requestParameters.postUnfavoriteTweetRequest was null or undefined when calling postUnfavoriteTweet.');
+        if (requestParameters.PostUnfavoriteTweetRequest === null || requestParameters.PostUnfavoriteTweetRequest === undefined) {
+            throw new runtime.RequiredError('PostUnfavoriteTweetRequest','Required parameter requestParameters.PostUnfavoriteTweetRequest was null or undefined when calling postUnfavoriteTweet.');
         }
 
         const queryParameters: any = {};
@@ -436,7 +436,7 @@ export class PostApi extends runtime.BaseAPI {
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: PostUnfavoriteTweetRequestToJSON(requestParameters.postUnfavoriteTweetRequest),
+            body: PostUnfavoriteTweetRequestToJSON(requestParameters.PostUnfavoriteTweetRequest),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => UnfavoriteTweetResponseDataFromJSON(jsonValue));

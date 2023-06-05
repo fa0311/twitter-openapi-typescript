@@ -1,4 +1,4 @@
-import { ApiUtilsHeader } from '@/types';
+import { ApiUtilsHeader } from '@/models';
 
 export type TwitterApiUtilsResponse<T> = {
   raw: TwitterApiUtilsRaw;

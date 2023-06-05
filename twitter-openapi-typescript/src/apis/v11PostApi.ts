@@ -1,6 +1,6 @@
 import * as i from 'twitter-openapi-typescript-generated';
-import { DefaultFlag, TwitterApiUtilsResponse } from '@/types';
-import { buildHeader } from '@/models';
+import { DefaultFlag, TwitterApiUtilsResponse } from '@/models';
+import { buildHeader } from '@/utils';
 
 type PostCreateFriendshipsParam = {
   userId: string;

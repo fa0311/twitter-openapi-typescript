@@ -1,5 +1,5 @@
 import * as i from 'twitter-openapi-typescript-generated';
-import { TweetApiUtilsData, UserApiUtilsData, CursorApiUtilsResponse, ApiUtilsHeader } from '@/types';
+import { TweetApiUtilsData, UserApiUtilsData, CursorApiUtilsResponse, ApiUtilsHeader } from '@/models';
 
 export const instructionToEntry = (item: i.InstructionUnion[]): i.TimelineAddEntry[] => {
   return item

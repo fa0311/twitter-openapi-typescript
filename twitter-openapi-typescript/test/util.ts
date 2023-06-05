@@ -1,4 +1,4 @@
-import { TweetApiUtilsData, UserApiUtilsData } from '@/types';
+import { TweetApiUtilsData, UserApiUtilsData } from '@/models';
 import { getClient, logger } from '@test/init';
 
 export const printTweet = (tweet: TweetApiUtilsData) => {

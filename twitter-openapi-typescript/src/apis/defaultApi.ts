@@ -1,7 +1,6 @@
 import * as i from 'twitter-openapi-typescript-generated';
-import { DefaultFlag } from '@/types';
-import { RequestParam, buildHeader } from '@/models';
-import { TwitterApiUtilsResponse } from '@/types/response';
+import { buildHeader } from '@/utils';
+import { RequestParam, DefaultFlag, TwitterApiUtilsResponse } from '@/models';
 
 export type ProfileSpotlightsQueryParam = {
   screenName: string;

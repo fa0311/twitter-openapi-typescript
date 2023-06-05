@@ -1,5 +1,5 @@
 import * as i from 'twitter-openapi-typescript-generated';
-import { ApiUtilsRaw, CursorApiUtilsResponse, ApiUtilsHeader } from '@/types';
+import { ApiUtilsRaw, CursorApiUtilsResponse, ApiUtilsHeader } from '@/models';
 
 export type UserListApiUtilsResponse = {
   raw: ApiUtilsRaw;

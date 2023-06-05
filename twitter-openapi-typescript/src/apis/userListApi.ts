@@ -1,13 +1,6 @@
 import * as i from 'twitter-openapi-typescript-generated';
-import { DefaultFlag, ApiUtilsRaw, UserListApiUtilsResponse } from '@/types';
-import {
-  RequestParam,
-  buildHeader,
-  buildUserResponse,
-  entriesCursor,
-  instructionToEntry,
-  userEntriesConverter,
-} from '@/models';
+import { RequestParam, DefaultFlag, ApiUtilsRaw, UserListApiUtilsResponse } from '@/models';
+import { buildHeader, buildUserResponse, entriesCursor, instructionToEntry, userEntriesConverter } from '@/utils';
 
 type GetFollowers = {
   userId: string;

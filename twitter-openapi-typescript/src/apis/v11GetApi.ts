@@ -1,5 +1,5 @@
 import * as i from 'twitter-openapi-typescript-generated';
-import { DefaultFlag } from '@/types';
+import { DefaultFlag } from '@/models';
 
 export class V11GetApiUtils {
   api: i.V11GetApi;

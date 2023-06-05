@@ -1,4 +1,4 @@
 export * from '@/apis';
 export * from '@/models';
-export * from '@/types';
+export * from '@/models';
 export * from '@/api';

@@ -60,26 +60,26 @@ export class TwitterOpenApi {
     const response = await this.fetchApi(TwitterOpenApi.twitter, { method: 'GET', redirect: 'manual' });
     const chars = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
     const csrfToken = [...Array(32)].reduce((a) => a + chars[Math.floor(Math.random() * chars.length)], '');
-    const cookie = this.cookieDecode(response.headers.get('set-cookie')!);
-    cookie.push({ name: 'ct0', value: csrfToken });
+    const cookies = this.cookieDecode(response.headers.get('set-cookie')!);
+    cookies.push({ name: 'ct0', value: csrfToken });
 
     const html = await this.fetchApi(TwitterOpenApi.twitter, {
       method: 'GET',
-      headers: { Cookie: this.cookieEncode(cookie) },
+      headers: { Cookie: this.cookieEncode(cookies) },
     }).then((response) => response.text());
 
     const re = new RegExp('<script nonce="([a-zA-Z0-9]{48})">(document.cookie="(.*?)";)+<\\/script>');
 
     const script = html.match(re)[0];
-    const document = script
+    script
       .split('document.cookie="')
       .slice(1)
       .map((e) => e.replace('</script>', '').replace('";', ''))
       .map((e) => this.cookieDecode(e)[0])
-      .filter((e) => cookie.findIndex((c) => c.name == e.name) == -1)
-      .forEach((e) => cookie.push(e));
+      .filter((e) => cookies.findIndex((c) => c.name == e.name) == -1)
+      .forEach((e) => cookies.push(e));
 
-    return cookie;
+    return cookies;
   }
 
   setCookies(context: i.RequestContext, cookies: TwitterOpenApiCookie[]): i.RequestContext {
@@ -101,6 +101,7 @@ export class TwitterOpenApi {
           'x-twitter-client-language': this.param.lang ?? 'en',
           'x-twitter-active-user': 'yes',
           'x-csrf-token': cookies.find((cookie) => cookie.name === 'ct0')?.value,
+          'x-guest-token': cookies.find((cookie) => cookie.name === 'gt')?.value,
         }[key]!;
       },
       accessToken: TwitterOpenApi.bearer,
@@ -110,11 +111,14 @@ export class TwitterOpenApi {
   }
 
   async getClientFromCookies(ct0: string, authToken: string): Promise<TwitterOpenApiClient> {
-    const cookies: TwitterOpenApiCookie[] = [
-      ...(await this.getGuestSession()),
+    const cookies: TwitterOpenApiCookie[] = await this.getGuestSession();
+    [
       { name: 'auth_token', value: authToken },
       { name: 'ct0', value: ct0 },
-    ];
+    ]
+      .filter((e) => cookies.findIndex((c) => c.name == e.name) == -1)
+      .forEach((e) => cookies.push(e));
+
     const config: i.ConfigurationParameters = {
       fetchApi: this.param.fetchApi || fetch,
       middleware: [{ pre: async (context) => this.setCookies(context, cookies) }],
@@ -124,7 +128,7 @@ export class TwitterOpenApi {
           'x-twitter-client-language': this.param.lang ?? 'en',
           'x-twitter-active-user': 'yes',
           'x-twitter-auth-type': 'OAuth2Session',
-          'x-csrf-token': ct0,
+          'x-csrf-token': cookies.find((cookie) => cookie.name === 'ct0')?.value,
         }[key]!;
       },
       accessToken: TwitterOpenApi.bearer,

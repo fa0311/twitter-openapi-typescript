@@ -3,8 +3,8 @@ updates:
   - package-ecosystem: npm
     directory: /twitter-openapi-typescript
     schedule:
-      interval: daily
+      interval: weekly
 # - package-ecosystem: npm
 #   directory: /twitter-openapi-typescript-generated
 #   schedule:
-#     interval: daily
+#     interval: weekly

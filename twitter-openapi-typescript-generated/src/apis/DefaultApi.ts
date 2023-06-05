@@ -85,6 +85,10 @@ export class DefaultApi extends runtime.BaseAPI {
             headerParameters["x-csrf-token"] = this.configuration.apiKey("x-csrf-token"); // CsrfToken authentication
         }
 
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-guest-token"] = this.configuration.apiKey("x-guest-token"); // GuestToken authentication
+        }
+
         if (this.configuration && this.configuration.accessToken) {
             const token = this.configuration.accessToken;
             const tokenString = await token("BearerAuth", []);

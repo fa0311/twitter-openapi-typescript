@@ -11,7 +11,6 @@
 Remove-Item -Recurse .openapi-generator
 Remove-Item -Recurse src
 Remove-Item -Recurse .gitignore
-Remove-Item -Recurse .npmignore
 Remove-Item -Recurse package.json
 Remove-Item -Recurse README.md
 Remove-Item -Recurse tsconfig.json
@@ -19,3 +18,4 @@ Remove-Item -Recurse dist
 
 # Remove-Item -Recurse package-lock.json
 # Remove-Item -Recurse node_modules
+# Remove-Item -Recurse .npmignore

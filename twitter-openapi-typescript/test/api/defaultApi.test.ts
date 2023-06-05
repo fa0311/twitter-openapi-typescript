@@ -1,5 +1,4 @@
 import { getClient, logger } from '@test/init';
-import { printTweet } from '@test/util';
 
 test('getProfileSpotlightsQuery', async () => {
   logger.log('getProfileSpotlightsQuery');

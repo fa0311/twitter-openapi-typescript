@@ -20,7 +20,7 @@ export class UserApiUtils {
     const apiFn: typeof param.apiFn = param.apiFn.bind(this.api);
     const response = await apiFn({
       queryId: this.flag[param.key]['queryId'],
-      variables: JSON.stringify({ ...this.flag[param.key]['variables'], ...param }),
+      variables: JSON.stringify({ ...this.flag[param.key]['variables'], ...param.param }),
       features: JSON.stringify(this.flag[param.key]['features']),
     });
     const user = param.convertFn(await response.value());
@@ -33,7 +33,7 @@ export class UserApiUtils {
 
   async getUserByScreenName(param: getUserByScreenNameParam): Promise<UserApiUtilsResponse> {
     const args = {
-      screenName: param.screenName,
+      screen_name: param.screenName,
       ...param.extraParam,
     };
     const response = this.request({

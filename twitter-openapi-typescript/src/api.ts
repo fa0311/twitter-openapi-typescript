@@ -22,6 +22,10 @@ export type TwitterOpenApiCookie = {
   value: string;
 };
 
+export type TwitterOpenApiClientOptions = {
+  flag?: DefaultFlag;
+};
+
 export class TwitterOpenApi {
   static hash = 'd5ccc25869b68cbb39c68fa81a1fa77967a667da';
   static url = `https://raw.githubusercontent.com/fa0311/twitter-openapi/${this.hash}/src/config/placeholder.json`;
@@ -90,7 +94,7 @@ export class TwitterOpenApi {
     return context;
   }
 
-  async getClient(): Promise<TwitterOpenApiClient> {
+  async getClient(options?: TwitterOpenApiClientOptions): Promise<TwitterOpenApiClient> {
     const cookies: TwitterOpenApiCookie[] = await this.getGuestSession();
     const config: i.ConfigurationParameters = {
       fetchApi: this.fetchApi,
@@ -106,8 +110,10 @@ export class TwitterOpenApi {
       },
       accessToken: TwitterOpenApi.bearer,
     };
-    const flag = this.fetchApi(TwitterOpenApi.url, { method: 'GET' }).then((res) => res.json()) as Promise<DefaultFlag>;
-    return new TwitterOpenApiClient(new i.Configuration(config), await flag);
+    const flag =
+      options.flag ||
+      ((await this.fetchApi(TwitterOpenApi.url, { method: 'GET' }).then((res) => res.json())) as DefaultFlag);
+    return new TwitterOpenApiClient(new i.Configuration(config), flag);
   }
 
   async getClientFromCookies(ct0: string, authToken: string): Promise<TwitterOpenApiClient> {

@@ -111,12 +111,16 @@ export class TwitterOpenApi {
       accessToken: TwitterOpenApi.bearer,
     };
     const flag =
-      options.flag ||
+      options?.flag ||
       ((await this.fetchApi(TwitterOpenApi.url, { method: 'GET' }).then((res) => res.json())) as DefaultFlag);
     return new TwitterOpenApiClient(new i.Configuration(config), flag);
   }
 
-  async getClientFromCookies(ct0: string, authToken: string): Promise<TwitterOpenApiClient> {
+  async getClientFromCookies(
+    ct0: string,
+    authToken: string,
+    options?: TwitterOpenApiClientOptions,
+  ): Promise<TwitterOpenApiClient> {
     const cookies: TwitterOpenApiCookie[] = await this.getGuestSession();
     [
       { name: 'auth_token', value: authToken },
@@ -139,8 +143,10 @@ export class TwitterOpenApi {
       },
       accessToken: TwitterOpenApi.bearer,
     };
-    const flag = this.fetchApi(TwitterOpenApi.url, { method: 'GET' }).then((res) => res.json()) as Promise<DefaultFlag>;
-    return new TwitterOpenApiClient(new i.Configuration(config), await flag);
+    const flag =
+      options?.flag ||
+      ((await this.fetchApi(TwitterOpenApi.url, { method: 'GET' }).then((res) => res.json())) as DefaultFlag);
+    return new TwitterOpenApiClient(new i.Configuration(config), flag);
   }
 }
 

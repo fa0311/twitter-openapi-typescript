@@ -1,6 +1,7 @@
 import * as i from 'twitter-openapi-typescript-generated';
 
 export type ApiFunction<T> = (requestParameters: {
+  pathQueryId: string;
   queryId: string;
   variables: string;
   features: string;

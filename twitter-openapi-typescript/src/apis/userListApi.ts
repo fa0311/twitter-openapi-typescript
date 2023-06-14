@@ -28,6 +28,7 @@ export class UserListApiUtils {
   async request<T>(param: RequestParam<i.InstructionUnion[], T>): Promise<UserListApiUtilsResponse> {
     const apiFn: typeof param.apiFn = param.apiFn.bind(this.api);
     const response = await apiFn({
+      pathQueryId: this.flag[param.key]['queryId'],
       queryId: this.flag[param.key]['queryId'],
       variables: JSON.stringify({ ...this.flag[param.key]['variables'], ...param.param }),
       features: JSON.stringify(this.flag[param.key]['features']),

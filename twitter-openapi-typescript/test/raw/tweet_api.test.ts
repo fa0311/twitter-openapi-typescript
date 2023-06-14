@@ -3,7 +3,7 @@ import { getClient, logger } from '@test/init';
 test('getHomeTimelineRaw', async () => {
   const client = await getClient();
   const response = await client.getTweetApi().api.getHomeTimelineRaw({
-    pathQueryId: client.flag.HomeTimeline.pathQueryId,
+    pathQueryId: client.flag.HomeTimeline.queryId,
     queryId: client.flag.HomeTimeline.queryId,
     variables: JSON.stringify(client.flag.HomeTimeline.variables),
     features: JSON.stringify(client.flag.HomeTimeline.features),

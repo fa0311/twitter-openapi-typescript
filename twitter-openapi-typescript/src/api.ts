@@ -15,6 +15,10 @@ import { DefaultFlag } from '@/models';
 export type TwitterOpenApiParams = {
   lang?: string;
   fetchApi?: i.FetchAPI;
+
+  flag?: DefaultFlag;
+  accessToken?: string;
+  userAgent?: string;
 };
 
 export type TwitterOpenApiCookie = {
@@ -97,17 +101,19 @@ export class TwitterOpenApi {
       middleware: [{ pre: async (context) => this.setCookies(context, cookies) }],
       apiKey: (key) => {
         return {
-          'user-agent': TwitterOpenApi.userAgent,
+          'user-agent': this.param.userAgent || TwitterOpenApi.userAgent,
           'x-twitter-client-language': this.param.lang ?? 'en',
           'x-twitter-active-user': 'yes',
           'x-csrf-token': cookies.find((cookie) => cookie.name === 'ct0')?.value,
           'x-guest-token': cookies.find((cookie) => cookie.name === 'gt')?.value,
         }[key]!;
       },
-      accessToken: TwitterOpenApi.bearer,
+      accessToken: this.param.accessToken || TwitterOpenApi.bearer,
     };
-    const flag = this.fetchApi(TwitterOpenApi.url, { method: 'GET' }).then((res) => res.json()) as Promise<DefaultFlag>;
-    return new TwitterOpenApiClient(new i.Configuration(config), await flag);
+    const flag =
+      this.param.flag ||
+      ((await this.fetchApi(TwitterOpenApi.url, { method: 'GET' }).then((res) => res.json())) as DefaultFlag);
+    return new TwitterOpenApiClient(new i.Configuration(config), flag);
   }
 
   async getClientFromCookies(ct0: string, authToken: string): Promise<TwitterOpenApiClient> {
@@ -124,17 +130,19 @@ export class TwitterOpenApi {
       middleware: [{ pre: async (context) => this.setCookies(context, cookies) }],
       apiKey: (key) => {
         return {
-          'user-agent': TwitterOpenApi.userAgent,
+          'user-agent': this.param.userAgent || TwitterOpenApi.userAgent,
           'x-twitter-client-language': this.param.lang ?? 'en',
           'x-twitter-active-user': 'yes',
           'x-twitter-auth-type': 'OAuth2Session',
           'x-csrf-token': cookies.find((cookie) => cookie.name === 'ct0')?.value,
         }[key]!;
       },
-      accessToken: TwitterOpenApi.bearer,
+      accessToken: this.param.accessToken || TwitterOpenApi.bearer,
     };
-    const flag = this.fetchApi(TwitterOpenApi.url, { method: 'GET' }).then((res) => res.json()) as Promise<DefaultFlag>;
-    return new TwitterOpenApiClient(new i.Configuration(config), await flag);
+    const flag =
+      this.param.flag ||
+      ((await this.fetchApi(TwitterOpenApi.url, { method: 'GET' }).then((res) => res.json())) as DefaultFlag);
+    return new TwitterOpenApiClient(new i.Configuration(config), flag);
   }
 }
 

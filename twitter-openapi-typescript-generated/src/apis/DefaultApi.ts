@@ -23,6 +23,7 @@ import {
 } from '../models';
 
 export interface GetProfileSpotlightsQueryRequest {
+    pathQueryId: string;
     queryId: string;
     variables: string;
     features: string;
@@ -37,6 +38,10 @@ export class DefaultApi extends runtime.BaseAPI {
      * get user by screen name
      */
     async getProfileSpotlightsQueryRaw(requestParameters: GetProfileSpotlightsQueryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProfileResponse>> {
+        if (requestParameters.pathQueryId === null || requestParameters.pathQueryId === undefined) {
+            throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling getProfileSpotlightsQuery.');
+        }
+
         if (requestParameters.queryId === null || requestParameters.queryId === undefined) {
             throw new runtime.RequiredError('queryId','Required parameter requestParameters.queryId was null or undefined when calling getProfileSpotlightsQuery.');
         }
@@ -98,7 +103,7 @@ export class DefaultApi extends runtime.BaseAPI {
             }
         }
         const response = await this.request({
-            path: `/graphql/9zwVLJ48lmVUk8u_Gh9DmA/ProfileSpotlightsQuery`,
+            path: `/graphql/{pathQueryId}/ProfileSpotlightsQuery`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters.pathQueryId))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,

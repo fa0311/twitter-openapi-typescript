@@ -23,6 +23,7 @@ import {
 } from '../models';
 
 export interface GetUserByScreenNameRequest {
+    pathQueryId: string;
     queryId: string;
     variables: string;
     features: string;
@@ -37,6 +38,10 @@ export class UserApi extends runtime.BaseAPI {
      * get user by screen name
      */
     async getUserByScreenNameRaw(requestParameters: GetUserByScreenNameRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UserResponse>> {
+        if (requestParameters.pathQueryId === null || requestParameters.pathQueryId === undefined) {
+            throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling getUserByScreenName.');
+        }
+
         if (requestParameters.queryId === null || requestParameters.queryId === undefined) {
             throw new runtime.RequiredError('queryId','Required parameter requestParameters.queryId was null or undefined when calling getUserByScreenName.');
         }
@@ -98,7 +103,7 @@ export class UserApi extends runtime.BaseAPI {
             }
         }
         const response = await this.request({
-            path: `/graphql/sLVLhk0bGj3MVFEKTdax1w/UserByScreenName`,
+            path: `/graphql/{pathQueryId}/UserByScreenName`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters.pathQueryId))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,

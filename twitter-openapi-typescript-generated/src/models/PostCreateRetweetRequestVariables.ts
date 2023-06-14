@@ -16,27 +16,27 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface PostDeleteTweetRequestVariables
+ * @interface PostCreateRetweetRequestVariables
  */
-export interface PostDeleteTweetRequestVariables {
+export interface PostCreateRetweetRequestVariables {
     /**
      * 
      * @type {boolean}
-     * @memberof PostDeleteTweetRequestVariables
+     * @memberof PostCreateRetweetRequestVariables
      */
     darkRequest: boolean;
     /**
      * 
      * @type {string}
-     * @memberof PostDeleteTweetRequestVariables
+     * @memberof PostCreateRetweetRequestVariables
      */
     tweetId: string;
 }
 
 /**
- * Check if a given object implements the PostDeleteTweetRequestVariables interface.
+ * Check if a given object implements the PostCreateRetweetRequestVariables interface.
  */
-export function instanceOfPostDeleteTweetRequestVariables(value: object): boolean {
+export function instanceOfPostCreateRetweetRequestVariables(value: object): boolean {
     let isInstance = true;
     isInstance = isInstance && "darkRequest" in value;
     isInstance = isInstance && "tweetId" in value;
@@ -44,11 +44,11 @@ export function instanceOfPostDeleteTweetRequestVariables(value: object): boolea
     return isInstance;
 }
 
-export function PostDeleteTweetRequestVariablesFromJSON(json: any): PostDeleteTweetRequestVariables {
-    return PostDeleteTweetRequestVariablesFromJSONTyped(json, false);
+export function PostCreateRetweetRequestVariablesFromJSON(json: any): PostCreateRetweetRequestVariables {
+    return PostCreateRetweetRequestVariablesFromJSONTyped(json, false);
 }
 
-export function PostDeleteTweetRequestVariablesFromJSONTyped(json: any, ignoreDiscriminator: boolean): PostDeleteTweetRequestVariables {
+export function PostCreateRetweetRequestVariablesFromJSONTyped(json: any, ignoreDiscriminator: boolean): PostCreateRetweetRequestVariables {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -59,7 +59,7 @@ export function PostDeleteTweetRequestVariablesFromJSONTyped(json: any, ignoreDi
     };
 }
 
-export function PostDeleteTweetRequestVariablesToJSON(value?: PostDeleteTweetRequestVariables | null): any {
+export function PostCreateRetweetRequestVariablesToJSON(value?: PostCreateRetweetRequestVariables | null): any {
     if (value === undefined) {
         return undefined;
     }

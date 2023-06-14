@@ -13,12 +13,12 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import type { PostDeleteTweetRequestVariables } from './PostDeleteTweetRequestVariables';
+import type { PostCreateRetweetRequestVariables } from './PostCreateRetweetRequestVariables';
 import {
-    PostDeleteTweetRequestVariablesFromJSON,
-    PostDeleteTweetRequestVariablesFromJSONTyped,
-    PostDeleteTweetRequestVariablesToJSON,
-} from './PostDeleteTweetRequestVariables';
+    PostCreateRetweetRequestVariablesFromJSON,
+    PostCreateRetweetRequestVariablesFromJSONTyped,
+    PostCreateRetweetRequestVariablesToJSON,
+} from './PostCreateRetweetRequestVariables';
 
 /**
  * 
@@ -34,10 +34,10 @@ export interface PostUnfavoriteTweetRequest {
     queryId: string;
     /**
      * 
-     * @type {PostDeleteTweetRequestVariables}
+     * @type {PostCreateRetweetRequestVariables}
      * @memberof PostUnfavoriteTweetRequest
      */
-    variables: PostDeleteTweetRequestVariables;
+    variables: PostCreateRetweetRequestVariables;
 }
 
 /**
@@ -62,7 +62,7 @@ export function PostUnfavoriteTweetRequestFromJSONTyped(json: any, ignoreDiscrim
     return {
         
         'queryId': json['queryId'],
-        'variables': PostDeleteTweetRequestVariablesFromJSON(json['variables']),
+        'variables': PostCreateRetweetRequestVariablesFromJSON(json['variables']),
     };
 }
 
@@ -76,7 +76,7 @@ export function PostUnfavoriteTweetRequestToJSON(value?: PostUnfavoriteTweetRequ
     return {
         
         'queryId': value.queryId,
-        'variables': PostDeleteTweetRequestVariablesToJSON(value.variables),
+        'variables': PostCreateRetweetRequestVariablesToJSON(value.variables),
     };
 }
 

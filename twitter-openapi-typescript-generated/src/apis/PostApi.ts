@@ -56,26 +56,32 @@ import {
 } from '../models';
 
 export interface PostCreateRetweetOperationRequest {
+    pathQueryId: string;
     postCreateRetweetRequest: PostCreateRetweetRequest;
 }
 
 export interface PostCreateTweetOperationRequest {
+    pathQueryId: string;
     postCreateTweetRequest: PostCreateTweetRequest;
 }
 
 export interface PostDeleteRetweetOperationRequest {
+    pathQueryId: string;
     postDeleteRetweetRequest: PostDeleteRetweetRequest;
 }
 
 export interface PostDeleteTweetOperationRequest {
+    pathQueryId: string;
     postDeleteTweetRequest: PostDeleteTweetRequest;
 }
 
 export interface PostFavoriteTweetOperationRequest {
+    pathQueryId: string;
     postFavoriteTweetRequest: PostFavoriteTweetRequest;
 }
 
 export interface PostUnfavoriteTweetOperationRequest {
+    pathQueryId: string;
     postUnfavoriteTweetRequest: PostUnfavoriteTweetRequest;
 }
 
@@ -88,6 +94,10 @@ export class PostApi extends runtime.BaseAPI {
      * create Retweet
      */
     async postCreateRetweetRaw(requestParameters: PostCreateRetweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateRetweetResponse>> {
+        if (requestParameters.pathQueryId === null || requestParameters.pathQueryId === undefined) {
+            throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling postCreateRetweet.');
+        }
+
         if (requestParameters.postCreateRetweetRequest === null || requestParameters.postCreateRetweetRequest === undefined) {
             throw new runtime.RequiredError('postCreateRetweetRequest','Required parameter requestParameters.postCreateRetweetRequest was null or undefined when calling postCreateRetweet.');
         }
@@ -131,7 +141,7 @@ export class PostApi extends runtime.BaseAPI {
             }
         }
         const response = await this.request({
-            path: `/graphql/ojPdsZsimiJrUGLR1sjUtA/CreateRetweet`,
+            path: `/graphql/{pathQueryId}/CreateRetweet`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters.pathQueryId))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -153,6 +163,10 @@ export class PostApi extends runtime.BaseAPI {
      * create Tweet
      */
     async postCreateTweetRaw(requestParameters: PostCreateTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateTweetResponse>> {
+        if (requestParameters.pathQueryId === null || requestParameters.pathQueryId === undefined) {
+            throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling postCreateTweet.');
+        }
+
         if (requestParameters.postCreateTweetRequest === null || requestParameters.postCreateTweetRequest === undefined) {
             throw new runtime.RequiredError('postCreateTweetRequest','Required parameter requestParameters.postCreateTweetRequest was null or undefined when calling postCreateTweet.');
         }
@@ -196,7 +210,7 @@ export class PostApi extends runtime.BaseAPI {
             }
         }
         const response = await this.request({
-            path: `/graphql/1RyAhNwby-gzGCRVsMxKbQ/CreateTweet`,
+            path: `/graphql/{pathQueryId}/CreateTweet`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters.pathQueryId))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -218,6 +232,10 @@ export class PostApi extends runtime.BaseAPI {
      * delete Retweet
      */
     async postDeleteRetweetRaw(requestParameters: PostDeleteRetweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeleteRetweetResponse>> {
+        if (requestParameters.pathQueryId === null || requestParameters.pathQueryId === undefined) {
+            throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling postDeleteRetweet.');
+        }
+
         if (requestParameters.postDeleteRetweetRequest === null || requestParameters.postDeleteRetweetRequest === undefined) {
             throw new runtime.RequiredError('postDeleteRetweetRequest','Required parameter requestParameters.postDeleteRetweetRequest was null or undefined when calling postDeleteRetweet.');
         }
@@ -261,7 +279,7 @@ export class PostApi extends runtime.BaseAPI {
             }
         }
         const response = await this.request({
-            path: `/graphql/iQtK4dl5hBmXewYZuEOKVw/DeleteRetweet`,
+            path: `/graphql/{pathQueryId}/DeleteRetweet`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters.pathQueryId))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -283,6 +301,10 @@ export class PostApi extends runtime.BaseAPI {
      * delete Retweet
      */
     async postDeleteTweetRaw(requestParameters: PostDeleteTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeleteTweetResponse>> {
+        if (requestParameters.pathQueryId === null || requestParameters.pathQueryId === undefined) {
+            throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling postDeleteTweet.');
+        }
+
         if (requestParameters.postDeleteTweetRequest === null || requestParameters.postDeleteTweetRequest === undefined) {
             throw new runtime.RequiredError('postDeleteTweetRequest','Required parameter requestParameters.postDeleteTweetRequest was null or undefined when calling postDeleteTweet.');
         }
@@ -326,7 +348,7 @@ export class PostApi extends runtime.BaseAPI {
             }
         }
         const response = await this.request({
-            path: `/graphql/VaenaVgh5q5ih7kvyVjgtg/DeleteTweet`,
+            path: `/graphql/{pathQueryId}/DeleteTweet`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters.pathQueryId))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -348,6 +370,10 @@ export class PostApi extends runtime.BaseAPI {
      * favorite Tweet
      */
     async postFavoriteTweetRaw(requestParameters: PostFavoriteTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FavoriteTweetResponseData>> {
+        if (requestParameters.pathQueryId === null || requestParameters.pathQueryId === undefined) {
+            throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling postFavoriteTweet.');
+        }
+
         if (requestParameters.postFavoriteTweetRequest === null || requestParameters.postFavoriteTweetRequest === undefined) {
             throw new runtime.RequiredError('postFavoriteTweetRequest','Required parameter requestParameters.postFavoriteTweetRequest was null or undefined when calling postFavoriteTweet.');
         }
@@ -391,7 +417,7 @@ export class PostApi extends runtime.BaseAPI {
             }
         }
         const response = await this.request({
-            path: `/graphql/lI07N6Otwv1PhnEgXILM7A/FavoriteTweet`,
+            path: `/graphql/{pathQueryId}/FavoriteTweet`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters.pathQueryId))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
@@ -413,6 +439,10 @@ export class PostApi extends runtime.BaseAPI {
      * unfavorite Tweet
      */
     async postUnfavoriteTweetRaw(requestParameters: PostUnfavoriteTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UnfavoriteTweetResponseData>> {
+        if (requestParameters.pathQueryId === null || requestParameters.pathQueryId === undefined) {
+            throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling postUnfavoriteTweet.');
+        }
+
         if (requestParameters.postUnfavoriteTweetRequest === null || requestParameters.postUnfavoriteTweetRequest === undefined) {
             throw new runtime.RequiredError('postUnfavoriteTweetRequest','Required parameter requestParameters.postUnfavoriteTweetRequest was null or undefined when calling postUnfavoriteTweet.');
         }
@@ -456,7 +486,7 @@ export class PostApi extends runtime.BaseAPI {
             }
         }
         const response = await this.request({
-            path: `/graphql/ZYKSe-w7KEslx3JhSIk5LA/UnfavoriteTweet`,
+            path: `/graphql/{pathQueryId}/UnfavoriteTweet`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters.pathQueryId))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,

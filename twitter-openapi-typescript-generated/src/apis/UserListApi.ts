@@ -23,12 +23,14 @@ import {
 } from '../models';
 
 export interface GetFollowersRequest {
+    pathQueryId: string;
     queryId: string;
     variables: string;
     features: string;
 }
 
 export interface GetFollowingRequest {
+    pathQueryId: string;
     queryId: string;
     variables: string;
     features: string;
@@ -43,6 +45,10 @@ export class UserListApi extends runtime.BaseAPI {
      * get user list of followers
      */
     async getFollowersRaw(requestParameters: GetFollowersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FollowResponse>> {
+        if (requestParameters.pathQueryId === null || requestParameters.pathQueryId === undefined) {
+            throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling getFollowers.');
+        }
+
         if (requestParameters.queryId === null || requestParameters.queryId === undefined) {
             throw new runtime.RequiredError('queryId','Required parameter requestParameters.queryId was null or undefined when calling getFollowers.');
         }
@@ -104,7 +110,7 @@ export class UserListApi extends runtime.BaseAPI {
             }
         }
         const response = await this.request({
-            path: `/graphql/djdTXDIk2qhd4OStqlUFeQ/Followers`,
+            path: `/graphql/{pathQueryId}/Followers`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters.pathQueryId))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -125,6 +131,10 @@ export class UserListApi extends runtime.BaseAPI {
      * get user list of following
      */
     async getFollowingRaw(requestParameters: GetFollowingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FollowResponse>> {
+        if (requestParameters.pathQueryId === null || requestParameters.pathQueryId === undefined) {
+            throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling getFollowing.');
+        }
+
         if (requestParameters.queryId === null || requestParameters.queryId === undefined) {
             throw new runtime.RequiredError('queryId','Required parameter requestParameters.queryId was null or undefined when calling getFollowing.');
         }
@@ -186,7 +196,7 @@ export class UserListApi extends runtime.BaseAPI {
             }
         }
         const response = await this.request({
-            path: `/graphql/IWP6Zt14sARO29lJT35bBw/Following`,
+            path: `/graphql/{pathQueryId}/Following`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters.pathQueryId))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,

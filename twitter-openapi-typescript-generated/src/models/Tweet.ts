@@ -19,6 +19,12 @@ import {
     ItemResultFromJSONTyped,
     ItemResultToJSON,
 } from './ItemResult';
+import type { TweetCard } from './TweetCard';
+import {
+    TweetCardFromJSON,
+    TweetCardFromJSONTyped,
+    TweetCardToJSON,
+} from './TweetCard';
 import type { TweetEditControl } from './TweetEditControl';
 import {
     TweetEditControlFromJSON,
@@ -68,6 +74,12 @@ export interface Tweet {
      * @memberof Tweet
      */
     typename?: TypeName;
+    /**
+     * 
+     * @type {TweetCard}
+     * @memberof Tweet
+     */
+    card?: TweetCard;
     /**
      * 
      * @type {UserResultCore}
@@ -151,6 +163,7 @@ export function TweetFromJSONTyped(json: any, ignoreDiscriminator: boolean): Twe
     return {
         
         'typename': !exists(json, '__typename') ? undefined : TypeNameFromJSON(json['__typename']),
+        'card': !exists(json, 'card') ? undefined : TweetCardFromJSON(json['card']),
         'core': UserResultCoreFromJSON(json['core']),
         'editControl': TweetEditControlFromJSON(json['edit_control']),
         'editPrespective': TweetEditPrespectiveFromJSON(json['edit_prespective']),
@@ -173,6 +186,7 @@ export function TweetToJSON(value?: Tweet | null): any {
     return {
         
         '__typename': TypeNameToJSON(value.typename),
+        'card': TweetCardToJSON(value.card),
         'core': UserResultCoreToJSON(value.core),
         'edit_control': TweetEditControlToJSON(value.editControl),
         'edit_prespective': TweetEditPrespectiveToJSON(value.editPrespective),

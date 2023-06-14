@@ -19,6 +19,12 @@ import {
     MediaFromJSONTyped,
     MediaToJSON,
 } from './Media';
+import type { Url } from './Url';
+import {
+    UrlFromJSON,
+    UrlFromJSONTyped,
+    UrlToJSON,
+} from './Url';
 
 /**
  * 
@@ -46,10 +52,10 @@ export interface Entities {
     symbols: Array<object>;
     /**
      * 
-     * @type {Array<object>}
+     * @type {Array<Url>}
      * @memberof Entities
      */
-    urls: Array<object>;
+    urls: Array<Url>;
     /**
      * 
      * @type {Array<object>}
@@ -84,7 +90,7 @@ export function EntitiesFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
         'hashtags': json['hashtags'],
         'media': !exists(json, 'media') ? undefined : ((json['media'] as Array<any>).map(MediaFromJSON)),
         'symbols': json['symbols'],
-        'urls': json['urls'],
+        'urls': ((json['urls'] as Array<any>).map(UrlFromJSON)),
         'userMentions': json['user_mentions'],
     };
 }
@@ -101,7 +107,7 @@ export function EntitiesToJSON(value?: Entities | null): any {
         'hashtags': value.hashtags,
         'media': value.media === undefined ? undefined : ((value.media as Array<any>).map(MediaToJSON)),
         'symbols': value.symbols,
-        'urls': value.urls,
+        'urls': ((value.urls as Array<any>).map(UrlToJSON)),
         'user_mentions': value.userMentions,
     };
 }

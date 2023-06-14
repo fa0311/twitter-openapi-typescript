@@ -58,6 +58,7 @@ src/models/ModuleItem.ts
 src/models/OneFactorLoginEligibility.ts
 src/models/OtherResponse.ts
 src/models/PostCreateRetweetRequest.ts
+src/models/PostCreateRetweetRequestVariables.ts
 src/models/PostCreateTweetRequest.ts
 src/models/PostCreateTweetRequestFeatures.ts
 src/models/PostCreateTweetRequestVariables.ts
@@ -65,7 +66,6 @@ src/models/PostCreateTweetRequestVariablesMedia.ts
 src/models/PostDeleteRetweetRequest.ts
 src/models/PostDeleteRetweetRequestVariables.ts
 src/models/PostDeleteTweetRequest.ts
-src/models/PostDeleteTweetRequestVariables.ts
 src/models/PostFavoriteTweetRequest.ts
 src/models/PostUnfavoriteTweetRequest.ts
 src/models/ProfileResponse.ts
@@ -88,6 +88,10 @@ src/models/TimelineTweet.ts
 src/models/TimelineUser.ts
 src/models/TimelineV2.ts
 src/models/Tweet.ts
+src/models/TweetCard.ts
+src/models/TweetCardLegacy.ts
+src/models/TweetCardLegacyBindingValuesInner.ts
+src/models/TweetCardLegacyBindingValuesInnerValue.ts
 src/models/TweetDetailResponse.ts
 src/models/TweetDetailResponseData.ts
 src/models/TweetEditControl.ts
@@ -100,6 +104,7 @@ src/models/TweetWithVisibilityResults.ts
 src/models/TypeName.ts
 src/models/UnfavoriteTweet.ts
 src/models/UnfavoriteTweetResponseData.ts
+src/models/Url.ts
 src/models/User.ts
 src/models/UserFeatures.ts
 src/models/UserLegacy.ts

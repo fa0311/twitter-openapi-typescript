@@ -1,4 +1,4 @@
-inputSpec: twitter-openapi/dist/typescript/openapi-3.0.yaml
+inputSpec: twitter-openapi/dist/compatible/openapi-3.0.yaml
 outputDir: .
 npmName: twitter-openapi-typescript-generated
 npmVersion: 0.0.6

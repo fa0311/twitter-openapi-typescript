@@ -85,6 +85,7 @@ export * from './TweetDetailResponseData';
 export * from './TweetEditControl';
 export * from './TweetEditPrespective';
 export * from './TweetLegacy';
+export * from './TweetLegacySelfThread';
 export * from './TweetTombstone';
 export * from './TweetUnion';
 export * from './TweetViews';

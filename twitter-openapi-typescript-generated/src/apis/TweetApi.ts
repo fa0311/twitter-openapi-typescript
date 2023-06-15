@@ -36,63 +36,54 @@ import {
 
 export interface GetBookmarksRequest {
     pathQueryId: string;
-    queryId: string;
     variables: string;
     features: string;
 }
 
 export interface GetHomeLatestTimelineRequest {
     pathQueryId: string;
-    queryId: string;
     variables: string;
     features: string;
 }
 
 export interface GetHomeTimelineRequest {
     pathQueryId: string;
-    queryId: string;
     variables: string;
     features: string;
 }
 
 export interface GetLikesRequest {
     pathQueryId: string;
-    queryId: string;
     variables: string;
     features: string;
 }
 
 export interface GetListLatestTweetsTimelineRequest {
     pathQueryId: string;
-    queryId: string;
     variables: string;
     features: string;
 }
 
 export interface GetTweetDetailRequest {
     pathQueryId: string;
-    queryId: string;
     variables: string;
     features: string;
 }
 
 export interface GetUserMediaRequest {
     pathQueryId: string;
-    queryId: string;
     variables: string;
     features: string;
 }
 
 export interface GetUserTweetsRequest {
     pathQueryId: string;
-    queryId: string;
     variables: string;
     features: string;
 }
 
 export interface GetUserTweetsAndRepliesRequest {
     pathQueryId: string;
-    queryId: string;
     variables: string;
     features: string;
 }
@@ -110,10 +101,6 @@ export class TweetApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling getBookmarks.');
         }
 
-        if (requestParameters.queryId === null || requestParameters.queryId === undefined) {
-            throw new runtime.RequiredError('queryId','Required parameter requestParameters.queryId was null or undefined when calling getBookmarks.');
-        }
-
         if (requestParameters.variables === null || requestParameters.variables === undefined) {
             throw new runtime.RequiredError('variables','Required parameter requestParameters.variables was null or undefined when calling getBookmarks.');
         }
@@ -123,10 +110,6 @@ export class TweetApi extends runtime.BaseAPI {
         }
 
         const queryParameters: any = {};
-
-        if (requestParameters.queryId !== undefined) {
-            queryParameters['queryId'] = requestParameters.queryId;
-        }
 
         if (requestParameters.variables !== undefined) {
             queryParameters['variables'] = requestParameters.variables;
@@ -196,10 +179,6 @@ export class TweetApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling getHomeLatestTimeline.');
         }
 
-        if (requestParameters.queryId === null || requestParameters.queryId === undefined) {
-            throw new runtime.RequiredError('queryId','Required parameter requestParameters.queryId was null or undefined when calling getHomeLatestTimeline.');
-        }
-
         if (requestParameters.variables === null || requestParameters.variables === undefined) {
             throw new runtime.RequiredError('variables','Required parameter requestParameters.variables was null or undefined when calling getHomeLatestTimeline.');
         }
@@ -209,10 +188,6 @@ export class TweetApi extends runtime.BaseAPI {
         }
 
         const queryParameters: any = {};
-
-        if (requestParameters.queryId !== undefined) {
-            queryParameters['queryId'] = requestParameters.queryId;
-        }
 
         if (requestParameters.variables !== undefined) {
             queryParameters['variables'] = requestParameters.variables;
@@ -282,10 +257,6 @@ export class TweetApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling getHomeTimeline.');
         }
 
-        if (requestParameters.queryId === null || requestParameters.queryId === undefined) {
-            throw new runtime.RequiredError('queryId','Required parameter requestParameters.queryId was null or undefined when calling getHomeTimeline.');
-        }
-
         if (requestParameters.variables === null || requestParameters.variables === undefined) {
             throw new runtime.RequiredError('variables','Required parameter requestParameters.variables was null or undefined when calling getHomeTimeline.');
         }
@@ -295,10 +266,6 @@ export class TweetApi extends runtime.BaseAPI {
         }
 
         const queryParameters: any = {};
-
-        if (requestParameters.queryId !== undefined) {
-            queryParameters['queryId'] = requestParameters.queryId;
-        }
 
         if (requestParameters.variables !== undefined) {
             queryParameters['variables'] = requestParameters.variables;
@@ -368,10 +335,6 @@ export class TweetApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling getLikes.');
         }
 
-        if (requestParameters.queryId === null || requestParameters.queryId === undefined) {
-            throw new runtime.RequiredError('queryId','Required parameter requestParameters.queryId was null or undefined when calling getLikes.');
-        }
-
         if (requestParameters.variables === null || requestParameters.variables === undefined) {
             throw new runtime.RequiredError('variables','Required parameter requestParameters.variables was null or undefined when calling getLikes.');
         }
@@ -381,10 +344,6 @@ export class TweetApi extends runtime.BaseAPI {
         }
 
         const queryParameters: any = {};
-
-        if (requestParameters.queryId !== undefined) {
-            queryParameters['queryId'] = requestParameters.queryId;
-        }
 
         if (requestParameters.variables !== undefined) {
             queryParameters['variables'] = requestParameters.variables;
@@ -454,10 +413,6 @@ export class TweetApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling getListLatestTweetsTimeline.');
         }
 
-        if (requestParameters.queryId === null || requestParameters.queryId === undefined) {
-            throw new runtime.RequiredError('queryId','Required parameter requestParameters.queryId was null or undefined when calling getListLatestTweetsTimeline.');
-        }
-
         if (requestParameters.variables === null || requestParameters.variables === undefined) {
             throw new runtime.RequiredError('variables','Required parameter requestParameters.variables was null or undefined when calling getListLatestTweetsTimeline.');
         }
@@ -467,10 +422,6 @@ export class TweetApi extends runtime.BaseAPI {
         }
 
         const queryParameters: any = {};
-
-        if (requestParameters.queryId !== undefined) {
-            queryParameters['queryId'] = requestParameters.queryId;
-        }
 
         if (requestParameters.variables !== undefined) {
             queryParameters['variables'] = requestParameters.variables;
@@ -540,10 +491,6 @@ export class TweetApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling getTweetDetail.');
         }
 
-        if (requestParameters.queryId === null || requestParameters.queryId === undefined) {
-            throw new runtime.RequiredError('queryId','Required parameter requestParameters.queryId was null or undefined when calling getTweetDetail.');
-        }
-
         if (requestParameters.variables === null || requestParameters.variables === undefined) {
             throw new runtime.RequiredError('variables','Required parameter requestParameters.variables was null or undefined when calling getTweetDetail.');
         }
@@ -553,10 +500,6 @@ export class TweetApi extends runtime.BaseAPI {
         }
 
         const queryParameters: any = {};
-
-        if (requestParameters.queryId !== undefined) {
-            queryParameters['queryId'] = requestParameters.queryId;
-        }
 
         if (requestParameters.variables !== undefined) {
             queryParameters['variables'] = requestParameters.variables;
@@ -626,10 +569,6 @@ export class TweetApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling getUserMedia.');
         }
 
-        if (requestParameters.queryId === null || requestParameters.queryId === undefined) {
-            throw new runtime.RequiredError('queryId','Required parameter requestParameters.queryId was null or undefined when calling getUserMedia.');
-        }
-
         if (requestParameters.variables === null || requestParameters.variables === undefined) {
             throw new runtime.RequiredError('variables','Required parameter requestParameters.variables was null or undefined when calling getUserMedia.');
         }
@@ -639,10 +578,6 @@ export class TweetApi extends runtime.BaseAPI {
         }
 
         const queryParameters: any = {};
-
-        if (requestParameters.queryId !== undefined) {
-            queryParameters['queryId'] = requestParameters.queryId;
-        }
 
         if (requestParameters.variables !== undefined) {
             queryParameters['variables'] = requestParameters.variables;
@@ -712,10 +647,6 @@ export class TweetApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling getUserTweets.');
         }
 
-        if (requestParameters.queryId === null || requestParameters.queryId === undefined) {
-            throw new runtime.RequiredError('queryId','Required parameter requestParameters.queryId was null or undefined when calling getUserTweets.');
-        }
-
         if (requestParameters.variables === null || requestParameters.variables === undefined) {
             throw new runtime.RequiredError('variables','Required parameter requestParameters.variables was null or undefined when calling getUserTweets.');
         }
@@ -725,10 +656,6 @@ export class TweetApi extends runtime.BaseAPI {
         }
 
         const queryParameters: any = {};
-
-        if (requestParameters.queryId !== undefined) {
-            queryParameters['queryId'] = requestParameters.queryId;
-        }
 
         if (requestParameters.variables !== undefined) {
             queryParameters['variables'] = requestParameters.variables;
@@ -798,10 +725,6 @@ export class TweetApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling getUserTweetsAndReplies.');
         }
 
-        if (requestParameters.queryId === null || requestParameters.queryId === undefined) {
-            throw new runtime.RequiredError('queryId','Required parameter requestParameters.queryId was null or undefined when calling getUserTweetsAndReplies.');
-        }
-
         if (requestParameters.variables === null || requestParameters.variables === undefined) {
             throw new runtime.RequiredError('variables','Required parameter requestParameters.variables was null or undefined when calling getUserTweetsAndReplies.');
         }
@@ -811,10 +734,6 @@ export class TweetApi extends runtime.BaseAPI {
         }
 
         const queryParameters: any = {};
-
-        if (requestParameters.queryId !== undefined) {
-            queryParameters['queryId'] = requestParameters.queryId;
-        }
 
         if (requestParameters.variables !== undefined) {
             queryParameters['variables'] = requestParameters.variables;

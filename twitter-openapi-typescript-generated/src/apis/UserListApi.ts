@@ -24,14 +24,12 @@ import {
 
 export interface GetFollowersRequest {
     pathQueryId: string;
-    queryId: string;
     variables: string;
     features: string;
 }
 
 export interface GetFollowingRequest {
     pathQueryId: string;
-    queryId: string;
     variables: string;
     features: string;
 }
@@ -49,10 +47,6 @@ export class UserListApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling getFollowers.');
         }
 
-        if (requestParameters.queryId === null || requestParameters.queryId === undefined) {
-            throw new runtime.RequiredError('queryId','Required parameter requestParameters.queryId was null or undefined when calling getFollowers.');
-        }
-
         if (requestParameters.variables === null || requestParameters.variables === undefined) {
             throw new runtime.RequiredError('variables','Required parameter requestParameters.variables was null or undefined when calling getFollowers.');
         }
@@ -62,10 +56,6 @@ export class UserListApi extends runtime.BaseAPI {
         }
 
         const queryParameters: any = {};
-
-        if (requestParameters.queryId !== undefined) {
-            queryParameters['queryId'] = requestParameters.queryId;
-        }
 
         if (requestParameters.variables !== undefined) {
             queryParameters['variables'] = requestParameters.variables;
@@ -135,10 +125,6 @@ export class UserListApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling getFollowing.');
         }
 
-        if (requestParameters.queryId === null || requestParameters.queryId === undefined) {
-            throw new runtime.RequiredError('queryId','Required parameter requestParameters.queryId was null or undefined when calling getFollowing.');
-        }
-
         if (requestParameters.variables === null || requestParameters.variables === undefined) {
             throw new runtime.RequiredError('variables','Required parameter requestParameters.variables was null or undefined when calling getFollowing.');
         }
@@ -148,10 +134,6 @@ export class UserListApi extends runtime.BaseAPI {
         }
 
         const queryParameters: any = {};
-
-        if (requestParameters.queryId !== undefined) {
-            queryParameters['queryId'] = requestParameters.queryId;
-        }
 
         if (requestParameters.variables !== undefined) {
             queryParameters['variables'] = requestParameters.variables;

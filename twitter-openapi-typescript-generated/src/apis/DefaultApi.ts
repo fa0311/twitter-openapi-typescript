@@ -24,7 +24,6 @@ import {
 
 export interface GetProfileSpotlightsQueryRequest {
     pathQueryId: string;
-    queryId: string;
     variables: string;
     features: string;
 }
@@ -42,10 +41,6 @@ export class DefaultApi extends runtime.BaseAPI {
             throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling getProfileSpotlightsQuery.');
         }
 
-        if (requestParameters.queryId === null || requestParameters.queryId === undefined) {
-            throw new runtime.RequiredError('queryId','Required parameter requestParameters.queryId was null or undefined when calling getProfileSpotlightsQuery.');
-        }
-
         if (requestParameters.variables === null || requestParameters.variables === undefined) {
             throw new runtime.RequiredError('variables','Required parameter requestParameters.variables was null or undefined when calling getProfileSpotlightsQuery.');
         }
@@ -55,10 +50,6 @@ export class DefaultApi extends runtime.BaseAPI {
         }
 
         const queryParameters: any = {};
-
-        if (requestParameters.queryId !== undefined) {
-            queryParameters['queryId'] = requestParameters.queryId;
-        }
 
         if (requestParameters.variables !== undefined) {
             queryParameters['variables'] = requestParameters.variables;

@@ -31,6 +31,12 @@ import {
     ItemResultFromJSONTyped,
     ItemResultToJSON,
 } from './ItemResult';
+import type { TweetLegacySelfThread } from './TweetLegacySelfThread';
+import {
+    TweetLegacySelfThreadFromJSON,
+    TweetLegacySelfThreadFromJSONTyped,
+    TweetLegacySelfThreadToJSON,
+} from './TweetLegacySelfThread';
 
 /**
  * 
@@ -160,6 +166,12 @@ export interface TweetLegacy {
     retweetedStatusResult?: ItemResult;
     /**
      * 
+     * @type {TweetLegacySelfThread}
+     * @memberof TweetLegacy
+     */
+    selfThread?: TweetLegacySelfThread;
+    /**
+     * 
      * @type {string}
      * @memberof TweetLegacy
      */
@@ -222,6 +234,7 @@ export function TweetLegacyFromJSONTyped(json: any, ignoreDiscriminator: boolean
         'retweetCount': json['retweet_count'],
         'retweeted': json['retweeted'],
         'retweetedStatusResult': !exists(json, 'retweeted_status_result') ? undefined : ItemResultFromJSON(json['retweeted_status_result']),
+        'selfThread': !exists(json, 'self_thread') ? undefined : TweetLegacySelfThreadFromJSON(json['self_thread']),
         'userIdStr': json['user_id_str'],
     };
 }
@@ -255,6 +268,7 @@ export function TweetLegacyToJSON(value?: TweetLegacy | null): any {
         'retweet_count': value.retweetCount,
         'retweeted': value.retweeted,
         'retweeted_status_result': ItemResultToJSON(value.retweetedStatusResult),
+        'self_thread': TweetLegacySelfThreadToJSON(value.selfThread),
         'user_id_str': value.userIdStr,
     };
 }

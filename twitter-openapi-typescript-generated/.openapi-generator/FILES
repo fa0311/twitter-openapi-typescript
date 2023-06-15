@@ -97,6 +97,7 @@ src/models/TweetDetailResponseData.ts
 src/models/TweetEditControl.ts
 src/models/TweetEditPrespective.ts
 src/models/TweetLegacy.ts
+src/models/TweetLegacySelfThread.ts
 src/models/TweetTombstone.ts
 src/models/TweetUnion.ts
 src/models/TweetViews.ts

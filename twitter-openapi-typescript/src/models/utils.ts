@@ -5,6 +5,7 @@ export type ApiFunction<T> = (requestParameters: {
   queryId: string;
   variables: string;
   features: string;
+  fieldToggles: string;
 }) => Promise<i.ApiResponse<T>>;
 
 export type RequestParam<T1, T2> = {

@@ -9,6 +9,14 @@ test('getTweetDetail', async () => {
   expect(response.raw.response.ok).toBe(true);
 });
 
+test('getSearchTimeline', async () => {
+  logger.log('getSearchTimeline');
+  const client = await getClient();
+  const response = await client.getTweetApi().getSearchTimeline({ rawQuery: 'elonmusk' });
+  response.data.filter((e) => !e.promotedMetadata).forEach((e) => printTweet(e));
+  expect(response.raw.response.ok).toBe(true);
+});
+
 test('getHomeTimeline', async () => {
   logger.log('getHomeTimeline');
   const client = await getClient();

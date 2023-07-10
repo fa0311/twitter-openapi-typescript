@@ -9,6 +9,13 @@ type GetTweetDetailParam = {
   extraParam?: { [key: string]: any };
 };
 
+type GetSearchTimelineParam = {
+  rawQuery: string;
+  product?: string;
+  cursor?: string;
+  count?: number;
+  extraParam?: { [key: string]: any };
+};
 type GetHomeTimelineParam = {
   couser?: string;
   count?: number;
@@ -73,11 +80,16 @@ export class TweetApiUtils {
 
   async request<T>(param: RequestParam<i.InstructionUnion[], T>): Promise<TweetListApiUtilsResponse> {
     const apiFn: typeof param.apiFn = param.apiFn.bind(this.api);
+    const fieldTogglesFn = () => {
+      if (this.flag[param.key]['fieldToggles'] == null) return { fieldToggles: '' };
+      return { fieldToggles: JSON.stringify(this.flag[param.key]['fieldToggles']) };
+    };
     const response = await apiFn({
       pathQueryId: this.flag[param.key]['queryId'],
       queryId: this.flag[param.key]['queryId'],
       variables: JSON.stringify({ ...this.flag[param.key]['variables'], ...param.param }),
       features: JSON.stringify(this.flag[param.key]['features']),
+      ...fieldTogglesFn(),
     });
     const instruction = param.convertFn(await response.value());
     const entry = instructionToEntry(instruction);
@@ -107,6 +119,23 @@ export class TweetApiUtils {
       apiFn: this.api.getTweetDetailRaw,
       convertFn: (e) => e.data.threadedConversationWithInjectionsV2.instructions,
       key: 'TweetDetail',
+      param: args,
+    });
+    return response;
+  }
+  async getSearchTimeline(param: GetSearchTimelineParam): Promise<TweetListApiUtilsResponse> {
+    const args = {
+      rawQuery: param.rawQuery,
+      ...(param.product == null ? {} : { product: param.product }),
+      ...(param.cursor == null ? {} : { cursor: param.cursor }),
+      ...(param.count == null ? {} : { count: param.count }),
+      ...param.extraParam,
+    };
+
+    const response = await this.request({
+      apiFn: this.api.getSearchTimelineRaw,
+      convertFn: (e) => e.data.searchByRawQuery.searchTimeline.timeline.instructions,
+      key: 'SearchTimeline',
       param: args,
     });
     return response;

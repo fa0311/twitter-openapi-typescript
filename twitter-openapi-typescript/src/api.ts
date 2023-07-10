@@ -27,7 +27,7 @@ export type TwitterOpenApiCookie = {
 };
 
 export class TwitterOpenApi {
-  static hash = 'd5ccc25869b68cbb39c68fa81a1fa77967a667da';
+  static hash = '29e05d162f600933fdbf633e992d2d0a249c9413';
   static url = `https://raw.githubusercontent.com/fa0311/twitter-openapi/${this.hash}/src/config/placeholder.json`;
   static twitter = 'https://twitter.com/home';
 

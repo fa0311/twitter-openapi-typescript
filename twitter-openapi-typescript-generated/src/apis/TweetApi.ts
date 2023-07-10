@@ -16,7 +16,8 @@
 import * as runtime from '../runtime';
 import type {
   BookmarksResponse,
-  ListTweetsTimelineResponse,
+  ListLatestTweetsTimelineResponse,
+  SearchTimelineResponse,
   TimelineResponse,
   TweetDetailResponse,
   UserTweetsResponse,
@@ -24,8 +25,10 @@ import type {
 import {
     BookmarksResponseFromJSON,
     BookmarksResponseToJSON,
-    ListTweetsTimelineResponseFromJSON,
-    ListTweetsTimelineResponseToJSON,
+    ListLatestTweetsTimelineResponseFromJSON,
+    ListLatestTweetsTimelineResponseToJSON,
+    SearchTimelineResponseFromJSON,
+    SearchTimelineResponseToJSON,
     TimelineResponseFromJSON,
     TimelineResponseToJSON,
     TweetDetailResponseFromJSON,
@@ -62,6 +65,13 @@ export interface GetListLatestTweetsTimelineRequest {
     pathQueryId: string;
     variables: string;
     features: string;
+}
+
+export interface GetSearchTimelineRequest {
+    pathQueryId: string;
+    variables: string;
+    features: string;
+    fieldToggles: string;
 }
 
 export interface GetTweetDetailRequest {
@@ -408,7 +418,7 @@ export class TweetApi extends runtime.BaseAPI {
     /**
      * get tweet list of timeline
      */
-    async getListLatestTweetsTimelineRaw(requestParameters: GetListLatestTweetsTimelineRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ListTweetsTimelineResponse>> {
+    async getListLatestTweetsTimelineRaw(requestParameters: GetListLatestTweetsTimelineRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ListLatestTweetsTimelineResponse>> {
         if (requestParameters.pathQueryId === null || requestParameters.pathQueryId === undefined) {
             throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling getListLatestTweetsTimeline.');
         }
@@ -472,14 +482,100 @@ export class TweetApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => ListTweetsTimelineResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListLatestTweetsTimelineResponseFromJSON(jsonValue));
     }
 
     /**
      * get tweet list of timeline
      */
-    async getListLatestTweetsTimeline(requestParameters: GetListLatestTweetsTimelineRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ListTweetsTimelineResponse> {
+    async getListLatestTweetsTimeline(requestParameters: GetListLatestTweetsTimelineRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ListLatestTweetsTimelineResponse> {
         const response = await this.getListLatestTweetsTimelineRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * search tweet list. product:[Top, Latest, People, Photos, Videos]
+     */
+    async getSearchTimelineRaw(requestParameters: GetSearchTimelineRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SearchTimelineResponse>> {
+        if (requestParameters.pathQueryId === null || requestParameters.pathQueryId === undefined) {
+            throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling getSearchTimeline.');
+        }
+
+        if (requestParameters.variables === null || requestParameters.variables === undefined) {
+            throw new runtime.RequiredError('variables','Required parameter requestParameters.variables was null or undefined when calling getSearchTimeline.');
+        }
+
+        if (requestParameters.features === null || requestParameters.features === undefined) {
+            throw new runtime.RequiredError('features','Required parameter requestParameters.features was null or undefined when calling getSearchTimeline.');
+        }
+
+        if (requestParameters.fieldToggles === null || requestParameters.fieldToggles === undefined) {
+            throw new runtime.RequiredError('fieldToggles','Required parameter requestParameters.fieldToggles was null or undefined when calling getSearchTimeline.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.variables !== undefined) {
+            queryParameters['variables'] = requestParameters.variables;
+        }
+
+        if (requestParameters.features !== undefined) {
+            queryParameters['features'] = requestParameters.features;
+        }
+
+        if (requestParameters.fieldToggles !== undefined) {
+            queryParameters['fieldToggles'] = requestParameters.fieldToggles;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-client-language"] = this.configuration.apiKey("x-twitter-client-language"); // ClientLanguage authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-active-user"] = this.configuration.apiKey("x-twitter-active-user"); // ActiveUser authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["user-agent"] = this.configuration.apiKey("user-agent"); // UserAgent authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-auth-type"] = this.configuration.apiKey("x-twitter-auth-type"); // AuthType authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-csrf-token"] = this.configuration.apiKey("x-csrf-token"); // CsrfToken authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-guest-token"] = this.configuration.apiKey("x-guest-token"); // GuestToken authentication
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BearerAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/graphql/{pathQueryId}/SearchTimeline`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters.pathQueryId))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => SearchTimelineResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * search tweet list. product:[Top, Latest, People, Photos, Videos]
+     */
+    async getSearchTimeline(requestParameters: GetSearchTimelineRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SearchTimelineResponse> {
+        const response = await this.getSearchTimelineRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

@@ -16,10 +16,16 @@
 import * as runtime from '../runtime';
 import type {
   FollowResponse,
+  TweetFavoritersResponse,
+  TweetRetweetersResponse,
 } from '../models';
 import {
     FollowResponseFromJSON,
     FollowResponseToJSON,
+    TweetFavoritersResponseFromJSON,
+    TweetFavoritersResponseToJSON,
+    TweetRetweetersResponseFromJSON,
+    TweetRetweetersResponseToJSON,
 } from '../models';
 
 export interface GetFollowersRequest {
@@ -28,7 +34,26 @@ export interface GetFollowersRequest {
     features: string;
 }
 
+export interface GetFollowersYouKnowRequest {
+    pathQueryId: string;
+    variables: string;
+    features: string;
+    fieldToggles: string;
+}
+
 export interface GetFollowingRequest {
+    pathQueryId: string;
+    variables: string;
+    features: string;
+}
+
+export interface GetTweetFavoritersRequest {
+    pathQueryId: string;
+    variables: string;
+    features: string;
+}
+
+export interface GetTweetRetweetersRequest {
     pathQueryId: string;
     variables: string;
     features: string;
@@ -118,6 +143,92 @@ export class UserListApi extends runtime.BaseAPI {
     }
 
     /**
+     * get followers you know
+     */
+    async getFollowersYouKnowRaw(requestParameters: GetFollowersYouKnowRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FollowResponse>> {
+        if (requestParameters.pathQueryId === null || requestParameters.pathQueryId === undefined) {
+            throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling getFollowersYouKnow.');
+        }
+
+        if (requestParameters.variables === null || requestParameters.variables === undefined) {
+            throw new runtime.RequiredError('variables','Required parameter requestParameters.variables was null or undefined when calling getFollowersYouKnow.');
+        }
+
+        if (requestParameters.features === null || requestParameters.features === undefined) {
+            throw new runtime.RequiredError('features','Required parameter requestParameters.features was null or undefined when calling getFollowersYouKnow.');
+        }
+
+        if (requestParameters.fieldToggles === null || requestParameters.fieldToggles === undefined) {
+            throw new runtime.RequiredError('fieldToggles','Required parameter requestParameters.fieldToggles was null or undefined when calling getFollowersYouKnow.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.variables !== undefined) {
+            queryParameters['variables'] = requestParameters.variables;
+        }
+
+        if (requestParameters.features !== undefined) {
+            queryParameters['features'] = requestParameters.features;
+        }
+
+        if (requestParameters.fieldToggles !== undefined) {
+            queryParameters['fieldToggles'] = requestParameters.fieldToggles;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-client-language"] = this.configuration.apiKey("x-twitter-client-language"); // ClientLanguage authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-active-user"] = this.configuration.apiKey("x-twitter-active-user"); // ActiveUser authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["user-agent"] = this.configuration.apiKey("user-agent"); // UserAgent authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-auth-type"] = this.configuration.apiKey("x-twitter-auth-type"); // AuthType authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-csrf-token"] = this.configuration.apiKey("x-csrf-token"); // CsrfToken authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-guest-token"] = this.configuration.apiKey("x-guest-token"); // GuestToken authentication
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BearerAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/graphql/{pathQueryId}/FollowersYouKnow`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters.pathQueryId))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => FollowResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * get followers you know
+     */
+    async getFollowersYouKnow(requestParameters: GetFollowersYouKnowRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FollowResponse> {
+        const response = await this.getFollowersYouKnowRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * get user list of following
      */
     async getFollowingRaw(requestParameters: GetFollowingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FollowResponse>> {
@@ -192,6 +303,162 @@ export class UserListApi extends runtime.BaseAPI {
      */
     async getFollowing(requestParameters: GetFollowingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FollowResponse> {
         const response = await this.getFollowingRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * get tweet favoriters
+     */
+    async getTweetFavoritersRaw(requestParameters: GetTweetFavoritersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TweetFavoritersResponse>> {
+        if (requestParameters.pathQueryId === null || requestParameters.pathQueryId === undefined) {
+            throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling getTweetFavoriters.');
+        }
+
+        if (requestParameters.variables === null || requestParameters.variables === undefined) {
+            throw new runtime.RequiredError('variables','Required parameter requestParameters.variables was null or undefined when calling getTweetFavoriters.');
+        }
+
+        if (requestParameters.features === null || requestParameters.features === undefined) {
+            throw new runtime.RequiredError('features','Required parameter requestParameters.features was null or undefined when calling getTweetFavoriters.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.variables !== undefined) {
+            queryParameters['variables'] = requestParameters.variables;
+        }
+
+        if (requestParameters.features !== undefined) {
+            queryParameters['features'] = requestParameters.features;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-client-language"] = this.configuration.apiKey("x-twitter-client-language"); // ClientLanguage authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-active-user"] = this.configuration.apiKey("x-twitter-active-user"); // ActiveUser authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["user-agent"] = this.configuration.apiKey("user-agent"); // UserAgent authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-auth-type"] = this.configuration.apiKey("x-twitter-auth-type"); // AuthType authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-csrf-token"] = this.configuration.apiKey("x-csrf-token"); // CsrfToken authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-guest-token"] = this.configuration.apiKey("x-guest-token"); // GuestToken authentication
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BearerAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/graphql/{pathQueryId}/Favoriters`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters.pathQueryId))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => TweetFavoritersResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * get tweet favoriters
+     */
+    async getTweetFavoriters(requestParameters: GetTweetFavoritersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TweetFavoritersResponse> {
+        const response = await this.getTweetFavoritersRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * get tweet retweeters
+     */
+    async getTweetRetweetersRaw(requestParameters: GetTweetRetweetersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TweetRetweetersResponse>> {
+        if (requestParameters.pathQueryId === null || requestParameters.pathQueryId === undefined) {
+            throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling getTweetRetweeters.');
+        }
+
+        if (requestParameters.variables === null || requestParameters.variables === undefined) {
+            throw new runtime.RequiredError('variables','Required parameter requestParameters.variables was null or undefined when calling getTweetRetweeters.');
+        }
+
+        if (requestParameters.features === null || requestParameters.features === undefined) {
+            throw new runtime.RequiredError('features','Required parameter requestParameters.features was null or undefined when calling getTweetRetweeters.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.variables !== undefined) {
+            queryParameters['variables'] = requestParameters.variables;
+        }
+
+        if (requestParameters.features !== undefined) {
+            queryParameters['features'] = requestParameters.features;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-client-language"] = this.configuration.apiKey("x-twitter-client-language"); // ClientLanguage authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-active-user"] = this.configuration.apiKey("x-twitter-active-user"); // ActiveUser authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["user-agent"] = this.configuration.apiKey("user-agent"); // UserAgent authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-auth-type"] = this.configuration.apiKey("x-twitter-auth-type"); // AuthType authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-csrf-token"] = this.configuration.apiKey("x-csrf-token"); // CsrfToken authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-guest-token"] = this.configuration.apiKey("x-guest-token"); // GuestToken authentication
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BearerAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/graphql/{pathQueryId}/Retweeters`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters.pathQueryId))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => TweetRetweetersResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * get tweet retweeters
+     */
+    async getTweetRetweeters(requestParameters: GetTweetRetweetersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TweetRetweetersResponse> {
+        const response = await this.getTweetRetweetersRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

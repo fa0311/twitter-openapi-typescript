@@ -16,13 +16,28 @@
 import * as runtime from '../runtime';
 import type {
   UserResponse,
+  UsersResponse,
 } from '../models';
 import {
     UserResponseFromJSON,
     UserResponseToJSON,
+    UsersResponseFromJSON,
+    UsersResponseToJSON,
 } from '../models';
 
+export interface GetUserByRestIdRequest {
+    pathQueryId: string;
+    variables: string;
+    features: string;
+}
+
 export interface GetUserByScreenNameRequest {
+    pathQueryId: string;
+    variables: string;
+    features: string;
+}
+
+export interface GetUsersByRestIdsRequest {
     pathQueryId: string;
     variables: string;
     features: string;
@@ -32,6 +47,84 @@ export interface GetUserByScreenNameRequest {
  * 
  */
 export class UserApi extends runtime.BaseAPI {
+
+    /**
+     * get user by rest id
+     */
+    async getUserByRestIdRaw(requestParameters: GetUserByRestIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UserResponse>> {
+        if (requestParameters.pathQueryId === null || requestParameters.pathQueryId === undefined) {
+            throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling getUserByRestId.');
+        }
+
+        if (requestParameters.variables === null || requestParameters.variables === undefined) {
+            throw new runtime.RequiredError('variables','Required parameter requestParameters.variables was null or undefined when calling getUserByRestId.');
+        }
+
+        if (requestParameters.features === null || requestParameters.features === undefined) {
+            throw new runtime.RequiredError('features','Required parameter requestParameters.features was null or undefined when calling getUserByRestId.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.variables !== undefined) {
+            queryParameters['variables'] = requestParameters.variables;
+        }
+
+        if (requestParameters.features !== undefined) {
+            queryParameters['features'] = requestParameters.features;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-client-language"] = this.configuration.apiKey("x-twitter-client-language"); // ClientLanguage authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-active-user"] = this.configuration.apiKey("x-twitter-active-user"); // ActiveUser authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["user-agent"] = this.configuration.apiKey("user-agent"); // UserAgent authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-auth-type"] = this.configuration.apiKey("x-twitter-auth-type"); // AuthType authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-csrf-token"] = this.configuration.apiKey("x-csrf-token"); // CsrfToken authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-guest-token"] = this.configuration.apiKey("x-guest-token"); // GuestToken authentication
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BearerAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/graphql/{pathQueryId}/UserByRestId`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters.pathQueryId))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => UserResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * get user by rest id
+     */
+    async getUserByRestId(requestParameters: GetUserByRestIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UserResponse> {
+        const response = await this.getUserByRestIdRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
 
     /**
      * get user by screen name
@@ -108,6 +201,84 @@ export class UserApi extends runtime.BaseAPI {
      */
     async getUserByScreenName(requestParameters: GetUserByScreenNameRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UserResponse> {
         const response = await this.getUserByScreenNameRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * get users by rest ids
+     */
+    async getUsersByRestIdsRaw(requestParameters: GetUsersByRestIdsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UsersResponse>> {
+        if (requestParameters.pathQueryId === null || requestParameters.pathQueryId === undefined) {
+            throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling getUsersByRestIds.');
+        }
+
+        if (requestParameters.variables === null || requestParameters.variables === undefined) {
+            throw new runtime.RequiredError('variables','Required parameter requestParameters.variables was null or undefined when calling getUsersByRestIds.');
+        }
+
+        if (requestParameters.features === null || requestParameters.features === undefined) {
+            throw new runtime.RequiredError('features','Required parameter requestParameters.features was null or undefined when calling getUsersByRestIds.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.variables !== undefined) {
+            queryParameters['variables'] = requestParameters.variables;
+        }
+
+        if (requestParameters.features !== undefined) {
+            queryParameters['features'] = requestParameters.features;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-client-language"] = this.configuration.apiKey("x-twitter-client-language"); // ClientLanguage authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-active-user"] = this.configuration.apiKey("x-twitter-active-user"); // ActiveUser authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["user-agent"] = this.configuration.apiKey("user-agent"); // UserAgent authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-auth-type"] = this.configuration.apiKey("x-twitter-auth-type"); // AuthType authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-csrf-token"] = this.configuration.apiKey("x-csrf-token"); // CsrfToken authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-guest-token"] = this.configuration.apiKey("x-guest-token"); // GuestToken authentication
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BearerAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/graphql/{pathQueryId}/UsersByRestIds`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters.pathQueryId))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => UsersResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * get users by rest ids
+     */
+    async getUsersByRestIds(requestParameters: GetUsersByRestIdsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UsersResponse> {
+        const response = await this.getUsersByRestIdsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

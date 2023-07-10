@@ -6,6 +6,11 @@ export type UserApiUtilsResponse = {
   header: ApiUtilsHeader;
   data: i.User;
 };
+export type UsersApiUtilsResponse = {
+  raw: UserApiUtilsRaw;
+  header: ApiUtilsHeader;
+  data: i.User[];
+};
 
 export type UserApiUtilsRaw = {
   response: Response;

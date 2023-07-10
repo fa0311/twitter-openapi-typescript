@@ -18,11 +18,16 @@ export class DefaultApiUtils {
 
   async request<T1, T2>(param: RequestParam<T1, T2>): Promise<TwitterApiUtilsResponse<T1>> {
     const apiFn: typeof param.apiFn = param.apiFn.bind(this.api);
+    const fieldTogglesFn = () => {
+      if (this.flag[param.key]['fieldToggles'] == null) return { fieldToggles: '' };
+      return { fieldToggles: JSON.stringify(this.flag[param.key]['fieldToggles']) };
+    };
     const response = await apiFn({
       pathQueryId: this.flag[param.key]['queryId'],
       queryId: this.flag[param.key]['queryId'],
       variables: JSON.stringify({ ...this.flag[param.key]['variables'], ...param.param }),
       features: JSON.stringify(this.flag[param.key]['features']),
+      ...fieldTogglesFn(),
     });
     const data = param.convertFn(await response.value());
     return {

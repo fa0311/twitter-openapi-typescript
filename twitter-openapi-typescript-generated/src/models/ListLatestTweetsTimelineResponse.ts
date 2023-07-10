@@ -23,32 +23,32 @@ import {
 /**
  * 
  * @export
- * @interface ListTweetsTimelineResponse
+ * @interface ListLatestTweetsTimelineResponse
  */
-export interface ListTweetsTimelineResponse {
+export interface ListLatestTweetsTimelineResponse {
     /**
      * 
      * @type {ListTweetsTimelineData}
-     * @memberof ListTweetsTimelineResponse
+     * @memberof ListLatestTweetsTimelineResponse
      */
     data: ListTweetsTimelineData;
 }
 
 /**
- * Check if a given object implements the ListTweetsTimelineResponse interface.
+ * Check if a given object implements the ListLatestTweetsTimelineResponse interface.
  */
-export function instanceOfListTweetsTimelineResponse(value: object): boolean {
+export function instanceOfListLatestTweetsTimelineResponse(value: object): boolean {
     let isInstance = true;
     isInstance = isInstance && "data" in value;
 
     return isInstance;
 }
 
-export function ListTweetsTimelineResponseFromJSON(json: any): ListTweetsTimelineResponse {
-    return ListTweetsTimelineResponseFromJSONTyped(json, false);
+export function ListLatestTweetsTimelineResponseFromJSON(json: any): ListLatestTweetsTimelineResponse {
+    return ListLatestTweetsTimelineResponseFromJSONTyped(json, false);
 }
 
-export function ListTweetsTimelineResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): ListTweetsTimelineResponse {
+export function ListLatestTweetsTimelineResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): ListLatestTweetsTimelineResponse {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -58,7 +58,7 @@ export function ListTweetsTimelineResponseFromJSONTyped(json: any, ignoreDiscrim
     };
 }
 
-export function ListTweetsTimelineResponseToJSON(value?: ListTweetsTimelineResponse | null): any {
+export function ListLatestTweetsTimelineResponseToJSON(value?: ListLatestTweetsTimelineResponse | null): any {
     if (value === undefined) {
         return undefined;
     }

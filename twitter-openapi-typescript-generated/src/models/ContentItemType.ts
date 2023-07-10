@@ -20,7 +20,9 @@
 export const ContentItemType = {
     TimelineTweet: 'TimelineTweet',
     TimelineTimelineCursor: 'TimelineTimelineCursor',
-    TimelineUser: 'TimelineUser'
+    TimelineUser: 'TimelineUser',
+    TimelinePrompt: 'TimelinePrompt',
+    TimelineMessagePrompt: 'TimelineMessagePrompt'
 } as const;
 export type ContentItemType = typeof ContentItemType[keyof typeof ContentItemType];
 

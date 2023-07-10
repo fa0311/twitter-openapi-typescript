@@ -1,6 +1,6 @@
 {
   "name": "twitter-openapi-typescript-generated",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "OpenAPI client for twitter-openapi-typescript-generated",
   "author": "fa0311",
   "repository": {
@@ -20,6 +20,7 @@
   "keywords": [
     "twitter",
     "api",
-    "typescript"
+    "typescript",
+    "scraper"
   ]
 }

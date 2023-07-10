@@ -20,6 +20,13 @@ import {
     TimelineAddEntriesToJSON,
 } from './TimelineAddEntries';
 import {
+    TimelineAddToModule,
+    instanceOfTimelineAddToModule,
+    TimelineAddToModuleFromJSON,
+    TimelineAddToModuleFromJSONTyped,
+    TimelineAddToModuleToJSON,
+} from './TimelineAddToModule';
+import {
     TimelineClearCache,
     instanceOfTimelineClearCache,
     TimelineClearCacheFromJSON,
@@ -34,6 +41,20 @@ import {
     TimelinePinEntryToJSON,
 } from './TimelinePinEntry';
 import {
+    TimelineReplaceEntry,
+    instanceOfTimelineReplaceEntry,
+    TimelineReplaceEntryFromJSON,
+    TimelineReplaceEntryFromJSONTyped,
+    TimelineReplaceEntryToJSON,
+} from './TimelineReplaceEntry';
+import {
+    TimelineShowAlert,
+    instanceOfTimelineShowAlert,
+    TimelineShowAlertFromJSON,
+    TimelineShowAlertFromJSONTyped,
+    TimelineShowAlertToJSON,
+} from './TimelineShowAlert';
+import {
     TimelineTerminateTimeline,
     instanceOfTimelineTerminateTimeline,
     TimelineTerminateTimelineFromJSON,
@@ -46,7 +67,7 @@ import {
  * 
  * @export
  */
-export type InstructionUnion = { type: 'TimelineAddEntries' } & TimelineAddEntries | { type: 'TimelineClearCache' } & TimelineClearCache | { type: 'TimelinePinEntry' } & TimelinePinEntry | { type: 'TimelineTerminateTimeline' } & TimelineTerminateTimeline;
+export type InstructionUnion = { type: 'TimelineAddEntries' } & TimelineAddEntries | { type: 'TimelineAddToModule' } & TimelineAddToModule | { type: 'TimelineClearCache' } & TimelineClearCache | { type: 'TimelinePinEntry' } & TimelinePinEntry | { type: 'TimelineReplaceEntry' } & TimelineReplaceEntry | { type: 'TimelineShowAlert' } & TimelineShowAlert | { type: 'TimelineTerminateTimeline' } & TimelineTerminateTimeline;
 
 export function InstructionUnionFromJSON(json: any): InstructionUnion {
     return InstructionUnionFromJSONTyped(json, false);
@@ -59,10 +80,16 @@ export function InstructionUnionFromJSONTyped(json: any, ignoreDiscriminator: bo
     switch (json['type']) {
         case 'TimelineAddEntries':
             return {...TimelineAddEntriesFromJSONTyped(json, true), type: 'TimelineAddEntries'};
+        case 'TimelineAddToModule':
+            return {...TimelineAddToModuleFromJSONTyped(json, true), type: 'TimelineAddToModule'};
         case 'TimelineClearCache':
             return {...TimelineClearCacheFromJSONTyped(json, true), type: 'TimelineClearCache'};
         case 'TimelinePinEntry':
             return {...TimelinePinEntryFromJSONTyped(json, true), type: 'TimelinePinEntry'};
+        case 'TimelineReplaceEntry':
+            return {...TimelineReplaceEntryFromJSONTyped(json, true), type: 'TimelineReplaceEntry'};
+        case 'TimelineShowAlert':
+            return {...TimelineShowAlertFromJSONTyped(json, true), type: 'TimelineShowAlert'};
         case 'TimelineTerminateTimeline':
             return {...TimelineTerminateTimelineFromJSONTyped(json, true), type: 'TimelineTerminateTimeline'};
         default:
@@ -80,10 +107,16 @@ export function InstructionUnionToJSON(value?: InstructionUnion | null): any {
     switch (value['type']) {
         case 'TimelineAddEntries':
             return TimelineAddEntriesToJSON(value);
+        case 'TimelineAddToModule':
+            return TimelineAddToModuleToJSON(value);
         case 'TimelineClearCache':
             return TimelineClearCacheToJSON(value);
         case 'TimelinePinEntry':
             return TimelinePinEntryToJSON(value);
+        case 'TimelineReplaceEntry':
+            return TimelineReplaceEntryToJSON(value);
+        case 'TimelineShowAlert':
+            return TimelineShowAlertToJSON(value);
         case 'TimelineTerminateTimeline':
             return TimelineTerminateTimelineToJSON(value);
         default:

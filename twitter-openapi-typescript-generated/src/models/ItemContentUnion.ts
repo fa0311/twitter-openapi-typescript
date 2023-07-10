@@ -13,6 +13,20 @@
  */
 
 import {
+    TimelineMessagePrompt,
+    instanceOfTimelineMessagePrompt,
+    TimelineMessagePromptFromJSON,
+    TimelineMessagePromptFromJSONTyped,
+    TimelineMessagePromptToJSON,
+} from './TimelineMessagePrompt';
+import {
+    TimelinePrompt,
+    instanceOfTimelinePrompt,
+    TimelinePromptFromJSON,
+    TimelinePromptFromJSONTyped,
+    TimelinePromptToJSON,
+} from './TimelinePrompt';
+import {
     TimelineTimelineCursor,
     instanceOfTimelineTimelineCursor,
     TimelineTimelineCursorFromJSON,
@@ -39,7 +53,7 @@ import {
  * 
  * @export
  */
-export type ItemContentUnion = { itemType: 'TimelineTimelineCursor' } & TimelineTimelineCursor | { itemType: 'TimelineTweet' } & TimelineTweet | { itemType: 'TimelineUser' } & TimelineUser;
+export type ItemContentUnion = { itemType: 'TimelineMessagePrompt' } & TimelineMessagePrompt | { itemType: 'TimelinePrompt' } & TimelinePrompt | { itemType: 'TimelineTimelineCursor' } & TimelineTimelineCursor | { itemType: 'TimelineTweet' } & TimelineTweet | { itemType: 'TimelineUser' } & TimelineUser;
 
 export function ItemContentUnionFromJSON(json: any): ItemContentUnion {
     return ItemContentUnionFromJSONTyped(json, false);
@@ -50,6 +64,10 @@ export function ItemContentUnionFromJSONTyped(json: any, ignoreDiscriminator: bo
         return json;
     }
     switch (json['itemType']) {
+        case 'TimelineMessagePrompt':
+            return {...TimelineMessagePromptFromJSONTyped(json, true), itemType: 'TimelineMessagePrompt'};
+        case 'TimelinePrompt':
+            return {...TimelinePromptFromJSONTyped(json, true), itemType: 'TimelinePrompt'};
         case 'TimelineTimelineCursor':
             return {...TimelineTimelineCursorFromJSONTyped(json, true), itemType: 'TimelineTimelineCursor'};
         case 'TimelineTweet':
@@ -69,6 +87,10 @@ export function ItemContentUnionToJSON(value?: ItemContentUnion | null): any {
         return null;
     }
     switch (value['itemType']) {
+        case 'TimelineMessagePrompt':
+            return TimelineMessagePromptToJSON(value);
+        case 'TimelinePrompt':
+            return TimelinePromptToJSON(value);
         case 'TimelineTimelineCursor':
             return TimelineTimelineCursorToJSON(value);
         case 'TimelineTweet':

@@ -2,9 +2,15 @@ import * as i from 'twitter-openapi-typescript-generated';
 import { TweetApiUtilsData, UserApiUtilsData, CursorApiUtilsResponse, ApiUtilsHeader } from '@/models';
 
 export const instructionToEntry = (item: i.InstructionUnion[]): i.TimelineAddEntry[] => {
-  return item
-    .map((e) => (e.type == i.InstructionType.TimelineAddEntries ? (e as i.TimelineAddEntries) : null))
-    .find((e) => e).entries;
+  return item.flatMap((e) => {
+    if (e.type == i.InstructionType.TimelineAddEntries) {
+      return (e as i.TimelineAddEntries).entries;
+    } else if (e.type == i.InstructionType.TimelineReplaceEntry) {
+      return [(e as i.TimelineReplaceEntry).entry];
+    } else {
+      return null;
+    }
+  });
 };
 
 export const tweetEntriesConverter = (item: i.TimelineAddEntry[]): TweetApiUtilsData[] => {

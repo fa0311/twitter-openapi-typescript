@@ -7,9 +7,8 @@ export const instructionToEntry = (item: i.InstructionUnion[]): i.TimelineAddEnt
       return (e as i.TimelineAddEntries).entries;
     } else if (e.type == i.InstructionType.TimelineReplaceEntry) {
       return [(e as i.TimelineReplaceEntry).entry];
-    } else {
-      return null;
     }
+    return [];
   });
 };
 

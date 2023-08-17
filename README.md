@@ -2,6 +2,8 @@
 
 ## Table of Contents
 
+This repository contains two packages.
+
 - [twitter-openapi-typescript](./twitter-openapi-typescript) Package for human-friendly TypeScript
 - [twitter-openapi-typescript-generated](./twitter-openapi-typescript-generated) TypeScript package automatically generated from [twitter-openapi](https://github.com/fa0311/twitter-openapi) by OpenAPI generator
 
@@ -11,7 +13,11 @@ graph LR
   B--Simplified handling-->C[twitter-openapi-typescript]
 ```
 
+---
+
 ## twitter-openapi-typescript
+
+Learn more about people-friendly TypeScript packages here.
 
 [twitter-openapi-typescript/README.md](./twitter-openapi-typescript/README.md)
 
@@ -19,7 +25,7 @@ graph LR
 
 > Note! twitter-openapi-typescript-generated is a package for advanced users who are familiar with Twitter's API. In general, [twitter-openapi-typescript](./twitter-openapi-typescript) should be used!
 
-### Build
+Build
 
 ```shell
 git clone https://github.com/fa0311/twitter-openapi-typescript.git
@@ -35,7 +41,7 @@ java -jar tools/openapi-generator-cli.jar generate -g typescript-fetch -c tools/
 npm run build
 ```
 
-### Setup
+Setup
 
 It cannot be installed from npm.  
 Plan to release it in v1.0.0 with npm.  
@@ -45,6 +51,6 @@ git clone https://github.com/fa0311/twitter-openapi-typescript
 npm install ./twitter-openapi-typescript/twitter-openapi-typescript
 ```
 
-### Usage
+Usage
 
 [twitter-openapi-typescript-generated/README.md](./twitter-openapi-typescript-generated/README.md)

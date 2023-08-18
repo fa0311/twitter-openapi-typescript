@@ -15,26 +15,29 @@
 
 import * as runtime from '../runtime';
 import type {
-  BookmarksResponse,
-  ListLatestTweetsTimelineResponse,
-  SearchTimelineResponse,
-  TimelineResponse,
-  TweetDetailResponse,
-  UserTweetsResponse,
+  GetBookmarks200Response,
+  GetHomeLatestTimeline200Response,
+  GetLikes200Response,
+  GetListLatestTweetsTimeline200Response,
+  GetSearchTimeline200Response,
+  GetTweetDetail200Response,
+  GetUserHighlightsTweets200Response,
 } from '../models';
 import {
-    BookmarksResponseFromJSON,
-    BookmarksResponseToJSON,
-    ListLatestTweetsTimelineResponseFromJSON,
-    ListLatestTweetsTimelineResponseToJSON,
-    SearchTimelineResponseFromJSON,
-    SearchTimelineResponseToJSON,
-    TimelineResponseFromJSON,
-    TimelineResponseToJSON,
-    TweetDetailResponseFromJSON,
-    TweetDetailResponseToJSON,
-    UserTweetsResponseFromJSON,
-    UserTweetsResponseToJSON,
+    GetBookmarks200ResponseFromJSON,
+    GetBookmarks200ResponseToJSON,
+    GetHomeLatestTimeline200ResponseFromJSON,
+    GetHomeLatestTimeline200ResponseToJSON,
+    GetLikes200ResponseFromJSON,
+    GetLikes200ResponseToJSON,
+    GetListLatestTweetsTimeline200ResponseFromJSON,
+    GetListLatestTweetsTimeline200ResponseToJSON,
+    GetSearchTimeline200ResponseFromJSON,
+    GetSearchTimeline200ResponseToJSON,
+    GetTweetDetail200ResponseFromJSON,
+    GetTweetDetail200ResponseToJSON,
+    GetUserHighlightsTweets200ResponseFromJSON,
+    GetUserHighlightsTweets200ResponseToJSON,
 } from '../models';
 
 export interface GetBookmarksRequest {
@@ -80,6 +83,13 @@ export interface GetTweetDetailRequest {
     features: string;
 }
 
+export interface GetUserHighlightsTweetsRequest {
+    pathQueryId: string;
+    variables: string;
+    features: string;
+    fieldToggles: string;
+}
+
 export interface GetUserMediaRequest {
     pathQueryId: string;
     variables: string;
@@ -106,7 +116,7 @@ export class TweetApi extends runtime.BaseAPI {
     /**
      * get bookmarks
      */
-    async getBookmarksRaw(requestParameters: GetBookmarksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<BookmarksResponse>> {
+    async getBookmarksRaw(requestParameters: GetBookmarksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetBookmarks200Response>> {
         if (requestParameters.pathQueryId === null || requestParameters.pathQueryId === undefined) {
             throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling getBookmarks.');
         }
@@ -170,13 +180,13 @@ export class TweetApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => BookmarksResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetBookmarks200ResponseFromJSON(jsonValue));
     }
 
     /**
      * get bookmarks
      */
-    async getBookmarks(requestParameters: GetBookmarksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<BookmarksResponse> {
+    async getBookmarks(requestParameters: GetBookmarksRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetBookmarks200Response> {
         const response = await this.getBookmarksRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -184,7 +194,7 @@ export class TweetApi extends runtime.BaseAPI {
     /**
      * get tweet list of timeline
      */
-    async getHomeLatestTimelineRaw(requestParameters: GetHomeLatestTimelineRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TimelineResponse>> {
+    async getHomeLatestTimelineRaw(requestParameters: GetHomeLatestTimelineRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetHomeLatestTimeline200Response>> {
         if (requestParameters.pathQueryId === null || requestParameters.pathQueryId === undefined) {
             throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling getHomeLatestTimeline.');
         }
@@ -248,13 +258,13 @@ export class TweetApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => TimelineResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetHomeLatestTimeline200ResponseFromJSON(jsonValue));
     }
 
     /**
      * get tweet list of timeline
      */
-    async getHomeLatestTimeline(requestParameters: GetHomeLatestTimelineRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TimelineResponse> {
+    async getHomeLatestTimeline(requestParameters: GetHomeLatestTimelineRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetHomeLatestTimeline200Response> {
         const response = await this.getHomeLatestTimelineRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -262,7 +272,7 @@ export class TweetApi extends runtime.BaseAPI {
     /**
      * get tweet list of timeline
      */
-    async getHomeTimelineRaw(requestParameters: GetHomeTimelineRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TimelineResponse>> {
+    async getHomeTimelineRaw(requestParameters: GetHomeTimelineRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetHomeLatestTimeline200Response>> {
         if (requestParameters.pathQueryId === null || requestParameters.pathQueryId === undefined) {
             throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling getHomeTimeline.');
         }
@@ -326,13 +336,13 @@ export class TweetApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => TimelineResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetHomeLatestTimeline200ResponseFromJSON(jsonValue));
     }
 
     /**
      * get tweet list of timeline
      */
-    async getHomeTimeline(requestParameters: GetHomeTimelineRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TimelineResponse> {
+    async getHomeTimeline(requestParameters: GetHomeTimelineRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetHomeLatestTimeline200Response> {
         const response = await this.getHomeTimelineRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -340,7 +350,7 @@ export class TweetApi extends runtime.BaseAPI {
     /**
      * get user likes tweets
      */
-    async getLikesRaw(requestParameters: GetLikesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UserTweetsResponse>> {
+    async getLikesRaw(requestParameters: GetLikesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetLikes200Response>> {
         if (requestParameters.pathQueryId === null || requestParameters.pathQueryId === undefined) {
             throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling getLikes.');
         }
@@ -404,13 +414,13 @@ export class TweetApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => UserTweetsResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetLikes200ResponseFromJSON(jsonValue));
     }
 
     /**
      * get user likes tweets
      */
-    async getLikes(requestParameters: GetLikesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UserTweetsResponse> {
+    async getLikes(requestParameters: GetLikesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetLikes200Response> {
         const response = await this.getLikesRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -418,7 +428,7 @@ export class TweetApi extends runtime.BaseAPI {
     /**
      * get tweet list of timeline
      */
-    async getListLatestTweetsTimelineRaw(requestParameters: GetListLatestTweetsTimelineRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ListLatestTweetsTimelineResponse>> {
+    async getListLatestTweetsTimelineRaw(requestParameters: GetListLatestTweetsTimelineRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetListLatestTweetsTimeline200Response>> {
         if (requestParameters.pathQueryId === null || requestParameters.pathQueryId === undefined) {
             throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling getListLatestTweetsTimeline.');
         }
@@ -482,13 +492,13 @@ export class TweetApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => ListLatestTweetsTimelineResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetListLatestTweetsTimeline200ResponseFromJSON(jsonValue));
     }
 
     /**
      * get tweet list of timeline
      */
-    async getListLatestTweetsTimeline(requestParameters: GetListLatestTweetsTimelineRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ListLatestTweetsTimelineResponse> {
+    async getListLatestTweetsTimeline(requestParameters: GetListLatestTweetsTimelineRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetListLatestTweetsTimeline200Response> {
         const response = await this.getListLatestTweetsTimelineRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -496,7 +506,7 @@ export class TweetApi extends runtime.BaseAPI {
     /**
      * search tweet list. product:[Top, Latest, People, Photos, Videos]
      */
-    async getSearchTimelineRaw(requestParameters: GetSearchTimelineRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<SearchTimelineResponse>> {
+    async getSearchTimelineRaw(requestParameters: GetSearchTimelineRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetSearchTimeline200Response>> {
         if (requestParameters.pathQueryId === null || requestParameters.pathQueryId === undefined) {
             throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling getSearchTimeline.');
         }
@@ -568,13 +578,13 @@ export class TweetApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => SearchTimelineResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetSearchTimeline200ResponseFromJSON(jsonValue));
     }
 
     /**
      * search tweet list. product:[Top, Latest, People, Photos, Videos]
      */
-    async getSearchTimeline(requestParameters: GetSearchTimelineRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<SearchTimelineResponse> {
+    async getSearchTimeline(requestParameters: GetSearchTimelineRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetSearchTimeline200Response> {
         const response = await this.getSearchTimelineRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -582,7 +592,7 @@ export class TweetApi extends runtime.BaseAPI {
     /**
      * get TweetDetail
      */
-    async getTweetDetailRaw(requestParameters: GetTweetDetailRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TweetDetailResponse>> {
+    async getTweetDetailRaw(requestParameters: GetTweetDetailRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetTweetDetail200Response>> {
         if (requestParameters.pathQueryId === null || requestParameters.pathQueryId === undefined) {
             throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling getTweetDetail.');
         }
@@ -646,21 +656,107 @@ export class TweetApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => TweetDetailResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetTweetDetail200ResponseFromJSON(jsonValue));
     }
 
     /**
      * get TweetDetail
      */
-    async getTweetDetail(requestParameters: GetTweetDetailRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TweetDetailResponse> {
+    async getTweetDetail(requestParameters: GetTweetDetailRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetTweetDetail200Response> {
         const response = await this.getTweetDetailRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * get user highlights tweets
+     */
+    async getUserHighlightsTweetsRaw(requestParameters: GetUserHighlightsTweetsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetUserHighlightsTweets200Response>> {
+        if (requestParameters.pathQueryId === null || requestParameters.pathQueryId === undefined) {
+            throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling getUserHighlightsTweets.');
+        }
+
+        if (requestParameters.variables === null || requestParameters.variables === undefined) {
+            throw new runtime.RequiredError('variables','Required parameter requestParameters.variables was null or undefined when calling getUserHighlightsTweets.');
+        }
+
+        if (requestParameters.features === null || requestParameters.features === undefined) {
+            throw new runtime.RequiredError('features','Required parameter requestParameters.features was null or undefined when calling getUserHighlightsTweets.');
+        }
+
+        if (requestParameters.fieldToggles === null || requestParameters.fieldToggles === undefined) {
+            throw new runtime.RequiredError('fieldToggles','Required parameter requestParameters.fieldToggles was null or undefined when calling getUserHighlightsTweets.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.variables !== undefined) {
+            queryParameters['variables'] = requestParameters.variables;
+        }
+
+        if (requestParameters.features !== undefined) {
+            queryParameters['features'] = requestParameters.features;
+        }
+
+        if (requestParameters.fieldToggles !== undefined) {
+            queryParameters['fieldToggles'] = requestParameters.fieldToggles;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-client-language"] = this.configuration.apiKey("x-twitter-client-language"); // ClientLanguage authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-active-user"] = this.configuration.apiKey("x-twitter-active-user"); // ActiveUser authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["user-agent"] = this.configuration.apiKey("user-agent"); // UserAgent authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-auth-type"] = this.configuration.apiKey("x-twitter-auth-type"); // AuthType authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-csrf-token"] = this.configuration.apiKey("x-csrf-token"); // CsrfToken authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-guest-token"] = this.configuration.apiKey("x-guest-token"); // GuestToken authentication
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BearerAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/graphql/{pathQueryId}/UserHighlightsTweets`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters.pathQueryId))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetUserHighlightsTweets200ResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * get user highlights tweets
+     */
+    async getUserHighlightsTweets(requestParameters: GetUserHighlightsTweetsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetUserHighlightsTweets200Response> {
+        const response = await this.getUserHighlightsTweetsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      * get user media tweets
      */
-    async getUserMediaRaw(requestParameters: GetUserMediaRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UserTweetsResponse>> {
+    async getUserMediaRaw(requestParameters: GetUserMediaRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetLikes200Response>> {
         if (requestParameters.pathQueryId === null || requestParameters.pathQueryId === undefined) {
             throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling getUserMedia.');
         }
@@ -724,13 +820,13 @@ export class TweetApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => UserTweetsResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetLikes200ResponseFromJSON(jsonValue));
     }
 
     /**
      * get user media tweets
      */
-    async getUserMedia(requestParameters: GetUserMediaRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UserTweetsResponse> {
+    async getUserMedia(requestParameters: GetUserMediaRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetLikes200Response> {
         const response = await this.getUserMediaRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -738,7 +834,7 @@ export class TweetApi extends runtime.BaseAPI {
     /**
      * get user tweets
      */
-    async getUserTweetsRaw(requestParameters: GetUserTweetsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UserTweetsResponse>> {
+    async getUserTweetsRaw(requestParameters: GetUserTweetsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetLikes200Response>> {
         if (requestParameters.pathQueryId === null || requestParameters.pathQueryId === undefined) {
             throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling getUserTweets.');
         }
@@ -802,13 +898,13 @@ export class TweetApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => UserTweetsResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetLikes200ResponseFromJSON(jsonValue));
     }
 
     /**
      * get user tweets
      */
-    async getUserTweets(requestParameters: GetUserTweetsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UserTweetsResponse> {
+    async getUserTweets(requestParameters: GetUserTweetsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetLikes200Response> {
         const response = await this.getUserTweetsRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -816,7 +912,7 @@ export class TweetApi extends runtime.BaseAPI {
     /**
      * get user replies tweets
      */
-    async getUserTweetsAndRepliesRaw(requestParameters: GetUserTweetsAndRepliesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UserTweetsResponse>> {
+    async getUserTweetsAndRepliesRaw(requestParameters: GetUserTweetsAndRepliesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetLikes200Response>> {
         if (requestParameters.pathQueryId === null || requestParameters.pathQueryId === undefined) {
             throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling getUserTweetsAndReplies.');
         }
@@ -880,13 +976,13 @@ export class TweetApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => UserTweetsResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetLikes200ResponseFromJSON(jsonValue));
     }
 
     /**
      * get user replies tweets
      */
-    async getUserTweetsAndReplies(requestParameters: GetUserTweetsAndRepliesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UserTweetsResponse> {
+    async getUserTweetsAndReplies(requestParameters: GetUserTweetsAndRepliesRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetLikes200Response> {
         const response = await this.getUserTweetsAndRepliesRaw(requestParameters, initOverrides);
         return await response.value();
     }

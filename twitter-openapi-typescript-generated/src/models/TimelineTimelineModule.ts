@@ -46,10 +46,10 @@ export interface TimelineTimelineModule {
     typename: TypeName;
     /**
      * 
-     * @type {object}
+     * @type {{ [key: string]: any; }}
      * @memberof TimelineTimelineModule
      */
-    clientEventInfo: object;
+    clientEventInfo: { [key: string]: any; };
     /**
      * 
      * @type {string}
@@ -64,16 +64,16 @@ export interface TimelineTimelineModule {
     entryType: ContentEntryType;
     /**
      * 
-     * @type {object}
+     * @type {{ [key: string]: any; }}
      * @memberof TimelineTimelineModule
      */
-    footer?: object;
+    footer?: { [key: string]: any; };
     /**
      * 
-     * @type {object}
+     * @type {{ [key: string]: any; }}
      * @memberof TimelineTimelineModule
      */
-    header?: object;
+    header?: { [key: string]: any; };
     /**
      * 
      * @type {Array<ModuleItem>}

@@ -46,10 +46,10 @@ export interface TimelineShowAlert {
     alertType?: TimelineShowAlertAlertTypeEnum;
     /**
      * 
-     * @type {object}
+     * @type {{ [key: string]: any; }}
      * @memberof TimelineShowAlert
      */
-    colorConfig?: object;
+    colorConfig?: { [key: string]: any; };
     /**
      * 
      * @type {number}
@@ -64,10 +64,10 @@ export interface TimelineShowAlert {
     displayLocation?: TimelineShowAlertDisplayLocationEnum;
     /**
      * 
-     * @type {object}
+     * @type {{ [key: string]: any; }}
      * @memberof TimelineShowAlert
      */
-    iconDisplayInfo?: object;
+    iconDisplayInfo?: { [key: string]: any; };
     /**
      * 
      * @type {TimelineShowAlertRichText}

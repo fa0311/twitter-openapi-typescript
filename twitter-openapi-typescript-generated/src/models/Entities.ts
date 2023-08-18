@@ -34,10 +34,10 @@ import {
 export interface Entities {
     /**
      * 
-     * @type {Array<object>}
+     * @type {Array<{ [key: string]: any; }>}
      * @memberof Entities
      */
-    hashtags: Array<object>;
+    hashtags: Array<{ [key: string]: any; }>;
     /**
      * 
      * @type {Array<Media>}
@@ -46,10 +46,10 @@ export interface Entities {
     media?: Array<Media>;
     /**
      * 
-     * @type {Array<object>}
+     * @type {Array<{ [key: string]: any; }>}
      * @memberof Entities
      */
-    symbols: Array<object>;
+    symbols: Array<{ [key: string]: any; }>;
     /**
      * 
      * @type {Array<Url>}
@@ -58,10 +58,10 @@ export interface Entities {
     urls: Array<Url>;
     /**
      * 
-     * @type {Array<object>}
+     * @type {Array<{ [key: string]: any; }>}
      * @memberof Entities
      */
-    userMentions: Array<object>;
+    userMentions: Array<{ [key: string]: any; }>;
 }
 
 /**

@@ -53,7 +53,7 @@ import {
  * 
  * @export
  */
-export type ItemContentUnion = { itemType: 'TimelineMessagePrompt' } & TimelineMessagePrompt | { itemType: 'TimelinePrompt' } & TimelinePrompt | { itemType: 'TimelineTimelineCursor' } & TimelineTimelineCursor | { itemType: 'TimelineTweet' } & TimelineTweet | { itemType: 'TimelineUser' } & TimelineUser;
+export type ItemContentUnion = { typename: 'TimelineMessagePrompt' } & TimelineMessagePrompt | { typename: 'TimelinePrompt' } & TimelinePrompt | { typename: 'TimelineTimelineCursor' } & TimelineTimelineCursor | { typename: 'TimelineTweet' } & TimelineTweet | { typename: 'TimelineUser' } & TimelineUser;
 
 export function ItemContentUnionFromJSON(json: any): ItemContentUnion {
     return ItemContentUnionFromJSONTyped(json, false);
@@ -63,19 +63,19 @@ export function ItemContentUnionFromJSONTyped(json: any, ignoreDiscriminator: bo
     if ((json === undefined) || (json === null)) {
         return json;
     }
-    switch (json['itemType']) {
+    switch (json['__typename']) {
         case 'TimelineMessagePrompt':
-            return {...TimelineMessagePromptFromJSONTyped(json, true), itemType: 'TimelineMessagePrompt'};
+            return {...TimelineMessagePromptFromJSONTyped(json, true), typename: 'TimelineMessagePrompt'};
         case 'TimelinePrompt':
-            return {...TimelinePromptFromJSONTyped(json, true), itemType: 'TimelinePrompt'};
+            return {...TimelinePromptFromJSONTyped(json, true), typename: 'TimelinePrompt'};
         case 'TimelineTimelineCursor':
-            return {...TimelineTimelineCursorFromJSONTyped(json, true), itemType: 'TimelineTimelineCursor'};
+            return {...TimelineTimelineCursorFromJSONTyped(json, true), typename: 'TimelineTimelineCursor'};
         case 'TimelineTweet':
-            return {...TimelineTweetFromJSONTyped(json, true), itemType: 'TimelineTweet'};
+            return {...TimelineTweetFromJSONTyped(json, true), typename: 'TimelineTweet'};
         case 'TimelineUser':
-            return {...TimelineUserFromJSONTyped(json, true), itemType: 'TimelineUser'};
+            return {...TimelineUserFromJSONTyped(json, true), typename: 'TimelineUser'};
         default:
-            throw new Error(`No variant of ItemContentUnion exists with 'itemType=${json['itemType']}'`);
+            throw new Error(`No variant of ItemContentUnion exists with 'typename=${json['__typename']}'`);
     }
 }
 
@@ -86,7 +86,7 @@ export function ItemContentUnionToJSON(value?: ItemContentUnion | null): any {
     if (value === null) {
         return null;
     }
-    switch (value['itemType']) {
+    switch (value['typename']) {
         case 'TimelineMessagePrompt':
             return TimelineMessagePromptToJSON(value);
         case 'TimelinePrompt':
@@ -98,7 +98,7 @@ export function ItemContentUnionToJSON(value?: ItemContentUnion | null): any {
         case 'TimelineUser':
             return TimelineUserToJSON(value);
         default:
-            throw new Error(`No variant of ItemContentUnion exists with 'itemType=${value['itemType']}'`);
+            throw new Error(`No variant of ItemContentUnion exists with 'typename=${value['typename']}'`);
     }
 
 }

@@ -26,6 +26,7 @@ import {
  * @interface TweetTombstone
  */
 export interface TweetTombstone {
+    [key: string]: any | any;
     /**
      * 
      * @type {TypeName}
@@ -53,6 +54,7 @@ export function TweetTombstoneFromJSONTyped(json: any, ignoreDiscriminator: bool
     }
     return {
         
+            ...json,
         'typename': !exists(json, '__typename') ? undefined : TypeNameFromJSON(json['__typename']),
     };
 }
@@ -66,6 +68,7 @@ export function TweetTombstoneToJSON(value?: TweetTombstone | null): any {
     }
     return {
         
+            ...value,
         '__typename': TypeNameToJSON(value.typename),
     };
 }

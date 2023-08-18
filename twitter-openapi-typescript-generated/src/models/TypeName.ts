@@ -25,8 +25,11 @@ export const TypeName = {
     TweetWithVisibilityResults: 'TweetWithVisibilityResults',
     TimelineTimelineModule: 'TimelineTimelineModule',
     TweetTombstone: 'TweetTombstone',
+    TimelinePrompt: 'TimelinePrompt',
+    TimelineMessagePrompt: 'TimelineMessagePrompt',
     Tweet: 'Tweet',
-    User: 'User'
+    User: 'User',
+    UserUnavailable: 'UserUnavailable'
 } as const;
 export type TypeName = typeof TypeName[keyof typeof TypeName];
 

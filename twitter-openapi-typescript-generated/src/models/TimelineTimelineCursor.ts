@@ -19,6 +19,12 @@ import {
     ContentEntryTypeFromJSONTyped,
     ContentEntryTypeToJSON,
 } from './ContentEntryType';
+import type { CursorType } from './CursorType';
+import {
+    CursorTypeFromJSON,
+    CursorTypeFromJSONTyped,
+    CursorTypeToJSON,
+} from './CursorType';
 import type { TypeName } from './TypeName';
 import {
     TypeNameFromJSON,
@@ -40,10 +46,10 @@ export interface TimelineTimelineCursor {
     typename: TypeName;
     /**
      * 
-     * @type {string}
+     * @type {CursorType}
      * @memberof TimelineTimelineCursor
      */
-    cursorType: TimelineTimelineCursorCursorTypeEnum;
+    cursorType: CursorType;
     /**
      * 
      * @type {ContentEntryType}
@@ -63,20 +69,6 @@ export interface TimelineTimelineCursor {
      */
     value: string;
 }
-
-
-/**
- * @export
- */
-export const TimelineTimelineCursorCursorTypeEnum = {
-    Top: 'Top',
-    Bottom: 'Bottom',
-    ShowMore: 'ShowMore',
-    ShowMoreThreads: 'ShowMoreThreads',
-    Gap: 'Gap'
-} as const;
-export type TimelineTimelineCursorCursorTypeEnum = typeof TimelineTimelineCursorCursorTypeEnum[keyof typeof TimelineTimelineCursorCursorTypeEnum];
-
 
 /**
  * Check if a given object implements the TimelineTimelineCursor interface.
@@ -101,7 +93,7 @@ export function TimelineTimelineCursorFromJSONTyped(json: any, ignoreDiscriminat
     return {
         
         'typename': TypeNameFromJSON(json['__typename']),
-        'cursorType': json['cursorType'],
+        'cursorType': CursorTypeFromJSON(json['cursorType']),
         'entryType': !exists(json, 'entryType') ? undefined : ContentEntryTypeFromJSON(json['entryType']),
         'itemType': !exists(json, 'itemType') ? undefined : ContentEntryTypeFromJSON(json['itemType']),
         'value': json['value'],
@@ -118,7 +110,7 @@ export function TimelineTimelineCursorToJSON(value?: TimelineTimelineCursor | nu
     return {
         
         '__typename': TypeNameToJSON(value.typename),
-        'cursorType': value.cursorType,
+        'cursorType': CursorTypeToJSON(value.cursorType),
         'entryType': ContentEntryTypeToJSON(value.entryType),
         'itemType': ContentEntryTypeToJSON(value.itemType),
         'value': value.value,

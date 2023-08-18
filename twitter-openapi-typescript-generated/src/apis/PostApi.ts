@@ -15,44 +15,44 @@
 
 import * as runtime from '../runtime';
 import type {
-  CreateRetweetResponse,
-  CreateTweetResponse,
-  DeleteRetweetResponse,
-  DeleteTweetResponse,
-  FavoriteTweetResponseData,
+  PostCreateRetweet200Response,
   PostCreateRetweetRequest,
+  PostCreateTweet200Response,
   PostCreateTweetRequest,
+  PostDeleteRetweet200Response,
   PostDeleteRetweetRequest,
+  PostDeleteTweet200Response,
   PostDeleteTweetRequest,
+  PostFavoriteTweet200Response,
   PostFavoriteTweetRequest,
+  PostUnfavoriteTweet200Response,
   PostUnfavoriteTweetRequest,
-  UnfavoriteTweetResponseData,
 } from '../models';
 import {
-    CreateRetweetResponseFromJSON,
-    CreateRetweetResponseToJSON,
-    CreateTweetResponseFromJSON,
-    CreateTweetResponseToJSON,
-    DeleteRetweetResponseFromJSON,
-    DeleteRetweetResponseToJSON,
-    DeleteTweetResponseFromJSON,
-    DeleteTweetResponseToJSON,
-    FavoriteTweetResponseDataFromJSON,
-    FavoriteTweetResponseDataToJSON,
+    PostCreateRetweet200ResponseFromJSON,
+    PostCreateRetweet200ResponseToJSON,
     PostCreateRetweetRequestFromJSON,
     PostCreateRetweetRequestToJSON,
+    PostCreateTweet200ResponseFromJSON,
+    PostCreateTweet200ResponseToJSON,
     PostCreateTweetRequestFromJSON,
     PostCreateTweetRequestToJSON,
+    PostDeleteRetweet200ResponseFromJSON,
+    PostDeleteRetweet200ResponseToJSON,
     PostDeleteRetweetRequestFromJSON,
     PostDeleteRetweetRequestToJSON,
+    PostDeleteTweet200ResponseFromJSON,
+    PostDeleteTweet200ResponseToJSON,
     PostDeleteTweetRequestFromJSON,
     PostDeleteTweetRequestToJSON,
+    PostFavoriteTweet200ResponseFromJSON,
+    PostFavoriteTweet200ResponseToJSON,
     PostFavoriteTweetRequestFromJSON,
     PostFavoriteTweetRequestToJSON,
+    PostUnfavoriteTweet200ResponseFromJSON,
+    PostUnfavoriteTweet200ResponseToJSON,
     PostUnfavoriteTweetRequestFromJSON,
     PostUnfavoriteTweetRequestToJSON,
-    UnfavoriteTweetResponseDataFromJSON,
-    UnfavoriteTweetResponseDataToJSON,
 } from '../models';
 
 export interface PostCreateRetweetOperationRequest {
@@ -93,7 +93,7 @@ export class PostApi extends runtime.BaseAPI {
     /**
      * create Retweet
      */
-    async postCreateRetweetRaw(requestParameters: PostCreateRetweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateRetweetResponse>> {
+    async postCreateRetweetRaw(requestParameters: PostCreateRetweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostCreateRetweet200Response>> {
         if (requestParameters.pathQueryId === null || requestParameters.pathQueryId === undefined) {
             throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling postCreateRetweet.');
         }
@@ -148,13 +148,13 @@ export class PostApi extends runtime.BaseAPI {
             body: PostCreateRetweetRequestToJSON(requestParameters.postCreateRetweetRequest),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => CreateRetweetResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => PostCreateRetweet200ResponseFromJSON(jsonValue));
     }
 
     /**
      * create Retweet
      */
-    async postCreateRetweet(requestParameters: PostCreateRetweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreateRetweetResponse> {
+    async postCreateRetweet(requestParameters: PostCreateRetweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PostCreateRetweet200Response> {
         const response = await this.postCreateRetweetRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -162,7 +162,7 @@ export class PostApi extends runtime.BaseAPI {
     /**
      * create Tweet
      */
-    async postCreateTweetRaw(requestParameters: PostCreateTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateTweetResponse>> {
+    async postCreateTweetRaw(requestParameters: PostCreateTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostCreateTweet200Response>> {
         if (requestParameters.pathQueryId === null || requestParameters.pathQueryId === undefined) {
             throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling postCreateTweet.');
         }
@@ -217,13 +217,13 @@ export class PostApi extends runtime.BaseAPI {
             body: PostCreateTweetRequestToJSON(requestParameters.postCreateTweetRequest),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => CreateTweetResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => PostCreateTweet200ResponseFromJSON(jsonValue));
     }
 
     /**
      * create Tweet
      */
-    async postCreateTweet(requestParameters: PostCreateTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreateTweetResponse> {
+    async postCreateTweet(requestParameters: PostCreateTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PostCreateTweet200Response> {
         const response = await this.postCreateTweetRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -231,7 +231,7 @@ export class PostApi extends runtime.BaseAPI {
     /**
      * delete Retweet
      */
-    async postDeleteRetweetRaw(requestParameters: PostDeleteRetweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeleteRetweetResponse>> {
+    async postDeleteRetweetRaw(requestParameters: PostDeleteRetweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostDeleteRetweet200Response>> {
         if (requestParameters.pathQueryId === null || requestParameters.pathQueryId === undefined) {
             throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling postDeleteRetweet.');
         }
@@ -286,13 +286,13 @@ export class PostApi extends runtime.BaseAPI {
             body: PostDeleteRetweetRequestToJSON(requestParameters.postDeleteRetweetRequest),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => DeleteRetweetResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => PostDeleteRetweet200ResponseFromJSON(jsonValue));
     }
 
     /**
      * delete Retweet
      */
-    async postDeleteRetweet(requestParameters: PostDeleteRetweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeleteRetweetResponse> {
+    async postDeleteRetweet(requestParameters: PostDeleteRetweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PostDeleteRetweet200Response> {
         const response = await this.postDeleteRetweetRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -300,7 +300,7 @@ export class PostApi extends runtime.BaseAPI {
     /**
      * delete Retweet
      */
-    async postDeleteTweetRaw(requestParameters: PostDeleteTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeleteTweetResponse>> {
+    async postDeleteTweetRaw(requestParameters: PostDeleteTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostDeleteTweet200Response>> {
         if (requestParameters.pathQueryId === null || requestParameters.pathQueryId === undefined) {
             throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling postDeleteTweet.');
         }
@@ -355,13 +355,13 @@ export class PostApi extends runtime.BaseAPI {
             body: PostDeleteTweetRequestToJSON(requestParameters.postDeleteTweetRequest),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => DeleteTweetResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => PostDeleteTweet200ResponseFromJSON(jsonValue));
     }
 
     /**
      * delete Retweet
      */
-    async postDeleteTweet(requestParameters: PostDeleteTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeleteTweetResponse> {
+    async postDeleteTweet(requestParameters: PostDeleteTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PostDeleteTweet200Response> {
         const response = await this.postDeleteTweetRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -369,7 +369,7 @@ export class PostApi extends runtime.BaseAPI {
     /**
      * favorite Tweet
      */
-    async postFavoriteTweetRaw(requestParameters: PostFavoriteTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FavoriteTweetResponseData>> {
+    async postFavoriteTweetRaw(requestParameters: PostFavoriteTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostFavoriteTweet200Response>> {
         if (requestParameters.pathQueryId === null || requestParameters.pathQueryId === undefined) {
             throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling postFavoriteTweet.');
         }
@@ -424,13 +424,13 @@ export class PostApi extends runtime.BaseAPI {
             body: PostFavoriteTweetRequestToJSON(requestParameters.postFavoriteTweetRequest),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => FavoriteTweetResponseDataFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => PostFavoriteTweet200ResponseFromJSON(jsonValue));
     }
 
     /**
      * favorite Tweet
      */
-    async postFavoriteTweet(requestParameters: PostFavoriteTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FavoriteTweetResponseData> {
+    async postFavoriteTweet(requestParameters: PostFavoriteTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PostFavoriteTweet200Response> {
         const response = await this.postFavoriteTweetRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -438,7 +438,7 @@ export class PostApi extends runtime.BaseAPI {
     /**
      * unfavorite Tweet
      */
-    async postUnfavoriteTweetRaw(requestParameters: PostUnfavoriteTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UnfavoriteTweetResponseData>> {
+    async postUnfavoriteTweetRaw(requestParameters: PostUnfavoriteTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostUnfavoriteTweet200Response>> {
         if (requestParameters.pathQueryId === null || requestParameters.pathQueryId === undefined) {
             throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling postUnfavoriteTweet.');
         }
@@ -493,13 +493,13 @@ export class PostApi extends runtime.BaseAPI {
             body: PostUnfavoriteTweetRequestToJSON(requestParameters.postUnfavoriteTweetRequest),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => UnfavoriteTweetResponseDataFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => PostUnfavoriteTweet200ResponseFromJSON(jsonValue));
     }
 
     /**
      * unfavorite Tweet
      */
-    async postUnfavoriteTweet(requestParameters: PostUnfavoriteTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UnfavoriteTweetResponseData> {
+    async postUnfavoriteTweet(requestParameters: PostUnfavoriteTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PostUnfavoriteTweet200Response> {
         const response = await this.postUnfavoriteTweetRaw(requestParameters, initOverrides);
         return await response.value();
     }

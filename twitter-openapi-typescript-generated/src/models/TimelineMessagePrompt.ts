@@ -26,6 +26,7 @@ import {
  * @interface TimelineMessagePrompt
  */
 export interface TimelineMessagePrompt {
+    [key: string]: any | any;
     /**
      * 
      * @type {TypeName}
@@ -53,6 +54,7 @@ export function TimelineMessagePromptFromJSONTyped(json: any, ignoreDiscriminato
     }
     return {
         
+            ...json,
         'typename': !exists(json, '__typename') ? undefined : TypeNameFromJSON(json['__typename']),
     };
 }
@@ -66,6 +68,7 @@ export function TimelineMessagePromptToJSON(value?: TimelineMessagePrompt | null
     }
     return {
         
+            ...value,
         '__typename': TypeNameToJSON(value.typename),
     };
 }

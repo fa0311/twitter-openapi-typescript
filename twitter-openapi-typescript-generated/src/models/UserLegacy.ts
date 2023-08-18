@@ -69,10 +69,10 @@ export interface UserLegacy {
     description: string;
     /**
      * 
-     * @type {object}
+     * @type {{ [key: string]: any; }}
      * @memberof UserLegacy
      */
-    entities: object;
+    entities: { [key: string]: any; };
     /**
      * 
      * @type {number}
@@ -90,13 +90,13 @@ export interface UserLegacy {
      * @type {boolean}
      * @memberof UserLegacy
      */
-    followRequestSent: boolean;
+    followRequestSent?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof UserLegacy
      */
-    followedBy: boolean;
+    followedBy?: boolean;
     /**
      * 
      * @type {number}
@@ -108,7 +108,7 @@ export interface UserLegacy {
      * @type {boolean}
      * @memberof UserLegacy
      */
-    following: boolean;
+    following?: boolean;
     /**
      * 
      * @type {number}
@@ -168,7 +168,7 @@ export interface UserLegacy {
      * @type {boolean}
      * @memberof UserLegacy
      */
-    notifications: boolean;
+    notifications?: boolean;
     /**
      * 
      * @type {Array<string>}
@@ -216,7 +216,7 @@ export interface UserLegacy {
      * @type {boolean}
      * @memberof UserLegacy
      */
-    _protected: boolean;
+    _protected?: boolean;
     /**
      * 
      * @type {string}
@@ -271,10 +271,7 @@ export function instanceOfUserLegacy(value: object): boolean {
     isInstance = isInstance && "entities" in value;
     isInstance = isInstance && "fastFollowersCount" in value;
     isInstance = isInstance && "favouritesCount" in value;
-    isInstance = isInstance && "followRequestSent" in value;
-    isInstance = isInstance && "followedBy" in value;
     isInstance = isInstance && "followersCount" in value;
-    isInstance = isInstance && "following" in value;
     isInstance = isInstance && "friendsCount" in value;
     isInstance = isInstance && "hasCustomTimelines" in value;
     isInstance = isInstance && "isTranslator" in value;
@@ -284,12 +281,10 @@ export function instanceOfUserLegacy(value: object): boolean {
     isInstance = isInstance && "muting" in value;
     isInstance = isInstance && "name" in value;
     isInstance = isInstance && "normalFollowersCount" in value;
-    isInstance = isInstance && "notifications" in value;
     isInstance = isInstance && "pinnedTweetIdsStr" in value;
     isInstance = isInstance && "possiblySensitive" in value;
     isInstance = isInstance && "profileImageUrlHttps" in value;
     isInstance = isInstance && "profileInterstitialType" in value;
-    isInstance = isInstance && "_protected" in value;
     isInstance = isInstance && "screenName" in value;
     isInstance = isInstance && "statusesCount" in value;
     isInstance = isInstance && "translatorType" in value;
@@ -320,10 +315,10 @@ export function UserLegacyFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'entities': json['entities'],
         'fastFollowersCount': json['fast_followers_count'],
         'favouritesCount': json['favourites_count'],
-        'followRequestSent': json['follow_request_sent'],
-        'followedBy': json['followed_by'],
+        'followRequestSent': !exists(json, 'follow_request_sent') ? undefined : json['follow_request_sent'],
+        'followedBy': !exists(json, 'followed_by') ? undefined : json['followed_by'],
         'followersCount': json['followers_count'],
-        'following': json['following'],
+        'following': !exists(json, 'following') ? undefined : json['following'],
         'friendsCount': json['friends_count'],
         'hasCustomTimelines': json['has_custom_timelines'],
         'isTranslator': json['is_translator'],
@@ -333,7 +328,7 @@ export function UserLegacyFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'muting': json['muting'],
         'name': json['name'],
         'normalFollowersCount': json['normal_followers_count'],
-        'notifications': json['notifications'],
+        'notifications': !exists(json, 'notifications') ? undefined : json['notifications'],
         'pinnedTweetIdsStr': json['pinned_tweet_ids_str'],
         'possiblySensitive': json['possibly_sensitive'],
         'profileBannerExtensions': !exists(json, 'profile_banner_extensions') ? undefined : json['profile_banner_extensions'],
@@ -341,7 +336,7 @@ export function UserLegacyFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'profileImageExtensions': !exists(json, 'profile_image_extensions') ? undefined : json['profile_image_extensions'],
         'profileImageUrlHttps': json['profile_image_url_https'],
         'profileInterstitialType': json['profile_interstitial_type'],
-        '_protected': json['protected'],
+        '_protected': !exists(json, 'protected') ? undefined : json['protected'],
         'screenName': json['screen_name'],
         'statusesCount': json['statuses_count'],
         'translatorType': json['translator_type'],

@@ -28,10 +28,10 @@ import {
 export interface ModuleEntry {
     /**
      * 
-     * @type {object}
+     * @type {{ [key: string]: any; }}
      * @memberof ModuleEntry
      */
-    clientEventInfo: object;
+    clientEventInfo: { [key: string]: any; };
     /**
      * 
      * @type {ItemContentUnion}

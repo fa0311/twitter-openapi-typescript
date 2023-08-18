@@ -40,10 +40,10 @@ export interface Media {
     expandedUrl: string;
     /**
      * 
-     * @type {object}
+     * @type {{ [key: string]: any; }}
      * @memberof Media
      */
-    extMediaAvailability?: object;
+    extMediaAvailability?: { [key: string]: any; };
     /**
      * 
      * @type {string}
@@ -76,10 +76,10 @@ export interface Media {
     originalInfo: MediaOriginalInfo;
     /**
      * 
-     * @type {object}
+     * @type {{ [key: string]: any; }}
      * @memberof Media
      */
-    sizes: object;
+    sizes: { [key: string]: any; };
     /**
      * 
      * @type {string}

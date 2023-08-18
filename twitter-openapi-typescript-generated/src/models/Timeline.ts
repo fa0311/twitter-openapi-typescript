@@ -34,16 +34,16 @@ export interface Timeline {
     instructions: Array<InstructionUnion>;
     /**
      * 
-     * @type {object}
+     * @type {{ [key: string]: any; }}
      * @memberof Timeline
      */
-    metadata?: object;
+    metadata?: { [key: string]: any; };
     /**
      * 
-     * @type {object}
+     * @type {{ [key: string]: any; }}
      * @memberof Timeline
      */
-    responseObjects?: object;
+    responseObjects?: { [key: string]: any; };
 }
 
 /**

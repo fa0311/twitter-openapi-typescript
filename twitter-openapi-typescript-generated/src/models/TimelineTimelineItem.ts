@@ -46,10 +46,10 @@ export interface TimelineTimelineItem {
     typename: TypeName;
     /**
      * 
-     * @type {object}
+     * @type {{ [key: string]: any; }}
      * @memberof TimelineTimelineItem
      */
-    clientEventInfo?: object;
+    clientEventInfo?: { [key: string]: any; };
     /**
      * 
      * @type {ContentEntryType}
@@ -58,10 +58,10 @@ export interface TimelineTimelineItem {
     entryType: ContentEntryType;
     /**
      * 
-     * @type {object}
+     * @type {{ [key: string]: any; }}
      * @memberof TimelineTimelineItem
      */
-    feedbackInfo?: object;
+    feedbackInfo?: { [key: string]: any; };
     /**
      * 
      * @type {ItemContentUnion}

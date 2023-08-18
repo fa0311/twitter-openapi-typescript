@@ -21,10 +21,10 @@ import { exists, mapValues } from '../runtime';
 export interface MediaOriginalInfo {
     /**
      * 
-     * @type {Array<object>}
+     * @type {Array<{ [key: string]: any; }>}
      * @memberof MediaOriginalInfo
      */
-    focusRects?: Array<object>;
+    focusRects?: Array<{ [key: string]: any; }>;
     /**
      * 
      * @type {number}

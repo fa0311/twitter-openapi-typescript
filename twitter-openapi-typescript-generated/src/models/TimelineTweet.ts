@@ -64,10 +64,10 @@ export interface TimelineTweet {
     itemType: ContentItemType;
     /**
      * 
-     * @type {object}
+     * @type {{ [key: string]: any; }}
      * @memberof TimelineTweet
      */
-    promotedMetadata?: object;
+    promotedMetadata?: { [key: string]: any; };
     /**
      * 
      * @type {string}

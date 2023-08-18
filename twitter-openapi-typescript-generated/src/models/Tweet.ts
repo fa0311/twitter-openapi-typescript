@@ -97,7 +97,7 @@ export interface Tweet {
      * @type {TweetEditPrespective}
      * @memberof Tweet
      */
-    editPrespective: TweetEditPrespective;
+    editPrespective?: TweetEditPrespective;
     /**
      * 
      * @type {boolean}
@@ -124,10 +124,10 @@ export interface Tweet {
     restId: string;
     /**
      * 
-     * @type {object}
+     * @type {{ [key: string]: any; }}
      * @memberof Tweet
      */
-    unmentionData?: object;
+    unmentionData?: { [key: string]: any; };
     /**
      * 
      * @type {TweetViews}
@@ -143,7 +143,6 @@ export function instanceOfTweet(value: object): boolean {
     let isInstance = true;
     isInstance = isInstance && "core" in value;
     isInstance = isInstance && "editControl" in value;
-    isInstance = isInstance && "editPrespective" in value;
     isInstance = isInstance && "isTranslatable" in value;
     isInstance = isInstance && "legacy" in value;
     isInstance = isInstance && "restId" in value;
@@ -166,7 +165,7 @@ export function TweetFromJSONTyped(json: any, ignoreDiscriminator: boolean): Twe
         'card': !exists(json, 'card') ? undefined : TweetCardFromJSON(json['card']),
         'core': UserResultCoreFromJSON(json['core']),
         'editControl': TweetEditControlFromJSON(json['edit_control']),
-        'editPrespective': TweetEditPrespectiveFromJSON(json['edit_prespective']),
+        'editPrespective': !exists(json, 'edit_prespective') ? undefined : TweetEditPrespectiveFromJSON(json['edit_prespective']),
         'isTranslatable': json['is_translatable'],
         'legacy': TweetLegacyFromJSON(json['legacy']),
         'quotedStatusResult': !exists(json, 'quoted_status_result') ? undefined : ItemResultFromJSON(json['quoted_status_result']),

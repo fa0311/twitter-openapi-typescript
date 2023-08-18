@@ -15,11 +15,11 @@
 
 import * as runtime from '../runtime';
 import type {
-  ProfileResponse,
+  GetProfileSpotlightsQuery200Response,
 } from '../models';
 import {
-    ProfileResponseFromJSON,
-    ProfileResponseToJSON,
+    GetProfileSpotlightsQuery200ResponseFromJSON,
+    GetProfileSpotlightsQuery200ResponseToJSON,
 } from '../models';
 
 export interface GetProfileSpotlightsQueryRequest {
@@ -36,7 +36,7 @@ export class DefaultApi extends runtime.BaseAPI {
     /**
      * get user by screen name
      */
-    async getProfileSpotlightsQueryRaw(requestParameters: GetProfileSpotlightsQueryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProfileResponse>> {
+    async getProfileSpotlightsQueryRaw(requestParameters: GetProfileSpotlightsQueryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetProfileSpotlightsQuery200Response>> {
         if (requestParameters.pathQueryId === null || requestParameters.pathQueryId === undefined) {
             throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling getProfileSpotlightsQuery.');
         }
@@ -100,13 +100,13 @@ export class DefaultApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => ProfileResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetProfileSpotlightsQuery200ResponseFromJSON(jsonValue));
     }
 
     /**
      * get user by screen name
      */
-    async getProfileSpotlightsQuery(requestParameters: GetProfileSpotlightsQueryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProfileResponse> {
+    async getProfileSpotlightsQuery(requestParameters: GetProfileSpotlightsQueryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetProfileSpotlightsQuery200Response> {
         const response = await this.getProfileSpotlightsQueryRaw(requestParameters, initOverrides);
         return await response.value();
     }

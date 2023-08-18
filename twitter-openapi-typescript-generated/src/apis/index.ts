@@ -6,6 +6,7 @@ export * from './PostApi';
 export * from './TweetApi';
 export * from './UserApi';
 export * from './UserListApi';
+export * from './UsersApi';
 export * from './V11GetApi';
 export * from './V11PostApi';
 export * from './V20GetApi';

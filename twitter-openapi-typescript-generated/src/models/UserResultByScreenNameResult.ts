@@ -52,10 +52,10 @@ export interface UserResultByScreenNameResult {
     legacy: UserResultByScreenNameLegacy;
     /**
      * 
-     * @type {object}
+     * @type {{ [key: string]: any; }}
      * @memberof UserResultByScreenNameResult
      */
-    profilemodules: object;
+    profilemodules: { [key: string]: any; };
     /**
      * 
      * @type {string}

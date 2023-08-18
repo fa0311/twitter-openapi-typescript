@@ -15,11 +15,11 @@
 
 import * as runtime from '../runtime';
 import type {
-  OtherResponse,
+  Other200Response,
 } from '../models';
 import {
-    OtherResponseFromJSON,
-    OtherResponseToJSON,
+    Other200ResponseFromJSON,
+    Other200ResponseToJSON,
 } from '../models';
 
 /**
@@ -30,7 +30,7 @@ export class OtherApi extends runtime.BaseAPI {
     /**
      * This is not an actual endpoint
      */
-    async otherRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<OtherResponse>> {
+    async otherRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Other200Response>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -74,13 +74,13 @@ export class OtherApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => OtherResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => Other200ResponseFromJSON(jsonValue));
     }
 
     /**
      * This is not an actual endpoint
      */
-    async other(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<OtherResponse> {
+    async other(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Other200Response> {
         const response = await this.otherRaw(initOverrides);
         return await response.value();
     }

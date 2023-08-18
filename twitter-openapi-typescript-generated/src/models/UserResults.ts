@@ -13,12 +13,12 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import type { User } from './User';
+import type { UserUnion } from './UserUnion';
 import {
-    UserFromJSON,
-    UserFromJSONTyped,
-    UserToJSON,
-} from './User';
+    UserUnionFromJSON,
+    UserUnionFromJSONTyped,
+    UserUnionToJSON,
+} from './UserUnion';
 
 /**
  * 
@@ -28,10 +28,10 @@ import {
 export interface UserResults {
     /**
      * 
-     * @type {User}
+     * @type {UserUnion}
      * @memberof UserResults
      */
-    result: User;
+    result: UserUnion;
 }
 
 /**
@@ -54,7 +54,7 @@ export function UserResultsFromJSONTyped(json: any, ignoreDiscriminator: boolean
     }
     return {
         
-        'result': UserFromJSON(json['result']),
+        'result': UserUnionFromJSON(json['result']),
     };
 }
 
@@ -67,7 +67,7 @@ export function UserResultsToJSON(value?: UserResults | null): any {
     }
     return {
         
-        'result': UserToJSON(value.result),
+        'result': UserUnionToJSON(value.result),
     };
 }
 

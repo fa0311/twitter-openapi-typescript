@@ -40,16 +40,16 @@ export interface User {
     typename: TypeName;
     /**
      * 
-     * @type {object}
+     * @type {{ [key: string]: any; }}
      * @memberof User
      */
-    affiliatesHighlightedLabel: object;
+    affiliatesHighlightedLabel: { [key: string]: any; };
     /**
      * 
-     * @type {object}
+     * @type {{ [key: string]: any; }}
      * @memberof User
      */
-    businessAccount?: object;
+    businessAccount?: { [key: string]: any; };
     /**
      * 
      * @type {boolean}

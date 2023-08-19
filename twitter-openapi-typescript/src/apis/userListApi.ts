@@ -1,6 +1,22 @@
 import * as i from 'twitter-openapi-typescript-generated';
-import { RequestParam, DefaultFlag, ApiUtilsRaw, UserListApiUtilsResponse } from '@/models';
-import { buildHeader, buildUserResponse, entriesCursor, instructionToEntry, userEntriesConverter } from '@/utils';
+import {
+  RequestParam,
+  DefaultFlag,
+  ApiUtilsRaw,
+  TimelineApiUtilsResponse,
+  TwitterApiUtilsResponse,
+  UserApiUtilsData,
+  TwitterApiUtilsRaw,
+} from '@/models';
+import {
+  buildHeader,
+  userResultConverter,
+  entriesCursor,
+  instructionToEntry,
+  userEntriesConverter,
+  getKwargs,
+  errorCheck,
+} from '@/utils';
 
 type GetFollowersParam = {
   userId: string;
@@ -37,6 +53,8 @@ type GetRetweetersParam = {
   extraParam?: { [key: string]: any };
 };
 
+type ResponseType = TwitterApiUtilsResponse<TimelineApiUtilsResponse<UserApiUtilsData>>;
+
 export class UserListApiUtils {
   api: i.UserListApi;
   flag: DefaultFlag;
@@ -46,38 +64,33 @@ export class UserListApiUtils {
     this.flag = flag;
   }
 
-  async request<T>(param: RequestParam<i.InstructionUnion[], T>): Promise<UserListApiUtilsResponse> {
+  async request<T>(param: RequestParam<i.InstructionUnion[], T>): Promise<ResponseType> {
     const apiFn: typeof param.apiFn = param.apiFn.bind(this.api);
-    const fieldTogglesFn = () => {
-      if (this.flag[param.key]['fieldToggles'] == null) return { fieldToggles: '' };
-      return { fieldToggles: JSON.stringify(this.flag[param.key]['fieldToggles']) };
-    };
-    const response = await apiFn({
-      pathQueryId: this.flag[param.key]['queryId'],
-      queryId: this.flag[param.key]['queryId'],
-      variables: JSON.stringify({ ...this.flag[param.key]['variables'], ...param.param }),
-      features: JSON.stringify(this.flag[param.key]['features']),
-      ...fieldTogglesFn(),
-    });
-    const instruction = param.convertFn(await response.value());
+    const args = getKwargs(this.flag[param.key], param.param);
+    const response = await apiFn(args);
+    const checked = errorCheck(await response.value());
+    const instruction = param.convertFn(checked);
     const entry = instructionToEntry(instruction);
     const userList = userEntriesConverter(entry);
-    const data = userList.map((user) => buildUserResponse(user));
+    const data = userResultConverter(userList);
 
-    const raw: ApiUtilsRaw = {
-      response: response.raw,
-      instruction: instruction,
-      entry: entry,
-    };
     return {
-      raw: raw,
+      raw: {
+        response: response.raw,
+      },
       header: buildHeader(response.raw.headers),
-      cursor: entriesCursor(entry),
-      data: data,
+      data: {
+        raw: {
+          instruction: instruction,
+          entry: entry,
+        },
+        data: data,
+        cursor: entriesCursor(entry),
+      },
     };
   }
 
-  async getFollowers(param: GetFollowersParam): Promise<UserListApiUtilsResponse> {
+  async getFollowers(param: GetFollowersParam): Promise<ResponseType> {
     const args = {
       userId: param.userId,
       ...(param.cursor == null ? {} : { cursor: param.cursor }),
@@ -92,7 +105,7 @@ export class UserListApiUtils {
     });
     return response;
   }
-  async getFollowing(param: GetFollowingParam): Promise<UserListApiUtilsResponse> {
+  async getFollowing(param: GetFollowingParam): Promise<ResponseType> {
     const args = {
       userId: param.userId,
       ...(param.cursor == null ? {} : { cursor: param.cursor }),
@@ -108,7 +121,7 @@ export class UserListApiUtils {
     return response;
   }
 
-  async getFollowersYouKnow(param: GetFollowersYouKnowParam): Promise<UserListApiUtilsResponse> {
+  async getFollowersYouKnow(param: GetFollowersYouKnowParam): Promise<ResponseType> {
     const args = {
       userId: param.userId,
       ...(param.cursor == null ? {} : { cursor: param.cursor }),
@@ -124,7 +137,7 @@ export class UserListApiUtils {
     return response;
   }
 
-  async getFavoriters(param: GetFavoritersParam): Promise<UserListApiUtilsResponse> {
+  async getFavoriters(param: GetFavoritersParam): Promise<ResponseType> {
     const args = {
       tweetId: param.tweetId,
       ...(param.cursor == null ? {} : { cursor: param.cursor }),
@@ -132,7 +145,7 @@ export class UserListApiUtils {
       ...param.extraParam,
     };
     const response = await this.request({
-      apiFn: this.api.getTweetFavoritersRaw,
+      apiFn: this.api.getFavoritersRaw,
       convertFn: (e) => e.data.favoritersTimeline.timeline.instructions,
       key: 'Favoriters',
       param: args,
@@ -140,7 +153,7 @@ export class UserListApiUtils {
     return response;
   }
 
-  async getRetweeters(param: GetRetweetersParam): Promise<UserListApiUtilsResponse> {
+  async getRetweeters(param: GetRetweetersParam): Promise<ResponseType> {
     const args = {
       tweetId: param.tweetId,
       ...(param.cursor == null ? {} : { cursor: param.cursor }),
@@ -148,7 +161,7 @@ export class UserListApiUtils {
       ...param.extraParam,
     };
     const response = await this.request({
-      apiFn: this.api.getTweetRetweetersRaw,
+      apiFn: this.api.getRetweetersRaw,
       convertFn: (e) => e.data.retweetersTimeline.timeline.instructions,
       key: 'Retweeters',
       param: args,

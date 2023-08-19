@@ -11,6 +11,7 @@ import {
   V20GetApiUtils,
 } from '@/apis';
 import { DefaultFlag } from '@/models';
+import { UsersApiUtils } from './apis/usersApi';
 
 export type TwitterOpenApiParams = {
   lang?: string;
@@ -27,7 +28,7 @@ export type TwitterOpenApiCookie = {
 };
 
 export class TwitterOpenApi {
-  static hash = '29e05d162f600933fdbf633e992d2d0a249c9413';
+  static hash = '2d477a0fb84d249a30b5af535b467efc25b34923';
   static url = `https://raw.githubusercontent.com/fa0311/twitter-openapi/${this.hash}/src/config/placeholder.json`;
   static twitter = 'https://twitter.com/home';
 
@@ -165,6 +166,10 @@ export class TwitterOpenApiClient {
 
   getUserApi(): UserApiUtils {
     return new UserApiUtils(new i.UserApi(this.config), this.flag);
+  }
+
+  getUsersApi(): UsersApiUtils {
+    return new UsersApiUtils(new i.UsersApi(this.config), this.flag);
   }
 
   getUserListApi(): UserListApiUtils {

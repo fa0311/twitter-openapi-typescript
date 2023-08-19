@@ -6,7 +6,27 @@ export type CursorApiUtilsResponse = {
 };
 
 export type ApiUtilsRaw = {
-  response: Response;
   instruction: i.InstructionUnion[];
   entry: i.TimelineAddEntry[];
+};
+
+export type TweetApiUtilsData = {
+  raw: i.ItemResult;
+  tweet: i.Tweet;
+  user: i.User;
+  replies: TweetApiUtilsData[];
+  quoted?: TweetApiUtilsData;
+  retweeted?: TweetApiUtilsData;
+  promotedMetadata?: Record<string, unknown>;
+};
+
+export type UserApiUtilsData = {
+  raw: i.UserResults;
+  user: i.User;
+};
+
+export type TimelineApiUtilsResponse<T> = {
+  raw: ApiUtilsRaw;
+  cursor: CursorApiUtilsResponse;
+  data: T[];
 };

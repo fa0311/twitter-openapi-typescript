@@ -1,5 +1,5 @@
 import * as i from 'twitter-openapi-typescript-generated';
-import { buildHeader } from '@/utils';
+import { buildHeader, errorCheck, getKwargs } from '@/utils';
 import { RequestParam, DefaultFlag, TwitterApiUtilsResponse } from '@/models';
 
 export type ProfileSpotlightsQueryParam = {
@@ -18,18 +18,10 @@ export class DefaultApiUtils {
 
   async request<T1, T2>(param: RequestParam<T1, T2>): Promise<TwitterApiUtilsResponse<T1>> {
     const apiFn: typeof param.apiFn = param.apiFn.bind(this.api);
-    const fieldTogglesFn = () => {
-      if (this.flag[param.key]['fieldToggles'] == null) return { fieldToggles: '' };
-      return { fieldToggles: JSON.stringify(this.flag[param.key]['fieldToggles']) };
-    };
-    const response = await apiFn({
-      pathQueryId: this.flag[param.key]['queryId'],
-      queryId: this.flag[param.key]['queryId'],
-      variables: JSON.stringify({ ...this.flag[param.key]['variables'], ...param.param }),
-      features: JSON.stringify(this.flag[param.key]['features']),
-      ...fieldTogglesFn(),
-    });
-    const data = param.convertFn(await response.value());
+    const args = getKwargs(this.flag[param.key], param.param);
+    const response = await apiFn(args);
+    const checked = errorCheck(await response.value());
+    const data = param.convertFn(checked);
     return {
       raw: { response: response.raw },
       header: buildHeader(response.raw.headers),

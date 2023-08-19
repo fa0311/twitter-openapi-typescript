@@ -1,7 +1,8 @@
 import * as i from 'twitter-openapi-typescript-generated';
 import { DefaultFlag } from '@/models';
-import { buildHeader } from '@/utils';
+import { buildHeader, errorCheck } from '@/utils';
 import { TwitterApiUtilsResponse } from '@/models';
+import { error } from 'console';
 
 type PostCreateTweetParam = {
   tweetText: string;
@@ -58,10 +59,11 @@ export class PostApiUtils {
         variables: { ...variables, ...args },
       },
     });
+
     return {
       raw: { response: response.raw },
       header: buildHeader(response.raw.headers),
-      data: await response.value(),
+      data: errorCheck(await response.value()),
     };
   }
 
@@ -82,7 +84,7 @@ export class PostApiUtils {
     return {
       raw: { response: response.raw },
       header: buildHeader(response.raw.headers),
-      data: await response.value(),
+      data: errorCheck(await response.value()),
     };
   }
 
@@ -103,7 +105,7 @@ export class PostApiUtils {
     return {
       raw: { response: response.raw },
       header: buildHeader(response.raw.headers),
-      data: await response.value(),
+      data: errorCheck(await response.value()),
     };
   }
   async postDeleteRetweet(param: PostDeleteRetweetParam): Promise<TwitterApiUtilsResponse<i.DeleteRetweetResponse>> {
@@ -123,7 +125,7 @@ export class PostApiUtils {
     return {
       raw: { response: response.raw },
       header: buildHeader(response.raw.headers),
-      data: await response.value(),
+      data: errorCheck(await response.value()),
     };
   }
 
@@ -146,7 +148,7 @@ export class PostApiUtils {
     return {
       raw: { response: response.raw },
       header: buildHeader(response.raw.headers),
-      data: await response.value(),
+      data: errorCheck(await response.value()),
     };
   }
 
@@ -169,7 +171,7 @@ export class PostApiUtils {
     return {
       raw: { response: response.raw },
       header: buildHeader(response.raw.headers),
-      data: await response.value(),
+      data: errorCheck(await response.value()),
     };
   }
 }

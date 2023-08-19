@@ -1,6 +1,6 @@
 import * as i from 'twitter-openapi-typescript-generated';
-import { RequestParam, DefaultFlag, UserApiUtilsResponse, UsersApiUtilsResponse } from '@/models';
-import { buildHeader } from '@/utils';
+import { RequestParam, DefaultFlag, UserApiUtilsData, TwitterApiUtilsResponse } from '@/models';
+import { buildHeader, errorCheck, getKwargs, userOrNullConverter } from '@/utils';
 
 type getUserByScreenNameParam = {
   screenName: string;
@@ -12,10 +12,7 @@ type getUserByRestIdParam = {
   extraParam?: { [key: string]: any };
 };
 
-type getUsersByRestIdsParam = {
-  userIds: string[];
-  extraParam?: { [key: string]: any };
-};
+type ResponseType = TwitterApiUtilsResponse<UserApiUtilsData>;
 
 export class UserApiUtils {
   api: i.UserApi;
@@ -26,49 +23,25 @@ export class UserApiUtils {
     this.flag = flag;
   }
 
-  async request<T>(param: RequestParam<i.UserResults, T>): Promise<UserApiUtilsResponse> {
+  async request<T>(param: RequestParam<i.UserResults, T>): Promise<ResponseType> {
     const apiFn: typeof param.apiFn = param.apiFn.bind(this.api);
-    const fieldTogglesFn = () => {
-      if (this.flag[param.key]['fieldToggles'] == null) return { fieldToggles: '' };
-      return { fieldToggles: JSON.stringify(this.flag[param.key]['fieldToggles']) };
-    };
-    const response = await apiFn({
-      pathQueryId: this.flag[param.key]['queryId'],
-      queryId: this.flag[param.key]['queryId'],
-      variables: JSON.stringify({ ...this.flag[param.key]['variables'], ...param.param }),
-      features: JSON.stringify(this.flag[param.key]['features']),
-      ...fieldTogglesFn(),
-    });
-    const user = param.convertFn(await response.value());
+    const args = getKwargs(this.flag[param.key], param.param);
+    const response = await apiFn(args);
+    const checked = errorCheck(await response.value());
+    const result = param.convertFn(checked);
+    const user = userOrNullConverter(result.result);
+
     return {
       raw: { response: response.raw },
       header: buildHeader(response.raw.headers),
-      data: user.result,
+      data: {
+        raw: result,
+        user: user,
+      },
     };
   }
 
-  async requests<T>(param: RequestParam<i.UserResults[], T>): Promise<UsersApiUtilsResponse> {
-    const apiFn: typeof param.apiFn = param.apiFn.bind(this.api);
-    const fieldTogglesFn = () => {
-      if (this.flag[param.key]['fieldToggles'] == null) return { fieldToggles: '' };
-      return { fieldToggles: JSON.stringify(this.flag[param.key]['fieldToggles']) };
-    };
-    const response = await apiFn({
-      pathQueryId: this.flag[param.key]['queryId'],
-      queryId: this.flag[param.key]['queryId'],
-      variables: JSON.stringify({ ...this.flag[param.key]['variables'], ...param.param }),
-      features: JSON.stringify(this.flag[param.key]['features']),
-      ...fieldTogglesFn(),
-    });
-    const user = param.convertFn(await response.value()).map((e) => e.result);
-    return {
-      raw: { response: response.raw },
-      header: buildHeader(response.raw.headers),
-      data: user,
-    };
-  }
-
-  async getUserByScreenName(param: getUserByScreenNameParam): Promise<UserApiUtilsResponse> {
+  async getUserByScreenName(param: getUserByScreenNameParam): Promise<ResponseType> {
     const args = {
       screen_name: param.screenName,
       ...param.extraParam,
@@ -81,7 +54,7 @@ export class UserApiUtils {
     });
     return response;
   }
-  async getUserByRestId(param: getUserByRestIdParam): Promise<UserApiUtilsResponse> {
+  async getUserByRestId(param: getUserByRestIdParam): Promise<ResponseType> {
     const args = {
       userId: param.userId,
       ...param.extraParam,
@@ -90,20 +63,6 @@ export class UserApiUtils {
       key: 'UserByRestId',
       apiFn: this.api.getUserByRestIdRaw,
       convertFn: (e) => e.data.user,
-      param: args,
-    });
-    return response;
-  }
-
-  async getUsersByRestIds(param: getUsersByRestIdsParam): Promise<UsersApiUtilsResponse> {
-    const args = {
-      userIds: param.userIds,
-      ...param.extraParam,
-    };
-    const response = this.requests({
-      key: 'UsersByRestIds',
-      apiFn: this.api.getUsersByRestIdsRaw,
-      convertFn: (e) => e.data.users,
       param: args,
     });
     return response;

@@ -1,6 +1,12 @@
 import * as i from 'twitter-openapi-typescript-generated';
-import { DefaultFlag, TweetListApiUtilsResponse, ApiUtilsRaw, RequestParam } from '@/models';
-import { buildHeader, entriesCursor, instructionToEntry, tweetEntriesConverter } from '@/utils';
+import {
+  DefaultFlag,
+  RequestParam,
+  TwitterApiUtilsResponse,
+  TweetApiUtilsData,
+  TimelineApiUtilsResponse,
+} from '@/models';
+import { buildHeader, entriesCursor, errorCheck, getKwargs, instructionToEntry, tweetEntriesConverter } from '@/utils';
 
 type GetTweetDetailParam = {
   focalTweetId: string;
@@ -69,6 +75,8 @@ type GetBookmarksParam = {
   extraParam?: { [key: string]: any };
 };
 
+type ResponseType = TwitterApiUtilsResponse<TimelineApiUtilsResponse<TweetApiUtilsData>>;
+
 export class TweetApiUtils {
   api: i.TweetApi;
   flag: DefaultFlag;
@@ -78,36 +86,31 @@ export class TweetApiUtils {
     this.flag = flag;
   }
 
-  async request<T>(param: RequestParam<i.InstructionUnion[], T>): Promise<TweetListApiUtilsResponse> {
+  async request<T>(param: RequestParam<i.InstructionUnion[], T>): Promise<ResponseType> {
     const apiFn: typeof param.apiFn = param.apiFn.bind(this.api);
-    const fieldTogglesFn = () => {
-      if (this.flag[param.key]['fieldToggles'] == null) return { fieldToggles: '' };
-      return { fieldToggles: JSON.stringify(this.flag[param.key]['fieldToggles']) };
-    };
-    const response = await apiFn({
-      pathQueryId: this.flag[param.key]['queryId'],
-      queryId: this.flag[param.key]['queryId'],
-      variables: JSON.stringify({ ...this.flag[param.key]['variables'], ...param.param }),
-      features: JSON.stringify(this.flag[param.key]['features']),
-      ...fieldTogglesFn(),
-    });
-    const instruction = param.convertFn(await response.value());
+    const args = getKwargs(this.flag[param.key], param.param);
+    const response = await apiFn(args);
+    const checked = errorCheck(await response.value());
+    const instruction = param.convertFn(checked);
     const entry = instructionToEntry(instruction);
     const data = tweetEntriesConverter(entry);
-    const raw: ApiUtilsRaw = {
-      response: response.raw,
-      instruction: instruction,
-      entry: entry,
-    };
     return {
-      raw: raw,
+      raw: {
+        response: response.raw,
+      },
       header: buildHeader(response.raw.headers),
-      cursor: entriesCursor(entry),
-      data: data,
+      data: {
+        raw: {
+          instruction,
+          entry,
+        },
+        cursor: entriesCursor(entry),
+        data: data,
+      },
     };
   }
 
-  async getTweetDetail(param: GetTweetDetailParam): Promise<TweetListApiUtilsResponse> {
+  async getTweetDetail(param: GetTweetDetailParam): Promise<ResponseType> {
     const args = {
       focalTweetId: param.focalTweetId,
       ...(param.cursor == null ? {} : { cursor: param.cursor }),
@@ -123,7 +126,7 @@ export class TweetApiUtils {
     });
     return response;
   }
-  async getSearchTimeline(param: GetSearchTimelineParam): Promise<TweetListApiUtilsResponse> {
+  async getSearchTimeline(param: GetSearchTimelineParam): Promise<ResponseType> {
     const args = {
       rawQuery: param.rawQuery,
       ...(param.product == null ? {} : { product: param.product }),
@@ -141,7 +144,7 @@ export class TweetApiUtils {
     return response;
   }
 
-  async getHomeTimeline(param: GetHomeTimelineParam = {}): Promise<TweetListApiUtilsResponse> {
+  async getHomeTimeline(param: GetHomeTimelineParam = {}): Promise<ResponseType> {
     const args = {
       ...(param.count == null ? {} : { count: param.count }),
       ...(param.couser == null ? {} : { couser: param.couser }),
@@ -157,7 +160,7 @@ export class TweetApiUtils {
     return response;
   }
 
-  async getHomeLatestTimeline(param: GetHomeLatestTimelineParam = {}): Promise<TweetListApiUtilsResponse> {
+  async getHomeLatestTimeline(param: GetHomeLatestTimelineParam = {}): Promise<ResponseType> {
     const args = {
       ...(param.count == null ? {} : { count: param.count }),
       ...(param.cursor == null ? {} : { cursor: param.cursor }),
@@ -173,7 +176,7 @@ export class TweetApiUtils {
     return response;
   }
 
-  async getListLatestTweetsTimeline(param: GetListLatestTweetsTimelineParam): Promise<TweetListApiUtilsResponse> {
+  async getListLatestTweetsTimeline(param: GetListLatestTweetsTimelineParam): Promise<ResponseType> {
     const args = {
       listId: param.listId,
       ...(param.count == null ? {} : { count: param.count }),
@@ -190,7 +193,7 @@ export class TweetApiUtils {
     return response;
   }
 
-  async getUserTweets(param: GetUserTweetsParam): Promise<TweetListApiUtilsResponse> {
+  async getUserTweets(param: GetUserTweetsParam): Promise<ResponseType> {
     const args = {
       userId: param.userId,
       ...(param.count == null ? {} : { count: param.count }),
@@ -207,7 +210,7 @@ export class TweetApiUtils {
     return response;
   }
 
-  async getUserTweetsAndReplies(param: GetUserTweetsAndRepliesParam): Promise<TweetListApiUtilsResponse> {
+  async getUserTweetsAndReplies(param: GetUserTweetsAndRepliesParam): Promise<ResponseType> {
     const args = {
       userId: param.userId,
       ...(param.count == null ? {} : { count: param.count }),
@@ -224,7 +227,7 @@ export class TweetApiUtils {
     return response;
   }
 
-  async getUserMedia(param: GetUserMediaParam): Promise<TweetListApiUtilsResponse> {
+  async getUserMedia(param: GetUserMediaParam): Promise<ResponseType> {
     const args = {
       userId: param.userId,
       ...(param.count == null ? {} : { count: param.count }),
@@ -240,7 +243,7 @@ export class TweetApiUtils {
     });
     return response;
   }
-  async getLikes(param: GetLikesParam): Promise<TweetListApiUtilsResponse> {
+  async getLikes(param: GetLikesParam): Promise<ResponseType> {
     const args = {
       userId: param.userId,
       ...(param.count == null ? {} : { count: param.count }),
@@ -256,7 +259,7 @@ export class TweetApiUtils {
     });
     return response;
   }
-  async getBookmarks(param: GetBookmarksParam = {}): Promise<TweetListApiUtilsResponse> {
+  async getBookmarks(param: GetBookmarksParam = {}): Promise<ResponseType> {
     const args = {
       ...(param.count == null ? {} : { count: param.count }),
       ...(param.cursor == null ? {} : { cursor: param.cursor }),

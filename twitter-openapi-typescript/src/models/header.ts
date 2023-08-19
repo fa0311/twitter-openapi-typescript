@@ -1,14 +1,14 @@
 export type ApiUtilsHeader = {
   raw: Headers;
-  connectionHash: string | null;
-  contentTypeOptions: string | null;
-  frameOptions: string | null;
+  connectionHash: string;
+  contentTypeOptions: string;
+  frameOptions: string;
   rateLimitLimit: number;
   rateLimitRemaining: number;
   rateLimitReset: number;
   responseTime: number;
   tfePreserveBody: boolean;
-  transactionId: string | null;
-  twitterResponseTags: string | null;
+  transactionId: string;
+  twitterResponseTags: string;
   xssProtection: number;
 };

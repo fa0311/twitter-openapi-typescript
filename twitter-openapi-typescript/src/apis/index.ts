@@ -2,6 +2,7 @@ export { DefaultApiUtils } from './defaultApi';
 export { TweetApiUtils } from './tweetApi';
 export { PostApiUtils } from './postApi';
 export { UserApiUtils } from './userApi';
+export { UsersApiUtils } from './usersApi';
 export { UserListApiUtils } from './userListApi';
 export { V11GetApiUtils } from './v11GetApi';
 export { V11PostApiUtils } from './v11PostApi';

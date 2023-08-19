@@ -1,6 +1,29 @@
 import * as i from 'twitter-openapi-typescript-generated';
 import { TweetApiUtilsData, UserApiUtilsData, CursorApiUtilsResponse, ApiUtilsHeader } from '@/models';
 
+export const getKwargs = (flag: { [key: string]: any }, additional: { [key: string]: any }): any => {
+  const kwargs: { [key: string]: any } = { pathQueryId: flag.queryId };
+  if (flag.variables != null) {
+    kwargs.variables = JSON.stringify({ ...flag.variables, ...additional });
+  }
+  if (flag.features != null) {
+    kwargs.features = JSON.stringify(flag.features);
+  }
+  if (flag.fieldToggles != null) {
+    kwargs.fieldToggles = JSON.stringify(flag.fieldToggles);
+  }
+  return kwargs;
+};
+
+export const errorCheck = <T>(data: i.Errors | T): T => {
+  const res: any = data;
+  if (res.data != undefined) {
+    return res;
+  } else if (res.error != undefined) {
+    throw Error(res.errors[0].message);
+  }
+};
+
 export const instructionToEntry = (item: i.InstructionUnion[]): i.TimelineAddEntry[] => {
   return item.flatMap((e) => {
     if (e.type == i.InstructionType.TimelineAddEntries) {
@@ -48,17 +71,21 @@ type buildTweetApiUtilsArgs = {
 export const buildTweetApiUtils = (args: buildTweetApiUtilsArgs): TweetApiUtilsData | undefined => {
   const tweet = tweetResultsConverter(args.result);
   if (tweet == null) return undefined;
+  const user = userOrNullConverter(tweet.core.userResults.result);
+  if (user == null) return undefined;
   const quoted = tweet.quotedStatusResult;
   const retweeted = tweet.legacy.retweetedStatusResult;
+  const reply =
+    args.reply
+      ?.map((e) => buildTweetApiUtils({ result: e.tweetResults, promotedMetadata: e.promotedMetadata }))
+      .filter((e): e is NonNullable<typeof e> => e != null) ?? [];
   return {
     raw: args.result,
     promotedMetadata: args.promotedMetadata,
     tweet: tweet,
-    user: tweet.core.userResults.result,
-    reply:
-      args.reply
-        ?.map((e) => buildTweetApiUtils({ result: e.tweetResults, promotedMetadata: e.promotedMetadata }))
-        .filter((e): e is NonNullable<typeof e> => e != null) ?? [],
+    user: user,
+    replies: reply,
+    retweeted: retweeted == undefined ? undefined : buildTweetApiUtils({ result: retweeted }),
     quoted: quoted == undefined ? undefined : buildTweetApiUtils({ result: quoted }),
   };
 };
@@ -75,22 +102,36 @@ export const tweetResultsConverter = (tweetResults: i.ItemResult): i.Tweet | und
   throw Error();
 };
 
-export const userEntriesConverter = (item: i.TimelineAddEntry[]): i.TimelineUser[] => {
+export const userOrNullConverter = (userResults: i.UserUnion): i.User | null => {
+  if (userResults.typename == i.TypeName.User) {
+    return userResults as i.User;
+  }
+};
+
+export const userEntriesConverter = (item: i.TimelineAddEntry[]): i.UserResults[] => {
   return item
     .map((e) => {
       if (e.content.typename == i.TypeName.TimelineTimelineItem) {
         const item = (e.content as i.TimelineTimelineItem).itemContent;
-        return item.itemType == i.ContentItemType.TimelineUser ? (item as i.TimelineUser) : null;
+        if (item.itemType == i.ContentItemType.TimelineUser) {
+          return (item as i.TimelineUser).userResults;
+        }
       }
     })
     .filter((e): e is NonNullable<typeof e> => e != null);
 };
 
-export const buildUserResponse = (user: i.TimelineUser): UserApiUtilsData => {
-  return {
-    raw: user,
-    user: user.userResults.result,
-  };
+export const userResultConverter = (user: i.UserResults[]): UserApiUtilsData[] => {
+  return user
+    .map((e) => {
+      const user = userOrNullConverter(e.result);
+      if (user == null) return null;
+      return {
+        raw: e,
+        user: user,
+      };
+    })
+    .filter((e): e is NonNullable<typeof e> => e != null);
 };
 
 export const entriesCursor = (item: i.TimelineAddEntry[]): CursorApiUtilsResponse => {
@@ -111,8 +152,8 @@ export const entriesCursor = (item: i.TimelineAddEntry[]): CursorApiUtilsRespons
 
 export const buildCursor = (cursorList: i.TimelineTimelineCursor[]): CursorApiUtilsResponse => {
   return {
-    top: cursorList.find((e) => e.cursorType == i.TimelineTimelineCursorCursorTypeEnum.Top),
-    bottom: cursorList.find((e) => e.cursorType == i.TimelineTimelineCursorCursorTypeEnum.Bottom),
+    top: cursorList.find((e) => e.cursorType == i.CursorType.Top),
+    bottom: cursorList.find((e) => e.cursorType == i.CursorType.Bottom),
   };
 };
 
@@ -122,9 +163,9 @@ export const buildHeader = (headers: Headers): ApiUtilsHeader => {
     connectionHash: headers.get('x-connection-hash'),
     contentTypeOptions: headers.get('x-content-type-options'),
     frameOptions: headers.get('x-frame-options'),
-    rateLimitLimit: Number(headers.get('x-rate-limit-limit')),
-    rateLimitRemaining: Number(headers.get('x-rate-limit-remaining')),
-    rateLimitReset: Number(headers.get('x-rate-limit-reset')),
+    rateLimitLimit: Number(headers.get('x-rate-limit-limit') ?? 0),
+    rateLimitRemaining: Number(headers.get('x-rate-limit-remaining') ?? 0),
+    rateLimitReset: Number(headers.get('x-rate-limit-reset') ?? 0),
     responseTime: Number(headers.get('x-response-time')),
     tfePreserveBody: headers.get('x-tfe-preserve-body') == 'true',
     transactionId: headers.get('x-transaction-id'),

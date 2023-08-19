@@ -1,18 +1,29 @@
+import * as i from 'twitter-openapi-typescript-generated';
+
 import { TweetApiUtilsData, UserApiUtilsData } from '@/models';
-import { getClient, logger } from '@test/init';
+import { logger } from '@test/init';
 
 export const printTweet = (tweet: TweetApiUtilsData) => {
   logger.log(`${tweet.user.legacy.screenName}: ${tweet.tweet.legacy.fullText}`.replace(/\n/g, ' '));
-  tweet.reply.forEach((reply) => {
-    logger.log(`${reply.user.legacy.screenName}: ${reply.tweet.legacy.fullText}`.replace(/\n/g, ' '));
+  tweet.replies.forEach((reply) => {
+    printLegacyTweet(reply.user.legacy, reply.tweet.legacy);
   });
-  logger.log('┄'.repeat(50));
+};
+
+export const printLegacyTweet = (user: i.UserLegacy, tweet: i.TweetLegacy) => {
+  const text = `${user.screenName.padStart(20)}: ${tweet.fullText}`.replace(/\n/g, ' ');
+  logger.log(text);
 };
 
 export const printUser = (user: UserApiUtilsData) => {
-  const legacy = user.user.legacy;
-  logger.log(legacy.screenName);
-  logger.log(`followedBy: ${legacy.followedBy} following: ${legacy.following}`);
-  logger.log(`friendsCount: ${legacy.friendsCount} followersCount: ${legacy.followersCount}`);
+  printLegacyUser(user.user.legacy);
+};
+
+export const printLegacyUser = (user: i.UserLegacy) => {
+  logger.log(user.screenName);
+  logger.log(`listedCount: ${user.listedCount}`);
+  logger.log(`followedBy: ${user.followedBy} following: ${user.following}`);
+  const text = `friendsCount: ${user.friendsCount} followersCount: ${user.followersCount}`;
+  logger.log(text);
   logger.log('┄'.repeat(50));
 };

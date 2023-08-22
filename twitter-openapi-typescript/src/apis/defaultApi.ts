@@ -1,9 +1,14 @@
 import * as i from 'twitter-openapi-typescript-generated';
-import { buildHeader, errorCheck, getKwargs } from '@/utils';
-import { RequestParam, DefaultFlag, TwitterApiUtilsResponse } from '@/models';
+import { buildHeader, buildTweetApiUtils, errorCheck, getKwargs } from '@/utils';
+import { RequestParam, DefaultFlag, TwitterApiUtilsResponse, TweetApiUtilsData } from '@/models';
 
 export type ProfileSpotlightsQueryParam = {
   screenName: string;
+  extraParam?: { [key: string]: any };
+};
+
+export type TweetResultByRestIdParam = {
+  tweetId: string;
   extraParam?: { [key: string]: any };
 };
 
@@ -40,6 +45,21 @@ export class DefaultApiUtils {
       key: 'ProfileSpotlightsQuery',
       apiFn: this.api.getProfileSpotlightsQueryRaw,
       convertFn: (value) => value.data.userResultByScreenName,
+      param: args,
+    });
+
+    return response;
+  }
+
+  async getTweetResultByRestId(param: TweetResultByRestIdParam): Promise<TwitterApiUtilsResponse<TweetApiUtilsData>> {
+    const args = {
+      tweetId: param.tweetId,
+      ...param.extraParam,
+    };
+    const response = await this.request({
+      key: 'TweetResultByRestId',
+      apiFn: this.api.getTweetResultByRestIdRaw,
+      convertFn: (value) => buildTweetApiUtils({ result: value.data.tweetResult }),
       param: args,
     });
 

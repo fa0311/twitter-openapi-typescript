@@ -55,6 +55,7 @@ src/models/GetProfileSpotlightsQuery200Response.ts
 src/models/GetRetweeters200Response.ts
 src/models/GetSearchTimeline200Response.ts
 src/models/GetTweetDetail200Response.ts
+src/models/GetTweetResultByRestId200Response.ts
 src/models/GetUserByRestId200Response.ts
 src/models/GetUserHighlightsTweets200Response.ts
 src/models/GetUsersByRestIds200Response.ts
@@ -137,6 +138,8 @@ src/models/TweetFavoritersResponse.ts
 src/models/TweetFavoritersResponseData.ts
 src/models/TweetLegacy.ts
 src/models/TweetLegacySelfThread.ts
+src/models/TweetResultByRestIdData.ts
+src/models/TweetResultByRestIdResponse.ts
 src/models/TweetRetweetersResponse.ts
 src/models/TweetRetweetersResponseData.ts
 src/models/TweetTombstone.ts

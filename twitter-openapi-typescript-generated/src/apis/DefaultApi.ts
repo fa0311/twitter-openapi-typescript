@@ -16,13 +16,22 @@
 import * as runtime from '../runtime';
 import type {
   GetProfileSpotlightsQuery200Response,
+  GetTweetResultByRestId200Response,
 } from '../models';
 import {
     GetProfileSpotlightsQuery200ResponseFromJSON,
     GetProfileSpotlightsQuery200ResponseToJSON,
+    GetTweetResultByRestId200ResponseFromJSON,
+    GetTweetResultByRestId200ResponseToJSON,
 } from '../models';
 
 export interface GetProfileSpotlightsQueryRequest {
+    pathQueryId: string;
+    variables: string;
+    features: string;
+}
+
+export interface GetTweetResultByRestIdRequest {
     pathQueryId: string;
     variables: string;
     features: string;
@@ -108,6 +117,84 @@ export class DefaultApi extends runtime.BaseAPI {
      */
     async getProfileSpotlightsQuery(requestParameters: GetProfileSpotlightsQueryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetProfileSpotlightsQuery200Response> {
         const response = await this.getProfileSpotlightsQueryRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * get TweetResultByRestId
+     */
+    async getTweetResultByRestIdRaw(requestParameters: GetTweetResultByRestIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetTweetResultByRestId200Response>> {
+        if (requestParameters.pathQueryId === null || requestParameters.pathQueryId === undefined) {
+            throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling getTweetResultByRestId.');
+        }
+
+        if (requestParameters.variables === null || requestParameters.variables === undefined) {
+            throw new runtime.RequiredError('variables','Required parameter requestParameters.variables was null or undefined when calling getTweetResultByRestId.');
+        }
+
+        if (requestParameters.features === null || requestParameters.features === undefined) {
+            throw new runtime.RequiredError('features','Required parameter requestParameters.features was null or undefined when calling getTweetResultByRestId.');
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters.variables !== undefined) {
+            queryParameters['variables'] = requestParameters.variables;
+        }
+
+        if (requestParameters.features !== undefined) {
+            queryParameters['features'] = requestParameters.features;
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-client-language"] = this.configuration.apiKey("x-twitter-client-language"); // ClientLanguage authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-active-user"] = this.configuration.apiKey("x-twitter-active-user"); // ActiveUser authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["user-agent"] = this.configuration.apiKey("user-agent"); // UserAgent authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-auth-type"] = this.configuration.apiKey("x-twitter-auth-type"); // AuthType authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-csrf-token"] = this.configuration.apiKey("x-csrf-token"); // CsrfToken authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-guest-token"] = this.configuration.apiKey("x-guest-token"); // GuestToken authentication
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BearerAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/graphql/{pathQueryId}/TweetResultByRestId`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters.pathQueryId))),
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => GetTweetResultByRestId200ResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * get TweetResultByRestId
+     */
+    async getTweetResultByRestId(requestParameters: GetTweetResultByRestIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetTweetResultByRestId200Response> {
+        const response = await this.getTweetResultByRestIdRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

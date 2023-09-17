@@ -43,7 +43,7 @@ export interface ItemResult {
      * @type {TweetUnion}
      * @memberof ItemResult
      */
-    result: TweetUnion;
+    result?: TweetUnion;
 }
 
 /**
@@ -51,7 +51,6 @@ export interface ItemResult {
  */
 export function instanceOfItemResult(value: object): boolean {
     let isInstance = true;
-    isInstance = isInstance && "result" in value;
 
     return isInstance;
 }
@@ -67,7 +66,7 @@ export function ItemResultFromJSONTyped(json: any, ignoreDiscriminator: boolean)
     return {
         
         'typename': !exists(json, '__typename') ? undefined : TypeNameFromJSON(json['__typename']),
-        'result': TweetUnionFromJSON(json['result']),
+        'result': !exists(json, 'result') ? undefined : TweetUnionFromJSON(json['result']),
     };
 }
 

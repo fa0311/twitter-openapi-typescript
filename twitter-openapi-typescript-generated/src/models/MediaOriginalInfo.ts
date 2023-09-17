@@ -13,6 +13,13 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { MediaOriginalInfoFocusRect } from './MediaOriginalInfoFocusRect';
+import {
+    MediaOriginalInfoFocusRectFromJSON,
+    MediaOriginalInfoFocusRectFromJSONTyped,
+    MediaOriginalInfoFocusRectToJSON,
+} from './MediaOriginalInfoFocusRect';
+
 /**
  * 
  * @export
@@ -21,22 +28,22 @@ import { exists, mapValues } from '../runtime';
 export interface MediaOriginalInfo {
     /**
      * 
-     * @type {Array<{ [key: string]: any; }>}
+     * @type {Array<MediaOriginalInfoFocusRect>}
      * @memberof MediaOriginalInfo
      */
-    focusRects?: Array<{ [key: string]: any; }>;
+    focusRects?: Array<MediaOriginalInfoFocusRect>;
     /**
      * 
      * @type {number}
      * @memberof MediaOriginalInfo
      */
-    height?: number;
+    height: number;
     /**
      * 
      * @type {number}
      * @memberof MediaOriginalInfo
      */
-    width?: number;
+    width: number;
 }
 
 /**
@@ -44,6 +51,8 @@ export interface MediaOriginalInfo {
  */
 export function instanceOfMediaOriginalInfo(value: object): boolean {
     let isInstance = true;
+    isInstance = isInstance && "height" in value;
+    isInstance = isInstance && "width" in value;
 
     return isInstance;
 }
@@ -58,9 +67,9 @@ export function MediaOriginalInfoFromJSONTyped(json: any, ignoreDiscriminator: b
     }
     return {
         
-        'focusRects': !exists(json, 'focus_rects') ? undefined : json['focus_rects'],
-        'height': !exists(json, 'height') ? undefined : json['height'],
-        'width': !exists(json, 'width') ? undefined : json['width'],
+        'focusRects': !exists(json, 'focus_rects') ? undefined : ((json['focus_rects'] as Array<any>).map(MediaOriginalInfoFocusRectFromJSON)),
+        'height': json['height'],
+        'width': json['width'],
     };
 }
 
@@ -73,7 +82,7 @@ export function MediaOriginalInfoToJSON(value?: MediaOriginalInfo | null): any {
     }
     return {
         
-        'focus_rects': value.focusRects,
+        'focus_rects': value.focusRects === undefined ? undefined : ((value.focusRects as Array<any>).map(MediaOriginalInfoFocusRectToJSON)),
         'height': value.height,
         'width': value.width,
     };

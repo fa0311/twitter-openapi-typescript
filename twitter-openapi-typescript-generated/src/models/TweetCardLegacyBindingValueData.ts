@@ -16,50 +16,50 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface TweetCardLegacyBindingValuesInnerValue
+ * @interface TweetCardLegacyBindingValueData
  */
-export interface TweetCardLegacyBindingValuesInnerValue {
+export interface TweetCardLegacyBindingValueData {
     /**
      * 
      * @type {boolean}
-     * @memberof TweetCardLegacyBindingValuesInnerValue
+     * @memberof TweetCardLegacyBindingValueData
      */
     booleanValue?: boolean;
     /**
      * 
      * @type {string}
-     * @memberof TweetCardLegacyBindingValuesInnerValue
+     * @memberof TweetCardLegacyBindingValueData
      */
     scribeKey?: string;
     /**
      * 
      * @type {string}
-     * @memberof TweetCardLegacyBindingValuesInnerValue
+     * @memberof TweetCardLegacyBindingValueData
      */
     stringValue?: string;
     /**
      * 
      * @type {string}
-     * @memberof TweetCardLegacyBindingValuesInnerValue
+     * @memberof TweetCardLegacyBindingValueData
      */
     type: string;
 }
 
 /**
- * Check if a given object implements the TweetCardLegacyBindingValuesInnerValue interface.
+ * Check if a given object implements the TweetCardLegacyBindingValueData interface.
  */
-export function instanceOfTweetCardLegacyBindingValuesInnerValue(value: object): boolean {
+export function instanceOfTweetCardLegacyBindingValueData(value: object): boolean {
     let isInstance = true;
     isInstance = isInstance && "type" in value;
 
     return isInstance;
 }
 
-export function TweetCardLegacyBindingValuesInnerValueFromJSON(json: any): TweetCardLegacyBindingValuesInnerValue {
-    return TweetCardLegacyBindingValuesInnerValueFromJSONTyped(json, false);
+export function TweetCardLegacyBindingValueDataFromJSON(json: any): TweetCardLegacyBindingValueData {
+    return TweetCardLegacyBindingValueDataFromJSONTyped(json, false);
 }
 
-export function TweetCardLegacyBindingValuesInnerValueFromJSONTyped(json: any, ignoreDiscriminator: boolean): TweetCardLegacyBindingValuesInnerValue {
+export function TweetCardLegacyBindingValueDataFromJSONTyped(json: any, ignoreDiscriminator: boolean): TweetCardLegacyBindingValueData {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -72,7 +72,7 @@ export function TweetCardLegacyBindingValuesInnerValueFromJSONTyped(json: any, i
     };
 }
 
-export function TweetCardLegacyBindingValuesInnerValueToJSON(value?: TweetCardLegacyBindingValuesInnerValue | null): any {
+export function TweetCardLegacyBindingValueDataToJSON(value?: TweetCardLegacyBindingValueData | null): any {
     if (value === undefined) {
         return undefined;
     }

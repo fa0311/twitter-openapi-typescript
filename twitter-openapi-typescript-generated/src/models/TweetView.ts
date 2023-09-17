@@ -16,48 +16,59 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface TweetViews
+ * @interface TweetView
  */
-export interface TweetViews {
+export interface TweetView {
     /**
      * 
      * @type {string}
-     * @memberof TweetViews
+     * @memberof TweetView
      */
     count?: string;
     /**
      * 
      * @type {string}
-     * @memberof TweetViews
+     * @memberof TweetView
      */
-    state?: string;
+    state: TweetViewStateEnum;
 }
 
+
 /**
- * Check if a given object implements the TweetViews interface.
+ * @export
  */
-export function instanceOfTweetViews(value: object): boolean {
+export const TweetViewStateEnum = {
+    EnabledWithCount: 'EnabledWithCount'
+} as const;
+export type TweetViewStateEnum = typeof TweetViewStateEnum[keyof typeof TweetViewStateEnum];
+
+
+/**
+ * Check if a given object implements the TweetView interface.
+ */
+export function instanceOfTweetView(value: object): boolean {
     let isInstance = true;
+    isInstance = isInstance && "state" in value;
 
     return isInstance;
 }
 
-export function TweetViewsFromJSON(json: any): TweetViews {
-    return TweetViewsFromJSONTyped(json, false);
+export function TweetViewFromJSON(json: any): TweetView {
+    return TweetViewFromJSONTyped(json, false);
 }
 
-export function TweetViewsFromJSONTyped(json: any, ignoreDiscriminator: boolean): TweetViews {
+export function TweetViewFromJSONTyped(json: any, ignoreDiscriminator: boolean): TweetView {
     if ((json === undefined) || (json === null)) {
         return json;
     }
     return {
         
         'count': !exists(json, 'count') ? undefined : json['count'],
-        'state': !exists(json, 'state') ? undefined : json['state'],
+        'state': json['state'],
     };
 }
 
-export function TweetViewsToJSON(value?: TweetViews | null): any {
+export function TweetViewToJSON(value?: TweetView | null): any {
     if (value === undefined) {
         return undefined;
     }

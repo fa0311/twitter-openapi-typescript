@@ -74,7 +74,8 @@ export const buildTweetApiUtils = (args: buildTweetApiUtilsArgs): TweetApiUtilsD
   const user = userOrNullConverter(tweet.core.userResults.result);
   if (user == null) return undefined;
   const quoted = tweet.quotedStatusResult;
-  const retweeted = tweet.legacy.retweetedStatusResult;
+  const retweeted = tweet.legacy?.retweetedStatusResult;
+
   const reply =
     args.reply
       ?.map((e) => buildTweetApiUtils({ result: e.tweetResults, promotedMetadata: e.promotedMetadata }))
@@ -91,6 +92,7 @@ export const buildTweetApiUtils = (args: buildTweetApiUtilsArgs): TweetApiUtilsD
 };
 
 export const tweetResultsConverter = (tweetResults: i.ItemResult): i.Tweet | undefined => {
+  if (tweetResults.result == undefined) return undefined;
   switch (tweetResults.result.typename) {
     case i.TypeName.Tweet:
       return tweetResults.result as i.Tweet;

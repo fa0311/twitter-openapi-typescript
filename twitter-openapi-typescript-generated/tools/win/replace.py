@@ -24,7 +24,7 @@ with open("package.json", mode="r", encoding="utf-8") as f:
 package.update(
     {
         "author": "fa0311",
-        "license": "LGPL-3.0-only",
+        "license": "custom license or AGPL-3.0-or-later",
         "repository": {
             "type": "git",
             "url": "https://github.com/fa0311/twitter-openapi-typescript.git",

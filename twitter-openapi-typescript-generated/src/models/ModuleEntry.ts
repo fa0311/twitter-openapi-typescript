@@ -13,6 +13,12 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { ClientEventInfo } from './ClientEventInfo';
+import {
+    ClientEventInfoFromJSON,
+    ClientEventInfoFromJSONTyped,
+    ClientEventInfoToJSON,
+} from './ClientEventInfo';
 import type { ItemContentUnion } from './ItemContentUnion';
 import {
     ItemContentUnionFromJSON,
@@ -28,10 +34,10 @@ import {
 export interface ModuleEntry {
     /**
      * 
-     * @type {{ [key: string]: any; }}
+     * @type {ClientEventInfo}
      * @memberof ModuleEntry
      */
-    clientEventInfo: { [key: string]: any; };
+    clientEventInfo: ClientEventInfo;
     /**
      * 
      * @type {ItemContentUnion}
@@ -61,7 +67,7 @@ export function ModuleEntryFromJSONTyped(json: any, ignoreDiscriminator: boolean
     }
     return {
         
-        'clientEventInfo': json['clientEventInfo'],
+        'clientEventInfo': ClientEventInfoFromJSON(json['clientEventInfo']),
         'itemContent': ItemContentUnionFromJSON(json['itemContent']),
     };
 }
@@ -75,7 +81,7 @@ export function ModuleEntryToJSON(value?: ModuleEntry | null): any {
     }
     return {
         
-        'clientEventInfo': value.clientEventInfo,
+        'clientEventInfo': ClientEventInfoToJSON(value.clientEventInfo),
         'itemContent': ItemContentUnionToJSON(value.itemContent),
     };
 }

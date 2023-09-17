@@ -24,7 +24,8 @@ export const InstructionType = {
     TimelinePinEntry: 'TimelinePinEntry',
     TimelineReplaceEntry: 'TimelineReplaceEntry',
     TimelineShowAlert: 'TimelineShowAlert',
-    TimelineTerminateTimeline: 'TimelineTerminateTimeline'
+    TimelineTerminateTimeline: 'TimelineTerminateTimeline',
+    TimelineShowCover: 'TimelineShowCover'
 } as const;
 export type InstructionType = typeof InstructionType[keyof typeof InstructionType];
 

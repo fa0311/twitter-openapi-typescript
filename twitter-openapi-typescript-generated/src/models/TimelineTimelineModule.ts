@@ -55,7 +55,7 @@ export interface TimelineTimelineModule {
      * @type {string}
      * @memberof TimelineTimelineModule
      */
-    displayType: string;
+    displayType: TimelineTimelineModuleDisplayTypeEnum;
     /**
      * 
      * @type {ContentEntryType}
@@ -81,6 +81,17 @@ export interface TimelineTimelineModule {
      */
     items?: Array<ModuleItem>;
 }
+
+
+/**
+ * @export
+ */
+export const TimelineTimelineModuleDisplayTypeEnum = {
+    Vertical: 'Vertical',
+    VerticalConversation: 'VerticalConversation'
+} as const;
+export type TimelineTimelineModuleDisplayTypeEnum = typeof TimelineTimelineModuleDisplayTypeEnum[keyof typeof TimelineTimelineModuleDisplayTypeEnum];
+
 
 /**
  * Check if a given object implements the TimelineTimelineModule interface.

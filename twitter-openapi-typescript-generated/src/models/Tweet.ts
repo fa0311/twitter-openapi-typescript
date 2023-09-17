@@ -43,12 +43,12 @@ import {
     TweetLegacyFromJSONTyped,
     TweetLegacyToJSON,
 } from './TweetLegacy';
-import type { TweetViews } from './TweetViews';
+import type { TweetView } from './TweetView';
 import {
-    TweetViewsFromJSON,
-    TweetViewsFromJSONTyped,
-    TweetViewsToJSON,
-} from './TweetViews';
+    TweetViewFromJSON,
+    TweetViewFromJSONTyped,
+    TweetViewToJSON,
+} from './TweetView';
 import type { TypeName } from './TypeName';
 import {
     TypeNameFromJSON,
@@ -85,7 +85,7 @@ export interface Tweet {
      * @type {UserResultCore}
      * @memberof Tweet
      */
-    core: UserResultCore;
+    core?: UserResultCore;
     /**
      * 
      * @type {TweetEditControl}
@@ -109,7 +109,7 @@ export interface Tweet {
      * @type {TweetLegacy}
      * @memberof Tweet
      */
-    legacy: TweetLegacy;
+    legacy?: TweetLegacy;
     /**
      * 
      * @type {ItemResult}
@@ -124,16 +124,22 @@ export interface Tweet {
     restId: string;
     /**
      * 
+     * @type {string}
+     * @memberof Tweet
+     */
+    source?: string;
+    /**
+     * 
      * @type {{ [key: string]: any; }}
      * @memberof Tweet
      */
     unmentionData?: { [key: string]: any; };
     /**
      * 
-     * @type {TweetViews}
+     * @type {TweetView}
      * @memberof Tweet
      */
-    views: TweetViews;
+    views: TweetView;
 }
 
 /**
@@ -141,10 +147,8 @@ export interface Tweet {
  */
 export function instanceOfTweet(value: object): boolean {
     let isInstance = true;
-    isInstance = isInstance && "core" in value;
     isInstance = isInstance && "editControl" in value;
     isInstance = isInstance && "isTranslatable" in value;
-    isInstance = isInstance && "legacy" in value;
     isInstance = isInstance && "restId" in value;
     isInstance = isInstance && "views" in value;
 
@@ -163,15 +167,16 @@ export function TweetFromJSONTyped(json: any, ignoreDiscriminator: boolean): Twe
         
         'typename': !exists(json, '__typename') ? undefined : TypeNameFromJSON(json['__typename']),
         'card': !exists(json, 'card') ? undefined : TweetCardFromJSON(json['card']),
-        'core': UserResultCoreFromJSON(json['core']),
+        'core': !exists(json, 'core') ? undefined : UserResultCoreFromJSON(json['core']),
         'editControl': TweetEditControlFromJSON(json['edit_control']),
         'editPrespective': !exists(json, 'edit_prespective') ? undefined : TweetEditPrespectiveFromJSON(json['edit_prespective']),
         'isTranslatable': json['is_translatable'],
-        'legacy': TweetLegacyFromJSON(json['legacy']),
+        'legacy': !exists(json, 'legacy') ? undefined : TweetLegacyFromJSON(json['legacy']),
         'quotedStatusResult': !exists(json, 'quoted_status_result') ? undefined : ItemResultFromJSON(json['quoted_status_result']),
         'restId': json['rest_id'],
+        'source': !exists(json, 'source') ? undefined : json['source'],
         'unmentionData': !exists(json, 'unmention_data') ? undefined : json['unmention_data'],
-        'views': TweetViewsFromJSON(json['views']),
+        'views': TweetViewFromJSON(json['views']),
     };
 }
 
@@ -193,8 +198,9 @@ export function TweetToJSON(value?: Tweet | null): any {
         'legacy': TweetLegacyToJSON(value.legacy),
         'quoted_status_result': ItemResultToJSON(value.quotedStatusResult),
         'rest_id': value.restId,
+        'source': value.source,
         'unmention_data': value.unmentionData,
-        'views': TweetViewsToJSON(value.views),
+        'views': TweetViewToJSON(value.views),
     };
 }
 

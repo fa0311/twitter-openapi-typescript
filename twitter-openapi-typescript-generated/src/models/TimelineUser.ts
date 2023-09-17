@@ -67,7 +67,7 @@ export interface TimelineUser {
      * @type {string}
      * @memberof TimelineUser
      */
-    userDisplayType: string;
+    userDisplayType: TimelineUserUserDisplayTypeEnum;
     /**
      * 
      * @type {UserResults}
@@ -75,6 +75,18 @@ export interface TimelineUser {
      */
     userResults: UserResults;
 }
+
+
+/**
+ * @export
+ */
+export const TimelineUserUserDisplayTypeEnum = {
+    User: 'User',
+    UserDetailed: 'UserDetailed',
+    SubscribableUser: 'SubscribableUser'
+} as const;
+export type TimelineUserUserDisplayTypeEnum = typeof TimelineUserUserDisplayTypeEnum[keyof typeof TimelineUserUserDisplayTypeEnum];
+
 
 /**
  * Check if a given object implements the TimelineUser interface.

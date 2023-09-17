@@ -36,3 +36,10 @@ npm i twitter-openapi-typescript
 You should read the Test case.
 
 <https://github.com/fa0311/twitter-openapi-typescript/tree/master/twitter-openapi-typescript/test/api>
+
+## License
+
+This project is dual licensed. You can choose one of the following licenses:
+
+- [Custom License](./LICENSE)
+- [GNU Affero General Public License v3.0](./LICENSE.AGPL)

@@ -16,32 +16,32 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface TweetLegacySelfThread
+ * @interface SelfThread
  */
-export interface TweetLegacySelfThread {
+export interface SelfThread {
     /**
      * 
      * @type {string}
-     * @memberof TweetLegacySelfThread
+     * @memberof SelfThread
      */
     idStr: string;
 }
 
 /**
- * Check if a given object implements the TweetLegacySelfThread interface.
+ * Check if a given object implements the SelfThread interface.
  */
-export function instanceOfTweetLegacySelfThread(value: object): boolean {
+export function instanceOfSelfThread(value: object): boolean {
     let isInstance = true;
     isInstance = isInstance && "idStr" in value;
 
     return isInstance;
 }
 
-export function TweetLegacySelfThreadFromJSON(json: any): TweetLegacySelfThread {
-    return TweetLegacySelfThreadFromJSONTyped(json, false);
+export function SelfThreadFromJSON(json: any): SelfThread {
+    return SelfThreadFromJSONTyped(json, false);
 }
 
-export function TweetLegacySelfThreadFromJSONTyped(json: any, ignoreDiscriminator: boolean): TweetLegacySelfThread {
+export function SelfThreadFromJSONTyped(json: any, ignoreDiscriminator: boolean): SelfThread {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -51,7 +51,7 @@ export function TweetLegacySelfThreadFromJSONTyped(json: any, ignoreDiscriminato
     };
 }
 
-export function TweetLegacySelfThreadToJSON(value?: TweetLegacySelfThread | null): any {
+export function SelfThreadToJSON(value?: SelfThread | null): any {
     if (value === undefined) {
         return undefined;
     }

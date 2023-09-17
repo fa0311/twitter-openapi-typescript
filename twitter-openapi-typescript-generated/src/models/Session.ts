@@ -109,7 +109,7 @@ export interface Session {
      * @type {string}
      * @memberof Session
      */
-    superFollowsApplicationStatus: string;
+    superFollowsApplicationStatus: SessionSuperFollowsApplicationStatusEnum;
     /**
      * 
      * @type {UserFeatures}
@@ -123,6 +123,16 @@ export interface Session {
      */
     userId: string;
 }
+
+
+/**
+ * @export
+ */
+export const SessionSuperFollowsApplicationStatusEnum = {
+    NotStarted: 'NotStarted'
+} as const;
+export type SessionSuperFollowsApplicationStatusEnum = typeof SessionSuperFollowsApplicationStatusEnum[keyof typeof SessionSuperFollowsApplicationStatusEnum];
+
 
 /**
  * Check if a given object implements the Session interface.

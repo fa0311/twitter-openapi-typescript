@@ -13,12 +13,12 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import type { Media } from './Media';
+import type { MediaExtended } from './MediaExtended';
 import {
-    MediaFromJSON,
-    MediaFromJSONTyped,
-    MediaToJSON,
-} from './Media';
+    MediaExtendedFromJSON,
+    MediaExtendedFromJSONTyped,
+    MediaExtendedToJSON,
+} from './MediaExtended';
 
 /**
  * 
@@ -28,10 +28,10 @@ import {
 export interface ExtendedEntities {
     /**
      * 
-     * @type {Array<Media>}
+     * @type {Array<MediaExtended>}
      * @memberof ExtendedEntities
      */
-    media: Array<Media>;
+    media: Array<MediaExtended>;
 }
 
 /**
@@ -54,7 +54,7 @@ export function ExtendedEntitiesFromJSONTyped(json: any, ignoreDiscriminator: bo
     }
     return {
         
-        'media': ((json['media'] as Array<any>).map(MediaFromJSON)),
+        'media': ((json['media'] as Array<any>).map(MediaExtendedFromJSON)),
     };
 }
 
@@ -67,7 +67,7 @@ export function ExtendedEntitiesToJSON(value?: ExtendedEntities | null): any {
     }
     return {
         
-        'media': ((value.media as Array<any>).map(MediaToJSON)),
+        'media': ((value.media as Array<any>).map(MediaExtendedToJSON)),
     };
 }
 

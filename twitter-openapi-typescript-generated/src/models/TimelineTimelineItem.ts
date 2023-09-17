@@ -13,6 +13,12 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { ClientEventInfo } from './ClientEventInfo';
+import {
+    ClientEventInfoFromJSON,
+    ClientEventInfoFromJSONTyped,
+    ClientEventInfoToJSON,
+} from './ClientEventInfo';
 import type { ContentEntryType } from './ContentEntryType';
 import {
     ContentEntryTypeFromJSON,
@@ -46,10 +52,10 @@ export interface TimelineTimelineItem {
     typename: TypeName;
     /**
      * 
-     * @type {{ [key: string]: any; }}
+     * @type {ClientEventInfo}
      * @memberof TimelineTimelineItem
      */
-    clientEventInfo?: { [key: string]: any; };
+    clientEventInfo?: ClientEventInfo;
     /**
      * 
      * @type {ContentEntryType}
@@ -93,7 +99,7 @@ export function TimelineTimelineItemFromJSONTyped(json: any, ignoreDiscriminator
     return {
         
         'typename': TypeNameFromJSON(json['__typename']),
-        'clientEventInfo': !exists(json, 'clientEventInfo') ? undefined : json['clientEventInfo'],
+        'clientEventInfo': !exists(json, 'clientEventInfo') ? undefined : ClientEventInfoFromJSON(json['clientEventInfo']),
         'entryType': ContentEntryTypeFromJSON(json['entryType']),
         'feedbackInfo': !exists(json, 'feedbackInfo') ? undefined : json['feedbackInfo'],
         'itemContent': ItemContentUnionFromJSON(json['itemContent']),
@@ -110,7 +116,7 @@ export function TimelineTimelineItemToJSON(value?: TimelineTimelineItem | null):
     return {
         
         '__typename': TypeNameToJSON(value.typename),
-        'clientEventInfo': value.clientEventInfo,
+        'clientEventInfo': ClientEventInfoToJSON(value.clientEventInfo),
         'entryType': ContentEntryTypeToJSON(value.entryType),
         'feedbackInfo': value.feedbackInfo,
         'itemContent': ItemContentUnionToJSON(value.itemContent),

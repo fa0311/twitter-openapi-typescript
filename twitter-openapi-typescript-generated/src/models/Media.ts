@@ -19,6 +19,12 @@ import {
     MediaOriginalInfoFromJSONTyped,
     MediaOriginalInfoToJSON,
 } from './MediaOriginalInfo';
+import type { MediaSizes } from './MediaSizes';
+import {
+    MediaSizesFromJSON,
+    MediaSizesFromJSONTyped,
+    MediaSizesToJSON,
+} from './MediaSizes';
 
 /**
  * 
@@ -40,10 +46,10 @@ export interface Media {
     expandedUrl: string;
     /**
      * 
-     * @type {{ [key: string]: any; }}
+     * @type {object}
      * @memberof Media
      */
-    extMediaAvailability?: { [key: string]: any; };
+    features?: object;
     /**
      * 
      * @type {string}
@@ -61,12 +67,6 @@ export interface Media {
      * @type {string}
      * @memberof Media
      */
-    mediaKey?: string;
-    /**
-     * 
-     * @type {string}
-     * @memberof Media
-     */
     mediaUrlHttps: string;
     /**
      * 
@@ -76,16 +76,16 @@ export interface Media {
     originalInfo: MediaOriginalInfo;
     /**
      * 
-     * @type {{ [key: string]: any; }}
+     * @type {MediaSizes}
      * @memberof Media
      */
-    sizes: { [key: string]: any; };
+    sizes: MediaSizes;
     /**
      * 
      * @type {string}
      * @memberof Media
      */
-    type: string;
+    type: MediaTypeEnum;
     /**
      * 
      * @type {string}
@@ -93,6 +93,18 @@ export interface Media {
      */
     url: string;
 }
+
+
+/**
+ * @export
+ */
+export const MediaTypeEnum = {
+    Photo: 'photo',
+    Video: 'video',
+    AnimatedGif: 'animated_gif'
+} as const;
+export type MediaTypeEnum = typeof MediaTypeEnum[keyof typeof MediaTypeEnum];
+
 
 /**
  * Check if a given object implements the Media interface.
@@ -124,13 +136,12 @@ export function MediaFromJSONTyped(json: any, ignoreDiscriminator: boolean): Med
         
         'displayUrl': json['display_url'],
         'expandedUrl': json['expanded_url'],
-        'extMediaAvailability': !exists(json, 'ext_media_availability') ? undefined : json['ext_media_availability'],
+        'features': !exists(json, 'features') ? undefined : json['features'],
         'idStr': json['id_str'],
         'indices': json['indices'],
-        'mediaKey': !exists(json, 'media_key') ? undefined : json['media_key'],
         'mediaUrlHttps': json['media_url_https'],
         'originalInfo': MediaOriginalInfoFromJSON(json['original_info']),
-        'sizes': json['sizes'],
+        'sizes': MediaSizesFromJSON(json['sizes']),
         'type': json['type'],
         'url': json['url'],
     };
@@ -147,13 +158,12 @@ export function MediaToJSON(value?: Media | null): any {
         
         'display_url': value.displayUrl,
         'expanded_url': value.expandedUrl,
-        'ext_media_availability': value.extMediaAvailability,
+        'features': value.features,
         'id_str': value.idStr,
         'indices': value.indices,
-        'media_key': value.mediaKey,
         'media_url_https': value.mediaUrlHttps,
         'original_info': MediaOriginalInfoToJSON(value.originalInfo),
-        'sizes': value.sizes,
+        'sizes': MediaSizesToJSON(value.sizes),
         'type': value.type,
         'url': value.url,
     };

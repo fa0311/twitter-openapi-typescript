@@ -55,6 +55,13 @@ import {
     TimelineShowAlertToJSON,
 } from './TimelineShowAlert';
 import {
+    TimelineShowCover,
+    instanceOfTimelineShowCover,
+    TimelineShowCoverFromJSON,
+    TimelineShowCoverFromJSONTyped,
+    TimelineShowCoverToJSON,
+} from './TimelineShowCover';
+import {
     TimelineTerminateTimeline,
     instanceOfTimelineTerminateTimeline,
     TimelineTerminateTimelineFromJSON,
@@ -67,7 +74,7 @@ import {
  * 
  * @export
  */
-export type InstructionUnion = { type: 'TimelineAddEntries' } & TimelineAddEntries | { type: 'TimelineAddToModule' } & TimelineAddToModule | { type: 'TimelineClearCache' } & TimelineClearCache | { type: 'TimelinePinEntry' } & TimelinePinEntry | { type: 'TimelineReplaceEntry' } & TimelineReplaceEntry | { type: 'TimelineShowAlert' } & TimelineShowAlert | { type: 'TimelineTerminateTimeline' } & TimelineTerminateTimeline;
+export type InstructionUnion = { type: 'TimelineAddEntries' } & TimelineAddEntries | { type: 'TimelineAddToModule' } & TimelineAddToModule | { type: 'TimelineClearCache' } & TimelineClearCache | { type: 'TimelinePinEntry' } & TimelinePinEntry | { type: 'TimelineReplaceEntry' } & TimelineReplaceEntry | { type: 'TimelineShowAlert' } & TimelineShowAlert | { type: 'TimelineShowCover' } & TimelineShowCover | { type: 'TimelineTerminateTimeline' } & TimelineTerminateTimeline;
 
 export function InstructionUnionFromJSON(json: any): InstructionUnion {
     return InstructionUnionFromJSONTyped(json, false);
@@ -90,6 +97,8 @@ export function InstructionUnionFromJSONTyped(json: any, ignoreDiscriminator: bo
             return {...TimelineReplaceEntryFromJSONTyped(json, true), type: 'TimelineReplaceEntry'};
         case 'TimelineShowAlert':
             return {...TimelineShowAlertFromJSONTyped(json, true), type: 'TimelineShowAlert'};
+        case 'TimelineShowCover':
+            return {...TimelineShowCoverFromJSONTyped(json, true), type: 'TimelineShowCover'};
         case 'TimelineTerminateTimeline':
             return {...TimelineTerminateTimelineFromJSONTyped(json, true), type: 'TimelineTerminateTimeline'};
         default:
@@ -117,6 +126,8 @@ export function InstructionUnionToJSON(value?: InstructionUnion | null): any {
             return TimelineReplaceEntryToJSON(value);
         case 'TimelineShowAlert':
             return TimelineShowAlertToJSON(value);
+        case 'TimelineShowCover':
+            return TimelineShowCoverToJSON(value);
         case 'TimelineTerminateTimeline':
             return TimelineTerminateTimelineToJSON(value);
         default:

@@ -27,6 +27,7 @@ export const TypeName = {
     TweetTombstone: 'TweetTombstone',
     TimelinePrompt: 'TimelinePrompt',
     TimelineMessagePrompt: 'TimelineMessagePrompt',
+    TweetUnavailable: 'TweetUnavailable',
     Tweet: 'Tweet',
     User: 'User',
     UserUnavailable: 'UserUnavailable'

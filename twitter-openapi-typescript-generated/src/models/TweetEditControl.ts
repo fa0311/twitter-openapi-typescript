@@ -13,12 +13,25 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { TweetEditControlInitial } from './TweetEditControlInitial';
+import {
+    TweetEditControlInitialFromJSON,
+    TweetEditControlInitialFromJSONTyped,
+    TweetEditControlInitialToJSON,
+} from './TweetEditControlInitial';
+
 /**
  * 
  * @export
  * @interface TweetEditControl
  */
 export interface TweetEditControl {
+    /**
+     * 
+     * @type {TweetEditControlInitial}
+     * @memberof TweetEditControl
+     */
+    editControlInitial?: TweetEditControlInitial;
     /**
      * 
      * @type {Array<string>}
@@ -37,6 +50,12 @@ export interface TweetEditControl {
      * @memberof TweetEditControl
      */
     editsRemaining?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TweetEditControl
+     */
+    initialTweetId?: string;
     /**
      * 
      * @type {boolean}
@@ -64,9 +83,11 @@ export function TweetEditControlFromJSONTyped(json: any, ignoreDiscriminator: bo
     }
     return {
         
+        'editControlInitial': !exists(json, 'edit_control_initial') ? undefined : TweetEditControlInitialFromJSON(json['edit_control_initial']),
         'editTweetIds': !exists(json, 'edit_tweet_ids') ? undefined : json['edit_tweet_ids'],
         'editableUntilMsecs': !exists(json, 'editable_until_msecs') ? undefined : json['editable_until_msecs'],
         'editsRemaining': !exists(json, 'edits_remaining') ? undefined : json['edits_remaining'],
+        'initialTweetId': !exists(json, 'initial_tweet_id') ? undefined : json['initial_tweet_id'],
         'isEditEligible': !exists(json, 'is_edit_eligible') ? undefined : json['is_edit_eligible'],
     };
 }
@@ -80,9 +101,11 @@ export function TweetEditControlToJSON(value?: TweetEditControl | null): any {
     }
     return {
         
+        'edit_control_initial': TweetEditControlInitialToJSON(value.editControlInitial),
         'edit_tweet_ids': value.editTweetIds,
         'editable_until_msecs': value.editableUntilMsecs,
         'edits_remaining': value.editsRemaining,
+        'initial_tweet_id': value.initialTweetId,
         'is_edit_eligible': value.isEditEligible,
     };
 }

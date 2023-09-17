@@ -13,12 +13,12 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import type { TweetCardLegacyBindingValuesInner } from './TweetCardLegacyBindingValuesInner';
+import type { TweetCardLegacyBindingValue } from './TweetCardLegacyBindingValue';
 import {
-    TweetCardLegacyBindingValuesInnerFromJSON,
-    TweetCardLegacyBindingValuesInnerFromJSONTyped,
-    TweetCardLegacyBindingValuesInnerToJSON,
-} from './TweetCardLegacyBindingValuesInner';
+    TweetCardLegacyBindingValueFromJSON,
+    TweetCardLegacyBindingValueFromJSONTyped,
+    TweetCardLegacyBindingValueToJSON,
+} from './TweetCardLegacyBindingValue';
 
 /**
  * 
@@ -28,10 +28,10 @@ import {
 export interface TweetCardLegacy {
     /**
      * 
-     * @type {Array<TweetCardLegacyBindingValuesInner>}
+     * @type {Array<TweetCardLegacyBindingValue>}
      * @memberof TweetCardLegacy
      */
-    bindingValues: Array<TweetCardLegacyBindingValuesInner>;
+    bindingValues: Array<TweetCardLegacyBindingValue>;
     /**
      * 
      * @type {string}
@@ -68,7 +68,7 @@ export function TweetCardLegacyFromJSONTyped(json: any, ignoreDiscriminator: boo
     }
     return {
         
-        'bindingValues': ((json['binding_values'] as Array<any>).map(TweetCardLegacyBindingValuesInnerFromJSON)),
+        'bindingValues': ((json['binding_values'] as Array<any>).map(TweetCardLegacyBindingValueFromJSON)),
         'name': json['name'],
         'url': json['url'],
     };
@@ -83,7 +83,7 @@ export function TweetCardLegacyToJSON(value?: TweetCardLegacy | null): any {
     }
     return {
         
-        'binding_values': ((value.bindingValues as Array<any>).map(TweetCardLegacyBindingValuesInnerToJSON)),
+        'binding_values': ((value.bindingValues as Array<any>).map(TweetCardLegacyBindingValueToJSON)),
         'name': value.name,
         'url': value.url,
     };

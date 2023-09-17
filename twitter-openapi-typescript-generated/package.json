@@ -16,6 +16,7 @@
   "devDependencies": {
     "typescript": "^4.0"
   },
+  "license": "custom license or AGPL-3.0-or-later",
   "keywords": [
     "twitter",
     "api",

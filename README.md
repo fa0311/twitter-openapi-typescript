@@ -43,13 +43,16 @@ npm run build
 
 Setup
 
-It cannot be installed from npm.  
-Plan to release it in v1.0.0 with npm.  
-
 ```shell
-git clone https://github.com/fa0311/twitter-openapi-typescript
-npm install ./twitter-openapi-typescript/twitter-openapi-typescript
+npm twitter-openapi-typescript-generated
 ```
+
+License
+
+This project is dual licensed. You can choose one of the following licenses:
+
+- [Custom License](./LICENSE)
+- [GNU Affero General Public License v3.0](./LICENSE.AGPL)
 
 Usage
 

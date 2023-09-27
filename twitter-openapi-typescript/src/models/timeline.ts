@@ -22,7 +22,7 @@ export type TweetApiUtilsData = {
 
 export type UserApiUtilsData = {
   raw: i.UserResults;
-  user: i.User;
+  user: i.User | undefined;
 };
 
 export type TimelineApiUtilsResponse<T> = {

@@ -93,8 +93,8 @@ export class UserListApiUtils {
   async getFollowers(param: GetFollowersParam): Promise<ResponseType> {
     const args = {
       userId: param.userId,
-      ...(param.cursor == null ? {} : { cursor: param.cursor }),
-      ...(param.count == null ? {} : { count: param.count }),
+      ...(param.cursor == undefined ? {} : { cursor: param.cursor }),
+      ...(param.count == undefined ? {} : { count: param.count }),
       ...param.extraParam,
     };
     const response = await this.request({
@@ -108,8 +108,8 @@ export class UserListApiUtils {
   async getFollowing(param: GetFollowingParam): Promise<ResponseType> {
     const args = {
       userId: param.userId,
-      ...(param.cursor == null ? {} : { cursor: param.cursor }),
-      ...(param.count == null ? {} : { count: param.count }),
+      ...(param.cursor == undefined ? {} : { cursor: param.cursor }),
+      ...(param.count == undefined ? {} : { count: param.count }),
       ...param.extraParam,
     };
     const response = await this.request({
@@ -124,8 +124,8 @@ export class UserListApiUtils {
   async getFollowersYouKnow(param: GetFollowersYouKnowParam): Promise<ResponseType> {
     const args = {
       userId: param.userId,
-      ...(param.cursor == null ? {} : { cursor: param.cursor }),
-      ...(param.count == null ? {} : { count: param.count }),
+      ...(param.cursor == undefined ? {} : { cursor: param.cursor }),
+      ...(param.count == undefined ? {} : { count: param.count }),
       ...param.extraParam,
     };
     const response = await this.request({
@@ -140,8 +140,8 @@ export class UserListApiUtils {
   async getFavoriters(param: GetFavoritersParam): Promise<ResponseType> {
     const args = {
       tweetId: param.tweetId,
-      ...(param.cursor == null ? {} : { cursor: param.cursor }),
-      ...(param.count == null ? {} : { count: param.count }),
+      ...(param.cursor == undefined ? {} : { cursor: param.cursor }),
+      ...(param.count == undefined ? {} : { count: param.count }),
       ...param.extraParam,
     };
     const response = await this.request({
@@ -156,8 +156,8 @@ export class UserListApiUtils {
   async getRetweeters(param: GetRetweetersParam): Promise<ResponseType> {
     const args = {
       tweetId: param.tweetId,
-      ...(param.cursor == null ? {} : { cursor: param.cursor }),
-      ...(param.count == null ? {} : { count: param.count }),
+      ...(param.cursor == undefined ? {} : { cursor: param.cursor }),
+      ...(param.count == undefined ? {} : { count: param.count }),
       ...param.extraParam,
     };
     const response = await this.request({

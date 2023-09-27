@@ -15,7 +15,8 @@
       "@test/*": ["./test/*"]
     },
     "declarationMap": true,
-    "sourceMap": true
+    "sourceMap": true,
+    "strict": true
   },
   "exclude": ["dist", "node_modules", "test"],
   "exports": {

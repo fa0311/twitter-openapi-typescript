@@ -6,6 +6,7 @@ import { error } from 'console';
 
 type PostCreateTweetParam = {
   tweetText: string;
+  media_ids?: string[];
   extraParam?: { [key: string]: any };
 };
 
@@ -48,9 +49,16 @@ export class PostApiUtils {
       tweetText: param.tweetText,
       ...param.extraParam,
     };
+
     const queryId = 'CreateTweet';
     const features = i.PostCreateTweetRequestFeaturesFromJSON(this.flag[queryId]['features']);
     const variables = i.PostCreateTweetRequestVariablesFromJSON(this.flag[queryId]['variables']);
+    variables.media.mediaEntities =
+      param.media_ids?.map((mediaId) => ({
+        mediaId: mediaId,
+        taggedUsers: [],
+      })) ?? [];
+
     const response = await this.api.postCreateTweetRaw({
       pathQueryId: this.flag[queryId]['queryId'],
       postCreateTweetRequest: {

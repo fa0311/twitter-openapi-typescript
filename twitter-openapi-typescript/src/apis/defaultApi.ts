@@ -51,7 +51,9 @@ export class DefaultApiUtils {
     return response;
   }
 
-  async getTweetResultByRestId(param: TweetResultByRestIdParam): Promise<TwitterApiUtilsResponse<TweetApiUtilsData>> {
+  async getTweetResultByRestId(
+    param: TweetResultByRestIdParam,
+  ): Promise<TwitterApiUtilsResponse<TweetApiUtilsData | undefined>> {
     const args = {
       tweetId: param.tweetId,
       ...param.extraParam,

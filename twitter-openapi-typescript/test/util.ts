@@ -4,9 +4,9 @@ import { TweetApiUtilsData, UserApiUtilsData } from '@/models';
 import { logger } from '@test/init';
 
 export const printTweet = (tweet: TweetApiUtilsData) => {
-  logger.log(`${tweet.user.legacy.screenName}: ${tweet.tweet.legacy.fullText}`.replace(/\n/g, ' '));
+  logger.log(`${tweet.user.legacy.screenName}: ${tweet.tweet.legacy?.fullText}`.replace(/\n/g, ' '));
   tweet.replies.forEach((reply) => {
-    printLegacyTweet(reply.user.legacy, reply.tweet.legacy);
+    reply.tweet.legacy && printLegacyTweet(reply.user.legacy, reply.tweet.legacy);
   });
 };
 
@@ -16,7 +16,7 @@ export const printLegacyTweet = (user: i.UserLegacy, tweet: i.TweetLegacy) => {
 };
 
 export const printUser = (user: UserApiUtilsData) => {
-  printLegacyUser(user.user.legacy);
+  user.user && printLegacyUser(user.user.legacy);
 };
 
 export const printLegacyUser = (user: i.UserLegacy) => {

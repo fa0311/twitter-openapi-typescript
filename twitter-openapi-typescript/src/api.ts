@@ -28,7 +28,7 @@ export type TwitterOpenApiCookie = {
 };
 
 export class TwitterOpenApi {
-  static hash = '591bddfa4707b3c01a0b1ca081226e7c6ff230f8';
+  static hash = '7560ee63488ec9d15f5389e64867f2413701d7dd';
   static url = `https://raw.githubusercontent.com/fa0311/twitter-openapi/${this.hash}/src/config/placeholder.json`;
   static twitter = 'https://twitter.com/home';
 
@@ -75,7 +75,7 @@ export class TwitterOpenApi {
 
     const re = new RegExp('<script nonce="([a-zA-Z0-9]{48})">(document.cookie="(.*?)";)+<\\/script>');
 
-    const script = html.match(re)[0];
+    const script = html.match(re)![0];
     script
       .split('document.cookie="')
       .slice(1)

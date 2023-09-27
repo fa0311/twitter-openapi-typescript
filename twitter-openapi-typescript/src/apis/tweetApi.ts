@@ -113,8 +113,8 @@ export class TweetApiUtils {
   async getTweetDetail(param: GetTweetDetailParam): Promise<ResponseType> {
     const args = {
       focalTweetId: param.focalTweetId,
-      ...(param.cursor == null ? {} : { cursor: param.cursor }),
-      ...(param.controllerData == null ? {} : { controller_data: param.controllerData }),
+      ...(param.cursor == undefined ? {} : { cursor: param.cursor }),
+      ...(param.controllerData == undefined ? {} : { controller_data: param.controllerData }),
       ...param.extraParam,
     };
 
@@ -129,9 +129,9 @@ export class TweetApiUtils {
   async getSearchTimeline(param: GetSearchTimelineParam): Promise<ResponseType> {
     const args = {
       rawQuery: param.rawQuery,
-      ...(param.product == null ? {} : { product: param.product }),
-      ...(param.cursor == null ? {} : { cursor: param.cursor }),
-      ...(param.count == null ? {} : { count: param.count }),
+      ...(param.product == undefined ? {} : { product: param.product }),
+      ...(param.cursor == undefined ? {} : { cursor: param.cursor }),
+      ...(param.count == undefined ? {} : { count: param.count }),
       ...param.extraParam,
     };
 
@@ -146,8 +146,8 @@ export class TweetApiUtils {
 
   async getHomeTimeline(param: GetHomeTimelineParam = {}): Promise<ResponseType> {
     const args = {
-      ...(param.count == null ? {} : { count: param.count }),
-      ...(param.couser == null ? {} : { couser: param.couser }),
+      ...(param.count == undefined ? {} : { count: param.count }),
+      ...(param.couser == undefined ? {} : { couser: param.couser }),
       ...param.extraParam,
     };
 
@@ -162,8 +162,8 @@ export class TweetApiUtils {
 
   async getHomeLatestTimeline(param: GetHomeLatestTimelineParam = {}): Promise<ResponseType> {
     const args = {
-      ...(param.count == null ? {} : { count: param.count }),
-      ...(param.cursor == null ? {} : { cursor: param.cursor }),
+      ...(param.count == undefined ? {} : { count: param.count }),
+      ...(param.cursor == undefined ? {} : { cursor: param.cursor }),
       ...param.extraParam,
     };
 
@@ -179,14 +179,14 @@ export class TweetApiUtils {
   async getListLatestTweetsTimeline(param: GetListLatestTweetsTimelineParam): Promise<ResponseType> {
     const args = {
       listId: param.listId,
-      ...(param.count == null ? {} : { count: param.count }),
-      ...(param.cursor == null ? {} : { cursor: param.cursor }),
+      ...(param.count == undefined ? {} : { count: param.count }),
+      ...(param.cursor == undefined ? {} : { cursor: param.cursor }),
       ...param.extraParam,
     };
 
     const response = await this.request({
       apiFn: this.api.getListLatestTweetsTimelineRaw,
-      convertFn: (e) => e.data.list.tweetsTimeline.timeline.instructions,
+      convertFn: (e) => e.data.list.tweetsTimeline.timeline?.instructions ?? [],
       key: 'ListLatestTweetsTimeline',
       param: args,
     });
@@ -196,8 +196,8 @@ export class TweetApiUtils {
   async getUserTweets(param: GetUserTweetsParam): Promise<ResponseType> {
     const args = {
       userId: param.userId,
-      ...(param.count == null ? {} : { count: param.count }),
-      ...(param.cursor == null ? {} : { cursor: param.cursor }),
+      ...(param.count == undefined ? {} : { count: param.count }),
+      ...(param.cursor == undefined ? {} : { cursor: param.cursor }),
       ...param.extraParam,
     };
 
@@ -213,8 +213,8 @@ export class TweetApiUtils {
   async getUserTweetsAndReplies(param: GetUserTweetsAndRepliesParam): Promise<ResponseType> {
     const args = {
       userId: param.userId,
-      ...(param.count == null ? {} : { count: param.count }),
-      ...(param.cursor == null ? {} : { cursor: param.cursor }),
+      ...(param.count == undefined ? {} : { count: param.count }),
+      ...(param.cursor == undefined ? {} : { cursor: param.cursor }),
       ...param.extraParam,
     };
 
@@ -230,8 +230,8 @@ export class TweetApiUtils {
   async getUserMedia(param: GetUserMediaParam): Promise<ResponseType> {
     const args = {
       userId: param.userId,
-      ...(param.count == null ? {} : { count: param.count }),
-      ...(param.cursor == null ? {} : { cursor: param.cursor }),
+      ...(param.count == undefined ? {} : { count: param.count }),
+      ...(param.cursor == undefined ? {} : { cursor: param.cursor }),
       ...param.extraParam,
     };
 
@@ -246,8 +246,8 @@ export class TweetApiUtils {
   async getLikes(param: GetLikesParam): Promise<ResponseType> {
     const args = {
       userId: param.userId,
-      ...(param.count == null ? {} : { count: param.count }),
-      ...(param.cursor == null ? {} : { cursor: param.cursor }),
+      ...(param.count == undefined ? {} : { count: param.count }),
+      ...(param.cursor == undefined ? {} : { cursor: param.cursor }),
       ...param.extraParam,
     };
 
@@ -261,8 +261,8 @@ export class TweetApiUtils {
   }
   async getBookmarks(param: GetBookmarksParam = {}): Promise<ResponseType> {
     const args = {
-      ...(param.count == null ? {} : { count: param.count }),
-      ...(param.cursor == null ? {} : { cursor: param.cursor }),
+      ...(param.count == undefined ? {} : { count: param.count }),
+      ...(param.cursor == undefined ? {} : { cursor: param.cursor }),
       ...param.extraParam,
     };
 

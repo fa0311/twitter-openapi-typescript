@@ -6,7 +6,7 @@ test('getUserByRestId', async () => {
   const client = await getClient();
   const response = await client.getUsersApi().getUsersByRestIds({ userIds: ['44196397'] });
   response.data.forEach((e) => {
-    printLegacyUser(e.user.legacy);
+    e.user && printLegacyUser(e.user.legacy);
   });
   expect(response.raw.response.ok).toBe(true);
 });

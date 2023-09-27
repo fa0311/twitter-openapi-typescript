@@ -29,7 +29,7 @@ export class UserApiUtils {
     const response = await apiFn(args);
     const checked = errorCheck(await response.value());
     const result = param.convertFn(checked);
-    const user = userOrNullConverter(result.result);
+    const user = result.result && userOrNullConverter(result.result);
 
     return {
       raw: { response: response.raw },

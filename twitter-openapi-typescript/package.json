@@ -1,6 +1,6 @@
 {
   "name": "twitter-openapi-typescript",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "Implementation of Twitter internal API in TypeScript",
   "scripts": {
     "test": "jest",
@@ -22,24 +22,24 @@
   "main": "./dist/src/index.js",
   "typings": "./dist/src/index.d.ts",
   "dependencies": {
-    "twitter-openapi-typescript-generated": "^0.0.11"
+    "twitter-openapi-typescript-generated": "^0.0.12"
   },
   "devDependencies": {
-    "@types/jest": "^28.1.8",
-    "@types/node": "^20.2.0",
-    "@types/node-fetch": "^2.0.0",
-    "@typescript-eslint/eslint-plugin": "^5.53.0",
-    "@typescript-eslint/parser": "^5.53.0",
-    "dotenv": "^16.0.0",
-    "eslint": "^8.0.0",
-    "eslint-config-standard-with-typescript": "^35.0.0",
-    "eslint-plugin-import": "^2.25.0",
-    "eslint-plugin-n": "^15.0.0",
-    "eslint-plugin-promise": "^6.0.0",
-    "jest": "^28.0.0",
-    "log4js": "^6.9.1",
+    "@types/jest": "any",
+    "@types/node": "any",
+    "@types/node-fetch": "any",
+    "@typescript-eslint/eslint-plugin": "any",
+    "@typescript-eslint/parser": "any",
+    "dotenv": "^16.3.0",
+    "eslint": "^8.50.0",
+    "eslint-config-standard-with-typescript": "any",
+    "eslint-plugin-import": "any",
+    "eslint-plugin-n": "any",
+    "eslint-plugin-promise": "any",
+    "jest": "^29.7.0",
+    "ts-jest": "any",
+    "log4js": "^6.9.0",
     "node-fetch": "^2.0.0",
-    "ts-jest": "^28.0.0",
-    "typescript": "^5.1"
+    "typescript": "^5.2.0"
   }
 }

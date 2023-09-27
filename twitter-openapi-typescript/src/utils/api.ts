@@ -3,13 +3,13 @@ import { TweetApiUtilsData, UserApiUtilsData, CursorApiUtilsResponse, ApiUtilsHe
 
 export const getKwargs = (flag: { [key: string]: any }, additional: { [key: string]: any }): any => {
   const kwargs: { [key: string]: any } = { pathQueryId: flag.queryId };
-  if (flag.variables != null) {
+  if (flag.variables != undefined) {
     kwargs.variables = JSON.stringify({ ...flag.variables, ...additional });
   }
-  if (flag.features != null) {
+  if (flag.features != undefined) {
     kwargs.features = JSON.stringify(flag.features);
   }
-  if (flag.fieldToggles != null) {
+  if (flag.fieldToggles != undefined) {
     kwargs.fieldToggles = JSON.stringify(flag.fieldToggles);
   }
   return kwargs;
@@ -22,6 +22,7 @@ export const errorCheck = <T>(data: i.Errors | T): T => {
   } else if (res.error != undefined) {
     throw Error(res.errors[0].message);
   }
+  throw Error();
 };
 
 export const instructionToEntry = (item: i.InstructionUnion[]): i.TimelineAddEntry[] => {
@@ -40,8 +41,8 @@ export const tweetEntriesConverter = (item: i.TimelineAddEntry[]): TweetApiUtils
     .map((e) => {
       if (e.content.entryType == i.ContentEntryType.TimelineTimelineItem) {
         const item = (e.content as i.TimelineTimelineItem).itemContent;
-        const timeline = item.itemType == i.ContentItemType.TimelineTweet ? (item as i.TimelineTweet) : null;
-        if (timeline == null) return null;
+        const timeline = item.itemType == i.ContentItemType.TimelineTweet ? (item as i.TimelineTweet) : undefined;
+        if (timeline == undefined) return undefined;
         return buildTweetApiUtils({
           result: timeline.tweetResults,
           promotedMetadata: timeline.promotedMetadata,
@@ -51,7 +52,7 @@ export const tweetEntriesConverter = (item: i.TimelineAddEntry[]): TweetApiUtils
         const timelineList = item
           .filter((e) => e.item.itemContent.itemType == i.ContentItemType.TimelineTweet)
           .map((e) => e.item.itemContent as i.TimelineTweet);
-        if (timelineList.length == 0) return null;
+        if (timelineList.length == 0) return undefined;
         const timeline = timelineList[0];
         return buildTweetApiUtils({
           result: timeline.tweetResults,
@@ -60,7 +61,7 @@ export const tweetEntriesConverter = (item: i.TimelineAddEntry[]): TweetApiUtils
         });
       }
     })
-    .filter((e): e is NonNullable<typeof e> => e != null);
+    .filter((e): e is NonNullable<typeof e> => e != undefined);
 };
 
 type buildTweetApiUtilsArgs = {
@@ -70,16 +71,17 @@ type buildTweetApiUtilsArgs = {
 };
 export const buildTweetApiUtils = (args: buildTweetApiUtilsArgs): TweetApiUtilsData | undefined => {
   const tweet = tweetResultsConverter(args.result);
-  if (tweet == null) return undefined;
-  const user = userOrNullConverter(tweet.core.userResults.result);
-  if (user == null) return undefined;
+  if (tweet == undefined) return undefined;
+  const result = tweet.core?.userResults.result;
+  const user = result && userOrNullConverter(result);
+  if (user == undefined) return undefined;
   const quoted = tweet.quotedStatusResult;
   const retweeted = tweet.legacy?.retweetedStatusResult;
 
   const reply =
     args.reply
       ?.map((e) => buildTweetApiUtils({ result: e.tweetResults, promotedMetadata: e.promotedMetadata }))
-      .filter((e): e is NonNullable<typeof e> => e != null) ?? [];
+      .filter((e): e is NonNullable<typeof e> => e != undefined) ?? [];
   return {
     raw: args.result,
     promotedMetadata: args.promotedMetadata,
@@ -104,7 +106,7 @@ export const tweetResultsConverter = (tweetResults: i.ItemResult): i.Tweet | und
   throw Error();
 };
 
-export const userOrNullConverter = (userResults: i.UserUnion): i.User | null => {
+export const userOrNullConverter = (userResults: i.UserUnion): i.User | undefined => {
   if (userResults.typename == i.TypeName.User) {
     return userResults as i.User;
   }
@@ -120,20 +122,24 @@ export const userEntriesConverter = (item: i.TimelineAddEntry[]): i.UserResults[
         }
       }
     })
-    .filter((e): e is NonNullable<typeof e> => e != null);
+    .filter((e): e is NonNullable<typeof e> => e != undefined);
+};
+
+const a = (a: string) => {
+  return a;
 };
 
 export const userResultConverter = (user: i.UserResults[]): UserApiUtilsData[] => {
   return user
     .map((e) => {
-      const user = userOrNullConverter(e.result);
-      if (user == null) return null;
+      const user = e.result && userOrNullConverter(e.result);
+      if (user == undefined) return undefined;
       return {
         raw: e,
         user: user,
       };
     })
-    .filter((e): e is NonNullable<typeof e> => e != null);
+    .filter((e): e is NonNullable<typeof e> => e != undefined);
 };
 
 export const entriesCursor = (item: i.TimelineAddEntry[]): CursorApiUtilsResponse => {
@@ -148,7 +154,7 @@ export const entriesCursor = (item: i.TimelineAddEntry[]): CursorApiUtilsRespons
         }
       }
     })
-    .filter((e): e is NonNullable<typeof e> => e != null);
+    .filter((e): e is NonNullable<typeof e> => e != undefined);
   return buildCursor(cursorList);
 };
 
@@ -162,16 +168,16 @@ export const buildCursor = (cursorList: i.TimelineTimelineCursor[]): CursorApiUt
 export const buildHeader = (headers: Headers): ApiUtilsHeader => {
   return {
     raw: headers,
-    connectionHash: headers.get('x-connection-hash'),
-    contentTypeOptions: headers.get('x-content-type-options'),
-    frameOptions: headers.get('x-frame-options'),
+    connectionHash: headers.get('x-connection-hash')!,
+    contentTypeOptions: headers.get('x-content-type-options')!,
+    frameOptions: headers.get('x-frame-options')!,
     rateLimitLimit: Number(headers.get('x-rate-limit-limit') ?? 0),
     rateLimitRemaining: Number(headers.get('x-rate-limit-remaining') ?? 0),
     rateLimitReset: Number(headers.get('x-rate-limit-reset') ?? 0),
     responseTime: Number(headers.get('x-response-time')),
     tfePreserveBody: headers.get('x-tfe-preserve-body') == 'true',
-    transactionId: headers.get('x-transaction-id'),
-    twitterResponseTags: headers.get('x-twitter-response-tags'),
+    transactionId: headers.get('x-transaction-id')!,
+    twitterResponseTags: headers.get('x-twitter-response-tags')!,
     xssProtection: Number(headers.get('x-xss-protection')),
   };
 };

@@ -79,7 +79,7 @@ export interface MediaExtended {
      * @type {ExtMediaAvailability}
      * @memberof MediaExtended
      */
-    extMediaAvailability: ExtMediaAvailability;
+    extMediaAvailability?: ExtMediaAvailability;
     /**
      * 
      * @type {object}
@@ -167,7 +167,6 @@ export function instanceOfMediaExtended(value: object): boolean {
     let isInstance = true;
     isInstance = isInstance && "displayUrl" in value;
     isInstance = isInstance && "expandedUrl" in value;
-    isInstance = isInstance && "extMediaAvailability" in value;
     isInstance = isInstance && "idStr" in value;
     isInstance = isInstance && "indices" in value;
     isInstance = isInstance && "mediaKey" in value;
@@ -193,7 +192,7 @@ export function MediaExtendedFromJSONTyped(json: any, ignoreDiscriminator: boole
         'additionalMediaInfo': !exists(json, 'additional_media_info') ? undefined : AdditionalMediaInfoFromJSON(json['additional_media_info']),
         'displayUrl': json['display_url'],
         'expandedUrl': json['expanded_url'],
-        'extMediaAvailability': ExtMediaAvailabilityFromJSON(json['ext_media_availability']),
+        'extMediaAvailability': !exists(json, 'ext_media_availability') ? undefined : ExtMediaAvailabilityFromJSON(json['ext_media_availability']),
         'features': !exists(json, 'features') ? undefined : json['features'],
         'idStr': json['id_str'],
         'indices': json['indices'],

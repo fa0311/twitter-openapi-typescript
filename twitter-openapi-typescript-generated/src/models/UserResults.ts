@@ -31,7 +31,7 @@ export interface UserResults {
      * @type {UserUnion}
      * @memberof UserResults
      */
-    result: UserUnion;
+    result?: UserUnion;
 }
 
 /**
@@ -39,7 +39,6 @@ export interface UserResults {
  */
 export function instanceOfUserResults(value: object): boolean {
     let isInstance = true;
-    isInstance = isInstance && "result" in value;
 
     return isInstance;
 }
@@ -54,7 +53,7 @@ export function UserResultsFromJSONTyped(json: any, ignoreDiscriminator: boolean
     }
     return {
         
-        'result': UserUnionFromJSON(json['result']),
+        'result': !exists(json, 'result') ? undefined : UserUnionFromJSON(json['result']),
     };
 }
 

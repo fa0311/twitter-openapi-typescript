@@ -123,15 +123,23 @@ export class V11PostApi extends runtime.BaseAPI {
         }
 
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["x-twitter-active-user"] = this.configuration.apiKey("x-twitter-active-user"); // ActiveUser authentication
+            headerParameters["Accept"] = this.configuration.apiKey("Accept"); // Accept authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["user-agent"] = this.configuration.apiKey("user-agent"); // UserAgent authentication
+            headerParameters["Sec-Fetch-Dest"] = this.configuration.apiKey("Sec-Fetch-Dest"); // SecFetchDest authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["x-twitter-auth-type"] = this.configuration.apiKey("x-twitter-auth-type"); // AuthType authentication
+            headerParameters["Pragma"] = this.configuration.apiKey("Pragma"); // Pragma authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Ch-Ua-Platform"] = this.configuration.apiKey("Sec-Ch-Ua-Platform"); // SecChUaPlatform authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Fetch-Mode"] = this.configuration.apiKey("Sec-Fetch-Mode"); // SecFetchMode authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
@@ -150,6 +158,42 @@ export class V11PostApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Ch-Ua"] = this.configuration.apiKey("Sec-Ch-Ua"); // SecChUa authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-active-user"] = this.configuration.apiKey("x-twitter-active-user"); // ActiveUser authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["user-agent"] = this.configuration.apiKey("user-agent"); // UserAgent authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Accept-Language"] = this.configuration.apiKey("Accept-Language"); // AcceptLanguage authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Fetch-Site"] = this.configuration.apiKey("Sec-Fetch-Site"); // SecFetchSite authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-auth-type"] = this.configuration.apiKey("x-twitter-auth-type"); // AuthType authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Cache-Control"] = this.configuration.apiKey("Cache-Control"); // CacheControl authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Ch-Ua-Mobile"] = this.configuration.apiKey("Sec-Ch-Ua-Mobile"); // SecChUaMobile authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Accept-Encoding"] = this.configuration.apiKey("Accept-Encoding"); // AcceptEncoding authentication
+        }
+
         const consumes: runtime.Consume[] = [
             { contentType: 'application/x-www-form-urlencoded' },
         ];
@@ -307,15 +351,23 @@ export class V11PostApi extends runtime.BaseAPI {
         }
 
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["x-twitter-active-user"] = this.configuration.apiKey("x-twitter-active-user"); // ActiveUser authentication
+            headerParameters["Accept"] = this.configuration.apiKey("Accept"); // Accept authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["user-agent"] = this.configuration.apiKey("user-agent"); // UserAgent authentication
+            headerParameters["Sec-Fetch-Dest"] = this.configuration.apiKey("Sec-Fetch-Dest"); // SecFetchDest authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["x-twitter-auth-type"] = this.configuration.apiKey("x-twitter-auth-type"); // AuthType authentication
+            headerParameters["Pragma"] = this.configuration.apiKey("Pragma"); // Pragma authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Ch-Ua-Platform"] = this.configuration.apiKey("Sec-Ch-Ua-Platform"); // SecChUaPlatform authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Fetch-Mode"] = this.configuration.apiKey("Sec-Fetch-Mode"); // SecFetchMode authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
@@ -334,6 +386,42 @@ export class V11PostApi extends runtime.BaseAPI {
                 headerParameters["Authorization"] = `Bearer ${tokenString}`;
             }
         }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Ch-Ua"] = this.configuration.apiKey("Sec-Ch-Ua"); // SecChUa authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-active-user"] = this.configuration.apiKey("x-twitter-active-user"); // ActiveUser authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["user-agent"] = this.configuration.apiKey("user-agent"); // UserAgent authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Accept-Language"] = this.configuration.apiKey("Accept-Language"); // AcceptLanguage authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Fetch-Site"] = this.configuration.apiKey("Sec-Fetch-Site"); // SecFetchSite authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-auth-type"] = this.configuration.apiKey("x-twitter-auth-type"); // AuthType authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Cache-Control"] = this.configuration.apiKey("Cache-Control"); // CacheControl authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Ch-Ua-Mobile"] = this.configuration.apiKey("Sec-Ch-Ua-Mobile"); // SecChUaMobile authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Accept-Encoding"] = this.configuration.apiKey("Accept-Encoding"); // AcceptEncoding authentication
+        }
+
         const consumes: runtime.Consume[] = [
             { contentType: 'application/x-www-form-urlencoded' },
         ];

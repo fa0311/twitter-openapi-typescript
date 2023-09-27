@@ -31,7 +31,7 @@ export interface ListTweetsTimeline {
      * @type {Timeline}
      * @memberof ListTweetsTimeline
      */
-    timeline: Timeline;
+    timeline?: Timeline;
 }
 
 /**
@@ -39,7 +39,6 @@ export interface ListTweetsTimeline {
  */
 export function instanceOfListTweetsTimeline(value: object): boolean {
     let isInstance = true;
-    isInstance = isInstance && "timeline" in value;
 
     return isInstance;
 }
@@ -54,7 +53,7 @@ export function ListTweetsTimelineFromJSONTyped(json: any, ignoreDiscriminator: 
     }
     return {
         
-        'timeline': TimelineFromJSON(json['timeline']),
+        'timeline': !exists(json, 'timeline') ? undefined : TimelineFromJSON(json['timeline']),
     };
 }
 

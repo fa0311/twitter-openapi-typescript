@@ -49,7 +49,7 @@ export interface CoverCta {
      * @type {string}
      * @memberof CoverCta
      */
-    buttonStyle: CoverCtaButtonStyleEnum;
+    buttonStyle?: CoverCtaButtonStyleEnum;
     /**
      * 
      * @type {Array<Callback>}
@@ -85,7 +85,6 @@ export type CoverCtaButtonStyleEnum = typeof CoverCtaButtonStyleEnum[keyof typeo
  */
 export function instanceOfCoverCta(value: object): boolean {
     let isInstance = true;
-    isInstance = isInstance && "buttonStyle" in value;
     isInstance = isInstance && "callbacks" in value;
     isInstance = isInstance && "clientEventInfo" in value;
     isInstance = isInstance && "ctaBehavior" in value;
@@ -104,7 +103,7 @@ export function CoverCtaFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
     return {
         
         'text': !exists(json, 'Text') ? undefined : json['Text'],
-        'buttonStyle': json['buttonStyle'],
+        'buttonStyle': !exists(json, 'buttonStyle') ? undefined : json['buttonStyle'],
         'callbacks': ((json['callbacks'] as Array<any>).map(CallbackFromJSON)),
         'clientEventInfo': CtaClientEventInfoFromJSON(json['clientEventInfo']),
         'ctaBehavior': TimelineCoverBehaviorFromJSON(json['ctaBehavior']),

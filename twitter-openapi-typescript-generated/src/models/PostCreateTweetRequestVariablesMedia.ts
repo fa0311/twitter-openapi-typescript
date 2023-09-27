@@ -13,6 +13,13 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { PostCreateTweetRequestVariablesMediaMediaEntitiesInner } from './PostCreateTweetRequestVariablesMediaMediaEntitiesInner';
+import {
+    PostCreateTweetRequestVariablesMediaMediaEntitiesInnerFromJSON,
+    PostCreateTweetRequestVariablesMediaMediaEntitiesInnerFromJSONTyped,
+    PostCreateTweetRequestVariablesMediaMediaEntitiesInnerToJSON,
+} from './PostCreateTweetRequestVariablesMediaMediaEntitiesInner';
+
 /**
  * 
  * @export
@@ -21,10 +28,10 @@ import { exists, mapValues } from '../runtime';
 export interface PostCreateTweetRequestVariablesMedia {
     /**
      * 
-     * @type {Array<object>}
+     * @type {Array<PostCreateTweetRequestVariablesMediaMediaEntitiesInner>}
      * @memberof PostCreateTweetRequestVariablesMedia
      */
-    mediaEntities: Array<object>;
+    mediaEntities: Array<PostCreateTweetRequestVariablesMediaMediaEntitiesInner>;
     /**
      * 
      * @type {boolean}
@@ -54,7 +61,7 @@ export function PostCreateTweetRequestVariablesMediaFromJSONTyped(json: any, ign
     }
     return {
         
-        'mediaEntities': json['media_entities'],
+        'mediaEntities': ((json['media_entities'] as Array<any>).map(PostCreateTweetRequestVariablesMediaMediaEntitiesInnerFromJSON)),
         'possiblySensitive': json['possibly_sensitive'],
     };
 }
@@ -68,7 +75,7 @@ export function PostCreateTweetRequestVariablesMediaToJSON(value?: PostCreateTwe
     }
     return {
         
-        'media_entities': value.mediaEntities,
+        'media_entities': ((value.mediaEntities as Array<any>).map(PostCreateTweetRequestVariablesMediaMediaEntitiesInnerToJSON)),
         'possibly_sensitive': value.possiblySensitive,
     };
 }

@@ -14,7 +14,7 @@
     "prepare": "npm run build"
   },
   "devDependencies": {
-    "typescript": "^4.0"
+    "typescript": "^5.2"
   },
   "license": "custom license or AGPL-3.0-or-later",
   "keywords": [

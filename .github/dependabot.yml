@@ -4,9 +4,6 @@ updates:
     directory: /twitter-openapi-typescript
     schedule:
       interval: weekly
-    ignore:
-      - dependency-name: "*"
-        update-types: ["version-update:semver-patch"]
 
   - package-ecosystem: npm
     directory: /twitter-openapi-typescript-generated
@@ -14,4 +11,3 @@ updates:
       interval: weekly
     ignore:
       - dependency-name: "*"
-        update-types: ["version-update:semver-patch"]

@@ -4,7 +4,10 @@ updates:
     directory: /twitter-openapi-typescript
     schedule:
       interval: weekly
-# - package-ecosystem: npm
-#   directory: /twitter-openapi-typescript-generated
-#   schedule:
-#     interval: weekly
+
+  - package-ecosystem: npm
+    directory: /twitter-openapi-typescript-generated
+    schedule:
+      interval: weekly
+    ignore:
+      - dependency-name: "*"

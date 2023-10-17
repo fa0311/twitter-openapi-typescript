@@ -118,13 +118,12 @@ export class TwitterOpenApi {
   }
 
   async getClientFromCookies(ct0: string, authToken: string): Promise<TwitterOpenApiClient> {
-    const cookies: TwitterOpenApiCookie[] = await this.getGuestSession();
-    [
+    const guestCookies: TwitterOpenApiCookie[] = await this.getGuestSession();
+    const cookies = [
       { name: 'auth_token', value: authToken },
       { name: 'ct0', value: ct0 },
-    ]
-      .filter((e) => cookies.findIndex((c) => c.name == e.name) == -1)
-      .forEach((e) => cookies.push(e));
+    ];
+    guestCookies.filter((e) => cookies.findIndex((c) => c.name == e.name) == -1).forEach((e) => cookies.push(e));
 
     const config: i.ConfigurationParameters = {
       fetchApi: this.param.fetchApi || fetch,

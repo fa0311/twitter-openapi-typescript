@@ -23,7 +23,7 @@ type GetSearchTimelineParam = {
   extraParam?: { [key: string]: any };
 };
 type GetHomeTimelineParam = {
-  couser?: string;
+  cursor?: string;
   count?: number;
   extraParam?: { [key: string]: any };
 };
@@ -147,7 +147,7 @@ export class TweetApiUtils {
   async getHomeTimeline(param: GetHomeTimelineParam = {}): Promise<ResponseType> {
     const args = {
       ...(param.count == undefined ? {} : { count: param.count }),
-      ...(param.couser == undefined ? {} : { couser: param.couser }),
+      ...(param.cursor == undefined ? {} : { cursor: param.cursor }),
       ...param.extraParam,
     };
 

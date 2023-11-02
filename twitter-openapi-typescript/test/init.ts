@@ -32,6 +32,10 @@ export const getClient = async () => {
     ct0: CsrfToken,
     auth_token: authToken,
   });
-  // const client = await api.getClient();
+  return client;
+};
+export const getGuestClient = async () => {
+  const api = new TwitterOpenApi({ fetchApi: fetch as any });
+  const client = await api.getGuestClient();
   return client;
 };

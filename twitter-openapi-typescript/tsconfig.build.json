@@ -2,10 +2,11 @@
   "compilerOptions": {
     "declaration": true,
     "target": "es5",
+    "downlevelIteration": true,
     "module": "commonjs",
     "moduleResolution": "node",
     "outDir": "dist",
-    "lib": ["es6", "dom"],
+    "lib": ["es2020", "dom"],
     "typeRoots": ["node_modules/@types"],
     "allowSyntheticDefaultImports": true,
     "rootDir": "./",

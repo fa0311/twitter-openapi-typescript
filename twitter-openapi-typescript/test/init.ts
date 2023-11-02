@@ -6,7 +6,7 @@ import * as log4js from 'log4js';
 dotenv.config();
 
 const authToken = process.env.AUTH_TOKEN as string;
-const ct0 = process.env.CSRF_TOKEN as string;
+const CsrfToken = process.env.CSRF_TOKEN as string;
 
 export const logger = log4js
   .configure({
@@ -28,7 +28,14 @@ export const logger = log4js
 
 export const getClient = async () => {
   const api = new TwitterOpenApi({ fetchApi: fetch as any });
-  const client = await api.getClientFromCookies(ct0, authToken);
-  // const client = await api.getClient();
+  const client = await api.getClientFromCookies({
+    ct0: CsrfToken,
+    auth_token: authToken,
+  });
+  return client;
+};
+export const getGuestClient = async () => {
+  const api = new TwitterOpenApi({ fetchApi: fetch as any });
+  const client = await api.getGuestClient();
   return client;
 };

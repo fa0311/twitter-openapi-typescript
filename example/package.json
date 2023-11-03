@@ -1,0 +1,29 @@
+{
+    "name": "example",
+    "license": "MIT",
+    "version": "1.0.0",
+    "author": "",
+    "description": "",
+    "scripts": {
+        "start": "npx ts-node -r tsconfig-paths/register src/main.ts"
+    },
+    "dependencies": {
+        "twitter-api-v2": "^1.15.2",
+        "twitter-openapi-typescript": "^0.0.19"
+    },
+    "devDependencies": {
+        "@types/node": "*",
+        "@types/node-fetch": "*",
+        "@typescript-eslint/eslint-plugin": "*",
+        "@typescript-eslint/parser": "*",
+        "dotenv": "^16.3.0",
+        "eslint": "^8.50.0",
+        "eslint-config-standard-with-typescript": "*",
+        "eslint-plugin-import": "*",
+        "eslint-plugin-n": "*",
+        "eslint-plugin-promise": "*",
+        "log4js": "^6.9.0",
+        "node-fetch": "^2.0.0",
+        "typescript": "^5.2.0"
+    }
+}

@@ -6,7 +6,7 @@ import { error } from 'console';
 
 type PostCreateTweetParam = {
   tweetText: string;
-  media_ids?: string[];
+  mediaIds?: string[];
   extraParam?: { [key: string]: any };
 };
 
@@ -54,7 +54,7 @@ export class PostApiUtils {
     const features = i.PostCreateTweetRequestFeaturesFromJSON(this.flag[queryId]['features']);
     const variables = i.PostCreateTweetRequestVariablesFromJSON(this.flag[queryId]['variables']);
     variables.media.mediaEntities =
-      param.media_ids?.map((mediaId) => ({
+      param.mediaIds?.map((mediaId) => ({
         mediaId: mediaId,
         taggedUsers: [],
       })) ?? [];

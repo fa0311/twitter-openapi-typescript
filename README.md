@@ -1,5 +1,7 @@
 # twitter-openapi-typescript
 
+[issues](https://github.com/fa0311/twitter-openapi-typescript/issues) / [discussion](https://github.com/fa0311/twitter-openapi/discussions)
+
 ## Table of Contents
 
 This repository contains two packages.

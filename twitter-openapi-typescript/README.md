@@ -12,7 +12,7 @@ npm i twitter-openapi-typescript
   import { TwitterOpenApi } from "twitter-openapi-typescript";
 
   const api = new TwitterOpenApi();
-  const client = await api.getClient();
+  const client = await api.getGuestClient();
   const response = await client.getUserApi().getUserByScreenName({ screenName: 'elonmusk' });
   console.log(response.data.legacy.screenName);
   console.log(`followCount: ${response.data.legacy.friendsCount} followersCount: ${response.data.legacy.followersCount}`);
@@ -28,7 +28,11 @@ npm i twitter-openapi-typescript
 ### Login
 
 ```typescript
-  const client = await api.getClientFromCookies('<csrf toke here>', '<auth token here>');
+  // ct0 and authToken will also work but it is recommended to set all cookies.
+  const client = await api.getClientFromCookies({
+    ct0: "<csrf_token>",
+    auth_token: "<auth_token>",
+  });
 ```
 
 ### List of APIs

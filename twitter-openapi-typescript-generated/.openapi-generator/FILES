@@ -14,6 +14,12 @@ src/apis/V20GetApi.ts
 src/apis/index.ts
 src/index.ts
 src/models/AdditionalMediaInfo.ts
+src/models/BirdwatchEntity.ts
+src/models/BirdwatchEntityRef.ts
+src/models/BirdwatchPivot.ts
+src/models/BirdwatchPivotFooter.ts
+src/models/BirdwatchPivotNote.ts
+src/models/BirdwatchPivotSubtitle.ts
 src/models/BookmarksResponse.ts
 src/models/BookmarksResponseData.ts
 src/models/BookmarksTimeline.ts
@@ -92,6 +98,12 @@ src/models/MediaVideoInfoVariant.ts
 src/models/ModelError.ts
 src/models/ModuleEntry.ts
 src/models/ModuleItem.ts
+src/models/NoteTweet.ts
+src/models/NoteTweetResult.ts
+src/models/NoteTweetResultData.ts
+src/models/NoteTweetResultMedia.ts
+src/models/NoteTweetResultRichText.ts
+src/models/NoteTweetResultRichTextTag.ts
 src/models/OneFactorLoginEligibility.ts
 src/models/Other200Response.ts
 src/models/OtherResponse.ts
@@ -132,6 +144,7 @@ src/models/TimelineAddEntries.ts
 src/models/TimelineAddEntry.ts
 src/models/TimelineAddToModule.ts
 src/models/TimelineClearCache.ts
+src/models/TimelineCommunity.ts
 src/models/TimelineCoverBehavior.ts
 src/models/TimelineHalfCover.ts
 src/models/TimelineMessagePrompt.ts

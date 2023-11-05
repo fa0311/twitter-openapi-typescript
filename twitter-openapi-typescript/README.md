@@ -12,7 +12,7 @@ npm i twitter-openapi-typescript
   import { TwitterOpenApi } from "twitter-openapi-typescript";
 
   const api = new TwitterOpenApi();
-  const client = await api.getClient();
+  const client = await api.getGuestClient();
   const response = await client.getUserApi().getUserByScreenName({ screenName: 'elonmusk' });
   console.log(response.data.legacy.screenName);
   console.log(`followCount: ${response.data.legacy.friendsCount} followersCount: ${response.data.legacy.followersCount}`);
@@ -28,7 +28,11 @@ npm i twitter-openapi-typescript
 ### Login
 
 ```typescript
-  const client = await api.getClientFromCookies('<csrf toke here>', '<auth token here>');
+  // ct0 and authToken will also work but it is recommended to set all cookies.
+  const client = await api.getClientFromCookies({
+    ct0: "<csrf_token>",
+    auth_token: "<auth_token>",
+  });
 ```
 
 ### List of APIs
@@ -36,6 +40,20 @@ npm i twitter-openapi-typescript
 You should read the Test case.
 
 <https://github.com/fa0311/twitter-openapi-typescript/tree/master/twitter-openapi-typescript/test/api>
+
+### Customize in detail
+
+Most values exist as static variables. There is no need to change them.
+
+```typescript
+  import { TwitterOpenApi } from "twitter-openapi-typescript";
+  TwitterOpenApi.url = "twitter-openapi placeholder json url";
+  TwitterOpenApi.twitter = "twitter first access url";
+  TwitterOpenApi.userAgent = "user agent";
+  TwitterOpenApi.bearer = "bearer token";
+  TwitterOpenApi.browser_headers = "browser headers";
+  TwitterOpenApi.api_key = "api key";
+```
 
 ## License
 

@@ -1,11 +1,10 @@
 {
   "name": "twitter-openapi-typescript",
-  "version": "0.0.19",
+  "version": "0.0.20",
   "description": "Implementation of Twitter internal API in TypeScript",
   "scripts": {
     "test": "jest",
-    "build": "tsc -p tsconfig.build.json && npx tscpaths -p tsconfig.build.json -s . -o ./dist",
-    "prepare": "npm run build"
+    "build": "tsc -p tsconfig.build.json && npx tscpaths -p tsconfig.build.json -s . -o ./dist"
   },
   "keywords": [
     "twitter",
@@ -22,7 +21,7 @@
   "main": "./dist/src/index.js",
   "typings": "./dist/src/index.d.ts",
   "dependencies": {
-    "twitter-openapi-typescript-generated": "^0.0.12"
+    "twitter-openapi-typescript-generated": "^0.0.13"
   },
   "devDependencies": {
     "@types/jest": "*",

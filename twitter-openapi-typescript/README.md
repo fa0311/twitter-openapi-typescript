@@ -41,6 +41,20 @@ You should read the Test case.
 
 <https://github.com/fa0311/twitter-openapi-typescript/tree/master/twitter-openapi-typescript/test/api>
 
+### Customize in detail
+
+Most values exist as static variables. There is no need to change them.
+
+```typescript
+  import { TwitterOpenApi } from "twitter-openapi-typescript";
+  TwitterOpenApi.url = "twitter-openapi placeholder json url";
+  TwitterOpenApi.twitter = "twitter first access url";
+  TwitterOpenApi.userAgent = "user agent";
+  TwitterOpenApi.bearer = "bearer token";
+  TwitterOpenApi.browser_headers = "browser headers";
+  TwitterOpenApi.api_key = "api key";
+```
+
 ## License
 
 This project is dual licensed. You can choose one of the following licenses:

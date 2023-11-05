@@ -13,6 +13,13 @@
  */
 
 import {
+    TimelineCommunity,
+    instanceOfTimelineCommunity,
+    TimelineCommunityFromJSON,
+    TimelineCommunityFromJSONTyped,
+    TimelineCommunityToJSON,
+} from './TimelineCommunity';
+import {
     TimelineMessagePrompt,
     instanceOfTimelineMessagePrompt,
     TimelineMessagePromptFromJSON,
@@ -53,7 +60,7 @@ import {
  * 
  * @export
  */
-export type ItemContentUnion = { typename: 'TimelineMessagePrompt' } & TimelineMessagePrompt | { typename: 'TimelinePrompt' } & TimelinePrompt | { typename: 'TimelineTimelineCursor' } & TimelineTimelineCursor | { typename: 'TimelineTweet' } & TimelineTweet | { typename: 'TimelineUser' } & TimelineUser;
+export type ItemContentUnion = { typename: 'TimelineCommunity' } & TimelineCommunity | { typename: 'TimelineMessagePrompt' } & TimelineMessagePrompt | { typename: 'TimelinePrompt' } & TimelinePrompt | { typename: 'TimelineTimelineCursor' } & TimelineTimelineCursor | { typename: 'TimelineTweet' } & TimelineTweet | { typename: 'TimelineUser' } & TimelineUser;
 
 export function ItemContentUnionFromJSON(json: any): ItemContentUnion {
     return ItemContentUnionFromJSONTyped(json, false);
@@ -64,6 +71,8 @@ export function ItemContentUnionFromJSONTyped(json: any, ignoreDiscriminator: bo
         return json;
     }
     switch (json['__typename']) {
+        case 'TimelineCommunity':
+            return {...TimelineCommunityFromJSONTyped(json, true), typename: 'TimelineCommunity'};
         case 'TimelineMessagePrompt':
             return {...TimelineMessagePromptFromJSONTyped(json, true), typename: 'TimelineMessagePrompt'};
         case 'TimelinePrompt':
@@ -87,6 +96,8 @@ export function ItemContentUnionToJSON(value?: ItemContentUnion | null): any {
         return null;
     }
     switch (value['typename']) {
+        case 'TimelineCommunity':
+            return TimelineCommunityToJSON(value);
         case 'TimelineMessagePrompt':
             return TimelineMessagePromptToJSON(value);
         case 'TimelinePrompt':

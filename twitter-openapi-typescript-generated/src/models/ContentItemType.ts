@@ -22,7 +22,8 @@ export const ContentItemType = {
     TimelineTimelineCursor: 'TimelineTimelineCursor',
     TimelineUser: 'TimelineUser',
     TimelinePrompt: 'TimelinePrompt',
-    TimelineMessagePrompt: 'TimelineMessagePrompt'
+    TimelineMessagePrompt: 'TimelineMessagePrompt',
+    TimelineCommunity: 'TimelineCommunity'
 } as const;
 export type ContentItemType = typeof ContentItemType[keyof typeof ContentItemType];
 

@@ -1,6 +1,12 @@
 /* tslint:disable */
 /* eslint-disable */
 export * from './AdditionalMediaInfo';
+export * from './BirdwatchEntity';
+export * from './BirdwatchEntityRef';
+export * from './BirdwatchPivot';
+export * from './BirdwatchPivotFooter';
+export * from './BirdwatchPivotNote';
+export * from './BirdwatchPivotSubtitle';
 export * from './BookmarksResponse';
 export * from './BookmarksResponseData';
 export * from './BookmarksTimeline';
@@ -79,6 +85,12 @@ export * from './MediaVideoInfoVariant';
 export * from './ModelError';
 export * from './ModuleEntry';
 export * from './ModuleItem';
+export * from './NoteTweet';
+export * from './NoteTweetResult';
+export * from './NoteTweetResultData';
+export * from './NoteTweetResultMedia';
+export * from './NoteTweetResultRichText';
+export * from './NoteTweetResultRichTextTag';
 export * from './OneFactorLoginEligibility';
 export * from './Other200Response';
 export * from './OtherResponse';
@@ -119,6 +131,7 @@ export * from './TimelineAddEntries';
 export * from './TimelineAddEntry';
 export * from './TimelineAddToModule';
 export * from './TimelineClearCache';
+export * from './TimelineCommunity';
 export * from './TimelineCoverBehavior';
 export * from './TimelineHalfCover';
 export * from './TimelineMessagePrompt';

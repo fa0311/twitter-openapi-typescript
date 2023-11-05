@@ -24,6 +24,12 @@ export interface ExtMediaAvailability {
      * @type {string}
      * @memberof ExtMediaAvailability
      */
+    reason?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof ExtMediaAvailability
+     */
     status?: ExtMediaAvailabilityStatusEnum;
 }
 
@@ -32,7 +38,8 @@ export interface ExtMediaAvailability {
  * @export
  */
 export const ExtMediaAvailabilityStatusEnum = {
-    Available: 'Available'
+    Available: 'Available',
+    Unavailable: 'Unavailable'
 } as const;
 export type ExtMediaAvailabilityStatusEnum = typeof ExtMediaAvailabilityStatusEnum[keyof typeof ExtMediaAvailabilityStatusEnum];
 
@@ -56,6 +63,7 @@ export function ExtMediaAvailabilityFromJSONTyped(json: any, ignoreDiscriminator
     }
     return {
         
+        'reason': !exists(json, 'reason') ? undefined : json['reason'],
         'status': !exists(json, 'status') ? undefined : json['status'],
     };
 }
@@ -69,6 +77,7 @@ export function ExtMediaAvailabilityToJSON(value?: ExtMediaAvailability | null):
     }
     return {
         
+        'reason': value.reason,
         'status': value.status,
     };
 }

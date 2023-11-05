@@ -13,12 +13,24 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { BirdwatchPivot } from './BirdwatchPivot';
+import {
+    BirdwatchPivotFromJSON,
+    BirdwatchPivotFromJSONTyped,
+    BirdwatchPivotToJSON,
+} from './BirdwatchPivot';
 import type { ItemResult } from './ItemResult';
 import {
     ItemResultFromJSON,
     ItemResultFromJSONTyped,
     ItemResultToJSON,
 } from './ItemResult';
+import type { NoteTweet } from './NoteTweet';
+import {
+    NoteTweetFromJSON,
+    NoteTweetFromJSONTyped,
+    NoteTweetToJSON,
+} from './NoteTweet';
 import type { TweetCard } from './TweetCard';
 import {
     TweetCardFromJSON,
@@ -76,6 +88,12 @@ export interface Tweet {
     typename?: TypeName;
     /**
      * 
+     * @type {BirdwatchPivot}
+     * @memberof Tweet
+     */
+    birdwatchPivot?: BirdwatchPivot;
+    /**
+     * 
      * @type {TweetCard}
      * @memberof Tweet
      */
@@ -110,6 +128,18 @@ export interface Tweet {
      * @memberof Tweet
      */
     legacy?: TweetLegacy;
+    /**
+     * 
+     * @type {NoteTweet}
+     * @memberof Tweet
+     */
+    noteTweet?: NoteTweet;
+    /**
+     * 
+     * @type {object}
+     * @memberof Tweet
+     */
+    quickPromoteEligibility?: object;
     /**
      * 
      * @type {ItemResult}
@@ -166,12 +196,15 @@ export function TweetFromJSONTyped(json: any, ignoreDiscriminator: boolean): Twe
     return {
         
         'typename': !exists(json, '__typename') ? undefined : TypeNameFromJSON(json['__typename']),
+        'birdwatchPivot': !exists(json, 'birdwatch_pivot') ? undefined : BirdwatchPivotFromJSON(json['birdwatch_pivot']),
         'card': !exists(json, 'card') ? undefined : TweetCardFromJSON(json['card']),
         'core': !exists(json, 'core') ? undefined : UserResultCoreFromJSON(json['core']),
         'editControl': TweetEditControlFromJSON(json['edit_control']),
         'editPrespective': !exists(json, 'edit_prespective') ? undefined : TweetEditPrespectiveFromJSON(json['edit_prespective']),
         'isTranslatable': json['is_translatable'],
         'legacy': !exists(json, 'legacy') ? undefined : TweetLegacyFromJSON(json['legacy']),
+        'noteTweet': !exists(json, 'note_tweet') ? undefined : NoteTweetFromJSON(json['note_tweet']),
+        'quickPromoteEligibility': !exists(json, 'quick_promote_eligibility') ? undefined : json['quick_promote_eligibility'],
         'quotedStatusResult': !exists(json, 'quoted_status_result') ? undefined : ItemResultFromJSON(json['quoted_status_result']),
         'restId': json['rest_id'],
         'source': !exists(json, 'source') ? undefined : json['source'],
@@ -190,12 +223,15 @@ export function TweetToJSON(value?: Tweet | null): any {
     return {
         
         '__typename': TypeNameToJSON(value.typename),
+        'birdwatch_pivot': BirdwatchPivotToJSON(value.birdwatchPivot),
         'card': TweetCardToJSON(value.card),
         'core': UserResultCoreToJSON(value.core),
         'edit_control': TweetEditControlToJSON(value.editControl),
         'edit_prespective': TweetEditPrespectiveToJSON(value.editPrespective),
         'is_translatable': value.isTranslatable,
         'legacy': TweetLegacyToJSON(value.legacy),
+        'note_tweet': NoteTweetToJSON(value.noteTweet),
+        'quick_promote_eligibility': value.quickPromoteEligibility,
         'quoted_status_result': ItemResultToJSON(value.quotedStatusResult),
         'rest_id': value.restId,
         'source': value.source,

@@ -60,7 +60,7 @@ export class TwitterOpenApi {
 
   cookie_normalize(cookie: string[]): { [key: string]: string } {
     return cookie.reduce((a, b) => {
-      const [key, value] = b.split('=');
+      const [key, value] = b.split('; ')[0].split('=');
       return { ...a, [key]: value };
     }, {});
   }
@@ -87,7 +87,8 @@ export class TwitterOpenApi {
       redirect: 'manual',
       headers: { Cookie: this.cookieEncode(cookies) },
     });
-    cookies = { ...cookies, ...this.cookie_normalize(response.headers.get('set-cookie')!.split(', ')) };
+    const raw = (response.headers as any).raw();
+    cookies = { ...cookies, ...this.cookie_normalize(raw['set-cookie']) };
 
     const html = await this.fetchApi(TwitterOpenApi.twitter, {
       method: 'GET',

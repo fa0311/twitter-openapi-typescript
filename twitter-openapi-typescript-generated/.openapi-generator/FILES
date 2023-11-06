@@ -102,6 +102,7 @@ src/models/NoteTweet.ts
 src/models/NoteTweetResult.ts
 src/models/NoteTweetResultData.ts
 src/models/NoteTweetResultMedia.ts
+src/models/NoteTweetResultMediaInlineMedia.ts
 src/models/NoteTweetResultRichText.ts
 src/models/NoteTweetResultRichTextTag.ts
 src/models/OneFactorLoginEligibility.ts

@@ -89,6 +89,7 @@ export * from './NoteTweet';
 export * from './NoteTweetResult';
 export * from './NoteTweetResultData';
 export * from './NoteTweetResultMedia';
+export * from './NoteTweetResultMediaInlineMedia';
 export * from './NoteTweetResultRichText';
 export * from './NoteTweetResultRichTextTag';
 export * from './OneFactorLoginEligibility';

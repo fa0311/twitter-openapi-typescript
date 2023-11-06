@@ -130,7 +130,7 @@ export class TwitterOpenApi {
   }
 
   async getClient(api: i.Configuration): Promise<TwitterOpenApiClient> {
-    const flag = (await TwitterOpenApis.fetchApi(TwitterOpenApi.url, { method: 'GET' }).then((res) =>
+    const flag = (await TwitterOpenApi.fetchApi(TwitterOpenApi.url, { method: 'GET' }).then((res) =>
       res.json(),
     )) as DefaultFlag;
     return new TwitterOpenApiClient(api, flag);

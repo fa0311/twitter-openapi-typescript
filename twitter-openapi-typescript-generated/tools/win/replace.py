@@ -30,6 +30,9 @@ package.update(
             "url": "https://github.com/fa0311/twitter-openapi-typescript.git",
         },
         "keywords": ["twitter", "api", "typescript", "scraper"],
+        "scripts": {
+            "build": "tsc"
+        },
     }
 )
 

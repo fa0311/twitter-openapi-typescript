@@ -13,6 +13,13 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { NoteTweetResultMediaInlineMedia } from './NoteTweetResultMediaInlineMedia';
+import {
+    NoteTweetResultMediaInlineMediaFromJSON,
+    NoteTweetResultMediaInlineMediaFromJSONTyped,
+    NoteTweetResultMediaInlineMediaToJSON,
+} from './NoteTweetResultMediaInlineMedia';
+
 /**
  * 
  * @export
@@ -21,10 +28,10 @@ import { exists, mapValues } from '../runtime';
 export interface NoteTweetResultMedia {
     /**
      * 
-     * @type {Array<object>}
+     * @type {Array<NoteTweetResultMediaInlineMedia>}
      * @memberof NoteTweetResultMedia
      */
-    inlineMedia: Array<object>;
+    inlineMedia: Array<NoteTweetResultMediaInlineMedia>;
 }
 
 /**
@@ -47,7 +54,7 @@ export function NoteTweetResultMediaFromJSONTyped(json: any, ignoreDiscriminator
     }
     return {
         
-        'inlineMedia': json['inline_media'],
+        'inlineMedia': ((json['inline_media'] as Array<any>).map(NoteTweetResultMediaInlineMediaFromJSON)),
     };
 }
 
@@ -60,7 +67,7 @@ export function NoteTweetResultMediaToJSON(value?: NoteTweetResultMedia | null):
     }
     return {
         
-        'inline_media': value.inlineMedia,
+        'inline_media': ((value.inlineMedia as Array<any>).map(NoteTweetResultMediaInlineMediaToJSON)),
     };
 }
 

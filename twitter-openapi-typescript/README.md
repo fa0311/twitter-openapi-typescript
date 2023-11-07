@@ -18,13 +18,6 @@ npm i twitter-openapi-typescript
   console.log(`followCount: ${response.data.legacy.friendsCount} followersCount: ${response.data.legacy.followersCount}`);
 ```
 
-### Node.js
-
-```typescript
-  import fetch from "node-fetch";
-  const api = new TwitterOpenApi({ fetchApi: fetch as any });
-```
-
 ### Login
 
 ```typescript

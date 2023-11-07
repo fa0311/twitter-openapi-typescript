@@ -13,10 +13,6 @@ import {
 import { DefaultFlag } from '@/models';
 import { UsersApiUtils } from './apis/usersApi';
 
-export type TwitterOpenApiParams = {
-  fetchApi?: i.FetchAPI;
-};
-
 export class TwitterOpenApi {
   static hash = '7560ee63488ec9d15f5389e64867f2413701d7dd';
   static url = `https://raw.githubusercontent.com/fa0311/twitter-openapi/${this.hash}/src/config/placeholder.json`;
@@ -48,19 +44,11 @@ export class TwitterOpenApi {
     ...TwitterOpenApi.browser_headers,
   };
 
-  param: TwitterOpenApiParams;
-
-  constructor(param: TwitterOpenApiParams = {}) {
-    this.param = param;
-  }
-
-  get fetchApi(): i.FetchAPI {
-    return this.param.fetchApi || fetch;
-  }
+  static fetchApi: i.FetchAPI = fetch;
 
   cookie_normalize(cookie: string[]): { [key: string]: string } {
     return cookie.reduce((a, b) => {
-      const [key, value] = b.split('=');
+      const [key, value] = b.split('; ')[0].split('=');
       return { ...a, [key]: value };
     }, {});
   }
@@ -82,14 +70,14 @@ export class TwitterOpenApi {
   async getGuestClient(): Promise<TwitterOpenApiClient> {
     let cookies: { [key: string]: string } = {};
 
-    const response = await this.fetchApi(TwitterOpenApi.twitter, {
+    const response = await TwitterOpenApi.fetchApi(TwitterOpenApi.twitter, {
       method: 'GET',
       redirect: 'manual',
       headers: { Cookie: this.cookieEncode(cookies) },
     });
-    cookies = { ...cookies, ...this.cookie_normalize(response.headers.get('set-cookie')!.split(', ')) };
+    cookies = { ...cookies, ...this.cookie_normalize(response.headers.getSetCookie()) };
 
-    const html = await this.fetchApi(TwitterOpenApi.twitter, {
+    const html = await TwitterOpenApi.fetchApi(TwitterOpenApi.twitter, {
       method: 'GET',
       headers: { Cookie: this.cookieEncode(cookies) },
     }).then((response) => response.text());
@@ -108,7 +96,7 @@ export class TwitterOpenApi {
         ...TwitterOpenApi.api_key,
         authorization: `Bearer ${TwitterOpenApi.bearer}`,
       };
-      const { guest_token } = await this.fetchApi('https://api.twitter.com/1.1/guest/activate.json', {
+      const { guest_token } = await TwitterOpenApi.fetchApi('https://api.twitter.com/1.1/guest/activate.json', {
         method: 'POST',
         headers: activate_headers,
       }).then((response) => response.json());
@@ -133,7 +121,7 @@ export class TwitterOpenApi {
     }
 
     const config: i.ConfigurationParameters = {
-      fetchApi: this.fetchApi,
+      fetchApi: TwitterOpenApi.fetchApi,
       middleware: [{ pre: async (context) => this.setCookies(context, cookies) }],
       apiKey: (key) => api_key[key.toLowerCase()],
       accessToken: TwitterOpenApi.bearer,
@@ -142,7 +130,9 @@ export class TwitterOpenApi {
   }
 
   async getClient(api: i.Configuration): Promise<TwitterOpenApiClient> {
-    const flag = (await this.fetchApi(TwitterOpenApi.url, { method: 'GET' }).then((res) => res.json())) as DefaultFlag;
+    const flag = (await TwitterOpenApi.fetchApi(TwitterOpenApi.url, { method: 'GET' }).then((res) =>
+      res.json(),
+    )) as DefaultFlag;
     return new TwitterOpenApiClient(api, flag);
   }
 }

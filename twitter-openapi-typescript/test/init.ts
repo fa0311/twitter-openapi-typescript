@@ -27,7 +27,7 @@ export const logger = log4js
   .getLogger('Test');
 
 export const getClient = async () => {
-  const api = new TwitterOpenApi({ fetchApi: fetch as any });
+  const api = new TwitterOpenApi();
   const client = await api.getClientFromCookies({
     ct0: CsrfToken,
     auth_token: authToken,
@@ -35,7 +35,7 @@ export const getClient = async () => {
   return client;
 };
 export const getGuestClient = async () => {
-  const api = new TwitterOpenApi({ fetchApi: fetch as any });
+  const api = new TwitterOpenApi();
   const client = await api.getGuestClient();
   return client;
 };

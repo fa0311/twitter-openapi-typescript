@@ -1,6 +1,6 @@
 {
   "name": "twitter-openapi-typescript",
-  "version": "0.0.21",
+  "version": "0.0.24",
   "description": "Implementation of Twitter internal API in TypeScript",
   "scripts": {
     "test": "jest",
@@ -38,7 +38,6 @@
     "jest": "^29.7.0",
     "ts-jest": "*",
     "log4js": "^6.9.0",
-    "node-fetch": "^2.0.0",
     "typescript": "^5.2.0"
   }
 }

@@ -46,7 +46,7 @@ npm run build
 Setup
 
 ```shell
-npm twitter-openapi-typescript-generated
+npm i twitter-openapi-typescript-generated
 ```
 
 License

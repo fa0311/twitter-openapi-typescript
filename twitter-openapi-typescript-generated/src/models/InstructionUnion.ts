@@ -12,57 +12,57 @@
  * Do not edit the class manually.
  */
 
+import type { TimelineAddEntries } from './TimelineAddEntries';
 import {
-    TimelineAddEntries,
     instanceOfTimelineAddEntries,
     TimelineAddEntriesFromJSON,
     TimelineAddEntriesFromJSONTyped,
     TimelineAddEntriesToJSON,
 } from './TimelineAddEntries';
+import type { TimelineAddToModule } from './TimelineAddToModule';
 import {
-    TimelineAddToModule,
     instanceOfTimelineAddToModule,
     TimelineAddToModuleFromJSON,
     TimelineAddToModuleFromJSONTyped,
     TimelineAddToModuleToJSON,
 } from './TimelineAddToModule';
+import type { TimelineClearCache } from './TimelineClearCache';
 import {
-    TimelineClearCache,
     instanceOfTimelineClearCache,
     TimelineClearCacheFromJSON,
     TimelineClearCacheFromJSONTyped,
     TimelineClearCacheToJSON,
 } from './TimelineClearCache';
+import type { TimelinePinEntry } from './TimelinePinEntry';
 import {
-    TimelinePinEntry,
     instanceOfTimelinePinEntry,
     TimelinePinEntryFromJSON,
     TimelinePinEntryFromJSONTyped,
     TimelinePinEntryToJSON,
 } from './TimelinePinEntry';
+import type { TimelineReplaceEntry } from './TimelineReplaceEntry';
 import {
-    TimelineReplaceEntry,
     instanceOfTimelineReplaceEntry,
     TimelineReplaceEntryFromJSON,
     TimelineReplaceEntryFromJSONTyped,
     TimelineReplaceEntryToJSON,
 } from './TimelineReplaceEntry';
+import type { TimelineShowAlert } from './TimelineShowAlert';
 import {
-    TimelineShowAlert,
     instanceOfTimelineShowAlert,
     TimelineShowAlertFromJSON,
     TimelineShowAlertFromJSONTyped,
     TimelineShowAlertToJSON,
 } from './TimelineShowAlert';
+import type { TimelineShowCover } from './TimelineShowCover';
 import {
-    TimelineShowCover,
     instanceOfTimelineShowCover,
     TimelineShowCoverFromJSON,
     TimelineShowCoverFromJSONTyped,
     TimelineShowCoverToJSON,
 } from './TimelineShowCover';
+import type { TimelineTerminateTimeline } from './TimelineTerminateTimeline';
 import {
-    TimelineTerminateTimeline,
     instanceOfTimelineTerminateTimeline,
     TimelineTerminateTimelineFromJSON,
     TimelineTerminateTimelineFromJSONTyped,

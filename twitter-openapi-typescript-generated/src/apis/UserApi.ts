@@ -16,11 +16,11 @@
 import * as runtime from '../runtime';
 import type {
   GetUserByRestId200Response,
-} from '../models';
+} from '../models/index';
 import {
     GetUserByRestId200ResponseFromJSON,
     GetUserByRestId200ResponseToJSON,
-} from '../models';
+} from '../models/index';
 
 export interface GetUserByRestIdRequest {
     pathQueryId: string;

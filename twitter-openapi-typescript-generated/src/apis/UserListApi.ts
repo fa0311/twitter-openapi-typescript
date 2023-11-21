@@ -18,7 +18,7 @@ import type {
   GetFavoriters200Response,
   GetFollowers200Response,
   GetRetweeters200Response,
-} from '../models';
+} from '../models/index';
 import {
     GetFavoriters200ResponseFromJSON,
     GetFavoriters200ResponseToJSON,
@@ -26,7 +26,7 @@ import {
     GetFollowers200ResponseToJSON,
     GetRetweeters200ResponseFromJSON,
     GetRetweeters200ResponseToJSON,
-} from '../models';
+} from '../models/index';
 
 export interface GetFavoritersRequest {
     pathQueryId: string;

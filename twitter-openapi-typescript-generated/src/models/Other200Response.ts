@@ -12,8 +12,8 @@
  * Do not edit the class manually.
  */
 
+import type { OtherResponse } from './OtherResponse';
 import {
-    OtherResponse,
     instanceOfOtherResponse,
     OtherResponseFromJSON,
     OtherResponseFromJSONTyped,

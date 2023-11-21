@@ -7,6 +7,7 @@ import { error } from 'console';
 type PostCreateTweetParam = {
   tweetText: string;
   mediaIds?: string[];
+  inReplyToTweetId?: string;
   extraParam?: { [key: string]: any };
 };
 
@@ -58,6 +59,13 @@ export class PostApiUtils {
         mediaId: mediaId,
         taggedUsers: [],
       })) ?? [];
+
+    if (param.inReplyToTweetId) {
+      variables.reply = {
+        excludeReplyUserIds: [],
+        inReplyToTweetId: param.inReplyToTweetId,
+      };
+    }
 
     const response = await this.api.postCreateTweetRaw({
       pathQueryId: this.flag[queryId]['queryId'],

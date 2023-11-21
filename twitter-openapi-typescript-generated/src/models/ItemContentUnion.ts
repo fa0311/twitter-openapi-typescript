@@ -12,43 +12,43 @@
  * Do not edit the class manually.
  */
 
+import type { TimelineCommunity } from './TimelineCommunity';
 import {
-    TimelineCommunity,
     instanceOfTimelineCommunity,
     TimelineCommunityFromJSON,
     TimelineCommunityFromJSONTyped,
     TimelineCommunityToJSON,
 } from './TimelineCommunity';
+import type { TimelineMessagePrompt } from './TimelineMessagePrompt';
 import {
-    TimelineMessagePrompt,
     instanceOfTimelineMessagePrompt,
     TimelineMessagePromptFromJSON,
     TimelineMessagePromptFromJSONTyped,
     TimelineMessagePromptToJSON,
 } from './TimelineMessagePrompt';
+import type { TimelinePrompt } from './TimelinePrompt';
 import {
-    TimelinePrompt,
     instanceOfTimelinePrompt,
     TimelinePromptFromJSON,
     TimelinePromptFromJSONTyped,
     TimelinePromptToJSON,
 } from './TimelinePrompt';
+import type { TimelineTimelineCursor } from './TimelineTimelineCursor';
 import {
-    TimelineTimelineCursor,
     instanceOfTimelineTimelineCursor,
     TimelineTimelineCursorFromJSON,
     TimelineTimelineCursorFromJSONTyped,
     TimelineTimelineCursorToJSON,
 } from './TimelineTimelineCursor';
+import type { TimelineTweet } from './TimelineTweet';
 import {
-    TimelineTweet,
     instanceOfTimelineTweet,
     TimelineTweetFromJSON,
     TimelineTweetFromJSONTyped,
     TimelineTweetToJSON,
 } from './TimelineTweet';
+import type { TimelineUser } from './TimelineUser';
 import {
-    TimelineUser,
     instanceOfTimelineUser,
     TimelineUserFromJSON,
     TimelineUserFromJSONTyped,
@@ -84,7 +84,7 @@ export function ItemContentUnionFromJSONTyped(json: any, ignoreDiscriminator: bo
         case 'TimelineUser':
             return {...TimelineUserFromJSONTyped(json, true), typename: 'TimelineUser'};
         default:
-            throw new Error(`No variant of ItemContentUnion exists with 'typename=${json['__typename']}'`);
+            throw new Error(`No variant of ItemContentUnion exists with 'typename=${json['typename']}'`);
     }
 }
 

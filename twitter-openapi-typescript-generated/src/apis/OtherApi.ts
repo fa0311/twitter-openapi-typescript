@@ -16,11 +16,11 @@
 import * as runtime from '../runtime';
 import type {
   Other200Response,
-} from '../models';
+} from '../models/index';
 import {
     Other200ResponseFromJSON,
     Other200ResponseToJSON,
-} from '../models';
+} from '../models/index';
 
 /**
  * 

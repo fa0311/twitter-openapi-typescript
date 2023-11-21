@@ -17,13 +17,13 @@ import * as runtime from '../runtime';
 import type {
   GetProfileSpotlightsQuery200Response,
   GetTweetResultByRestId200Response,
-} from '../models';
+} from '../models/index';
 import {
     GetProfileSpotlightsQuery200ResponseFromJSON,
     GetProfileSpotlightsQuery200ResponseToJSON,
     GetTweetResultByRestId200ResponseFromJSON,
     GetTweetResultByRestId200ResponseToJSON,
-} from '../models';
+} from '../models/index';
 
 export interface GetProfileSpotlightsQueryRequest {
     pathQueryId: string;

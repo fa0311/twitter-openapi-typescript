@@ -8,6 +8,17 @@ test('postCreateTweet', async () => {
   expect(response.raw.response.ok).toBe(true);
 });
 
+test('postCreateReplyTweet', async () => {
+  logger.log('postCreateTweet');
+  const client = await getClient();
+  const time = new Date().toISOString();
+  const response = await client.getPostApi().postCreateTweet({
+    tweetText: `Test[${time}]`,
+    inReplyToTweetId: '1726807635754914204',
+  });
+  expect(response.raw.response.ok).toBe(true);
+});
+
 test('postDeleteTweet', async () => {
   logger.log('postDeleteTweet');
   const client = await getClient();

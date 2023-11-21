@@ -27,7 +27,7 @@ import type {
   PostFavoriteTweetRequest,
   PostUnfavoriteTweet200Response,
   PostUnfavoriteTweetRequest,
-} from '../models';
+} from '../models/index';
 import {
     PostCreateRetweet200ResponseFromJSON,
     PostCreateRetweet200ResponseToJSON,
@@ -53,7 +53,7 @@ import {
     PostUnfavoriteTweet200ResponseToJSON,
     PostUnfavoriteTweetRequestFromJSON,
     PostUnfavoriteTweetRequestToJSON,
-} from '../models';
+} from '../models/index';
 
 export interface PostCreateRetweetOperationRequest {
     pathQueryId: string;

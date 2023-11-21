@@ -19,6 +19,12 @@ import {
     PostCreateTweetRequestVariablesMediaFromJSONTyped,
     PostCreateTweetRequestVariablesMediaToJSON,
 } from './PostCreateTweetRequestVariablesMedia';
+import type { PostCreateTweetRequestVariablesReply } from './PostCreateTweetRequestVariablesReply';
+import {
+    PostCreateTweetRequestVariablesReplyFromJSON,
+    PostCreateTweetRequestVariablesReplyFromJSONTyped,
+    PostCreateTweetRequestVariablesReplyToJSON,
+} from './PostCreateTweetRequestVariablesReply';
 
 /**
  * 
@@ -38,6 +44,12 @@ export interface PostCreateTweetRequestVariables {
      * @memberof PostCreateTweetRequestVariables
      */
     media: PostCreateTweetRequestVariablesMedia;
+    /**
+     * 
+     * @type {PostCreateTweetRequestVariablesReply}
+     * @memberof PostCreateTweetRequestVariables
+     */
+    reply?: PostCreateTweetRequestVariablesReply;
     /**
      * 
      * @type {Array<object>}
@@ -77,6 +89,7 @@ export function PostCreateTweetRequestVariablesFromJSONTyped(json: any, ignoreDi
         
         'darkRequest': json['dark_request'],
         'media': PostCreateTweetRequestVariablesMediaFromJSON(json['media']),
+        'reply': !exists(json, 'reply') ? undefined : PostCreateTweetRequestVariablesReplyFromJSON(json['reply']),
         'semanticAnnotationIds': json['semantic_annotation_ids'],
         'tweetText': json['tweet_text'],
     };
@@ -93,6 +106,7 @@ export function PostCreateTweetRequestVariablesToJSON(value?: PostCreateTweetReq
         
         'dark_request': value.darkRequest,
         'media': PostCreateTweetRequestVariablesMediaToJSON(value.media),
+        'reply': PostCreateTweetRequestVariablesReplyToJSON(value.reply),
         'semantic_annotation_ids': value.semanticAnnotationIds,
         'tweet_text': value.tweetText,
     };

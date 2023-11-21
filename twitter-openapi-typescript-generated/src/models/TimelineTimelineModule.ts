@@ -88,7 +88,8 @@ export interface TimelineTimelineModule {
  */
 export const TimelineTimelineModuleDisplayTypeEnum = {
     Vertical: 'Vertical',
-    VerticalConversation: 'VerticalConversation'
+    VerticalConversation: 'VerticalConversation',
+    Carousel: 'Carousel'
 } as const;
 export type TimelineTimelineModuleDisplayTypeEnum = typeof TimelineTimelineModuleDisplayTypeEnum[keyof typeof TimelineTimelineModuleDisplayTypeEnum];
 

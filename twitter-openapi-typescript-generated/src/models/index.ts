@@ -104,6 +104,7 @@ export * from './PostCreateTweetRequestFeatures';
 export * from './PostCreateTweetRequestVariables';
 export * from './PostCreateTweetRequestVariablesMedia';
 export * from './PostCreateTweetRequestVariablesMediaMediaEntitiesInner';
+export * from './PostCreateTweetRequestVariablesReply';
 export * from './PostDeleteRetweet200Response';
 export * from './PostDeleteRetweetRequest';
 export * from './PostDeleteRetweetRequestVariables';

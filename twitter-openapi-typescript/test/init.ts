@@ -1,5 +1,4 @@
 import { TwitterOpenApi } from '@/api';
-import fetch from 'node-fetch';
 import * as dotenv from 'dotenv';
 import * as log4js from 'log4js';
 

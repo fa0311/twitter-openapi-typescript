@@ -26,7 +26,6 @@
   "devDependencies": {
     "@types/jest": "*",
     "@types/node": "*",
-    "@types/node-fetch": "*",
     "@typescript-eslint/eslint-plugin": "*",
     "@typescript-eslint/parser": "*",
     "dotenv": "^16.3.0",
@@ -36,8 +35,8 @@
     "eslint-plugin-n": "*",
     "eslint-plugin-promise": "*",
     "jest": "^29.7.0",
-    "ts-jest": "*",
     "log4js": "^6.9.0",
+    "ts-jest": "*",
     "typescript": "^5.2.0"
   }
 }

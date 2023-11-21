@@ -12,15 +12,15 @@
  * Do not edit the class manually.
  */
 
+import type { User } from './User';
 import {
-    User,
     instanceOfUser,
     UserFromJSON,
     UserFromJSONTyped,
     UserToJSON,
 } from './User';
+import type { UserUnavailable } from './UserUnavailable';
 import {
-    UserUnavailable,
     instanceOfUserUnavailable,
     UserUnavailableFromJSON,
     UserUnavailableFromJSONTyped,
@@ -48,7 +48,7 @@ export function UserUnionFromJSONTyped(json: any, ignoreDiscriminator: boolean):
         case 'UserUnavailable':
             return {...UserUnavailableFromJSONTyped(json, true), typename: 'UserUnavailable'};
         default:
-            throw new Error(`No variant of UserUnion exists with 'typename=${json['__typename']}'`);
+            throw new Error(`No variant of UserUnion exists with 'typename=${json['typename']}'`);
     }
 }
 

@@ -1,21 +1,16 @@
-import glob
 import json
 
 
-for file in glob.glob("src/**/*.ts", recursive=True):
-    with open(file, mode="r", encoding="utf-8") as f:
-        text = f.read()
+# for file in glob.glob("src/**/*.ts", recursive=True):
+#     with open(file, mode="r", encoding="utf-8") as f:
+#         text = f.read()
 
-    # https://github.com/OpenAPITools/openapi-generator/pull/15668
-    text = text.replace("json['typename']", "json['__typename']")
-    text = text.replace("json['typename']", "json['__typename']")
+#     # https://github.com/OpenAPITools/openapi-generator/pull/15668
+#     text = text.replace("json['typename']", "json['__typename']")
+#     text = text.replace("json['typename']", "json['__typename']")
 
-    with open(file, mode="w", encoding="utf-8") as f:
-        f.write(text)
-
-
-with open(file, mode="r", encoding="utf-8") as f:
-    text = f.read()
+#     with open(file, mode="w", encoding="utf-8") as f:
+#         f.write(text)
 
 
 with open("package.json", mode="r", encoding="utf-8") as f:
@@ -30,9 +25,7 @@ package.update(
             "url": "https://github.com/fa0311/twitter-openapi-typescript.git",
         },
         "keywords": ["twitter", "api", "typescript", "scraper"],
-        "scripts": {
-            "build": "tsc"
-        },
+        "scripts": {"build": "tsc"},
     }
 )
 

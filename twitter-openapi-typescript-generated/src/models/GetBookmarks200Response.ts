@@ -12,15 +12,15 @@
  * Do not edit the class manually.
  */
 
+import type { BookmarksResponse } from './BookmarksResponse';
 import {
-    BookmarksResponse,
     instanceOfBookmarksResponse,
     BookmarksResponseFromJSON,
     BookmarksResponseFromJSONTyped,
     BookmarksResponseToJSON,
 } from './BookmarksResponse';
+import type { Errors } from './Errors';
 import {
-    Errors,
     instanceOfErrors,
     ErrorsFromJSON,
     ErrorsFromJSONTyped,

@@ -12,15 +12,15 @@
  * Do not edit the class manually.
  */
 
+import type { DeleteRetweetResponse } from './DeleteRetweetResponse';
 import {
-    DeleteRetweetResponse,
     instanceOfDeleteRetweetResponse,
     DeleteRetweetResponseFromJSON,
     DeleteRetweetResponseFromJSONTyped,
     DeleteRetweetResponseToJSON,
 } from './DeleteRetweetResponse';
+import type { Errors } from './Errors';
 import {
-    Errors,
     instanceOfErrors,
     ErrorsFromJSON,
     ErrorsFromJSONTyped,

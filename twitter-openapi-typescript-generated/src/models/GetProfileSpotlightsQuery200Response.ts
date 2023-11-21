@@ -12,15 +12,15 @@
  * Do not edit the class manually.
  */
 
+import type { Errors } from './Errors';
 import {
-    Errors,
     instanceOfErrors,
     ErrorsFromJSON,
     ErrorsFromJSONTyped,
     ErrorsToJSON,
 } from './Errors';
+import type { ProfileResponse } from './ProfileResponse';
 import {
-    ProfileResponse,
     instanceOfProfileResponse,
     ProfileResponseFromJSON,
     ProfileResponseFromJSONTyped,

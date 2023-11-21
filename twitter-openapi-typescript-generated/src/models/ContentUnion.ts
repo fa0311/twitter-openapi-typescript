@@ -12,22 +12,22 @@
  * Do not edit the class manually.
  */
 
+import type { TimelineTimelineCursor } from './TimelineTimelineCursor';
 import {
-    TimelineTimelineCursor,
     instanceOfTimelineTimelineCursor,
     TimelineTimelineCursorFromJSON,
     TimelineTimelineCursorFromJSONTyped,
     TimelineTimelineCursorToJSON,
 } from './TimelineTimelineCursor';
+import type { TimelineTimelineItem } from './TimelineTimelineItem';
 import {
-    TimelineTimelineItem,
     instanceOfTimelineTimelineItem,
     TimelineTimelineItemFromJSON,
     TimelineTimelineItemFromJSONTyped,
     TimelineTimelineItemToJSON,
 } from './TimelineTimelineItem';
+import type { TimelineTimelineModule } from './TimelineTimelineModule';
 import {
-    TimelineTimelineModule,
     instanceOfTimelineTimelineModule,
     TimelineTimelineModuleFromJSON,
     TimelineTimelineModuleFromJSONTyped,

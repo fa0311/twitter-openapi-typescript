@@ -12,15 +12,15 @@
  * Do not edit the class manually.
  */
 
+import type { CreateTweetResponse } from './CreateTweetResponse';
 import {
-    CreateTweetResponse,
     instanceOfCreateTweetResponse,
     CreateTweetResponseFromJSON,
     CreateTweetResponseFromJSONTyped,
     CreateTweetResponseToJSON,
 } from './CreateTweetResponse';
+import type { Errors } from './Errors';
 import {
-    Errors,
     instanceOfErrors,
     ErrorsFromJSON,
     ErrorsFromJSONTyped,

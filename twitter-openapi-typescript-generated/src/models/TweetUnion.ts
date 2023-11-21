@@ -12,22 +12,22 @@
  * Do not edit the class manually.
  */
 
+import type { Tweet } from './Tweet';
 import {
-    Tweet,
     instanceOfTweet,
     TweetFromJSON,
     TweetFromJSONTyped,
     TweetToJSON,
 } from './Tweet';
+import type { TweetTombstone } from './TweetTombstone';
 import {
-    TweetTombstone,
     instanceOfTweetTombstone,
     TweetTombstoneFromJSON,
     TweetTombstoneFromJSONTyped,
     TweetTombstoneToJSON,
 } from './TweetTombstone';
+import type { TweetWithVisibilityResults } from './TweetWithVisibilityResults';
 import {
-    TweetWithVisibilityResults,
     instanceOfTweetWithVisibilityResults,
     TweetWithVisibilityResultsFromJSON,
     TweetWithVisibilityResultsFromJSONTyped,
@@ -57,7 +57,7 @@ export function TweetUnionFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         case 'TweetWithVisibilityResults':
             return {...TweetWithVisibilityResultsFromJSONTyped(json, true), typename: 'TweetWithVisibilityResults'};
         default:
-            throw new Error(`No variant of TweetUnion exists with 'typename=${json['__typename']}'`);
+            throw new Error(`No variant of TweetUnion exists with 'typename=${json['typename']}'`);
     }
 }
 

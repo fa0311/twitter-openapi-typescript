@@ -22,7 +22,7 @@ import type {
   GetSearchTimeline200Response,
   GetTweetDetail200Response,
   GetUserHighlightsTweets200Response,
-} from '../models';
+} from '../models/index';
 import {
     GetBookmarks200ResponseFromJSON,
     GetBookmarks200ResponseToJSON,
@@ -38,7 +38,7 @@ import {
     GetTweetDetail200ResponseToJSON,
     GetUserHighlightsTweets200ResponseFromJSON,
     GetUserHighlightsTweets200ResponseToJSON,
-} from '../models';
+} from '../models/index';
 
 export interface GetBookmarksRequest {
     pathQueryId: string;

@@ -44,7 +44,7 @@ export class TwitterOpenApi {
     ...TwitterOpenApi.browser_headers,
   };
 
-  static fetchApi: i.FetchAPI = fetch;
+  static fetchApi: i.FetchAPI = fetch.bind(globalThis);
 
   cookie_normalize(cookie: string[]): { [key: string]: string } {
     return cookie.reduce((a, b) => {

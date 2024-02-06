@@ -46,6 +46,12 @@ export class TwitterOpenApi {
 
   static fetchApi: i.FetchAPI = fetch;
 
+  initOverrides: initOverrides = {};
+
+  setInitOverrides(initOverrides: initOverrides): void {
+    this.initOverrides = initOverrides;
+  }
+
   cookie_normalize(cookie: string[]): { [key: string]: string } {
     return cookie.reduce((a, b) => {
       const [key, value] = b.split('; ')[0].split('=');
@@ -74,12 +80,19 @@ export class TwitterOpenApi {
       method: 'GET',
       redirect: 'manual',
       headers: { Cookie: this.cookieEncode(cookies) },
+      ...this.initOverrides,
     });
-    cookies = { ...cookies, ...this.cookie_normalize(response.headers.getSetCookie()) };
+
+    if (response.headers.getSetCookie) {
+      cookies = { ...cookies, ...this.cookie_normalize(response.headers.getSetCookie()) };
+    } else {
+      cookies = { ...cookies, ...this.cookie_normalize(response.headers.get('set-cookie')?.split(', ') || []) };
+    }
 
     const html = await TwitterOpenApi.fetchApi(TwitterOpenApi.twitter, {
       method: 'GET',
       headers: { Cookie: this.cookieEncode(cookies) },
+      ...this.initOverrides,
     }).then((response) => response.text());
 
     const re = new RegExp('document.cookie="(.*?)";', 'g');
@@ -99,6 +112,7 @@ export class TwitterOpenApi {
       const { guest_token } = await TwitterOpenApi.fetchApi('https://api.twitter.com/1.1/guest/activate.json', {
         method: 'POST',
         headers: activate_headers,
+        ...this.initOverrides,
       }).then((response) => response.json());
       cookies['gt'] = guest_token;
     }
@@ -130,10 +144,11 @@ export class TwitterOpenApi {
   }
 
   async getClient(api: i.Configuration): Promise<TwitterOpenApiClient> {
-    const flag = (await TwitterOpenApi.fetchApi(TwitterOpenApi.url, { method: 'GET' }).then((res) =>
-      res.json(),
-    )) as DefaultFlag;
-    return new TwitterOpenApiClient(api, flag);
+    const flag = (await TwitterOpenApi.fetchApi(TwitterOpenApi.url, {
+      method: 'GET',
+      ...this.initOverrides,
+    }).then((res) => res.json())) as DefaultFlag;
+    return new TwitterOpenApiClient(api, flag, this.initOverrides);
   }
 }
 
@@ -142,12 +157,9 @@ export class TwitterOpenApiClient {
   flag: DefaultFlag;
   initOverrides: initOverrides;
 
-  constructor(config: i.Configuration, flag: DefaultFlag) {
+  constructor(config: i.Configuration, flag: DefaultFlag, initOverrides: initOverrides) {
     this.config = config;
     this.flag = flag;
-  }
-
-  setInitOverrides(initOverrides: initOverrides): void {
     this.initOverrides = initOverrides;
   }
 

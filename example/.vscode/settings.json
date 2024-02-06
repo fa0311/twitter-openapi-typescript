@@ -1,0 +1,13 @@
+{
+  "jest.autoRun": {
+    "watch": false
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "explicit",
+      "source.organizeImports": "explicit",
+    },
+    "editor.formatOnSave": true,
+  },
+}

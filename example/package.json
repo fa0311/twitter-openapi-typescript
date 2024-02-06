@@ -8,8 +8,9 @@
         "start": "npx ts-node -r tsconfig-paths/register src/main.ts"
     },
     "dependencies": {
+        "https-proxy-agent": "^7.0.2",
         "twitter-api-v2": "^1.15.2",
-        "twitter-openapi-typescript": "^0.0.19"
+        "twitter-openapi-typescript": "^0.0.27"
     },
     "devDependencies": {
         "@types/node": "*",
@@ -23,7 +24,7 @@
         "eslint-plugin-n": "*",
         "eslint-plugin-promise": "*",
         "log4js": "^6.9.0",
-        "node-fetch": "^2.0.0",
+        "node-fetch": "^2.6.6",
         "typescript": "^5.2.0"
     }
 }

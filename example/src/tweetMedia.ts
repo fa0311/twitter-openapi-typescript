@@ -1,6 +1,6 @@
 import login from '@/login';
 
-const main = async () => {
+(async () => {
   const { client, legacy } = await login();
 
   const data = await legacy.v1.uploadMedia('test.png');
@@ -9,6 +9,4 @@ const main = async () => {
     tweetText: 'Hello World!!',
     mediaIds: [data],
   });
-};
-
-main();
+})();

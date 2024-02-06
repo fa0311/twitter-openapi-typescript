@@ -1,6 +1,5 @@
+import { ITwitterApiClientPlugin, TwitterApi } from 'twitter-api-v2';
 import { TwitterOpenApi } from 'twitter-openapi-typescript';
-import { TwitterApi, ITwitterApiClientPlugin } from 'twitter-api-v2';
-import fetch from 'node-fetch';
 
 import * as dotenv from 'dotenv';
 dotenv.config();
@@ -11,7 +10,7 @@ const CsrfToken = process.env.CSRF_TOKEN as string;
 export const login = async () => {
   const cookie = { auth_token: authToken, ct0: CsrfToken };
 
-  const api = new TwitterOpenApi({ fetchApi: fetch as any });
+  const api = new TwitterOpenApi();
   const client = await api.getClientFromCookies(cookie);
 
   const plugin: ITwitterApiClientPlugin = {

@@ -1,10 +1,10 @@
 export { DefaultApiUtils } from './defaultApi';
-export { TweetApiUtils } from './tweetApi';
+export { InitialStateApiUtils } from './initialStateApi';
 export { PostApiUtils } from './postApi';
+export { TweetApiUtils } from './tweetApi';
 export { UserApiUtils } from './userApi';
-export { UsersApiUtils } from './usersApi';
 export { UserListApiUtils } from './userListApi';
+export { UsersApiUtils } from './usersApi';
 export { V11GetApiUtils } from './v11GetApi';
 export { V11PostApiUtils } from './v11PostApi';
 export { V20GetApiUtils } from './v20GetApi';
-export { InitialStateApiUtils } from './initialStateApi';

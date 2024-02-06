@@ -1,4 +1,3 @@
-import * as i from 'twitter-openapi-typescript-generated';
 import {
   DefaultApiUtils,
   InitialStateApiUtils,
@@ -10,7 +9,8 @@ import {
   V11PostApiUtils,
   V20GetApiUtils,
 } from '@/apis';
-import { DefaultFlag } from '@/models';
+import { DefaultFlag, initOverrides } from '@/models';
+import * as i from 'twitter-openapi-typescript-generated';
 import { UsersApiUtils } from './apis/usersApi';
 
 export class TwitterOpenApi {
@@ -46,6 +46,12 @@ export class TwitterOpenApi {
 
   static fetchApi: i.FetchAPI = fetch.bind(globalThis);
 
+  initOverrides: initOverrides = {};
+
+  setInitOverrides(initOverrides: initOverrides): void {
+    this.initOverrides = initOverrides;
+  }
+
   cookie_normalize(cookie: string[]): { [key: string]: string } {
     return cookie.reduce((a, b) => {
       const [key, value] = b.split('; ')[0].split('=');
@@ -74,12 +80,19 @@ export class TwitterOpenApi {
       method: 'GET',
       redirect: 'manual',
       headers: { Cookie: this.cookieEncode(cookies) },
+      ...this.initOverrides,
     });
-    cookies = { ...cookies, ...this.cookie_normalize(response.headers.getSetCookie()) };
+
+    if (response.headers.getSetCookie) {
+      cookies = { ...cookies, ...this.cookie_normalize(response.headers.getSetCookie()) };
+    } else {
+      cookies = { ...cookies, ...this.cookie_normalize(response.headers.get('set-cookie')?.split(', ') || []) };
+    }
 
     const html = await TwitterOpenApi.fetchApi(TwitterOpenApi.twitter, {
       method: 'GET',
       headers: { Cookie: this.cookieEncode(cookies) },
+      ...this.initOverrides,
     }).then((response) => response.text());
 
     const re = new RegExp('document.cookie="(.*?)";', 'g');
@@ -99,6 +112,7 @@ export class TwitterOpenApi {
       const { guest_token } = await TwitterOpenApi.fetchApi('https://api.twitter.com/1.1/guest/activate.json', {
         method: 'POST',
         headers: activate_headers,
+        ...this.initOverrides,
       }).then((response) => response.json());
       cookies['gt'] = guest_token;
     }
@@ -130,56 +144,59 @@ export class TwitterOpenApi {
   }
 
   async getClient(api: i.Configuration): Promise<TwitterOpenApiClient> {
-    const flag = (await TwitterOpenApi.fetchApi(TwitterOpenApi.url, { method: 'GET' }).then((res) =>
-      res.json(),
-    )) as DefaultFlag;
-    return new TwitterOpenApiClient(api, flag);
+    const flag = (await TwitterOpenApi.fetchApi(TwitterOpenApi.url, {
+      method: 'GET',
+      ...this.initOverrides,
+    }).then((res) => res.json())) as DefaultFlag;
+    return new TwitterOpenApiClient(api, flag, this.initOverrides);
   }
 }
 
 export class TwitterOpenApiClient {
-  private config: i.Configuration;
-  public flag: DefaultFlag;
+  config: i.Configuration;
+  flag: DefaultFlag;
+  initOverrides: initOverrides;
 
-  constructor(config: i.Configuration, flag: DefaultFlag) {
+  constructor(config: i.Configuration, flag: DefaultFlag, initOverrides: initOverrides) {
     this.config = config;
     this.flag = flag;
+    this.initOverrides = initOverrides;
   }
 
   getDefaultApi(): DefaultApiUtils {
-    return new DefaultApiUtils(new i.DefaultApi(this.config), this.flag);
+    return new DefaultApiUtils(new i.DefaultApi(this.config), this.flag, this.initOverrides);
   }
 
   getTweetApi(): TweetApiUtils {
-    return new TweetApiUtils(new i.TweetApi(this.config), this.flag);
+    return new TweetApiUtils(new i.TweetApi(this.config), this.flag, this.initOverrides);
   }
 
   getUserApi(): UserApiUtils {
-    return new UserApiUtils(new i.UserApi(this.config), this.flag);
+    return new UserApiUtils(new i.UserApi(this.config), this.flag, this.initOverrides);
   }
 
   getUsersApi(): UsersApiUtils {
-    return new UsersApiUtils(new i.UsersApi(this.config), this.flag);
+    return new UsersApiUtils(new i.UsersApi(this.config), this.flag, this.initOverrides);
   }
 
   getUserListApi(): UserListApiUtils {
-    return new UserListApiUtils(new i.UserListApi(this.config), this.flag);
+    return new UserListApiUtils(new i.UserListApi(this.config), this.flag, this.initOverrides);
   }
 
   getPostApi(): PostApiUtils {
-    return new PostApiUtils(new i.PostApi(this.config), this.flag);
+    return new PostApiUtils(new i.PostApi(this.config), this.flag, this.initOverrides);
   }
 
   getV11GetApi(): V11GetApiUtils {
-    return new V11GetApiUtils(new i.V11GetApi(this.config), this.flag);
+    return new V11GetApiUtils(new i.V11GetApi(this.config), this.flag, this.initOverrides);
   }
 
   getV11PostApi(): V11PostApiUtils {
-    return new V11PostApiUtils(new i.V11PostApi(this.config), this.flag);
+    return new V11PostApiUtils(new i.V11PostApi(this.config), this.flag, this.initOverrides);
   }
 
   getV20GetApi(): V20GetApiUtils {
-    return new V20GetApiUtils(new i.V20GetApi(this.config), this.flag);
+    return new V20GetApiUtils(new i.V20GetApi(this.config), this.flag, this.initOverrides);
   }
 
   getInitialStateApi(): InitialStateApiUtils {

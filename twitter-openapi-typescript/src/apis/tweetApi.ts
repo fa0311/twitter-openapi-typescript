@@ -1,12 +1,13 @@
-import * as i from 'twitter-openapi-typescript-generated';
 import {
   DefaultFlag,
   RequestParam,
-  TwitterApiUtilsResponse,
-  TweetApiUtilsData,
   TimelineApiUtilsResponse,
+  TweetApiUtilsData,
+  TwitterApiUtilsResponse,
+  initOverrides,
 } from '@/models';
 import { buildHeader, entriesCursor, errorCheck, getKwargs, instructionToEntry, tweetEntriesConverter } from '@/utils';
+import * as i from 'twitter-openapi-typescript-generated';
 
 type GetTweetDetailParam = {
   focalTweetId: string;
@@ -80,16 +81,18 @@ type ResponseType = TwitterApiUtilsResponse<TimelineApiUtilsResponse<TweetApiUti
 export class TweetApiUtils {
   api: i.TweetApi;
   flag: DefaultFlag;
+  initOverrides: initOverrides;
 
-  constructor(api: i.TweetApi, flag: DefaultFlag) {
+  constructor(api: i.TweetApi, flag: DefaultFlag, initOverrides: initOverrides) {
     this.api = api;
     this.flag = flag;
+    this.initOverrides = initOverrides;
   }
 
   async request<T>(param: RequestParam<i.InstructionUnion[], T>): Promise<ResponseType> {
     const apiFn: typeof param.apiFn = param.apiFn.bind(this.api);
     const args = getKwargs(this.flag[param.key], param.param);
-    const response = await apiFn(args);
+    const response = await apiFn(args, this.initOverrides);
     const checked = errorCheck(await response.value());
     const instruction = param.convertFn(checked);
     const entry = instructionToEntry(instruction);

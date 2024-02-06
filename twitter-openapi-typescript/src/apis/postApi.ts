@@ -1,8 +1,6 @@
-import * as i from 'twitter-openapi-typescript-generated';
-import { DefaultFlag } from '@/models';
+import { DefaultFlag, TwitterApiUtilsResponse, initOverrides } from '@/models';
 import { buildHeader, errorCheck } from '@/utils';
-import { TwitterApiUtilsResponse } from '@/models';
-import { error } from 'console';
+import * as i from 'twitter-openapi-typescript-generated';
 
 type PostCreateTweetParam = {
   tweetText: string;
@@ -39,10 +37,12 @@ type PostUnfavoriteTweetParam = {
 export class PostApiUtils {
   api: i.PostApi;
   flag: DefaultFlag;
+  initOverrides: initOverrides;
 
-  constructor(api: i.PostApi, flag: DefaultFlag) {
+  constructor(api: i.PostApi, flag: DefaultFlag, initOverrides: initOverrides) {
     this.api = api;
     this.flag = flag;
+    this.initOverrides = initOverrides;
   }
 
   async postCreateTweet(param: PostCreateTweetParam): Promise<TwitterApiUtilsResponse<i.CreateTweetResponse>> {

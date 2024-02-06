@@ -1,22 +1,21 @@
-import * as i from 'twitter-openapi-typescript-generated';
 import {
-  RequestParam,
   DefaultFlag,
-  ApiUtilsRaw,
+  RequestParam,
   TimelineApiUtilsResponse,
   TwitterApiUtilsResponse,
   UserApiUtilsData,
-  TwitterApiUtilsRaw,
+  initOverrides,
 } from '@/models';
 import {
   buildHeader,
-  userResultConverter,
   entriesCursor,
+  errorCheck,
+  getKwargs,
   instructionToEntry,
   userEntriesConverter,
-  getKwargs,
-  errorCheck,
+  userResultConverter,
 } from '@/utils';
+import * as i from 'twitter-openapi-typescript-generated';
 
 type GetFollowersParam = {
   userId: string;
@@ -58,16 +57,18 @@ type ResponseType = TwitterApiUtilsResponse<TimelineApiUtilsResponse<UserApiUtil
 export class UserListApiUtils {
   api: i.UserListApi;
   flag: DefaultFlag;
+  initOverrides: initOverrides;
 
-  constructor(api: i.UserListApi, flag: DefaultFlag) {
+  constructor(api: i.UserListApi, flag: DefaultFlag, initOverrides: initOverrides) {
     this.api = api;
     this.flag = flag;
+    this.initOverrides = initOverrides;
   }
 
   async request<T>(param: RequestParam<i.InstructionUnion[], T>): Promise<ResponseType> {
     const apiFn: typeof param.apiFn = param.apiFn.bind(this.api);
     const args = getKwargs(this.flag[param.key], param.param);
-    const response = await apiFn(args);
+    const response = await apiFn(args, this.initOverrides);
     const checked = errorCheck(await response.value());
     const instruction = param.convertFn(checked);
     const entry = instructionToEntry(instruction);

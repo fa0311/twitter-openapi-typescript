@@ -1,5 +1,5 @@
+import { ApiUtilsHeader, CursorApiUtilsResponse, TweetApiUtilsData, UserApiUtilsData } from '@/models';
 import * as i from 'twitter-openapi-typescript-generated';
-import { TweetApiUtilsData, UserApiUtilsData, CursorApiUtilsResponse, ApiUtilsHeader } from '@/models';
 
 export const getKwargs = (flag: { [key: string]: any }, additional: { [key: string]: any }): any => {
   const kwargs: { [key: string]: any } = { pathQueryId: flag.queryId };
@@ -103,7 +103,6 @@ export const tweetResultsConverter = (tweetResults: i.ItemResult): i.Tweet | und
     case i.TypeName.TweetTombstone:
       return undefined;
   }
-  throw Error();
 };
 
 export const userOrNullConverter = (userResults: i.UserUnion): i.User | undefined => {

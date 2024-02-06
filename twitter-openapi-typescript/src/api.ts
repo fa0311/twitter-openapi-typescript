@@ -1,4 +1,3 @@
-import * as i from 'twitter-openapi-typescript-generated';
 import {
   DefaultApiUtils,
   InitialStateApiUtils,
@@ -10,7 +9,8 @@ import {
   V11PostApiUtils,
   V20GetApiUtils,
 } from '@/apis';
-import { DefaultFlag } from '@/models';
+import { DefaultFlag, initOverrides } from '@/models';
+import * as i from 'twitter-openapi-typescript-generated';
 import { UsersApiUtils } from './apis/usersApi';
 
 export class TwitterOpenApi {
@@ -138,48 +138,53 @@ export class TwitterOpenApi {
 }
 
 export class TwitterOpenApiClient {
-  private config: i.Configuration;
-  public flag: DefaultFlag;
+  config: i.Configuration;
+  flag: DefaultFlag;
+  initOverrides: initOverrides;
 
   constructor(config: i.Configuration, flag: DefaultFlag) {
     this.config = config;
     this.flag = flag;
   }
 
+  setInitOverrides(initOverrides: initOverrides): void {
+    this.initOverrides = initOverrides;
+  }
+
   getDefaultApi(): DefaultApiUtils {
-    return new DefaultApiUtils(new i.DefaultApi(this.config), this.flag);
+    return new DefaultApiUtils(new i.DefaultApi(this.config), this.flag, this.initOverrides);
   }
 
   getTweetApi(): TweetApiUtils {
-    return new TweetApiUtils(new i.TweetApi(this.config), this.flag);
+    return new TweetApiUtils(new i.TweetApi(this.config), this.flag, this.initOverrides);
   }
 
   getUserApi(): UserApiUtils {
-    return new UserApiUtils(new i.UserApi(this.config), this.flag);
+    return new UserApiUtils(new i.UserApi(this.config), this.flag, this.initOverrides);
   }
 
   getUsersApi(): UsersApiUtils {
-    return new UsersApiUtils(new i.UsersApi(this.config), this.flag);
+    return new UsersApiUtils(new i.UsersApi(this.config), this.flag, this.initOverrides);
   }
 
   getUserListApi(): UserListApiUtils {
-    return new UserListApiUtils(new i.UserListApi(this.config), this.flag);
+    return new UserListApiUtils(new i.UserListApi(this.config), this.flag, this.initOverrides);
   }
 
   getPostApi(): PostApiUtils {
-    return new PostApiUtils(new i.PostApi(this.config), this.flag);
+    return new PostApiUtils(new i.PostApi(this.config), this.flag, this.initOverrides);
   }
 
   getV11GetApi(): V11GetApiUtils {
-    return new V11GetApiUtils(new i.V11GetApi(this.config), this.flag);
+    return new V11GetApiUtils(new i.V11GetApi(this.config), this.flag, this.initOverrides);
   }
 
   getV11PostApi(): V11PostApiUtils {
-    return new V11PostApiUtils(new i.V11PostApi(this.config), this.flag);
+    return new V11PostApiUtils(new i.V11PostApi(this.config), this.flag, this.initOverrides);
   }
 
   getV20GetApi(): V20GetApiUtils {
-    return new V20GetApiUtils(new i.V20GetApi(this.config), this.flag);
+    return new V20GetApiUtils(new i.V20GetApi(this.config), this.flag, this.initOverrides);
   }
 
   getInitialStateApi(): InitialStateApiUtils {

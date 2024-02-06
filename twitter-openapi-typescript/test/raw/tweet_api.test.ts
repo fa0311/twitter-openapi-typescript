@@ -1,4 +1,4 @@
-import { getClient, logger } from '@test/init';
+import { getClient } from '@test/init';
 
 test('getHomeTimelineRaw', async () => {
   const client = await getClient();

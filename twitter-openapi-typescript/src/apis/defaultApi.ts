@@ -1,6 +1,6 @@
-import * as i from 'twitter-openapi-typescript-generated';
+import { DefaultFlag, RequestParam, TweetApiUtilsData, TwitterApiUtilsResponse, initOverrides } from '@/models';
 import { buildHeader, buildTweetApiUtils, errorCheck, getKwargs } from '@/utils';
-import { RequestParam, DefaultFlag, TwitterApiUtilsResponse, TweetApiUtilsData } from '@/models';
+import * as i from 'twitter-openapi-typescript-generated';
 
 export type ProfileSpotlightsQueryParam = {
   screenName: string;
@@ -15,16 +15,18 @@ export type TweetResultByRestIdParam = {
 export class DefaultApiUtils {
   api: i.DefaultApi;
   flag: DefaultFlag;
+  initOverrides: initOverrides;
 
-  constructor(api: i.DefaultApi, flag: DefaultFlag) {
+  constructor(api: i.DefaultApi, flag: DefaultFlag, initOverrides: initOverrides) {
     this.api = api;
     this.flag = flag;
+    this.initOverrides = initOverrides;
   }
 
   async request<T1, T2>(param: RequestParam<T1, T2>): Promise<TwitterApiUtilsResponse<T1>> {
     const apiFn: typeof param.apiFn = param.apiFn.bind(this.api);
     const args = getKwargs(this.flag[param.key], param.param);
-    const response = await apiFn(args);
+    const response = await apiFn(args, this.initOverrides);
     const checked = errorCheck(await response.value());
     const data = param.convertFn(checked);
     return {

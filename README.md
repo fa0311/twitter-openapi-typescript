@@ -1,5 +1,7 @@
 # twitter-openapi-typescript
 
+[issues](https://github.com/fa0311/twitter-openapi-typescript/issues) / [discussions](https://github.com/fa0311/twitter-openapi/discussions)
+
 ## Table of Contents
 
 This repository contains two packages.
@@ -44,7 +46,7 @@ npm run build
 Setup
 
 ```shell
-npm twitter-openapi-typescript-generated
+npm i twitter-openapi-typescript-generated
 ```
 
 License

@@ -43,25 +43,42 @@ export const tweetEntriesConverter = (item: i.TimelineAddEntry[]): TweetApiUtils
         const item = (e.content as i.TimelineTimelineItem).itemContent;
         const timeline = item.itemType == i.ContentItemType.TimelineTweet ? (item as i.TimelineTweet) : undefined;
         if (timeline == undefined) return undefined;
-        return buildTweetApiUtils({
-          result: timeline.tweetResults,
-          promotedMetadata: timeline.promotedMetadata,
-        });
+        return [
+          buildTweetApiUtils({
+            result: timeline.tweetResults,
+            promotedMetadata: timeline.promotedMetadata,
+          }),
+        ];
       } else if (e.content.entryType == i.ContentEntryType.TimelineTimelineModule) {
         const item = (e.content as i.TimelineTimelineModule).items ?? [];
         const timelineList = item
           .filter((e) => e.item.itemContent.itemType == i.ContentItemType.TimelineTweet)
           .map((e) => e.item.itemContent as i.TimelineTweet);
         if (timelineList.length == 0) return undefined;
-        const timeline = timelineList[0];
-        return buildTweetApiUtils({
-          result: timeline.tweetResults,
-          promotedMetadata: timeline.promotedMetadata,
-          reply: timelineList.slice(1),
-        });
+
+        const displayType = (e.content as i.TimelineTimelineModule).displayType;
+        if (displayType == i.DisplayType.VerticalGrid) {
+          return timelineList.map((e) =>
+            buildTweetApiUtils({
+              result: e.tweetResults,
+              promotedMetadata: e.promotedMetadata,
+            }),
+          );
+        } else {
+          const timeline = timelineList[0];
+          return [
+            buildTweetApiUtils({
+              result: timeline.tweetResults,
+              promotedMetadata: timeline.promotedMetadata,
+              reply: timelineList.slice(1),
+            }),
+          ];
+        }
       }
     })
-    .filter((e): e is NonNullable<typeof e> => e != undefined);
+    .filter((e): e is NonNullable<typeof e> => e != undefined)
+    .map((e) => e.filter((e): e is NonNullable<typeof e> => e != undefined))
+    .flat();
 };
 
 type buildTweetApiUtilsArgs = {

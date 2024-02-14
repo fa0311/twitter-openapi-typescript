@@ -19,12 +19,12 @@ import {
     ContentItemTypeFromJSONTyped,
     ContentItemTypeToJSON,
 } from './ContentItemType';
-import type { SocialContext } from './SocialContext';
+import type { SocialContextUnion } from './SocialContextUnion';
 import {
-    SocialContextFromJSON,
-    SocialContextFromJSONTyped,
-    SocialContextToJSON,
-} from './SocialContext';
+    SocialContextUnionFromJSON,
+    SocialContextUnionFromJSONTyped,
+    SocialContextUnionToJSON,
+} from './SocialContextUnion';
 import type { TypeName } from './TypeName';
 import {
     TypeNameFromJSON,
@@ -46,12 +46,6 @@ import {
 export interface TimelineUser {
     /**
      * 
-     * @type {SocialContext}
-     * @memberof TimelineUser
-     */
-    socialContext?: SocialContext;
-    /**
-     * 
      * @type {TypeName}
      * @memberof TimelineUser
      */
@@ -62,6 +56,12 @@ export interface TimelineUser {
      * @memberof TimelineUser
      */
     itemType: ContentItemType;
+    /**
+     * 
+     * @type {SocialContextUnion}
+     * @memberof TimelineUser
+     */
+    socialContext?: SocialContextUnion;
     /**
      * 
      * @type {string}
@@ -111,9 +111,9 @@ export function TimelineUserFromJSONTyped(json: any, ignoreDiscriminator: boolea
     }
     return {
         
-        'socialContext': !exists(json, 'SocialContext') ? undefined : SocialContextFromJSON(json['SocialContext']),
         'typename': TypeNameFromJSON(json['__typename']),
         'itemType': ContentItemTypeFromJSON(json['itemType']),
+        'socialContext': !exists(json, 'socialContext') ? undefined : SocialContextUnionFromJSON(json['socialContext']),
         'userDisplayType': json['userDisplayType'],
         'userResults': UserResultsFromJSON(json['user_results']),
     };
@@ -128,9 +128,9 @@ export function TimelineUserToJSON(value?: TimelineUser | null): any {
     }
     return {
         
-        'SocialContext': SocialContextToJSON(value.socialContext),
         '__typename': TypeNameToJSON(value.typename),
         'itemType': ContentItemTypeToJSON(value.itemType),
+        'socialContext': SocialContextUnionToJSON(value.socialContext),
         'userDisplayType': value.userDisplayType,
         'user_results': UserResultsToJSON(value.userResults),
     };

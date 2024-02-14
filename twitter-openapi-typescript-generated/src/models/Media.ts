@@ -13,6 +13,12 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { ExtMediaAvailability } from './ExtMediaAvailability';
+import {
+    ExtMediaAvailabilityFromJSON,
+    ExtMediaAvailabilityFromJSONTyped,
+    ExtMediaAvailabilityToJSON,
+} from './ExtMediaAvailability';
 import type { MediaOriginalInfo } from './MediaOriginalInfo';
 import {
     MediaOriginalInfoFromJSON,
@@ -25,6 +31,12 @@ import {
     MediaSizesFromJSONTyped,
     MediaSizesToJSON,
 } from './MediaSizes';
+import type { SensitiveMediaWarning } from './SensitiveMediaWarning';
+import {
+    SensitiveMediaWarningFromJSON,
+    SensitiveMediaWarningFromJSONTyped,
+    SensitiveMediaWarningToJSON,
+} from './SensitiveMediaWarning';
 
 /**
  * 
@@ -32,6 +44,12 @@ import {
  * @interface Media
  */
 export interface Media {
+    /**
+     * 
+     * @type {{ [key: string]: any; }}
+     * @memberof Media
+     */
+    additionalMediaInfo?: { [key: string]: any; };
     /**
      * 
      * @type {string}
@@ -44,6 +62,18 @@ export interface Media {
      * @memberof Media
      */
     expandedUrl: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Media
+     */
+    extAltText?: string;
+    /**
+     * 
+     * @type {ExtMediaAvailability}
+     * @memberof Media
+     */
+    extMediaAvailability: ExtMediaAvailability;
     /**
      * 
      * @type {object}
@@ -67,6 +97,12 @@ export interface Media {
      * @type {string}
      * @memberof Media
      */
+    mediaKey: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Media
+     */
     mediaUrlHttps: string;
     /**
      * 
@@ -76,10 +112,28 @@ export interface Media {
     originalInfo: MediaOriginalInfo;
     /**
      * 
+     * @type {SensitiveMediaWarning}
+     * @memberof Media
+     */
+    sensitiveMediaWarning?: SensitiveMediaWarning;
+    /**
+     * 
      * @type {MediaSizes}
      * @memberof Media
      */
     sizes: MediaSizes;
+    /**
+     * 
+     * @type {string}
+     * @memberof Media
+     */
+    sourceStatusIdStr?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof Media
+     */
+    sourceUserIdStr?: string;
     /**
      * 
      * @type {string}
@@ -92,6 +146,12 @@ export interface Media {
      * @memberof Media
      */
     url: string;
+    /**
+     * 
+     * @type {{ [key: string]: any; }}
+     * @memberof Media
+     */
+    videoInfo?: { [key: string]: any; };
 }
 
 
@@ -113,8 +173,10 @@ export function instanceOfMedia(value: object): boolean {
     let isInstance = true;
     isInstance = isInstance && "displayUrl" in value;
     isInstance = isInstance && "expandedUrl" in value;
+    isInstance = isInstance && "extMediaAvailability" in value;
     isInstance = isInstance && "idStr" in value;
     isInstance = isInstance && "indices" in value;
+    isInstance = isInstance && "mediaKey" in value;
     isInstance = isInstance && "mediaUrlHttps" in value;
     isInstance = isInstance && "originalInfo" in value;
     isInstance = isInstance && "sizes" in value;
@@ -134,16 +196,24 @@ export function MediaFromJSONTyped(json: any, ignoreDiscriminator: boolean): Med
     }
     return {
         
+        'additionalMediaInfo': !exists(json, 'additional_media_info') ? undefined : json['additional_media_info'],
         'displayUrl': json['display_url'],
         'expandedUrl': json['expanded_url'],
+        'extAltText': !exists(json, 'ext_alt_text') ? undefined : json['ext_alt_text'],
+        'extMediaAvailability': ExtMediaAvailabilityFromJSON(json['ext_media_availability']),
         'features': !exists(json, 'features') ? undefined : json['features'],
         'idStr': json['id_str'],
         'indices': json['indices'],
+        'mediaKey': json['media_key'],
         'mediaUrlHttps': json['media_url_https'],
         'originalInfo': MediaOriginalInfoFromJSON(json['original_info']),
+        'sensitiveMediaWarning': !exists(json, 'sensitive_media_warning') ? undefined : SensitiveMediaWarningFromJSON(json['sensitive_media_warning']),
         'sizes': MediaSizesFromJSON(json['sizes']),
+        'sourceStatusIdStr': !exists(json, 'source_status_id_str') ? undefined : json['source_status_id_str'],
+        'sourceUserIdStr': !exists(json, 'source_user_id_str') ? undefined : json['source_user_id_str'],
         'type': json['type'],
         'url': json['url'],
+        'videoInfo': !exists(json, 'video_info') ? undefined : json['video_info'],
     };
 }
 
@@ -156,16 +226,24 @@ export function MediaToJSON(value?: Media | null): any {
     }
     return {
         
+        'additional_media_info': value.additionalMediaInfo,
         'display_url': value.displayUrl,
         'expanded_url': value.expandedUrl,
+        'ext_alt_text': value.extAltText,
+        'ext_media_availability': ExtMediaAvailabilityToJSON(value.extMediaAvailability),
         'features': value.features,
         'id_str': value.idStr,
         'indices': value.indices,
+        'media_key': value.mediaKey,
         'media_url_https': value.mediaUrlHttps,
         'original_info': MediaOriginalInfoToJSON(value.originalInfo),
+        'sensitive_media_warning': SensitiveMediaWarningToJSON(value.sensitiveMediaWarning),
         'sizes': MediaSizesToJSON(value.sizes),
+        'source_status_id_str': value.sourceStatusIdStr,
+        'source_user_id_str': value.sourceUserIdStr,
         'type': value.type,
         'url': value.url,
+        'video_info': value.videoInfo,
     };
 }
 

@@ -13,6 +13,19 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { AdditionalMediaInfoCallToActions } from './AdditionalMediaInfoCallToActions';
+import {
+    AdditionalMediaInfoCallToActionsFromJSON,
+    AdditionalMediaInfoCallToActionsFromJSONTyped,
+    AdditionalMediaInfoCallToActionsToJSON,
+} from './AdditionalMediaInfoCallToActions';
+import type { UserResultCore } from './UserResultCore';
+import {
+    UserResultCoreFromJSON,
+    UserResultCoreFromJSONTyped,
+    UserResultCoreToJSON,
+} from './UserResultCore';
+
 /**
  * 
  * @export
@@ -21,10 +34,40 @@ import { exists, mapValues } from '../runtime';
 export interface AdditionalMediaInfo {
     /**
      * 
+     * @type {AdditionalMediaInfoCallToActions}
+     * @memberof AdditionalMediaInfo
+     */
+    callToActions?: AdditionalMediaInfoCallToActions;
+    /**
+     * 
+     * @type {string}
+     * @memberof AdditionalMediaInfo
+     */
+    description?: string;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof AdditionalMediaInfo
+     */
+    embeddable?: boolean;
+    /**
+     * 
      * @type {boolean}
      * @memberof AdditionalMediaInfo
      */
     monetizable: boolean;
+    /**
+     * 
+     * @type {UserResultCore}
+     * @memberof AdditionalMediaInfo
+     */
+    sourceUser?: UserResultCore;
+    /**
+     * 
+     * @type {string}
+     * @memberof AdditionalMediaInfo
+     */
+    title?: string;
 }
 
 /**
@@ -47,7 +90,12 @@ export function AdditionalMediaInfoFromJSONTyped(json: any, ignoreDiscriminator:
     }
     return {
         
+        'callToActions': !exists(json, 'call_to_actions') ? undefined : AdditionalMediaInfoCallToActionsFromJSON(json['call_to_actions']),
+        'description': !exists(json, 'description') ? undefined : json['description'],
+        'embeddable': !exists(json, 'embeddable') ? undefined : json['embeddable'],
         'monetizable': json['monetizable'],
+        'sourceUser': !exists(json, 'source_user') ? undefined : UserResultCoreFromJSON(json['source_user']),
+        'title': !exists(json, 'title') ? undefined : json['title'],
     };
 }
 
@@ -60,7 +108,12 @@ export function AdditionalMediaInfoToJSON(value?: AdditionalMediaInfo | null): a
     }
     return {
         
+        'call_to_actions': AdditionalMediaInfoCallToActionsToJSON(value.callToActions),
+        'description': value.description,
+        'embeddable': value.embeddable,
         'monetizable': value.monetizable,
+        'source_user': UserResultCoreToJSON(value.sourceUser),
+        'title': value.title,
     };
 }
 

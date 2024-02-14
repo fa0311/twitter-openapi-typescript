@@ -13,6 +13,19 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { TweetCardLegacyBindingValueDataImage } from './TweetCardLegacyBindingValueDataImage';
+import {
+    TweetCardLegacyBindingValueDataImageFromJSON,
+    TweetCardLegacyBindingValueDataImageFromJSONTyped,
+    TweetCardLegacyBindingValueDataImageToJSON,
+} from './TweetCardLegacyBindingValueDataImage';
+import type { UserValue } from './UserValue';
+import {
+    UserValueFromJSON,
+    UserValueFromJSONTyped,
+    UserValueToJSON,
+} from './UserValue';
+
 /**
  * 
  * @export
@@ -25,6 +38,18 @@ export interface TweetCardLegacyBindingValueData {
      * @memberof TweetCardLegacyBindingValueData
      */
     booleanValue?: boolean;
+    /**
+     * 
+     * @type {{ [key: string]: any; }}
+     * @memberof TweetCardLegacyBindingValueData
+     */
+    imageColorValue?: { [key: string]: any; };
+    /**
+     * 
+     * @type {TweetCardLegacyBindingValueDataImage}
+     * @memberof TweetCardLegacyBindingValueData
+     */
+    imageValue?: TweetCardLegacyBindingValueDataImage;
     /**
      * 
      * @type {string}
@@ -43,6 +68,12 @@ export interface TweetCardLegacyBindingValueData {
      * @memberof TweetCardLegacyBindingValueData
      */
     type: string;
+    /**
+     * 
+     * @type {UserValue}
+     * @memberof TweetCardLegacyBindingValueData
+     */
+    userValue?: UserValue;
 }
 
 /**
@@ -66,9 +97,12 @@ export function TweetCardLegacyBindingValueDataFromJSONTyped(json: any, ignoreDi
     return {
         
         'booleanValue': !exists(json, 'boolean_value') ? undefined : json['boolean_value'],
+        'imageColorValue': !exists(json, 'image_color_value') ? undefined : json['image_color_value'],
+        'imageValue': !exists(json, 'image_value') ? undefined : TweetCardLegacyBindingValueDataImageFromJSON(json['image_value']),
         'scribeKey': !exists(json, 'scribe_key') ? undefined : json['scribe_key'],
         'stringValue': !exists(json, 'string_value') ? undefined : json['string_value'],
         'type': json['type'],
+        'userValue': !exists(json, 'user_value') ? undefined : UserValueFromJSON(json['user_value']),
     };
 }
 
@@ -82,9 +116,12 @@ export function TweetCardLegacyBindingValueDataToJSON(value?: TweetCardLegacyBin
     return {
         
         'boolean_value': value.booleanValue,
+        'image_color_value': value.imageColorValue,
+        'image_value': TweetCardLegacyBindingValueDataImageToJSON(value.imageValue),
         'scribe_key': value.scribeKey,
         'string_value': value.stringValue,
         'type': value.type,
+        'user_value': UserValueToJSON(value.userValue),
     };
 }
 

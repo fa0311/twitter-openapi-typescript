@@ -24,19 +24,25 @@ export interface BirdwatchEntityRef {
      * @type {string}
      * @memberof BirdwatchEntityRef
      */
+    text?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BirdwatchEntityRef
+     */
     type: BirdwatchEntityRefTypeEnum;
     /**
      * 
      * @type {string}
      * @memberof BirdwatchEntityRef
      */
-    url: string;
+    url?: string;
     /**
      * 
      * @type {string}
      * @memberof BirdwatchEntityRef
      */
-    urlType: BirdwatchEntityRefUrlTypeEnum;
+    urlType?: BirdwatchEntityRefUrlTypeEnum;
 }
 
 
@@ -44,7 +50,8 @@ export interface BirdwatchEntityRef {
  * @export
  */
 export const BirdwatchEntityRefTypeEnum = {
-    TimelineUrl: 'TimelineUrl'
+    TimelineUrl: 'TimelineUrl',
+    TimelineRichTextHashtag: 'TimelineRichTextHashtag'
 } as const;
 export type BirdwatchEntityRefTypeEnum = typeof BirdwatchEntityRefTypeEnum[keyof typeof BirdwatchEntityRefTypeEnum];
 
@@ -63,8 +70,6 @@ export type BirdwatchEntityRefUrlTypeEnum = typeof BirdwatchEntityRefUrlTypeEnum
 export function instanceOfBirdwatchEntityRef(value: object): boolean {
     let isInstance = true;
     isInstance = isInstance && "type" in value;
-    isInstance = isInstance && "url" in value;
-    isInstance = isInstance && "urlType" in value;
 
     return isInstance;
 }
@@ -79,9 +84,10 @@ export function BirdwatchEntityRefFromJSONTyped(json: any, ignoreDiscriminator: 
     }
     return {
         
+        'text': !exists(json, 'text') ? undefined : json['text'],
         'type': json['type'],
-        'url': json['url'],
-        'urlType': json['urlType'],
+        'url': !exists(json, 'url') ? undefined : json['url'],
+        'urlType': !exists(json, 'urlType') ? undefined : json['urlType'],
     };
 }
 
@@ -94,6 +100,7 @@ export function BirdwatchEntityRefToJSON(value?: BirdwatchEntityRef | null): any
     }
     return {
         
+        'text': value.text,
         'type': value.type,
         'url': value.url,
         'urlType': value.urlType,

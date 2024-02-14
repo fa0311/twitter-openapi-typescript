@@ -365,35 +365,35 @@ export class V20GetApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["x-twitter-client-language"] = this.configuration.apiKey("x-twitter-client-language"); // ClientLanguage authentication
+            headerParameters["x-twitter-client-language"] = await this.configuration.apiKey("x-twitter-client-language"); // ClientLanguage authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Accept"] = this.configuration.apiKey("Accept"); // Accept authentication
+            headerParameters["Accept"] = await this.configuration.apiKey("Accept"); // Accept authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Sec-Fetch-Dest"] = this.configuration.apiKey("Sec-Fetch-Dest"); // SecFetchDest authentication
+            headerParameters["Sec-Fetch-Dest"] = await this.configuration.apiKey("Sec-Fetch-Dest"); // SecFetchDest authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Pragma"] = this.configuration.apiKey("Pragma"); // Pragma authentication
+            headerParameters["Pragma"] = await this.configuration.apiKey("Pragma"); // Pragma authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Sec-Ch-Ua-Platform"] = this.configuration.apiKey("Sec-Ch-Ua-Platform"); // SecChUaPlatform authentication
+            headerParameters["Sec-Ch-Ua-Platform"] = await this.configuration.apiKey("Sec-Ch-Ua-Platform"); // SecChUaPlatform authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Sec-Fetch-Mode"] = this.configuration.apiKey("Sec-Fetch-Mode"); // SecFetchMode authentication
+            headerParameters["Sec-Fetch-Mode"] = await this.configuration.apiKey("Sec-Fetch-Mode"); // SecFetchMode authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["x-csrf-token"] = this.configuration.apiKey("x-csrf-token"); // CsrfToken authentication
+            headerParameters["x-csrf-token"] = await this.configuration.apiKey("x-csrf-token"); // CsrfToken authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["x-guest-token"] = this.configuration.apiKey("x-guest-token"); // GuestToken authentication
+            headerParameters["x-guest-token"] = await this.configuration.apiKey("x-guest-token"); // GuestToken authentication
         }
 
         if (this.configuration && this.configuration.accessToken) {
@@ -405,39 +405,39 @@ export class V20GetApi extends runtime.BaseAPI {
             }
         }
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Sec-Ch-Ua"] = this.configuration.apiKey("Sec-Ch-Ua"); // SecChUa authentication
+            headerParameters["Sec-Ch-Ua"] = await this.configuration.apiKey("Sec-Ch-Ua"); // SecChUa authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["x-twitter-active-user"] = this.configuration.apiKey("x-twitter-active-user"); // ActiveUser authentication
+            headerParameters["x-twitter-active-user"] = await this.configuration.apiKey("x-twitter-active-user"); // ActiveUser authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["user-agent"] = this.configuration.apiKey("user-agent"); // UserAgent authentication
+            headerParameters["user-agent"] = await this.configuration.apiKey("user-agent"); // UserAgent authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Accept-Language"] = this.configuration.apiKey("Accept-Language"); // AcceptLanguage authentication
+            headerParameters["Accept-Language"] = await this.configuration.apiKey("Accept-Language"); // AcceptLanguage authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Sec-Fetch-Site"] = this.configuration.apiKey("Sec-Fetch-Site"); // SecFetchSite authentication
+            headerParameters["Sec-Fetch-Site"] = await this.configuration.apiKey("Sec-Fetch-Site"); // SecFetchSite authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["x-twitter-auth-type"] = this.configuration.apiKey("x-twitter-auth-type"); // AuthType authentication
+            headerParameters["x-twitter-auth-type"] = await this.configuration.apiKey("x-twitter-auth-type"); // AuthType authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Cache-Control"] = this.configuration.apiKey("Cache-Control"); // CacheControl authentication
+            headerParameters["Cache-Control"] = await this.configuration.apiKey("Cache-Control"); // CacheControl authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Sec-Ch-Ua-Mobile"] = this.configuration.apiKey("Sec-Ch-Ua-Mobile"); // SecChUaMobile authentication
+            headerParameters["Sec-Ch-Ua-Mobile"] = await this.configuration.apiKey("Sec-Ch-Ua-Mobile"); // SecChUaMobile authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Accept-Encoding"] = this.configuration.apiKey("Accept-Encoding"); // AcceptEncoding authentication
+            headerParameters["Accept-Encoding"] = await this.configuration.apiKey("Accept-Encoding"); // AcceptEncoding authentication
         }
 
         const response = await this.request({

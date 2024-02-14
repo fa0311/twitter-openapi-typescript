@@ -38,6 +38,7 @@ export interface TweetView {
  * @export
  */
 export const TweetViewStateEnum = {
+    Enabled: 'Enabled',
     EnabledWithCount: 'EnabledWithCount'
 } as const;
 export type TweetViewStateEnum = typeof TweetViewStateEnum[keyof typeof TweetViewStateEnum];

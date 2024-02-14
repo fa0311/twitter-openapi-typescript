@@ -19,6 +19,18 @@ import {
     ContentEntryTypeFromJSONTyped,
     ContentEntryTypeToJSON,
 } from './ContentEntryType';
+import type { DisplayType } from './DisplayType';
+import {
+    DisplayTypeFromJSON,
+    DisplayTypeFromJSONTyped,
+    DisplayTypeToJSON,
+} from './DisplayType';
+import type { FeedbackInfo } from './FeedbackInfo';
+import {
+    FeedbackInfoFromJSON,
+    FeedbackInfoFromJSONTyped,
+    FeedbackInfoToJSON,
+} from './FeedbackInfo';
 import type { ModuleItem } from './ModuleItem';
 import {
     ModuleItemFromJSON,
@@ -52,16 +64,22 @@ export interface TimelineTimelineModule {
     clientEventInfo: { [key: string]: any; };
     /**
      * 
-     * @type {string}
+     * @type {DisplayType}
      * @memberof TimelineTimelineModule
      */
-    displayType: TimelineTimelineModuleDisplayTypeEnum;
+    displayType: DisplayType;
     /**
      * 
      * @type {ContentEntryType}
      * @memberof TimelineTimelineModule
      */
     entryType: ContentEntryType;
+    /**
+     * 
+     * @type {FeedbackInfo}
+     * @memberof TimelineTimelineModule
+     */
+    feedbackInfo?: FeedbackInfo;
     /**
      * 
      * @type {{ [key: string]: any; }}
@@ -80,19 +98,13 @@ export interface TimelineTimelineModule {
      * @memberof TimelineTimelineModule
      */
     items?: Array<ModuleItem>;
+    /**
+     * 
+     * @type {{ [key: string]: any; }}
+     * @memberof TimelineTimelineModule
+     */
+    metadata?: { [key: string]: any; };
 }
-
-
-/**
- * @export
- */
-export const TimelineTimelineModuleDisplayTypeEnum = {
-    Vertical: 'Vertical',
-    VerticalConversation: 'VerticalConversation',
-    Carousel: 'Carousel'
-} as const;
-export type TimelineTimelineModuleDisplayTypeEnum = typeof TimelineTimelineModuleDisplayTypeEnum[keyof typeof TimelineTimelineModuleDisplayTypeEnum];
-
 
 /**
  * Check if a given object implements the TimelineTimelineModule interface.
@@ -119,11 +131,13 @@ export function TimelineTimelineModuleFromJSONTyped(json: any, ignoreDiscriminat
         
         'typename': TypeNameFromJSON(json['__typename']),
         'clientEventInfo': json['clientEventInfo'],
-        'displayType': json['displayType'],
+        'displayType': DisplayTypeFromJSON(json['displayType']),
         'entryType': ContentEntryTypeFromJSON(json['entryType']),
+        'feedbackInfo': !exists(json, 'feedbackInfo') ? undefined : FeedbackInfoFromJSON(json['feedbackInfo']),
         'footer': !exists(json, 'footer') ? undefined : json['footer'],
         'header': !exists(json, 'header') ? undefined : json['header'],
         'items': !exists(json, 'items') ? undefined : ((json['items'] as Array<any>).map(ModuleItemFromJSON)),
+        'metadata': !exists(json, 'metadata') ? undefined : json['metadata'],
     };
 }
 
@@ -138,11 +152,13 @@ export function TimelineTimelineModuleToJSON(value?: TimelineTimelineModule | nu
         
         '__typename': TypeNameToJSON(value.typename),
         'clientEventInfo': value.clientEventInfo,
-        'displayType': value.displayType,
+        'displayType': DisplayTypeToJSON(value.displayType),
         'entryType': ContentEntryTypeToJSON(value.entryType),
+        'feedbackInfo': FeedbackInfoToJSON(value.feedbackInfo),
         'footer': value.footer,
         'header': value.header,
         'items': value.items === undefined ? undefined : ((value.items as Array<any>).map(ModuleItemToJSON)),
+        'metadata': value.metadata,
     };
 }
 

@@ -13,6 +13,12 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { AuthorCommunityRelationship } from './AuthorCommunityRelationship';
+import {
+    AuthorCommunityRelationshipFromJSON,
+    AuthorCommunityRelationshipFromJSONTyped,
+    AuthorCommunityRelationshipToJSON,
+} from './AuthorCommunityRelationship';
 import type { BirdwatchPivot } from './BirdwatchPivot';
 import {
     BirdwatchPivotFromJSON,
@@ -31,6 +37,18 @@ import {
     NoteTweetFromJSONTyped,
     NoteTweetToJSON,
 } from './NoteTweet';
+import type { QuotedRefResult } from './QuotedRefResult';
+import {
+    QuotedRefResultFromJSON,
+    QuotedRefResultFromJSONTyped,
+    QuotedRefResultToJSON,
+} from './QuotedRefResult';
+import type { SuperFollowsReplyUserResult } from './SuperFollowsReplyUserResult';
+import {
+    SuperFollowsReplyUserResultFromJSON,
+    SuperFollowsReplyUserResultFromJSONTyped,
+    SuperFollowsReplyUserResultToJSON,
+} from './SuperFollowsReplyUserResult';
 import type { TweetCard } from './TweetCard';
 import {
     TweetCardFromJSON,
@@ -55,6 +73,12 @@ import {
     TweetLegacyFromJSONTyped,
     TweetLegacyToJSON,
 } from './TweetLegacy';
+import type { TweetPreviousCounts } from './TweetPreviousCounts';
+import {
+    TweetPreviousCountsFromJSON,
+    TweetPreviousCountsFromJSONTyped,
+    TweetPreviousCountsToJSON,
+} from './TweetPreviousCounts';
 import type { TweetView } from './TweetView';
 import {
     TweetViewFromJSON,
@@ -67,6 +91,12 @@ import {
     TypeNameFromJSONTyped,
     TypeNameToJSON,
 } from './TypeName';
+import type { UnifiedCard } from './UnifiedCard';
+import {
+    UnifiedCardFromJSON,
+    UnifiedCardFromJSONTyped,
+    UnifiedCardToJSON,
+} from './UnifiedCard';
 import type { UserResultCore } from './UserResultCore';
 import {
     UserResultCoreFromJSON,
@@ -86,6 +116,12 @@ export interface Tweet {
      * @memberof Tweet
      */
     typename?: TypeName;
+    /**
+     * 
+     * @type {AuthorCommunityRelationship}
+     * @memberof Tweet
+     */
+    authorCommunityRelationship?: AuthorCommunityRelationship;
     /**
      * 
      * @type {BirdwatchPivot}
@@ -109,7 +145,7 @@ export interface Tweet {
      * @type {TweetEditControl}
      * @memberof Tweet
      */
-    editControl: TweetEditControl;
+    editControl?: TweetEditControl;
     /**
      * 
      * @type {TweetEditPrespective}
@@ -121,7 +157,13 @@ export interface Tweet {
      * @type {boolean}
      * @memberof Tweet
      */
-    isTranslatable: boolean;
+    hasBirdwatchNotes?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof Tweet
+     */
+    isTranslatable?: boolean;
     /**
      * 
      * @type {TweetLegacy}
@@ -136,10 +178,22 @@ export interface Tweet {
     noteTweet?: NoteTweet;
     /**
      * 
+     * @type {TweetPreviousCounts}
+     * @memberof Tweet
+     */
+    previousCounts?: TweetPreviousCounts;
+    /**
+     * 
      * @type {object}
      * @memberof Tweet
      */
     quickPromoteEligibility?: object;
+    /**
+     * 
+     * @type {QuotedRefResult}
+     * @memberof Tweet
+     */
+    quotedRefResult?: QuotedRefResult;
     /**
      * 
      * @type {ItemResult}
@@ -160,6 +214,18 @@ export interface Tweet {
     source?: string;
     /**
      * 
+     * @type {SuperFollowsReplyUserResult}
+     * @memberof Tweet
+     */
+    superFollowsReplyUserResult?: SuperFollowsReplyUserResult;
+    /**
+     * 
+     * @type {UnifiedCard}
+     * @memberof Tweet
+     */
+    unifiedCard?: UnifiedCard;
+    /**
+     * 
      * @type {{ [key: string]: any; }}
      * @memberof Tweet
      */
@@ -169,7 +235,7 @@ export interface Tweet {
      * @type {TweetView}
      * @memberof Tweet
      */
-    views: TweetView;
+    views?: TweetView;
 }
 
 /**
@@ -177,10 +243,7 @@ export interface Tweet {
  */
 export function instanceOfTweet(value: object): boolean {
     let isInstance = true;
-    isInstance = isInstance && "editControl" in value;
-    isInstance = isInstance && "isTranslatable" in value;
     isInstance = isInstance && "restId" in value;
-    isInstance = isInstance && "views" in value;
 
     return isInstance;
 }
@@ -196,20 +259,26 @@ export function TweetFromJSONTyped(json: any, ignoreDiscriminator: boolean): Twe
     return {
         
         'typename': !exists(json, '__typename') ? undefined : TypeNameFromJSON(json['__typename']),
+        'authorCommunityRelationship': !exists(json, 'author_community_relationship') ? undefined : AuthorCommunityRelationshipFromJSON(json['author_community_relationship']),
         'birdwatchPivot': !exists(json, 'birdwatch_pivot') ? undefined : BirdwatchPivotFromJSON(json['birdwatch_pivot']),
         'card': !exists(json, 'card') ? undefined : TweetCardFromJSON(json['card']),
         'core': !exists(json, 'core') ? undefined : UserResultCoreFromJSON(json['core']),
-        'editControl': TweetEditControlFromJSON(json['edit_control']),
+        'editControl': !exists(json, 'edit_control') ? undefined : TweetEditControlFromJSON(json['edit_control']),
         'editPrespective': !exists(json, 'edit_prespective') ? undefined : TweetEditPrespectiveFromJSON(json['edit_prespective']),
-        'isTranslatable': json['is_translatable'],
+        'hasBirdwatchNotes': !exists(json, 'has_birdwatch_notes') ? undefined : json['has_birdwatch_notes'],
+        'isTranslatable': !exists(json, 'is_translatable') ? undefined : json['is_translatable'],
         'legacy': !exists(json, 'legacy') ? undefined : TweetLegacyFromJSON(json['legacy']),
         'noteTweet': !exists(json, 'note_tweet') ? undefined : NoteTweetFromJSON(json['note_tweet']),
+        'previousCounts': !exists(json, 'previous_counts') ? undefined : TweetPreviousCountsFromJSON(json['previous_counts']),
         'quickPromoteEligibility': !exists(json, 'quick_promote_eligibility') ? undefined : json['quick_promote_eligibility'],
+        'quotedRefResult': !exists(json, 'quotedRefResult') ? undefined : QuotedRefResultFromJSON(json['quotedRefResult']),
         'quotedStatusResult': !exists(json, 'quoted_status_result') ? undefined : ItemResultFromJSON(json['quoted_status_result']),
         'restId': json['rest_id'],
         'source': !exists(json, 'source') ? undefined : json['source'],
+        'superFollowsReplyUserResult': !exists(json, 'superFollowsReplyUserResult') ? undefined : SuperFollowsReplyUserResultFromJSON(json['superFollowsReplyUserResult']),
+        'unifiedCard': !exists(json, 'unified_card') ? undefined : UnifiedCardFromJSON(json['unified_card']),
         'unmentionData': !exists(json, 'unmention_data') ? undefined : json['unmention_data'],
-        'views': TweetViewFromJSON(json['views']),
+        'views': !exists(json, 'views') ? undefined : TweetViewFromJSON(json['views']),
     };
 }
 
@@ -223,18 +292,24 @@ export function TweetToJSON(value?: Tweet | null): any {
     return {
         
         '__typename': TypeNameToJSON(value.typename),
+        'author_community_relationship': AuthorCommunityRelationshipToJSON(value.authorCommunityRelationship),
         'birdwatch_pivot': BirdwatchPivotToJSON(value.birdwatchPivot),
         'card': TweetCardToJSON(value.card),
         'core': UserResultCoreToJSON(value.core),
         'edit_control': TweetEditControlToJSON(value.editControl),
         'edit_prespective': TweetEditPrespectiveToJSON(value.editPrespective),
+        'has_birdwatch_notes': value.hasBirdwatchNotes,
         'is_translatable': value.isTranslatable,
         'legacy': TweetLegacyToJSON(value.legacy),
         'note_tweet': NoteTweetToJSON(value.noteTweet),
+        'previous_counts': TweetPreviousCountsToJSON(value.previousCounts),
         'quick_promote_eligibility': value.quickPromoteEligibility,
+        'quotedRefResult': QuotedRefResultToJSON(value.quotedRefResult),
         'quoted_status_result': ItemResultToJSON(value.quotedStatusResult),
         'rest_id': value.restId,
         'source': value.source,
+        'superFollowsReplyUserResult': SuperFollowsReplyUserResultToJSON(value.superFollowsReplyUserResult),
+        'unified_card': UnifiedCardToJSON(value.unifiedCard),
         'unmention_data': value.unmentionData,
         'views': TweetViewToJSON(value.views),
     };

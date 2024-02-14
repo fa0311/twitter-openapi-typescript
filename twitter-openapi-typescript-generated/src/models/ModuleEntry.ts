@@ -19,6 +19,12 @@ import {
     ClientEventInfoFromJSONTyped,
     ClientEventInfoToJSON,
 } from './ClientEventInfo';
+import type { FeedbackInfo } from './FeedbackInfo';
+import {
+    FeedbackInfoFromJSON,
+    FeedbackInfoFromJSONTyped,
+    FeedbackInfoToJSON,
+} from './FeedbackInfo';
 import type { ItemContentUnion } from './ItemContentUnion';
 import {
     ItemContentUnionFromJSON,
@@ -37,7 +43,13 @@ export interface ModuleEntry {
      * @type {ClientEventInfo}
      * @memberof ModuleEntry
      */
-    clientEventInfo: ClientEventInfo;
+    clientEventInfo?: ClientEventInfo;
+    /**
+     * 
+     * @type {FeedbackInfo}
+     * @memberof ModuleEntry
+     */
+    feedbackInfo?: FeedbackInfo;
     /**
      * 
      * @type {ItemContentUnion}
@@ -51,7 +63,6 @@ export interface ModuleEntry {
  */
 export function instanceOfModuleEntry(value: object): boolean {
     let isInstance = true;
-    isInstance = isInstance && "clientEventInfo" in value;
     isInstance = isInstance && "itemContent" in value;
 
     return isInstance;
@@ -67,7 +78,8 @@ export function ModuleEntryFromJSONTyped(json: any, ignoreDiscriminator: boolean
     }
     return {
         
-        'clientEventInfo': ClientEventInfoFromJSON(json['clientEventInfo']),
+        'clientEventInfo': !exists(json, 'clientEventInfo') ? undefined : ClientEventInfoFromJSON(json['clientEventInfo']),
+        'feedbackInfo': !exists(json, 'feedbackInfo') ? undefined : FeedbackInfoFromJSON(json['feedbackInfo']),
         'itemContent': ItemContentUnionFromJSON(json['itemContent']),
     };
 }
@@ -82,6 +94,7 @@ export function ModuleEntryToJSON(value?: ModuleEntry | null): any {
     return {
         
         'clientEventInfo': ClientEventInfoToJSON(value.clientEventInfo),
+        'feedbackInfo': FeedbackInfoToJSON(value.feedbackInfo),
         'itemContent': ItemContentUnionToJSON(value.itemContent),
     };
 }

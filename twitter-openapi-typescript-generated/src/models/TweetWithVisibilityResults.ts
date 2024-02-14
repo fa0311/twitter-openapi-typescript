@@ -19,6 +19,12 @@ import {
     TweetFromJSONTyped,
     TweetToJSON,
 } from './Tweet';
+import type { TweetInterstitial } from './TweetInterstitial';
+import {
+    TweetInterstitialFromJSON,
+    TweetInterstitialFromJSONTyped,
+    TweetInterstitialToJSON,
+} from './TweetInterstitial';
 import type { TypeName } from './TypeName';
 import {
     TypeNameFromJSON,
@@ -40,10 +46,22 @@ export interface TweetWithVisibilityResults {
     typename: TypeName;
     /**
      * 
+     * @type {{ [key: string]: any; }}
+     * @memberof TweetWithVisibilityResults
+     */
+    limitedActionResults?: { [key: string]: any; };
+    /**
+     * 
      * @type {Tweet}
      * @memberof TweetWithVisibilityResults
      */
     tweet: Tweet;
+    /**
+     * 
+     * @type {TweetInterstitial}
+     * @memberof TweetWithVisibilityResults
+     */
+    tweetInterstitial?: TweetInterstitial;
 }
 
 /**
@@ -68,7 +86,9 @@ export function TweetWithVisibilityResultsFromJSONTyped(json: any, ignoreDiscrim
     return {
         
         'typename': TypeNameFromJSON(json['__typename']),
+        'limitedActionResults': !exists(json, 'limitedActionResults') ? undefined : json['limitedActionResults'],
         'tweet': TweetFromJSON(json['tweet']),
+        'tweetInterstitial': !exists(json, 'tweetInterstitial') ? undefined : TweetInterstitialFromJSON(json['tweetInterstitial']),
     };
 }
 
@@ -82,7 +102,9 @@ export function TweetWithVisibilityResultsToJSON(value?: TweetWithVisibilityResu
     return {
         
         '__typename': TypeNameToJSON(value.typename),
+        'limitedActionResults': value.limitedActionResults,
         'tweet': TweetToJSON(value.tweet),
+        'tweetInterstitial': TweetInterstitialToJSON(value.tweetInterstitial),
     };
 }
 

@@ -23,6 +23,7 @@ export const TypeName = {
     TimelineUser: 'TimelineUser',
     TimelineTimelineCursor: 'TimelineTimelineCursor',
     TweetWithVisibilityResults: 'TweetWithVisibilityResults',
+    ContextualTweetInterstitial: 'ContextualTweetInterstitial',
     TimelineTimelineModule: 'TimelineTimelineModule',
     TweetTombstone: 'TweetTombstone',
     TimelinePrompt: 'TimelinePrompt',
@@ -31,7 +32,14 @@ export const TypeName = {
     TweetUnavailable: 'TweetUnavailable',
     Tweet: 'Tweet',
     User: 'User',
-    UserUnavailable: 'UserUnavailable'
+    UserUnavailable: 'UserUnavailable',
+    Community: 'Community',
+    CommunityDeleteActionUnavailable: 'CommunityDeleteActionUnavailable',
+    CommunityJoinAction: 'CommunityJoinAction',
+    CommunityLeaveActionUnavailable: 'CommunityLeaveActionUnavailable',
+    CommunityTweetPinActionUnavailable: 'CommunityTweetPinActionUnavailable',
+    CommunityInvitesUnavailable: 'CommunityInvitesUnavailable',
+    CommunityJoinRequestsUnavailable: 'CommunityJoinRequestsUnavailable'
 } as const;
 export type TypeName = typeof TypeName[keyof typeof TypeName];
 

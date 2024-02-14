@@ -19,18 +19,24 @@ import {
     ContentItemTypeFromJSONTyped,
     ContentItemTypeToJSON,
 } from './ContentItemType';
+import type { Highlight } from './Highlight';
+import {
+    HighlightFromJSON,
+    HighlightFromJSONTyped,
+    HighlightToJSON,
+} from './Highlight';
 import type { ItemResult } from './ItemResult';
 import {
     ItemResultFromJSON,
     ItemResultFromJSONTyped,
     ItemResultToJSON,
 } from './ItemResult';
-import type { SocialContext } from './SocialContext';
+import type { SocialContextUnion } from './SocialContextUnion';
 import {
-    SocialContextFromJSON,
-    SocialContextFromJSONTyped,
-    SocialContextToJSON,
-} from './SocialContext';
+    SocialContextUnionFromJSON,
+    SocialContextUnionFromJSONTyped,
+    SocialContextUnionToJSON,
+} from './SocialContextUnion';
 import type { TypeName } from './TypeName';
 import {
     TypeNameFromJSON,
@@ -46,16 +52,16 @@ import {
 export interface TimelineTweet {
     /**
      * 
-     * @type {SocialContext}
-     * @memberof TimelineTweet
-     */
-    socialContext?: SocialContext;
-    /**
-     * 
      * @type {TypeName}
      * @memberof TimelineTweet
      */
     typename: TypeName;
+    /**
+     * 
+     * @type {Highlight}
+     * @memberof TimelineTweet
+     */
+    highlights?: Highlight;
     /**
      * 
      * @type {ContentItemType}
@@ -68,6 +74,12 @@ export interface TimelineTweet {
      * @memberof TimelineTweet
      */
     promotedMetadata?: { [key: string]: any; };
+    /**
+     * 
+     * @type {SocialContextUnion}
+     * @memberof TimelineTweet
+     */
+    socialContext?: SocialContextUnion;
     /**
      * 
      * @type {string}
@@ -105,10 +117,11 @@ export function TimelineTweetFromJSONTyped(json: any, ignoreDiscriminator: boole
     }
     return {
         
-        'socialContext': !exists(json, 'SocialContext') ? undefined : SocialContextFromJSON(json['SocialContext']),
         'typename': TypeNameFromJSON(json['__typename']),
+        'highlights': !exists(json, 'highlights') ? undefined : HighlightFromJSON(json['highlights']),
         'itemType': ContentItemTypeFromJSON(json['itemType']),
         'promotedMetadata': !exists(json, 'promotedMetadata') ? undefined : json['promotedMetadata'],
+        'socialContext': !exists(json, 'socialContext') ? undefined : SocialContextUnionFromJSON(json['socialContext']),
         'tweetDisplayType': json['tweetDisplayType'],
         'tweetResults': ItemResultFromJSON(json['tweet_results']),
     };
@@ -123,10 +136,11 @@ export function TimelineTweetToJSON(value?: TimelineTweet | null): any {
     }
     return {
         
-        'SocialContext': SocialContextToJSON(value.socialContext),
         '__typename': TypeNameToJSON(value.typename),
+        'highlights': HighlightToJSON(value.highlights),
         'itemType': ContentItemTypeToJSON(value.itemType),
         'promotedMetadata': value.promotedMetadata,
+        'socialContext': SocialContextUnionToJSON(value.socialContext),
         'tweetDisplayType': value.tweetDisplayType,
         'tweet_results': ItemResultToJSON(value.tweetResults),
     };

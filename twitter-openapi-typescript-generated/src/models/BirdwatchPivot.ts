@@ -13,6 +13,12 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { BirdwatchPivotCallToAction } from './BirdwatchPivotCallToAction';
+import {
+    BirdwatchPivotCallToActionFromJSON,
+    BirdwatchPivotCallToActionFromJSONTyped,
+    BirdwatchPivotCallToActionToJSON,
+} from './BirdwatchPivotCallToAction';
 import type { BirdwatchPivotFooter } from './BirdwatchPivotFooter';
 import {
     BirdwatchPivotFooterFromJSON,
@@ -38,6 +44,12 @@ import {
  * @interface BirdwatchPivot
  */
 export interface BirdwatchPivot {
+    /**
+     * 
+     * @type {BirdwatchPivotCallToAction}
+     * @memberof BirdwatchPivot
+     */
+    callToAction?: BirdwatchPivotCallToAction;
     /**
      * 
      * @type {string}
@@ -132,6 +144,7 @@ export function BirdwatchPivotFromJSONTyped(json: any, ignoreDiscriminator: bool
     }
     return {
         
+        'callToAction': !exists(json, 'callToAction') ? undefined : BirdwatchPivotCallToActionFromJSON(json['callToAction']),
         'destinationUrl': json['destinationUrl'],
         'footer': BirdwatchPivotFooterFromJSON(json['footer']),
         'iconType': json['iconType'],
@@ -152,6 +165,7 @@ export function BirdwatchPivotToJSON(value?: BirdwatchPivot | null): any {
     }
     return {
         
+        'callToAction': BirdwatchPivotCallToActionToJSON(value.callToAction),
         'destinationUrl': value.destinationUrl,
         'footer': BirdwatchPivotFooterToJSON(value.footer),
         'iconType': value.iconType,

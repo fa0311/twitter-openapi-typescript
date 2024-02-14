@@ -19,6 +19,18 @@ import {
     TweetCardLegacyBindingValueFromJSONTyped,
     TweetCardLegacyBindingValueToJSON,
 } from './TweetCardLegacyBindingValue';
+import type { TweetCardPlatformData } from './TweetCardPlatformData';
+import {
+    TweetCardPlatformDataFromJSON,
+    TweetCardPlatformDataFromJSONTyped,
+    TweetCardPlatformDataToJSON,
+} from './TweetCardPlatformData';
+import type { UserResults } from './UserResults';
+import {
+    UserResultsFromJSON,
+    UserResultsFromJSONTyped,
+    UserResultsToJSON,
+} from './UserResults';
 
 /**
  * 
@@ -34,6 +46,12 @@ export interface TweetCardLegacy {
     bindingValues: Array<TweetCardLegacyBindingValue>;
     /**
      * 
+     * @type {TweetCardPlatformData}
+     * @memberof TweetCardLegacy
+     */
+    cardPlatform?: TweetCardPlatformData;
+    /**
+     * 
      * @type {string}
      * @memberof TweetCardLegacy
      */
@@ -44,6 +62,12 @@ export interface TweetCardLegacy {
      * @memberof TweetCardLegacy
      */
     url: string;
+    /**
+     * 
+     * @type {Array<UserResults>}
+     * @memberof TweetCardLegacy
+     */
+    userRefsResults?: Array<UserResults>;
 }
 
 /**
@@ -69,8 +93,10 @@ export function TweetCardLegacyFromJSONTyped(json: any, ignoreDiscriminator: boo
     return {
         
         'bindingValues': ((json['binding_values'] as Array<any>).map(TweetCardLegacyBindingValueFromJSON)),
+        'cardPlatform': !exists(json, 'card_platform') ? undefined : TweetCardPlatformDataFromJSON(json['card_platform']),
         'name': json['name'],
         'url': json['url'],
+        'userRefsResults': !exists(json, 'user_refs_results') ? undefined : ((json['user_refs_results'] as Array<any>).map(UserResultsFromJSON)),
     };
 }
 
@@ -84,8 +110,10 @@ export function TweetCardLegacyToJSON(value?: TweetCardLegacy | null): any {
     return {
         
         'binding_values': ((value.bindingValues as Array<any>).map(TweetCardLegacyBindingValueToJSON)),
+        'card_platform': TweetCardPlatformDataToJSON(value.cardPlatform),
         'name': value.name,
         'url': value.url,
+        'user_refs_results': value.userRefsResults === undefined ? undefined : ((value.userRefsResults as Array<any>).map(UserResultsToJSON)),
     };
 }
 

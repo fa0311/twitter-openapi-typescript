@@ -49,6 +49,12 @@ import {
     MediaVideoInfoFromJSONTyped,
     MediaVideoInfoToJSON,
 } from './MediaVideoInfo';
+import type { SensitiveMediaWarning } from './SensitiveMediaWarning';
+import {
+    SensitiveMediaWarningFromJSON,
+    SensitiveMediaWarningFromJSONTyped,
+    SensitiveMediaWarningToJSON,
+} from './SensitiveMediaWarning';
 
 /**
  * 
@@ -74,6 +80,12 @@ export interface MediaExtended {
      * @memberof MediaExtended
      */
     expandedUrl: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof MediaExtended
+     */
+    extAltText?: string;
     /**
      * 
      * @type {ExtMediaAvailability}
@@ -124,10 +136,28 @@ export interface MediaExtended {
     originalInfo: MediaOriginalInfo;
     /**
      * 
+     * @type {SensitiveMediaWarning}
+     * @memberof MediaExtended
+     */
+    sensitiveMediaWarning?: SensitiveMediaWarning;
+    /**
+     * 
      * @type {MediaSizes}
      * @memberof MediaExtended
      */
     sizes: MediaSizes;
+    /**
+     * 
+     * @type {string}
+     * @memberof MediaExtended
+     */
+    sourceStatusIdStr?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof MediaExtended
+     */
+    sourceUserIdStr?: string;
     /**
      * 
      * @type {string}
@@ -192,6 +222,7 @@ export function MediaExtendedFromJSONTyped(json: any, ignoreDiscriminator: boole
         'additionalMediaInfo': !exists(json, 'additional_media_info') ? undefined : AdditionalMediaInfoFromJSON(json['additional_media_info']),
         'displayUrl': json['display_url'],
         'expandedUrl': json['expanded_url'],
+        'extAltText': !exists(json, 'ext_alt_text') ? undefined : json['ext_alt_text'],
         'extMediaAvailability': !exists(json, 'ext_media_availability') ? undefined : ExtMediaAvailabilityFromJSON(json['ext_media_availability']),
         'features': !exists(json, 'features') ? undefined : json['features'],
         'idStr': json['id_str'],
@@ -200,7 +231,10 @@ export function MediaExtendedFromJSONTyped(json: any, ignoreDiscriminator: boole
         'mediaKey': json['media_key'],
         'mediaUrlHttps': json['media_url_https'],
         'originalInfo': MediaOriginalInfoFromJSON(json['original_info']),
+        'sensitiveMediaWarning': !exists(json, 'sensitive_media_warning') ? undefined : SensitiveMediaWarningFromJSON(json['sensitive_media_warning']),
         'sizes': MediaSizesFromJSON(json['sizes']),
+        'sourceStatusIdStr': !exists(json, 'source_status_id_str') ? undefined : json['source_status_id_str'],
+        'sourceUserIdStr': !exists(json, 'source_user_id_str') ? undefined : json['source_user_id_str'],
         'type': json['type'],
         'url': json['url'],
         'videoInfo': !exists(json, 'video_info') ? undefined : MediaVideoInfoFromJSON(json['video_info']),
@@ -219,6 +253,7 @@ export function MediaExtendedToJSON(value?: MediaExtended | null): any {
         'additional_media_info': AdditionalMediaInfoToJSON(value.additionalMediaInfo),
         'display_url': value.displayUrl,
         'expanded_url': value.expandedUrl,
+        'ext_alt_text': value.extAltText,
         'ext_media_availability': ExtMediaAvailabilityToJSON(value.extMediaAvailability),
         'features': value.features,
         'id_str': value.idStr,
@@ -227,7 +262,10 @@ export function MediaExtendedToJSON(value?: MediaExtended | null): any {
         'media_key': value.mediaKey,
         'media_url_https': value.mediaUrlHttps,
         'original_info': MediaOriginalInfoToJSON(value.originalInfo),
+        'sensitive_media_warning': SensitiveMediaWarningToJSON(value.sensitiveMediaWarning),
         'sizes': MediaSizesToJSON(value.sizes),
+        'source_status_id_str': value.sourceStatusIdStr,
+        'source_user_id_str': value.sourceUserIdStr,
         'type': value.type,
         'url': value.url,
         'video_info': MediaVideoInfoToJSON(value.videoInfo),

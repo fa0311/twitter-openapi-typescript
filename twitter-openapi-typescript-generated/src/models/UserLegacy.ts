@@ -249,11 +249,34 @@ export interface UserLegacy {
     verified: boolean;
     /**
      * 
+     * @type {string}
+     * @memberof UserLegacy
+     */
+    verifiedType?: UserLegacyVerifiedTypeEnum;
+    /**
+     * 
      * @type {boolean}
      * @memberof UserLegacy
      */
     wantRetweets: boolean;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof UserLegacy
+     */
+    withheldInCountries?: Array<string>;
 }
+
+
+/**
+ * @export
+ */
+export const UserLegacyVerifiedTypeEnum = {
+    Business: 'Business',
+    Government: 'Government'
+} as const;
+export type UserLegacyVerifiedTypeEnum = typeof UserLegacyVerifiedTypeEnum[keyof typeof UserLegacyVerifiedTypeEnum];
+
 
 /**
  * Check if a given object implements the UserLegacy interface.
@@ -342,7 +365,9 @@ export function UserLegacyFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'translatorType': json['translator_type'],
         'url': !exists(json, 'url') ? undefined : json['url'],
         'verified': json['verified'],
+        'verifiedType': !exists(json, 'verified_type') ? undefined : json['verified_type'],
         'wantRetweets': json['want_retweets'],
+        'withheldInCountries': !exists(json, 'withheld_in_countries') ? undefined : json['withheld_in_countries'],
     };
 }
 
@@ -393,7 +418,9 @@ export function UserLegacyToJSON(value?: UserLegacy | null): any {
         'translator_type': value.translatorType,
         'url': value.url,
         'verified': value.verified,
+        'verified_type': value.verifiedType,
         'want_retweets': value.wantRetweets,
+        'withheld_in_countries': value.withheldInCountries,
     };
 }
 

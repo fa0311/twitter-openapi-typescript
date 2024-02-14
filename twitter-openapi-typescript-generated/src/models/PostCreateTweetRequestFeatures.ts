@@ -24,6 +24,12 @@ export interface PostCreateTweetRequestFeatures {
      * @type {boolean}
      * @memberof PostCreateTweetRequestFeatures
      */
+    c9sTweetAnatomyModeratorBadgeEnabled: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof PostCreateTweetRequestFeatures
+     */
     freedomOfSpeechNotReachFetchEnabled: boolean;
     /**
      * 
@@ -96,6 +102,12 @@ export interface PostCreateTweetRequestFeatures {
      * @type {boolean}
      * @memberof PostCreateTweetRequestFeatures
      */
+    rwebVideoTimestampsEnabled: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof PostCreateTweetRequestFeatures
+     */
     standardizedNudgesMisinfo: boolean;
     /**
      * 
@@ -134,6 +146,7 @@ export interface PostCreateTweetRequestFeatures {
  */
 export function instanceOfPostCreateTweetRequestFeatures(value: object): boolean {
     let isInstance = true;
+    isInstance = isInstance && "c9sTweetAnatomyModeratorBadgeEnabled" in value;
     isInstance = isInstance && "freedomOfSpeechNotReachFetchEnabled" in value;
     isInstance = isInstance && "graphqlIsTranslatableRwebTweetIsTranslatableEnabled" in value;
     isInstance = isInstance && "longformNotetweetsConsumptionEnabled" in value;
@@ -146,6 +159,7 @@ export function instanceOfPostCreateTweetRequestFeatures(value: object): boolean
     isInstance = isInstance && "responsiveWebGraphqlTimelineNavigationEnabled" in value;
     isInstance = isInstance && "responsiveWebMediaDownloadVideoEnabled" in value;
     isInstance = isInstance && "responsiveWebTwitterArticleTweetConsumptionEnabled" in value;
+    isInstance = isInstance && "rwebVideoTimestampsEnabled" in value;
     isInstance = isInstance && "standardizedNudgesMisinfo" in value;
     isInstance = isInstance && "tweetAwardsWebTippingEnabled" in value;
     isInstance = isInstance && "tweetWithVisibilityResultsPreferGqlLimitedActionsPolicyEnabled" in value;
@@ -166,6 +180,7 @@ export function PostCreateTweetRequestFeaturesFromJSONTyped(json: any, ignoreDis
     }
     return {
         
+        'c9sTweetAnatomyModeratorBadgeEnabled': json['c9s_tweet_anatomy_moderator_badge_enabled'],
         'freedomOfSpeechNotReachFetchEnabled': json['freedom_of_speech_not_reach_fetch_enabled'],
         'graphqlIsTranslatableRwebTweetIsTranslatableEnabled': json['graphql_is_translatable_rweb_tweet_is_translatable_enabled'],
         'longformNotetweetsConsumptionEnabled': json['longform_notetweets_consumption_enabled'],
@@ -178,6 +193,7 @@ export function PostCreateTweetRequestFeaturesFromJSONTyped(json: any, ignoreDis
         'responsiveWebGraphqlTimelineNavigationEnabled': json['responsive_web_graphql_timeline_navigation_enabled'],
         'responsiveWebMediaDownloadVideoEnabled': json['responsive_web_media_download_video_enabled'],
         'responsiveWebTwitterArticleTweetConsumptionEnabled': json['responsive_web_twitter_article_tweet_consumption_enabled'],
+        'rwebVideoTimestampsEnabled': json['rweb_video_timestamps_enabled'],
         'standardizedNudgesMisinfo': json['standardized_nudges_misinfo'],
         'tweetAwardsWebTippingEnabled': json['tweet_awards_web_tipping_enabled'],
         'tweetWithVisibilityResultsPreferGqlLimitedActionsPolicyEnabled': json['tweet_with_visibility_results_prefer_gql_limited_actions_policy_enabled'],
@@ -196,6 +212,7 @@ export function PostCreateTweetRequestFeaturesToJSON(value?: PostCreateTweetRequ
     }
     return {
         
+        'c9s_tweet_anatomy_moderator_badge_enabled': value.c9sTweetAnatomyModeratorBadgeEnabled,
         'freedom_of_speech_not_reach_fetch_enabled': value.freedomOfSpeechNotReachFetchEnabled,
         'graphql_is_translatable_rweb_tweet_is_translatable_enabled': value.graphqlIsTranslatableRwebTweetIsTranslatableEnabled,
         'longform_notetweets_consumption_enabled': value.longformNotetweetsConsumptionEnabled,
@@ -208,6 +225,7 @@ export function PostCreateTweetRequestFeaturesToJSON(value?: PostCreateTweetRequ
         'responsive_web_graphql_timeline_navigation_enabled': value.responsiveWebGraphqlTimelineNavigationEnabled,
         'responsive_web_media_download_video_enabled': value.responsiveWebMediaDownloadVideoEnabled,
         'responsive_web_twitter_article_tweet_consumption_enabled': value.responsiveWebTwitterArticleTweetConsumptionEnabled,
+        'rweb_video_timestamps_enabled': value.rwebVideoTimestampsEnabled,
         'standardized_nudges_misinfo': value.standardizedNudgesMisinfo,
         'tweet_awards_web_tipping_enabled': value.tweetAwardsWebTippingEnabled,
         'tweet_with_visibility_results_prefer_gql_limited_actions_policy_enabled': value.tweetWithVisibilityResultsPreferGqlLimitedActionsPolicyEnabled,

@@ -25,6 +25,12 @@ import {
     CursorTypeFromJSONTyped,
     CursorTypeToJSON,
 } from './CursorType';
+import type { DisplayTreatment } from './DisplayTreatment';
+import {
+    DisplayTreatmentFromJSON,
+    DisplayTreatmentFromJSONTyped,
+    DisplayTreatmentToJSON,
+} from './DisplayTreatment';
 import type { TypeName } from './TypeName';
 import {
     TypeNameFromJSON,
@@ -52,6 +58,12 @@ export interface TimelineTimelineCursor {
     cursorType: CursorType;
     /**
      * 
+     * @type {DisplayTreatment}
+     * @memberof TimelineTimelineCursor
+     */
+    displayTreatment?: DisplayTreatment;
+    /**
+     * 
      * @type {ContentEntryType}
      * @memberof TimelineTimelineCursor
      */
@@ -62,6 +74,12 @@ export interface TimelineTimelineCursor {
      * @memberof TimelineTimelineCursor
      */
     itemType?: ContentEntryType;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof TimelineTimelineCursor
+     */
+    stopOnEmptyResponse: boolean;
     /**
      * 
      * @type {string}
@@ -77,6 +95,7 @@ export function instanceOfTimelineTimelineCursor(value: object): boolean {
     let isInstance = true;
     isInstance = isInstance && "typename" in value;
     isInstance = isInstance && "cursorType" in value;
+    isInstance = isInstance && "stopOnEmptyResponse" in value;
     isInstance = isInstance && "value" in value;
 
     return isInstance;
@@ -94,8 +113,10 @@ export function TimelineTimelineCursorFromJSONTyped(json: any, ignoreDiscriminat
         
         'typename': TypeNameFromJSON(json['__typename']),
         'cursorType': CursorTypeFromJSON(json['cursorType']),
+        'displayTreatment': !exists(json, 'displayTreatment') ? undefined : DisplayTreatmentFromJSON(json['displayTreatment']),
         'entryType': !exists(json, 'entryType') ? undefined : ContentEntryTypeFromJSON(json['entryType']),
         'itemType': !exists(json, 'itemType') ? undefined : ContentEntryTypeFromJSON(json['itemType']),
+        'stopOnEmptyResponse': json['stopOnEmptyResponse'],
         'value': json['value'],
     };
 }
@@ -111,8 +132,10 @@ export function TimelineTimelineCursorToJSON(value?: TimelineTimelineCursor | nu
         
         '__typename': TypeNameToJSON(value.typename),
         'cursorType': CursorTypeToJSON(value.cursorType),
+        'displayTreatment': DisplayTreatmentToJSON(value.displayTreatment),
         'entryType': ContentEntryTypeToJSON(value.entryType),
         'itemType': ContentEntryTypeToJSON(value.itemType),
+        'stopOnEmptyResponse': value.stopOnEmptyResponse,
         'value': value.value,
     };
 }

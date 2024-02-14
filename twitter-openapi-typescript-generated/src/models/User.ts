@@ -19,12 +19,30 @@ import {
     TypeNameFromJSONTyped,
     TypeNameToJSON,
 } from './TypeName';
+import type { UserHighlightsInfo } from './UserHighlightsInfo';
+import {
+    UserHighlightsInfoFromJSON,
+    UserHighlightsInfoFromJSONTyped,
+    UserHighlightsInfoToJSON,
+} from './UserHighlightsInfo';
 import type { UserLegacy } from './UserLegacy';
 import {
     UserLegacyFromJSON,
     UserLegacyFromJSONTyped,
     UserLegacyToJSON,
 } from './UserLegacy';
+import type { UserProfessional } from './UserProfessional';
+import {
+    UserProfessionalFromJSON,
+    UserProfessionalFromJSONTyped,
+    UserProfessionalToJSON,
+} from './UserProfessional';
+import type { UserVerificationInfo } from './UserVerificationInfo';
+import {
+    UserVerificationInfoFromJSON,
+    UserVerificationInfoFromJSONTyped,
+    UserVerificationInfoToJSON,
+} from './UserVerificationInfo';
 
 /**
  * 
@@ -52,6 +70,12 @@ export interface User {
     businessAccount?: { [key: string]: any; };
     /**
      * 
+     * @type {number}
+     * @memberof User
+     */
+    creatorSubscriptionsCount?: number;
+    /**
+     * 
      * @type {boolean}
      * @memberof User
      */
@@ -62,6 +86,12 @@ export interface User {
      * @memberof User
      */
     hasNftAvatar?: boolean;
+    /**
+     * 
+     * @type {UserHighlightsInfo}
+     * @memberof User
+     */
+    highlightsInfo?: UserHighlightsInfo;
     /**
      * 
      * @type {string}
@@ -76,10 +106,28 @@ export interface User {
     isBlueVerified: boolean;
     /**
      * 
+     * @type {boolean}
+     * @memberof User
+     */
+    isProfileTranslatable?: boolean;
+    /**
+     * 
      * @type {UserLegacy}
      * @memberof User
      */
     legacy: UserLegacy;
+    /**
+     * 
+     * @type {UserProfessional}
+     * @memberof User
+     */
+    professional?: UserProfessional;
+    /**
+     * 
+     * @type {string}
+     * @memberof User
+     */
+    profileImageShape: UserProfileImageShapeEnum;
     /**
      * 
      * @type {string}
@@ -104,7 +152,31 @@ export interface User {
      * @memberof User
      */
     superFollowing: boolean;
+    /**
+     * 
+     * @type {number}
+     * @memberof User
+     */
+    userSeedTweetCount?: number;
+    /**
+     * 
+     * @type {UserVerificationInfo}
+     * @memberof User
+     */
+    verificationInfo?: UserVerificationInfo;
 }
+
+
+/**
+ * @export
+ */
+export const UserProfileImageShapeEnum = {
+    Circle: 'Circle',
+    Square: 'Square',
+    Hexagon: 'Hexagon'
+} as const;
+export type UserProfileImageShapeEnum = typeof UserProfileImageShapeEnum[keyof typeof UserProfileImageShapeEnum];
+
 
 /**
  * Check if a given object implements the User interface.
@@ -116,6 +188,7 @@ export function instanceOfUser(value: object): boolean {
     isInstance = isInstance && "id" in value;
     isInstance = isInstance && "isBlueVerified" in value;
     isInstance = isInstance && "legacy" in value;
+    isInstance = isInstance && "profileImageShape" in value;
     isInstance = isInstance && "restId" in value;
     isInstance = isInstance && "superFollowEligible" in value;
     isInstance = isInstance && "superFollowedBy" in value;
@@ -137,15 +210,22 @@ export function UserFromJSONTyped(json: any, ignoreDiscriminator: boolean): User
         'typename': TypeNameFromJSON(json['__typename']),
         'affiliatesHighlightedLabel': json['affiliates_highlighted_label'],
         'businessAccount': !exists(json, 'business_account') ? undefined : json['business_account'],
+        'creatorSubscriptionsCount': !exists(json, 'creator_subscriptions_count') ? undefined : json['creator_subscriptions_count'],
         'hasGraduatedAccess': !exists(json, 'has_graduated_access') ? undefined : json['has_graduated_access'],
         'hasNftAvatar': !exists(json, 'has_nft_avatar') ? undefined : json['has_nft_avatar'],
+        'highlightsInfo': !exists(json, 'highlights_info') ? undefined : UserHighlightsInfoFromJSON(json['highlights_info']),
         'id': json['id'],
         'isBlueVerified': json['is_blue_verified'],
+        'isProfileTranslatable': !exists(json, 'is_profile_translatable') ? undefined : json['is_profile_translatable'],
         'legacy': UserLegacyFromJSON(json['legacy']),
+        'professional': !exists(json, 'professional') ? undefined : UserProfessionalFromJSON(json['professional']),
+        'profileImageShape': json['profile_image_shape'],
         'restId': json['rest_id'],
         'superFollowEligible': json['super_follow_eligible'],
         'superFollowedBy': json['super_followed_by'],
         'superFollowing': json['super_following'],
+        'userSeedTweetCount': !exists(json, 'user_seed_tweet_count') ? undefined : json['user_seed_tweet_count'],
+        'verificationInfo': !exists(json, 'verification_info') ? undefined : UserVerificationInfoFromJSON(json['verification_info']),
     };
 }
 
@@ -161,15 +241,22 @@ export function UserToJSON(value?: User | null): any {
         '__typename': TypeNameToJSON(value.typename),
         'affiliates_highlighted_label': value.affiliatesHighlightedLabel,
         'business_account': value.businessAccount,
+        'creator_subscriptions_count': value.creatorSubscriptionsCount,
         'has_graduated_access': value.hasGraduatedAccess,
         'has_nft_avatar': value.hasNftAvatar,
+        'highlights_info': UserHighlightsInfoToJSON(value.highlightsInfo),
         'id': value.id,
         'is_blue_verified': value.isBlueVerified,
+        'is_profile_translatable': value.isProfileTranslatable,
         'legacy': UserLegacyToJSON(value.legacy),
+        'professional': UserProfessionalToJSON(value.professional),
+        'profile_image_shape': value.profileImageShape,
         'rest_id': value.restId,
         'super_follow_eligible': value.superFollowEligible,
         'super_followed_by': value.superFollowedBy,
         'super_following': value.superFollowing,
+        'user_seed_tweet_count': value.userSeedTweetCount,
+        'verification_info': UserVerificationInfoToJSON(value.verificationInfo),
     };
 }
 

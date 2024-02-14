@@ -31,12 +31,24 @@ import {
     ItemResultFromJSONTyped,
     ItemResultToJSON,
 } from './ItemResult';
+import type { QuotedStatusPermalink } from './QuotedStatusPermalink';
+import {
+    QuotedStatusPermalinkFromJSON,
+    QuotedStatusPermalinkFromJSONTyped,
+    QuotedStatusPermalinkToJSON,
+} from './QuotedStatusPermalink';
 import type { SelfThread } from './SelfThread';
 import {
     SelfThreadFromJSON,
     SelfThreadFromJSONTyped,
     SelfThreadToJSON,
 } from './SelfThread';
+import type { TweetLegacyScopes } from './TweetLegacyScopes';
+import {
+    TweetLegacyScopesFromJSON,
+    TweetLegacyScopesFromJSONTyped,
+    TweetLegacyScopesToJSON,
+} from './TweetLegacyScopes';
 
 /**
  * 
@@ -56,6 +68,12 @@ export interface TweetLegacy {
      * @memberof TweetLegacy
      */
     bookmarked: boolean;
+    /**
+     * 
+     * @type {{ [key: string]: any; }}
+     * @memberof TweetLegacy
+     */
+    conversationControl?: { [key: string]: any; };
     /**
      * 
      * @type {string}
@@ -112,6 +130,24 @@ export interface TweetLegacy {
     idStr: string;
     /**
      * 
+     * @type {string}
+     * @memberof TweetLegacy
+     */
+    inReplyToScreenName?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TweetLegacy
+     */
+    inReplyToStatusIdStr?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TweetLegacy
+     */
+    inReplyToUserIdStr?: string;
+    /**
+     * 
      * @type {boolean}
      * @memberof TweetLegacy
      */
@@ -122,6 +158,18 @@ export interface TweetLegacy {
      * @memberof TweetLegacy
      */
     lang: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof TweetLegacy
+     */
+    limitedActions?: TweetLegacyLimitedActionsEnum;
+    /**
+     * 
+     * @type {{ [key: string]: any; }}
+     * @memberof TweetLegacy
+     */
+    place?: { [key: string]: any; };
     /**
      * 
      * @type {boolean}
@@ -140,6 +188,18 @@ export interface TweetLegacy {
      * @memberof TweetLegacy
      */
     quoteCount: number;
+    /**
+     * 
+     * @type {string}
+     * @memberof TweetLegacy
+     */
+    quotedStatusIdStr?: string;
+    /**
+     * 
+     * @type {QuotedStatusPermalink}
+     * @memberof TweetLegacy
+     */
+    quotedStatusPermalink?: QuotedStatusPermalink;
     /**
      * 
      * @type {number}
@@ -166,6 +226,12 @@ export interface TweetLegacy {
     retweetedStatusResult?: ItemResult;
     /**
      * 
+     * @type {TweetLegacyScopes}
+     * @memberof TweetLegacy
+     */
+    scopes?: TweetLegacyScopes;
+    /**
+     * 
      * @type {SelfThread}
      * @memberof TweetLegacy
      */
@@ -177,6 +243,20 @@ export interface TweetLegacy {
      */
     userIdStr: string;
 }
+
+
+/**
+ * @export
+ */
+export const TweetLegacyLimitedActionsEnum = {
+    LimitedReplies: 'limited_replies',
+    CommunityTweetNonMemberPublicCommunity: 'community_tweet_non_member_public_community',
+    NonCompliant: 'non_compliant',
+    DynamicProductAd: 'dynamic_product_ad',
+    StaleTweet: 'stale_tweet'
+} as const;
+export type TweetLegacyLimitedActionsEnum = typeof TweetLegacyLimitedActionsEnum[keyof typeof TweetLegacyLimitedActionsEnum];
+
 
 /**
  * Check if a given object implements the TweetLegacy interface.
@@ -216,6 +296,7 @@ export function TweetLegacyFromJSONTyped(json: any, ignoreDiscriminator: boolean
         
         'bookmarkCount': json['bookmark_count'],
         'bookmarked': json['bookmarked'],
+        'conversationControl': !exists(json, 'conversation_control') ? undefined : json['conversation_control'],
         'conversationIdStr': json['conversation_id_str'],
         'createdAt': json['created_at'],
         'displayTextRange': json['display_text_range'],
@@ -225,15 +306,23 @@ export function TweetLegacyFromJSONTyped(json: any, ignoreDiscriminator: boolean
         'favorited': json['favorited'],
         'fullText': json['full_text'],
         'idStr': json['id_str'],
+        'inReplyToScreenName': !exists(json, 'in_reply_to_screen_name') ? undefined : json['in_reply_to_screen_name'],
+        'inReplyToStatusIdStr': !exists(json, 'in_reply_to_status_id_str') ? undefined : json['in_reply_to_status_id_str'],
+        'inReplyToUserIdStr': !exists(json, 'in_reply_to_user_id_str') ? undefined : json['in_reply_to_user_id_str'],
         'isQuoteStatus': json['is_quote_status'],
         'lang': json['lang'],
+        'limitedActions': !exists(json, 'limited_actions') ? undefined : json['limited_actions'],
+        'place': !exists(json, 'place') ? undefined : json['place'],
         'possiblySensitive': !exists(json, 'possibly_sensitive') ? undefined : json['possibly_sensitive'],
         'possiblySensitiveEditable': !exists(json, 'possibly_sensitive_editable') ? undefined : json['possibly_sensitive_editable'],
         'quoteCount': json['quote_count'],
+        'quotedStatusIdStr': !exists(json, 'quoted_status_id_str') ? undefined : json['quoted_status_id_str'],
+        'quotedStatusPermalink': !exists(json, 'quoted_status_permalink') ? undefined : QuotedStatusPermalinkFromJSON(json['quoted_status_permalink']),
         'replyCount': json['reply_count'],
         'retweetCount': json['retweet_count'],
         'retweeted': json['retweeted'],
         'retweetedStatusResult': !exists(json, 'retweeted_status_result') ? undefined : ItemResultFromJSON(json['retweeted_status_result']),
+        'scopes': !exists(json, 'scopes') ? undefined : TweetLegacyScopesFromJSON(json['scopes']),
         'selfThread': !exists(json, 'self_thread') ? undefined : SelfThreadFromJSON(json['self_thread']),
         'userIdStr': json['user_id_str'],
     };
@@ -250,6 +339,7 @@ export function TweetLegacyToJSON(value?: TweetLegacy | null): any {
         
         'bookmark_count': value.bookmarkCount,
         'bookmarked': value.bookmarked,
+        'conversation_control': value.conversationControl,
         'conversation_id_str': value.conversationIdStr,
         'created_at': value.createdAt,
         'display_text_range': value.displayTextRange,
@@ -259,15 +349,23 @@ export function TweetLegacyToJSON(value?: TweetLegacy | null): any {
         'favorited': value.favorited,
         'full_text': value.fullText,
         'id_str': value.idStr,
+        'in_reply_to_screen_name': value.inReplyToScreenName,
+        'in_reply_to_status_id_str': value.inReplyToStatusIdStr,
+        'in_reply_to_user_id_str': value.inReplyToUserIdStr,
         'is_quote_status': value.isQuoteStatus,
         'lang': value.lang,
+        'limited_actions': value.limitedActions,
+        'place': value.place,
         'possibly_sensitive': value.possiblySensitive,
         'possibly_sensitive_editable': value.possiblySensitiveEditable,
         'quote_count': value.quoteCount,
+        'quoted_status_id_str': value.quotedStatusIdStr,
+        'quoted_status_permalink': QuotedStatusPermalinkToJSON(value.quotedStatusPermalink),
         'reply_count': value.replyCount,
         'retweet_count': value.retweetCount,
         'retweeted': value.retweeted,
         'retweeted_status_result': ItemResultToJSON(value.retweetedStatusResult),
+        'scopes': TweetLegacyScopesToJSON(value.scopes),
         'self_thread': SelfThreadToJSON(value.selfThread),
         'user_id_str': value.userIdStr,
     };

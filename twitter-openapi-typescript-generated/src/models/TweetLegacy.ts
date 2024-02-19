@@ -250,10 +250,11 @@ export interface TweetLegacy {
  */
 export const TweetLegacyLimitedActionsEnum = {
     LimitedReplies: 'limited_replies',
-    CommunityTweetNonMemberPublicCommunity: 'community_tweet_non_member_public_community',
     NonCompliant: 'non_compliant',
     DynamicProductAd: 'dynamic_product_ad',
-    StaleTweet: 'stale_tweet'
+    StaleTweet: 'stale_tweet',
+    CommunityTweetNonMemberPublicCommunity: 'community_tweet_non_member_public_community',
+    CommunityTweetNonMemberClosedCommunity: 'community_tweet_non_member_closed_community'
 } as const;
 export type TweetLegacyLimitedActionsEnum = typeof TweetLegacyLimitedActionsEnum[keyof typeof TweetLegacyLimitedActionsEnum];
 

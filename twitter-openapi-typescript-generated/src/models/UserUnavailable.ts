@@ -37,6 +37,12 @@ export interface UserUnavailable {
      * @type {string}
      * @memberof UserUnavailable
      */
+    message?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserUnavailable
+     */
     reason: string;
 }
 
@@ -62,6 +68,7 @@ export function UserUnavailableFromJSONTyped(json: any, ignoreDiscriminator: boo
     return {
         
         'typename': TypeNameFromJSON(json['__typename']),
+        'message': !exists(json, 'message') ? undefined : json['message'],
         'reason': json['reason'],
     };
 }
@@ -76,6 +83,7 @@ export function UserUnavailableToJSON(value?: UserUnavailable | null): any {
     return {
         
         '__typename': TypeNameToJSON(value.typename),
+        'message': value.message,
         'reason': value.reason,
     };
 }

@@ -19,6 +19,12 @@ import {
     MediaFromJSONTyped,
     MediaToJSON,
 } from './Media';
+import type { Timestamp } from './Timestamp';
+import {
+    TimestampFromJSON,
+    TimestampFromJSONTyped,
+    TimestampToJSON,
+} from './Timestamp';
 import type { Url } from './Url';
 import {
     UrlFromJSON,
@@ -50,6 +56,12 @@ export interface Entities {
      * @memberof Entities
      */
     symbols: Array<{ [key: string]: any; }>;
+    /**
+     * 
+     * @type {Array<Timestamp>}
+     * @memberof Entities
+     */
+    timestamps?: Array<Timestamp>;
     /**
      * 
      * @type {Array<Url>}
@@ -90,6 +102,7 @@ export function EntitiesFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
         'hashtags': json['hashtags'],
         'media': !exists(json, 'media') ? undefined : ((json['media'] as Array<any>).map(MediaFromJSON)),
         'symbols': json['symbols'],
+        'timestamps': !exists(json, 'timestamps') ? undefined : ((json['timestamps'] as Array<any>).map(TimestampFromJSON)),
         'urls': ((json['urls'] as Array<any>).map(UrlFromJSON)),
         'userMentions': json['user_mentions'],
     };
@@ -107,6 +120,7 @@ export function EntitiesToJSON(value?: Entities | null): any {
         'hashtags': value.hashtags,
         'media': value.media === undefined ? undefined : ((value.media as Array<any>).map(MediaToJSON)),
         'symbols': value.symbols,
+        'timestamps': value.timestamps === undefined ? undefined : ((value.timestamps as Array<any>).map(TimestampToJSON)),
         'urls': ((value.urls as Array<any>).map(UrlToJSON)),
         'user_mentions': value.userMentions,
     };

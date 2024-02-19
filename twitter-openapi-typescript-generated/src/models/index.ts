@@ -183,6 +183,7 @@ export * from './TimelineTopicContext';
 export * from './TimelineTweet';
 export * from './TimelineUser';
 export * from './TimelineV2';
+export * from './Timestamp';
 export * from './TopicContext';
 export * from './Tracing';
 export * from './Tweet';

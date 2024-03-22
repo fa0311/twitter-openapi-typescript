@@ -88,12 +88,13 @@ export class TwitterOpenApi {
     } else {
       cookies = { ...cookies, ...this.cookie_normalize(response.headers.get('set-cookie')?.split(', ') || []) };
     }
+    const html = await response.text();
 
-    const html = await TwitterOpenApi.fetchApi(TwitterOpenApi.twitter, {
-      method: 'GET',
-      headers: { Cookie: this.cookieEncode(cookies) },
-      ...this.initOverrides,
-    }).then((response) => response.text());
+    // const html = await TwitterOpenApi.fetchApi(TwitterOpenApi.twitter, {
+    //   method: 'GET',
+    //   headers: { Cookie: this.cookieEncode(cookies) },
+    //   ...this.initOverrides,
+    // }).then((response) => response.text());
 
     const re = new RegExp('document.cookie="(.*?)";', 'g');
 

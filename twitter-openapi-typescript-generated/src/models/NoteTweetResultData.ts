@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { Entities } from './Entities';
 import {
     EntitiesFromJSON,
@@ -74,12 +74,10 @@ export interface NoteTweetResultData {
  * Check if a given object implements the NoteTweetResultData interface.
  */
 export function instanceOfNoteTweetResultData(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "entitySet" in value;
-    isInstance = isInstance && "id" in value;
-    isInstance = isInstance && "text" in value;
-
-    return isInstance;
+    if (!('entitySet' in value)) return false;
+    if (!('id' in value)) return false;
+    if (!('text' in value)) return false;
+    return true;
 }
 
 export function NoteTweetResultDataFromJSON(json: any): NoteTweetResultData {
@@ -87,33 +85,30 @@ export function NoteTweetResultDataFromJSON(json: any): NoteTweetResultData {
 }
 
 export function NoteTweetResultDataFromJSONTyped(json: any, ignoreDiscriminator: boolean): NoteTweetResultData {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
         'entitySet': EntitiesFromJSON(json['entity_set']),
         'id': json['id'],
-        'media': !exists(json, 'media') ? undefined : NoteTweetResultMediaFromJSON(json['media']),
-        'richtext': !exists(json, 'richtext') ? undefined : NoteTweetResultRichTextFromJSON(json['richtext']),
+        'media': json['media'] == null ? undefined : NoteTweetResultMediaFromJSON(json['media']),
+        'richtext': json['richtext'] == null ? undefined : NoteTweetResultRichTextFromJSON(json['richtext']),
         'text': json['text'],
     };
 }
 
 export function NoteTweetResultDataToJSON(value?: NoteTweetResultData | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'entity_set': EntitiesToJSON(value.entitySet),
-        'id': value.id,
-        'media': NoteTweetResultMediaToJSON(value.media),
-        'richtext': NoteTweetResultRichTextToJSON(value.richtext),
-        'text': value.text,
+        'entity_set': EntitiesToJSON(value['entitySet']),
+        'id': value['id'],
+        'media': NoteTweetResultMediaToJSON(value['media']),
+        'richtext': NoteTweetResultRichTextToJSON(value['richtext']),
+        'text': value['text'],
     };
 }
 

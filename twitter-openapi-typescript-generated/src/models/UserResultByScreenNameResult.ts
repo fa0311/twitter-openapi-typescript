@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { TypeName } from './TypeName';
 import {
     TypeNameFromJSON,
@@ -68,14 +68,12 @@ export interface UserResultByScreenNameResult {
  * Check if a given object implements the UserResultByScreenNameResult interface.
  */
 export function instanceOfUserResultByScreenNameResult(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "typename" in value;
-    isInstance = isInstance && "id" in value;
-    isInstance = isInstance && "legacy" in value;
-    isInstance = isInstance && "profilemodules" in value;
-    isInstance = isInstance && "restId" in value;
-
-    return isInstance;
+    if (!('typename' in value)) return false;
+    if (!('id' in value)) return false;
+    if (!('legacy' in value)) return false;
+    if (!('profilemodules' in value)) return false;
+    if (!('restId' in value)) return false;
+    return true;
 }
 
 export function UserResultByScreenNameResultFromJSON(json: any): UserResultByScreenNameResult {
@@ -83,7 +81,7 @@ export function UserResultByScreenNameResultFromJSON(json: any): UserResultByScr
 }
 
 export function UserResultByScreenNameResultFromJSONTyped(json: any, ignoreDiscriminator: boolean): UserResultByScreenNameResult {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -97,19 +95,16 @@ export function UserResultByScreenNameResultFromJSONTyped(json: any, ignoreDiscr
 }
 
 export function UserResultByScreenNameResultToJSON(value?: UserResultByScreenNameResult | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        '__typename': TypeNameToJSON(value.typename),
-        'id': value.id,
-        'legacy': UserResultByScreenNameLegacyToJSON(value.legacy),
-        'profilemodules': value.profilemodules,
-        'rest_id': value.restId,
+        '__typename': TypeNameToJSON(value['typename']),
+        'id': value['id'],
+        'legacy': UserResultByScreenNameLegacyToJSON(value['legacy']),
+        'profilemodules': value['profilemodules'],
+        'rest_id': value['restId'],
     };
 }
 

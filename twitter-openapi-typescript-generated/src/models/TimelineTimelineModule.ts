@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { ContentEntryType } from './ContentEntryType';
 import {
     ContentEntryTypeFromJSON,
@@ -110,13 +110,11 @@ export interface TimelineTimelineModule {
  * Check if a given object implements the TimelineTimelineModule interface.
  */
 export function instanceOfTimelineTimelineModule(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "typename" in value;
-    isInstance = isInstance && "clientEventInfo" in value;
-    isInstance = isInstance && "displayType" in value;
-    isInstance = isInstance && "entryType" in value;
-
-    return isInstance;
+    if (!('typename' in value)) return false;
+    if (!('clientEventInfo' in value)) return false;
+    if (!('displayType' in value)) return false;
+    if (!('entryType' in value)) return false;
+    return true;
 }
 
 export function TimelineTimelineModuleFromJSON(json: any): TimelineTimelineModule {
@@ -124,7 +122,7 @@ export function TimelineTimelineModuleFromJSON(json: any): TimelineTimelineModul
 }
 
 export function TimelineTimelineModuleFromJSONTyped(json: any, ignoreDiscriminator: boolean): TimelineTimelineModule {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -133,32 +131,29 @@ export function TimelineTimelineModuleFromJSONTyped(json: any, ignoreDiscriminat
         'clientEventInfo': json['clientEventInfo'],
         'displayType': DisplayTypeFromJSON(json['displayType']),
         'entryType': ContentEntryTypeFromJSON(json['entryType']),
-        'feedbackInfo': !exists(json, 'feedbackInfo') ? undefined : FeedbackInfoFromJSON(json['feedbackInfo']),
-        'footer': !exists(json, 'footer') ? undefined : json['footer'],
-        'header': !exists(json, 'header') ? undefined : json['header'],
-        'items': !exists(json, 'items') ? undefined : ((json['items'] as Array<any>).map(ModuleItemFromJSON)),
-        'metadata': !exists(json, 'metadata') ? undefined : json['metadata'],
+        'feedbackInfo': json['feedbackInfo'] == null ? undefined : FeedbackInfoFromJSON(json['feedbackInfo']),
+        'footer': json['footer'] == null ? undefined : json['footer'],
+        'header': json['header'] == null ? undefined : json['header'],
+        'items': json['items'] == null ? undefined : ((json['items'] as Array<any>).map(ModuleItemFromJSON)),
+        'metadata': json['metadata'] == null ? undefined : json['metadata'],
     };
 }
 
 export function TimelineTimelineModuleToJSON(value?: TimelineTimelineModule | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        '__typename': TypeNameToJSON(value.typename),
-        'clientEventInfo': value.clientEventInfo,
-        'displayType': DisplayTypeToJSON(value.displayType),
-        'entryType': ContentEntryTypeToJSON(value.entryType),
-        'feedbackInfo': FeedbackInfoToJSON(value.feedbackInfo),
-        'footer': value.footer,
-        'header': value.header,
-        'items': value.items === undefined ? undefined : ((value.items as Array<any>).map(ModuleItemToJSON)),
-        'metadata': value.metadata,
+        '__typename': TypeNameToJSON(value['typename']),
+        'clientEventInfo': value['clientEventInfo'],
+        'displayType': DisplayTypeToJSON(value['displayType']),
+        'entryType': ContentEntryTypeToJSON(value['entryType']),
+        'feedbackInfo': FeedbackInfoToJSON(value['feedbackInfo']),
+        'footer': value['footer'],
+        'header': value['header'],
+        'items': value['items'] == null ? undefined : ((value['items'] as Array<any>).map(ModuleItemToJSON)),
+        'metadata': value['metadata'],
     };
 }
 

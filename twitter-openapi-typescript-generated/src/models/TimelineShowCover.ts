@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { ClientEventInfo } from './ClientEventInfo';
 import {
     ClientEventInfoFromJSON,
@@ -62,12 +62,10 @@ export interface TimelineShowCover {
  * Check if a given object implements the TimelineShowCover interface.
  */
 export function instanceOfTimelineShowCover(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "clientEventInfo" in value;
-    isInstance = isInstance && "cover" in value;
-    isInstance = isInstance && "type" in value;
-
-    return isInstance;
+    if (!('clientEventInfo' in value)) return false;
+    if (!('cover' in value)) return false;
+    if (!('type' in value)) return false;
+    return true;
 }
 
 export function TimelineShowCoverFromJSON(json: any): TimelineShowCover {
@@ -75,7 +73,7 @@ export function TimelineShowCoverFromJSON(json: any): TimelineShowCover {
 }
 
 export function TimelineShowCoverFromJSONTyped(json: any, ignoreDiscriminator: boolean): TimelineShowCover {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -87,17 +85,14 @@ export function TimelineShowCoverFromJSONTyped(json: any, ignoreDiscriminator: b
 }
 
 export function TimelineShowCoverToJSON(value?: TimelineShowCover | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'clientEventInfo': ClientEventInfoToJSON(value.clientEventInfo),
-        'cover': TimelineHalfCoverToJSON(value.cover),
-        'type': InstructionTypeToJSON(value.type),
+        'clientEventInfo': ClientEventInfoToJSON(value['clientEventInfo']),
+        'cover': TimelineHalfCoverToJSON(value['cover']),
+        'type': InstructionTypeToJSON(value['type']),
     };
 }
 

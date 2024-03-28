@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -41,10 +41,8 @@ export type UnifiedCardCardFetchStateEnum = typeof UnifiedCardCardFetchStateEnum
  * Check if a given object implements the UnifiedCard interface.
  */
 export function instanceOfUnifiedCard(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "cardFetchState" in value;
-
-    return isInstance;
+    if (!('cardFetchState' in value)) return false;
+    return true;
 }
 
 export function UnifiedCardFromJSON(json: any): UnifiedCard {
@@ -52,7 +50,7 @@ export function UnifiedCardFromJSON(json: any): UnifiedCard {
 }
 
 export function UnifiedCardFromJSONTyped(json: any, ignoreDiscriminator: boolean): UnifiedCard {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -62,15 +60,12 @@ export function UnifiedCardFromJSONTyped(json: any, ignoreDiscriminator: boolean
 }
 
 export function UnifiedCardToJSON(value?: UnifiedCard | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'card_fetch_state': value.cardFetchState,
+        'card_fetch_state': value['cardFetchState'],
     };
 }
 

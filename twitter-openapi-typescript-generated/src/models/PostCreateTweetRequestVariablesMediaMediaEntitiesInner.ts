@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -37,11 +37,9 @@ export interface PostCreateTweetRequestVariablesMediaMediaEntitiesInner {
  * Check if a given object implements the PostCreateTweetRequestVariablesMediaMediaEntitiesInner interface.
  */
 export function instanceOfPostCreateTweetRequestVariablesMediaMediaEntitiesInner(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "mediaId" in value;
-    isInstance = isInstance && "taggedUsers" in value;
-
-    return isInstance;
+    if (!('mediaId' in value)) return false;
+    if (!('taggedUsers' in value)) return false;
+    return true;
 }
 
 export function PostCreateTweetRequestVariablesMediaMediaEntitiesInnerFromJSON(json: any): PostCreateTweetRequestVariablesMediaMediaEntitiesInner {
@@ -49,7 +47,7 @@ export function PostCreateTweetRequestVariablesMediaMediaEntitiesInnerFromJSON(j
 }
 
 export function PostCreateTweetRequestVariablesMediaMediaEntitiesInnerFromJSONTyped(json: any, ignoreDiscriminator: boolean): PostCreateTweetRequestVariablesMediaMediaEntitiesInner {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -60,16 +58,13 @@ export function PostCreateTweetRequestVariablesMediaMediaEntitiesInnerFromJSONTy
 }
 
 export function PostCreateTweetRequestVariablesMediaMediaEntitiesInnerToJSON(value?: PostCreateTweetRequestVariablesMediaMediaEntitiesInner | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'media_id': value.mediaId,
-        'tagged_users': value.taggedUsers,
+        'media_id': value['mediaId'],
+        'tagged_users': value['taggedUsers'],
     };
 }
 

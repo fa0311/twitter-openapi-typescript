@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { TweetCardLegacyBindingValue } from './TweetCardLegacyBindingValue';
 import {
     TweetCardLegacyBindingValueFromJSON,
@@ -74,12 +74,10 @@ export interface TweetCardLegacy {
  * Check if a given object implements the TweetCardLegacy interface.
  */
 export function instanceOfTweetCardLegacy(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "bindingValues" in value;
-    isInstance = isInstance && "name" in value;
-    isInstance = isInstance && "url" in value;
-
-    return isInstance;
+    if (!('bindingValues' in value)) return false;
+    if (!('name' in value)) return false;
+    if (!('url' in value)) return false;
+    return true;
 }
 
 export function TweetCardLegacyFromJSON(json: any): TweetCardLegacy {
@@ -87,33 +85,30 @@ export function TweetCardLegacyFromJSON(json: any): TweetCardLegacy {
 }
 
 export function TweetCardLegacyFromJSONTyped(json: any, ignoreDiscriminator: boolean): TweetCardLegacy {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
         'bindingValues': ((json['binding_values'] as Array<any>).map(TweetCardLegacyBindingValueFromJSON)),
-        'cardPlatform': !exists(json, 'card_platform') ? undefined : TweetCardPlatformDataFromJSON(json['card_platform']),
+        'cardPlatform': json['card_platform'] == null ? undefined : TweetCardPlatformDataFromJSON(json['card_platform']),
         'name': json['name'],
         'url': json['url'],
-        'userRefsResults': !exists(json, 'user_refs_results') ? undefined : ((json['user_refs_results'] as Array<any>).map(UserResultsFromJSON)),
+        'userRefsResults': json['user_refs_results'] == null ? undefined : ((json['user_refs_results'] as Array<any>).map(UserResultsFromJSON)),
     };
 }
 
 export function TweetCardLegacyToJSON(value?: TweetCardLegacy | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'binding_values': ((value.bindingValues as Array<any>).map(TweetCardLegacyBindingValueToJSON)),
-        'card_platform': TweetCardPlatformDataToJSON(value.cardPlatform),
-        'name': value.name,
-        'url': value.url,
-        'user_refs_results': value.userRefsResults === undefined ? undefined : ((value.userRefsResults as Array<any>).map(UserResultsToJSON)),
+        'binding_values': ((value['bindingValues'] as Array<any>).map(TweetCardLegacyBindingValueToJSON)),
+        'card_platform': TweetCardPlatformDataToJSON(value['cardPlatform']),
+        'name': value['name'],
+        'url': value['url'],
+        'user_refs_results': value['userRefsResults'] == null ? undefined : ((value['userRefsResults'] as Array<any>).map(UserResultsToJSON)),
     };
 }
 

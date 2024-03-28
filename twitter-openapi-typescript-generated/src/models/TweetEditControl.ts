@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { TweetEditControlInitial } from './TweetEditControlInitial';
 import {
     TweetEditControlInitialFromJSON,
@@ -68,9 +68,7 @@ export interface TweetEditControl {
  * Check if a given object implements the TweetEditControl interface.
  */
 export function instanceOfTweetEditControl(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+    return true;
 }
 
 export function TweetEditControlFromJSON(json: any): TweetEditControl {
@@ -78,35 +76,32 @@ export function TweetEditControlFromJSON(json: any): TweetEditControl {
 }
 
 export function TweetEditControlFromJSONTyped(json: any, ignoreDiscriminator: boolean): TweetEditControl {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'editControlInitial': !exists(json, 'edit_control_initial') ? undefined : TweetEditControlInitialFromJSON(json['edit_control_initial']),
-        'editTweetIds': !exists(json, 'edit_tweet_ids') ? undefined : json['edit_tweet_ids'],
-        'editableUntilMsecs': !exists(json, 'editable_until_msecs') ? undefined : json['editable_until_msecs'],
-        'editsRemaining': !exists(json, 'edits_remaining') ? undefined : json['edits_remaining'],
-        'initialTweetId': !exists(json, 'initial_tweet_id') ? undefined : json['initial_tweet_id'],
-        'isEditEligible': !exists(json, 'is_edit_eligible') ? undefined : json['is_edit_eligible'],
+        'editControlInitial': json['edit_control_initial'] == null ? undefined : TweetEditControlInitialFromJSON(json['edit_control_initial']),
+        'editTweetIds': json['edit_tweet_ids'] == null ? undefined : json['edit_tweet_ids'],
+        'editableUntilMsecs': json['editable_until_msecs'] == null ? undefined : json['editable_until_msecs'],
+        'editsRemaining': json['edits_remaining'] == null ? undefined : json['edits_remaining'],
+        'initialTweetId': json['initial_tweet_id'] == null ? undefined : json['initial_tweet_id'],
+        'isEditEligible': json['is_edit_eligible'] == null ? undefined : json['is_edit_eligible'],
     };
 }
 
 export function TweetEditControlToJSON(value?: TweetEditControl | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'edit_control_initial': TweetEditControlInitialToJSON(value.editControlInitial),
-        'edit_tweet_ids': value.editTweetIds,
-        'editable_until_msecs': value.editableUntilMsecs,
-        'edits_remaining': value.editsRemaining,
-        'initial_tweet_id': value.initialTweetId,
-        'is_edit_eligible': value.isEditEligible,
+        'edit_control_initial': TweetEditControlInitialToJSON(value['editControlInitial']),
+        'edit_tweet_ids': value['editTweetIds'],
+        'editable_until_msecs': value['editableUntilMsecs'],
+        'edits_remaining': value['editsRemaining'],
+        'initial_tweet_id': value['initialTweetId'],
+        'is_edit_eligible': value['isEditEligible'],
     };
 }
 

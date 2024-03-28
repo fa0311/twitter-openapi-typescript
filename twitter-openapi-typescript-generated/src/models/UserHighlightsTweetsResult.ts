@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { TypeName } from './TypeName';
 import {
     TypeNameFromJSON,
@@ -50,11 +50,9 @@ export interface UserHighlightsTweetsResult {
  * Check if a given object implements the UserHighlightsTweetsResult interface.
  */
 export function instanceOfUserHighlightsTweetsResult(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "typename" in value;
-    isInstance = isInstance && "timeline" in value;
-
-    return isInstance;
+    if (!('typename' in value)) return false;
+    if (!('timeline' in value)) return false;
+    return true;
 }
 
 export function UserHighlightsTweetsResultFromJSON(json: any): UserHighlightsTweetsResult {
@@ -62,7 +60,7 @@ export function UserHighlightsTweetsResultFromJSON(json: any): UserHighlightsTwe
 }
 
 export function UserHighlightsTweetsResultFromJSONTyped(json: any, ignoreDiscriminator: boolean): UserHighlightsTweetsResult {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -73,16 +71,13 @@ export function UserHighlightsTweetsResultFromJSONTyped(json: any, ignoreDiscrim
 }
 
 export function UserHighlightsTweetsResultToJSON(value?: UserHighlightsTweetsResult | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        '__typename': TypeNameToJSON(value.typename),
-        'timeline': UserHighlightsTweetsTimelineToJSON(value.timeline),
+        '__typename': TypeNameToJSON(value['typename']),
+        'timeline': UserHighlightsTweetsTimelineToJSON(value['timeline']),
     };
 }
 

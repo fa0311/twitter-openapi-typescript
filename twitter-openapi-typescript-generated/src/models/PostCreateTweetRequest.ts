@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { PostCreateTweetRequestFeatures } from './PostCreateTweetRequestFeatures';
 import {
     PostCreateTweetRequestFeaturesFromJSON,
@@ -56,12 +56,10 @@ export interface PostCreateTweetRequest {
  * Check if a given object implements the PostCreateTweetRequest interface.
  */
 export function instanceOfPostCreateTweetRequest(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "features" in value;
-    isInstance = isInstance && "queryId" in value;
-    isInstance = isInstance && "variables" in value;
-
-    return isInstance;
+    if (!('features' in value)) return false;
+    if (!('queryId' in value)) return false;
+    if (!('variables' in value)) return false;
+    return true;
 }
 
 export function PostCreateTweetRequestFromJSON(json: any): PostCreateTweetRequest {
@@ -69,7 +67,7 @@ export function PostCreateTweetRequestFromJSON(json: any): PostCreateTweetReques
 }
 
 export function PostCreateTweetRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): PostCreateTweetRequest {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -81,17 +79,14 @@ export function PostCreateTweetRequestFromJSONTyped(json: any, ignoreDiscriminat
 }
 
 export function PostCreateTweetRequestToJSON(value?: PostCreateTweetRequest | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'features': PostCreateTweetRequestFeaturesToJSON(value.features),
-        'queryId': value.queryId,
-        'variables': PostCreateTweetRequestVariablesToJSON(value.variables),
+        'features': PostCreateTweetRequestFeaturesToJSON(value['features']),
+        'queryId': value['queryId'],
+        'variables': PostCreateTweetRequestVariablesToJSON(value['variables']),
     };
 }
 

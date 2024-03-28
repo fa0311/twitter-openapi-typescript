@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { Callback } from './Callback';
 import {
     CallbackFromJSON,
@@ -84,12 +84,10 @@ export type CoverCtaButtonStyleEnum = typeof CoverCtaButtonStyleEnum[keyof typeo
  * Check if a given object implements the CoverCta interface.
  */
 export function instanceOfCoverCta(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "callbacks" in value;
-    isInstance = isInstance && "clientEventInfo" in value;
-    isInstance = isInstance && "ctaBehavior" in value;
-
-    return isInstance;
+    if (!('callbacks' in value)) return false;
+    if (!('clientEventInfo' in value)) return false;
+    if (!('ctaBehavior' in value)) return false;
+    return true;
 }
 
 export function CoverCtaFromJSON(json: any): CoverCta {
@@ -97,13 +95,13 @@ export function CoverCtaFromJSON(json: any): CoverCta {
 }
 
 export function CoverCtaFromJSONTyped(json: any, ignoreDiscriminator: boolean): CoverCta {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'text': !exists(json, 'Text') ? undefined : json['Text'],
-        'buttonStyle': !exists(json, 'buttonStyle') ? undefined : json['buttonStyle'],
+        'text': json['Text'] == null ? undefined : json['Text'],
+        'buttonStyle': json['buttonStyle'] == null ? undefined : json['buttonStyle'],
         'callbacks': ((json['callbacks'] as Array<any>).map(CallbackFromJSON)),
         'clientEventInfo': CtaClientEventInfoFromJSON(json['clientEventInfo']),
         'ctaBehavior': TimelineCoverBehaviorFromJSON(json['ctaBehavior']),
@@ -111,19 +109,16 @@ export function CoverCtaFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
 }
 
 export function CoverCtaToJSON(value?: CoverCta | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'Text': value.text,
-        'buttonStyle': value.buttonStyle,
-        'callbacks': ((value.callbacks as Array<any>).map(CallbackToJSON)),
-        'clientEventInfo': CtaClientEventInfoToJSON(value.clientEventInfo),
-        'ctaBehavior': TimelineCoverBehaviorToJSON(value.ctaBehavior),
+        'Text': value['text'],
+        'buttonStyle': value['buttonStyle'],
+        'callbacks': ((value['callbacks'] as Array<any>).map(CallbackToJSON)),
+        'clientEventInfo': CtaClientEventInfoToJSON(value['clientEventInfo']),
+        'ctaBehavior': TimelineCoverBehaviorToJSON(value['ctaBehavior']),
     };
 }
 

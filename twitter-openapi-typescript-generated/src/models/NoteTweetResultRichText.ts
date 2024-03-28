@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { NoteTweetResultRichTextTag } from './NoteTweetResultRichTextTag';
 import {
     NoteTweetResultRichTextTagFromJSON,
@@ -38,10 +38,8 @@ export interface NoteTweetResultRichText {
  * Check if a given object implements the NoteTweetResultRichText interface.
  */
 export function instanceOfNoteTweetResultRichText(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "richtextTags" in value;
-
-    return isInstance;
+    if (!('richtextTags' in value)) return false;
+    return true;
 }
 
 export function NoteTweetResultRichTextFromJSON(json: any): NoteTweetResultRichText {
@@ -49,7 +47,7 @@ export function NoteTweetResultRichTextFromJSON(json: any): NoteTweetResultRichT
 }
 
 export function NoteTweetResultRichTextFromJSONTyped(json: any, ignoreDiscriminator: boolean): NoteTweetResultRichText {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -59,15 +57,12 @@ export function NoteTweetResultRichTextFromJSONTyped(json: any, ignoreDiscrimina
 }
 
 export function NoteTweetResultRichTextToJSON(value?: NoteTweetResultRichText | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'richtext_tags': ((value.richtextTags as Array<any>).map(NoteTweetResultRichTextTagToJSON)),
+        'richtext_tags': ((value['richtextTags'] as Array<any>).map(NoteTweetResultRichTextTagToJSON)),
     };
 }
 

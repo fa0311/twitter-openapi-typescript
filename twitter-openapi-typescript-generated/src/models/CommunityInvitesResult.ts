@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { TypeName } from './TypeName';
 import {
     TypeNameFromJSON,
@@ -60,12 +60,10 @@ export type CommunityInvitesResultReasonEnum = typeof CommunityInvitesResultReas
  * Check if a given object implements the CommunityInvitesResult interface.
  */
 export function instanceOfCommunityInvitesResult(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "typename" in value;
-    isInstance = isInstance && "message" in value;
-    isInstance = isInstance && "reason" in value;
-
-    return isInstance;
+    if (!('typename' in value)) return false;
+    if (!('message' in value)) return false;
+    if (!('reason' in value)) return false;
+    return true;
 }
 
 export function CommunityInvitesResultFromJSON(json: any): CommunityInvitesResult {
@@ -73,7 +71,7 @@ export function CommunityInvitesResultFromJSON(json: any): CommunityInvitesResul
 }
 
 export function CommunityInvitesResultFromJSONTyped(json: any, ignoreDiscriminator: boolean): CommunityInvitesResult {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -85,17 +83,14 @@ export function CommunityInvitesResultFromJSONTyped(json: any, ignoreDiscriminat
 }
 
 export function CommunityInvitesResultToJSON(value?: CommunityInvitesResult | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        '__typename': TypeNameToJSON(value.typename),
-        'message': value.message,
-        'reason': value.reason,
+        '__typename': TypeNameToJSON(value['typename']),
+        'message': value['message'],
+        'reason': value['reason'],
     };
 }
 

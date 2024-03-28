@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -43,12 +43,10 @@ export interface SensitiveMediaWarning {
  * Check if a given object implements the SensitiveMediaWarning interface.
  */
 export function instanceOfSensitiveMediaWarning(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "adultContent" in value;
-    isInstance = isInstance && "graphicViolence" in value;
-    isInstance = isInstance && "other" in value;
-
-    return isInstance;
+    if (!('adultContent' in value)) return false;
+    if (!('graphicViolence' in value)) return false;
+    if (!('other' in value)) return false;
+    return true;
 }
 
 export function SensitiveMediaWarningFromJSON(json: any): SensitiveMediaWarning {
@@ -56,7 +54,7 @@ export function SensitiveMediaWarningFromJSON(json: any): SensitiveMediaWarning 
 }
 
 export function SensitiveMediaWarningFromJSONTyped(json: any, ignoreDiscriminator: boolean): SensitiveMediaWarning {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -68,17 +66,14 @@ export function SensitiveMediaWarningFromJSONTyped(json: any, ignoreDiscriminato
 }
 
 export function SensitiveMediaWarningToJSON(value?: SensitiveMediaWarning | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'adult_content': value.adultContent,
-        'graphic_violence': value.graphicViolence,
-        'other': value.other,
+        'adult_content': value['adultContent'],
+        'graphic_violence': value['graphicViolence'],
+        'other': value['other'],
     };
 }
 

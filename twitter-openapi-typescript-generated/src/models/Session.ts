@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { CommunitiesActions } from './CommunitiesActions';
 import {
     CommunitiesActionsFromJSON,
@@ -138,22 +138,20 @@ export type SessionSuperFollowsApplicationStatusEnum = typeof SessionSuperFollow
  * Check if a given object implements the Session interface.
  */
 export function instanceOfSession(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "communitiesActions" in value;
-    isInstance = isInstance && "country" in value;
-    isInstance = isInstance && "guestId" in value;
-    isInstance = isInstance && "hasCommunityMemberships" in value;
-    isInstance = isInstance && "isActiveCreator" in value;
-    isInstance = isInstance && "isRestrictedSession" in value;
-    isInstance = isInstance && "isSuperFollowSubscriber" in value;
-    isInstance = isInstance && "language" in value;
-    isInstance = isInstance && "oneFactorLoginEligibility" in value;
-    isInstance = isInstance && "superFollowersCount" in value;
-    isInstance = isInstance && "superFollowsApplicationStatus" in value;
-    isInstance = isInstance && "userFeatures" in value;
-    isInstance = isInstance && "userId" in value;
-
-    return isInstance;
+    if (!('communitiesActions' in value)) return false;
+    if (!('country' in value)) return false;
+    if (!('guestId' in value)) return false;
+    if (!('hasCommunityMemberships' in value)) return false;
+    if (!('isActiveCreator' in value)) return false;
+    if (!('isRestrictedSession' in value)) return false;
+    if (!('isSuperFollowSubscriber' in value)) return false;
+    if (!('language' in value)) return false;
+    if (!('oneFactorLoginEligibility' in value)) return false;
+    if (!('superFollowersCount' in value)) return false;
+    if (!('superFollowsApplicationStatus' in value)) return false;
+    if (!('userFeatures' in value)) return false;
+    if (!('userId' in value)) return false;
+    return true;
 }
 
 export function SessionFromJSON(json: any): Session {
@@ -161,12 +159,12 @@ export function SessionFromJSON(json: any): Session {
 }
 
 export function SessionFromJSONTyped(json: any, ignoreDiscriminator: boolean): Session {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'ssoInitTokens': !exists(json, 'SsoInitTokens') ? undefined : json['SsoInitTokens'],
+        'ssoInitTokens': json['SsoInitTokens'] == null ? undefined : json['SsoInitTokens'],
         'communitiesActions': CommunitiesActionsFromJSON(json['communitiesActions']),
         'country': json['country'],
         'guestId': json['guestId'],
@@ -184,28 +182,25 @@ export function SessionFromJSONTyped(json: any, ignoreDiscriminator: boolean): S
 }
 
 export function SessionToJSON(value?: Session | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'SsoInitTokens': value.ssoInitTokens,
-        'communitiesActions': CommunitiesActionsToJSON(value.communitiesActions),
-        'country': value.country,
-        'guestId': value.guestId,
-        'hasCommunityMemberships': value.hasCommunityMemberships,
-        'isActiveCreator': value.isActiveCreator,
-        'isRestrictedSession': value.isRestrictedSession,
-        'isSuperFollowSubscriber': value.isSuperFollowSubscriber,
-        'language': value.language,
-        'oneFactorLoginEligibility': OneFactorLoginEligibilityToJSON(value.oneFactorLoginEligibility),
-        'superFollowersCount': value.superFollowersCount,
-        'superFollowsApplicationStatus': value.superFollowsApplicationStatus,
-        'userFeatures': UserFeaturesToJSON(value.userFeatures),
-        'user_id': value.userId,
+        'SsoInitTokens': value['ssoInitTokens'],
+        'communitiesActions': CommunitiesActionsToJSON(value['communitiesActions']),
+        'country': value['country'],
+        'guestId': value['guestId'],
+        'hasCommunityMemberships': value['hasCommunityMemberships'],
+        'isActiveCreator': value['isActiveCreator'],
+        'isRestrictedSession': value['isRestrictedSession'],
+        'isSuperFollowSubscriber': value['isSuperFollowSubscriber'],
+        'language': value['language'],
+        'oneFactorLoginEligibility': OneFactorLoginEligibilityToJSON(value['oneFactorLoginEligibility']),
+        'superFollowersCount': value['superFollowersCount'],
+        'superFollowsApplicationStatus': value['superFollowsApplicationStatus'],
+        'userFeatures': UserFeaturesToJSON(value['userFeatures']),
+        'user_id': value['userId'],
     };
 }
 

@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -54,12 +54,10 @@ export type MediaSizeResizeEnum = typeof MediaSizeResizeEnum[keyof typeof MediaS
  * Check if a given object implements the MediaSize interface.
  */
 export function instanceOfMediaSize(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "h" in value;
-    isInstance = isInstance && "resize" in value;
-    isInstance = isInstance && "w" in value;
-
-    return isInstance;
+    if (!('h' in value)) return false;
+    if (!('resize' in value)) return false;
+    if (!('w' in value)) return false;
+    return true;
 }
 
 export function MediaSizeFromJSON(json: any): MediaSize {
@@ -67,7 +65,7 @@ export function MediaSizeFromJSON(json: any): MediaSize {
 }
 
 export function MediaSizeFromJSONTyped(json: any, ignoreDiscriminator: boolean): MediaSize {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -79,17 +77,14 @@ export function MediaSizeFromJSONTyped(json: any, ignoreDiscriminator: boolean):
 }
 
 export function MediaSizeToJSON(value?: MediaSize | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'h': value.h,
-        'resize': value.resize,
-        'w': value.w,
+        'h': value['h'],
+        'resize': value['resize'],
+        'w': value['w'],
     };
 }
 

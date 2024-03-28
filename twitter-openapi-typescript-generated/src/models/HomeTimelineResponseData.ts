@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { HomeTimelineHome } from './HomeTimelineHome';
 import {
     HomeTimelineHomeFromJSON,
@@ -38,10 +38,8 @@ export interface HomeTimelineResponseData {
  * Check if a given object implements the HomeTimelineResponseData interface.
  */
 export function instanceOfHomeTimelineResponseData(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "home" in value;
-
-    return isInstance;
+    if (!('home' in value)) return false;
+    return true;
 }
 
 export function HomeTimelineResponseDataFromJSON(json: any): HomeTimelineResponseData {
@@ -49,7 +47,7 @@ export function HomeTimelineResponseDataFromJSON(json: any): HomeTimelineRespons
 }
 
 export function HomeTimelineResponseDataFromJSONTyped(json: any, ignoreDiscriminator: boolean): HomeTimelineResponseData {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -59,15 +57,12 @@ export function HomeTimelineResponseDataFromJSONTyped(json: any, ignoreDiscrimin
 }
 
 export function HomeTimelineResponseDataToJSON(value?: HomeTimelineResponseData | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'home': HomeTimelineHomeToJSON(value.home),
+        'home': HomeTimelineHomeToJSON(value['home']),
     };
 }
 

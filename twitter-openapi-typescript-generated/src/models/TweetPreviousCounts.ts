@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -55,14 +55,12 @@ export interface TweetPreviousCounts {
  * Check if a given object implements the TweetPreviousCounts interface.
  */
 export function instanceOfTweetPreviousCounts(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "bookmarkCount" in value;
-    isInstance = isInstance && "favoriteCount" in value;
-    isInstance = isInstance && "quoteCount" in value;
-    isInstance = isInstance && "replyCount" in value;
-    isInstance = isInstance && "retweetCount" in value;
-
-    return isInstance;
+    if (!('bookmarkCount' in value)) return false;
+    if (!('favoriteCount' in value)) return false;
+    if (!('quoteCount' in value)) return false;
+    if (!('replyCount' in value)) return false;
+    if (!('retweetCount' in value)) return false;
+    return true;
 }
 
 export function TweetPreviousCountsFromJSON(json: any): TweetPreviousCounts {
@@ -70,7 +68,7 @@ export function TweetPreviousCountsFromJSON(json: any): TweetPreviousCounts {
 }
 
 export function TweetPreviousCountsFromJSONTyped(json: any, ignoreDiscriminator: boolean): TweetPreviousCounts {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -84,19 +82,16 @@ export function TweetPreviousCountsFromJSONTyped(json: any, ignoreDiscriminator:
 }
 
 export function TweetPreviousCountsToJSON(value?: TweetPreviousCounts | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'bookmark_count': value.bookmarkCount,
-        'favorite_count': value.favoriteCount,
-        'quote_count': value.quoteCount,
-        'reply_count': value.replyCount,
-        'retweet_count': value.retweetCount,
+        'bookmark_count': value['bookmarkCount'],
+        'favorite_count': value['favoriteCount'],
+        'quote_count': value['quoteCount'],
+        'reply_count': value['replyCount'],
+        'retweet_count': value['retweetCount'],
     };
 }
 

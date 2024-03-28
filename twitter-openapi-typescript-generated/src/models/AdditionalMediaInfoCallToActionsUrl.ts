@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -31,10 +31,8 @@ export interface AdditionalMediaInfoCallToActionsUrl {
  * Check if a given object implements the AdditionalMediaInfoCallToActionsUrl interface.
  */
 export function instanceOfAdditionalMediaInfoCallToActionsUrl(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "url" in value;
-
-    return isInstance;
+    if (!('url' in value)) return false;
+    return true;
 }
 
 export function AdditionalMediaInfoCallToActionsUrlFromJSON(json: any): AdditionalMediaInfoCallToActionsUrl {
@@ -42,7 +40,7 @@ export function AdditionalMediaInfoCallToActionsUrlFromJSON(json: any): Addition
 }
 
 export function AdditionalMediaInfoCallToActionsUrlFromJSONTyped(json: any, ignoreDiscriminator: boolean): AdditionalMediaInfoCallToActionsUrl {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -52,15 +50,12 @@ export function AdditionalMediaInfoCallToActionsUrlFromJSONTyped(json: any, igno
 }
 
 export function AdditionalMediaInfoCallToActionsUrlToJSON(value?: AdditionalMediaInfoCallToActionsUrl | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'url': value.url,
+        'url': value['url'],
     };
 }
 

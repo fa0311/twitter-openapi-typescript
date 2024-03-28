@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -61,12 +61,10 @@ export type TweetInterstitialTextEntityRefUrlTypeEnum = typeof TweetInterstitial
  * Check if a given object implements the TweetInterstitialTextEntityRef interface.
  */
 export function instanceOfTweetInterstitialTextEntityRef(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "type" in value;
-    isInstance = isInstance && "url" in value;
-    isInstance = isInstance && "urlType" in value;
-
-    return isInstance;
+    if (!('type' in value)) return false;
+    if (!('url' in value)) return false;
+    if (!('urlType' in value)) return false;
+    return true;
 }
 
 export function TweetInterstitialTextEntityRefFromJSON(json: any): TweetInterstitialTextEntityRef {
@@ -74,7 +72,7 @@ export function TweetInterstitialTextEntityRefFromJSON(json: any): TweetIntersti
 }
 
 export function TweetInterstitialTextEntityRefFromJSONTyped(json: any, ignoreDiscriminator: boolean): TweetInterstitialTextEntityRef {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -86,17 +84,14 @@ export function TweetInterstitialTextEntityRefFromJSONTyped(json: any, ignoreDis
 }
 
 export function TweetInterstitialTextEntityRefToJSON(value?: TweetInterstitialTextEntityRef | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'type': value.type,
-        'url': value.url,
-        'urlType': value.urlType,
+        'type': value['type'],
+        'url': value['url'],
+        'urlType': value['urlType'],
     };
 }
 

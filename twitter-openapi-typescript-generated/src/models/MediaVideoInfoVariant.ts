@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -43,11 +43,9 @@ export interface MediaVideoInfoVariant {
  * Check if a given object implements the MediaVideoInfoVariant interface.
  */
 export function instanceOfMediaVideoInfoVariant(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "contentType" in value;
-    isInstance = isInstance && "url" in value;
-
-    return isInstance;
+    if (!('contentType' in value)) return false;
+    if (!('url' in value)) return false;
+    return true;
 }
 
 export function MediaVideoInfoVariantFromJSON(json: any): MediaVideoInfoVariant {
@@ -55,29 +53,26 @@ export function MediaVideoInfoVariantFromJSON(json: any): MediaVideoInfoVariant 
 }
 
 export function MediaVideoInfoVariantFromJSONTyped(json: any, ignoreDiscriminator: boolean): MediaVideoInfoVariant {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'bitrate': !exists(json, 'bitrate') ? undefined : json['bitrate'],
+        'bitrate': json['bitrate'] == null ? undefined : json['bitrate'],
         'contentType': json['content_type'],
         'url': json['url'],
     };
 }
 
 export function MediaVideoInfoVariantToJSON(value?: MediaVideoInfoVariant | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'bitrate': value.bitrate,
-        'content_type': value.contentType,
-        'url': value.url,
+        'bitrate': value['bitrate'],
+        'content_type': value['contentType'],
+        'url': value['url'],
     };
 }
 

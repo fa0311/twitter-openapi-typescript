@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { ErrorExtensions } from './ErrorExtensions';
 import {
     ErrorExtensionsFromJSON,
@@ -104,19 +104,17 @@ export interface ModelError {
  * Check if a given object implements the ModelError interface.
  */
 export function instanceOfModelError(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "code" in value;
-    isInstance = isInstance && "extensions" in value;
-    isInstance = isInstance && "kind" in value;
-    isInstance = isInstance && "locations" in value;
-    isInstance = isInstance && "message" in value;
-    isInstance = isInstance && "name" in value;
-    isInstance = isInstance && "path" in value;
-    isInstance = isInstance && "retryAfter" in value;
-    isInstance = isInstance && "source" in value;
-    isInstance = isInstance && "tracing" in value;
-
-    return isInstance;
+    if (!('code' in value)) return false;
+    if (!('extensions' in value)) return false;
+    if (!('kind' in value)) return false;
+    if (!('locations' in value)) return false;
+    if (!('message' in value)) return false;
+    if (!('name' in value)) return false;
+    if (!('path' in value)) return false;
+    if (!('retryAfter' in value)) return false;
+    if (!('source' in value)) return false;
+    if (!('tracing' in value)) return false;
+    return true;
 }
 
 export function ModelErrorFromJSON(json: any): ModelError {
@@ -124,7 +122,7 @@ export function ModelErrorFromJSON(json: any): ModelError {
 }
 
 export function ModelErrorFromJSONTyped(json: any, ignoreDiscriminator: boolean): ModelError {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -143,24 +141,21 @@ export function ModelErrorFromJSONTyped(json: any, ignoreDiscriminator: boolean)
 }
 
 export function ModelErrorToJSON(value?: ModelError | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'code': value.code,
-        'extensions': ErrorExtensionsToJSON(value.extensions),
-        'kind': value.kind,
-        'locations': ((value.locations as Array<any>).map(LocationToJSON)),
-        'message': value.message,
-        'name': value.name,
-        'path': value.path,
-        'retry_after': value.retryAfter,
-        'source': value.source,
-        'tracing': TracingToJSON(value.tracing),
+        'code': value['code'],
+        'extensions': ErrorExtensionsToJSON(value['extensions']),
+        'kind': value['kind'],
+        'locations': ((value['locations'] as Array<any>).map(LocationToJSON)),
+        'message': value['message'],
+        'name': value['name'],
+        'path': value['path'],
+        'retry_after': value['retryAfter'],
+        'source': value['source'],
+        'tracing': TracingToJSON(value['tracing']),
     };
 }
 

@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -31,10 +31,8 @@ export interface Tracing {
  * Check if a given object implements the Tracing interface.
  */
 export function instanceOfTracing(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "traceId" in value;
-
-    return isInstance;
+    if (!('traceId' in value)) return false;
+    return true;
 }
 
 export function TracingFromJSON(json: any): Tracing {
@@ -42,7 +40,7 @@ export function TracingFromJSON(json: any): Tracing {
 }
 
 export function TracingFromJSONTyped(json: any, ignoreDiscriminator: boolean): Tracing {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -52,15 +50,12 @@ export function TracingFromJSONTyped(json: any, ignoreDiscriminator: boolean): T
 }
 
 export function TracingToJSON(value?: Tracing | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'trace_id': value.traceId,
+        'trace_id': value['traceId'],
     };
 }
 

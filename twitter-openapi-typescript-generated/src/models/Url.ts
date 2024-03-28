@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -49,13 +49,11 @@ export interface Url {
  * Check if a given object implements the Url interface.
  */
 export function instanceOfUrl(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "displayUrl" in value;
-    isInstance = isInstance && "expandedUrl" in value;
-    isInstance = isInstance && "indices" in value;
-    isInstance = isInstance && "url" in value;
-
-    return isInstance;
+    if (!('displayUrl' in value)) return false;
+    if (!('expandedUrl' in value)) return false;
+    if (!('indices' in value)) return false;
+    if (!('url' in value)) return false;
+    return true;
 }
 
 export function UrlFromJSON(json: any): Url {
@@ -63,7 +61,7 @@ export function UrlFromJSON(json: any): Url {
 }
 
 export function UrlFromJSONTyped(json: any, ignoreDiscriminator: boolean): Url {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -76,18 +74,15 @@ export function UrlFromJSONTyped(json: any, ignoreDiscriminator: boolean): Url {
 }
 
 export function UrlToJSON(value?: Url | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'display_url': value.displayUrl,
-        'expanded_url': value.expandedUrl,
-        'indices': value.indices,
-        'url': value.url,
+        'display_url': value['displayUrl'],
+        'expanded_url': value['expandedUrl'],
+        'indices': value['indices'],
+        'url': value['url'],
     };
 }
 

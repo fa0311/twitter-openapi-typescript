@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { TextEntityRef } from './TextEntityRef';
 import {
     TextEntityRefFromJSON,
@@ -50,12 +50,10 @@ export interface TextEntity {
  * Check if a given object implements the TextEntity interface.
  */
 export function instanceOfTextEntity(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "fromIndex" in value;
-    isInstance = isInstance && "ref" in value;
-    isInstance = isInstance && "toIndex" in value;
-
-    return isInstance;
+    if (!('fromIndex' in value)) return false;
+    if (!('ref' in value)) return false;
+    if (!('toIndex' in value)) return false;
+    return true;
 }
 
 export function TextEntityFromJSON(json: any): TextEntity {
@@ -63,7 +61,7 @@ export function TextEntityFromJSON(json: any): TextEntity {
 }
 
 export function TextEntityFromJSONTyped(json: any, ignoreDiscriminator: boolean): TextEntity {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -75,17 +73,14 @@ export function TextEntityFromJSONTyped(json: any, ignoreDiscriminator: boolean)
 }
 
 export function TextEntityToJSON(value?: TextEntity | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'fromIndex': value.fromIndex,
-        'ref': TextEntityRefToJSON(value.ref),
-        'toIndex': value.toIndex,
+        'fromIndex': value['fromIndex'],
+        'ref': TextEntityRefToJSON(value['ref']),
+        'toIndex': value['toIndex'],
     };
 }
 

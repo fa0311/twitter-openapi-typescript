@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -37,11 +37,9 @@ export interface PrimaryCommunityTopic {
  * Check if a given object implements the PrimaryCommunityTopic interface.
  */
 export function instanceOfPrimaryCommunityTopic(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "topicId" in value;
-    isInstance = isInstance && "topicName" in value;
-
-    return isInstance;
+    if (!('topicId' in value)) return false;
+    if (!('topicName' in value)) return false;
+    return true;
 }
 
 export function PrimaryCommunityTopicFromJSON(json: any): PrimaryCommunityTopic {
@@ -49,7 +47,7 @@ export function PrimaryCommunityTopicFromJSON(json: any): PrimaryCommunityTopic 
 }
 
 export function PrimaryCommunityTopicFromJSONTyped(json: any, ignoreDiscriminator: boolean): PrimaryCommunityTopic {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -60,16 +58,13 @@ export function PrimaryCommunityTopicFromJSONTyped(json: any, ignoreDiscriminato
 }
 
 export function PrimaryCommunityTopicToJSON(value?: PrimaryCommunityTopic | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'topic_id': value.topicId,
-        'topic_name': value.topicName,
+        'topic_id': value['topicId'],
+        'topic_name': value['topicName'],
     };
 }
 

@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -31,10 +31,8 @@ export interface BirdwatchPivotNote {
  * Check if a given object implements the BirdwatchPivotNote interface.
  */
 export function instanceOfBirdwatchPivotNote(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "restId" in value;
-
-    return isInstance;
+    if (!('restId' in value)) return false;
+    return true;
 }
 
 export function BirdwatchPivotNoteFromJSON(json: any): BirdwatchPivotNote {
@@ -42,7 +40,7 @@ export function BirdwatchPivotNoteFromJSON(json: any): BirdwatchPivotNote {
 }
 
 export function BirdwatchPivotNoteFromJSONTyped(json: any, ignoreDiscriminator: boolean): BirdwatchPivotNote {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -52,15 +50,12 @@ export function BirdwatchPivotNoteFromJSONTyped(json: any, ignoreDiscriminator: 
 }
 
 export function BirdwatchPivotNoteToJSON(value?: BirdwatchPivotNote | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'rest_id': value.restId,
+        'rest_id': value['restId'],
     };
 }
 

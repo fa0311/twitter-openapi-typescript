@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { TweetInterstitialTextEntity } from './TweetInterstitialTextEntity';
 import {
     TweetInterstitialTextEntityFromJSON,
@@ -50,12 +50,10 @@ export interface TweetInterstitialText {
  * Check if a given object implements the TweetInterstitialText interface.
  */
 export function instanceOfTweetInterstitialText(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "entities" in value;
-    isInstance = isInstance && "rtl" in value;
-    isInstance = isInstance && "text" in value;
-
-    return isInstance;
+    if (!('entities' in value)) return false;
+    if (!('rtl' in value)) return false;
+    if (!('text' in value)) return false;
+    return true;
 }
 
 export function TweetInterstitialTextFromJSON(json: any): TweetInterstitialText {
@@ -63,7 +61,7 @@ export function TweetInterstitialTextFromJSON(json: any): TweetInterstitialText 
 }
 
 export function TweetInterstitialTextFromJSONTyped(json: any, ignoreDiscriminator: boolean): TweetInterstitialText {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -75,17 +73,14 @@ export function TweetInterstitialTextFromJSONTyped(json: any, ignoreDiscriminato
 }
 
 export function TweetInterstitialTextToJSON(value?: TweetInterstitialText | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'entities': ((value.entities as Array<any>).map(TweetInterstitialTextEntityToJSON)),
-        'rtl': value.rtl,
-        'text': value.text,
+        'entities': ((value['entities'] as Array<any>).map(TweetInterstitialTextEntityToJSON)),
+        'rtl': value['rtl'],
+        'text': value['text'],
     };
 }
 

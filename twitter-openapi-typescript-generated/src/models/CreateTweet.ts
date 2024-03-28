@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { Tweet } from './Tweet';
 import {
     TweetFromJSON,
@@ -38,10 +38,8 @@ export interface CreateTweet {
  * Check if a given object implements the CreateTweet interface.
  */
 export function instanceOfCreateTweet(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "result" in value;
-
-    return isInstance;
+    if (!('result' in value)) return false;
+    return true;
 }
 
 export function CreateTweetFromJSON(json: any): CreateTweet {
@@ -49,7 +47,7 @@ export function CreateTweetFromJSON(json: any): CreateTweet {
 }
 
 export function CreateTweetFromJSONTyped(json: any, ignoreDiscriminator: boolean): CreateTweet {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -59,15 +57,12 @@ export function CreateTweetFromJSONTyped(json: any, ignoreDiscriminator: boolean
 }
 
 export function CreateTweetToJSON(value?: CreateTweet | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'result': TweetToJSON(value.result),
+        'result': TweetToJSON(value['result']),
     };
 }
 

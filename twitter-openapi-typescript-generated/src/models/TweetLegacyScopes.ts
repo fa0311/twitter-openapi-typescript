@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -31,10 +31,8 @@ export interface TweetLegacyScopes {
  * Check if a given object implements the TweetLegacyScopes interface.
  */
 export function instanceOfTweetLegacyScopes(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "followers" in value;
-
-    return isInstance;
+    if (!('followers' in value)) return false;
+    return true;
 }
 
 export function TweetLegacyScopesFromJSON(json: any): TweetLegacyScopes {
@@ -42,7 +40,7 @@ export function TweetLegacyScopesFromJSON(json: any): TweetLegacyScopes {
 }
 
 export function TweetLegacyScopesFromJSONTyped(json: any, ignoreDiscriminator: boolean): TweetLegacyScopes {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -52,15 +50,12 @@ export function TweetLegacyScopesFromJSONTyped(json: any, ignoreDiscriminator: b
 }
 
 export function TweetLegacyScopesToJSON(value?: TweetLegacyScopes | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'followers': value.followers,
+        'followers': value['followers'],
     };
 }
 

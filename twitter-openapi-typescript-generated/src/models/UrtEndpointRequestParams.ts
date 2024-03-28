@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -37,11 +37,9 @@ export interface UrtEndpointRequestParams {
  * Check if a given object implements the UrtEndpointRequestParams interface.
  */
 export function instanceOfUrtEndpointRequestParams(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "key" in value;
-    isInstance = isInstance && "value" in value;
-
-    return isInstance;
+    if (!('key' in value)) return false;
+    if (!('value' in value)) return false;
+    return true;
 }
 
 export function UrtEndpointRequestParamsFromJSON(json: any): UrtEndpointRequestParams {
@@ -49,7 +47,7 @@ export function UrtEndpointRequestParamsFromJSON(json: any): UrtEndpointRequestP
 }
 
 export function UrtEndpointRequestParamsFromJSONTyped(json: any, ignoreDiscriminator: boolean): UrtEndpointRequestParams {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -60,16 +58,13 @@ export function UrtEndpointRequestParamsFromJSONTyped(json: any, ignoreDiscrimin
 }
 
 export function UrtEndpointRequestParamsToJSON(value?: UrtEndpointRequestParams | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'key': value.key,
-        'value': value.value,
+        'key': value['key'],
+        'value': value['value'],
     };
 }
 

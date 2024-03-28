@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { FollowTimeline } from './FollowTimeline';
 import {
     FollowTimelineFromJSON,
@@ -50,11 +50,9 @@ export interface FollowResponseResult {
  * Check if a given object implements the FollowResponseResult interface.
  */
 export function instanceOfFollowResponseResult(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "typename" in value;
-    isInstance = isInstance && "timeline" in value;
-
-    return isInstance;
+    if (!('typename' in value)) return false;
+    if (!('timeline' in value)) return false;
+    return true;
 }
 
 export function FollowResponseResultFromJSON(json: any): FollowResponseResult {
@@ -62,7 +60,7 @@ export function FollowResponseResultFromJSON(json: any): FollowResponseResult {
 }
 
 export function FollowResponseResultFromJSONTyped(json: any, ignoreDiscriminator: boolean): FollowResponseResult {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -73,16 +71,13 @@ export function FollowResponseResultFromJSONTyped(json: any, ignoreDiscriminator
 }
 
 export function FollowResponseResultToJSON(value?: FollowResponseResult | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        '__typename': TypeNameToJSON(value.typename),
-        'timeline': FollowTimelineToJSON(value.timeline),
+        '__typename': TypeNameToJSON(value['typename']),
+        'timeline': FollowTimelineToJSON(value['timeline']),
     };
 }
 

@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { Timeline } from './Timeline';
 import {
     TimelineFromJSON,
@@ -38,10 +38,8 @@ export interface TweetDetailResponseData {
  * Check if a given object implements the TweetDetailResponseData interface.
  */
 export function instanceOfTweetDetailResponseData(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "threadedConversationWithInjectionsV2" in value;
-
-    return isInstance;
+    if (!('threadedConversationWithInjectionsV2' in value)) return false;
+    return true;
 }
 
 export function TweetDetailResponseDataFromJSON(json: any): TweetDetailResponseData {
@@ -49,7 +47,7 @@ export function TweetDetailResponseDataFromJSON(json: any): TweetDetailResponseD
 }
 
 export function TweetDetailResponseDataFromJSONTyped(json: any, ignoreDiscriminator: boolean): TweetDetailResponseData {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -59,15 +57,12 @@ export function TweetDetailResponseDataFromJSONTyped(json: any, ignoreDiscrimina
 }
 
 export function TweetDetailResponseDataToJSON(value?: TweetDetailResponseData | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'threaded_conversation_with_injections_v2': TimelineToJSON(value.threadedConversationWithInjectionsV2),
+        'threaded_conversation_with_injections_v2': TimelineToJSON(value['threadedConversationWithInjectionsV2']),
     };
 }
 

@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -41,10 +41,8 @@ export type TimelineCoverBehaviorTypeEnum = typeof TimelineCoverBehaviorTypeEnum
  * Check if a given object implements the TimelineCoverBehavior interface.
  */
 export function instanceOfTimelineCoverBehavior(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "type" in value;
-
-    return isInstance;
+    if (!('type' in value)) return false;
+    return true;
 }
 
 export function TimelineCoverBehaviorFromJSON(json: any): TimelineCoverBehavior {
@@ -52,7 +50,7 @@ export function TimelineCoverBehaviorFromJSON(json: any): TimelineCoverBehavior 
 }
 
 export function TimelineCoverBehaviorFromJSONTyped(json: any, ignoreDiscriminator: boolean): TimelineCoverBehavior {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -62,15 +60,12 @@ export function TimelineCoverBehaviorFromJSONTyped(json: any, ignoreDiscriminato
 }
 
 export function TimelineCoverBehaviorToJSON(value?: TimelineCoverBehavior | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'type': value.type,
+        'type': value['type'],
     };
 }
 

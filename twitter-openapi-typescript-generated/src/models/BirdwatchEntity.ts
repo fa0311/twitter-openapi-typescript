@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { BirdwatchEntityRef } from './BirdwatchEntityRef';
 import {
     BirdwatchEntityRefFromJSON,
@@ -50,12 +50,10 @@ export interface BirdwatchEntity {
  * Check if a given object implements the BirdwatchEntity interface.
  */
 export function instanceOfBirdwatchEntity(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "fromIndex" in value;
-    isInstance = isInstance && "ref" in value;
-    isInstance = isInstance && "toIndex" in value;
-
-    return isInstance;
+    if (!('fromIndex' in value)) return false;
+    if (!('ref' in value)) return false;
+    if (!('toIndex' in value)) return false;
+    return true;
 }
 
 export function BirdwatchEntityFromJSON(json: any): BirdwatchEntity {
@@ -63,7 +61,7 @@ export function BirdwatchEntityFromJSON(json: any): BirdwatchEntity {
 }
 
 export function BirdwatchEntityFromJSONTyped(json: any, ignoreDiscriminator: boolean): BirdwatchEntity {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -75,17 +73,14 @@ export function BirdwatchEntityFromJSONTyped(json: any, ignoreDiscriminator: boo
 }
 
 export function BirdwatchEntityToJSON(value?: BirdwatchEntity | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'fromIndex': value.fromIndex,
-        'ref': BirdwatchEntityRefToJSON(value.ref),
-        'toIndex': value.toIndex,
+        'fromIndex': value['fromIndex'],
+        'ref': BirdwatchEntityRefToJSON(value['ref']),
+        'toIndex': value['toIndex'],
     };
 }
 

@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { UrtEndpointRequestParams } from './UrtEndpointRequestParams';
 import {
     UrtEndpointRequestParamsFromJSON,
@@ -44,11 +44,9 @@ export interface UrtEndpointOptions {
  * Check if a given object implements the UrtEndpointOptions interface.
  */
 export function instanceOfUrtEndpointOptions(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "requestParams" in value;
-    isInstance = isInstance && "title" in value;
-
-    return isInstance;
+    if (!('requestParams' in value)) return false;
+    if (!('title' in value)) return false;
+    return true;
 }
 
 export function UrtEndpointOptionsFromJSON(json: any): UrtEndpointOptions {
@@ -56,7 +54,7 @@ export function UrtEndpointOptionsFromJSON(json: any): UrtEndpointOptions {
 }
 
 export function UrtEndpointOptionsFromJSONTyped(json: any, ignoreDiscriminator: boolean): UrtEndpointOptions {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -67,16 +65,13 @@ export function UrtEndpointOptionsFromJSONTyped(json: any, ignoreDiscriminator: 
 }
 
 export function UrtEndpointOptionsToJSON(value?: UrtEndpointOptions | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'requestParams': ((value.requestParams as Array<any>).map(UrtEndpointRequestParamsToJSON)),
-        'title': value.title,
+        'requestParams': ((value['requestParams'] as Array<any>).map(UrtEndpointRequestParamsToJSON)),
+        'title': value['title'],
     };
 }
 

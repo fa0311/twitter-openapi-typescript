@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { MediaVideoInfoVariant } from './MediaVideoInfoVariant';
 import {
     MediaVideoInfoVariantFromJSON,
@@ -50,11 +50,9 @@ export interface MediaVideoInfo {
  * Check if a given object implements the MediaVideoInfo interface.
  */
 export function instanceOfMediaVideoInfo(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "aspectRatio" in value;
-    isInstance = isInstance && "variants" in value;
-
-    return isInstance;
+    if (!('aspectRatio' in value)) return false;
+    if (!('variants' in value)) return false;
+    return true;
 }
 
 export function MediaVideoInfoFromJSON(json: any): MediaVideoInfo {
@@ -62,29 +60,26 @@ export function MediaVideoInfoFromJSON(json: any): MediaVideoInfo {
 }
 
 export function MediaVideoInfoFromJSONTyped(json: any, ignoreDiscriminator: boolean): MediaVideoInfo {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
         'aspectRatio': json['aspect_ratio'],
-        'durationMillis': !exists(json, 'duration_millis') ? undefined : json['duration_millis'],
+        'durationMillis': json['duration_millis'] == null ? undefined : json['duration_millis'],
         'variants': ((json['variants'] as Array<any>).map(MediaVideoInfoVariantFromJSON)),
     };
 }
 
 export function MediaVideoInfoToJSON(value?: MediaVideoInfo | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'aspect_ratio': value.aspectRatio,
-        'duration_millis': value.durationMillis,
-        'variants': ((value.variants as Array<any>).map(MediaVideoInfoVariantToJSON)),
+        'aspect_ratio': value['aspectRatio'],
+        'duration_millis': value['durationMillis'],
+        'variants': ((value['variants'] as Array<any>).map(MediaVideoInfoVariantToJSON)),
     };
 }
 

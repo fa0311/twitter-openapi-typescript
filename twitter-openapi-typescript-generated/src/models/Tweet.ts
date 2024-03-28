@@ -12,7 +12,13 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
+import type { Article } from './Article';
+import {
+    ArticleFromJSON,
+    ArticleFromJSONTyped,
+    ArticleToJSON,
+} from './Article';
 import type { AuthorCommunityRelationship } from './AuthorCommunityRelationship';
 import {
     AuthorCommunityRelationshipFromJSON,
@@ -116,6 +122,12 @@ export interface Tweet {
      * @memberof Tweet
      */
     typename?: TypeName;
+    /**
+     * 
+     * @type {Article}
+     * @memberof Tweet
+     */
+    article?: Article;
     /**
      * 
      * @type {AuthorCommunityRelationship}
@@ -242,10 +254,8 @@ export interface Tweet {
  * Check if a given object implements the Tweet interface.
  */
 export function instanceOfTweet(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "restId" in value;
-
-    return isInstance;
+    if (!('restId' in value)) return false;
+    return true;
 }
 
 export function TweetFromJSON(json: any): Tweet {
@@ -253,65 +263,64 @@ export function TweetFromJSON(json: any): Tweet {
 }
 
 export function TweetFromJSONTyped(json: any, ignoreDiscriminator: boolean): Tweet {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'typename': !exists(json, '__typename') ? undefined : TypeNameFromJSON(json['__typename']),
-        'authorCommunityRelationship': !exists(json, 'author_community_relationship') ? undefined : AuthorCommunityRelationshipFromJSON(json['author_community_relationship']),
-        'birdwatchPivot': !exists(json, 'birdwatch_pivot') ? undefined : BirdwatchPivotFromJSON(json['birdwatch_pivot']),
-        'card': !exists(json, 'card') ? undefined : TweetCardFromJSON(json['card']),
-        'core': !exists(json, 'core') ? undefined : UserResultCoreFromJSON(json['core']),
-        'editControl': !exists(json, 'edit_control') ? undefined : TweetEditControlFromJSON(json['edit_control']),
-        'editPrespective': !exists(json, 'edit_prespective') ? undefined : TweetEditPrespectiveFromJSON(json['edit_prespective']),
-        'hasBirdwatchNotes': !exists(json, 'has_birdwatch_notes') ? undefined : json['has_birdwatch_notes'],
-        'isTranslatable': !exists(json, 'is_translatable') ? undefined : json['is_translatable'],
-        'legacy': !exists(json, 'legacy') ? undefined : TweetLegacyFromJSON(json['legacy']),
-        'noteTweet': !exists(json, 'note_tweet') ? undefined : NoteTweetFromJSON(json['note_tweet']),
-        'previousCounts': !exists(json, 'previous_counts') ? undefined : TweetPreviousCountsFromJSON(json['previous_counts']),
-        'quickPromoteEligibility': !exists(json, 'quick_promote_eligibility') ? undefined : json['quick_promote_eligibility'],
-        'quotedRefResult': !exists(json, 'quotedRefResult') ? undefined : QuotedRefResultFromJSON(json['quotedRefResult']),
-        'quotedStatusResult': !exists(json, 'quoted_status_result') ? undefined : ItemResultFromJSON(json['quoted_status_result']),
+        'typename': json['__typename'] == null ? undefined : TypeNameFromJSON(json['__typename']),
+        'article': json['article'] == null ? undefined : ArticleFromJSON(json['article']),
+        'authorCommunityRelationship': json['author_community_relationship'] == null ? undefined : AuthorCommunityRelationshipFromJSON(json['author_community_relationship']),
+        'birdwatchPivot': json['birdwatch_pivot'] == null ? undefined : BirdwatchPivotFromJSON(json['birdwatch_pivot']),
+        'card': json['card'] == null ? undefined : TweetCardFromJSON(json['card']),
+        'core': json['core'] == null ? undefined : UserResultCoreFromJSON(json['core']),
+        'editControl': json['edit_control'] == null ? undefined : TweetEditControlFromJSON(json['edit_control']),
+        'editPrespective': json['edit_prespective'] == null ? undefined : TweetEditPrespectiveFromJSON(json['edit_prespective']),
+        'hasBirdwatchNotes': json['has_birdwatch_notes'] == null ? undefined : json['has_birdwatch_notes'],
+        'isTranslatable': json['is_translatable'] == null ? undefined : json['is_translatable'],
+        'legacy': json['legacy'] == null ? undefined : TweetLegacyFromJSON(json['legacy']),
+        'noteTweet': json['note_tweet'] == null ? undefined : NoteTweetFromJSON(json['note_tweet']),
+        'previousCounts': json['previous_counts'] == null ? undefined : TweetPreviousCountsFromJSON(json['previous_counts']),
+        'quickPromoteEligibility': json['quick_promote_eligibility'] == null ? undefined : json['quick_promote_eligibility'],
+        'quotedRefResult': json['quotedRefResult'] == null ? undefined : QuotedRefResultFromJSON(json['quotedRefResult']),
+        'quotedStatusResult': json['quoted_status_result'] == null ? undefined : ItemResultFromJSON(json['quoted_status_result']),
         'restId': json['rest_id'],
-        'source': !exists(json, 'source') ? undefined : json['source'],
-        'superFollowsReplyUserResult': !exists(json, 'superFollowsReplyUserResult') ? undefined : SuperFollowsReplyUserResultFromJSON(json['superFollowsReplyUserResult']),
-        'unifiedCard': !exists(json, 'unified_card') ? undefined : UnifiedCardFromJSON(json['unified_card']),
-        'unmentionData': !exists(json, 'unmention_data') ? undefined : json['unmention_data'],
-        'views': !exists(json, 'views') ? undefined : TweetViewFromJSON(json['views']),
+        'source': json['source'] == null ? undefined : json['source'],
+        'superFollowsReplyUserResult': json['superFollowsReplyUserResult'] == null ? undefined : SuperFollowsReplyUserResultFromJSON(json['superFollowsReplyUserResult']),
+        'unifiedCard': json['unified_card'] == null ? undefined : UnifiedCardFromJSON(json['unified_card']),
+        'unmentionData': json['unmention_data'] == null ? undefined : json['unmention_data'],
+        'views': json['views'] == null ? undefined : TweetViewFromJSON(json['views']),
     };
 }
 
 export function TweetToJSON(value?: Tweet | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        '__typename': TypeNameToJSON(value.typename),
-        'author_community_relationship': AuthorCommunityRelationshipToJSON(value.authorCommunityRelationship),
-        'birdwatch_pivot': BirdwatchPivotToJSON(value.birdwatchPivot),
-        'card': TweetCardToJSON(value.card),
-        'core': UserResultCoreToJSON(value.core),
-        'edit_control': TweetEditControlToJSON(value.editControl),
-        'edit_prespective': TweetEditPrespectiveToJSON(value.editPrespective),
-        'has_birdwatch_notes': value.hasBirdwatchNotes,
-        'is_translatable': value.isTranslatable,
-        'legacy': TweetLegacyToJSON(value.legacy),
-        'note_tweet': NoteTweetToJSON(value.noteTweet),
-        'previous_counts': TweetPreviousCountsToJSON(value.previousCounts),
-        'quick_promote_eligibility': value.quickPromoteEligibility,
-        'quotedRefResult': QuotedRefResultToJSON(value.quotedRefResult),
-        'quoted_status_result': ItemResultToJSON(value.quotedStatusResult),
-        'rest_id': value.restId,
-        'source': value.source,
-        'superFollowsReplyUserResult': SuperFollowsReplyUserResultToJSON(value.superFollowsReplyUserResult),
-        'unified_card': UnifiedCardToJSON(value.unifiedCard),
-        'unmention_data': value.unmentionData,
-        'views': TweetViewToJSON(value.views),
+        '__typename': TypeNameToJSON(value['typename']),
+        'article': ArticleToJSON(value['article']),
+        'author_community_relationship': AuthorCommunityRelationshipToJSON(value['authorCommunityRelationship']),
+        'birdwatch_pivot': BirdwatchPivotToJSON(value['birdwatchPivot']),
+        'card': TweetCardToJSON(value['card']),
+        'core': UserResultCoreToJSON(value['core']),
+        'edit_control': TweetEditControlToJSON(value['editControl']),
+        'edit_prespective': TweetEditPrespectiveToJSON(value['editPrespective']),
+        'has_birdwatch_notes': value['hasBirdwatchNotes'],
+        'is_translatable': value['isTranslatable'],
+        'legacy': TweetLegacyToJSON(value['legacy']),
+        'note_tweet': NoteTweetToJSON(value['noteTweet']),
+        'previous_counts': TweetPreviousCountsToJSON(value['previousCounts']),
+        'quick_promote_eligibility': value['quickPromoteEligibility'],
+        'quotedRefResult': QuotedRefResultToJSON(value['quotedRefResult']),
+        'quoted_status_result': ItemResultToJSON(value['quotedStatusResult']),
+        'rest_id': value['restId'],
+        'source': value['source'],
+        'superFollowsReplyUserResult': SuperFollowsReplyUserResultToJSON(value['superFollowsReplyUserResult']),
+        'unified_card': UnifiedCardToJSON(value['unifiedCard']),
+        'unmention_data': value['unmentionData'],
+        'views': TweetViewToJSON(value['views']),
     };
 }
 

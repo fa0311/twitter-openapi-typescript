@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { TypeName } from './TypeName';
 import {
     TypeNameFromJSON,
@@ -60,12 +60,10 @@ export type CommunityLeaveActionResultReasonEnum = typeof CommunityLeaveActionRe
  * Check if a given object implements the CommunityLeaveActionResult interface.
  */
 export function instanceOfCommunityLeaveActionResult(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "typename" in value;
-    isInstance = isInstance && "message" in value;
-    isInstance = isInstance && "reason" in value;
-
-    return isInstance;
+    if (!('typename' in value)) return false;
+    if (!('message' in value)) return false;
+    if (!('reason' in value)) return false;
+    return true;
 }
 
 export function CommunityLeaveActionResultFromJSON(json: any): CommunityLeaveActionResult {
@@ -73,7 +71,7 @@ export function CommunityLeaveActionResultFromJSON(json: any): CommunityLeaveAct
 }
 
 export function CommunityLeaveActionResultFromJSONTyped(json: any, ignoreDiscriminator: boolean): CommunityLeaveActionResult {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -85,17 +83,14 @@ export function CommunityLeaveActionResultFromJSONTyped(json: any, ignoreDiscrim
 }
 
 export function CommunityLeaveActionResultToJSON(value?: CommunityLeaveActionResult | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        '__typename': TypeNameToJSON(value.typename),
-        'message': value.message,
-        'reason': value.reason,
+        '__typename': TypeNameToJSON(value['typename']),
+        'message': value['message'],
+        'reason': value['reason'],
     };
 }
 

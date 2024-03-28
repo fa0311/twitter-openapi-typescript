@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -31,10 +31,8 @@ export interface CommunityUrlsPermalink {
  * Check if a given object implements the CommunityUrlsPermalink interface.
  */
 export function instanceOfCommunityUrlsPermalink(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "url" in value;
-
-    return isInstance;
+    if (!('url' in value)) return false;
+    return true;
 }
 
 export function CommunityUrlsPermalinkFromJSON(json: any): CommunityUrlsPermalink {
@@ -42,7 +40,7 @@ export function CommunityUrlsPermalinkFromJSON(json: any): CommunityUrlsPermalin
 }
 
 export function CommunityUrlsPermalinkFromJSONTyped(json: any, ignoreDiscriminator: boolean): CommunityUrlsPermalink {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -52,15 +50,12 @@ export function CommunityUrlsPermalinkFromJSONTyped(json: any, ignoreDiscriminat
 }
 
 export function CommunityUrlsPermalinkToJSON(value?: CommunityUrlsPermalink | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'url': value.url,
+        'url': value['url'],
     };
 }
 

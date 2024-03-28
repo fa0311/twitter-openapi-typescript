@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -37,11 +37,9 @@ export interface TweetCardPlatformDevice {
  * Check if a given object implements the TweetCardPlatformDevice interface.
  */
 export function instanceOfTweetCardPlatformDevice(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "name" in value;
-    isInstance = isInstance && "version" in value;
-
-    return isInstance;
+    if (!('name' in value)) return false;
+    if (!('version' in value)) return false;
+    return true;
 }
 
 export function TweetCardPlatformDeviceFromJSON(json: any): TweetCardPlatformDevice {
@@ -49,7 +47,7 @@ export function TweetCardPlatformDeviceFromJSON(json: any): TweetCardPlatformDev
 }
 
 export function TweetCardPlatformDeviceFromJSONTyped(json: any, ignoreDiscriminator: boolean): TweetCardPlatformDevice {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -60,16 +58,13 @@ export function TweetCardPlatformDeviceFromJSONTyped(json: any, ignoreDiscrimina
 }
 
 export function TweetCardPlatformDeviceToJSON(value?: TweetCardPlatformDevice | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'name': value.name,
-        'version': value.version,
+        'name': value['name'],
+        'version': value['version'],
     };
 }
 

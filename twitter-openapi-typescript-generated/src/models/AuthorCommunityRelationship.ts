@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { Community } from './Community';
 import {
     CommunityFromJSON,
@@ -66,10 +66,8 @@ export type AuthorCommunityRelationshipRoleEnum = typeof AuthorCommunityRelation
  * Check if a given object implements the AuthorCommunityRelationship interface.
  */
 export function instanceOfAuthorCommunityRelationship(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "communityResults" in value;
-
-    return isInstance;
+    if (!('communityResults' in value)) return false;
+    return true;
 }
 
 export function AuthorCommunityRelationshipFromJSON(json: any): AuthorCommunityRelationship {
@@ -77,29 +75,26 @@ export function AuthorCommunityRelationshipFromJSON(json: any): AuthorCommunityR
 }
 
 export function AuthorCommunityRelationshipFromJSONTyped(json: any, ignoreDiscriminator: boolean): AuthorCommunityRelationship {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
         'communityResults': CommunityFromJSON(json['community_results']),
-        'role': !exists(json, 'role') ? undefined : json['role'],
-        'userResults': !exists(json, 'user_results') ? undefined : UserResultsFromJSON(json['user_results']),
+        'role': json['role'] == null ? undefined : json['role'],
+        'userResults': json['user_results'] == null ? undefined : UserResultsFromJSON(json['user_results']),
     };
 }
 
 export function AuthorCommunityRelationshipToJSON(value?: AuthorCommunityRelationship | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'community_results': CommunityToJSON(value.communityResults),
-        'role': value.role,
-        'user_results': UserResultsToJSON(value.userResults),
+        'community_results': CommunityToJSON(value['communityResults']),
+        'role': value['role'],
+        'user_results': UserResultsToJSON(value['userResults']),
     };
 }
 

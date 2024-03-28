@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { UserVerificationInfoReasonDescriptionEntitiesRef } from './UserVerificationInfoReasonDescriptionEntitiesRef';
 import {
     UserVerificationInfoReasonDescriptionEntitiesRefFromJSON,
@@ -50,12 +50,10 @@ export interface UserVerificationInfoReasonDescriptionEntities {
  * Check if a given object implements the UserVerificationInfoReasonDescriptionEntities interface.
  */
 export function instanceOfUserVerificationInfoReasonDescriptionEntities(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "fromIndex" in value;
-    isInstance = isInstance && "ref" in value;
-    isInstance = isInstance && "toIndex" in value;
-
-    return isInstance;
+    if (!('fromIndex' in value)) return false;
+    if (!('ref' in value)) return false;
+    if (!('toIndex' in value)) return false;
+    return true;
 }
 
 export function UserVerificationInfoReasonDescriptionEntitiesFromJSON(json: any): UserVerificationInfoReasonDescriptionEntities {
@@ -63,7 +61,7 @@ export function UserVerificationInfoReasonDescriptionEntitiesFromJSON(json: any)
 }
 
 export function UserVerificationInfoReasonDescriptionEntitiesFromJSONTyped(json: any, ignoreDiscriminator: boolean): UserVerificationInfoReasonDescriptionEntities {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -75,17 +73,14 @@ export function UserVerificationInfoReasonDescriptionEntitiesFromJSONTyped(json:
 }
 
 export function UserVerificationInfoReasonDescriptionEntitiesToJSON(value?: UserVerificationInfoReasonDescriptionEntities | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'from_index': value.fromIndex,
-        'ref': UserVerificationInfoReasonDescriptionEntitiesRefToJSON(value.ref),
-        'to_index': value.toIndex,
+        'from_index': value['fromIndex'],
+        'ref': UserVerificationInfoReasonDescriptionEntitiesRefToJSON(value['ref']),
+        'to_index': value['toIndex'],
     };
 }
 

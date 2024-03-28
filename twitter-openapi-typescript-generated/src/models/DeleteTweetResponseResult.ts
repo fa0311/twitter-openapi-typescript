@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -31,10 +31,8 @@ export interface DeleteTweetResponseResult {
  * Check if a given object implements the DeleteTweetResponseResult interface.
  */
 export function instanceOfDeleteTweetResponseResult(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "tweetResults" in value;
-
-    return isInstance;
+    if (!('tweetResults' in value)) return false;
+    return true;
 }
 
 export function DeleteTweetResponseResultFromJSON(json: any): DeleteTweetResponseResult {
@@ -42,7 +40,7 @@ export function DeleteTweetResponseResultFromJSON(json: any): DeleteTweetRespons
 }
 
 export function DeleteTweetResponseResultFromJSONTyped(json: any, ignoreDiscriminator: boolean): DeleteTweetResponseResult {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -52,15 +50,12 @@ export function DeleteTweetResponseResultFromJSONTyped(json: any, ignoreDiscrimi
 }
 
 export function DeleteTweetResponseResultToJSON(value?: DeleteTweetResponseResult | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'tweet_results': value.tweetResults,
+        'tweet_results': value['tweetResults'],
     };
 }
 

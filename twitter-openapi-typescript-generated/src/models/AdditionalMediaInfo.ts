@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { AdditionalMediaInfoCallToActions } from './AdditionalMediaInfoCallToActions';
 import {
     AdditionalMediaInfoCallToActionsFromJSON,
@@ -74,10 +74,8 @@ export interface AdditionalMediaInfo {
  * Check if a given object implements the AdditionalMediaInfo interface.
  */
 export function instanceOfAdditionalMediaInfo(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "monetizable" in value;
-
-    return isInstance;
+    if (!('monetizable' in value)) return false;
+    return true;
 }
 
 export function AdditionalMediaInfoFromJSON(json: any): AdditionalMediaInfo {
@@ -85,35 +83,32 @@ export function AdditionalMediaInfoFromJSON(json: any): AdditionalMediaInfo {
 }
 
 export function AdditionalMediaInfoFromJSONTyped(json: any, ignoreDiscriminator: boolean): AdditionalMediaInfo {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'callToActions': !exists(json, 'call_to_actions') ? undefined : AdditionalMediaInfoCallToActionsFromJSON(json['call_to_actions']),
-        'description': !exists(json, 'description') ? undefined : json['description'],
-        'embeddable': !exists(json, 'embeddable') ? undefined : json['embeddable'],
+        'callToActions': json['call_to_actions'] == null ? undefined : AdditionalMediaInfoCallToActionsFromJSON(json['call_to_actions']),
+        'description': json['description'] == null ? undefined : json['description'],
+        'embeddable': json['embeddable'] == null ? undefined : json['embeddable'],
         'monetizable': json['monetizable'],
-        'sourceUser': !exists(json, 'source_user') ? undefined : UserResultCoreFromJSON(json['source_user']),
-        'title': !exists(json, 'title') ? undefined : json['title'],
+        'sourceUser': json['source_user'] == null ? undefined : UserResultCoreFromJSON(json['source_user']),
+        'title': json['title'] == null ? undefined : json['title'],
     };
 }
 
 export function AdditionalMediaInfoToJSON(value?: AdditionalMediaInfo | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'call_to_actions': AdditionalMediaInfoCallToActionsToJSON(value.callToActions),
-        'description': value.description,
-        'embeddable': value.embeddable,
-        'monetizable': value.monetizable,
-        'source_user': UserResultCoreToJSON(value.sourceUser),
-        'title': value.title,
+        'call_to_actions': AdditionalMediaInfoCallToActionsToJSON(value['callToActions']),
+        'description': value['description'],
+        'embeddable': value['embeddable'],
+        'monetizable': value['monetizable'],
+        'source_user': UserResultCoreToJSON(value['sourceUser']),
+        'title': value['title'],
     };
 }
 

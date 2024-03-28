@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { UserVerificationInfoReasonDescriptionEntities } from './UserVerificationInfoReasonDescriptionEntities';
 import {
     UserVerificationInfoReasonDescriptionEntitiesFromJSON,
@@ -44,11 +44,9 @@ export interface UserVerificationInfoReasonDescription {
  * Check if a given object implements the UserVerificationInfoReasonDescription interface.
  */
 export function instanceOfUserVerificationInfoReasonDescription(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "entities" in value;
-    isInstance = isInstance && "text" in value;
-
-    return isInstance;
+    if (!('entities' in value)) return false;
+    if (!('text' in value)) return false;
+    return true;
 }
 
 export function UserVerificationInfoReasonDescriptionFromJSON(json: any): UserVerificationInfoReasonDescription {
@@ -56,7 +54,7 @@ export function UserVerificationInfoReasonDescriptionFromJSON(json: any): UserVe
 }
 
 export function UserVerificationInfoReasonDescriptionFromJSONTyped(json: any, ignoreDiscriminator: boolean): UserVerificationInfoReasonDescription {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -67,16 +65,13 @@ export function UserVerificationInfoReasonDescriptionFromJSONTyped(json: any, ig
 }
 
 export function UserVerificationInfoReasonDescriptionToJSON(value?: UserVerificationInfoReasonDescription | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'entities': ((value.entities as Array<any>).map(UserVerificationInfoReasonDescriptionEntitiesToJSON)),
-        'text': value.text,
+        'entities': ((value['entities'] as Array<any>).map(UserVerificationInfoReasonDescriptionEntitiesToJSON)),
+        'text': value['text'],
     };
 }
 

@@ -16,6 +16,14 @@ src/index.ts
 src/models/AdditionalMediaInfo.ts
 src/models/AdditionalMediaInfoCallToActions.ts
 src/models/AdditionalMediaInfoCallToActionsUrl.ts
+src/models/Article.ts
+src/models/ArticleCoverMedia.ts
+src/models/ArticleCoverMediaColorInfo.ts
+src/models/ArticleCoverMediaColorInfoPalette.ts
+src/models/ArticleCoverMediaColorInfoPaletteRGB.ts
+src/models/ArticleCoverMediaInfo.ts
+src/models/ArticleResult.ts
+src/models/ArticleResults.ts
 src/models/AuthorCommunityRelationship.ts
 src/models/BirdwatchEntity.ts
 src/models/BirdwatchEntityRef.ts

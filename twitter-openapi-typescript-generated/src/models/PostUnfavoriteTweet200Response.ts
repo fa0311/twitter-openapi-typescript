@@ -39,18 +39,15 @@ export function PostUnfavoriteTweet200ResponseFromJSON(json: any): PostUnfavorit
 }
 
 export function PostUnfavoriteTweet200ResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): PostUnfavoriteTweet200Response {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return { ...ErrorsFromJSONTyped(json, true), ...UnfavoriteTweetResponseDataFromJSONTyped(json, true) };
 }
 
 export function PostUnfavoriteTweet200ResponseToJSON(value?: PostUnfavoriteTweet200Response | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
 
     if (instanceOfErrors(value)) {

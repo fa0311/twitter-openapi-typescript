@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -43,9 +43,7 @@ export interface ClientEventInfo {
  * Check if a given object implements the ClientEventInfo interface.
  */
 export function instanceOfClientEventInfo(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+    return true;
 }
 
 export function ClientEventInfoFromJSON(json: any): ClientEventInfo {
@@ -53,29 +51,26 @@ export function ClientEventInfoFromJSON(json: any): ClientEventInfo {
 }
 
 export function ClientEventInfoFromJSONTyped(json: any, ignoreDiscriminator: boolean): ClientEventInfo {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'component': !exists(json, 'component') ? undefined : json['component'],
-        'details': !exists(json, 'details') ? undefined : json['details'],
-        'element': !exists(json, 'element') ? undefined : json['element'],
+        'component': json['component'] == null ? undefined : json['component'],
+        'details': json['details'] == null ? undefined : json['details'],
+        'element': json['element'] == null ? undefined : json['element'],
     };
 }
 
 export function ClientEventInfoToJSON(value?: ClientEventInfo | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'component': value.component,
-        'details': value.details,
-        'element': value.element,
+        'component': value['component'],
+        'details': value['details'],
+        'element': value['element'],
     };
 }
 

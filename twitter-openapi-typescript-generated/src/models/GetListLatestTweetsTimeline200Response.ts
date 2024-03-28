@@ -39,18 +39,15 @@ export function GetListLatestTweetsTimeline200ResponseFromJSON(json: any): GetLi
 }
 
 export function GetListLatestTweetsTimeline200ResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): GetListLatestTweetsTimeline200Response {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return { ...ErrorsFromJSONTyped(json, true), ...ListLatestTweetsTimelineResponseFromJSONTyped(json, true) };
 }
 
 export function GetListLatestTweetsTimeline200ResponseToJSON(value?: GetListLatestTweetsTimeline200Response | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
 
     if (instanceOfErrors(value)) {

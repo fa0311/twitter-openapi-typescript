@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { TimelineV2 } from './TimelineV2';
 import {
     TimelineV2FromJSON,
@@ -38,10 +38,8 @@ export interface TweetFavoritersResponseData {
  * Check if a given object implements the TweetFavoritersResponseData interface.
  */
 export function instanceOfTweetFavoritersResponseData(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "favoritersTimeline" in value;
-
-    return isInstance;
+    if (!('favoritersTimeline' in value)) return false;
+    return true;
 }
 
 export function TweetFavoritersResponseDataFromJSON(json: any): TweetFavoritersResponseData {
@@ -49,7 +47,7 @@ export function TweetFavoritersResponseDataFromJSON(json: any): TweetFavoritersR
 }
 
 export function TweetFavoritersResponseDataFromJSONTyped(json: any, ignoreDiscriminator: boolean): TweetFavoritersResponseData {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -59,15 +57,12 @@ export function TweetFavoritersResponseDataFromJSONTyped(json: any, ignoreDiscri
 }
 
 export function TweetFavoritersResponseDataToJSON(value?: TweetFavoritersResponseData | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'favoriters_timeline': TimelineV2ToJSON(value.favoritersTimeline),
+        'favoriters_timeline': TimelineV2ToJSON(value['favoritersTimeline']),
     };
 }
 

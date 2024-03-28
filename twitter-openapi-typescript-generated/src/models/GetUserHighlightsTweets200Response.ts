@@ -39,18 +39,15 @@ export function GetUserHighlightsTweets200ResponseFromJSON(json: any): GetUserHi
 }
 
 export function GetUserHighlightsTweets200ResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): GetUserHighlightsTweets200Response {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return { ...ErrorsFromJSONTyped(json, true), ...UserHighlightsTweetsResponseFromJSONTyped(json, true) };
 }
 
 export function GetUserHighlightsTweets200ResponseToJSON(value?: GetUserHighlightsTweets200Response | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
 
     if (instanceOfErrors(value)) {

@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -68,10 +68,8 @@ export type BirdwatchEntityRefUrlTypeEnum = typeof BirdwatchEntityRefUrlTypeEnum
  * Check if a given object implements the BirdwatchEntityRef interface.
  */
 export function instanceOfBirdwatchEntityRef(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "type" in value;
-
-    return isInstance;
+    if (!('type' in value)) return false;
+    return true;
 }
 
 export function BirdwatchEntityRefFromJSON(json: any): BirdwatchEntityRef {
@@ -79,31 +77,28 @@ export function BirdwatchEntityRefFromJSON(json: any): BirdwatchEntityRef {
 }
 
 export function BirdwatchEntityRefFromJSONTyped(json: any, ignoreDiscriminator: boolean): BirdwatchEntityRef {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'text': !exists(json, 'text') ? undefined : json['text'],
+        'text': json['text'] == null ? undefined : json['text'],
         'type': json['type'],
-        'url': !exists(json, 'url') ? undefined : json['url'],
-        'urlType': !exists(json, 'urlType') ? undefined : json['urlType'],
+        'url': json['url'] == null ? undefined : json['url'],
+        'urlType': json['urlType'] == null ? undefined : json['urlType'],
     };
 }
 
 export function BirdwatchEntityRefToJSON(value?: BirdwatchEntityRef | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'text': value.text,
-        'type': value.type,
-        'url': value.url,
-        'urlType': value.urlType,
+        'text': value['text'],
+        'type': value['type'],
+        'url': value['url'],
+        'urlType': value['urlType'],
     };
 }
 

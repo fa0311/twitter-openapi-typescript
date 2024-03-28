@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { Tracing } from './Tracing';
 import {
     TracingFromJSON,
@@ -68,15 +68,13 @@ export interface ErrorExtensions {
  * Check if a given object implements the ErrorExtensions interface.
  */
 export function instanceOfErrorExtensions(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "code" in value;
-    isInstance = isInstance && "kind" in value;
-    isInstance = isInstance && "name" in value;
-    isInstance = isInstance && "retryAfter" in value;
-    isInstance = isInstance && "source" in value;
-    isInstance = isInstance && "tracing" in value;
-
-    return isInstance;
+    if (!('code' in value)) return false;
+    if (!('kind' in value)) return false;
+    if (!('name' in value)) return false;
+    if (!('retryAfter' in value)) return false;
+    if (!('source' in value)) return false;
+    if (!('tracing' in value)) return false;
+    return true;
 }
 
 export function ErrorExtensionsFromJSON(json: any): ErrorExtensions {
@@ -84,7 +82,7 @@ export function ErrorExtensionsFromJSON(json: any): ErrorExtensions {
 }
 
 export function ErrorExtensionsFromJSONTyped(json: any, ignoreDiscriminator: boolean): ErrorExtensions {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -99,20 +97,17 @@ export function ErrorExtensionsFromJSONTyped(json: any, ignoreDiscriminator: boo
 }
 
 export function ErrorExtensionsToJSON(value?: ErrorExtensions | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'code': value.code,
-        'kind': value.kind,
-        'name': value.name,
-        'retry_after': value.retryAfter,
-        'source': value.source,
-        'tracing': TracingToJSON(value.tracing),
+        'code': value['code'],
+        'kind': value['kind'],
+        'name': value['name'],
+        'retry_after': value['retryAfter'],
+        'source': value['source'],
+        'tracing': TracingToJSON(value['tracing']),
     };
 }
 

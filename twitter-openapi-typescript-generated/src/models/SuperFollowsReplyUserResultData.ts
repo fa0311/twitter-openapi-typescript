@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { SuperFollowsReplyUserResultLegacy } from './SuperFollowsReplyUserResultLegacy';
 import {
     SuperFollowsReplyUserResultLegacyFromJSON,
@@ -50,11 +50,9 @@ export interface SuperFollowsReplyUserResultData {
  * Check if a given object implements the SuperFollowsReplyUserResultData interface.
  */
 export function instanceOfSuperFollowsReplyUserResultData(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "typename" in value;
-    isInstance = isInstance && "legacy" in value;
-
-    return isInstance;
+    if (!('typename' in value)) return false;
+    if (!('legacy' in value)) return false;
+    return true;
 }
 
 export function SuperFollowsReplyUserResultDataFromJSON(json: any): SuperFollowsReplyUserResultData {
@@ -62,7 +60,7 @@ export function SuperFollowsReplyUserResultDataFromJSON(json: any): SuperFollows
 }
 
 export function SuperFollowsReplyUserResultDataFromJSONTyped(json: any, ignoreDiscriminator: boolean): SuperFollowsReplyUserResultData {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -73,16 +71,13 @@ export function SuperFollowsReplyUserResultDataFromJSONTyped(json: any, ignoreDi
 }
 
 export function SuperFollowsReplyUserResultDataToJSON(value?: SuperFollowsReplyUserResultData | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        '__typename': TypeNameToJSON(value.typename),
-        'legacy': SuperFollowsReplyUserResultLegacyToJSON(value.legacy),
+        '__typename': TypeNameToJSON(value['typename']),
+        'legacy': SuperFollowsReplyUserResultLegacyToJSON(value['legacy']),
     };
 }
 

@@ -46,7 +46,7 @@ export function TweetUnionFromJSON(json: any): TweetUnion {
 }
 
 export function TweetUnionFromJSONTyped(json: any, ignoreDiscriminator: boolean): TweetUnion {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     switch (json['__typename']) {
@@ -62,11 +62,8 @@ export function TweetUnionFromJSONTyped(json: any, ignoreDiscriminator: boolean)
 }
 
 export function TweetUnionToJSON(value?: TweetUnion | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     switch (value['typename']) {
         case 'Tweet':

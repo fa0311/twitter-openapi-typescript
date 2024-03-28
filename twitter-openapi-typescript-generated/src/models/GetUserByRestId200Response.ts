@@ -39,18 +39,15 @@ export function GetUserByRestId200ResponseFromJSON(json: any): GetUserByRestId20
 }
 
 export function GetUserByRestId200ResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): GetUserByRestId200Response {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return { ...ErrorsFromJSONTyped(json, true), ...UserResponseFromJSONTyped(json, true) };
 }
 
 export function GetUserByRestId200ResponseToJSON(value?: GetUserByRestId200Response | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
 
     if (instanceOfErrors(value)) {

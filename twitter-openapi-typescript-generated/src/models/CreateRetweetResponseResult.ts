@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { CreateRetweet } from './CreateRetweet';
 import {
     CreateRetweetFromJSON,
@@ -38,10 +38,8 @@ export interface CreateRetweetResponseResult {
  * Check if a given object implements the CreateRetweetResponseResult interface.
  */
 export function instanceOfCreateRetweetResponseResult(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "retweetResults" in value;
-
-    return isInstance;
+    if (!('retweetResults' in value)) return false;
+    return true;
 }
 
 export function CreateRetweetResponseResultFromJSON(json: any): CreateRetweetResponseResult {
@@ -49,7 +47,7 @@ export function CreateRetweetResponseResultFromJSON(json: any): CreateRetweetRes
 }
 
 export function CreateRetweetResponseResultFromJSONTyped(json: any, ignoreDiscriminator: boolean): CreateRetweetResponseResult {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -59,15 +57,12 @@ export function CreateRetweetResponseResultFromJSONTyped(json: any, ignoreDiscri
 }
 
 export function CreateRetweetResponseResultToJSON(value?: CreateRetweetResponseResult | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'retweet_results': CreateRetweetToJSON(value.retweetResults),
+        'retweet_results': CreateRetweetToJSON(value['retweetResults']),
     };
 }
 

@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { TweetInterstitialRevealText } from './TweetInterstitialRevealText';
 import {
     TweetInterstitialRevealTextFromJSON,
@@ -78,13 +78,11 @@ export type TweetInterstitialDisplayTypeEnum = typeof TweetInterstitialDisplayTy
  * Check if a given object implements the TweetInterstitial interface.
  */
 export function instanceOfTweetInterstitial(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "typename" in value;
-    isInstance = isInstance && "displayType" in value;
-    isInstance = isInstance && "revealText" in value;
-    isInstance = isInstance && "text" in value;
-
-    return isInstance;
+    if (!('typename' in value)) return false;
+    if (!('displayType' in value)) return false;
+    if (!('revealText' in value)) return false;
+    if (!('text' in value)) return false;
+    return true;
 }
 
 export function TweetInterstitialFromJSON(json: any): TweetInterstitial {
@@ -92,7 +90,7 @@ export function TweetInterstitialFromJSON(json: any): TweetInterstitial {
 }
 
 export function TweetInterstitialFromJSONTyped(json: any, ignoreDiscriminator: boolean): TweetInterstitial {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -105,18 +103,15 @@ export function TweetInterstitialFromJSONTyped(json: any, ignoreDiscriminator: b
 }
 
 export function TweetInterstitialToJSON(value?: TweetInterstitial | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        '__typename': TypeNameToJSON(value.typename),
-        'displayType': value.displayType,
-        'revealText': TweetInterstitialRevealTextToJSON(value.revealText),
-        'text': TweetInterstitialTextToJSON(value.text),
+        '__typename': TypeNameToJSON(value['typename']),
+        'displayType': value['displayType'],
+        'revealText': TweetInterstitialRevealTextToJSON(value['revealText']),
+        'text': TweetInterstitialTextToJSON(value['text']),
     };
 }
 

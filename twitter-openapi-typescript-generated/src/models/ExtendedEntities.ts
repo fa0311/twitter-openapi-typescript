@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { MediaExtended } from './MediaExtended';
 import {
     MediaExtendedFromJSON,
@@ -38,10 +38,8 @@ export interface ExtendedEntities {
  * Check if a given object implements the ExtendedEntities interface.
  */
 export function instanceOfExtendedEntities(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "media" in value;
-
-    return isInstance;
+    if (!('media' in value)) return false;
+    return true;
 }
 
 export function ExtendedEntitiesFromJSON(json: any): ExtendedEntities {
@@ -49,7 +47,7 @@ export function ExtendedEntitiesFromJSON(json: any): ExtendedEntities {
 }
 
 export function ExtendedEntitiesFromJSONTyped(json: any, ignoreDiscriminator: boolean): ExtendedEntities {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -59,15 +57,12 @@ export function ExtendedEntitiesFromJSONTyped(json: any, ignoreDiscriminator: bo
 }
 
 export function ExtendedEntitiesToJSON(value?: ExtendedEntities | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'media': ((value.media as Array<any>).map(MediaExtendedToJSON)),
+        'media': ((value['media'] as Array<any>).map(MediaExtendedToJSON)),
     };
 }
 

@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { NoteTweetResultMediaInlineMedia } from './NoteTweetResultMediaInlineMedia';
 import {
     NoteTweetResultMediaInlineMediaFromJSON,
@@ -38,10 +38,8 @@ export interface NoteTweetResultMedia {
  * Check if a given object implements the NoteTweetResultMedia interface.
  */
 export function instanceOfNoteTweetResultMedia(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "inlineMedia" in value;
-
-    return isInstance;
+    if (!('inlineMedia' in value)) return false;
+    return true;
 }
 
 export function NoteTweetResultMediaFromJSON(json: any): NoteTweetResultMedia {
@@ -49,7 +47,7 @@ export function NoteTweetResultMediaFromJSON(json: any): NoteTweetResultMedia {
 }
 
 export function NoteTweetResultMediaFromJSONTyped(json: any, ignoreDiscriminator: boolean): NoteTweetResultMedia {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -59,15 +57,12 @@ export function NoteTweetResultMediaFromJSONTyped(json: any, ignoreDiscriminator
 }
 
 export function NoteTweetResultMediaToJSON(value?: NoteTweetResultMedia | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'inline_media': ((value.inlineMedia as Array<any>).map(NoteTweetResultMediaInlineMediaToJSON)),
+        'inline_media': ((value['inlineMedia'] as Array<any>).map(NoteTweetResultMediaInlineMediaToJSON)),
     };
 }
 

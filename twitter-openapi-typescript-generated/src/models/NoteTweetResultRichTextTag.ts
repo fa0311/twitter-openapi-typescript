@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -54,12 +54,10 @@ export type NoteTweetResultRichTextTagRichtextTypesEnum = typeof NoteTweetResult
  * Check if a given object implements the NoteTweetResultRichTextTag interface.
  */
 export function instanceOfNoteTweetResultRichTextTag(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "fromIndex" in value;
-    isInstance = isInstance && "richtextTypes" in value;
-    isInstance = isInstance && "toIndex" in value;
-
-    return isInstance;
+    if (!('fromIndex' in value)) return false;
+    if (!('richtextTypes' in value)) return false;
+    if (!('toIndex' in value)) return false;
+    return true;
 }
 
 export function NoteTweetResultRichTextTagFromJSON(json: any): NoteTweetResultRichTextTag {
@@ -67,7 +65,7 @@ export function NoteTweetResultRichTextTagFromJSON(json: any): NoteTweetResultRi
 }
 
 export function NoteTweetResultRichTextTagFromJSONTyped(json: any, ignoreDiscriminator: boolean): NoteTweetResultRichTextTag {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -79,17 +77,14 @@ export function NoteTweetResultRichTextTagFromJSONTyped(json: any, ignoreDiscrim
 }
 
 export function NoteTweetResultRichTextTagToJSON(value?: NoteTweetResultRichTextTag | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'from_index': value.fromIndex,
-        'richtext_types': value.richtextTypes,
-        'to_index': value.toIndex,
+        'from_index': value['fromIndex'],
+        'richtext_types': value['richtextTypes'],
+        'to_index': value['toIndex'],
     };
 }
 

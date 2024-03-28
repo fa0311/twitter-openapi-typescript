@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { ContentUnion } from './ContentUnion';
 import {
     ContentUnionFromJSON,
@@ -50,12 +50,10 @@ export interface TimelineAddEntry {
  * Check if a given object implements the TimelineAddEntry interface.
  */
 export function instanceOfTimelineAddEntry(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "content" in value;
-    isInstance = isInstance && "entryId" in value;
-    isInstance = isInstance && "sortIndex" in value;
-
-    return isInstance;
+    if (!('content' in value)) return false;
+    if (!('entryId' in value)) return false;
+    if (!('sortIndex' in value)) return false;
+    return true;
 }
 
 export function TimelineAddEntryFromJSON(json: any): TimelineAddEntry {
@@ -63,7 +61,7 @@ export function TimelineAddEntryFromJSON(json: any): TimelineAddEntry {
 }
 
 export function TimelineAddEntryFromJSONTyped(json: any, ignoreDiscriminator: boolean): TimelineAddEntry {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -75,17 +73,14 @@ export function TimelineAddEntryFromJSONTyped(json: any, ignoreDiscriminator: bo
 }
 
 export function TimelineAddEntryToJSON(value?: TimelineAddEntry | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'content': ContentUnionToJSON(value.content),
-        'entryId': value.entryId,
-        'sortIndex': value.sortIndex,
+        'content': ContentUnionToJSON(value['content']),
+        'entryId': value['entryId'],
+        'sortIndex': value['sortIndex'],
     };
 }
 

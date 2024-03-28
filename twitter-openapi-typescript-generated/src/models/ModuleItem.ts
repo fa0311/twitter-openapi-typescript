@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { ModuleEntry } from './ModuleEntry';
 import {
     ModuleEntryFromJSON,
@@ -44,11 +44,9 @@ export interface ModuleItem {
  * Check if a given object implements the ModuleItem interface.
  */
 export function instanceOfModuleItem(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "entryId" in value;
-    isInstance = isInstance && "item" in value;
-
-    return isInstance;
+    if (!('entryId' in value)) return false;
+    if (!('item' in value)) return false;
+    return true;
 }
 
 export function ModuleItemFromJSON(json: any): ModuleItem {
@@ -56,7 +54,7 @@ export function ModuleItemFromJSON(json: any): ModuleItem {
 }
 
 export function ModuleItemFromJSONTyped(json: any, ignoreDiscriminator: boolean): ModuleItem {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -67,16 +65,13 @@ export function ModuleItemFromJSONTyped(json: any, ignoreDiscriminator: boolean)
 }
 
 export function ModuleItemToJSON(value?: ModuleItem | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'entryId': value.entryId,
-        'item': ModuleEntryToJSON(value.item),
+        'entryId': value['entryId'],
+        'item': ModuleEntryToJSON(value['item']),
     };
 }
 

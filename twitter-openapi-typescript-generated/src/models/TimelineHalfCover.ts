@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { Callback } from './Callback';
 import {
     CallbackFromJSON,
@@ -104,16 +104,14 @@ export type TimelineHalfCoverTypeEnum = typeof TimelineHalfCoverTypeEnum[keyof t
  * Check if a given object implements the TimelineHalfCover interface.
  */
 export function instanceOfTimelineHalfCover(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "dismissible" in value;
-    isInstance = isInstance && "halfCoverDisplayType" in value;
-    isInstance = isInstance && "impressionCallbacks" in value;
-    isInstance = isInstance && "primaryCoverCta" in value;
-    isInstance = isInstance && "primaryText" in value;
-    isInstance = isInstance && "secondaryText" in value;
-    isInstance = isInstance && "type" in value;
-
-    return isInstance;
+    if (!('dismissible' in value)) return false;
+    if (!('halfCoverDisplayType' in value)) return false;
+    if (!('impressionCallbacks' in value)) return false;
+    if (!('primaryCoverCta' in value)) return false;
+    if (!('primaryText' in value)) return false;
+    if (!('secondaryText' in value)) return false;
+    if (!('type' in value)) return false;
+    return true;
 }
 
 export function TimelineHalfCoverFromJSON(json: any): TimelineHalfCover {
@@ -121,7 +119,7 @@ export function TimelineHalfCoverFromJSON(json: any): TimelineHalfCover {
 }
 
 export function TimelineHalfCoverFromJSONTyped(json: any, ignoreDiscriminator: boolean): TimelineHalfCover {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -137,21 +135,18 @@ export function TimelineHalfCoverFromJSONTyped(json: any, ignoreDiscriminator: b
 }
 
 export function TimelineHalfCoverToJSON(value?: TimelineHalfCover | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'dismissible': value.dismissible,
-        'halfCoverDisplayType': value.halfCoverDisplayType,
-        'impressionCallbacks': ((value.impressionCallbacks as Array<any>).map(CallbackToJSON)),
-        'primaryCoverCta': CoverCtaToJSON(value.primaryCoverCta),
-        'primaryText': TextToJSON(value.primaryText),
-        'secondaryText': TextToJSON(value.secondaryText),
-        'type': value.type,
+        'dismissible': value['dismissible'],
+        'halfCoverDisplayType': value['halfCoverDisplayType'],
+        'impressionCallbacks': ((value['impressionCallbacks'] as Array<any>).map(CallbackToJSON)),
+        'primaryCoverCta': CoverCtaToJSON(value['primaryCoverCta']),
+        'primaryText': TextToJSON(value['primaryText']),
+        'secondaryText': TextToJSON(value['secondaryText']),
+        'type': value['type'],
     };
 }
 

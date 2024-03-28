@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { ListTweetsTimelineData } from './ListTweetsTimelineData';
 import {
     ListTweetsTimelineDataFromJSON,
@@ -38,10 +38,8 @@ export interface ListLatestTweetsTimelineResponse {
  * Check if a given object implements the ListLatestTweetsTimelineResponse interface.
  */
 export function instanceOfListLatestTweetsTimelineResponse(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "data" in value;
-
-    return isInstance;
+    if (!('data' in value)) return false;
+    return true;
 }
 
 export function ListLatestTweetsTimelineResponseFromJSON(json: any): ListLatestTweetsTimelineResponse {
@@ -49,7 +47,7 @@ export function ListLatestTweetsTimelineResponseFromJSON(json: any): ListLatestT
 }
 
 export function ListLatestTweetsTimelineResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): ListLatestTweetsTimelineResponse {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -59,15 +57,12 @@ export function ListLatestTweetsTimelineResponseFromJSONTyped(json: any, ignoreD
 }
 
 export function ListLatestTweetsTimelineResponseToJSON(value?: ListLatestTweetsTimelineResponse | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'data': ListTweetsTimelineDataToJSON(value.data),
+        'data': ListTweetsTimelineDataToJSON(value['data']),
     };
 }
 

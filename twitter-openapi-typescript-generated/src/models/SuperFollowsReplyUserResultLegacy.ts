@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -31,10 +31,8 @@ export interface SuperFollowsReplyUserResultLegacy {
  * Check if a given object implements the SuperFollowsReplyUserResultLegacy interface.
  */
 export function instanceOfSuperFollowsReplyUserResultLegacy(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "screenName" in value;
-
-    return isInstance;
+    if (!('screenName' in value)) return false;
+    return true;
 }
 
 export function SuperFollowsReplyUserResultLegacyFromJSON(json: any): SuperFollowsReplyUserResultLegacy {
@@ -42,7 +40,7 @@ export function SuperFollowsReplyUserResultLegacyFromJSON(json: any): SuperFollo
 }
 
 export function SuperFollowsReplyUserResultLegacyFromJSONTyped(json: any, ignoreDiscriminator: boolean): SuperFollowsReplyUserResultLegacy {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -52,15 +50,12 @@ export function SuperFollowsReplyUserResultLegacyFromJSONTyped(json: any, ignore
 }
 
 export function SuperFollowsReplyUserResultLegacyToJSON(value?: SuperFollowsReplyUserResultLegacy | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'screen_name': value.screenName,
+        'screen_name': value['screenName'],
     };
 }
 

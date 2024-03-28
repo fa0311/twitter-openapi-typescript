@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -37,11 +37,9 @@ export interface TextHighlight {
  * Check if a given object implements the TextHighlight interface.
  */
 export function instanceOfTextHighlight(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "endIndex" in value;
-    isInstance = isInstance && "startIndex" in value;
-
-    return isInstance;
+    if (!('endIndex' in value)) return false;
+    if (!('startIndex' in value)) return false;
+    return true;
 }
 
 export function TextHighlightFromJSON(json: any): TextHighlight {
@@ -49,7 +47,7 @@ export function TextHighlightFromJSON(json: any): TextHighlight {
 }
 
 export function TextHighlightFromJSONTyped(json: any, ignoreDiscriminator: boolean): TextHighlight {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -60,16 +58,13 @@ export function TextHighlightFromJSONTyped(json: any, ignoreDiscriminator: boole
 }
 
 export function TextHighlightToJSON(value?: TextHighlight | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'endIndex': value.endIndex,
-        'startIndex': value.startIndex,
+        'endIndex': value['endIndex'],
+        'startIndex': value['startIndex'],
     };
 }
 

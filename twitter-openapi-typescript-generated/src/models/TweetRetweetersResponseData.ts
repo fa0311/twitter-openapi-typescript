@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { TimelineV2 } from './TimelineV2';
 import {
     TimelineV2FromJSON,
@@ -38,10 +38,8 @@ export interface TweetRetweetersResponseData {
  * Check if a given object implements the TweetRetweetersResponseData interface.
  */
 export function instanceOfTweetRetweetersResponseData(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "retweetersTimeline" in value;
-
-    return isInstance;
+    if (!('retweetersTimeline' in value)) return false;
+    return true;
 }
 
 export function TweetRetweetersResponseDataFromJSON(json: any): TweetRetweetersResponseData {
@@ -49,7 +47,7 @@ export function TweetRetweetersResponseDataFromJSON(json: any): TweetRetweetersR
 }
 
 export function TweetRetweetersResponseDataFromJSONTyped(json: any, ignoreDiscriminator: boolean): TweetRetweetersResponseData {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -59,15 +57,12 @@ export function TweetRetweetersResponseDataFromJSONTyped(json: any, ignoreDiscri
 }
 
 export function TweetRetweetersResponseDataToJSON(value?: TweetRetweetersResponseData | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'retweeters_timeline': TimelineV2ToJSON(value.retweetersTimeline),
+        'retweeters_timeline': TimelineV2ToJSON(value['retweetersTimeline']),
     };
 }
 

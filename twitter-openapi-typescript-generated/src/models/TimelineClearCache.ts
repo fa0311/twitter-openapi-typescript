@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { InstructionType } from './InstructionType';
 import {
     InstructionTypeFromJSON,
@@ -38,10 +38,8 @@ export interface TimelineClearCache {
  * Check if a given object implements the TimelineClearCache interface.
  */
 export function instanceOfTimelineClearCache(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "type" in value;
-
-    return isInstance;
+    if (!('type' in value)) return false;
+    return true;
 }
 
 export function TimelineClearCacheFromJSON(json: any): TimelineClearCache {
@@ -49,7 +47,7 @@ export function TimelineClearCacheFromJSON(json: any): TimelineClearCache {
 }
 
 export function TimelineClearCacheFromJSONTyped(json: any, ignoreDiscriminator: boolean): TimelineClearCache {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -59,15 +57,12 @@ export function TimelineClearCacheFromJSONTyped(json: any, ignoreDiscriminator: 
 }
 
 export function TimelineClearCacheToJSON(value?: TimelineClearCache | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'type': InstructionTypeToJSON(value.type),
+        'type': InstructionTypeToJSON(value['type']),
     };
 }
 

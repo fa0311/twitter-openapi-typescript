@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { TimelineV2 } from './TimelineV2';
 import {
     TimelineV2FromJSON,
@@ -50,11 +50,9 @@ export interface UserTweetsResult {
  * Check if a given object implements the UserTweetsResult interface.
  */
 export function instanceOfUserTweetsResult(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "typename" in value;
-    isInstance = isInstance && "timelineV2" in value;
-
-    return isInstance;
+    if (!('typename' in value)) return false;
+    if (!('timelineV2' in value)) return false;
+    return true;
 }
 
 export function UserTweetsResultFromJSON(json: any): UserTweetsResult {
@@ -62,7 +60,7 @@ export function UserTweetsResultFromJSON(json: any): UserTweetsResult {
 }
 
 export function UserTweetsResultFromJSONTyped(json: any, ignoreDiscriminator: boolean): UserTweetsResult {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -73,16 +71,13 @@ export function UserTweetsResultFromJSONTyped(json: any, ignoreDiscriminator: bo
 }
 
 export function UserTweetsResultToJSON(value?: UserTweetsResult | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        '__typename': TypeNameToJSON(value.typename),
-        'timeline_v2': TimelineV2ToJSON(value.timelineV2),
+        '__typename': TypeNameToJSON(value['typename']),
+        'timeline_v2': TimelineV2ToJSON(value['timelineV2']),
     };
 }
 

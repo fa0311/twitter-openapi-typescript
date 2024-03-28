@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -49,13 +49,11 @@ export interface MediaOriginalInfoFocusRect {
  * Check if a given object implements the MediaOriginalInfoFocusRect interface.
  */
 export function instanceOfMediaOriginalInfoFocusRect(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "h" in value;
-    isInstance = isInstance && "w" in value;
-    isInstance = isInstance && "x" in value;
-    isInstance = isInstance && "y" in value;
-
-    return isInstance;
+    if (!('h' in value)) return false;
+    if (!('w' in value)) return false;
+    if (!('x' in value)) return false;
+    if (!('y' in value)) return false;
+    return true;
 }
 
 export function MediaOriginalInfoFocusRectFromJSON(json: any): MediaOriginalInfoFocusRect {
@@ -63,7 +61,7 @@ export function MediaOriginalInfoFocusRectFromJSON(json: any): MediaOriginalInfo
 }
 
 export function MediaOriginalInfoFocusRectFromJSONTyped(json: any, ignoreDiscriminator: boolean): MediaOriginalInfoFocusRect {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -76,18 +74,15 @@ export function MediaOriginalInfoFocusRectFromJSONTyped(json: any, ignoreDiscrim
 }
 
 export function MediaOriginalInfoFocusRectToJSON(value?: MediaOriginalInfoFocusRect | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'h': value.h,
-        'w': value.w,
-        'x': value.x,
-        'y': value.y,
+        'h': value['h'],
+        'w': value['w'],
+        'x': value['x'],
+        'y': value['y'],
     };
 }
 

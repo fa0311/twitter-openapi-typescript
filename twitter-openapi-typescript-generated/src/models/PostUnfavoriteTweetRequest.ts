@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { PostCreateRetweetRequestVariables } from './PostCreateRetweetRequestVariables';
 import {
     PostCreateRetweetRequestVariablesFromJSON,
@@ -44,11 +44,9 @@ export interface PostUnfavoriteTweetRequest {
  * Check if a given object implements the PostUnfavoriteTweetRequest interface.
  */
 export function instanceOfPostUnfavoriteTweetRequest(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "queryId" in value;
-    isInstance = isInstance && "variables" in value;
-
-    return isInstance;
+    if (!('queryId' in value)) return false;
+    if (!('variables' in value)) return false;
+    return true;
 }
 
 export function PostUnfavoriteTweetRequestFromJSON(json: any): PostUnfavoriteTweetRequest {
@@ -56,7 +54,7 @@ export function PostUnfavoriteTweetRequestFromJSON(json: any): PostUnfavoriteTwe
 }
 
 export function PostUnfavoriteTweetRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): PostUnfavoriteTweetRequest {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -67,16 +65,13 @@ export function PostUnfavoriteTweetRequestFromJSONTyped(json: any, ignoreDiscrim
 }
 
 export function PostUnfavoriteTweetRequestToJSON(value?: PostUnfavoriteTweetRequest | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'queryId': value.queryId,
-        'variables': PostCreateRetweetRequestVariablesToJSON(value.variables),
+        'queryId': value['queryId'],
+        'variables': PostCreateRetweetRequestVariablesToJSON(value['variables']),
     };
 }
 

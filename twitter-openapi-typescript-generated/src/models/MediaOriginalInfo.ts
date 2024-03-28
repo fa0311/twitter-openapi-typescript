@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { MediaOriginalInfoFocusRect } from './MediaOriginalInfoFocusRect';
 import {
     MediaOriginalInfoFocusRectFromJSON,
@@ -50,11 +50,9 @@ export interface MediaOriginalInfo {
  * Check if a given object implements the MediaOriginalInfo interface.
  */
 export function instanceOfMediaOriginalInfo(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "height" in value;
-    isInstance = isInstance && "width" in value;
-
-    return isInstance;
+    if (!('height' in value)) return false;
+    if (!('width' in value)) return false;
+    return true;
 }
 
 export function MediaOriginalInfoFromJSON(json: any): MediaOriginalInfo {
@@ -62,29 +60,26 @@ export function MediaOriginalInfoFromJSON(json: any): MediaOriginalInfo {
 }
 
 export function MediaOriginalInfoFromJSONTyped(json: any, ignoreDiscriminator: boolean): MediaOriginalInfo {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'focusRects': !exists(json, 'focus_rects') ? undefined : ((json['focus_rects'] as Array<any>).map(MediaOriginalInfoFocusRectFromJSON)),
+        'focusRects': json['focus_rects'] == null ? undefined : ((json['focus_rects'] as Array<any>).map(MediaOriginalInfoFocusRectFromJSON)),
         'height': json['height'],
         'width': json['width'],
     };
 }
 
 export function MediaOriginalInfoToJSON(value?: MediaOriginalInfo | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'focus_rects': value.focusRects === undefined ? undefined : ((value.focusRects as Array<any>).map(MediaOriginalInfoFocusRectToJSON)),
-        'height': value.height,
-        'width': value.width,
+        'focus_rects': value['focusRects'] == null ? undefined : ((value['focusRects'] as Array<any>).map(MediaOriginalInfoFocusRectToJSON)),
+        'height': value['height'],
+        'width': value['width'],
     };
 }
 

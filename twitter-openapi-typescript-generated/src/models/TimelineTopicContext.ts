@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { SocialContextUnionType } from './SocialContextUnionType';
 import {
     SocialContextUnionTypeFromJSON,
@@ -66,9 +66,7 @@ export type TimelineTopicContextFunctionalityTypeEnum = typeof TimelineTopicCont
  * Check if a given object implements the TimelineTopicContext interface.
  */
 export function instanceOfTimelineTopicContext(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+    return true;
 }
 
 export function TimelineTopicContextFromJSON(json: any): TimelineTopicContext {
@@ -76,29 +74,26 @@ export function TimelineTopicContextFromJSON(json: any): TimelineTopicContext {
 }
 
 export function TimelineTopicContextFromJSONTyped(json: any, ignoreDiscriminator: boolean): TimelineTopicContext {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'functionalityType': !exists(json, 'functionalityType') ? undefined : json['functionalityType'],
-        'topic': !exists(json, 'topic') ? undefined : TopicContextFromJSON(json['topic']),
-        'type': !exists(json, 'type') ? undefined : SocialContextUnionTypeFromJSON(json['type']),
+        'functionalityType': json['functionalityType'] == null ? undefined : json['functionalityType'],
+        'topic': json['topic'] == null ? undefined : TopicContextFromJSON(json['topic']),
+        'type': json['type'] == null ? undefined : SocialContextUnionTypeFromJSON(json['type']),
     };
 }
 
 export function TimelineTopicContextToJSON(value?: TimelineTopicContext | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'functionalityType': value.functionalityType,
-        'topic': TopicContextToJSON(value.topic),
-        'type': SocialContextUnionTypeToJSON(value.type),
+        'functionalityType': value['functionalityType'],
+        'topic': TopicContextToJSON(value['topic']),
+        'type': SocialContextUnionTypeToJSON(value['type']),
     };
 }
 

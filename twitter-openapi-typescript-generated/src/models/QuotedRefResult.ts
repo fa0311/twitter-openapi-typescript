@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { TweetUnion } from './TweetUnion';
 import {
     TweetUnionFromJSON,
@@ -38,9 +38,7 @@ export interface QuotedRefResult {
  * Check if a given object implements the QuotedRefResult interface.
  */
 export function instanceOfQuotedRefResult(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+    return true;
 }
 
 export function QuotedRefResultFromJSON(json: any): QuotedRefResult {
@@ -48,25 +46,22 @@ export function QuotedRefResultFromJSON(json: any): QuotedRefResult {
 }
 
 export function QuotedRefResultFromJSONTyped(json: any, ignoreDiscriminator: boolean): QuotedRefResult {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'result': !exists(json, 'result') ? undefined : TweetUnionFromJSON(json['result']),
+        'result': json['result'] == null ? undefined : TweetUnionFromJSON(json['result']),
     };
 }
 
 export function QuotedRefResultToJSON(value?: QuotedRefResult | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'result': TweetUnionToJSON(value.result),
+        'result': TweetUnionToJSON(value['result']),
     };
 }
 

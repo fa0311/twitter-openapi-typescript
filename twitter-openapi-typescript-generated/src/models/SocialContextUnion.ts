@@ -39,7 +39,7 @@ export function SocialContextUnionFromJSON(json: any): SocialContextUnion {
 }
 
 export function SocialContextUnionFromJSONTyped(json: any, ignoreDiscriminator: boolean): SocialContextUnion {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     switch (json['type']) {
@@ -53,11 +53,8 @@ export function SocialContextUnionFromJSONTyped(json: any, ignoreDiscriminator: 
 }
 
 export function SocialContextUnionToJSON(value?: SocialContextUnion | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     switch (value['type']) {
         case 'TimelineGeneralContext':

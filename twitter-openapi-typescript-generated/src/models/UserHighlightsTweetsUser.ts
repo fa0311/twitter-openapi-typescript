@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { UserHighlightsTweetsResult } from './UserHighlightsTweetsResult';
 import {
     UserHighlightsTweetsResultFromJSON,
@@ -38,10 +38,8 @@ export interface UserHighlightsTweetsUser {
  * Check if a given object implements the UserHighlightsTweetsUser interface.
  */
 export function instanceOfUserHighlightsTweetsUser(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "result" in value;
-
-    return isInstance;
+    if (!('result' in value)) return false;
+    return true;
 }
 
 export function UserHighlightsTweetsUserFromJSON(json: any): UserHighlightsTweetsUser {
@@ -49,7 +47,7 @@ export function UserHighlightsTweetsUserFromJSON(json: any): UserHighlightsTweet
 }
 
 export function UserHighlightsTweetsUserFromJSONTyped(json: any, ignoreDiscriminator: boolean): UserHighlightsTweetsUser {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -59,15 +57,12 @@ export function UserHighlightsTweetsUserFromJSONTyped(json: any, ignoreDiscrimin
 }
 
 export function UserHighlightsTweetsUserToJSON(value?: UserHighlightsTweetsUser | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'result': UserHighlightsTweetsResultToJSON(value.result),
+        'result': UserHighlightsTweetsResultToJSON(value['result']),
     };
 }
 

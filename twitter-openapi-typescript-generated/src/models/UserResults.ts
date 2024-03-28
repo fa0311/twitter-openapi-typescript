@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { UserUnion } from './UserUnion';
 import {
     UserUnionFromJSON,
@@ -38,9 +38,7 @@ export interface UserResults {
  * Check if a given object implements the UserResults interface.
  */
 export function instanceOfUserResults(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+    return true;
 }
 
 export function UserResultsFromJSON(json: any): UserResults {
@@ -48,25 +46,22 @@ export function UserResultsFromJSON(json: any): UserResults {
 }
 
 export function UserResultsFromJSONTyped(json: any, ignoreDiscriminator: boolean): UserResults {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'result': !exists(json, 'result') ? undefined : UserUnionFromJSON(json['result']),
+        'result': json['result'] == null ? undefined : UserUnionFromJSON(json['result']),
     };
 }
 
 export function UserResultsToJSON(value?: UserResults | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'result': UserUnionToJSON(value.result),
+        'result': UserUnionToJSON(value['result']),
     };
 }
 

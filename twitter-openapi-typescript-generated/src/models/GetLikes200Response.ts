@@ -39,18 +39,15 @@ export function GetLikes200ResponseFromJSON(json: any): GetLikes200Response {
 }
 
 export function GetLikes200ResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): GetLikes200Response {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return { ...ErrorsFromJSONTyped(json, true), ...UserTweetsResponseFromJSONTyped(json, true) };
 }
 
 export function GetLikes200ResponseToJSON(value?: GetLikes200Response | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
 
     if (instanceOfErrors(value)) {

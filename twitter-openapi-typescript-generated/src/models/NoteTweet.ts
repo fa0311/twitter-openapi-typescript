@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { NoteTweetResult } from './NoteTweetResult';
 import {
     NoteTweetResultFromJSON,
@@ -44,11 +44,9 @@ export interface NoteTweet {
  * Check if a given object implements the NoteTweet interface.
  */
 export function instanceOfNoteTweet(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "isExpandable" in value;
-    isInstance = isInstance && "noteTweetResults" in value;
-
-    return isInstance;
+    if (!('isExpandable' in value)) return false;
+    if (!('noteTweetResults' in value)) return false;
+    return true;
 }
 
 export function NoteTweetFromJSON(json: any): NoteTweet {
@@ -56,7 +54,7 @@ export function NoteTweetFromJSON(json: any): NoteTweet {
 }
 
 export function NoteTweetFromJSONTyped(json: any, ignoreDiscriminator: boolean): NoteTweet {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -67,16 +65,13 @@ export function NoteTweetFromJSONTyped(json: any, ignoreDiscriminator: boolean):
 }
 
 export function NoteTweetToJSON(value?: NoteTweet | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'is_expandable': value.isExpandable,
-        'note_tweet_results': NoteTweetResultToJSON(value.noteTweetResults),
+        'is_expandable': value['isExpandable'],
+        'note_tweet_results': NoteTweetResultToJSON(value['noteTweetResults']),
     };
 }
 

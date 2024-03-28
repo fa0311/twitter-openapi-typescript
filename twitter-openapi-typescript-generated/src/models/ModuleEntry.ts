@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { ClientEventInfo } from './ClientEventInfo';
 import {
     ClientEventInfoFromJSON,
@@ -62,10 +62,8 @@ export interface ModuleEntry {
  * Check if a given object implements the ModuleEntry interface.
  */
 export function instanceOfModuleEntry(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "itemContent" in value;
-
-    return isInstance;
+    if (!('itemContent' in value)) return false;
+    return true;
 }
 
 export function ModuleEntryFromJSON(json: any): ModuleEntry {
@@ -73,29 +71,26 @@ export function ModuleEntryFromJSON(json: any): ModuleEntry {
 }
 
 export function ModuleEntryFromJSONTyped(json: any, ignoreDiscriminator: boolean): ModuleEntry {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'clientEventInfo': !exists(json, 'clientEventInfo') ? undefined : ClientEventInfoFromJSON(json['clientEventInfo']),
-        'feedbackInfo': !exists(json, 'feedbackInfo') ? undefined : FeedbackInfoFromJSON(json['feedbackInfo']),
+        'clientEventInfo': json['clientEventInfo'] == null ? undefined : ClientEventInfoFromJSON(json['clientEventInfo']),
+        'feedbackInfo': json['feedbackInfo'] == null ? undefined : FeedbackInfoFromJSON(json['feedbackInfo']),
         'itemContent': ItemContentUnionFromJSON(json['itemContent']),
     };
 }
 
 export function ModuleEntryToJSON(value?: ModuleEntry | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'clientEventInfo': ClientEventInfoToJSON(value.clientEventInfo),
-        'feedbackInfo': FeedbackInfoToJSON(value.feedbackInfo),
-        'itemContent': ItemContentUnionToJSON(value.itemContent),
+        'clientEventInfo': ClientEventInfoToJSON(value['clientEventInfo']),
+        'feedbackInfo': FeedbackInfoToJSON(value['feedbackInfo']),
+        'itemContent': ItemContentUnionToJSON(value['itemContent']),
     };
 }
 

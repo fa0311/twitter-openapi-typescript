@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -43,12 +43,10 @@ export interface Timestamp {
  * Check if a given object implements the Timestamp interface.
  */
 export function instanceOfTimestamp(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "indices" in value;
-    isInstance = isInstance && "seconds" in value;
-    isInstance = isInstance && "text" in value;
-
-    return isInstance;
+    if (!('indices' in value)) return false;
+    if (!('seconds' in value)) return false;
+    if (!('text' in value)) return false;
+    return true;
 }
 
 export function TimestampFromJSON(json: any): Timestamp {
@@ -56,7 +54,7 @@ export function TimestampFromJSON(json: any): Timestamp {
 }
 
 export function TimestampFromJSONTyped(json: any, ignoreDiscriminator: boolean): Timestamp {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -68,17 +66,14 @@ export function TimestampFromJSONTyped(json: any, ignoreDiscriminator: boolean):
 }
 
 export function TimestampToJSON(value?: Timestamp | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'indices': value.indices,
-        'seconds': value.seconds,
-        'text': value.text,
+        'indices': value['indices'],
+        'seconds': value['seconds'],
+        'text': value['text'],
     };
 }
 

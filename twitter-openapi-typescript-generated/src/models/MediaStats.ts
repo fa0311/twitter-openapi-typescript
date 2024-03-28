@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -31,10 +31,8 @@ export interface MediaStats {
  * Check if a given object implements the MediaStats interface.
  */
 export function instanceOfMediaStats(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "viewCount" in value;
-
-    return isInstance;
+    if (!('viewCount' in value)) return false;
+    return true;
 }
 
 export function MediaStatsFromJSON(json: any): MediaStats {
@@ -42,7 +40,7 @@ export function MediaStatsFromJSON(json: any): MediaStats {
 }
 
 export function MediaStatsFromJSONTyped(json: any, ignoreDiscriminator: boolean): MediaStats {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -52,15 +50,12 @@ export function MediaStatsFromJSONTyped(json: any, ignoreDiscriminator: boolean)
 }
 
 export function MediaStatsToJSON(value?: MediaStats | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'viewCount': value.viewCount,
+        'viewCount': value['viewCount'],
     };
 }
 

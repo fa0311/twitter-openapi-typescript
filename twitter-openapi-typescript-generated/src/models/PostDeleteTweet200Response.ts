@@ -39,18 +39,15 @@ export function PostDeleteTweet200ResponseFromJSON(json: any): PostDeleteTweet20
 }
 
 export function PostDeleteTweet200ResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): PostDeleteTweet200Response {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return { ...DeleteTweetResponseFromJSONTyped(json, true), ...ErrorsFromJSONTyped(json, true) };
 }
 
 export function PostDeleteTweet200ResponseToJSON(value?: PostDeleteTweet200Response | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
 
     if (instanceOfDeleteTweetResponse(value)) {

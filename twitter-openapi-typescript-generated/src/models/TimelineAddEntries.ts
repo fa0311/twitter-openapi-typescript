@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { InstructionType } from './InstructionType';
 import {
     InstructionTypeFromJSON,
@@ -50,11 +50,9 @@ export interface TimelineAddEntries {
  * Check if a given object implements the TimelineAddEntries interface.
  */
 export function instanceOfTimelineAddEntries(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "entries" in value;
-    isInstance = isInstance && "type" in value;
-
-    return isInstance;
+    if (!('entries' in value)) return false;
+    if (!('type' in value)) return false;
+    return true;
 }
 
 export function TimelineAddEntriesFromJSON(json: any): TimelineAddEntries {
@@ -62,7 +60,7 @@ export function TimelineAddEntriesFromJSON(json: any): TimelineAddEntries {
 }
 
 export function TimelineAddEntriesFromJSONTyped(json: any, ignoreDiscriminator: boolean): TimelineAddEntries {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -73,16 +71,13 @@ export function TimelineAddEntriesFromJSONTyped(json: any, ignoreDiscriminator: 
 }
 
 export function TimelineAddEntriesToJSON(value?: TimelineAddEntries | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'entries': ((value.entries as Array<any>).map(TimelineAddEntryToJSON)),
-        'type': InstructionTypeToJSON(value.type),
+        'entries': ((value['entries'] as Array<any>).map(TimelineAddEntryToJSON)),
+        'type': InstructionTypeToJSON(value['type']),
     };
 }
 

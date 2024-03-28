@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { DeleteRetweetResponseData } from './DeleteRetweetResponseData';
 import {
     DeleteRetweetResponseDataFromJSON,
@@ -38,10 +38,8 @@ export interface DeleteRetweetResponse {
  * Check if a given object implements the DeleteRetweetResponse interface.
  */
 export function instanceOfDeleteRetweetResponse(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "data" in value;
-
-    return isInstance;
+    if (!('data' in value)) return false;
+    return true;
 }
 
 export function DeleteRetweetResponseFromJSON(json: any): DeleteRetweetResponse {
@@ -49,7 +47,7 @@ export function DeleteRetweetResponseFromJSON(json: any): DeleteRetweetResponse 
 }
 
 export function DeleteRetweetResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): DeleteRetweetResponse {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -59,15 +57,12 @@ export function DeleteRetweetResponseFromJSONTyped(json: any, ignoreDiscriminato
 }
 
 export function DeleteRetweetResponseToJSON(value?: DeleteRetweetResponse | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'data': DeleteRetweetResponseDataToJSON(value.data),
+        'data': DeleteRetweetResponseDataToJSON(value['data']),
     };
 }
 

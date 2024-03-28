@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { ContentItemType } from './ContentItemType';
 import {
     ContentItemTypeFromJSON,
@@ -92,13 +92,11 @@ export type TimelineUserUserDisplayTypeEnum = typeof TimelineUserUserDisplayType
  * Check if a given object implements the TimelineUser interface.
  */
 export function instanceOfTimelineUser(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "typename" in value;
-    isInstance = isInstance && "itemType" in value;
-    isInstance = isInstance && "userDisplayType" in value;
-    isInstance = isInstance && "userResults" in value;
-
-    return isInstance;
+    if (!('typename' in value)) return false;
+    if (!('itemType' in value)) return false;
+    if (!('userDisplayType' in value)) return false;
+    if (!('userResults' in value)) return false;
+    return true;
 }
 
 export function TimelineUserFromJSON(json: any): TimelineUser {
@@ -106,33 +104,30 @@ export function TimelineUserFromJSON(json: any): TimelineUser {
 }
 
 export function TimelineUserFromJSONTyped(json: any, ignoreDiscriminator: boolean): TimelineUser {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
         'typename': TypeNameFromJSON(json['__typename']),
         'itemType': ContentItemTypeFromJSON(json['itemType']),
-        'socialContext': !exists(json, 'socialContext') ? undefined : SocialContextUnionFromJSON(json['socialContext']),
+        'socialContext': json['socialContext'] == null ? undefined : SocialContextUnionFromJSON(json['socialContext']),
         'userDisplayType': json['userDisplayType'],
         'userResults': UserResultsFromJSON(json['user_results']),
     };
 }
 
 export function TimelineUserToJSON(value?: TimelineUser | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        '__typename': TypeNameToJSON(value.typename),
-        'itemType': ContentItemTypeToJSON(value.itemType),
-        'socialContext': SocialContextUnionToJSON(value.socialContext),
-        'userDisplayType': value.userDisplayType,
-        'user_results': UserResultsToJSON(value.userResults),
+        '__typename': TypeNameToJSON(value['typename']),
+        'itemType': ContentItemTypeToJSON(value['itemType']),
+        'socialContext': SocialContextUnionToJSON(value['socialContext']),
+        'userDisplayType': value['userDisplayType'],
+        'user_results': UserResultsToJSON(value['userResults']),
     };
 }
 

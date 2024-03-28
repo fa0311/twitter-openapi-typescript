@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { TypeName } from './TypeName';
 import {
     TypeNameFromJSON,
@@ -54,11 +54,9 @@ export type CommunityDeleteActionResultReasonEnum = typeof CommunityDeleteAction
  * Check if a given object implements the CommunityDeleteActionResult interface.
  */
 export function instanceOfCommunityDeleteActionResult(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "typename" in value;
-    isInstance = isInstance && "reason" in value;
-
-    return isInstance;
+    if (!('typename' in value)) return false;
+    if (!('reason' in value)) return false;
+    return true;
 }
 
 export function CommunityDeleteActionResultFromJSON(json: any): CommunityDeleteActionResult {
@@ -66,7 +64,7 @@ export function CommunityDeleteActionResultFromJSON(json: any): CommunityDeleteA
 }
 
 export function CommunityDeleteActionResultFromJSONTyped(json: any, ignoreDiscriminator: boolean): CommunityDeleteActionResult {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -77,16 +75,13 @@ export function CommunityDeleteActionResultFromJSONTyped(json: any, ignoreDiscri
 }
 
 export function CommunityDeleteActionResultToJSON(value?: CommunityDeleteActionResult | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        '__typename': TypeNameToJSON(value.typename),
-        'reason': value.reason,
+        '__typename': TypeNameToJSON(value['typename']),
+        'reason': value['reason'],
     };
 }
 

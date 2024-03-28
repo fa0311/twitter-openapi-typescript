@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { SuperFollowsReplyUserResultData } from './SuperFollowsReplyUserResultData';
 import {
     SuperFollowsReplyUserResultDataFromJSON,
@@ -38,10 +38,8 @@ export interface SuperFollowsReplyUserResult {
  * Check if a given object implements the SuperFollowsReplyUserResult interface.
  */
 export function instanceOfSuperFollowsReplyUserResult(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "result" in value;
-
-    return isInstance;
+    if (!('result' in value)) return false;
+    return true;
 }
 
 export function SuperFollowsReplyUserResultFromJSON(json: any): SuperFollowsReplyUserResult {
@@ -49,7 +47,7 @@ export function SuperFollowsReplyUserResultFromJSON(json: any): SuperFollowsRepl
 }
 
 export function SuperFollowsReplyUserResultFromJSONTyped(json: any, ignoreDiscriminator: boolean): SuperFollowsReplyUserResult {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -59,15 +57,12 @@ export function SuperFollowsReplyUserResultFromJSONTyped(json: any, ignoreDiscri
 }
 
 export function SuperFollowsReplyUserResultToJSON(value?: SuperFollowsReplyUserResult | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'result': SuperFollowsReplyUserResultDataToJSON(value.result),
+        'result': SuperFollowsReplyUserResultDataToJSON(value['result']),
     };
 }
 

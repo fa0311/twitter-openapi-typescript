@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { SearchByRawQuery } from './SearchByRawQuery';
 import {
     SearchByRawQueryFromJSON,
@@ -38,10 +38,8 @@ export interface SearchTimelineData {
  * Check if a given object implements the SearchTimelineData interface.
  */
 export function instanceOfSearchTimelineData(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "searchByRawQuery" in value;
-
-    return isInstance;
+    if (!('searchByRawQuery' in value)) return false;
+    return true;
 }
 
 export function SearchTimelineDataFromJSON(json: any): SearchTimelineData {
@@ -49,7 +47,7 @@ export function SearchTimelineDataFromJSON(json: any): SearchTimelineData {
 }
 
 export function SearchTimelineDataFromJSONTyped(json: any, ignoreDiscriminator: boolean): SearchTimelineData {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -59,15 +57,12 @@ export function SearchTimelineDataFromJSONTyped(json: any, ignoreDiscriminator: 
 }
 
 export function SearchTimelineDataToJSON(value?: SearchTimelineData | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'search_by_raw_query': SearchByRawQueryToJSON(value.searchByRawQuery),
+        'search_by_raw_query': SearchByRawQueryToJSON(value['searchByRawQuery']),
     };
 }
 

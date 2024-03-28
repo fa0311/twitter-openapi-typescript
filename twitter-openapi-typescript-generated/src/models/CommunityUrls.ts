@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { CommunityUrlsPermalink } from './CommunityUrlsPermalink';
 import {
     CommunityUrlsPermalinkFromJSON,
@@ -38,10 +38,8 @@ export interface CommunityUrls {
  * Check if a given object implements the CommunityUrls interface.
  */
 export function instanceOfCommunityUrls(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "permalink" in value;
-
-    return isInstance;
+    if (!('permalink' in value)) return false;
+    return true;
 }
 
 export function CommunityUrlsFromJSON(json: any): CommunityUrls {
@@ -49,7 +47,7 @@ export function CommunityUrlsFromJSON(json: any): CommunityUrls {
 }
 
 export function CommunityUrlsFromJSONTyped(json: any, ignoreDiscriminator: boolean): CommunityUrls {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -59,15 +57,12 @@ export function CommunityUrlsFromJSONTyped(json: any, ignoreDiscriminator: boole
 }
 
 export function CommunityUrlsToJSON(value?: CommunityUrls | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'permalink': CommunityUrlsPermalinkToJSON(value.permalink),
+        'permalink': CommunityUrlsPermalinkToJSON(value['permalink']),
     };
 }
 

@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -43,12 +43,10 @@ export interface BirdwatchPivotCallToAction {
  * Check if a given object implements the BirdwatchPivotCallToAction interface.
  */
 export function instanceOfBirdwatchPivotCallToAction(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "destinationUrl" in value;
-    isInstance = isInstance && "prompt" in value;
-    isInstance = isInstance && "title" in value;
-
-    return isInstance;
+    if (!('destinationUrl' in value)) return false;
+    if (!('prompt' in value)) return false;
+    if (!('title' in value)) return false;
+    return true;
 }
 
 export function BirdwatchPivotCallToActionFromJSON(json: any): BirdwatchPivotCallToAction {
@@ -56,7 +54,7 @@ export function BirdwatchPivotCallToActionFromJSON(json: any): BirdwatchPivotCal
 }
 
 export function BirdwatchPivotCallToActionFromJSONTyped(json: any, ignoreDiscriminator: boolean): BirdwatchPivotCallToAction {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -68,17 +66,14 @@ export function BirdwatchPivotCallToActionFromJSONTyped(json: any, ignoreDiscrim
 }
 
 export function BirdwatchPivotCallToActionToJSON(value?: BirdwatchPivotCallToAction | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'destinationUrl': value.destinationUrl,
-        'prompt': value.prompt,
-        'title': value.title,
+        'destinationUrl': value['destinationUrl'],
+        'prompt': value['prompt'],
+        'title': value['title'],
     };
 }
 

@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { SocialContextLandingUrl } from './SocialContextLandingUrl';
 import {
     SocialContextLandingUrlFromJSON,
@@ -78,9 +78,7 @@ export type TimelineGeneralContextContextTypeEnum = typeof TimelineGeneralContex
  * Check if a given object implements the TimelineGeneralContext interface.
  */
 export function instanceOfTimelineGeneralContext(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+    return true;
 }
 
 export function TimelineGeneralContextFromJSON(json: any): TimelineGeneralContext {
@@ -88,31 +86,28 @@ export function TimelineGeneralContextFromJSON(json: any): TimelineGeneralContex
 }
 
 export function TimelineGeneralContextFromJSONTyped(json: any, ignoreDiscriminator: boolean): TimelineGeneralContext {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'contextType': !exists(json, 'contextType') ? undefined : json['contextType'],
-        'landingUrl': !exists(json, 'landingUrl') ? undefined : SocialContextLandingUrlFromJSON(json['landingUrl']),
-        'text': !exists(json, 'text') ? undefined : json['text'],
-        'type': !exists(json, 'type') ? undefined : SocialContextUnionTypeFromJSON(json['type']),
+        'contextType': json['contextType'] == null ? undefined : json['contextType'],
+        'landingUrl': json['landingUrl'] == null ? undefined : SocialContextLandingUrlFromJSON(json['landingUrl']),
+        'text': json['text'] == null ? undefined : json['text'],
+        'type': json['type'] == null ? undefined : SocialContextUnionTypeFromJSON(json['type']),
     };
 }
 
 export function TimelineGeneralContextToJSON(value?: TimelineGeneralContext | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'contextType': value.contextType,
-        'landingUrl': SocialContextLandingUrlToJSON(value.landingUrl),
-        'text': value.text,
-        'type': SocialContextUnionTypeToJSON(value.type),
+        'contextType': value['contextType'],
+        'landingUrl': SocialContextLandingUrlToJSON(value['landingUrl']),
+        'text': value['text'],
+        'type': SocialContextUnionTypeToJSON(value['type']),
     };
 }
 

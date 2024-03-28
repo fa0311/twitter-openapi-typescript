@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { UserVerificationInfoReason } from './UserVerificationInfoReason';
 import {
     UserVerificationInfoReasonFromJSON,
@@ -44,10 +44,8 @@ export interface UserVerificationInfo {
  * Check if a given object implements the UserVerificationInfo interface.
  */
 export function instanceOfUserVerificationInfo(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "isIdentityVerified" in value;
-
-    return isInstance;
+    if (!('isIdentityVerified' in value)) return false;
+    return true;
 }
 
 export function UserVerificationInfoFromJSON(json: any): UserVerificationInfo {
@@ -55,27 +53,24 @@ export function UserVerificationInfoFromJSON(json: any): UserVerificationInfo {
 }
 
 export function UserVerificationInfoFromJSONTyped(json: any, ignoreDiscriminator: boolean): UserVerificationInfo {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
         'isIdentityVerified': json['is_identity_verified'],
-        'reason': !exists(json, 'reason') ? undefined : UserVerificationInfoReasonFromJSON(json['reason']),
+        'reason': json['reason'] == null ? undefined : UserVerificationInfoReasonFromJSON(json['reason']),
     };
 }
 
 export function UserVerificationInfoToJSON(value?: UserVerificationInfo | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'is_identity_verified': value.isIdentityVerified,
-        'reason': UserVerificationInfoReasonToJSON(value.reason),
+        'is_identity_verified': value['isIdentityVerified'],
+        'reason': UserVerificationInfoReasonToJSON(value['reason']),
     };
 }
 

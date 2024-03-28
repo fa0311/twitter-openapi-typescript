@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { UserVerificationInfoReasonDescription } from './UserVerificationInfoReasonDescription';
 import {
     UserVerificationInfoReasonDescriptionFromJSON,
@@ -50,12 +50,10 @@ export interface UserVerificationInfoReason {
  * Check if a given object implements the UserVerificationInfoReason interface.
  */
 export function instanceOfUserVerificationInfoReason(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "description" in value;
-    isInstance = isInstance && "overrideVerifiedYear" in value;
-    isInstance = isInstance && "verifiedSinceMsec" in value;
-
-    return isInstance;
+    if (!('description' in value)) return false;
+    if (!('overrideVerifiedYear' in value)) return false;
+    if (!('verifiedSinceMsec' in value)) return false;
+    return true;
 }
 
 export function UserVerificationInfoReasonFromJSON(json: any): UserVerificationInfoReason {
@@ -63,7 +61,7 @@ export function UserVerificationInfoReasonFromJSON(json: any): UserVerificationI
 }
 
 export function UserVerificationInfoReasonFromJSONTyped(json: any, ignoreDiscriminator: boolean): UserVerificationInfoReason {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -75,17 +73,14 @@ export function UserVerificationInfoReasonFromJSONTyped(json: any, ignoreDiscrim
 }
 
 export function UserVerificationInfoReasonToJSON(value?: UserVerificationInfoReason | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'description': UserVerificationInfoReasonDescriptionToJSON(value.description),
-        'override_verified_year': value.overrideVerifiedYear,
-        'verified_since_msec': value.verifiedSinceMsec,
+        'description': UserVerificationInfoReasonDescriptionToJSON(value['description']),
+        'override_verified_year': value['overrideVerifiedYear'],
+        'verified_since_msec': value['verifiedSinceMsec'],
     };
 }
 

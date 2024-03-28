@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -31,10 +31,8 @@ export interface Callback {
  * Check if a given object implements the Callback interface.
  */
 export function instanceOfCallback(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "endpoint" in value;
-
-    return isInstance;
+    if (!('endpoint' in value)) return false;
+    return true;
 }
 
 export function CallbackFromJSON(json: any): Callback {
@@ -42,7 +40,7 @@ export function CallbackFromJSON(json: any): Callback {
 }
 
 export function CallbackFromJSONTyped(json: any, ignoreDiscriminator: boolean): Callback {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -52,15 +50,12 @@ export function CallbackFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
 }
 
 export function CallbackToJSON(value?: Callback | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'endpoint': value.endpoint,
+        'endpoint': value['endpoint'],
     };
 }
 

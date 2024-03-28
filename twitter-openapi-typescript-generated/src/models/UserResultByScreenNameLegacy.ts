@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -67,9 +67,7 @@ export interface UserResultByScreenNameLegacy {
  * Check if a given object implements the UserResultByScreenNameLegacy interface.
  */
 export function instanceOfUserResultByScreenNameLegacy(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+    return true;
 }
 
 export function UserResultByScreenNameLegacyFromJSON(json: any): UserResultByScreenNameLegacy {
@@ -77,37 +75,34 @@ export function UserResultByScreenNameLegacyFromJSON(json: any): UserResultByScr
 }
 
 export function UserResultByScreenNameLegacyFromJSONTyped(json: any, ignoreDiscriminator: boolean): UserResultByScreenNameLegacy {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'blockedBy': !exists(json, 'blocked_by') ? undefined : json['blocked_by'],
-        'blocking': !exists(json, 'blocking') ? undefined : json['blocking'],
-        'followedBy': !exists(json, 'followed_by') ? undefined : json['followed_by'],
-        'following': !exists(json, 'following') ? undefined : json['following'],
-        'name': !exists(json, 'name') ? undefined : json['name'],
-        '_protected': !exists(json, 'protected') ? undefined : json['protected'],
-        'screenName': !exists(json, 'screen_name') ? undefined : json['screen_name'],
+        'blockedBy': json['blocked_by'] == null ? undefined : json['blocked_by'],
+        'blocking': json['blocking'] == null ? undefined : json['blocking'],
+        'followedBy': json['followed_by'] == null ? undefined : json['followed_by'],
+        'following': json['following'] == null ? undefined : json['following'],
+        'name': json['name'] == null ? undefined : json['name'],
+        '_protected': json['protected'] == null ? undefined : json['protected'],
+        'screenName': json['screen_name'] == null ? undefined : json['screen_name'],
     };
 }
 
 export function UserResultByScreenNameLegacyToJSON(value?: UserResultByScreenNameLegacy | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'blocked_by': value.blockedBy,
-        'blocking': value.blocking,
-        'followed_by': value.followedBy,
-        'following': value.following,
-        'name': value.name,
-        'protected': value._protected,
-        'screen_name': value.screenName,
+        'blocked_by': value['blockedBy'],
+        'blocking': value['blocking'],
+        'followed_by': value['followedBy'],
+        'following': value['following'],
+        'name': value['name'],
+        'protected': value['_protected'],
+        'screen_name': value['screenName'],
     };
 }
 

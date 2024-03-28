@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -43,11 +43,9 @@ export interface CommunityRule {
  * Check if a given object implements the CommunityRule interface.
  */
 export function instanceOfCommunityRule(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "name" in value;
-    isInstance = isInstance && "restId" in value;
-
-    return isInstance;
+    if (!('name' in value)) return false;
+    if (!('restId' in value)) return false;
+    return true;
 }
 
 export function CommunityRuleFromJSON(json: any): CommunityRule {
@@ -55,29 +53,26 @@ export function CommunityRuleFromJSON(json: any): CommunityRule {
 }
 
 export function CommunityRuleFromJSONTyped(json: any, ignoreDiscriminator: boolean): CommunityRule {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'description': !exists(json, 'description') ? undefined : json['description'],
+        'description': json['description'] == null ? undefined : json['description'],
         'name': json['name'],
         'restId': json['rest_id'],
     };
 }
 
 export function CommunityRuleToJSON(value?: CommunityRule | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'description': value.description,
-        'name': value.name,
-        'rest_id': value.restId,
+        'description': value['description'],
+        'name': value['name'],
+        'rest_id': value['restId'],
     };
 }
 

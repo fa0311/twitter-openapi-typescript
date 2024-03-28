@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { TweetRetweetersResponseData } from './TweetRetweetersResponseData';
 import {
     TweetRetweetersResponseDataFromJSON,
@@ -38,10 +38,8 @@ export interface TweetRetweetersResponse {
  * Check if a given object implements the TweetRetweetersResponse interface.
  */
 export function instanceOfTweetRetweetersResponse(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "data" in value;
-
-    return isInstance;
+    if (!('data' in value)) return false;
+    return true;
 }
 
 export function TweetRetweetersResponseFromJSON(json: any): TweetRetweetersResponse {
@@ -49,7 +47,7 @@ export function TweetRetweetersResponseFromJSON(json: any): TweetRetweetersRespo
 }
 
 export function TweetRetweetersResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): TweetRetweetersResponse {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -59,15 +57,12 @@ export function TweetRetweetersResponseFromJSONTyped(json: any, ignoreDiscrimina
 }
 
 export function TweetRetweetersResponseToJSON(value?: TweetRetweetersResponse | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'data': TweetRetweetersResponseDataToJSON(value.data),
+        'data': TweetRetweetersResponseDataToJSON(value['data']),
     };
 }
 

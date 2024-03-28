@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -31,10 +31,8 @@ export interface UserValue {
  * Check if a given object implements the UserValue interface.
  */
 export function instanceOfUserValue(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "idStr" in value;
-
-    return isInstance;
+    if (!('idStr' in value)) return false;
+    return true;
 }
 
 export function UserValueFromJSON(json: any): UserValue {
@@ -42,7 +40,7 @@ export function UserValueFromJSON(json: any): UserValue {
 }
 
 export function UserValueFromJSONTyped(json: any, ignoreDiscriminator: boolean): UserValue {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -52,15 +50,12 @@ export function UserValueFromJSONTyped(json: any, ignoreDiscriminator: boolean):
 }
 
 export function UserValueToJSON(value?: UserValue | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'id_str': value.idStr,
+        'id_str': value['idStr'],
     };
 }
 

@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { UserTweetsUser } from './UserTweetsUser';
 import {
     UserTweetsUserFromJSON,
@@ -38,10 +38,8 @@ export interface UserTweetsData {
  * Check if a given object implements the UserTweetsData interface.
  */
 export function instanceOfUserTweetsData(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "user" in value;
-
-    return isInstance;
+    if (!('user' in value)) return false;
+    return true;
 }
 
 export function UserTweetsDataFromJSON(json: any): UserTweetsData {
@@ -49,7 +47,7 @@ export function UserTweetsDataFromJSON(json: any): UserTweetsData {
 }
 
 export function UserTweetsDataFromJSONTyped(json: any, ignoreDiscriminator: boolean): UserTweetsData {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -59,15 +57,12 @@ export function UserTweetsDataFromJSONTyped(json: any, ignoreDiscriminator: bool
 }
 
 export function UserTweetsDataToJSON(value?: UserTweetsData | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'user': UserTweetsUserToJSON(value.user),
+        'user': UserTweetsUserToJSON(value['user']),
     };
 }
 

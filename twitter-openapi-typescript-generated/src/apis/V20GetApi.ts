@@ -64,302 +64,413 @@ export class V20GetApi extends runtime.BaseAPI {
      * get search adaptive
      */
     async getSearchAdaptiveRaw(requestParameters: GetSearchAdaptiveRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.includeProfileInterstitialType === null || requestParameters.includeProfileInterstitialType === undefined) {
-            throw new runtime.RequiredError('includeProfileInterstitialType','Required parameter requestParameters.includeProfileInterstitialType was null or undefined when calling getSearchAdaptive.');
+        if (requestParameters['includeProfileInterstitialType'] == null) {
+            throw new runtime.RequiredError(
+                'includeProfileInterstitialType',
+                'Required parameter "includeProfileInterstitialType" was null or undefined when calling getSearchAdaptive().'
+            );
         }
 
-        if (requestParameters.includeBlocking === null || requestParameters.includeBlocking === undefined) {
-            throw new runtime.RequiredError('includeBlocking','Required parameter requestParameters.includeBlocking was null or undefined when calling getSearchAdaptive.');
+        if (requestParameters['includeBlocking'] == null) {
+            throw new runtime.RequiredError(
+                'includeBlocking',
+                'Required parameter "includeBlocking" was null or undefined when calling getSearchAdaptive().'
+            );
         }
 
-        if (requestParameters.includeBlockedBy === null || requestParameters.includeBlockedBy === undefined) {
-            throw new runtime.RequiredError('includeBlockedBy','Required parameter requestParameters.includeBlockedBy was null or undefined when calling getSearchAdaptive.');
+        if (requestParameters['includeBlockedBy'] == null) {
+            throw new runtime.RequiredError(
+                'includeBlockedBy',
+                'Required parameter "includeBlockedBy" was null or undefined when calling getSearchAdaptive().'
+            );
         }
 
-        if (requestParameters.includeFollowedBy === null || requestParameters.includeFollowedBy === undefined) {
-            throw new runtime.RequiredError('includeFollowedBy','Required parameter requestParameters.includeFollowedBy was null or undefined when calling getSearchAdaptive.');
+        if (requestParameters['includeFollowedBy'] == null) {
+            throw new runtime.RequiredError(
+                'includeFollowedBy',
+                'Required parameter "includeFollowedBy" was null or undefined when calling getSearchAdaptive().'
+            );
         }
 
-        if (requestParameters.includeWantRetweets === null || requestParameters.includeWantRetweets === undefined) {
-            throw new runtime.RequiredError('includeWantRetweets','Required parameter requestParameters.includeWantRetweets was null or undefined when calling getSearchAdaptive.');
+        if (requestParameters['includeWantRetweets'] == null) {
+            throw new runtime.RequiredError(
+                'includeWantRetweets',
+                'Required parameter "includeWantRetweets" was null or undefined when calling getSearchAdaptive().'
+            );
         }
 
-        if (requestParameters.includeMuteEdge === null || requestParameters.includeMuteEdge === undefined) {
-            throw new runtime.RequiredError('includeMuteEdge','Required parameter requestParameters.includeMuteEdge was null or undefined when calling getSearchAdaptive.');
+        if (requestParameters['includeMuteEdge'] == null) {
+            throw new runtime.RequiredError(
+                'includeMuteEdge',
+                'Required parameter "includeMuteEdge" was null or undefined when calling getSearchAdaptive().'
+            );
         }
 
-        if (requestParameters.includeCanDm === null || requestParameters.includeCanDm === undefined) {
-            throw new runtime.RequiredError('includeCanDm','Required parameter requestParameters.includeCanDm was null or undefined when calling getSearchAdaptive.');
+        if (requestParameters['includeCanDm'] == null) {
+            throw new runtime.RequiredError(
+                'includeCanDm',
+                'Required parameter "includeCanDm" was null or undefined when calling getSearchAdaptive().'
+            );
         }
 
-        if (requestParameters.includeCanMediaTag === null || requestParameters.includeCanMediaTag === undefined) {
-            throw new runtime.RequiredError('includeCanMediaTag','Required parameter requestParameters.includeCanMediaTag was null or undefined when calling getSearchAdaptive.');
+        if (requestParameters['includeCanMediaTag'] == null) {
+            throw new runtime.RequiredError(
+                'includeCanMediaTag',
+                'Required parameter "includeCanMediaTag" was null or undefined when calling getSearchAdaptive().'
+            );
         }
 
-        if (requestParameters.includeExtHasNftAvatar === null || requestParameters.includeExtHasNftAvatar === undefined) {
-            throw new runtime.RequiredError('includeExtHasNftAvatar','Required parameter requestParameters.includeExtHasNftAvatar was null or undefined when calling getSearchAdaptive.');
+        if (requestParameters['includeExtHasNftAvatar'] == null) {
+            throw new runtime.RequiredError(
+                'includeExtHasNftAvatar',
+                'Required parameter "includeExtHasNftAvatar" was null or undefined when calling getSearchAdaptive().'
+            );
         }
 
-        if (requestParameters.includeExtIsBlueVerified === null || requestParameters.includeExtIsBlueVerified === undefined) {
-            throw new runtime.RequiredError('includeExtIsBlueVerified','Required parameter requestParameters.includeExtIsBlueVerified was null or undefined when calling getSearchAdaptive.');
+        if (requestParameters['includeExtIsBlueVerified'] == null) {
+            throw new runtime.RequiredError(
+                'includeExtIsBlueVerified',
+                'Required parameter "includeExtIsBlueVerified" was null or undefined when calling getSearchAdaptive().'
+            );
         }
 
-        if (requestParameters.includeExtVerifiedType === null || requestParameters.includeExtVerifiedType === undefined) {
-            throw new runtime.RequiredError('includeExtVerifiedType','Required parameter requestParameters.includeExtVerifiedType was null or undefined when calling getSearchAdaptive.');
+        if (requestParameters['includeExtVerifiedType'] == null) {
+            throw new runtime.RequiredError(
+                'includeExtVerifiedType',
+                'Required parameter "includeExtVerifiedType" was null or undefined when calling getSearchAdaptive().'
+            );
         }
 
-        if (requestParameters.includeExtProfileImageShape === null || requestParameters.includeExtProfileImageShape === undefined) {
-            throw new runtime.RequiredError('includeExtProfileImageShape','Required parameter requestParameters.includeExtProfileImageShape was null or undefined when calling getSearchAdaptive.');
+        if (requestParameters['includeExtProfileImageShape'] == null) {
+            throw new runtime.RequiredError(
+                'includeExtProfileImageShape',
+                'Required parameter "includeExtProfileImageShape" was null or undefined when calling getSearchAdaptive().'
+            );
         }
 
-        if (requestParameters.skipStatus === null || requestParameters.skipStatus === undefined) {
-            throw new runtime.RequiredError('skipStatus','Required parameter requestParameters.skipStatus was null or undefined when calling getSearchAdaptive.');
+        if (requestParameters['skipStatus'] == null) {
+            throw new runtime.RequiredError(
+                'skipStatus',
+                'Required parameter "skipStatus" was null or undefined when calling getSearchAdaptive().'
+            );
         }
 
-        if (requestParameters.cardsPlatform === null || requestParameters.cardsPlatform === undefined) {
-            throw new runtime.RequiredError('cardsPlatform','Required parameter requestParameters.cardsPlatform was null or undefined when calling getSearchAdaptive.');
+        if (requestParameters['cardsPlatform'] == null) {
+            throw new runtime.RequiredError(
+                'cardsPlatform',
+                'Required parameter "cardsPlatform" was null or undefined when calling getSearchAdaptive().'
+            );
         }
 
-        if (requestParameters.includeCards === null || requestParameters.includeCards === undefined) {
-            throw new runtime.RequiredError('includeCards','Required parameter requestParameters.includeCards was null or undefined when calling getSearchAdaptive.');
+        if (requestParameters['includeCards'] == null) {
+            throw new runtime.RequiredError(
+                'includeCards',
+                'Required parameter "includeCards" was null or undefined when calling getSearchAdaptive().'
+            );
         }
 
-        if (requestParameters.includeExtAltText === null || requestParameters.includeExtAltText === undefined) {
-            throw new runtime.RequiredError('includeExtAltText','Required parameter requestParameters.includeExtAltText was null or undefined when calling getSearchAdaptive.');
+        if (requestParameters['includeExtAltText'] == null) {
+            throw new runtime.RequiredError(
+                'includeExtAltText',
+                'Required parameter "includeExtAltText" was null or undefined when calling getSearchAdaptive().'
+            );
         }
 
-        if (requestParameters.includeExtLimitedActionResults === null || requestParameters.includeExtLimitedActionResults === undefined) {
-            throw new runtime.RequiredError('includeExtLimitedActionResults','Required parameter requestParameters.includeExtLimitedActionResults was null or undefined when calling getSearchAdaptive.');
+        if (requestParameters['includeExtLimitedActionResults'] == null) {
+            throw new runtime.RequiredError(
+                'includeExtLimitedActionResults',
+                'Required parameter "includeExtLimitedActionResults" was null or undefined when calling getSearchAdaptive().'
+            );
         }
 
-        if (requestParameters.includeQuoteCount === null || requestParameters.includeQuoteCount === undefined) {
-            throw new runtime.RequiredError('includeQuoteCount','Required parameter requestParameters.includeQuoteCount was null or undefined when calling getSearchAdaptive.');
+        if (requestParameters['includeQuoteCount'] == null) {
+            throw new runtime.RequiredError(
+                'includeQuoteCount',
+                'Required parameter "includeQuoteCount" was null or undefined when calling getSearchAdaptive().'
+            );
         }
 
-        if (requestParameters.includeReplyCount === null || requestParameters.includeReplyCount === undefined) {
-            throw new runtime.RequiredError('includeReplyCount','Required parameter requestParameters.includeReplyCount was null or undefined when calling getSearchAdaptive.');
+        if (requestParameters['includeReplyCount'] == null) {
+            throw new runtime.RequiredError(
+                'includeReplyCount',
+                'Required parameter "includeReplyCount" was null or undefined when calling getSearchAdaptive().'
+            );
         }
 
-        if (requestParameters.tweetMode === null || requestParameters.tweetMode === undefined) {
-            throw new runtime.RequiredError('tweetMode','Required parameter requestParameters.tweetMode was null or undefined when calling getSearchAdaptive.');
+        if (requestParameters['tweetMode'] == null) {
+            throw new runtime.RequiredError(
+                'tweetMode',
+                'Required parameter "tweetMode" was null or undefined when calling getSearchAdaptive().'
+            );
         }
 
-        if (requestParameters.includeExtViews === null || requestParameters.includeExtViews === undefined) {
-            throw new runtime.RequiredError('includeExtViews','Required parameter requestParameters.includeExtViews was null or undefined when calling getSearchAdaptive.');
+        if (requestParameters['includeExtViews'] == null) {
+            throw new runtime.RequiredError(
+                'includeExtViews',
+                'Required parameter "includeExtViews" was null or undefined when calling getSearchAdaptive().'
+            );
         }
 
-        if (requestParameters.includeEntities === null || requestParameters.includeEntities === undefined) {
-            throw new runtime.RequiredError('includeEntities','Required parameter requestParameters.includeEntities was null or undefined when calling getSearchAdaptive.');
+        if (requestParameters['includeEntities'] == null) {
+            throw new runtime.RequiredError(
+                'includeEntities',
+                'Required parameter "includeEntities" was null or undefined when calling getSearchAdaptive().'
+            );
         }
 
-        if (requestParameters.includeUserEntities === null || requestParameters.includeUserEntities === undefined) {
-            throw new runtime.RequiredError('includeUserEntities','Required parameter requestParameters.includeUserEntities was null or undefined when calling getSearchAdaptive.');
+        if (requestParameters['includeUserEntities'] == null) {
+            throw new runtime.RequiredError(
+                'includeUserEntities',
+                'Required parameter "includeUserEntities" was null or undefined when calling getSearchAdaptive().'
+            );
         }
 
-        if (requestParameters.includeExtMediaColor === null || requestParameters.includeExtMediaColor === undefined) {
-            throw new runtime.RequiredError('includeExtMediaColor','Required parameter requestParameters.includeExtMediaColor was null or undefined when calling getSearchAdaptive.');
+        if (requestParameters['includeExtMediaColor'] == null) {
+            throw new runtime.RequiredError(
+                'includeExtMediaColor',
+                'Required parameter "includeExtMediaColor" was null or undefined when calling getSearchAdaptive().'
+            );
         }
 
-        if (requestParameters.includeExtMediaAvailability === null || requestParameters.includeExtMediaAvailability === undefined) {
-            throw new runtime.RequiredError('includeExtMediaAvailability','Required parameter requestParameters.includeExtMediaAvailability was null or undefined when calling getSearchAdaptive.');
+        if (requestParameters['includeExtMediaAvailability'] == null) {
+            throw new runtime.RequiredError(
+                'includeExtMediaAvailability',
+                'Required parameter "includeExtMediaAvailability" was null or undefined when calling getSearchAdaptive().'
+            );
         }
 
-        if (requestParameters.includeExtSensitiveMediaWarning === null || requestParameters.includeExtSensitiveMediaWarning === undefined) {
-            throw new runtime.RequiredError('includeExtSensitiveMediaWarning','Required parameter requestParameters.includeExtSensitiveMediaWarning was null or undefined when calling getSearchAdaptive.');
+        if (requestParameters['includeExtSensitiveMediaWarning'] == null) {
+            throw new runtime.RequiredError(
+                'includeExtSensitiveMediaWarning',
+                'Required parameter "includeExtSensitiveMediaWarning" was null or undefined when calling getSearchAdaptive().'
+            );
         }
 
-        if (requestParameters.includeExtTrustedFriendsMetadata === null || requestParameters.includeExtTrustedFriendsMetadata === undefined) {
-            throw new runtime.RequiredError('includeExtTrustedFriendsMetadata','Required parameter requestParameters.includeExtTrustedFriendsMetadata was null or undefined when calling getSearchAdaptive.');
+        if (requestParameters['includeExtTrustedFriendsMetadata'] == null) {
+            throw new runtime.RequiredError(
+                'includeExtTrustedFriendsMetadata',
+                'Required parameter "includeExtTrustedFriendsMetadata" was null or undefined when calling getSearchAdaptive().'
+            );
         }
 
-        if (requestParameters.sendErrorCodes === null || requestParameters.sendErrorCodes === undefined) {
-            throw new runtime.RequiredError('sendErrorCodes','Required parameter requestParameters.sendErrorCodes was null or undefined when calling getSearchAdaptive.');
+        if (requestParameters['sendErrorCodes'] == null) {
+            throw new runtime.RequiredError(
+                'sendErrorCodes',
+                'Required parameter "sendErrorCodes" was null or undefined when calling getSearchAdaptive().'
+            );
         }
 
-        if (requestParameters.simpleQuotedTweet === null || requestParameters.simpleQuotedTweet === undefined) {
-            throw new runtime.RequiredError('simpleQuotedTweet','Required parameter requestParameters.simpleQuotedTweet was null or undefined when calling getSearchAdaptive.');
+        if (requestParameters['simpleQuotedTweet'] == null) {
+            throw new runtime.RequiredError(
+                'simpleQuotedTweet',
+                'Required parameter "simpleQuotedTweet" was null or undefined when calling getSearchAdaptive().'
+            );
         }
 
-        if (requestParameters.q === null || requestParameters.q === undefined) {
-            throw new runtime.RequiredError('q','Required parameter requestParameters.q was null or undefined when calling getSearchAdaptive.');
+        if (requestParameters['q'] == null) {
+            throw new runtime.RequiredError(
+                'q',
+                'Required parameter "q" was null or undefined when calling getSearchAdaptive().'
+            );
         }
 
-        if (requestParameters.querySource === null || requestParameters.querySource === undefined) {
-            throw new runtime.RequiredError('querySource','Required parameter requestParameters.querySource was null or undefined when calling getSearchAdaptive.');
+        if (requestParameters['querySource'] == null) {
+            throw new runtime.RequiredError(
+                'querySource',
+                'Required parameter "querySource" was null or undefined when calling getSearchAdaptive().'
+            );
         }
 
-        if (requestParameters.count === null || requestParameters.count === undefined) {
-            throw new runtime.RequiredError('count','Required parameter requestParameters.count was null or undefined when calling getSearchAdaptive.');
+        if (requestParameters['count'] == null) {
+            throw new runtime.RequiredError(
+                'count',
+                'Required parameter "count" was null or undefined when calling getSearchAdaptive().'
+            );
         }
 
-        if (requestParameters.requestContext === null || requestParameters.requestContext === undefined) {
-            throw new runtime.RequiredError('requestContext','Required parameter requestParameters.requestContext was null or undefined when calling getSearchAdaptive.');
+        if (requestParameters['requestContext'] == null) {
+            throw new runtime.RequiredError(
+                'requestContext',
+                'Required parameter "requestContext" was null or undefined when calling getSearchAdaptive().'
+            );
         }
 
-        if (requestParameters.pc === null || requestParameters.pc === undefined) {
-            throw new runtime.RequiredError('pc','Required parameter requestParameters.pc was null or undefined when calling getSearchAdaptive.');
+        if (requestParameters['pc'] == null) {
+            throw new runtime.RequiredError(
+                'pc',
+                'Required parameter "pc" was null or undefined when calling getSearchAdaptive().'
+            );
         }
 
-        if (requestParameters.spellingCorrections === null || requestParameters.spellingCorrections === undefined) {
-            throw new runtime.RequiredError('spellingCorrections','Required parameter requestParameters.spellingCorrections was null or undefined when calling getSearchAdaptive.');
+        if (requestParameters['spellingCorrections'] == null) {
+            throw new runtime.RequiredError(
+                'spellingCorrections',
+                'Required parameter "spellingCorrections" was null or undefined when calling getSearchAdaptive().'
+            );
         }
 
-        if (requestParameters.includeExtEditControl === null || requestParameters.includeExtEditControl === undefined) {
-            throw new runtime.RequiredError('includeExtEditControl','Required parameter requestParameters.includeExtEditControl was null or undefined when calling getSearchAdaptive.');
+        if (requestParameters['includeExtEditControl'] == null) {
+            throw new runtime.RequiredError(
+                'includeExtEditControl',
+                'Required parameter "includeExtEditControl" was null or undefined when calling getSearchAdaptive().'
+            );
         }
 
-        if (requestParameters.ext === null || requestParameters.ext === undefined) {
-            throw new runtime.RequiredError('ext','Required parameter requestParameters.ext was null or undefined when calling getSearchAdaptive.');
+        if (requestParameters['ext'] == null) {
+            throw new runtime.RequiredError(
+                'ext',
+                'Required parameter "ext" was null or undefined when calling getSearchAdaptive().'
+            );
         }
 
         const queryParameters: any = {};
 
-        if (requestParameters.includeProfileInterstitialType !== undefined) {
-            queryParameters['include_profile_interstitial_type'] = requestParameters.includeProfileInterstitialType;
+        if (requestParameters['includeProfileInterstitialType'] != null) {
+            queryParameters['include_profile_interstitial_type'] = requestParameters['includeProfileInterstitialType'];
         }
 
-        if (requestParameters.includeBlocking !== undefined) {
-            queryParameters['include_blocking'] = requestParameters.includeBlocking;
+        if (requestParameters['includeBlocking'] != null) {
+            queryParameters['include_blocking'] = requestParameters['includeBlocking'];
         }
 
-        if (requestParameters.includeBlockedBy !== undefined) {
-            queryParameters['include_blocked_by'] = requestParameters.includeBlockedBy;
+        if (requestParameters['includeBlockedBy'] != null) {
+            queryParameters['include_blocked_by'] = requestParameters['includeBlockedBy'];
         }
 
-        if (requestParameters.includeFollowedBy !== undefined) {
-            queryParameters['include_followed_by'] = requestParameters.includeFollowedBy;
+        if (requestParameters['includeFollowedBy'] != null) {
+            queryParameters['include_followed_by'] = requestParameters['includeFollowedBy'];
         }
 
-        if (requestParameters.includeWantRetweets !== undefined) {
-            queryParameters['include_want_retweets'] = requestParameters.includeWantRetweets;
+        if (requestParameters['includeWantRetweets'] != null) {
+            queryParameters['include_want_retweets'] = requestParameters['includeWantRetweets'];
         }
 
-        if (requestParameters.includeMuteEdge !== undefined) {
-            queryParameters['include_mute_edge'] = requestParameters.includeMuteEdge;
+        if (requestParameters['includeMuteEdge'] != null) {
+            queryParameters['include_mute_edge'] = requestParameters['includeMuteEdge'];
         }
 
-        if (requestParameters.includeCanDm !== undefined) {
-            queryParameters['include_can_dm'] = requestParameters.includeCanDm;
+        if (requestParameters['includeCanDm'] != null) {
+            queryParameters['include_can_dm'] = requestParameters['includeCanDm'];
         }
 
-        if (requestParameters.includeCanMediaTag !== undefined) {
-            queryParameters['include_can_media_tag'] = requestParameters.includeCanMediaTag;
+        if (requestParameters['includeCanMediaTag'] != null) {
+            queryParameters['include_can_media_tag'] = requestParameters['includeCanMediaTag'];
         }
 
-        if (requestParameters.includeExtHasNftAvatar !== undefined) {
-            queryParameters['include_ext_has_nft_avatar'] = requestParameters.includeExtHasNftAvatar;
+        if (requestParameters['includeExtHasNftAvatar'] != null) {
+            queryParameters['include_ext_has_nft_avatar'] = requestParameters['includeExtHasNftAvatar'];
         }
 
-        if (requestParameters.includeExtIsBlueVerified !== undefined) {
-            queryParameters['include_ext_is_blue_verified'] = requestParameters.includeExtIsBlueVerified;
+        if (requestParameters['includeExtIsBlueVerified'] != null) {
+            queryParameters['include_ext_is_blue_verified'] = requestParameters['includeExtIsBlueVerified'];
         }
 
-        if (requestParameters.includeExtVerifiedType !== undefined) {
-            queryParameters['include_ext_verified_type'] = requestParameters.includeExtVerifiedType;
+        if (requestParameters['includeExtVerifiedType'] != null) {
+            queryParameters['include_ext_verified_type'] = requestParameters['includeExtVerifiedType'];
         }
 
-        if (requestParameters.includeExtProfileImageShape !== undefined) {
-            queryParameters['include_ext_profile_image_shape'] = requestParameters.includeExtProfileImageShape;
+        if (requestParameters['includeExtProfileImageShape'] != null) {
+            queryParameters['include_ext_profile_image_shape'] = requestParameters['includeExtProfileImageShape'];
         }
 
-        if (requestParameters.skipStatus !== undefined) {
-            queryParameters['skip_status'] = requestParameters.skipStatus;
+        if (requestParameters['skipStatus'] != null) {
+            queryParameters['skip_status'] = requestParameters['skipStatus'];
         }
 
-        if (requestParameters.cardsPlatform !== undefined) {
-            queryParameters['cards_platform'] = requestParameters.cardsPlatform;
+        if (requestParameters['cardsPlatform'] != null) {
+            queryParameters['cards_platform'] = requestParameters['cardsPlatform'];
         }
 
-        if (requestParameters.includeCards !== undefined) {
-            queryParameters['include_cards'] = requestParameters.includeCards;
+        if (requestParameters['includeCards'] != null) {
+            queryParameters['include_cards'] = requestParameters['includeCards'];
         }
 
-        if (requestParameters.includeExtAltText !== undefined) {
-            queryParameters['include_ext_alt_text'] = requestParameters.includeExtAltText;
+        if (requestParameters['includeExtAltText'] != null) {
+            queryParameters['include_ext_alt_text'] = requestParameters['includeExtAltText'];
         }
 
-        if (requestParameters.includeExtLimitedActionResults !== undefined) {
-            queryParameters['include_ext_limited_action_results'] = requestParameters.includeExtLimitedActionResults;
+        if (requestParameters['includeExtLimitedActionResults'] != null) {
+            queryParameters['include_ext_limited_action_results'] = requestParameters['includeExtLimitedActionResults'];
         }
 
-        if (requestParameters.includeQuoteCount !== undefined) {
-            queryParameters['include_quote_count'] = requestParameters.includeQuoteCount;
+        if (requestParameters['includeQuoteCount'] != null) {
+            queryParameters['include_quote_count'] = requestParameters['includeQuoteCount'];
         }
 
-        if (requestParameters.includeReplyCount !== undefined) {
-            queryParameters['include_reply_count'] = requestParameters.includeReplyCount;
+        if (requestParameters['includeReplyCount'] != null) {
+            queryParameters['include_reply_count'] = requestParameters['includeReplyCount'];
         }
 
-        if (requestParameters.tweetMode !== undefined) {
-            queryParameters['tweet_mode'] = requestParameters.tweetMode;
+        if (requestParameters['tweetMode'] != null) {
+            queryParameters['tweet_mode'] = requestParameters['tweetMode'];
         }
 
-        if (requestParameters.includeExtViews !== undefined) {
-            queryParameters['include_ext_views'] = requestParameters.includeExtViews;
+        if (requestParameters['includeExtViews'] != null) {
+            queryParameters['include_ext_views'] = requestParameters['includeExtViews'];
         }
 
-        if (requestParameters.includeEntities !== undefined) {
-            queryParameters['include_entities'] = requestParameters.includeEntities;
+        if (requestParameters['includeEntities'] != null) {
+            queryParameters['include_entities'] = requestParameters['includeEntities'];
         }
 
-        if (requestParameters.includeUserEntities !== undefined) {
-            queryParameters['include_user_entities'] = requestParameters.includeUserEntities;
+        if (requestParameters['includeUserEntities'] != null) {
+            queryParameters['include_user_entities'] = requestParameters['includeUserEntities'];
         }
 
-        if (requestParameters.includeExtMediaColor !== undefined) {
-            queryParameters['include_ext_media_color'] = requestParameters.includeExtMediaColor;
+        if (requestParameters['includeExtMediaColor'] != null) {
+            queryParameters['include_ext_media_color'] = requestParameters['includeExtMediaColor'];
         }
 
-        if (requestParameters.includeExtMediaAvailability !== undefined) {
-            queryParameters['include_ext_media_availability'] = requestParameters.includeExtMediaAvailability;
+        if (requestParameters['includeExtMediaAvailability'] != null) {
+            queryParameters['include_ext_media_availability'] = requestParameters['includeExtMediaAvailability'];
         }
 
-        if (requestParameters.includeExtSensitiveMediaWarning !== undefined) {
-            queryParameters['include_ext_sensitive_media_warning'] = requestParameters.includeExtSensitiveMediaWarning;
+        if (requestParameters['includeExtSensitiveMediaWarning'] != null) {
+            queryParameters['include_ext_sensitive_media_warning'] = requestParameters['includeExtSensitiveMediaWarning'];
         }
 
-        if (requestParameters.includeExtTrustedFriendsMetadata !== undefined) {
-            queryParameters['include_ext_trusted_friends_metadata'] = requestParameters.includeExtTrustedFriendsMetadata;
+        if (requestParameters['includeExtTrustedFriendsMetadata'] != null) {
+            queryParameters['include_ext_trusted_friends_metadata'] = requestParameters['includeExtTrustedFriendsMetadata'];
         }
 
-        if (requestParameters.sendErrorCodes !== undefined) {
-            queryParameters['send_error_codes'] = requestParameters.sendErrorCodes;
+        if (requestParameters['sendErrorCodes'] != null) {
+            queryParameters['send_error_codes'] = requestParameters['sendErrorCodes'];
         }
 
-        if (requestParameters.simpleQuotedTweet !== undefined) {
-            queryParameters['simple_quoted_tweet'] = requestParameters.simpleQuotedTweet;
+        if (requestParameters['simpleQuotedTweet'] != null) {
+            queryParameters['simple_quoted_tweet'] = requestParameters['simpleQuotedTweet'];
         }
 
-        if (requestParameters.q !== undefined) {
-            queryParameters['q'] = requestParameters.q;
+        if (requestParameters['q'] != null) {
+            queryParameters['q'] = requestParameters['q'];
         }
 
-        if (requestParameters.querySource !== undefined) {
-            queryParameters['query_source'] = requestParameters.querySource;
+        if (requestParameters['querySource'] != null) {
+            queryParameters['query_source'] = requestParameters['querySource'];
         }
 
-        if (requestParameters.count !== undefined) {
-            queryParameters['count'] = requestParameters.count;
+        if (requestParameters['count'] != null) {
+            queryParameters['count'] = requestParameters['count'];
         }
 
-        if (requestParameters.requestContext !== undefined) {
-            queryParameters['requestContext'] = requestParameters.requestContext;
+        if (requestParameters['requestContext'] != null) {
+            queryParameters['requestContext'] = requestParameters['requestContext'];
         }
 
-        if (requestParameters.pc !== undefined) {
-            queryParameters['pc'] = requestParameters.pc;
+        if (requestParameters['pc'] != null) {
+            queryParameters['pc'] = requestParameters['pc'];
         }
 
-        if (requestParameters.spellingCorrections !== undefined) {
-            queryParameters['spelling_corrections'] = requestParameters.spellingCorrections;
+        if (requestParameters['spellingCorrections'] != null) {
+            queryParameters['spelling_corrections'] = requestParameters['spellingCorrections'];
         }
 
-        if (requestParameters.includeExtEditControl !== undefined) {
-            queryParameters['include_ext_edit_control'] = requestParameters.includeExtEditControl;
+        if (requestParameters['includeExtEditControl'] != null) {
+            queryParameters['include_ext_edit_control'] = requestParameters['includeExtEditControl'];
         }
 
-        if (requestParameters.ext !== undefined) {
-            queryParameters['ext'] = requestParameters.ext;
+        if (requestParameters['ext'] != null) {
+            queryParameters['ext'] = requestParameters['ext'];
         }
 
         const headerParameters: runtime.HTTPHeaders = {};

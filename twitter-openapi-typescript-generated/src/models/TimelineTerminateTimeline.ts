@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { InstructionType } from './InstructionType';
 import {
     InstructionTypeFromJSON,
@@ -56,11 +56,9 @@ export type TimelineTerminateTimelineDirectionEnum = typeof TimelineTerminateTim
  * Check if a given object implements the TimelineTerminateTimeline interface.
  */
 export function instanceOfTimelineTerminateTimeline(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "direction" in value;
-    isInstance = isInstance && "type" in value;
-
-    return isInstance;
+    if (!('direction' in value)) return false;
+    if (!('type' in value)) return false;
+    return true;
 }
 
 export function TimelineTerminateTimelineFromJSON(json: any): TimelineTerminateTimeline {
@@ -68,7 +66,7 @@ export function TimelineTerminateTimelineFromJSON(json: any): TimelineTerminateT
 }
 
 export function TimelineTerminateTimelineFromJSONTyped(json: any, ignoreDiscriminator: boolean): TimelineTerminateTimeline {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -79,16 +77,13 @@ export function TimelineTerminateTimelineFromJSONTyped(json: any, ignoreDiscrimi
 }
 
 export function TimelineTerminateTimelineToJSON(value?: TimelineTerminateTimeline | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'direction': value.direction,
-        'type': InstructionTypeToJSON(value.type),
+        'direction': value['direction'],
+        'type': InstructionTypeToJSON(value['type']),
     };
 }
 

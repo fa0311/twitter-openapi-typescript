@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -37,9 +37,7 @@ export interface TimelineShowAlertRichText {
  * Check if a given object implements the TimelineShowAlertRichText interface.
  */
 export function instanceOfTimelineShowAlertRichText(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+    return true;
 }
 
 export function TimelineShowAlertRichTextFromJSON(json: any): TimelineShowAlertRichText {
@@ -47,27 +45,24 @@ export function TimelineShowAlertRichTextFromJSON(json: any): TimelineShowAlertR
 }
 
 export function TimelineShowAlertRichTextFromJSONTyped(json: any, ignoreDiscriminator: boolean): TimelineShowAlertRichText {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'entities': !exists(json, 'entities') ? undefined : json['entities'],
-        'text': !exists(json, 'text') ? undefined : json['text'],
+        'entities': json['entities'] == null ? undefined : json['entities'],
+        'text': json['text'] == null ? undefined : json['text'],
     };
 }
 
 export function TimelineShowAlertRichTextToJSON(value?: TimelineShowAlertRichText | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'entities': value.entities,
-        'text': value.text,
+        'entities': value['entities'],
+        'text': value['text'],
     };
 }
 

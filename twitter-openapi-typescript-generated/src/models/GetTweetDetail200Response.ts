@@ -39,18 +39,15 @@ export function GetTweetDetail200ResponseFromJSON(json: any): GetTweetDetail200R
 }
 
 export function GetTweetDetail200ResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): GetTweetDetail200Response {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return { ...ErrorsFromJSONTyped(json, true), ...TweetDetailResponseFromJSONTyped(json, true) };
 }
 
 export function GetTweetDetail200ResponseToJSON(value?: GetTweetDetail200Response | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
 
     if (instanceOfErrors(value)) {

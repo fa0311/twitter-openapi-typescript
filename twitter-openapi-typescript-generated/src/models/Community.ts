@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { CommunityData } from './CommunityData';
 import {
     CommunityDataFromJSON,
@@ -38,10 +38,8 @@ export interface Community {
  * Check if a given object implements the Community interface.
  */
 export function instanceOfCommunity(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "result" in value;
-
-    return isInstance;
+    if (!('result' in value)) return false;
+    return true;
 }
 
 export function CommunityFromJSON(json: any): Community {
@@ -49,7 +47,7 @@ export function CommunityFromJSON(json: any): Community {
 }
 
 export function CommunityFromJSONTyped(json: any, ignoreDiscriminator: boolean): Community {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -59,15 +57,12 @@ export function CommunityFromJSONTyped(json: any, ignoreDiscriminator: boolean):
 }
 
 export function CommunityToJSON(value?: Community | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'result': CommunityDataToJSON(value.result),
+        'result': CommunityDataToJSON(value['result']),
     };
 }
 

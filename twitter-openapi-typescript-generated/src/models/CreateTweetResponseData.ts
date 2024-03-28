@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { CreateTweetResponseResult } from './CreateTweetResponseResult';
 import {
     CreateTweetResponseResultFromJSON,
@@ -38,10 +38,8 @@ export interface CreateTweetResponseData {
  * Check if a given object implements the CreateTweetResponseData interface.
  */
 export function instanceOfCreateTweetResponseData(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "createTweet" in value;
-
-    return isInstance;
+    if (!('createTweet' in value)) return false;
+    return true;
 }
 
 export function CreateTweetResponseDataFromJSON(json: any): CreateTweetResponseData {
@@ -49,7 +47,7 @@ export function CreateTweetResponseDataFromJSON(json: any): CreateTweetResponseD
 }
 
 export function CreateTweetResponseDataFromJSONTyped(json: any, ignoreDiscriminator: boolean): CreateTweetResponseData {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -59,15 +57,12 @@ export function CreateTweetResponseDataFromJSONTyped(json: any, ignoreDiscrimina
 }
 
 export function CreateTweetResponseDataToJSON(value?: CreateTweetResponseData | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'create_tweet': CreateTweetResponseResultToJSON(value.createTweet),
+        'create_tweet': CreateTweetResponseResultToJSON(value['createTweet']),
     };
 }
 

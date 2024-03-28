@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -49,13 +49,11 @@ export interface TweetEditControlInitial {
  * Check if a given object implements the TweetEditControlInitial interface.
  */
 export function instanceOfTweetEditControlInitial(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "editTweetIds" in value;
-    isInstance = isInstance && "editableUntilMsecs" in value;
-    isInstance = isInstance && "editsRemaining" in value;
-    isInstance = isInstance && "isEditEligible" in value;
-
-    return isInstance;
+    if (!('editTweetIds' in value)) return false;
+    if (!('editableUntilMsecs' in value)) return false;
+    if (!('editsRemaining' in value)) return false;
+    if (!('isEditEligible' in value)) return false;
+    return true;
 }
 
 export function TweetEditControlInitialFromJSON(json: any): TweetEditControlInitial {
@@ -63,7 +61,7 @@ export function TweetEditControlInitialFromJSON(json: any): TweetEditControlInit
 }
 
 export function TweetEditControlInitialFromJSONTyped(json: any, ignoreDiscriminator: boolean): TweetEditControlInitial {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -76,18 +74,15 @@ export function TweetEditControlInitialFromJSONTyped(json: any, ignoreDiscrimina
 }
 
 export function TweetEditControlInitialToJSON(value?: TweetEditControlInitial | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'edit_tweet_ids': value.editTweetIds,
-        'editable_until_msecs': value.editableUntilMsecs,
-        'edits_remaining': value.editsRemaining,
-        'is_edit_eligible': value.isEditEligible,
+        'edit_tweet_ids': value['editTweetIds'],
+        'editable_until_msecs': value['editableUntilMsecs'],
+        'edits_remaining': value['editsRemaining'],
+        'is_edit_eligible': value['isEditEligible'],
     };
 }
 

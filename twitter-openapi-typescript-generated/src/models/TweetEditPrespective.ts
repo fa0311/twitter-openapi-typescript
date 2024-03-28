@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -37,9 +37,7 @@ export interface TweetEditPrespective {
  * Check if a given object implements the TweetEditPrespective interface.
  */
 export function instanceOfTweetEditPrespective(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+    return true;
 }
 
 export function TweetEditPrespectiveFromJSON(json: any): TweetEditPrespective {
@@ -47,27 +45,24 @@ export function TweetEditPrespectiveFromJSON(json: any): TweetEditPrespective {
 }
 
 export function TweetEditPrespectiveFromJSONTyped(json: any, ignoreDiscriminator: boolean): TweetEditPrespective {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'favorited': !exists(json, 'favorited') ? undefined : json['favorited'],
-        'retweeted': !exists(json, 'retweeted') ? undefined : json['retweeted'],
+        'favorited': json['favorited'] == null ? undefined : json['favorited'],
+        'retweeted': json['retweeted'] == null ? undefined : json['retweeted'],
     };
 }
 
 export function TweetEditPrespectiveToJSON(value?: TweetEditPrespective | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'favorited': value.favorited,
-        'retweeted': value.retweeted,
+        'favorited': value['favorited'],
+        'retweeted': value['retweeted'],
     };
 }
 

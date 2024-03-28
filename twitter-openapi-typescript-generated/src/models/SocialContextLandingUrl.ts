@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { UrtEndpointOptions } from './UrtEndpointOptions';
 import {
     UrtEndpointOptionsFromJSON,
@@ -62,9 +62,7 @@ export type SocialContextLandingUrlUrlTypeEnum = typeof SocialContextLandingUrlU
  * Check if a given object implements the SocialContextLandingUrl interface.
  */
 export function instanceOfSocialContextLandingUrl(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+    return true;
 }
 
 export function SocialContextLandingUrlFromJSON(json: any): SocialContextLandingUrl {
@@ -72,29 +70,26 @@ export function SocialContextLandingUrlFromJSON(json: any): SocialContextLanding
 }
 
 export function SocialContextLandingUrlFromJSONTyped(json: any, ignoreDiscriminator: boolean): SocialContextLandingUrl {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'url': !exists(json, 'url') ? undefined : json['url'],
-        'urlType': !exists(json, 'urlType') ? undefined : json['urlType'],
-        'urtEndpointOptions': !exists(json, 'urtEndpointOptions') ? undefined : UrtEndpointOptionsFromJSON(json['urtEndpointOptions']),
+        'url': json['url'] == null ? undefined : json['url'],
+        'urlType': json['urlType'] == null ? undefined : json['urlType'],
+        'urtEndpointOptions': json['urtEndpointOptions'] == null ? undefined : UrtEndpointOptionsFromJSON(json['urtEndpointOptions']),
     };
 }
 
 export function SocialContextLandingUrlToJSON(value?: SocialContextLandingUrl | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'url': value.url,
-        'urlType': value.urlType,
-        'urtEndpointOptions': UrtEndpointOptionsToJSON(value.urtEndpointOptions),
+        'url': value['url'],
+        'urlType': value['urlType'],
+        'urtEndpointOptions': UrtEndpointOptionsToJSON(value['urtEndpointOptions']),
     };
 }
 

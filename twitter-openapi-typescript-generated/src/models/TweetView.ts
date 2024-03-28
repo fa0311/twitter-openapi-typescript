@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -48,10 +48,8 @@ export type TweetViewStateEnum = typeof TweetViewStateEnum[keyof typeof TweetVie
  * Check if a given object implements the TweetView interface.
  */
 export function instanceOfTweetView(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "state" in value;
-
-    return isInstance;
+    if (!('state' in value)) return false;
+    return true;
 }
 
 export function TweetViewFromJSON(json: any): TweetView {
@@ -59,27 +57,24 @@ export function TweetViewFromJSON(json: any): TweetView {
 }
 
 export function TweetViewFromJSONTyped(json: any, ignoreDiscriminator: boolean): TweetView {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'count': !exists(json, 'count') ? undefined : json['count'],
+        'count': json['count'] == null ? undefined : json['count'],
         'state': json['state'],
     };
 }
 
 export function TweetViewToJSON(value?: TweetView | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'count': value.count,
-        'state': value.state,
+        'count': value['count'],
+        'state': value['state'],
     };
 }
 

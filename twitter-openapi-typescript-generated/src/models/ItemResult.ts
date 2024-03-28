@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { TweetUnion } from './TweetUnion';
 import {
     TweetUnionFromJSON,
@@ -50,9 +50,7 @@ export interface ItemResult {
  * Check if a given object implements the ItemResult interface.
  */
 export function instanceOfItemResult(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+    return true;
 }
 
 export function ItemResultFromJSON(json: any): ItemResult {
@@ -60,27 +58,24 @@ export function ItemResultFromJSON(json: any): ItemResult {
 }
 
 export function ItemResultFromJSONTyped(json: any, ignoreDiscriminator: boolean): ItemResult {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'typename': !exists(json, '__typename') ? undefined : TypeNameFromJSON(json['__typename']),
-        'result': !exists(json, 'result') ? undefined : TweetUnionFromJSON(json['result']),
+        'typename': json['__typename'] == null ? undefined : TypeNameFromJSON(json['__typename']),
+        'result': json['result'] == null ? undefined : TweetUnionFromJSON(json['result']),
     };
 }
 
 export function ItemResultToJSON(value?: ItemResult | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        '__typename': TypeNameToJSON(value.typename),
-        'result': TweetUnionToJSON(value.result),
+        '__typename': TypeNameToJSON(value['typename']),
+        'result': TweetUnionToJSON(value['result']),
     };
 }
 

@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -37,11 +37,9 @@ export interface NoteTweetResultMediaInlineMedia {
  * Check if a given object implements the NoteTweetResultMediaInlineMedia interface.
  */
 export function instanceOfNoteTweetResultMediaInlineMedia(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "index" in value;
-    isInstance = isInstance && "mediaId" in value;
-
-    return isInstance;
+    if (!('index' in value)) return false;
+    if (!('mediaId' in value)) return false;
+    return true;
 }
 
 export function NoteTweetResultMediaInlineMediaFromJSON(json: any): NoteTweetResultMediaInlineMedia {
@@ -49,7 +47,7 @@ export function NoteTweetResultMediaInlineMediaFromJSON(json: any): NoteTweetRes
 }
 
 export function NoteTweetResultMediaInlineMediaFromJSONTyped(json: any, ignoreDiscriminator: boolean): NoteTweetResultMediaInlineMedia {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -60,16 +58,13 @@ export function NoteTweetResultMediaInlineMediaFromJSONTyped(json: any, ignoreDi
 }
 
 export function NoteTweetResultMediaInlineMediaToJSON(value?: NoteTweetResultMediaInlineMedia | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'index': value.index,
-        'media_id': value.mediaId,
+        'index': value['index'],
+        'media_id': value['mediaId'],
     };
 }
 

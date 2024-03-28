@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -61,12 +61,10 @@ export type TextEntityRefUrlTypeEnum = typeof TextEntityRefUrlTypeEnum[keyof typ
  * Check if a given object implements the TextEntityRef interface.
  */
 export function instanceOfTextEntityRef(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "type" in value;
-    isInstance = isInstance && "url" in value;
-    isInstance = isInstance && "urlType" in value;
-
-    return isInstance;
+    if (!('type' in value)) return false;
+    if (!('url' in value)) return false;
+    if (!('urlType' in value)) return false;
+    return true;
 }
 
 export function TextEntityRefFromJSON(json: any): TextEntityRef {
@@ -74,7 +72,7 @@ export function TextEntityRefFromJSON(json: any): TextEntityRef {
 }
 
 export function TextEntityRefFromJSONTyped(json: any, ignoreDiscriminator: boolean): TextEntityRef {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -86,17 +84,14 @@ export function TextEntityRefFromJSONTyped(json: any, ignoreDiscriminator: boole
 }
 
 export function TextEntityRefToJSON(value?: TextEntityRef | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'type': value.type,
-        'url': value.url,
-        'urlType': value.urlType,
+        'type': value['type'],
+        'url': value['url'],
+        'urlType': value['urlType'],
     };
 }
 

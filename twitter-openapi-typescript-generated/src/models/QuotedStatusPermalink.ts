@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -43,12 +43,10 @@ export interface QuotedStatusPermalink {
  * Check if a given object implements the QuotedStatusPermalink interface.
  */
 export function instanceOfQuotedStatusPermalink(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "display" in value;
-    isInstance = isInstance && "expanded" in value;
-    isInstance = isInstance && "url" in value;
-
-    return isInstance;
+    if (!('display' in value)) return false;
+    if (!('expanded' in value)) return false;
+    if (!('url' in value)) return false;
+    return true;
 }
 
 export function QuotedStatusPermalinkFromJSON(json: any): QuotedStatusPermalink {
@@ -56,7 +54,7 @@ export function QuotedStatusPermalinkFromJSON(json: any): QuotedStatusPermalink 
 }
 
 export function QuotedStatusPermalinkFromJSONTyped(json: any, ignoreDiscriminator: boolean): QuotedStatusPermalink {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -68,17 +66,14 @@ export function QuotedStatusPermalinkFromJSONTyped(json: any, ignoreDiscriminato
 }
 
 export function QuotedStatusPermalinkToJSON(value?: QuotedStatusPermalink | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'display': value.display,
-        'expanded': value.expanded,
-        'url': value.url,
+        'display': value['display'],
+        'expanded': value['expanded'],
+        'url': value['url'],
     };
 }
 

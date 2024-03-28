@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { UserResultByScreenNameResult } from './UserResultByScreenNameResult';
 import {
     UserResultByScreenNameResultFromJSON,
@@ -44,11 +44,9 @@ export interface UserResultByScreenName {
  * Check if a given object implements the UserResultByScreenName interface.
  */
 export function instanceOfUserResultByScreenName(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "id" in value;
-    isInstance = isInstance && "result" in value;
-
-    return isInstance;
+    if (!('id' in value)) return false;
+    if (!('result' in value)) return false;
+    return true;
 }
 
 export function UserResultByScreenNameFromJSON(json: any): UserResultByScreenName {
@@ -56,7 +54,7 @@ export function UserResultByScreenNameFromJSON(json: any): UserResultByScreenNam
 }
 
 export function UserResultByScreenNameFromJSONTyped(json: any, ignoreDiscriminator: boolean): UserResultByScreenName {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -67,16 +65,13 @@ export function UserResultByScreenNameFromJSONTyped(json: any, ignoreDiscriminat
 }
 
 export function UserResultByScreenNameToJSON(value?: UserResultByScreenName | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'id': value.id,
-        'result': UserResultByScreenNameResultToJSON(value.result),
+        'id': value['id'],
+        'result': UserResultByScreenNameResultToJSON(value['result']),
     };
 }
 

@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { RetweetLegacy } from './RetweetLegacy';
 import {
     RetweetLegacyFromJSON,
@@ -44,11 +44,9 @@ export interface Retweet {
  * Check if a given object implements the Retweet interface.
  */
 export function instanceOfRetweet(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "legacy" in value;
-    isInstance = isInstance && "restId" in value;
-
-    return isInstance;
+    if (!('legacy' in value)) return false;
+    if (!('restId' in value)) return false;
+    return true;
 }
 
 export function RetweetFromJSON(json: any): Retweet {
@@ -56,7 +54,7 @@ export function RetweetFromJSON(json: any): Retweet {
 }
 
 export function RetweetFromJSONTyped(json: any, ignoreDiscriminator: boolean): Retweet {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -67,16 +65,13 @@ export function RetweetFromJSONTyped(json: any, ignoreDiscriminator: boolean): R
 }
 
 export function RetweetToJSON(value?: Retweet | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'legacy': RetweetLegacyToJSON(value.legacy),
-        'rest_id': value.restId,
+        'legacy': RetweetLegacyToJSON(value['legacy']),
+        'rest_id': value['restId'],
     };
 }
 

@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { FollowResponseData } from './FollowResponseData';
 import {
     FollowResponseDataFromJSON,
@@ -38,10 +38,8 @@ export interface FollowResponse {
  * Check if a given object implements the FollowResponse interface.
  */
 export function instanceOfFollowResponse(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "data" in value;
-
-    return isInstance;
+    if (!('data' in value)) return false;
+    return true;
 }
 
 export function FollowResponseFromJSON(json: any): FollowResponse {
@@ -49,7 +47,7 @@ export function FollowResponseFromJSON(json: any): FollowResponse {
 }
 
 export function FollowResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): FollowResponse {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -59,15 +57,12 @@ export function FollowResponseFromJSONTyped(json: any, ignoreDiscriminator: bool
 }
 
 export function FollowResponseToJSON(value?: FollowResponse | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'data': FollowResponseDataToJSON(value.data),
+        'data': FollowResponseDataToJSON(value['data']),
     };
 }
 

@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { Tracing } from './Tracing';
 import {
     TracingFromJSON,
@@ -62,14 +62,12 @@ export interface Extensions {
  * Check if a given object implements the Extensions interface.
  */
 export function instanceOfExtensions(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "code" in value;
-    isInstance = isInstance && "kind" in value;
-    isInstance = isInstance && "name" in value;
-    isInstance = isInstance && "source" in value;
-    isInstance = isInstance && "tracing" in value;
-
-    return isInstance;
+    if (!('code' in value)) return false;
+    if (!('kind' in value)) return false;
+    if (!('name' in value)) return false;
+    if (!('source' in value)) return false;
+    if (!('tracing' in value)) return false;
+    return true;
 }
 
 export function ExtensionsFromJSON(json: any): Extensions {
@@ -77,7 +75,7 @@ export function ExtensionsFromJSON(json: any): Extensions {
 }
 
 export function ExtensionsFromJSONTyped(json: any, ignoreDiscriminator: boolean): Extensions {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -91,19 +89,16 @@ export function ExtensionsFromJSONTyped(json: any, ignoreDiscriminator: boolean)
 }
 
 export function ExtensionsToJSON(value?: Extensions | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'code': value.code,
-        'kind': value.kind,
-        'name': value.name,
-        'source': value.source,
-        'tracing': TracingToJSON(value.tracing),
+        'code': value['code'],
+        'kind': value['kind'],
+        'name': value['name'],
+        'source': value['source'],
+        'tracing': TracingToJSON(value['tracing']),
     };
 }
 

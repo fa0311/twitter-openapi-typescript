@@ -53,142 +53,193 @@ export class V11GetApi extends runtime.BaseAPI {
      * get friends following list
      */
     async getFriendsFollowingListRaw(requestParameters: GetFriendsFollowingListRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.includeProfileInterstitialType === null || requestParameters.includeProfileInterstitialType === undefined) {
-            throw new runtime.RequiredError('includeProfileInterstitialType','Required parameter requestParameters.includeProfileInterstitialType was null or undefined when calling getFriendsFollowingList.');
+        if (requestParameters['includeProfileInterstitialType'] == null) {
+            throw new runtime.RequiredError(
+                'includeProfileInterstitialType',
+                'Required parameter "includeProfileInterstitialType" was null or undefined when calling getFriendsFollowingList().'
+            );
         }
 
-        if (requestParameters.includeBlocking === null || requestParameters.includeBlocking === undefined) {
-            throw new runtime.RequiredError('includeBlocking','Required parameter requestParameters.includeBlocking was null or undefined when calling getFriendsFollowingList.');
+        if (requestParameters['includeBlocking'] == null) {
+            throw new runtime.RequiredError(
+                'includeBlocking',
+                'Required parameter "includeBlocking" was null or undefined when calling getFriendsFollowingList().'
+            );
         }
 
-        if (requestParameters.includeBlockedBy === null || requestParameters.includeBlockedBy === undefined) {
-            throw new runtime.RequiredError('includeBlockedBy','Required parameter requestParameters.includeBlockedBy was null or undefined when calling getFriendsFollowingList.');
+        if (requestParameters['includeBlockedBy'] == null) {
+            throw new runtime.RequiredError(
+                'includeBlockedBy',
+                'Required parameter "includeBlockedBy" was null or undefined when calling getFriendsFollowingList().'
+            );
         }
 
-        if (requestParameters.includeFollowedBy === null || requestParameters.includeFollowedBy === undefined) {
-            throw new runtime.RequiredError('includeFollowedBy','Required parameter requestParameters.includeFollowedBy was null or undefined when calling getFriendsFollowingList.');
+        if (requestParameters['includeFollowedBy'] == null) {
+            throw new runtime.RequiredError(
+                'includeFollowedBy',
+                'Required parameter "includeFollowedBy" was null or undefined when calling getFriendsFollowingList().'
+            );
         }
 
-        if (requestParameters.includeWantRetweets === null || requestParameters.includeWantRetweets === undefined) {
-            throw new runtime.RequiredError('includeWantRetweets','Required parameter requestParameters.includeWantRetweets was null or undefined when calling getFriendsFollowingList.');
+        if (requestParameters['includeWantRetweets'] == null) {
+            throw new runtime.RequiredError(
+                'includeWantRetweets',
+                'Required parameter "includeWantRetweets" was null or undefined when calling getFriendsFollowingList().'
+            );
         }
 
-        if (requestParameters.includeMuteEdge === null || requestParameters.includeMuteEdge === undefined) {
-            throw new runtime.RequiredError('includeMuteEdge','Required parameter requestParameters.includeMuteEdge was null or undefined when calling getFriendsFollowingList.');
+        if (requestParameters['includeMuteEdge'] == null) {
+            throw new runtime.RequiredError(
+                'includeMuteEdge',
+                'Required parameter "includeMuteEdge" was null or undefined when calling getFriendsFollowingList().'
+            );
         }
 
-        if (requestParameters.includeCanDm === null || requestParameters.includeCanDm === undefined) {
-            throw new runtime.RequiredError('includeCanDm','Required parameter requestParameters.includeCanDm was null or undefined when calling getFriendsFollowingList.');
+        if (requestParameters['includeCanDm'] == null) {
+            throw new runtime.RequiredError(
+                'includeCanDm',
+                'Required parameter "includeCanDm" was null or undefined when calling getFriendsFollowingList().'
+            );
         }
 
-        if (requestParameters.includeCanMediaTag === null || requestParameters.includeCanMediaTag === undefined) {
-            throw new runtime.RequiredError('includeCanMediaTag','Required parameter requestParameters.includeCanMediaTag was null or undefined when calling getFriendsFollowingList.');
+        if (requestParameters['includeCanMediaTag'] == null) {
+            throw new runtime.RequiredError(
+                'includeCanMediaTag',
+                'Required parameter "includeCanMediaTag" was null or undefined when calling getFriendsFollowingList().'
+            );
         }
 
-        if (requestParameters.includeExtHasNftAvatar === null || requestParameters.includeExtHasNftAvatar === undefined) {
-            throw new runtime.RequiredError('includeExtHasNftAvatar','Required parameter requestParameters.includeExtHasNftAvatar was null or undefined when calling getFriendsFollowingList.');
+        if (requestParameters['includeExtHasNftAvatar'] == null) {
+            throw new runtime.RequiredError(
+                'includeExtHasNftAvatar',
+                'Required parameter "includeExtHasNftAvatar" was null or undefined when calling getFriendsFollowingList().'
+            );
         }
 
-        if (requestParameters.includeExtIsBlueVerified === null || requestParameters.includeExtIsBlueVerified === undefined) {
-            throw new runtime.RequiredError('includeExtIsBlueVerified','Required parameter requestParameters.includeExtIsBlueVerified was null or undefined when calling getFriendsFollowingList.');
+        if (requestParameters['includeExtIsBlueVerified'] == null) {
+            throw new runtime.RequiredError(
+                'includeExtIsBlueVerified',
+                'Required parameter "includeExtIsBlueVerified" was null or undefined when calling getFriendsFollowingList().'
+            );
         }
 
-        if (requestParameters.includeExtVerifiedType === null || requestParameters.includeExtVerifiedType === undefined) {
-            throw new runtime.RequiredError('includeExtVerifiedType','Required parameter requestParameters.includeExtVerifiedType was null or undefined when calling getFriendsFollowingList.');
+        if (requestParameters['includeExtVerifiedType'] == null) {
+            throw new runtime.RequiredError(
+                'includeExtVerifiedType',
+                'Required parameter "includeExtVerifiedType" was null or undefined when calling getFriendsFollowingList().'
+            );
         }
 
-        if (requestParameters.includeExtProfileImageShape === null || requestParameters.includeExtProfileImageShape === undefined) {
-            throw new runtime.RequiredError('includeExtProfileImageShape','Required parameter requestParameters.includeExtProfileImageShape was null or undefined when calling getFriendsFollowingList.');
+        if (requestParameters['includeExtProfileImageShape'] == null) {
+            throw new runtime.RequiredError(
+                'includeExtProfileImageShape',
+                'Required parameter "includeExtProfileImageShape" was null or undefined when calling getFriendsFollowingList().'
+            );
         }
 
-        if (requestParameters.skipStatus === null || requestParameters.skipStatus === undefined) {
-            throw new runtime.RequiredError('skipStatus','Required parameter requestParameters.skipStatus was null or undefined when calling getFriendsFollowingList.');
+        if (requestParameters['skipStatus'] == null) {
+            throw new runtime.RequiredError(
+                'skipStatus',
+                'Required parameter "skipStatus" was null or undefined when calling getFriendsFollowingList().'
+            );
         }
 
-        if (requestParameters.cursor === null || requestParameters.cursor === undefined) {
-            throw new runtime.RequiredError('cursor','Required parameter requestParameters.cursor was null or undefined when calling getFriendsFollowingList.');
+        if (requestParameters['cursor'] == null) {
+            throw new runtime.RequiredError(
+                'cursor',
+                'Required parameter "cursor" was null or undefined when calling getFriendsFollowingList().'
+            );
         }
 
-        if (requestParameters.userId === null || requestParameters.userId === undefined) {
-            throw new runtime.RequiredError('userId','Required parameter requestParameters.userId was null or undefined when calling getFriendsFollowingList.');
+        if (requestParameters['userId'] == null) {
+            throw new runtime.RequiredError(
+                'userId',
+                'Required parameter "userId" was null or undefined when calling getFriendsFollowingList().'
+            );
         }
 
-        if (requestParameters.count === null || requestParameters.count === undefined) {
-            throw new runtime.RequiredError('count','Required parameter requestParameters.count was null or undefined when calling getFriendsFollowingList.');
+        if (requestParameters['count'] == null) {
+            throw new runtime.RequiredError(
+                'count',
+                'Required parameter "count" was null or undefined when calling getFriendsFollowingList().'
+            );
         }
 
-        if (requestParameters.withTotalCount === null || requestParameters.withTotalCount === undefined) {
-            throw new runtime.RequiredError('withTotalCount','Required parameter requestParameters.withTotalCount was null or undefined when calling getFriendsFollowingList.');
+        if (requestParameters['withTotalCount'] == null) {
+            throw new runtime.RequiredError(
+                'withTotalCount',
+                'Required parameter "withTotalCount" was null or undefined when calling getFriendsFollowingList().'
+            );
         }
 
         const queryParameters: any = {};
 
-        if (requestParameters.includeProfileInterstitialType !== undefined) {
-            queryParameters['include_profile_interstitial_type'] = requestParameters.includeProfileInterstitialType;
+        if (requestParameters['includeProfileInterstitialType'] != null) {
+            queryParameters['include_profile_interstitial_type'] = requestParameters['includeProfileInterstitialType'];
         }
 
-        if (requestParameters.includeBlocking !== undefined) {
-            queryParameters['include_blocking'] = requestParameters.includeBlocking;
+        if (requestParameters['includeBlocking'] != null) {
+            queryParameters['include_blocking'] = requestParameters['includeBlocking'];
         }
 
-        if (requestParameters.includeBlockedBy !== undefined) {
-            queryParameters['include_blocked_by'] = requestParameters.includeBlockedBy;
+        if (requestParameters['includeBlockedBy'] != null) {
+            queryParameters['include_blocked_by'] = requestParameters['includeBlockedBy'];
         }
 
-        if (requestParameters.includeFollowedBy !== undefined) {
-            queryParameters['include_followed_by'] = requestParameters.includeFollowedBy;
+        if (requestParameters['includeFollowedBy'] != null) {
+            queryParameters['include_followed_by'] = requestParameters['includeFollowedBy'];
         }
 
-        if (requestParameters.includeWantRetweets !== undefined) {
-            queryParameters['include_want_retweets'] = requestParameters.includeWantRetweets;
+        if (requestParameters['includeWantRetweets'] != null) {
+            queryParameters['include_want_retweets'] = requestParameters['includeWantRetweets'];
         }
 
-        if (requestParameters.includeMuteEdge !== undefined) {
-            queryParameters['include_mute_edge'] = requestParameters.includeMuteEdge;
+        if (requestParameters['includeMuteEdge'] != null) {
+            queryParameters['include_mute_edge'] = requestParameters['includeMuteEdge'];
         }
 
-        if (requestParameters.includeCanDm !== undefined) {
-            queryParameters['include_can_dm'] = requestParameters.includeCanDm;
+        if (requestParameters['includeCanDm'] != null) {
+            queryParameters['include_can_dm'] = requestParameters['includeCanDm'];
         }
 
-        if (requestParameters.includeCanMediaTag !== undefined) {
-            queryParameters['include_can_media_tag'] = requestParameters.includeCanMediaTag;
+        if (requestParameters['includeCanMediaTag'] != null) {
+            queryParameters['include_can_media_tag'] = requestParameters['includeCanMediaTag'];
         }
 
-        if (requestParameters.includeExtHasNftAvatar !== undefined) {
-            queryParameters['include_ext_has_nft_avatar'] = requestParameters.includeExtHasNftAvatar;
+        if (requestParameters['includeExtHasNftAvatar'] != null) {
+            queryParameters['include_ext_has_nft_avatar'] = requestParameters['includeExtHasNftAvatar'];
         }
 
-        if (requestParameters.includeExtIsBlueVerified !== undefined) {
-            queryParameters['include_ext_is_blue_verified'] = requestParameters.includeExtIsBlueVerified;
+        if (requestParameters['includeExtIsBlueVerified'] != null) {
+            queryParameters['include_ext_is_blue_verified'] = requestParameters['includeExtIsBlueVerified'];
         }
 
-        if (requestParameters.includeExtVerifiedType !== undefined) {
-            queryParameters['include_ext_verified_type'] = requestParameters.includeExtVerifiedType;
+        if (requestParameters['includeExtVerifiedType'] != null) {
+            queryParameters['include_ext_verified_type'] = requestParameters['includeExtVerifiedType'];
         }
 
-        if (requestParameters.includeExtProfileImageShape !== undefined) {
-            queryParameters['include_ext_profile_image_shape'] = requestParameters.includeExtProfileImageShape;
+        if (requestParameters['includeExtProfileImageShape'] != null) {
+            queryParameters['include_ext_profile_image_shape'] = requestParameters['includeExtProfileImageShape'];
         }
 
-        if (requestParameters.skipStatus !== undefined) {
-            queryParameters['skip_status'] = requestParameters.skipStatus;
+        if (requestParameters['skipStatus'] != null) {
+            queryParameters['skip_status'] = requestParameters['skipStatus'];
         }
 
-        if (requestParameters.cursor !== undefined) {
-            queryParameters['cursor'] = requestParameters.cursor;
+        if (requestParameters['cursor'] != null) {
+            queryParameters['cursor'] = requestParameters['cursor'];
         }
 
-        if (requestParameters.userId !== undefined) {
-            queryParameters['user_id'] = requestParameters.userId;
+        if (requestParameters['userId'] != null) {
+            queryParameters['user_id'] = requestParameters['userId'];
         }
 
-        if (requestParameters.count !== undefined) {
-            queryParameters['count'] = requestParameters.count;
+        if (requestParameters['count'] != null) {
+            queryParameters['count'] = requestParameters['count'];
         }
 
-        if (requestParameters.withTotalCount !== undefined) {
-            queryParameters['with_total_count'] = requestParameters.withTotalCount;
+        if (requestParameters['withTotalCount'] != null) {
+            queryParameters['with_total_count'] = requestParameters['withTotalCount'];
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -290,54 +341,72 @@ export class V11GetApi extends runtime.BaseAPI {
      * get search typeahead
      */
     async getSearchTypeaheadRaw(requestParameters: GetSearchTypeaheadRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
-        if (requestParameters.includeExtIsBlueVerified === null || requestParameters.includeExtIsBlueVerified === undefined) {
-            throw new runtime.RequiredError('includeExtIsBlueVerified','Required parameter requestParameters.includeExtIsBlueVerified was null or undefined when calling getSearchTypeahead.');
+        if (requestParameters['includeExtIsBlueVerified'] == null) {
+            throw new runtime.RequiredError(
+                'includeExtIsBlueVerified',
+                'Required parameter "includeExtIsBlueVerified" was null or undefined when calling getSearchTypeahead().'
+            );
         }
 
-        if (requestParameters.includeExtVerifiedType === null || requestParameters.includeExtVerifiedType === undefined) {
-            throw new runtime.RequiredError('includeExtVerifiedType','Required parameter requestParameters.includeExtVerifiedType was null or undefined when calling getSearchTypeahead.');
+        if (requestParameters['includeExtVerifiedType'] == null) {
+            throw new runtime.RequiredError(
+                'includeExtVerifiedType',
+                'Required parameter "includeExtVerifiedType" was null or undefined when calling getSearchTypeahead().'
+            );
         }
 
-        if (requestParameters.includeExtProfileImageShape === null || requestParameters.includeExtProfileImageShape === undefined) {
-            throw new runtime.RequiredError('includeExtProfileImageShape','Required parameter requestParameters.includeExtProfileImageShape was null or undefined when calling getSearchTypeahead.');
+        if (requestParameters['includeExtProfileImageShape'] == null) {
+            throw new runtime.RequiredError(
+                'includeExtProfileImageShape',
+                'Required parameter "includeExtProfileImageShape" was null or undefined when calling getSearchTypeahead().'
+            );
         }
 
-        if (requestParameters.q === null || requestParameters.q === undefined) {
-            throw new runtime.RequiredError('q','Required parameter requestParameters.q was null or undefined when calling getSearchTypeahead.');
+        if (requestParameters['q'] == null) {
+            throw new runtime.RequiredError(
+                'q',
+                'Required parameter "q" was null or undefined when calling getSearchTypeahead().'
+            );
         }
 
-        if (requestParameters.src === null || requestParameters.src === undefined) {
-            throw new runtime.RequiredError('src','Required parameter requestParameters.src was null or undefined when calling getSearchTypeahead.');
+        if (requestParameters['src'] == null) {
+            throw new runtime.RequiredError(
+                'src',
+                'Required parameter "src" was null or undefined when calling getSearchTypeahead().'
+            );
         }
 
-        if (requestParameters.resultType === null || requestParameters.resultType === undefined) {
-            throw new runtime.RequiredError('resultType','Required parameter requestParameters.resultType was null or undefined when calling getSearchTypeahead.');
+        if (requestParameters['resultType'] == null) {
+            throw new runtime.RequiredError(
+                'resultType',
+                'Required parameter "resultType" was null or undefined when calling getSearchTypeahead().'
+            );
         }
 
         const queryParameters: any = {};
 
-        if (requestParameters.includeExtIsBlueVerified !== undefined) {
-            queryParameters['include_ext_is_blue_verified'] = requestParameters.includeExtIsBlueVerified;
+        if (requestParameters['includeExtIsBlueVerified'] != null) {
+            queryParameters['include_ext_is_blue_verified'] = requestParameters['includeExtIsBlueVerified'];
         }
 
-        if (requestParameters.includeExtVerifiedType !== undefined) {
-            queryParameters['include_ext_verified_type'] = requestParameters.includeExtVerifiedType;
+        if (requestParameters['includeExtVerifiedType'] != null) {
+            queryParameters['include_ext_verified_type'] = requestParameters['includeExtVerifiedType'];
         }
 
-        if (requestParameters.includeExtProfileImageShape !== undefined) {
-            queryParameters['include_ext_profile_image_shape'] = requestParameters.includeExtProfileImageShape;
+        if (requestParameters['includeExtProfileImageShape'] != null) {
+            queryParameters['include_ext_profile_image_shape'] = requestParameters['includeExtProfileImageShape'];
         }
 
-        if (requestParameters.q !== undefined) {
-            queryParameters['q'] = requestParameters.q;
+        if (requestParameters['q'] != null) {
+            queryParameters['q'] = requestParameters['q'];
         }
 
-        if (requestParameters.src !== undefined) {
-            queryParameters['src'] = requestParameters.src;
+        if (requestParameters['src'] != null) {
+            queryParameters['src'] = requestParameters['src'];
         }
 
-        if (requestParameters.resultType !== undefined) {
-            queryParameters['result_type'] = requestParameters.resultType;
+        if (requestParameters['resultType'] != null) {
+            queryParameters['result_type'] = requestParameters['resultType'];
         }
 
         const headerParameters: runtime.HTTPHeaders = {};

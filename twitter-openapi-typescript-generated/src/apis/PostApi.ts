@@ -94,12 +94,18 @@ export class PostApi extends runtime.BaseAPI {
      * create Retweet
      */
     async postCreateRetweetRaw(requestParameters: PostCreateRetweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostCreateRetweet200Response>> {
-        if (requestParameters.pathQueryId === null || requestParameters.pathQueryId === undefined) {
-            throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling postCreateRetweet.');
+        if (requestParameters['pathQueryId'] == null) {
+            throw new runtime.RequiredError(
+                'pathQueryId',
+                'Required parameter "pathQueryId" was null or undefined when calling postCreateRetweet().'
+            );
         }
 
-        if (requestParameters.postCreateRetweetRequest === null || requestParameters.postCreateRetweetRequest === undefined) {
-            throw new runtime.RequiredError('postCreateRetweetRequest','Required parameter requestParameters.postCreateRetweetRequest was null or undefined when calling postCreateRetweet.');
+        if (requestParameters['postCreateRetweetRequest'] == null) {
+            throw new runtime.RequiredError(
+                'postCreateRetweetRequest',
+                'Required parameter "postCreateRetweetRequest" was null or undefined when calling postCreateRetweet().'
+            );
         }
 
         const queryParameters: any = {};
@@ -185,11 +191,11 @@ export class PostApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/graphql/{pathQueryId}/CreateRetweet`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters.pathQueryId))),
+            path: `/graphql/{pathQueryId}/CreateRetweet`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters['pathQueryId']))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: PostCreateRetweetRequestToJSON(requestParameters.postCreateRetweetRequest),
+            body: PostCreateRetweetRequestToJSON(requestParameters['postCreateRetweetRequest']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => PostCreateRetweet200ResponseFromJSON(jsonValue));
@@ -207,12 +213,18 @@ export class PostApi extends runtime.BaseAPI {
      * create Tweet
      */
     async postCreateTweetRaw(requestParameters: PostCreateTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostCreateTweet200Response>> {
-        if (requestParameters.pathQueryId === null || requestParameters.pathQueryId === undefined) {
-            throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling postCreateTweet.');
+        if (requestParameters['pathQueryId'] == null) {
+            throw new runtime.RequiredError(
+                'pathQueryId',
+                'Required parameter "pathQueryId" was null or undefined when calling postCreateTweet().'
+            );
         }
 
-        if (requestParameters.postCreateTweetRequest === null || requestParameters.postCreateTweetRequest === undefined) {
-            throw new runtime.RequiredError('postCreateTweetRequest','Required parameter requestParameters.postCreateTweetRequest was null or undefined when calling postCreateTweet.');
+        if (requestParameters['postCreateTweetRequest'] == null) {
+            throw new runtime.RequiredError(
+                'postCreateTweetRequest',
+                'Required parameter "postCreateTweetRequest" was null or undefined when calling postCreateTweet().'
+            );
         }
 
         const queryParameters: any = {};
@@ -298,11 +310,11 @@ export class PostApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/graphql/{pathQueryId}/CreateTweet`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters.pathQueryId))),
+            path: `/graphql/{pathQueryId}/CreateTweet`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters['pathQueryId']))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: PostCreateTweetRequestToJSON(requestParameters.postCreateTweetRequest),
+            body: PostCreateTweetRequestToJSON(requestParameters['postCreateTweetRequest']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => PostCreateTweet200ResponseFromJSON(jsonValue));
@@ -320,12 +332,18 @@ export class PostApi extends runtime.BaseAPI {
      * delete Retweet
      */
     async postDeleteRetweetRaw(requestParameters: PostDeleteRetweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostDeleteRetweet200Response>> {
-        if (requestParameters.pathQueryId === null || requestParameters.pathQueryId === undefined) {
-            throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling postDeleteRetweet.');
+        if (requestParameters['pathQueryId'] == null) {
+            throw new runtime.RequiredError(
+                'pathQueryId',
+                'Required parameter "pathQueryId" was null or undefined when calling postDeleteRetweet().'
+            );
         }
 
-        if (requestParameters.postDeleteRetweetRequest === null || requestParameters.postDeleteRetweetRequest === undefined) {
-            throw new runtime.RequiredError('postDeleteRetweetRequest','Required parameter requestParameters.postDeleteRetweetRequest was null or undefined when calling postDeleteRetweet.');
+        if (requestParameters['postDeleteRetweetRequest'] == null) {
+            throw new runtime.RequiredError(
+                'postDeleteRetweetRequest',
+                'Required parameter "postDeleteRetweetRequest" was null or undefined when calling postDeleteRetweet().'
+            );
         }
 
         const queryParameters: any = {};
@@ -411,11 +429,11 @@ export class PostApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/graphql/{pathQueryId}/DeleteRetweet`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters.pathQueryId))),
+            path: `/graphql/{pathQueryId}/DeleteRetweet`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters['pathQueryId']))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: PostDeleteRetweetRequestToJSON(requestParameters.postDeleteRetweetRequest),
+            body: PostDeleteRetweetRequestToJSON(requestParameters['postDeleteRetweetRequest']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => PostDeleteRetweet200ResponseFromJSON(jsonValue));
@@ -433,12 +451,18 @@ export class PostApi extends runtime.BaseAPI {
      * delete Retweet
      */
     async postDeleteTweetRaw(requestParameters: PostDeleteTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostDeleteTweet200Response>> {
-        if (requestParameters.pathQueryId === null || requestParameters.pathQueryId === undefined) {
-            throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling postDeleteTweet.');
+        if (requestParameters['pathQueryId'] == null) {
+            throw new runtime.RequiredError(
+                'pathQueryId',
+                'Required parameter "pathQueryId" was null or undefined when calling postDeleteTweet().'
+            );
         }
 
-        if (requestParameters.postDeleteTweetRequest === null || requestParameters.postDeleteTweetRequest === undefined) {
-            throw new runtime.RequiredError('postDeleteTweetRequest','Required parameter requestParameters.postDeleteTweetRequest was null or undefined when calling postDeleteTweet.');
+        if (requestParameters['postDeleteTweetRequest'] == null) {
+            throw new runtime.RequiredError(
+                'postDeleteTweetRequest',
+                'Required parameter "postDeleteTweetRequest" was null or undefined when calling postDeleteTweet().'
+            );
         }
 
         const queryParameters: any = {};
@@ -524,11 +548,11 @@ export class PostApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/graphql/{pathQueryId}/DeleteTweet`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters.pathQueryId))),
+            path: `/graphql/{pathQueryId}/DeleteTweet`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters['pathQueryId']))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: PostDeleteTweetRequestToJSON(requestParameters.postDeleteTweetRequest),
+            body: PostDeleteTweetRequestToJSON(requestParameters['postDeleteTweetRequest']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => PostDeleteTweet200ResponseFromJSON(jsonValue));
@@ -546,12 +570,18 @@ export class PostApi extends runtime.BaseAPI {
      * favorite Tweet
      */
     async postFavoriteTweetRaw(requestParameters: PostFavoriteTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostFavoriteTweet200Response>> {
-        if (requestParameters.pathQueryId === null || requestParameters.pathQueryId === undefined) {
-            throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling postFavoriteTweet.');
+        if (requestParameters['pathQueryId'] == null) {
+            throw new runtime.RequiredError(
+                'pathQueryId',
+                'Required parameter "pathQueryId" was null or undefined when calling postFavoriteTweet().'
+            );
         }
 
-        if (requestParameters.postFavoriteTweetRequest === null || requestParameters.postFavoriteTweetRequest === undefined) {
-            throw new runtime.RequiredError('postFavoriteTweetRequest','Required parameter requestParameters.postFavoriteTweetRequest was null or undefined when calling postFavoriteTweet.');
+        if (requestParameters['postFavoriteTweetRequest'] == null) {
+            throw new runtime.RequiredError(
+                'postFavoriteTweetRequest',
+                'Required parameter "postFavoriteTweetRequest" was null or undefined when calling postFavoriteTweet().'
+            );
         }
 
         const queryParameters: any = {};
@@ -637,11 +667,11 @@ export class PostApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/graphql/{pathQueryId}/FavoriteTweet`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters.pathQueryId))),
+            path: `/graphql/{pathQueryId}/FavoriteTweet`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters['pathQueryId']))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: PostFavoriteTweetRequestToJSON(requestParameters.postFavoriteTweetRequest),
+            body: PostFavoriteTweetRequestToJSON(requestParameters['postFavoriteTweetRequest']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => PostFavoriteTweet200ResponseFromJSON(jsonValue));
@@ -659,12 +689,18 @@ export class PostApi extends runtime.BaseAPI {
      * unfavorite Tweet
      */
     async postUnfavoriteTweetRaw(requestParameters: PostUnfavoriteTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostUnfavoriteTweet200Response>> {
-        if (requestParameters.pathQueryId === null || requestParameters.pathQueryId === undefined) {
-            throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling postUnfavoriteTweet.');
+        if (requestParameters['pathQueryId'] == null) {
+            throw new runtime.RequiredError(
+                'pathQueryId',
+                'Required parameter "pathQueryId" was null or undefined when calling postUnfavoriteTweet().'
+            );
         }
 
-        if (requestParameters.postUnfavoriteTweetRequest === null || requestParameters.postUnfavoriteTweetRequest === undefined) {
-            throw new runtime.RequiredError('postUnfavoriteTweetRequest','Required parameter requestParameters.postUnfavoriteTweetRequest was null or undefined when calling postUnfavoriteTweet.');
+        if (requestParameters['postUnfavoriteTweetRequest'] == null) {
+            throw new runtime.RequiredError(
+                'postUnfavoriteTweetRequest',
+                'Required parameter "postUnfavoriteTweetRequest" was null or undefined when calling postUnfavoriteTweet().'
+            );
         }
 
         const queryParameters: any = {};
@@ -750,11 +786,11 @@ export class PostApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/graphql/{pathQueryId}/UnfavoriteTweet`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters.pathQueryId))),
+            path: `/graphql/{pathQueryId}/UnfavoriteTweet`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters['pathQueryId']))),
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
-            body: PostUnfavoriteTweetRequestToJSON(requestParameters.postUnfavoriteTweetRequest),
+            body: PostUnfavoriteTweetRequestToJSON(requestParameters['postUnfavoriteTweetRequest']),
         }, initOverrides);
 
         return new runtime.JSONApiResponse(response, (jsonValue) => PostUnfavoriteTweet200ResponseFromJSON(jsonValue));

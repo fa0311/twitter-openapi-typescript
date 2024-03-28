@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { UserProfessionalCategory } from './UserProfessionalCategory';
 import {
     UserProfessionalCategoryFromJSON,
@@ -61,12 +61,10 @@ export type UserProfessionalProfessionalTypeEnum = typeof UserProfessionalProfes
  * Check if a given object implements the UserProfessional interface.
  */
 export function instanceOfUserProfessional(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "category" in value;
-    isInstance = isInstance && "professionalType" in value;
-    isInstance = isInstance && "restId" in value;
-
-    return isInstance;
+    if (!('category' in value)) return false;
+    if (!('professionalType' in value)) return false;
+    if (!('restId' in value)) return false;
+    return true;
 }
 
 export function UserProfessionalFromJSON(json: any): UserProfessional {
@@ -74,7 +72,7 @@ export function UserProfessionalFromJSON(json: any): UserProfessional {
 }
 
 export function UserProfessionalFromJSONTyped(json: any, ignoreDiscriminator: boolean): UserProfessional {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -86,17 +84,14 @@ export function UserProfessionalFromJSONTyped(json: any, ignoreDiscriminator: bo
 }
 
 export function UserProfessionalToJSON(value?: UserProfessional | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'category': ((value.category as Array<any>).map(UserProfessionalCategoryToJSON)),
-        'professional_type': value.professionalType,
-        'rest_id': value.restId,
+        'category': ((value['category'] as Array<any>).map(UserProfessionalCategoryToJSON)),
+        'professional_type': value['professionalType'],
+        'rest_id': value['restId'],
     };
 }
 

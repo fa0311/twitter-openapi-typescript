@@ -67,7 +67,7 @@ export function ItemContentUnionFromJSON(json: any): ItemContentUnion {
 }
 
 export function ItemContentUnionFromJSONTyped(json: any, ignoreDiscriminator: boolean): ItemContentUnion {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     switch (json['__typename']) {
@@ -89,11 +89,8 @@ export function ItemContentUnionFromJSONTyped(json: any, ignoreDiscriminator: bo
 }
 
 export function ItemContentUnionToJSON(value?: ItemContentUnion | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     switch (value['typename']) {
         case 'TimelineCommunity':

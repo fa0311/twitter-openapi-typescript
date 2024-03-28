@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { TweetResultByRestIdData } from './TweetResultByRestIdData';
 import {
     TweetResultByRestIdDataFromJSON,
@@ -38,10 +38,8 @@ export interface TweetResultByRestIdResponse {
  * Check if a given object implements the TweetResultByRestIdResponse interface.
  */
 export function instanceOfTweetResultByRestIdResponse(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "data" in value;
-
-    return isInstance;
+    if (!('data' in value)) return false;
+    return true;
 }
 
 export function TweetResultByRestIdResponseFromJSON(json: any): TweetResultByRestIdResponse {
@@ -49,7 +47,7 @@ export function TweetResultByRestIdResponseFromJSON(json: any): TweetResultByRes
 }
 
 export function TweetResultByRestIdResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): TweetResultByRestIdResponse {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -59,15 +57,12 @@ export function TweetResultByRestIdResponseFromJSONTyped(json: any, ignoreDiscri
 }
 
 export function TweetResultByRestIdResponseToJSON(value?: TweetResultByRestIdResponse | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'data': TweetResultByRestIdDataToJSON(value.data),
+        'data': TweetResultByRestIdDataToJSON(value['data']),
     };
 }
 

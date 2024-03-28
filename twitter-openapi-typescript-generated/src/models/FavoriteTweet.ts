@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -31,10 +31,8 @@ export interface FavoriteTweet {
  * Check if a given object implements the FavoriteTweet interface.
  */
 export function instanceOfFavoriteTweet(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "favoriteTweet" in value;
-
-    return isInstance;
+    if (!('favoriteTweet' in value)) return false;
+    return true;
 }
 
 export function FavoriteTweetFromJSON(json: any): FavoriteTweet {
@@ -42,7 +40,7 @@ export function FavoriteTweetFromJSON(json: any): FavoriteTweet {
 }
 
 export function FavoriteTweetFromJSONTyped(json: any, ignoreDiscriminator: boolean): FavoriteTweet {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -52,15 +50,12 @@ export function FavoriteTweetFromJSONTyped(json: any, ignoreDiscriminator: boole
 }
 
 export function FavoriteTweetToJSON(value?: FavoriteTweet | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'favorite_tweet': value.favoriteTweet,
+        'favorite_tweet': value['favoriteTweet'],
     };
 }
 

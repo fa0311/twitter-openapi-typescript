@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -31,10 +31,8 @@ export interface UserFeatures {
  * Check if a given object implements the UserFeatures interface.
  */
 export function instanceOfUserFeatures(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "mediatoolStudioLibrary" in value;
-
-    return isInstance;
+    if (!('mediatoolStudioLibrary' in value)) return false;
+    return true;
 }
 
 export function UserFeaturesFromJSON(json: any): UserFeatures {
@@ -42,7 +40,7 @@ export function UserFeaturesFromJSON(json: any): UserFeatures {
 }
 
 export function UserFeaturesFromJSONTyped(json: any, ignoreDiscriminator: boolean): UserFeatures {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -52,15 +50,12 @@ export function UserFeaturesFromJSONTyped(json: any, ignoreDiscriminator: boolea
 }
 
 export function UserFeaturesToJSON(value?: UserFeatures | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'mediatool_studio_library': value.mediatoolStudioLibrary,
+        'mediatool_studio_library': value['mediatoolStudioLibrary'],
     };
 }
 

@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { CommunityDeleteActionResult } from './CommunityDeleteActionResult';
 import {
     CommunityDeleteActionResultFromJSON,
@@ -74,13 +74,11 @@ export interface CommunityActions {
  * Check if a given object implements the CommunityActions interface.
  */
 export function instanceOfCommunityActions(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "deleteActionResult" in value;
-    isInstance = isInstance && "joinActionResult" in value;
-    isInstance = isInstance && "leaveActionResult" in value;
-    isInstance = isInstance && "pinActionResult" in value;
-
-    return isInstance;
+    if (!('deleteActionResult' in value)) return false;
+    if (!('joinActionResult' in value)) return false;
+    if (!('leaveActionResult' in value)) return false;
+    if (!('pinActionResult' in value)) return false;
+    return true;
 }
 
 export function CommunityActionsFromJSON(json: any): CommunityActions {
@@ -88,7 +86,7 @@ export function CommunityActionsFromJSON(json: any): CommunityActions {
 }
 
 export function CommunityActionsFromJSONTyped(json: any, ignoreDiscriminator: boolean): CommunityActions {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -101,18 +99,15 @@ export function CommunityActionsFromJSONTyped(json: any, ignoreDiscriminator: bo
 }
 
 export function CommunityActionsToJSON(value?: CommunityActions | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'delete_action_result': CommunityDeleteActionResultToJSON(value.deleteActionResult),
-        'join_action_result': CommunityJoinActionResultToJSON(value.joinActionResult),
-        'leave_action_result': CommunityLeaveActionResultToJSON(value.leaveActionResult),
-        'pin_action_result': CommunityPinActionResultToJSON(value.pinActionResult),
+        'delete_action_result': CommunityDeleteActionResultToJSON(value['deleteActionResult']),
+        'join_action_result': CommunityJoinActionResultToJSON(value['joinActionResult']),
+        'leave_action_result': CommunityLeaveActionResultToJSON(value['leaveActionResult']),
+        'pin_action_result': CommunityPinActionResultToJSON(value['pinActionResult']),
     };
 }
 

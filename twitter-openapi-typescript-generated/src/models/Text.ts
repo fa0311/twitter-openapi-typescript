@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { TextEntity } from './TextEntity';
 import {
     TextEntityFromJSON,
@@ -44,11 +44,9 @@ export interface Text {
  * Check if a given object implements the Text interface.
  */
 export function instanceOfText(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "entities" in value;
-    isInstance = isInstance && "text" in value;
-
-    return isInstance;
+    if (!('entities' in value)) return false;
+    if (!('text' in value)) return false;
+    return true;
 }
 
 export function TextFromJSON(json: any): Text {
@@ -56,7 +54,7 @@ export function TextFromJSON(json: any): Text {
 }
 
 export function TextFromJSONTyped(json: any, ignoreDiscriminator: boolean): Text {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -67,16 +65,13 @@ export function TextFromJSONTyped(json: any, ignoreDiscriminator: boolean): Text
 }
 
 export function TextToJSON(value?: Text | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'entities': ((value.entities as Array<any>).map(TextEntityToJSON)),
-        'text': value.text,
+        'entities': ((value['entities'] as Array<any>).map(TextEntityToJSON)),
+        'text': value['text'],
     };
 }
 

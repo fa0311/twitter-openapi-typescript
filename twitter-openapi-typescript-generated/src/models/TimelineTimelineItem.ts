@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { ClientEventInfo } from './ClientEventInfo';
 import {
     ClientEventInfoFromJSON,
@@ -80,12 +80,10 @@ export interface TimelineTimelineItem {
  * Check if a given object implements the TimelineTimelineItem interface.
  */
 export function instanceOfTimelineTimelineItem(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "typename" in value;
-    isInstance = isInstance && "entryType" in value;
-    isInstance = isInstance && "itemContent" in value;
-
-    return isInstance;
+    if (!('typename' in value)) return false;
+    if (!('entryType' in value)) return false;
+    if (!('itemContent' in value)) return false;
+    return true;
 }
 
 export function TimelineTimelineItemFromJSON(json: any): TimelineTimelineItem {
@@ -93,33 +91,30 @@ export function TimelineTimelineItemFromJSON(json: any): TimelineTimelineItem {
 }
 
 export function TimelineTimelineItemFromJSONTyped(json: any, ignoreDiscriminator: boolean): TimelineTimelineItem {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
         'typename': TypeNameFromJSON(json['__typename']),
-        'clientEventInfo': !exists(json, 'clientEventInfo') ? undefined : ClientEventInfoFromJSON(json['clientEventInfo']),
+        'clientEventInfo': json['clientEventInfo'] == null ? undefined : ClientEventInfoFromJSON(json['clientEventInfo']),
         'entryType': ContentEntryTypeFromJSON(json['entryType']),
-        'feedbackInfo': !exists(json, 'feedbackInfo') ? undefined : json['feedbackInfo'],
+        'feedbackInfo': json['feedbackInfo'] == null ? undefined : json['feedbackInfo'],
         'itemContent': ItemContentUnionFromJSON(json['itemContent']),
     };
 }
 
 export function TimelineTimelineItemToJSON(value?: TimelineTimelineItem | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        '__typename': TypeNameToJSON(value.typename),
-        'clientEventInfo': ClientEventInfoToJSON(value.clientEventInfo),
-        'entryType': ContentEntryTypeToJSON(value.entryType),
-        'feedbackInfo': value.feedbackInfo,
-        'itemContent': ItemContentUnionToJSON(value.itemContent),
+        '__typename': TypeNameToJSON(value['typename']),
+        'clientEventInfo': ClientEventInfoToJSON(value['clientEventInfo']),
+        'entryType': ContentEntryTypeToJSON(value['entryType']),
+        'feedbackInfo': value['feedbackInfo'],
+        'itemContent': ItemContentUnionToJSON(value['itemContent']),
     };
 }
 

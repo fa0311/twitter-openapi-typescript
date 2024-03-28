@@ -67,26 +67,35 @@ export class UserListApi extends runtime.BaseAPI {
      * get tweet favoriters
      */
     async getFavoritersRaw(requestParameters: GetFavoritersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetFavoriters200Response>> {
-        if (requestParameters.pathQueryId === null || requestParameters.pathQueryId === undefined) {
-            throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling getFavoriters.');
+        if (requestParameters['pathQueryId'] == null) {
+            throw new runtime.RequiredError(
+                'pathQueryId',
+                'Required parameter "pathQueryId" was null or undefined when calling getFavoriters().'
+            );
         }
 
-        if (requestParameters.variables === null || requestParameters.variables === undefined) {
-            throw new runtime.RequiredError('variables','Required parameter requestParameters.variables was null or undefined when calling getFavoriters.');
+        if (requestParameters['variables'] == null) {
+            throw new runtime.RequiredError(
+                'variables',
+                'Required parameter "variables" was null or undefined when calling getFavoriters().'
+            );
         }
 
-        if (requestParameters.features === null || requestParameters.features === undefined) {
-            throw new runtime.RequiredError('features','Required parameter requestParameters.features was null or undefined when calling getFavoriters.');
+        if (requestParameters['features'] == null) {
+            throw new runtime.RequiredError(
+                'features',
+                'Required parameter "features" was null or undefined when calling getFavoriters().'
+            );
         }
 
         const queryParameters: any = {};
 
-        if (requestParameters.variables !== undefined) {
-            queryParameters['variables'] = requestParameters.variables;
+        if (requestParameters['variables'] != null) {
+            queryParameters['variables'] = requestParameters['variables'];
         }
 
-        if (requestParameters.features !== undefined) {
-            queryParameters['features'] = requestParameters.features;
+        if (requestParameters['features'] != null) {
+            queryParameters['features'] = requestParameters['features'];
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -168,7 +177,7 @@ export class UserListApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/graphql/{pathQueryId}/Favoriters`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters.pathQueryId))),
+            path: `/graphql/{pathQueryId}/Favoriters`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters['pathQueryId']))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -189,26 +198,35 @@ export class UserListApi extends runtime.BaseAPI {
      * get user list of followers
      */
     async getFollowersRaw(requestParameters: GetFollowersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetFollowers200Response>> {
-        if (requestParameters.pathQueryId === null || requestParameters.pathQueryId === undefined) {
-            throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling getFollowers.');
+        if (requestParameters['pathQueryId'] == null) {
+            throw new runtime.RequiredError(
+                'pathQueryId',
+                'Required parameter "pathQueryId" was null or undefined when calling getFollowers().'
+            );
         }
 
-        if (requestParameters.variables === null || requestParameters.variables === undefined) {
-            throw new runtime.RequiredError('variables','Required parameter requestParameters.variables was null or undefined when calling getFollowers.');
+        if (requestParameters['variables'] == null) {
+            throw new runtime.RequiredError(
+                'variables',
+                'Required parameter "variables" was null or undefined when calling getFollowers().'
+            );
         }
 
-        if (requestParameters.features === null || requestParameters.features === undefined) {
-            throw new runtime.RequiredError('features','Required parameter requestParameters.features was null or undefined when calling getFollowers.');
+        if (requestParameters['features'] == null) {
+            throw new runtime.RequiredError(
+                'features',
+                'Required parameter "features" was null or undefined when calling getFollowers().'
+            );
         }
 
         const queryParameters: any = {};
 
-        if (requestParameters.variables !== undefined) {
-            queryParameters['variables'] = requestParameters.variables;
+        if (requestParameters['variables'] != null) {
+            queryParameters['variables'] = requestParameters['variables'];
         }
 
-        if (requestParameters.features !== undefined) {
-            queryParameters['features'] = requestParameters.features;
+        if (requestParameters['features'] != null) {
+            queryParameters['features'] = requestParameters['features'];
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -290,7 +308,7 @@ export class UserListApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/graphql/{pathQueryId}/Followers`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters.pathQueryId))),
+            path: `/graphql/{pathQueryId}/Followers`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters['pathQueryId']))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -311,26 +329,35 @@ export class UserListApi extends runtime.BaseAPI {
      * get followers you know
      */
     async getFollowersYouKnowRaw(requestParameters: GetFollowersYouKnowRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetFollowers200Response>> {
-        if (requestParameters.pathQueryId === null || requestParameters.pathQueryId === undefined) {
-            throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling getFollowersYouKnow.');
+        if (requestParameters['pathQueryId'] == null) {
+            throw new runtime.RequiredError(
+                'pathQueryId',
+                'Required parameter "pathQueryId" was null or undefined when calling getFollowersYouKnow().'
+            );
         }
 
-        if (requestParameters.variables === null || requestParameters.variables === undefined) {
-            throw new runtime.RequiredError('variables','Required parameter requestParameters.variables was null or undefined when calling getFollowersYouKnow.');
+        if (requestParameters['variables'] == null) {
+            throw new runtime.RequiredError(
+                'variables',
+                'Required parameter "variables" was null or undefined when calling getFollowersYouKnow().'
+            );
         }
 
-        if (requestParameters.features === null || requestParameters.features === undefined) {
-            throw new runtime.RequiredError('features','Required parameter requestParameters.features was null or undefined when calling getFollowersYouKnow.');
+        if (requestParameters['features'] == null) {
+            throw new runtime.RequiredError(
+                'features',
+                'Required parameter "features" was null or undefined when calling getFollowersYouKnow().'
+            );
         }
 
         const queryParameters: any = {};
 
-        if (requestParameters.variables !== undefined) {
-            queryParameters['variables'] = requestParameters.variables;
+        if (requestParameters['variables'] != null) {
+            queryParameters['variables'] = requestParameters['variables'];
         }
 
-        if (requestParameters.features !== undefined) {
-            queryParameters['features'] = requestParameters.features;
+        if (requestParameters['features'] != null) {
+            queryParameters['features'] = requestParameters['features'];
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -412,7 +439,7 @@ export class UserListApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/graphql/{pathQueryId}/FollowersYouKnow`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters.pathQueryId))),
+            path: `/graphql/{pathQueryId}/FollowersYouKnow`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters['pathQueryId']))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -433,26 +460,35 @@ export class UserListApi extends runtime.BaseAPI {
      * get user list of following
      */
     async getFollowingRaw(requestParameters: GetFollowingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetFollowers200Response>> {
-        if (requestParameters.pathQueryId === null || requestParameters.pathQueryId === undefined) {
-            throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling getFollowing.');
+        if (requestParameters['pathQueryId'] == null) {
+            throw new runtime.RequiredError(
+                'pathQueryId',
+                'Required parameter "pathQueryId" was null or undefined when calling getFollowing().'
+            );
         }
 
-        if (requestParameters.variables === null || requestParameters.variables === undefined) {
-            throw new runtime.RequiredError('variables','Required parameter requestParameters.variables was null or undefined when calling getFollowing.');
+        if (requestParameters['variables'] == null) {
+            throw new runtime.RequiredError(
+                'variables',
+                'Required parameter "variables" was null or undefined when calling getFollowing().'
+            );
         }
 
-        if (requestParameters.features === null || requestParameters.features === undefined) {
-            throw new runtime.RequiredError('features','Required parameter requestParameters.features was null or undefined when calling getFollowing.');
+        if (requestParameters['features'] == null) {
+            throw new runtime.RequiredError(
+                'features',
+                'Required parameter "features" was null or undefined when calling getFollowing().'
+            );
         }
 
         const queryParameters: any = {};
 
-        if (requestParameters.variables !== undefined) {
-            queryParameters['variables'] = requestParameters.variables;
+        if (requestParameters['variables'] != null) {
+            queryParameters['variables'] = requestParameters['variables'];
         }
 
-        if (requestParameters.features !== undefined) {
-            queryParameters['features'] = requestParameters.features;
+        if (requestParameters['features'] != null) {
+            queryParameters['features'] = requestParameters['features'];
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -534,7 +570,7 @@ export class UserListApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/graphql/{pathQueryId}/Following`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters.pathQueryId))),
+            path: `/graphql/{pathQueryId}/Following`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters['pathQueryId']))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -555,26 +591,35 @@ export class UserListApi extends runtime.BaseAPI {
      * get tweet retweeters
      */
     async getRetweetersRaw(requestParameters: GetRetweetersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetRetweeters200Response>> {
-        if (requestParameters.pathQueryId === null || requestParameters.pathQueryId === undefined) {
-            throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling getRetweeters.');
+        if (requestParameters['pathQueryId'] == null) {
+            throw new runtime.RequiredError(
+                'pathQueryId',
+                'Required parameter "pathQueryId" was null or undefined when calling getRetweeters().'
+            );
         }
 
-        if (requestParameters.variables === null || requestParameters.variables === undefined) {
-            throw new runtime.RequiredError('variables','Required parameter requestParameters.variables was null or undefined when calling getRetweeters.');
+        if (requestParameters['variables'] == null) {
+            throw new runtime.RequiredError(
+                'variables',
+                'Required parameter "variables" was null or undefined when calling getRetweeters().'
+            );
         }
 
-        if (requestParameters.features === null || requestParameters.features === undefined) {
-            throw new runtime.RequiredError('features','Required parameter requestParameters.features was null or undefined when calling getRetweeters.');
+        if (requestParameters['features'] == null) {
+            throw new runtime.RequiredError(
+                'features',
+                'Required parameter "features" was null or undefined when calling getRetweeters().'
+            );
         }
 
         const queryParameters: any = {};
 
-        if (requestParameters.variables !== undefined) {
-            queryParameters['variables'] = requestParameters.variables;
+        if (requestParameters['variables'] != null) {
+            queryParameters['variables'] = requestParameters['variables'];
         }
 
-        if (requestParameters.features !== undefined) {
-            queryParameters['features'] = requestParameters.features;
+        if (requestParameters['features'] != null) {
+            queryParameters['features'] = requestParameters['features'];
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -656,7 +701,7 @@ export class UserListApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/graphql/{pathQueryId}/Retweeters`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters.pathQueryId))),
+            path: `/graphql/{pathQueryId}/Retweeters`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters['pathQueryId']))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,

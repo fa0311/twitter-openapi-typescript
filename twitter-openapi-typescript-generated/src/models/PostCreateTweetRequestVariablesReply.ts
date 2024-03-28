@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -37,11 +37,9 @@ export interface PostCreateTweetRequestVariablesReply {
  * Check if a given object implements the PostCreateTweetRequestVariablesReply interface.
  */
 export function instanceOfPostCreateTweetRequestVariablesReply(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "excludeReplyUserIds" in value;
-    isInstance = isInstance && "inReplyToTweetId" in value;
-
-    return isInstance;
+    if (!('excludeReplyUserIds' in value)) return false;
+    if (!('inReplyToTweetId' in value)) return false;
+    return true;
 }
 
 export function PostCreateTweetRequestVariablesReplyFromJSON(json: any): PostCreateTweetRequestVariablesReply {
@@ -49,7 +47,7 @@ export function PostCreateTweetRequestVariablesReplyFromJSON(json: any): PostCre
 }
 
 export function PostCreateTweetRequestVariablesReplyFromJSONTyped(json: any, ignoreDiscriminator: boolean): PostCreateTweetRequestVariablesReply {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -60,16 +58,13 @@ export function PostCreateTweetRequestVariablesReplyFromJSONTyped(json: any, ign
 }
 
 export function PostCreateTweetRequestVariablesReplyToJSON(value?: PostCreateTweetRequestVariablesReply | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'exclude_reply_user_ids': value.excludeReplyUserIds,
-        'in_reply_to_tweet_id': value.inReplyToTweetId,
+        'exclude_reply_user_ids': value['excludeReplyUserIds'],
+        'in_reply_to_tweet_id': value['inReplyToTweetId'],
     };
 }
 

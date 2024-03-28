@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { AdditionalMediaInfo } from './AdditionalMediaInfo';
 import {
     AdditionalMediaInfoFromJSON,
@@ -194,19 +194,17 @@ export type MediaExtendedTypeEnum = typeof MediaExtendedTypeEnum[keyof typeof Me
  * Check if a given object implements the MediaExtended interface.
  */
 export function instanceOfMediaExtended(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "displayUrl" in value;
-    isInstance = isInstance && "expandedUrl" in value;
-    isInstance = isInstance && "idStr" in value;
-    isInstance = isInstance && "indices" in value;
-    isInstance = isInstance && "mediaKey" in value;
-    isInstance = isInstance && "mediaUrlHttps" in value;
-    isInstance = isInstance && "originalInfo" in value;
-    isInstance = isInstance && "sizes" in value;
-    isInstance = isInstance && "type" in value;
-    isInstance = isInstance && "url" in value;
-
-    return isInstance;
+    if (!('displayUrl' in value)) return false;
+    if (!('expandedUrl' in value)) return false;
+    if (!('idStr' in value)) return false;
+    if (!('indices' in value)) return false;
+    if (!('mediaKey' in value)) return false;
+    if (!('mediaUrlHttps' in value)) return false;
+    if (!('originalInfo' in value)) return false;
+    if (!('sizes' in value)) return false;
+    if (!('type' in value)) return false;
+    if (!('url' in value)) return false;
+    return true;
 }
 
 export function MediaExtendedFromJSON(json: any): MediaExtended {
@@ -214,61 +212,58 @@ export function MediaExtendedFromJSON(json: any): MediaExtended {
 }
 
 export function MediaExtendedFromJSONTyped(json: any, ignoreDiscriminator: boolean): MediaExtended {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'additionalMediaInfo': !exists(json, 'additional_media_info') ? undefined : AdditionalMediaInfoFromJSON(json['additional_media_info']),
+        'additionalMediaInfo': json['additional_media_info'] == null ? undefined : AdditionalMediaInfoFromJSON(json['additional_media_info']),
         'displayUrl': json['display_url'],
         'expandedUrl': json['expanded_url'],
-        'extAltText': !exists(json, 'ext_alt_text') ? undefined : json['ext_alt_text'],
-        'extMediaAvailability': !exists(json, 'ext_media_availability') ? undefined : ExtMediaAvailabilityFromJSON(json['ext_media_availability']),
-        'features': !exists(json, 'features') ? undefined : json['features'],
+        'extAltText': json['ext_alt_text'] == null ? undefined : json['ext_alt_text'],
+        'extMediaAvailability': json['ext_media_availability'] == null ? undefined : ExtMediaAvailabilityFromJSON(json['ext_media_availability']),
+        'features': json['features'] == null ? undefined : json['features'],
         'idStr': json['id_str'],
         'indices': json['indices'],
-        'mediaStats': !exists(json, 'mediaStats') ? undefined : MediaStatsFromJSON(json['mediaStats']),
+        'mediaStats': json['mediaStats'] == null ? undefined : MediaStatsFromJSON(json['mediaStats']),
         'mediaKey': json['media_key'],
         'mediaUrlHttps': json['media_url_https'],
         'originalInfo': MediaOriginalInfoFromJSON(json['original_info']),
-        'sensitiveMediaWarning': !exists(json, 'sensitive_media_warning') ? undefined : SensitiveMediaWarningFromJSON(json['sensitive_media_warning']),
+        'sensitiveMediaWarning': json['sensitive_media_warning'] == null ? undefined : SensitiveMediaWarningFromJSON(json['sensitive_media_warning']),
         'sizes': MediaSizesFromJSON(json['sizes']),
-        'sourceStatusIdStr': !exists(json, 'source_status_id_str') ? undefined : json['source_status_id_str'],
-        'sourceUserIdStr': !exists(json, 'source_user_id_str') ? undefined : json['source_user_id_str'],
+        'sourceStatusIdStr': json['source_status_id_str'] == null ? undefined : json['source_status_id_str'],
+        'sourceUserIdStr': json['source_user_id_str'] == null ? undefined : json['source_user_id_str'],
         'type': json['type'],
         'url': json['url'],
-        'videoInfo': !exists(json, 'video_info') ? undefined : MediaVideoInfoFromJSON(json['video_info']),
+        'videoInfo': json['video_info'] == null ? undefined : MediaVideoInfoFromJSON(json['video_info']),
     };
 }
 
 export function MediaExtendedToJSON(value?: MediaExtended | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'additional_media_info': AdditionalMediaInfoToJSON(value.additionalMediaInfo),
-        'display_url': value.displayUrl,
-        'expanded_url': value.expandedUrl,
-        'ext_alt_text': value.extAltText,
-        'ext_media_availability': ExtMediaAvailabilityToJSON(value.extMediaAvailability),
-        'features': value.features,
-        'id_str': value.idStr,
-        'indices': value.indices,
-        'mediaStats': MediaStatsToJSON(value.mediaStats),
-        'media_key': value.mediaKey,
-        'media_url_https': value.mediaUrlHttps,
-        'original_info': MediaOriginalInfoToJSON(value.originalInfo),
-        'sensitive_media_warning': SensitiveMediaWarningToJSON(value.sensitiveMediaWarning),
-        'sizes': MediaSizesToJSON(value.sizes),
-        'source_status_id_str': value.sourceStatusIdStr,
-        'source_user_id_str': value.sourceUserIdStr,
-        'type': value.type,
-        'url': value.url,
-        'video_info': MediaVideoInfoToJSON(value.videoInfo),
+        'additional_media_info': AdditionalMediaInfoToJSON(value['additionalMediaInfo']),
+        'display_url': value['displayUrl'],
+        'expanded_url': value['expandedUrl'],
+        'ext_alt_text': value['extAltText'],
+        'ext_media_availability': ExtMediaAvailabilityToJSON(value['extMediaAvailability']),
+        'features': value['features'],
+        'id_str': value['idStr'],
+        'indices': value['indices'],
+        'mediaStats': MediaStatsToJSON(value['mediaStats']),
+        'media_key': value['mediaKey'],
+        'media_url_https': value['mediaUrlHttps'],
+        'original_info': MediaOriginalInfoToJSON(value['originalInfo']),
+        'sensitive_media_warning': SensitiveMediaWarningToJSON(value['sensitiveMediaWarning']),
+        'sizes': MediaSizesToJSON(value['sizes']),
+        'source_status_id_str': value['sourceStatusIdStr'],
+        'source_user_id_str': value['sourceUserIdStr'],
+        'type': value['type'],
+        'url': value['url'],
+        'video_info': MediaVideoInfoToJSON(value['videoInfo']),
     };
 }
 

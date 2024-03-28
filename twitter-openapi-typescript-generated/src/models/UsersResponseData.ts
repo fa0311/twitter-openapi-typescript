@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { UserResults } from './UserResults';
 import {
     UserResultsFromJSON,
@@ -38,10 +38,8 @@ export interface UsersResponseData {
  * Check if a given object implements the UsersResponseData interface.
  */
 export function instanceOfUsersResponseData(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "users" in value;
-
-    return isInstance;
+    if (!('users' in value)) return false;
+    return true;
 }
 
 export function UsersResponseDataFromJSON(json: any): UsersResponseData {
@@ -49,7 +47,7 @@ export function UsersResponseDataFromJSON(json: any): UsersResponseData {
 }
 
 export function UsersResponseDataFromJSONTyped(json: any, ignoreDiscriminator: boolean): UsersResponseData {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -59,15 +57,12 @@ export function UsersResponseDataFromJSONTyped(json: any, ignoreDiscriminator: b
 }
 
 export function UsersResponseDataToJSON(value?: UsersResponseData | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'users': ((value.users as Array<any>).map(UserResultsToJSON)),
+        'users': ((value['users'] as Array<any>).map(UserResultsToJSON)),
     };
 }
 

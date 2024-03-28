@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -48,9 +48,7 @@ export type ExtMediaAvailabilityStatusEnum = typeof ExtMediaAvailabilityStatusEn
  * Check if a given object implements the ExtMediaAvailability interface.
  */
 export function instanceOfExtMediaAvailability(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+    return true;
 }
 
 export function ExtMediaAvailabilityFromJSON(json: any): ExtMediaAvailability {
@@ -58,27 +56,24 @@ export function ExtMediaAvailabilityFromJSON(json: any): ExtMediaAvailability {
 }
 
 export function ExtMediaAvailabilityFromJSONTyped(json: any, ignoreDiscriminator: boolean): ExtMediaAvailability {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'reason': !exists(json, 'reason') ? undefined : json['reason'],
-        'status': !exists(json, 'status') ? undefined : json['status'],
+        'reason': json['reason'] == null ? undefined : json['reason'],
+        'status': json['status'] == null ? undefined : json['status'],
     };
 }
 
 export function ExtMediaAvailabilityToJSON(value?: ExtMediaAvailability | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'reason': value.reason,
-        'status': value.status,
+        'reason': value['reason'],
+        'status': value['status'],
     };
 }
 

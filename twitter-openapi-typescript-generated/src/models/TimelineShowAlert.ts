@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { InstructionType } from './InstructionType';
 import {
     InstructionTypeFromJSON,
@@ -116,12 +116,10 @@ export type TimelineShowAlertDisplayLocationEnum = typeof TimelineShowAlertDispl
  * Check if a given object implements the TimelineShowAlert interface.
  */
 export function instanceOfTimelineShowAlert(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "richText" in value;
-    isInstance = isInstance && "type" in value;
-    isInstance = isInstance && "usersResults" in value;
-
-    return isInstance;
+    if (!('richText' in value)) return false;
+    if (!('type' in value)) return false;
+    if (!('usersResults' in value)) return false;
+    return true;
 }
 
 export function TimelineShowAlertFromJSON(json: any): TimelineShowAlert {
@@ -129,41 +127,38 @@ export function TimelineShowAlertFromJSON(json: any): TimelineShowAlert {
 }
 
 export function TimelineShowAlertFromJSONTyped(json: any, ignoreDiscriminator: boolean): TimelineShowAlert {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'alertType': !exists(json, 'alertType') ? undefined : json['alertType'],
-        'colorConfig': !exists(json, 'colorConfig') ? undefined : json['colorConfig'],
-        'displayDurationMs': !exists(json, 'displayDurationMs') ? undefined : json['displayDurationMs'],
-        'displayLocation': !exists(json, 'displayLocation') ? undefined : json['displayLocation'],
-        'iconDisplayInfo': !exists(json, 'iconDisplayInfo') ? undefined : json['iconDisplayInfo'],
+        'alertType': json['alertType'] == null ? undefined : json['alertType'],
+        'colorConfig': json['colorConfig'] == null ? undefined : json['colorConfig'],
+        'displayDurationMs': json['displayDurationMs'] == null ? undefined : json['displayDurationMs'],
+        'displayLocation': json['displayLocation'] == null ? undefined : json['displayLocation'],
+        'iconDisplayInfo': json['iconDisplayInfo'] == null ? undefined : json['iconDisplayInfo'],
         'richText': TimelineShowAlertRichTextFromJSON(json['richText']),
-        'triggerDelayMs': !exists(json, 'triggerDelayMs') ? undefined : json['triggerDelayMs'],
+        'triggerDelayMs': json['triggerDelayMs'] == null ? undefined : json['triggerDelayMs'],
         'type': InstructionTypeFromJSON(json['type']),
         'usersResults': ((json['usersResults'] as Array<any>).map(UserResultsFromJSON)),
     };
 }
 
 export function TimelineShowAlertToJSON(value?: TimelineShowAlert | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'alertType': value.alertType,
-        'colorConfig': value.colorConfig,
-        'displayDurationMs': value.displayDurationMs,
-        'displayLocation': value.displayLocation,
-        'iconDisplayInfo': value.iconDisplayInfo,
-        'richText': TimelineShowAlertRichTextToJSON(value.richText),
-        'triggerDelayMs': value.triggerDelayMs,
-        'type': InstructionTypeToJSON(value.type),
-        'usersResults': ((value.usersResults as Array<any>).map(UserResultsToJSON)),
+        'alertType': value['alertType'],
+        'colorConfig': value['colorConfig'],
+        'displayDurationMs': value['displayDurationMs'],
+        'displayLocation': value['displayLocation'],
+        'iconDisplayInfo': value['iconDisplayInfo'],
+        'richText': TimelineShowAlertRichTextToJSON(value['richText']),
+        'triggerDelayMs': value['triggerDelayMs'],
+        'type': InstructionTypeToJSON(value['type']),
+        'usersResults': ((value['usersResults'] as Array<any>).map(UserResultsToJSON)),
     };
 }
 

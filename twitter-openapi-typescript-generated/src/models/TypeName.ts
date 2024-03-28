@@ -39,7 +39,8 @@ export const TypeName = {
     CommunityLeaveActionUnavailable: 'CommunityLeaveActionUnavailable',
     CommunityTweetPinActionUnavailable: 'CommunityTweetPinActionUnavailable',
     CommunityInvitesUnavailable: 'CommunityInvitesUnavailable',
-    CommunityJoinRequestsUnavailable: 'CommunityJoinRequestsUnavailable'
+    CommunityJoinRequestsUnavailable: 'CommunityJoinRequestsUnavailable',
+    ApiImage: 'ApiImage'
 } as const;
 export type TypeName = typeof TypeName[keyof typeof TypeName];
 

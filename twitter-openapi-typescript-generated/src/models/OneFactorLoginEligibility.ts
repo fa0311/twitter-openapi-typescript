@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -31,10 +31,8 @@ export interface OneFactorLoginEligibility {
  * Check if a given object implements the OneFactorLoginEligibility interface.
  */
 export function instanceOfOneFactorLoginEligibility(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "fetchStatus" in value;
-
-    return isInstance;
+    if (!('fetchStatus' in value)) return false;
+    return true;
 }
 
 export function OneFactorLoginEligibilityFromJSON(json: any): OneFactorLoginEligibility {
@@ -42,7 +40,7 @@ export function OneFactorLoginEligibilityFromJSON(json: any): OneFactorLoginElig
 }
 
 export function OneFactorLoginEligibilityFromJSONTyped(json: any, ignoreDiscriminator: boolean): OneFactorLoginEligibility {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -52,15 +50,12 @@ export function OneFactorLoginEligibilityFromJSONTyped(json: any, ignoreDiscrimi
 }
 
 export function OneFactorLoginEligibilityToJSON(value?: OneFactorLoginEligibility | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'fetchStatus': value.fetchStatus,
+        'fetchStatus': value['fetchStatus'],
     };
 }
 

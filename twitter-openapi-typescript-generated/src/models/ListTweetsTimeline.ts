@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { Timeline } from './Timeline';
 import {
     TimelineFromJSON,
@@ -38,9 +38,7 @@ export interface ListTweetsTimeline {
  * Check if a given object implements the ListTweetsTimeline interface.
  */
 export function instanceOfListTweetsTimeline(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+    return true;
 }
 
 export function ListTweetsTimelineFromJSON(json: any): ListTweetsTimeline {
@@ -48,25 +46,22 @@ export function ListTweetsTimelineFromJSON(json: any): ListTweetsTimeline {
 }
 
 export function ListTweetsTimelineFromJSONTyped(json: any, ignoreDiscriminator: boolean): ListTweetsTimeline {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'timeline': !exists(json, 'timeline') ? undefined : TimelineFromJSON(json['timeline']),
+        'timeline': json['timeline'] == null ? undefined : TimelineFromJSON(json['timeline']),
     };
 }
 
 export function ListTweetsTimelineToJSON(value?: ListTweetsTimeline | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'timeline': TimelineToJSON(value.timeline),
+        'timeline': TimelineToJSON(value['timeline']),
     };
 }
 

@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { BirdwatchPivotCallToAction } from './BirdwatchPivotCallToAction';
 import {
     BirdwatchPivotCallToActionFromJSON,
@@ -122,16 +122,14 @@ export type BirdwatchPivotVisualStyleEnum = typeof BirdwatchPivotVisualStyleEnum
  * Check if a given object implements the BirdwatchPivot interface.
  */
 export function instanceOfBirdwatchPivot(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "destinationUrl" in value;
-    isInstance = isInstance && "footer" in value;
-    isInstance = isInstance && "iconType" in value;
-    isInstance = isInstance && "note" in value;
-    isInstance = isInstance && "shorttitle" in value;
-    isInstance = isInstance && "subtitle" in value;
-    isInstance = isInstance && "title" in value;
-
-    return isInstance;
+    if (!('destinationUrl' in value)) return false;
+    if (!('footer' in value)) return false;
+    if (!('iconType' in value)) return false;
+    if (!('note' in value)) return false;
+    if (!('shorttitle' in value)) return false;
+    if (!('subtitle' in value)) return false;
+    if (!('title' in value)) return false;
+    return true;
 }
 
 export function BirdwatchPivotFromJSON(json: any): BirdwatchPivot {
@@ -139,12 +137,12 @@ export function BirdwatchPivotFromJSON(json: any): BirdwatchPivot {
 }
 
 export function BirdwatchPivotFromJSONTyped(json: any, ignoreDiscriminator: boolean): BirdwatchPivot {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'callToAction': !exists(json, 'callToAction') ? undefined : BirdwatchPivotCallToActionFromJSON(json['callToAction']),
+        'callToAction': json['callToAction'] == null ? undefined : BirdwatchPivotCallToActionFromJSON(json['callToAction']),
         'destinationUrl': json['destinationUrl'],
         'footer': BirdwatchPivotFooterFromJSON(json['footer']),
         'iconType': json['iconType'],
@@ -152,28 +150,25 @@ export function BirdwatchPivotFromJSONTyped(json: any, ignoreDiscriminator: bool
         'shorttitle': json['shorttitle'],
         'subtitle': BirdwatchPivotSubtitleFromJSON(json['subtitle']),
         'title': json['title'],
-        'visualStyle': !exists(json, 'visualStyle') ? undefined : json['visualStyle'],
+        'visualStyle': json['visualStyle'] == null ? undefined : json['visualStyle'],
     };
 }
 
 export function BirdwatchPivotToJSON(value?: BirdwatchPivot | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'callToAction': BirdwatchPivotCallToActionToJSON(value.callToAction),
-        'destinationUrl': value.destinationUrl,
-        'footer': BirdwatchPivotFooterToJSON(value.footer),
-        'iconType': value.iconType,
-        'note': BirdwatchPivotNoteToJSON(value.note),
-        'shorttitle': value.shorttitle,
-        'subtitle': BirdwatchPivotSubtitleToJSON(value.subtitle),
-        'title': value.title,
-        'visualStyle': value.visualStyle,
+        'callToAction': BirdwatchPivotCallToActionToJSON(value['callToAction']),
+        'destinationUrl': value['destinationUrl'],
+        'footer': BirdwatchPivotFooterToJSON(value['footer']),
+        'iconType': value['iconType'],
+        'note': BirdwatchPivotNoteToJSON(value['note']),
+        'shorttitle': value['shorttitle'],
+        'subtitle': BirdwatchPivotSubtitleToJSON(value['subtitle']),
+        'title': value['title'],
+        'visualStyle': value['visualStyle'],
     };
 }
 

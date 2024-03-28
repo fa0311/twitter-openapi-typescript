@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { DeleteTweetResponseResult } from './DeleteTweetResponseResult';
 import {
     DeleteTweetResponseResultFromJSON,
@@ -38,9 +38,7 @@ export interface DeleteTweetResponseData {
  * Check if a given object implements the DeleteTweetResponseData interface.
  */
 export function instanceOfDeleteTweetResponseData(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+    return true;
 }
 
 export function DeleteTweetResponseDataFromJSON(json: any): DeleteTweetResponseData {
@@ -48,25 +46,22 @@ export function DeleteTweetResponseDataFromJSON(json: any): DeleteTweetResponseD
 }
 
 export function DeleteTweetResponseDataFromJSONTyped(json: any, ignoreDiscriminator: boolean): DeleteTweetResponseData {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'deleteRetweet': !exists(json, 'delete_retweet') ? undefined : DeleteTweetResponseResultFromJSON(json['delete_retweet']),
+        'deleteRetweet': json['delete_retweet'] == null ? undefined : DeleteTweetResponseResultFromJSON(json['delete_retweet']),
     };
 }
 
 export function DeleteTweetResponseDataToJSON(value?: DeleteTweetResponseData | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'delete_retweet': DeleteTweetResponseResultToJSON(value.deleteRetweet),
+        'delete_retweet': DeleteTweetResponseResultToJSON(value['deleteRetweet']),
     };
 }
 

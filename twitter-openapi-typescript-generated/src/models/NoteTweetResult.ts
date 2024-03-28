@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { NoteTweetResultData } from './NoteTweetResultData';
 import {
     NoteTweetResultDataFromJSON,
@@ -38,10 +38,8 @@ export interface NoteTweetResult {
  * Check if a given object implements the NoteTweetResult interface.
  */
 export function instanceOfNoteTweetResult(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "result" in value;
-
-    return isInstance;
+    if (!('result' in value)) return false;
+    return true;
 }
 
 export function NoteTweetResultFromJSON(json: any): NoteTweetResult {
@@ -49,7 +47,7 @@ export function NoteTweetResultFromJSON(json: any): NoteTweetResult {
 }
 
 export function NoteTweetResultFromJSONTyped(json: any, ignoreDiscriminator: boolean): NoteTweetResult {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -59,15 +57,12 @@ export function NoteTweetResultFromJSONTyped(json: any, ignoreDiscriminator: boo
 }
 
 export function NoteTweetResultToJSON(value?: NoteTweetResult | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'result': NoteTweetResultDataToJSON(value.result),
+        'result': NoteTweetResultDataToJSON(value['result']),
     };
 }
 

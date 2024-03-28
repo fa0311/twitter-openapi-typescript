@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { TextHighlight } from './TextHighlight';
 import {
     TextHighlightFromJSON,
@@ -38,10 +38,8 @@ export interface Highlight {
  * Check if a given object implements the Highlight interface.
  */
 export function instanceOfHighlight(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "textHighlights" in value;
-
-    return isInstance;
+    if (!('textHighlights' in value)) return false;
+    return true;
 }
 
 export function HighlightFromJSON(json: any): Highlight {
@@ -49,7 +47,7 @@ export function HighlightFromJSON(json: any): Highlight {
 }
 
 export function HighlightFromJSONTyped(json: any, ignoreDiscriminator: boolean): Highlight {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -59,15 +57,12 @@ export function HighlightFromJSONTyped(json: any, ignoreDiscriminator: boolean):
 }
 
 export function HighlightToJSON(value?: Highlight | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'textHighlights': ((value.textHighlights as Array<any>).map(TextHighlightToJSON)),
+        'textHighlights': ((value['textHighlights'] as Array<any>).map(TextHighlightToJSON)),
     };
 }
 

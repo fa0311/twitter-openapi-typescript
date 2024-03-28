@@ -81,7 +81,7 @@ export function InstructionUnionFromJSON(json: any): InstructionUnion {
 }
 
 export function InstructionUnionFromJSONTyped(json: any, ignoreDiscriminator: boolean): InstructionUnion {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     switch (json['type']) {
@@ -107,11 +107,8 @@ export function InstructionUnionFromJSONTyped(json: any, ignoreDiscriminator: bo
 }
 
 export function InstructionUnionToJSON(value?: InstructionUnion | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     switch (value['type']) {
         case 'TimelineAddEntries':

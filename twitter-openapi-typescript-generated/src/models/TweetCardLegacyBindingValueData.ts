@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { TweetCardLegacyBindingValueDataImage } from './TweetCardLegacyBindingValueDataImage';
 import {
     TweetCardLegacyBindingValueDataImageFromJSON,
@@ -80,10 +80,8 @@ export interface TweetCardLegacyBindingValueData {
  * Check if a given object implements the TweetCardLegacyBindingValueData interface.
  */
 export function instanceOfTweetCardLegacyBindingValueData(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "type" in value;
-
-    return isInstance;
+    if (!('type' in value)) return false;
+    return true;
 }
 
 export function TweetCardLegacyBindingValueDataFromJSON(json: any): TweetCardLegacyBindingValueData {
@@ -91,37 +89,34 @@ export function TweetCardLegacyBindingValueDataFromJSON(json: any): TweetCardLeg
 }
 
 export function TweetCardLegacyBindingValueDataFromJSONTyped(json: any, ignoreDiscriminator: boolean): TweetCardLegacyBindingValueData {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'booleanValue': !exists(json, 'boolean_value') ? undefined : json['boolean_value'],
-        'imageColorValue': !exists(json, 'image_color_value') ? undefined : json['image_color_value'],
-        'imageValue': !exists(json, 'image_value') ? undefined : TweetCardLegacyBindingValueDataImageFromJSON(json['image_value']),
-        'scribeKey': !exists(json, 'scribe_key') ? undefined : json['scribe_key'],
-        'stringValue': !exists(json, 'string_value') ? undefined : json['string_value'],
+        'booleanValue': json['boolean_value'] == null ? undefined : json['boolean_value'],
+        'imageColorValue': json['image_color_value'] == null ? undefined : json['image_color_value'],
+        'imageValue': json['image_value'] == null ? undefined : TweetCardLegacyBindingValueDataImageFromJSON(json['image_value']),
+        'scribeKey': json['scribe_key'] == null ? undefined : json['scribe_key'],
+        'stringValue': json['string_value'] == null ? undefined : json['string_value'],
         'type': json['type'],
-        'userValue': !exists(json, 'user_value') ? undefined : UserValueFromJSON(json['user_value']),
+        'userValue': json['user_value'] == null ? undefined : UserValueFromJSON(json['user_value']),
     };
 }
 
 export function TweetCardLegacyBindingValueDataToJSON(value?: TweetCardLegacyBindingValueData | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'boolean_value': value.booleanValue,
-        'image_color_value': value.imageColorValue,
-        'image_value': TweetCardLegacyBindingValueDataImageToJSON(value.imageValue),
-        'scribe_key': value.scribeKey,
-        'string_value': value.stringValue,
-        'type': value.type,
-        'user_value': UserValueToJSON(value.userValue),
+        'boolean_value': value['booleanValue'],
+        'image_color_value': value['imageColorValue'],
+        'image_value': TweetCardLegacyBindingValueDataImageToJSON(value['imageValue']),
+        'scribe_key': value['scribeKey'],
+        'string_value': value['stringValue'],
+        'type': value['type'],
+        'user_value': UserValueToJSON(value['userValue']),
     };
 }
 

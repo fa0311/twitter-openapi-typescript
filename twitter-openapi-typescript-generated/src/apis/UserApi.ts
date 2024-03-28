@@ -44,26 +44,35 @@ export class UserApi extends runtime.BaseAPI {
      * get user by rest id
      */
     async getUserByRestIdRaw(requestParameters: GetUserByRestIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetUserByRestId200Response>> {
-        if (requestParameters.pathQueryId === null || requestParameters.pathQueryId === undefined) {
-            throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling getUserByRestId.');
+        if (requestParameters['pathQueryId'] == null) {
+            throw new runtime.RequiredError(
+                'pathQueryId',
+                'Required parameter "pathQueryId" was null or undefined when calling getUserByRestId().'
+            );
         }
 
-        if (requestParameters.variables === null || requestParameters.variables === undefined) {
-            throw new runtime.RequiredError('variables','Required parameter requestParameters.variables was null or undefined when calling getUserByRestId.');
+        if (requestParameters['variables'] == null) {
+            throw new runtime.RequiredError(
+                'variables',
+                'Required parameter "variables" was null or undefined when calling getUserByRestId().'
+            );
         }
 
-        if (requestParameters.features === null || requestParameters.features === undefined) {
-            throw new runtime.RequiredError('features','Required parameter requestParameters.features was null or undefined when calling getUserByRestId.');
+        if (requestParameters['features'] == null) {
+            throw new runtime.RequiredError(
+                'features',
+                'Required parameter "features" was null or undefined when calling getUserByRestId().'
+            );
         }
 
         const queryParameters: any = {};
 
-        if (requestParameters.variables !== undefined) {
-            queryParameters['variables'] = requestParameters.variables;
+        if (requestParameters['variables'] != null) {
+            queryParameters['variables'] = requestParameters['variables'];
         }
 
-        if (requestParameters.features !== undefined) {
-            queryParameters['features'] = requestParameters.features;
+        if (requestParameters['features'] != null) {
+            queryParameters['features'] = requestParameters['features'];
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -145,7 +154,7 @@ export class UserApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/graphql/{pathQueryId}/UserByRestId`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters.pathQueryId))),
+            path: `/graphql/{pathQueryId}/UserByRestId`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters['pathQueryId']))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -166,34 +175,46 @@ export class UserApi extends runtime.BaseAPI {
      * get user by screen name
      */
     async getUserByScreenNameRaw(requestParameters: GetUserByScreenNameRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetUserByRestId200Response>> {
-        if (requestParameters.pathQueryId === null || requestParameters.pathQueryId === undefined) {
-            throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling getUserByScreenName.');
+        if (requestParameters['pathQueryId'] == null) {
+            throw new runtime.RequiredError(
+                'pathQueryId',
+                'Required parameter "pathQueryId" was null or undefined when calling getUserByScreenName().'
+            );
         }
 
-        if (requestParameters.variables === null || requestParameters.variables === undefined) {
-            throw new runtime.RequiredError('variables','Required parameter requestParameters.variables was null or undefined when calling getUserByScreenName.');
+        if (requestParameters['variables'] == null) {
+            throw new runtime.RequiredError(
+                'variables',
+                'Required parameter "variables" was null or undefined when calling getUserByScreenName().'
+            );
         }
 
-        if (requestParameters.features === null || requestParameters.features === undefined) {
-            throw new runtime.RequiredError('features','Required parameter requestParameters.features was null or undefined when calling getUserByScreenName.');
+        if (requestParameters['features'] == null) {
+            throw new runtime.RequiredError(
+                'features',
+                'Required parameter "features" was null or undefined when calling getUserByScreenName().'
+            );
         }
 
-        if (requestParameters.fieldToggles === null || requestParameters.fieldToggles === undefined) {
-            throw new runtime.RequiredError('fieldToggles','Required parameter requestParameters.fieldToggles was null or undefined when calling getUserByScreenName.');
+        if (requestParameters['fieldToggles'] == null) {
+            throw new runtime.RequiredError(
+                'fieldToggles',
+                'Required parameter "fieldToggles" was null or undefined when calling getUserByScreenName().'
+            );
         }
 
         const queryParameters: any = {};
 
-        if (requestParameters.variables !== undefined) {
-            queryParameters['variables'] = requestParameters.variables;
+        if (requestParameters['variables'] != null) {
+            queryParameters['variables'] = requestParameters['variables'];
         }
 
-        if (requestParameters.features !== undefined) {
-            queryParameters['features'] = requestParameters.features;
+        if (requestParameters['features'] != null) {
+            queryParameters['features'] = requestParameters['features'];
         }
 
-        if (requestParameters.fieldToggles !== undefined) {
-            queryParameters['fieldToggles'] = requestParameters.fieldToggles;
+        if (requestParameters['fieldToggles'] != null) {
+            queryParameters['fieldToggles'] = requestParameters['fieldToggles'];
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -275,7 +296,7 @@ export class UserApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/graphql/{pathQueryId}/UserByScreenName`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters.pathQueryId))),
+            path: `/graphql/{pathQueryId}/UserByScreenName`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters['pathQueryId']))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,

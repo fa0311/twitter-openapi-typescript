@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { AdditionalMediaInfoCallToActionsUrl } from './AdditionalMediaInfoCallToActionsUrl';
 import {
     AdditionalMediaInfoCallToActionsUrlFromJSON,
@@ -44,9 +44,7 @@ export interface AdditionalMediaInfoCallToActions {
  * Check if a given object implements the AdditionalMediaInfoCallToActions interface.
  */
 export function instanceOfAdditionalMediaInfoCallToActions(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+    return true;
 }
 
 export function AdditionalMediaInfoCallToActionsFromJSON(json: any): AdditionalMediaInfoCallToActions {
@@ -54,27 +52,24 @@ export function AdditionalMediaInfoCallToActionsFromJSON(json: any): AdditionalM
 }
 
 export function AdditionalMediaInfoCallToActionsFromJSONTyped(json: any, ignoreDiscriminator: boolean): AdditionalMediaInfoCallToActions {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'visitSite': !exists(json, 'visit_site') ? undefined : AdditionalMediaInfoCallToActionsUrlFromJSON(json['visit_site']),
-        'watchNow': !exists(json, 'watch_now') ? undefined : AdditionalMediaInfoCallToActionsUrlFromJSON(json['watch_now']),
+        'visitSite': json['visit_site'] == null ? undefined : AdditionalMediaInfoCallToActionsUrlFromJSON(json['visit_site']),
+        'watchNow': json['watch_now'] == null ? undefined : AdditionalMediaInfoCallToActionsUrlFromJSON(json['watch_now']),
     };
 }
 
 export function AdditionalMediaInfoCallToActionsToJSON(value?: AdditionalMediaInfoCallToActions | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'visit_site': AdditionalMediaInfoCallToActionsUrlToJSON(value.visitSite),
-        'watch_now': AdditionalMediaInfoCallToActionsUrlToJSON(value.watchNow),
+        'visit_site': AdditionalMediaInfoCallToActionsUrlToJSON(value['visitSite']),
+        'watch_now': AdditionalMediaInfoCallToActionsUrlToJSON(value['watchNow']),
     };
 }
 

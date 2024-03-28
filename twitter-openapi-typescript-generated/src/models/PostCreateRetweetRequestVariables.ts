@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -37,11 +37,9 @@ export interface PostCreateRetweetRequestVariables {
  * Check if a given object implements the PostCreateRetweetRequestVariables interface.
  */
 export function instanceOfPostCreateRetweetRequestVariables(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "darkRequest" in value;
-    isInstance = isInstance && "tweetId" in value;
-
-    return isInstance;
+    if (!('darkRequest' in value)) return false;
+    if (!('tweetId' in value)) return false;
+    return true;
 }
 
 export function PostCreateRetweetRequestVariablesFromJSON(json: any): PostCreateRetweetRequestVariables {
@@ -49,7 +47,7 @@ export function PostCreateRetweetRequestVariablesFromJSON(json: any): PostCreate
 }
 
 export function PostCreateRetweetRequestVariablesFromJSONTyped(json: any, ignoreDiscriminator: boolean): PostCreateRetweetRequestVariables {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -60,16 +58,13 @@ export function PostCreateRetweetRequestVariablesFromJSONTyped(json: any, ignore
 }
 
 export function PostCreateRetweetRequestVariablesToJSON(value?: PostCreateRetweetRequestVariables | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'dark_request': value.darkRequest,
-        'tweet_id': value.tweetId,
+        'dark_request': value['darkRequest'],
+        'tweet_id': value['tweetId'],
     };
 }
 

@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { Media } from './Media';
 import {
     MediaFromJSON,
@@ -80,13 +80,11 @@ export interface Entities {
  * Check if a given object implements the Entities interface.
  */
 export function instanceOfEntities(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "hashtags" in value;
-    isInstance = isInstance && "symbols" in value;
-    isInstance = isInstance && "urls" in value;
-    isInstance = isInstance && "userMentions" in value;
-
-    return isInstance;
+    if (!('hashtags' in value)) return false;
+    if (!('symbols' in value)) return false;
+    if (!('urls' in value)) return false;
+    if (!('userMentions' in value)) return false;
+    return true;
 }
 
 export function EntitiesFromJSON(json: any): Entities {
@@ -94,35 +92,32 @@ export function EntitiesFromJSON(json: any): Entities {
 }
 
 export function EntitiesFromJSONTyped(json: any, ignoreDiscriminator: boolean): Entities {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
         'hashtags': json['hashtags'],
-        'media': !exists(json, 'media') ? undefined : ((json['media'] as Array<any>).map(MediaFromJSON)),
+        'media': json['media'] == null ? undefined : ((json['media'] as Array<any>).map(MediaFromJSON)),
         'symbols': json['symbols'],
-        'timestamps': !exists(json, 'timestamps') ? undefined : ((json['timestamps'] as Array<any>).map(TimestampFromJSON)),
+        'timestamps': json['timestamps'] == null ? undefined : ((json['timestamps'] as Array<any>).map(TimestampFromJSON)),
         'urls': ((json['urls'] as Array<any>).map(UrlFromJSON)),
         'userMentions': json['user_mentions'],
     };
 }
 
 export function EntitiesToJSON(value?: Entities | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'hashtags': value.hashtags,
-        'media': value.media === undefined ? undefined : ((value.media as Array<any>).map(MediaToJSON)),
-        'symbols': value.symbols,
-        'timestamps': value.timestamps === undefined ? undefined : ((value.timestamps as Array<any>).map(TimestampToJSON)),
-        'urls': ((value.urls as Array<any>).map(UrlToJSON)),
-        'user_mentions': value.userMentions,
+        'hashtags': value['hashtags'],
+        'media': value['media'] == null ? undefined : ((value['media'] as Array<any>).map(MediaToJSON)),
+        'symbols': value['symbols'],
+        'timestamps': value['timestamps'] == null ? undefined : ((value['timestamps'] as Array<any>).map(TimestampToJSON)),
+        'urls': ((value['urls'] as Array<any>).map(UrlToJSON)),
+        'user_mentions': value['userMentions'],
     };
 }
 

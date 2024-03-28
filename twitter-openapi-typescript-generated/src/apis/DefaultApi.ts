@@ -46,26 +46,35 @@ export class DefaultApi extends runtime.BaseAPI {
      * get user by screen name
      */
     async getProfileSpotlightsQueryRaw(requestParameters: GetProfileSpotlightsQueryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetProfileSpotlightsQuery200Response>> {
-        if (requestParameters.pathQueryId === null || requestParameters.pathQueryId === undefined) {
-            throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling getProfileSpotlightsQuery.');
+        if (requestParameters['pathQueryId'] == null) {
+            throw new runtime.RequiredError(
+                'pathQueryId',
+                'Required parameter "pathQueryId" was null or undefined when calling getProfileSpotlightsQuery().'
+            );
         }
 
-        if (requestParameters.variables === null || requestParameters.variables === undefined) {
-            throw new runtime.RequiredError('variables','Required parameter requestParameters.variables was null or undefined when calling getProfileSpotlightsQuery.');
+        if (requestParameters['variables'] == null) {
+            throw new runtime.RequiredError(
+                'variables',
+                'Required parameter "variables" was null or undefined when calling getProfileSpotlightsQuery().'
+            );
         }
 
-        if (requestParameters.features === null || requestParameters.features === undefined) {
-            throw new runtime.RequiredError('features','Required parameter requestParameters.features was null or undefined when calling getProfileSpotlightsQuery.');
+        if (requestParameters['features'] == null) {
+            throw new runtime.RequiredError(
+                'features',
+                'Required parameter "features" was null or undefined when calling getProfileSpotlightsQuery().'
+            );
         }
 
         const queryParameters: any = {};
 
-        if (requestParameters.variables !== undefined) {
-            queryParameters['variables'] = requestParameters.variables;
+        if (requestParameters['variables'] != null) {
+            queryParameters['variables'] = requestParameters['variables'];
         }
 
-        if (requestParameters.features !== undefined) {
-            queryParameters['features'] = requestParameters.features;
+        if (requestParameters['features'] != null) {
+            queryParameters['features'] = requestParameters['features'];
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -147,7 +156,7 @@ export class DefaultApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/graphql/{pathQueryId}/ProfileSpotlightsQuery`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters.pathQueryId))),
+            path: `/graphql/{pathQueryId}/ProfileSpotlightsQuery`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters['pathQueryId']))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -168,26 +177,35 @@ export class DefaultApi extends runtime.BaseAPI {
      * get TweetResultByRestId
      */
     async getTweetResultByRestIdRaw(requestParameters: GetTweetResultByRestIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetTweetResultByRestId200Response>> {
-        if (requestParameters.pathQueryId === null || requestParameters.pathQueryId === undefined) {
-            throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling getTweetResultByRestId.');
+        if (requestParameters['pathQueryId'] == null) {
+            throw new runtime.RequiredError(
+                'pathQueryId',
+                'Required parameter "pathQueryId" was null or undefined when calling getTweetResultByRestId().'
+            );
         }
 
-        if (requestParameters.variables === null || requestParameters.variables === undefined) {
-            throw new runtime.RequiredError('variables','Required parameter requestParameters.variables was null or undefined when calling getTweetResultByRestId.');
+        if (requestParameters['variables'] == null) {
+            throw new runtime.RequiredError(
+                'variables',
+                'Required parameter "variables" was null or undefined when calling getTweetResultByRestId().'
+            );
         }
 
-        if (requestParameters.features === null || requestParameters.features === undefined) {
-            throw new runtime.RequiredError('features','Required parameter requestParameters.features was null or undefined when calling getTweetResultByRestId.');
+        if (requestParameters['features'] == null) {
+            throw new runtime.RequiredError(
+                'features',
+                'Required parameter "features" was null or undefined when calling getTweetResultByRestId().'
+            );
         }
 
         const queryParameters: any = {};
 
-        if (requestParameters.variables !== undefined) {
-            queryParameters['variables'] = requestParameters.variables;
+        if (requestParameters['variables'] != null) {
+            queryParameters['variables'] = requestParameters['variables'];
         }
 
-        if (requestParameters.features !== undefined) {
-            queryParameters['features'] = requestParameters.features;
+        if (requestParameters['features'] != null) {
+            queryParameters['features'] = requestParameters['features'];
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -269,7 +287,7 @@ export class DefaultApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/graphql/{pathQueryId}/TweetResultByRestId`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters.pathQueryId))),
+            path: `/graphql/{pathQueryId}/TweetResultByRestId`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters['pathQueryId']))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,

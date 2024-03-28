@@ -39,7 +39,7 @@ export function UserUnionFromJSON(json: any): UserUnion {
 }
 
 export function UserUnionFromJSONTyped(json: any, ignoreDiscriminator: boolean): UserUnion {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     switch (json['__typename']) {
@@ -53,11 +53,8 @@ export function UserUnionFromJSONTyped(json: any, ignoreDiscriminator: boolean):
 }
 
 export function UserUnionToJSON(value?: UserUnion | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     switch (value['typename']) {
         case 'User':

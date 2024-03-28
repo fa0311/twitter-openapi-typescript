@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -37,11 +37,9 @@ export interface Location {
  * Check if a given object implements the Location interface.
  */
 export function instanceOfLocation(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "column" in value;
-    isInstance = isInstance && "line" in value;
-
-    return isInstance;
+    if (!('column' in value)) return false;
+    if (!('line' in value)) return false;
+    return true;
 }
 
 export function LocationFromJSON(json: any): Location {
@@ -49,7 +47,7 @@ export function LocationFromJSON(json: any): Location {
 }
 
 export function LocationFromJSONTyped(json: any, ignoreDiscriminator: boolean): Location {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -60,16 +58,13 @@ export function LocationFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
 }
 
 export function LocationToJSON(value?: Location | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'column': value.column,
-        'line': value.line,
+        'column': value['column'],
+        'line': value['line'],
     };
 }
 

@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { MediaSize } from './MediaSize';
 import {
     MediaSizeFromJSON,
@@ -56,13 +56,11 @@ export interface MediaSizes {
  * Check if a given object implements the MediaSizes interface.
  */
 export function instanceOfMediaSizes(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "large" in value;
-    isInstance = isInstance && "medium" in value;
-    isInstance = isInstance && "small" in value;
-    isInstance = isInstance && "thumb" in value;
-
-    return isInstance;
+    if (!('large' in value)) return false;
+    if (!('medium' in value)) return false;
+    if (!('small' in value)) return false;
+    if (!('thumb' in value)) return false;
+    return true;
 }
 
 export function MediaSizesFromJSON(json: any): MediaSizes {
@@ -70,7 +68,7 @@ export function MediaSizesFromJSON(json: any): MediaSizes {
 }
 
 export function MediaSizesFromJSONTyped(json: any, ignoreDiscriminator: boolean): MediaSizes {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -83,18 +81,15 @@ export function MediaSizesFromJSONTyped(json: any, ignoreDiscriminator: boolean)
 }
 
 export function MediaSizesToJSON(value?: MediaSizes | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'large': MediaSizeToJSON(value.large),
-        'medium': MediaSizeToJSON(value.medium),
-        'small': MediaSizeToJSON(value.small),
-        'thumb': MediaSizeToJSON(value.thumb),
+        'large': MediaSizeToJSON(value['large']),
+        'medium': MediaSizeToJSON(value['medium']),
+        'small': MediaSizeToJSON(value['small']),
+        'thumb': MediaSizeToJSON(value['thumb']),
     };
 }
 

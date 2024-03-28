@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { TypeName } from './TypeName';
 import {
     TypeNameFromJSON,
@@ -38,10 +38,8 @@ export interface CommunityPinActionResult {
  * Check if a given object implements the CommunityPinActionResult interface.
  */
 export function instanceOfCommunityPinActionResult(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "typename" in value;
-
-    return isInstance;
+    if (!('typename' in value)) return false;
+    return true;
 }
 
 export function CommunityPinActionResultFromJSON(json: any): CommunityPinActionResult {
@@ -49,7 +47,7 @@ export function CommunityPinActionResultFromJSON(json: any): CommunityPinActionR
 }
 
 export function CommunityPinActionResultFromJSONTyped(json: any, ignoreDiscriminator: boolean): CommunityPinActionResult {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -59,15 +57,12 @@ export function CommunityPinActionResultFromJSONTyped(json: any, ignoreDiscrimin
 }
 
 export function CommunityPinActionResultToJSON(value?: CommunityPinActionResult | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        '__typename': TypeNameToJSON(value.typename),
+        '__typename': TypeNameToJSON(value['typename']),
     };
 }
 

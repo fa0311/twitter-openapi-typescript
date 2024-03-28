@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { UnfavoriteTweet } from './UnfavoriteTweet';
 import {
     UnfavoriteTweetFromJSON,
@@ -38,10 +38,8 @@ export interface UnfavoriteTweetResponseData {
  * Check if a given object implements the UnfavoriteTweetResponseData interface.
  */
 export function instanceOfUnfavoriteTweetResponseData(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "data" in value;
-
-    return isInstance;
+    if (!('data' in value)) return false;
+    return true;
 }
 
 export function UnfavoriteTweetResponseDataFromJSON(json: any): UnfavoriteTweetResponseData {
@@ -49,7 +47,7 @@ export function UnfavoriteTweetResponseDataFromJSON(json: any): UnfavoriteTweetR
 }
 
 export function UnfavoriteTweetResponseDataFromJSONTyped(json: any, ignoreDiscriminator: boolean): UnfavoriteTweetResponseData {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -59,15 +57,12 @@ export function UnfavoriteTweetResponseDataFromJSONTyped(json: any, ignoreDiscri
 }
 
 export function UnfavoriteTweetResponseDataToJSON(value?: UnfavoriteTweetResponseData | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'data': UnfavoriteTweetToJSON(value.data),
+        'data': UnfavoriteTweetToJSON(value['data']),
     };
 }
 

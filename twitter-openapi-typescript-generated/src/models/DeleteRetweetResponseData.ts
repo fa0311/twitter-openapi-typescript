@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { CreateRetweetResponseResult } from './CreateRetweetResponseResult';
 import {
     CreateRetweetResponseResultFromJSON,
@@ -38,9 +38,7 @@ export interface DeleteRetweetResponseData {
  * Check if a given object implements the DeleteRetweetResponseData interface.
  */
 export function instanceOfDeleteRetweetResponseData(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+    return true;
 }
 
 export function DeleteRetweetResponseDataFromJSON(json: any): DeleteRetweetResponseData {
@@ -48,25 +46,22 @@ export function DeleteRetweetResponseDataFromJSON(json: any): DeleteRetweetRespo
 }
 
 export function DeleteRetweetResponseDataFromJSONTyped(json: any, ignoreDiscriminator: boolean): DeleteRetweetResponseData {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'createRetweet': !exists(json, 'create_retweet') ? undefined : CreateRetweetResponseResultFromJSON(json['create_retweet']),
+        'createRetweet': json['create_retweet'] == null ? undefined : CreateRetweetResponseResultFromJSON(json['create_retweet']),
     };
 }
 
 export function DeleteRetweetResponseDataToJSON(value?: DeleteRetweetResponseData | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'create_retweet': CreateRetweetResponseResultToJSON(value.createRetweet),
+        'create_retweet': CreateRetweetResponseResultToJSON(value['createRetweet']),
     };
 }
 

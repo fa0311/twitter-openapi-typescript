@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { PostCreateTweetRequestVariablesMedia } from './PostCreateTweetRequestVariablesMedia';
 import {
     PostCreateTweetRequestVariablesMediaFromJSON,
@@ -68,13 +68,11 @@ export interface PostCreateTweetRequestVariables {
  * Check if a given object implements the PostCreateTweetRequestVariables interface.
  */
 export function instanceOfPostCreateTweetRequestVariables(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "darkRequest" in value;
-    isInstance = isInstance && "media" in value;
-    isInstance = isInstance && "semanticAnnotationIds" in value;
-    isInstance = isInstance && "tweetText" in value;
-
-    return isInstance;
+    if (!('darkRequest' in value)) return false;
+    if (!('media' in value)) return false;
+    if (!('semanticAnnotationIds' in value)) return false;
+    if (!('tweetText' in value)) return false;
+    return true;
 }
 
 export function PostCreateTweetRequestVariablesFromJSON(json: any): PostCreateTweetRequestVariables {
@@ -82,33 +80,30 @@ export function PostCreateTweetRequestVariablesFromJSON(json: any): PostCreateTw
 }
 
 export function PostCreateTweetRequestVariablesFromJSONTyped(json: any, ignoreDiscriminator: boolean): PostCreateTweetRequestVariables {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
         'darkRequest': json['dark_request'],
         'media': PostCreateTweetRequestVariablesMediaFromJSON(json['media']),
-        'reply': !exists(json, 'reply') ? undefined : PostCreateTweetRequestVariablesReplyFromJSON(json['reply']),
+        'reply': json['reply'] == null ? undefined : PostCreateTweetRequestVariablesReplyFromJSON(json['reply']),
         'semanticAnnotationIds': json['semantic_annotation_ids'],
         'tweetText': json['tweet_text'],
     };
 }
 
 export function PostCreateTweetRequestVariablesToJSON(value?: PostCreateTweetRequestVariables | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'dark_request': value.darkRequest,
-        'media': PostCreateTweetRequestVariablesMediaToJSON(value.media),
-        'reply': PostCreateTweetRequestVariablesReplyToJSON(value.reply),
-        'semantic_annotation_ids': value.semanticAnnotationIds,
-        'tweet_text': value.tweetText,
+        'dark_request': value['darkRequest'],
+        'media': PostCreateTweetRequestVariablesMediaToJSON(value['media']),
+        'reply': PostCreateTweetRequestVariablesReplyToJSON(value['reply']),
+        'semantic_annotation_ids': value['semanticAnnotationIds'],
+        'tweet_text': value['tweetText'],
     };
 }
 

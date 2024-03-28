@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { UserHighlightsTweetsUser } from './UserHighlightsTweetsUser';
 import {
     UserHighlightsTweetsUserFromJSON,
@@ -38,10 +38,8 @@ export interface UserHighlightsTweetsData {
  * Check if a given object implements the UserHighlightsTweetsData interface.
  */
 export function instanceOfUserHighlightsTweetsData(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "user" in value;
-
-    return isInstance;
+    if (!('user' in value)) return false;
+    return true;
 }
 
 export function UserHighlightsTweetsDataFromJSON(json: any): UserHighlightsTweetsData {
@@ -49,7 +47,7 @@ export function UserHighlightsTweetsDataFromJSON(json: any): UserHighlightsTweet
 }
 
 export function UserHighlightsTweetsDataFromJSONTyped(json: any, ignoreDiscriminator: boolean): UserHighlightsTweetsData {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -59,15 +57,12 @@ export function UserHighlightsTweetsDataFromJSONTyped(json: any, ignoreDiscrimin
 }
 
 export function UserHighlightsTweetsDataToJSON(value?: UserHighlightsTweetsData | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'user': UserHighlightsTweetsUserToJSON(value.user),
+        'user': UserHighlightsTweetsUserToJSON(value['user']),
     };
 }
 

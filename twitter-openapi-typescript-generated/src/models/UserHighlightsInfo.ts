@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -37,11 +37,9 @@ export interface UserHighlightsInfo {
  * Check if a given object implements the UserHighlightsInfo interface.
  */
 export function instanceOfUserHighlightsInfo(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "canHighlightTweets" in value;
-    isInstance = isInstance && "highlightedTweets" in value;
-
-    return isInstance;
+    if (!('canHighlightTweets' in value)) return false;
+    if (!('highlightedTweets' in value)) return false;
+    return true;
 }
 
 export function UserHighlightsInfoFromJSON(json: any): UserHighlightsInfo {
@@ -49,7 +47,7 @@ export function UserHighlightsInfoFromJSON(json: any): UserHighlightsInfo {
 }
 
 export function UserHighlightsInfoFromJSONTyped(json: any, ignoreDiscriminator: boolean): UserHighlightsInfo {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -60,16 +58,13 @@ export function UserHighlightsInfoFromJSONTyped(json: any, ignoreDiscriminator: 
 }
 
 export function UserHighlightsInfoToJSON(value?: UserHighlightsInfo | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'can_highlight_tweets': value.canHighlightTweets,
-        'highlighted_tweets': value.highlightedTweets,
+        'can_highlight_tweets': value['canHighlightTweets'],
+        'highlighted_tweets': value['highlightedTweets'],
     };
 }
 

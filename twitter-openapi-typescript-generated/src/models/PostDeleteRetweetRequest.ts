@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { PostDeleteRetweetRequestVariables } from './PostDeleteRetweetRequestVariables';
 import {
     PostDeleteRetweetRequestVariablesFromJSON,
@@ -44,11 +44,9 @@ export interface PostDeleteRetweetRequest {
  * Check if a given object implements the PostDeleteRetweetRequest interface.
  */
 export function instanceOfPostDeleteRetweetRequest(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "queryId" in value;
-    isInstance = isInstance && "variables" in value;
-
-    return isInstance;
+    if (!('queryId' in value)) return false;
+    if (!('variables' in value)) return false;
+    return true;
 }
 
 export function PostDeleteRetweetRequestFromJSON(json: any): PostDeleteRetweetRequest {
@@ -56,7 +54,7 @@ export function PostDeleteRetweetRequestFromJSON(json: any): PostDeleteRetweetRe
 }
 
 export function PostDeleteRetweetRequestFromJSONTyped(json: any, ignoreDiscriminator: boolean): PostDeleteRetweetRequest {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -67,16 +65,13 @@ export function PostDeleteRetweetRequestFromJSONTyped(json: any, ignoreDiscrimin
 }
 
 export function PostDeleteRetweetRequestToJSON(value?: PostDeleteRetweetRequest | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'queryId': value.queryId,
-        'variables': PostDeleteRetweetRequestVariablesToJSON(value.variables),
+        'queryId': value['queryId'],
+        'variables': PostDeleteRetweetRequestVariablesToJSON(value['variables']),
     };
 }
 

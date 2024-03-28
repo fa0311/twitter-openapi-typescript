@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { InstructionType } from './InstructionType';
 import {
     InstructionTypeFromJSON,
@@ -62,12 +62,10 @@ export interface TimelineAddToModule {
  * Check if a given object implements the TimelineAddToModule interface.
  */
 export function instanceOfTimelineAddToModule(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "moduleEntryId" in value;
-    isInstance = isInstance && "moduleItems" in value;
-    isInstance = isInstance && "type" in value;
-
-    return isInstance;
+    if (!('moduleEntryId' in value)) return false;
+    if (!('moduleItems' in value)) return false;
+    if (!('type' in value)) return false;
+    return true;
 }
 
 export function TimelineAddToModuleFromJSON(json: any): TimelineAddToModule {
@@ -75,31 +73,28 @@ export function TimelineAddToModuleFromJSON(json: any): TimelineAddToModule {
 }
 
 export function TimelineAddToModuleFromJSONTyped(json: any, ignoreDiscriminator: boolean): TimelineAddToModule {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
         'moduleEntryId': json['moduleEntryId'],
         'moduleItems': ((json['moduleItems'] as Array<any>).map(ModuleItemFromJSON)),
-        'prepend': !exists(json, 'prepend') ? undefined : json['prepend'],
+        'prepend': json['prepend'] == null ? undefined : json['prepend'],
         'type': InstructionTypeFromJSON(json['type']),
     };
 }
 
 export function TimelineAddToModuleToJSON(value?: TimelineAddToModule | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'moduleEntryId': value.moduleEntryId,
-        'moduleItems': ((value.moduleItems as Array<any>).map(ModuleItemToJSON)),
-        'prepend': value.prepend,
-        'type': InstructionTypeToJSON(value.type),
+        'moduleEntryId': value['moduleEntryId'],
+        'moduleItems': ((value['moduleItems'] as Array<any>).map(ModuleItemToJSON)),
+        'prepend': value['prepend'],
+        'type': InstructionTypeToJSON(value['type']),
     };
 }
 

@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -31,10 +31,8 @@ export interface DisplayTreatment {
  * Check if a given object implements the DisplayTreatment interface.
  */
 export function instanceOfDisplayTreatment(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "actionText" in value;
-
-    return isInstance;
+    if (!('actionText' in value)) return false;
+    return true;
 }
 
 export function DisplayTreatmentFromJSON(json: any): DisplayTreatment {
@@ -42,7 +40,7 @@ export function DisplayTreatmentFromJSON(json: any): DisplayTreatment {
 }
 
 export function DisplayTreatmentFromJSONTyped(json: any, ignoreDiscriminator: boolean): DisplayTreatment {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -52,15 +50,12 @@ export function DisplayTreatmentFromJSONTyped(json: any, ignoreDiscriminator: bo
 }
 
 export function DisplayTreatmentToJSON(value?: DisplayTreatment | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'actionText': value.actionText,
+        'actionText': value['actionText'],
     };
 }
 

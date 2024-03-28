@@ -39,18 +39,15 @@ export function GetSearchTimeline200ResponseFromJSON(json: any): GetSearchTimeli
 }
 
 export function GetSearchTimeline200ResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): GetSearchTimeline200Response {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return { ...ErrorsFromJSONTyped(json, true), ...SearchTimelineResponseFromJSONTyped(json, true) };
 }
 
 export function GetSearchTimeline200ResponseToJSON(value?: GetSearchTimeline200Response | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
 
     if (instanceOfErrors(value)) {

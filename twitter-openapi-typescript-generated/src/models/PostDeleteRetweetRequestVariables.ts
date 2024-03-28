@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -37,11 +37,9 @@ export interface PostDeleteRetweetRequestVariables {
  * Check if a given object implements the PostDeleteRetweetRequestVariables interface.
  */
 export function instanceOfPostDeleteRetweetRequestVariables(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "darkRequest" in value;
-    isInstance = isInstance && "sourceTweetId" in value;
-
-    return isInstance;
+    if (!('darkRequest' in value)) return false;
+    if (!('sourceTweetId' in value)) return false;
+    return true;
 }
 
 export function PostDeleteRetweetRequestVariablesFromJSON(json: any): PostDeleteRetweetRequestVariables {
@@ -49,7 +47,7 @@ export function PostDeleteRetweetRequestVariablesFromJSON(json: any): PostDelete
 }
 
 export function PostDeleteRetweetRequestVariablesFromJSONTyped(json: any, ignoreDiscriminator: boolean): PostDeleteRetweetRequestVariables {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -60,16 +58,13 @@ export function PostDeleteRetweetRequestVariablesFromJSONTyped(json: any, ignore
 }
 
 export function PostDeleteRetweetRequestVariablesToJSON(value?: PostDeleteRetweetRequestVariables | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'dark_request': value.darkRequest,
-        'source_tweet_id': value.sourceTweetId,
+        'dark_request': value['darkRequest'],
+        'source_tweet_id': value['sourceTweetId'],
     };
 }
 

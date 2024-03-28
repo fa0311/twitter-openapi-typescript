@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { TweetCardPlatform } from './TweetCardPlatform';
 import {
     TweetCardPlatformFromJSON,
@@ -38,10 +38,8 @@ export interface TweetCardPlatformData {
  * Check if a given object implements the TweetCardPlatformData interface.
  */
 export function instanceOfTweetCardPlatformData(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "platform" in value;
-
-    return isInstance;
+    if (!('platform' in value)) return false;
+    return true;
 }
 
 export function TweetCardPlatformDataFromJSON(json: any): TweetCardPlatformData {
@@ -49,7 +47,7 @@ export function TweetCardPlatformDataFromJSON(json: any): TweetCardPlatformData 
 }
 
 export function TweetCardPlatformDataFromJSONTyped(json: any, ignoreDiscriminator: boolean): TweetCardPlatformData {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -59,15 +57,12 @@ export function TweetCardPlatformDataFromJSONTyped(json: any, ignoreDiscriminato
 }
 
 export function TweetCardPlatformDataToJSON(value?: TweetCardPlatformData | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'platform': TweetCardPlatformToJSON(value.platform),
+        'platform': TweetCardPlatformToJSON(value['platform']),
     };
 }
 

@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { TypeName } from './TypeName';
 import {
     TypeNameFromJSON,
@@ -38,10 +38,8 @@ export interface CommunityJoinRequestsResult {
  * Check if a given object implements the CommunityJoinRequestsResult interface.
  */
 export function instanceOfCommunityJoinRequestsResult(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "typename" in value;
-
-    return isInstance;
+    if (!('typename' in value)) return false;
+    return true;
 }
 
 export function CommunityJoinRequestsResultFromJSON(json: any): CommunityJoinRequestsResult {
@@ -49,7 +47,7 @@ export function CommunityJoinRequestsResultFromJSON(json: any): CommunityJoinReq
 }
 
 export function CommunityJoinRequestsResultFromJSONTyped(json: any, ignoreDiscriminator: boolean): CommunityJoinRequestsResult {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -59,15 +57,12 @@ export function CommunityJoinRequestsResultFromJSONTyped(json: any, ignoreDiscri
 }
 
 export function CommunityJoinRequestsResultToJSON(value?: CommunityJoinRequestsResult | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        '__typename': TypeNameToJSON(value.typename),
+        '__typename': TypeNameToJSON(value['typename']),
     };
 }
 

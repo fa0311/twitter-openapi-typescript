@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { TypeName } from './TypeName';
 import {
     TypeNameFromJSON,
@@ -39,9 +39,7 @@ export interface TimelineMessagePrompt {
  * Check if a given object implements the TimelineMessagePrompt interface.
  */
 export function instanceOfTimelineMessagePrompt(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+    return true;
 }
 
 export function TimelineMessagePromptFromJSON(json: any): TimelineMessagePrompt {
@@ -49,27 +47,24 @@ export function TimelineMessagePromptFromJSON(json: any): TimelineMessagePrompt 
 }
 
 export function TimelineMessagePromptFromJSONTyped(json: any, ignoreDiscriminator: boolean): TimelineMessagePrompt {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
             ...json,
-        'typename': !exists(json, '__typename') ? undefined : TypeNameFromJSON(json['__typename']),
+        'typename': json['__typename'] == null ? undefined : TypeNameFromJSON(json['__typename']),
     };
 }
 
 export function TimelineMessagePromptToJSON(value?: TimelineMessagePrompt | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
             ...value,
-        '__typename': TypeNameToJSON(value.typename),
+        '__typename': TypeNameToJSON(value['typename']),
     };
 }
 

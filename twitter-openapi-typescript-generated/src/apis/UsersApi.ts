@@ -37,26 +37,35 @@ export class UsersApi extends runtime.BaseAPI {
      * get users by rest ids
      */
     async getUsersByRestIdsRaw(requestParameters: GetUsersByRestIdsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetUsersByRestIds200Response>> {
-        if (requestParameters.pathQueryId === null || requestParameters.pathQueryId === undefined) {
-            throw new runtime.RequiredError('pathQueryId','Required parameter requestParameters.pathQueryId was null or undefined when calling getUsersByRestIds.');
+        if (requestParameters['pathQueryId'] == null) {
+            throw new runtime.RequiredError(
+                'pathQueryId',
+                'Required parameter "pathQueryId" was null or undefined when calling getUsersByRestIds().'
+            );
         }
 
-        if (requestParameters.variables === null || requestParameters.variables === undefined) {
-            throw new runtime.RequiredError('variables','Required parameter requestParameters.variables was null or undefined when calling getUsersByRestIds.');
+        if (requestParameters['variables'] == null) {
+            throw new runtime.RequiredError(
+                'variables',
+                'Required parameter "variables" was null or undefined when calling getUsersByRestIds().'
+            );
         }
 
-        if (requestParameters.features === null || requestParameters.features === undefined) {
-            throw new runtime.RequiredError('features','Required parameter requestParameters.features was null or undefined when calling getUsersByRestIds.');
+        if (requestParameters['features'] == null) {
+            throw new runtime.RequiredError(
+                'features',
+                'Required parameter "features" was null or undefined when calling getUsersByRestIds().'
+            );
         }
 
         const queryParameters: any = {};
 
-        if (requestParameters.variables !== undefined) {
-            queryParameters['variables'] = requestParameters.variables;
+        if (requestParameters['variables'] != null) {
+            queryParameters['variables'] = requestParameters['variables'];
         }
 
-        if (requestParameters.features !== undefined) {
-            queryParameters['features'] = requestParameters.features;
+        if (requestParameters['features'] != null) {
+            queryParameters['features'] = requestParameters['features'];
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -138,7 +147,7 @@ export class UsersApi extends runtime.BaseAPI {
         }
 
         const response = await this.request({
-            path: `/graphql/{pathQueryId}/UsersByRestIds`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters.pathQueryId))),
+            path: `/graphql/{pathQueryId}/UsersByRestIds`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters['pathQueryId']))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,

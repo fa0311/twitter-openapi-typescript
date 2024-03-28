@@ -39,18 +39,15 @@ export function GetHomeLatestTimeline200ResponseFromJSON(json: any): GetHomeLate
 }
 
 export function GetHomeLatestTimeline200ResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): GetHomeLatestTimeline200Response {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return { ...ErrorsFromJSONTyped(json, true), ...TimelineResponseFromJSONTyped(json, true) };
 }
 
 export function GetHomeLatestTimeline200ResponseToJSON(value?: GetHomeLatestTimeline200Response | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
 
     if (instanceOfErrors(value)) {

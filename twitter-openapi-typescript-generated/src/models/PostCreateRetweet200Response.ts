@@ -39,18 +39,15 @@ export function PostCreateRetweet200ResponseFromJSON(json: any): PostCreateRetwe
 }
 
 export function PostCreateRetweet200ResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): PostCreateRetweet200Response {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return { ...CreateRetweetResponseFromJSONTyped(json, true), ...ErrorsFromJSONTyped(json, true) };
 }
 
 export function PostCreateRetweet200ResponseToJSON(value?: PostCreateRetweet200Response | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
 
     if (instanceOfCreateRetweetResponse(value)) {

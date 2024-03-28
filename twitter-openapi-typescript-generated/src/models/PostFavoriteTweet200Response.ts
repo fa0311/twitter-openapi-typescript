@@ -39,18 +39,15 @@ export function PostFavoriteTweet200ResponseFromJSON(json: any): PostFavoriteTwe
 }
 
 export function PostFavoriteTweet200ResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): PostFavoriteTweet200Response {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return { ...ErrorsFromJSONTyped(json, true), ...FavoriteTweetResponseDataFromJSONTyped(json, true) };
 }
 
 export function PostFavoriteTweet200ResponseToJSON(value?: PostFavoriteTweet200Response | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
 
     if (instanceOfErrors(value)) {

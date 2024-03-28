@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { BirdwatchEntity } from './BirdwatchEntity';
 import {
     BirdwatchEntityFromJSON,
@@ -44,11 +44,9 @@ export interface BirdwatchPivotFooter {
  * Check if a given object implements the BirdwatchPivotFooter interface.
  */
 export function instanceOfBirdwatchPivotFooter(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "entities" in value;
-    isInstance = isInstance && "text" in value;
-
-    return isInstance;
+    if (!('entities' in value)) return false;
+    if (!('text' in value)) return false;
+    return true;
 }
 
 export function BirdwatchPivotFooterFromJSON(json: any): BirdwatchPivotFooter {
@@ -56,7 +54,7 @@ export function BirdwatchPivotFooterFromJSON(json: any): BirdwatchPivotFooter {
 }
 
 export function BirdwatchPivotFooterFromJSONTyped(json: any, ignoreDiscriminator: boolean): BirdwatchPivotFooter {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -67,16 +65,13 @@ export function BirdwatchPivotFooterFromJSONTyped(json: any, ignoreDiscriminator
 }
 
 export function BirdwatchPivotFooterToJSON(value?: BirdwatchPivotFooter | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'entities': ((value.entities as Array<any>).map(BirdwatchEntityToJSON)),
-        'text': value.text,
+        'entities': ((value['entities'] as Array<any>).map(BirdwatchEntityToJSON)),
+        'text': value['text'],
     };
 }
 

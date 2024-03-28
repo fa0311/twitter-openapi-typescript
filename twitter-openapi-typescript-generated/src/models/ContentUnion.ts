@@ -46,7 +46,7 @@ export function ContentUnionFromJSON(json: any): ContentUnion {
 }
 
 export function ContentUnionFromJSONTyped(json: any, ignoreDiscriminator: boolean): ContentUnion {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     switch (json['entryType']) {
@@ -62,11 +62,8 @@ export function ContentUnionFromJSONTyped(json: any, ignoreDiscriminator: boolea
 }
 
 export function ContentUnionToJSON(value?: ContentUnion | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     switch (value['entryType']) {
         case 'TimelineTimelineCursor':

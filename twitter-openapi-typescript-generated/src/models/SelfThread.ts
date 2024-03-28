@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -31,10 +31,8 @@ export interface SelfThread {
  * Check if a given object implements the SelfThread interface.
  */
 export function instanceOfSelfThread(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "idStr" in value;
-
-    return isInstance;
+    if (!('idStr' in value)) return false;
+    return true;
 }
 
 export function SelfThreadFromJSON(json: any): SelfThread {
@@ -42,7 +40,7 @@ export function SelfThreadFromJSON(json: any): SelfThread {
 }
 
 export function SelfThreadFromJSONTyped(json: any, ignoreDiscriminator: boolean): SelfThread {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -52,15 +50,12 @@ export function SelfThreadFromJSONTyped(json: any, ignoreDiscriminator: boolean)
 }
 
 export function SelfThreadToJSON(value?: SelfThread | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'id_str': value.idStr,
+        'id_str': value['idStr'],
     };
 }
 

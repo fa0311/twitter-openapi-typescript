@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { PostCreateTweetRequestVariablesMediaMediaEntitiesInner } from './PostCreateTweetRequestVariablesMediaMediaEntitiesInner';
 import {
     PostCreateTweetRequestVariablesMediaMediaEntitiesInnerFromJSON,
@@ -44,11 +44,9 @@ export interface PostCreateTweetRequestVariablesMedia {
  * Check if a given object implements the PostCreateTweetRequestVariablesMedia interface.
  */
 export function instanceOfPostCreateTweetRequestVariablesMedia(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "mediaEntities" in value;
-    isInstance = isInstance && "possiblySensitive" in value;
-
-    return isInstance;
+    if (!('mediaEntities' in value)) return false;
+    if (!('possiblySensitive' in value)) return false;
+    return true;
 }
 
 export function PostCreateTweetRequestVariablesMediaFromJSON(json: any): PostCreateTweetRequestVariablesMedia {
@@ -56,7 +54,7 @@ export function PostCreateTweetRequestVariablesMediaFromJSON(json: any): PostCre
 }
 
 export function PostCreateTweetRequestVariablesMediaFromJSONTyped(json: any, ignoreDiscriminator: boolean): PostCreateTweetRequestVariablesMedia {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -67,16 +65,13 @@ export function PostCreateTweetRequestVariablesMediaFromJSONTyped(json: any, ign
 }
 
 export function PostCreateTweetRequestVariablesMediaToJSON(value?: PostCreateTweetRequestVariablesMedia | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'media_entities': ((value.mediaEntities as Array<any>).map(PostCreateTweetRequestVariablesMediaMediaEntitiesInnerToJSON)),
-        'possibly_sensitive': value.possiblySensitive,
+        'media_entities': ((value['mediaEntities'] as Array<any>).map(PostCreateTweetRequestVariablesMediaMediaEntitiesInnerToJSON)),
+        'possibly_sensitive': value['possiblySensitive'],
     };
 }
 

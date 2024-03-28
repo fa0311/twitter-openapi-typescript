@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { TypeName } from './TypeName';
 import {
     TypeNameFromJSON,
@@ -39,9 +39,7 @@ export interface TimelinePrompt {
  * Check if a given object implements the TimelinePrompt interface.
  */
 export function instanceOfTimelinePrompt(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+    return true;
 }
 
 export function TimelinePromptFromJSON(json: any): TimelinePrompt {
@@ -49,27 +47,24 @@ export function TimelinePromptFromJSON(json: any): TimelinePrompt {
 }
 
 export function TimelinePromptFromJSONTyped(json: any, ignoreDiscriminator: boolean): TimelinePrompt {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
             ...json,
-        'typename': !exists(json, '__typename') ? undefined : TypeNameFromJSON(json['__typename']),
+        'typename': json['__typename'] == null ? undefined : TypeNameFromJSON(json['__typename']),
     };
 }
 
 export function TimelinePromptToJSON(value?: TimelinePrompt | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
             ...value,
-        '__typename': TypeNameToJSON(value.typename),
+        '__typename': TypeNameToJSON(value['typename']),
     };
 }
 

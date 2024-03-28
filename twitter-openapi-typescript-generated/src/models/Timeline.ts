@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { InstructionUnion } from './InstructionUnion';
 import {
     InstructionUnionFromJSON,
@@ -50,10 +50,8 @@ export interface Timeline {
  * Check if a given object implements the Timeline interface.
  */
 export function instanceOfTimeline(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "instructions" in value;
-
-    return isInstance;
+    if (!('instructions' in value)) return false;
+    return true;
 }
 
 export function TimelineFromJSON(json: any): Timeline {
@@ -61,29 +59,26 @@ export function TimelineFromJSON(json: any): Timeline {
 }
 
 export function TimelineFromJSONTyped(json: any, ignoreDiscriminator: boolean): Timeline {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
         'instructions': ((json['instructions'] as Array<any>).map(InstructionUnionFromJSON)),
-        'metadata': !exists(json, 'metadata') ? undefined : json['metadata'],
-        'responseObjects': !exists(json, 'responseObjects') ? undefined : json['responseObjects'],
+        'metadata': json['metadata'] == null ? undefined : json['metadata'],
+        'responseObjects': json['responseObjects'] == null ? undefined : json['responseObjects'],
     };
 }
 
 export function TimelineToJSON(value?: Timeline | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'instructions': ((value.instructions as Array<any>).map(InstructionUnionToJSON)),
-        'metadata': value.metadata,
-        'responseObjects': value.responseObjects,
+        'instructions': ((value['instructions'] as Array<any>).map(InstructionUnionToJSON)),
+        'metadata': value['metadata'],
+        'responseObjects': value['responseObjects'],
     };
 }
 

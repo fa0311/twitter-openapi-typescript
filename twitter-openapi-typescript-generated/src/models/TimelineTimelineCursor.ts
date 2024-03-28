@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { ContentEntryType } from './ContentEntryType';
 import {
     ContentEntryTypeFromJSON,
@@ -92,13 +92,11 @@ export interface TimelineTimelineCursor {
  * Check if a given object implements the TimelineTimelineCursor interface.
  */
 export function instanceOfTimelineTimelineCursor(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "typename" in value;
-    isInstance = isInstance && "cursorType" in value;
-    isInstance = isInstance && "stopOnEmptyResponse" in value;
-    isInstance = isInstance && "value" in value;
-
-    return isInstance;
+    if (!('typename' in value)) return false;
+    if (!('cursorType' in value)) return false;
+    if (!('stopOnEmptyResponse' in value)) return false;
+    if (!('value' in value)) return false;
+    return true;
 }
 
 export function TimelineTimelineCursorFromJSON(json: any): TimelineTimelineCursor {
@@ -106,37 +104,34 @@ export function TimelineTimelineCursorFromJSON(json: any): TimelineTimelineCurso
 }
 
 export function TimelineTimelineCursorFromJSONTyped(json: any, ignoreDiscriminator: boolean): TimelineTimelineCursor {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
         'typename': TypeNameFromJSON(json['__typename']),
         'cursorType': CursorTypeFromJSON(json['cursorType']),
-        'displayTreatment': !exists(json, 'displayTreatment') ? undefined : DisplayTreatmentFromJSON(json['displayTreatment']),
-        'entryType': !exists(json, 'entryType') ? undefined : ContentEntryTypeFromJSON(json['entryType']),
-        'itemType': !exists(json, 'itemType') ? undefined : ContentEntryTypeFromJSON(json['itemType']),
+        'displayTreatment': json['displayTreatment'] == null ? undefined : DisplayTreatmentFromJSON(json['displayTreatment']),
+        'entryType': json['entryType'] == null ? undefined : ContentEntryTypeFromJSON(json['entryType']),
+        'itemType': json['itemType'] == null ? undefined : ContentEntryTypeFromJSON(json['itemType']),
         'stopOnEmptyResponse': json['stopOnEmptyResponse'],
         'value': json['value'],
     };
 }
 
 export function TimelineTimelineCursorToJSON(value?: TimelineTimelineCursor | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        '__typename': TypeNameToJSON(value.typename),
-        'cursorType': CursorTypeToJSON(value.cursorType),
-        'displayTreatment': DisplayTreatmentToJSON(value.displayTreatment),
-        'entryType': ContentEntryTypeToJSON(value.entryType),
-        'itemType': ContentEntryTypeToJSON(value.itemType),
-        'stopOnEmptyResponse': value.stopOnEmptyResponse,
-        'value': value.value,
+        '__typename': TypeNameToJSON(value['typename']),
+        'cursorType': CursorTypeToJSON(value['cursorType']),
+        'displayTreatment': DisplayTreatmentToJSON(value['displayTreatment']),
+        'entryType': ContentEntryTypeToJSON(value['entryType']),
+        'itemType': ContentEntryTypeToJSON(value['itemType']),
+        'stopOnEmptyResponse': value['stopOnEmptyResponse'],
+        'value': value['value'],
     };
 }
 

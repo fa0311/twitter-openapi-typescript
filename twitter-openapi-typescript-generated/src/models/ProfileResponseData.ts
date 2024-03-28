@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { UserResultByScreenName } from './UserResultByScreenName';
 import {
     UserResultByScreenNameFromJSON,
@@ -38,10 +38,8 @@ export interface ProfileResponseData {
  * Check if a given object implements the ProfileResponseData interface.
  */
 export function instanceOfProfileResponseData(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "userResultByScreenName" in value;
-
-    return isInstance;
+    if (!('userResultByScreenName' in value)) return false;
+    return true;
 }
 
 export function ProfileResponseDataFromJSON(json: any): ProfileResponseData {
@@ -49,7 +47,7 @@ export function ProfileResponseDataFromJSON(json: any): ProfileResponseData {
 }
 
 export function ProfileResponseDataFromJSONTyped(json: any, ignoreDiscriminator: boolean): ProfileResponseData {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -59,15 +57,12 @@ export function ProfileResponseDataFromJSONTyped(json: any, ignoreDiscriminator:
 }
 
 export function ProfileResponseDataToJSON(value?: ProfileResponseData | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'user_result_by_screen_name': UserResultByScreenNameToJSON(value.userResultByScreenName),
+        'user_result_by_screen_name': UserResultByScreenNameToJSON(value['userResultByScreenName']),
     };
 }
 

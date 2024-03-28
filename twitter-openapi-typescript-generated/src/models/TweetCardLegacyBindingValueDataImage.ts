@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -49,12 +49,10 @@ export interface TweetCardLegacyBindingValueDataImage {
  * Check if a given object implements the TweetCardLegacyBindingValueDataImage interface.
  */
 export function instanceOfTweetCardLegacyBindingValueDataImage(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "height" in value;
-    isInstance = isInstance && "url" in value;
-    isInstance = isInstance && "width" in value;
-
-    return isInstance;
+    if (!('height' in value)) return false;
+    if (!('url' in value)) return false;
+    if (!('width' in value)) return false;
+    return true;
 }
 
 export function TweetCardLegacyBindingValueDataImageFromJSON(json: any): TweetCardLegacyBindingValueDataImage {
@@ -62,12 +60,12 @@ export function TweetCardLegacyBindingValueDataImageFromJSON(json: any): TweetCa
 }
 
 export function TweetCardLegacyBindingValueDataImageFromJSONTyped(json: any, ignoreDiscriminator: boolean): TweetCardLegacyBindingValueDataImage {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'alt': !exists(json, 'alt') ? undefined : json['alt'],
+        'alt': json['alt'] == null ? undefined : json['alt'],
         'height': json['height'],
         'url': json['url'],
         'width': json['width'],
@@ -75,18 +73,15 @@ export function TweetCardLegacyBindingValueDataImageFromJSONTyped(json: any, ign
 }
 
 export function TweetCardLegacyBindingValueDataImageToJSON(value?: TweetCardLegacyBindingValueDataImage | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'alt': value.alt,
-        'height': value.height,
-        'url': value.url,
-        'width': value.width,
+        'alt': value['alt'],
+        'height': value['height'],
+        'url': value['url'],
+        'width': value['width'],
     };
 }
 

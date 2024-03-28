@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { Timeline } from './Timeline';
 import {
     TimelineFromJSON,
@@ -38,10 +38,8 @@ export interface BookmarksTimeline {
  * Check if a given object implements the BookmarksTimeline interface.
  */
 export function instanceOfBookmarksTimeline(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "timeline" in value;
-
-    return isInstance;
+    if (!('timeline' in value)) return false;
+    return true;
 }
 
 export function BookmarksTimelineFromJSON(json: any): BookmarksTimeline {
@@ -49,7 +47,7 @@ export function BookmarksTimelineFromJSON(json: any): BookmarksTimeline {
 }
 
 export function BookmarksTimelineFromJSONTyped(json: any, ignoreDiscriminator: boolean): BookmarksTimeline {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -59,15 +57,12 @@ export function BookmarksTimelineFromJSONTyped(json: any, ignoreDiscriminator: b
 }
 
 export function BookmarksTimelineToJSON(value?: BookmarksTimeline | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'timeline': TimelineToJSON(value.timeline),
+        'timeline': TimelineToJSON(value['timeline']),
     };
 }
 

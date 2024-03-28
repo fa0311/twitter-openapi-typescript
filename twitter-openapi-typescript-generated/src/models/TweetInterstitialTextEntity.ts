@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { TweetInterstitialTextEntityRef } from './TweetInterstitialTextEntityRef';
 import {
     TweetInterstitialTextEntityRefFromJSON,
@@ -50,12 +50,10 @@ export interface TweetInterstitialTextEntity {
  * Check if a given object implements the TweetInterstitialTextEntity interface.
  */
 export function instanceOfTweetInterstitialTextEntity(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "fromIndex" in value;
-    isInstance = isInstance && "ref" in value;
-    isInstance = isInstance && "toIndex" in value;
-
-    return isInstance;
+    if (!('fromIndex' in value)) return false;
+    if (!('ref' in value)) return false;
+    if (!('toIndex' in value)) return false;
+    return true;
 }
 
 export function TweetInterstitialTextEntityFromJSON(json: any): TweetInterstitialTextEntity {
@@ -63,7 +61,7 @@ export function TweetInterstitialTextEntityFromJSON(json: any): TweetInterstitia
 }
 
 export function TweetInterstitialTextEntityFromJSONTyped(json: any, ignoreDiscriminator: boolean): TweetInterstitialTextEntity {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -75,17 +73,14 @@ export function TweetInterstitialTextEntityFromJSONTyped(json: any, ignoreDiscri
 }
 
 export function TweetInterstitialTextEntityToJSON(value?: TweetInterstitialTextEntity | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'fromIndex': value.fromIndex,
-        'ref': TweetInterstitialTextEntityRefToJSON(value.ref),
-        'toIndex': value.toIndex,
+        'fromIndex': value['fromIndex'],
+        'ref': TweetInterstitialTextEntityRefToJSON(value['ref']),
+        'toIndex': value['toIndex'],
     };
 }
 

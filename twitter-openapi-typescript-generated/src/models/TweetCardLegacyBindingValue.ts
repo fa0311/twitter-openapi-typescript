@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { TweetCardLegacyBindingValueData } from './TweetCardLegacyBindingValueData';
 import {
     TweetCardLegacyBindingValueDataFromJSON,
@@ -44,11 +44,9 @@ export interface TweetCardLegacyBindingValue {
  * Check if a given object implements the TweetCardLegacyBindingValue interface.
  */
 export function instanceOfTweetCardLegacyBindingValue(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "key" in value;
-    isInstance = isInstance && "value" in value;
-
-    return isInstance;
+    if (!('key' in value)) return false;
+    if (!('value' in value)) return false;
+    return true;
 }
 
 export function TweetCardLegacyBindingValueFromJSON(json: any): TweetCardLegacyBindingValue {
@@ -56,7 +54,7 @@ export function TweetCardLegacyBindingValueFromJSON(json: any): TweetCardLegacyB
 }
 
 export function TweetCardLegacyBindingValueFromJSONTyped(json: any, ignoreDiscriminator: boolean): TweetCardLegacyBindingValue {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -67,16 +65,13 @@ export function TweetCardLegacyBindingValueFromJSONTyped(json: any, ignoreDiscri
 }
 
 export function TweetCardLegacyBindingValueToJSON(value?: TweetCardLegacyBindingValue | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'key': value.key,
-        'value': TweetCardLegacyBindingValueDataToJSON(value.value),
+        'key': value['key'],
+        'value': TweetCardLegacyBindingValueDataToJSON(value['value']),
     };
 }
 

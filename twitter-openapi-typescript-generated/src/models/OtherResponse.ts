@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { Session } from './Session';
 import {
     SessionFromJSON,
@@ -38,9 +38,7 @@ export interface OtherResponse {
  * Check if a given object implements the OtherResponse interface.
  */
 export function instanceOfOtherResponse(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+    return true;
 }
 
 export function OtherResponseFromJSON(json: any): OtherResponse {
@@ -48,25 +46,22 @@ export function OtherResponseFromJSON(json: any): OtherResponse {
 }
 
 export function OtherResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): OtherResponse {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'session': !exists(json, 'Session') ? undefined : SessionFromJSON(json['Session']),
+        'session': json['Session'] == null ? undefined : SessionFromJSON(json['Session']),
     };
 }
 
 export function OtherResponseToJSON(value?: OtherResponse | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'Session': SessionToJSON(value.session),
+        'Session': SessionToJSON(value['session']),
     };
 }
 

@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { CreateTweet } from './CreateTweet';
 import {
     CreateTweetFromJSON,
@@ -38,10 +38,8 @@ export interface CreateTweetResponseResult {
  * Check if a given object implements the CreateTweetResponseResult interface.
  */
 export function instanceOfCreateTweetResponseResult(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "tweetResults" in value;
-
-    return isInstance;
+    if (!('tweetResults' in value)) return false;
+    return true;
 }
 
 export function CreateTweetResponseResultFromJSON(json: any): CreateTweetResponseResult {
@@ -49,7 +47,7 @@ export function CreateTweetResponseResultFromJSON(json: any): CreateTweetRespons
 }
 
 export function CreateTweetResponseResultFromJSONTyped(json: any, ignoreDiscriminator: boolean): CreateTweetResponseResult {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -59,15 +57,12 @@ export function CreateTweetResponseResultFromJSONTyped(json: any, ignoreDiscrimi
 }
 
 export function CreateTweetResponseResultToJSON(value?: CreateTweetResponseResult | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'tweet_results': CreateTweetToJSON(value.tweetResults),
+        'tweet_results': CreateTweetToJSON(value['tweetResults']),
     };
 }
 

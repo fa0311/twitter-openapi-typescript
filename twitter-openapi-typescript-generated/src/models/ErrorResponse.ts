@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { Errors } from './Errors';
 import {
     ErrorsFromJSON,
@@ -38,10 +38,8 @@ export interface ErrorResponse {
  * Check if a given object implements the ErrorResponse interface.
  */
 export function instanceOfErrorResponse(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "errors" in value;
-
-    return isInstance;
+    if (!('errors' in value)) return false;
+    return true;
 }
 
 export function ErrorResponseFromJSON(json: any): ErrorResponse {
@@ -49,7 +47,7 @@ export function ErrorResponseFromJSON(json: any): ErrorResponse {
 }
 
 export function ErrorResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): ErrorResponse {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -59,15 +57,12 @@ export function ErrorResponseFromJSONTyped(json: any, ignoreDiscriminator: boole
 }
 
 export function ErrorResponseToJSON(value?: ErrorResponse | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'errors': ErrorsToJSON(value.errors),
+        'errors': ErrorsToJSON(value['errors']),
     };
 }
 

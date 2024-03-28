@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { Timeline } from './Timeline';
 import {
     TimelineFromJSON,
@@ -38,10 +38,8 @@ export interface FollowTimeline {
  * Check if a given object implements the FollowTimeline interface.
  */
 export function instanceOfFollowTimeline(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "timeline" in value;
-
-    return isInstance;
+    if (!('timeline' in value)) return false;
+    return true;
 }
 
 export function FollowTimelineFromJSON(json: any): FollowTimeline {
@@ -49,7 +47,7 @@ export function FollowTimelineFromJSON(json: any): FollowTimeline {
 }
 
 export function FollowTimelineFromJSONTyped(json: any, ignoreDiscriminator: boolean): FollowTimeline {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -59,15 +57,12 @@ export function FollowTimelineFromJSONTyped(json: any, ignoreDiscriminator: bool
 }
 
 export function FollowTimelineToJSON(value?: FollowTimeline | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'timeline': TimelineToJSON(value.timeline),
+        'timeline': TimelineToJSON(value['timeline']),
     };
 }
 

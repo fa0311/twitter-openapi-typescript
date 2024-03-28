@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -67,9 +67,7 @@ export interface TopicContext {
  * Check if a given object implements the TopicContext interface.
  */
 export function instanceOfTopicContext(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+    return true;
 }
 
 export function TopicContextFromJSON(json: any): TopicContext {
@@ -77,37 +75,34 @@ export function TopicContextFromJSON(json: any): TopicContext {
 }
 
 export function TopicContextFromJSONTyped(json: any, ignoreDiscriminator: boolean): TopicContext {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'description': !exists(json, 'description') ? undefined : json['description'],
-        'following': !exists(json, 'following') ? undefined : json['following'],
-        'iconUrl': !exists(json, 'icon_url') ? undefined : json['icon_url'],
-        'id': !exists(json, 'id') ? undefined : json['id'],
-        'name': !exists(json, 'name') ? undefined : json['name'],
-        'notInterested': !exists(json, 'not_interested') ? undefined : json['not_interested'],
-        'topicId': !exists(json, 'topic_id') ? undefined : json['topic_id'],
+        'description': json['description'] == null ? undefined : json['description'],
+        'following': json['following'] == null ? undefined : json['following'],
+        'iconUrl': json['icon_url'] == null ? undefined : json['icon_url'],
+        'id': json['id'] == null ? undefined : json['id'],
+        'name': json['name'] == null ? undefined : json['name'],
+        'notInterested': json['not_interested'] == null ? undefined : json['not_interested'],
+        'topicId': json['topic_id'] == null ? undefined : json['topic_id'],
     };
 }
 
 export function TopicContextToJSON(value?: TopicContext | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'description': value.description,
-        'following': value.following,
-        'icon_url': value.iconUrl,
-        'id': value.id,
-        'name': value.name,
-        'not_interested': value.notInterested,
-        'topic_id': value.topicId,
+        'description': value['description'],
+        'following': value['following'],
+        'icon_url': value['iconUrl'],
+        'id': value['id'],
+        'name': value['name'],
+        'not_interested': value['notInterested'],
+        'topic_id': value['topicId'],
     };
 }
 

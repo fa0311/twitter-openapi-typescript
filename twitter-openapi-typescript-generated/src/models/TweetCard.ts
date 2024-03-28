@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { TweetCardLegacy } from './TweetCardLegacy';
 import {
     TweetCardLegacyFromJSON,
@@ -44,9 +44,7 @@ export interface TweetCard {
  * Check if a given object implements the TweetCard interface.
  */
 export function instanceOfTweetCard(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
+    return true;
 }
 
 export function TweetCardFromJSON(json: any): TweetCard {
@@ -54,27 +52,24 @@ export function TweetCardFromJSON(json: any): TweetCard {
 }
 
 export function TweetCardFromJSONTyped(json: any, ignoreDiscriminator: boolean): TweetCard {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
-        'legacy': !exists(json, 'legacy') ? undefined : TweetCardLegacyFromJSON(json['legacy']),
-        'restId': !exists(json, 'rest_id') ? undefined : json['rest_id'],
+        'legacy': json['legacy'] == null ? undefined : TweetCardLegacyFromJSON(json['legacy']),
+        'restId': json['rest_id'] == null ? undefined : json['rest_id'],
     };
 }
 
 export function TweetCardToJSON(value?: TweetCard | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'legacy': TweetCardLegacyToJSON(value.legacy),
-        'rest_id': value.restId,
+        'legacy': TweetCardLegacyToJSON(value['legacy']),
+        'rest_id': value['restId'],
     };
 }
 

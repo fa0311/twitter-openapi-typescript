@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { TypeName } from './TypeName';
 import {
     TypeNameFromJSON,
@@ -182,19 +182,17 @@ export type UserProfileImageShapeEnum = typeof UserProfileImageShapeEnum[keyof t
  * Check if a given object implements the User interface.
  */
 export function instanceOfUser(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "typename" in value;
-    isInstance = isInstance && "affiliatesHighlightedLabel" in value;
-    isInstance = isInstance && "id" in value;
-    isInstance = isInstance && "isBlueVerified" in value;
-    isInstance = isInstance && "legacy" in value;
-    isInstance = isInstance && "profileImageShape" in value;
-    isInstance = isInstance && "restId" in value;
-    isInstance = isInstance && "superFollowEligible" in value;
-    isInstance = isInstance && "superFollowedBy" in value;
-    isInstance = isInstance && "superFollowing" in value;
-
-    return isInstance;
+    if (!('typename' in value)) return false;
+    if (!('affiliatesHighlightedLabel' in value)) return false;
+    if (!('id' in value)) return false;
+    if (!('isBlueVerified' in value)) return false;
+    if (!('legacy' in value)) return false;
+    if (!('profileImageShape' in value)) return false;
+    if (!('restId' in value)) return false;
+    if (!('superFollowEligible' in value)) return false;
+    if (!('superFollowedBy' in value)) return false;
+    if (!('superFollowing' in value)) return false;
+    return true;
 }
 
 export function UserFromJSON(json: any): User {
@@ -202,61 +200,58 @@ export function UserFromJSON(json: any): User {
 }
 
 export function UserFromJSONTyped(json: any, ignoreDiscriminator: boolean): User {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
         'typename': TypeNameFromJSON(json['__typename']),
         'affiliatesHighlightedLabel': json['affiliates_highlighted_label'],
-        'businessAccount': !exists(json, 'business_account') ? undefined : json['business_account'],
-        'creatorSubscriptionsCount': !exists(json, 'creator_subscriptions_count') ? undefined : json['creator_subscriptions_count'],
-        'hasGraduatedAccess': !exists(json, 'has_graduated_access') ? undefined : json['has_graduated_access'],
-        'hasNftAvatar': !exists(json, 'has_nft_avatar') ? undefined : json['has_nft_avatar'],
-        'highlightsInfo': !exists(json, 'highlights_info') ? undefined : UserHighlightsInfoFromJSON(json['highlights_info']),
+        'businessAccount': json['business_account'] == null ? undefined : json['business_account'],
+        'creatorSubscriptionsCount': json['creator_subscriptions_count'] == null ? undefined : json['creator_subscriptions_count'],
+        'hasGraduatedAccess': json['has_graduated_access'] == null ? undefined : json['has_graduated_access'],
+        'hasNftAvatar': json['has_nft_avatar'] == null ? undefined : json['has_nft_avatar'],
+        'highlightsInfo': json['highlights_info'] == null ? undefined : UserHighlightsInfoFromJSON(json['highlights_info']),
         'id': json['id'],
         'isBlueVerified': json['is_blue_verified'],
-        'isProfileTranslatable': !exists(json, 'is_profile_translatable') ? undefined : json['is_profile_translatable'],
+        'isProfileTranslatable': json['is_profile_translatable'] == null ? undefined : json['is_profile_translatable'],
         'legacy': UserLegacyFromJSON(json['legacy']),
-        'professional': !exists(json, 'professional') ? undefined : UserProfessionalFromJSON(json['professional']),
+        'professional': json['professional'] == null ? undefined : UserProfessionalFromJSON(json['professional']),
         'profileImageShape': json['profile_image_shape'],
         'restId': json['rest_id'],
         'superFollowEligible': json['super_follow_eligible'],
         'superFollowedBy': json['super_followed_by'],
         'superFollowing': json['super_following'],
-        'userSeedTweetCount': !exists(json, 'user_seed_tweet_count') ? undefined : json['user_seed_tweet_count'],
-        'verificationInfo': !exists(json, 'verification_info') ? undefined : UserVerificationInfoFromJSON(json['verification_info']),
+        'userSeedTweetCount': json['user_seed_tweet_count'] == null ? undefined : json['user_seed_tweet_count'],
+        'verificationInfo': json['verification_info'] == null ? undefined : UserVerificationInfoFromJSON(json['verification_info']),
     };
 }
 
 export function UserToJSON(value?: User | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        '__typename': TypeNameToJSON(value.typename),
-        'affiliates_highlighted_label': value.affiliatesHighlightedLabel,
-        'business_account': value.businessAccount,
-        'creator_subscriptions_count': value.creatorSubscriptionsCount,
-        'has_graduated_access': value.hasGraduatedAccess,
-        'has_nft_avatar': value.hasNftAvatar,
-        'highlights_info': UserHighlightsInfoToJSON(value.highlightsInfo),
-        'id': value.id,
-        'is_blue_verified': value.isBlueVerified,
-        'is_profile_translatable': value.isProfileTranslatable,
-        'legacy': UserLegacyToJSON(value.legacy),
-        'professional': UserProfessionalToJSON(value.professional),
-        'profile_image_shape': value.profileImageShape,
-        'rest_id': value.restId,
-        'super_follow_eligible': value.superFollowEligible,
-        'super_followed_by': value.superFollowedBy,
-        'super_following': value.superFollowing,
-        'user_seed_tweet_count': value.userSeedTweetCount,
-        'verification_info': UserVerificationInfoToJSON(value.verificationInfo),
+        '__typename': TypeNameToJSON(value['typename']),
+        'affiliates_highlighted_label': value['affiliatesHighlightedLabel'],
+        'business_account': value['businessAccount'],
+        'creator_subscriptions_count': value['creatorSubscriptionsCount'],
+        'has_graduated_access': value['hasGraduatedAccess'],
+        'has_nft_avatar': value['hasNftAvatar'],
+        'highlights_info': UserHighlightsInfoToJSON(value['highlightsInfo']),
+        'id': value['id'],
+        'is_blue_verified': value['isBlueVerified'],
+        'is_profile_translatable': value['isProfileTranslatable'],
+        'legacy': UserLegacyToJSON(value['legacy']),
+        'professional': UserProfessionalToJSON(value['professional']),
+        'profile_image_shape': value['profileImageShape'],
+        'rest_id': value['restId'],
+        'super_follow_eligible': value['superFollowEligible'],
+        'super_followed_by': value['superFollowedBy'],
+        'super_following': value['superFollowing'],
+        'user_seed_tweet_count': value['userSeedTweetCount'],
+        'verification_info': UserVerificationInfoToJSON(value['verificationInfo']),
     };
 }
 

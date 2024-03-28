@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { Tweet } from './Tweet';
 import {
     TweetFromJSON,
@@ -68,11 +68,9 @@ export interface TweetWithVisibilityResults {
  * Check if a given object implements the TweetWithVisibilityResults interface.
  */
 export function instanceOfTweetWithVisibilityResults(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "typename" in value;
-    isInstance = isInstance && "tweet" in value;
-
-    return isInstance;
+    if (!('typename' in value)) return false;
+    if (!('tweet' in value)) return false;
+    return true;
 }
 
 export function TweetWithVisibilityResultsFromJSON(json: any): TweetWithVisibilityResults {
@@ -80,31 +78,28 @@ export function TweetWithVisibilityResultsFromJSON(json: any): TweetWithVisibili
 }
 
 export function TweetWithVisibilityResultsFromJSONTyped(json: any, ignoreDiscriminator: boolean): TweetWithVisibilityResults {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
         'typename': TypeNameFromJSON(json['__typename']),
-        'limitedActionResults': !exists(json, 'limitedActionResults') ? undefined : json['limitedActionResults'],
+        'limitedActionResults': json['limitedActionResults'] == null ? undefined : json['limitedActionResults'],
         'tweet': TweetFromJSON(json['tweet']),
-        'tweetInterstitial': !exists(json, 'tweetInterstitial') ? undefined : TweetInterstitialFromJSON(json['tweetInterstitial']),
+        'tweetInterstitial': json['tweetInterstitial'] == null ? undefined : TweetInterstitialFromJSON(json['tweetInterstitial']),
     };
 }
 
 export function TweetWithVisibilityResultsToJSON(value?: TweetWithVisibilityResults | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        '__typename': TypeNameToJSON(value.typename),
-        'limitedActionResults': value.limitedActionResults,
-        'tweet': TweetToJSON(value.tweet),
-        'tweetInterstitial': TweetInterstitialToJSON(value.tweetInterstitial),
+        '__typename': TypeNameToJSON(value['typename']),
+        'limitedActionResults': value['limitedActionResults'],
+        'tweet': TweetToJSON(value['tweet']),
+        'tweetInterstitial': TweetInterstitialToJSON(value['tweetInterstitial']),
     };
 }
 

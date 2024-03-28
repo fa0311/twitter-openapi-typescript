@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { TweetCardPlatformAudience } from './TweetCardPlatformAudience';
 import {
     TweetCardPlatformAudienceFromJSON,
@@ -50,11 +50,9 @@ export interface TweetCardPlatform {
  * Check if a given object implements the TweetCardPlatform interface.
  */
 export function instanceOfTweetCardPlatform(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "audience" in value;
-    isInstance = isInstance && "device" in value;
-
-    return isInstance;
+    if (!('audience' in value)) return false;
+    if (!('device' in value)) return false;
+    return true;
 }
 
 export function TweetCardPlatformFromJSON(json: any): TweetCardPlatform {
@@ -62,7 +60,7 @@ export function TweetCardPlatformFromJSON(json: any): TweetCardPlatform {
 }
 
 export function TweetCardPlatformFromJSONTyped(json: any, ignoreDiscriminator: boolean): TweetCardPlatform {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -73,16 +71,13 @@ export function TweetCardPlatformFromJSONTyped(json: any, ignoreDiscriminator: b
 }
 
 export function TweetCardPlatformToJSON(value?: TweetCardPlatform | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'audience': TweetCardPlatformAudienceToJSON(value.audience),
-        'device': TweetCardPlatformDeviceToJSON(value.device),
+        'audience': TweetCardPlatformAudienceToJSON(value['audience']),
+        'device': TweetCardPlatformDeviceToJSON(value['device']),
     };
 }
 

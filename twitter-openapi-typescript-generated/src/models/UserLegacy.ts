@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -282,39 +282,37 @@ export type UserLegacyVerifiedTypeEnum = typeof UserLegacyVerifiedTypeEnum[keyof
  * Check if a given object implements the UserLegacy interface.
  */
 export function instanceOfUserLegacy(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "blockedBy" in value;
-    isInstance = isInstance && "blocking" in value;
-    isInstance = isInstance && "canDm" in value;
-    isInstance = isInstance && "canMediaTag" in value;
-    isInstance = isInstance && "createdAt" in value;
-    isInstance = isInstance && "defaultProfile" in value;
-    isInstance = isInstance && "defaultProfileImage" in value;
-    isInstance = isInstance && "description" in value;
-    isInstance = isInstance && "entities" in value;
-    isInstance = isInstance && "fastFollowersCount" in value;
-    isInstance = isInstance && "favouritesCount" in value;
-    isInstance = isInstance && "followersCount" in value;
-    isInstance = isInstance && "friendsCount" in value;
-    isInstance = isInstance && "hasCustomTimelines" in value;
-    isInstance = isInstance && "isTranslator" in value;
-    isInstance = isInstance && "listedCount" in value;
-    isInstance = isInstance && "location" in value;
-    isInstance = isInstance && "mediaCount" in value;
-    isInstance = isInstance && "muting" in value;
-    isInstance = isInstance && "name" in value;
-    isInstance = isInstance && "normalFollowersCount" in value;
-    isInstance = isInstance && "pinnedTweetIdsStr" in value;
-    isInstance = isInstance && "possiblySensitive" in value;
-    isInstance = isInstance && "profileImageUrlHttps" in value;
-    isInstance = isInstance && "profileInterstitialType" in value;
-    isInstance = isInstance && "screenName" in value;
-    isInstance = isInstance && "statusesCount" in value;
-    isInstance = isInstance && "translatorType" in value;
-    isInstance = isInstance && "verified" in value;
-    isInstance = isInstance && "wantRetweets" in value;
-
-    return isInstance;
+    if (!('blockedBy' in value)) return false;
+    if (!('blocking' in value)) return false;
+    if (!('canDm' in value)) return false;
+    if (!('canMediaTag' in value)) return false;
+    if (!('createdAt' in value)) return false;
+    if (!('defaultProfile' in value)) return false;
+    if (!('defaultProfileImage' in value)) return false;
+    if (!('description' in value)) return false;
+    if (!('entities' in value)) return false;
+    if (!('fastFollowersCount' in value)) return false;
+    if (!('favouritesCount' in value)) return false;
+    if (!('followersCount' in value)) return false;
+    if (!('friendsCount' in value)) return false;
+    if (!('hasCustomTimelines' in value)) return false;
+    if (!('isTranslator' in value)) return false;
+    if (!('listedCount' in value)) return false;
+    if (!('location' in value)) return false;
+    if (!('mediaCount' in value)) return false;
+    if (!('muting' in value)) return false;
+    if (!('name' in value)) return false;
+    if (!('normalFollowersCount' in value)) return false;
+    if (!('pinnedTweetIdsStr' in value)) return false;
+    if (!('possiblySensitive' in value)) return false;
+    if (!('profileImageUrlHttps' in value)) return false;
+    if (!('profileInterstitialType' in value)) return false;
+    if (!('screenName' in value)) return false;
+    if (!('statusesCount' in value)) return false;
+    if (!('translatorType' in value)) return false;
+    if (!('verified' in value)) return false;
+    if (!('wantRetweets' in value)) return false;
+    return true;
 }
 
 export function UserLegacyFromJSON(json: any): UserLegacy {
@@ -322,7 +320,7 @@ export function UserLegacyFromJSON(json: any): UserLegacy {
 }
 
 export function UserLegacyFromJSONTyped(json: any, ignoreDiscriminator: boolean): UserLegacy {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -338,10 +336,10 @@ export function UserLegacyFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'entities': json['entities'],
         'fastFollowersCount': json['fast_followers_count'],
         'favouritesCount': json['favourites_count'],
-        'followRequestSent': !exists(json, 'follow_request_sent') ? undefined : json['follow_request_sent'],
-        'followedBy': !exists(json, 'followed_by') ? undefined : json['followed_by'],
+        'followRequestSent': json['follow_request_sent'] == null ? undefined : json['follow_request_sent'],
+        'followedBy': json['followed_by'] == null ? undefined : json['followed_by'],
         'followersCount': json['followers_count'],
-        'following': !exists(json, 'following') ? undefined : json['following'],
+        'following': json['following'] == null ? undefined : json['following'],
         'friendsCount': json['friends_count'],
         'hasCustomTimelines': json['has_custom_timelines'],
         'isTranslator': json['is_translator'],
@@ -351,76 +349,73 @@ export function UserLegacyFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'muting': json['muting'],
         'name': json['name'],
         'normalFollowersCount': json['normal_followers_count'],
-        'notifications': !exists(json, 'notifications') ? undefined : json['notifications'],
+        'notifications': json['notifications'] == null ? undefined : json['notifications'],
         'pinnedTweetIdsStr': json['pinned_tweet_ids_str'],
         'possiblySensitive': json['possibly_sensitive'],
-        'profileBannerExtensions': !exists(json, 'profile_banner_extensions') ? undefined : json['profile_banner_extensions'],
-        'profileBannerUrl': !exists(json, 'profile_banner_url') ? undefined : json['profile_banner_url'],
-        'profileImageExtensions': !exists(json, 'profile_image_extensions') ? undefined : json['profile_image_extensions'],
+        'profileBannerExtensions': json['profile_banner_extensions'] == null ? undefined : json['profile_banner_extensions'],
+        'profileBannerUrl': json['profile_banner_url'] == null ? undefined : json['profile_banner_url'],
+        'profileImageExtensions': json['profile_image_extensions'] == null ? undefined : json['profile_image_extensions'],
         'profileImageUrlHttps': json['profile_image_url_https'],
         'profileInterstitialType': json['profile_interstitial_type'],
-        '_protected': !exists(json, 'protected') ? undefined : json['protected'],
+        '_protected': json['protected'] == null ? undefined : json['protected'],
         'screenName': json['screen_name'],
         'statusesCount': json['statuses_count'],
         'translatorType': json['translator_type'],
-        'url': !exists(json, 'url') ? undefined : json['url'],
+        'url': json['url'] == null ? undefined : json['url'],
         'verified': json['verified'],
-        'verifiedType': !exists(json, 'verified_type') ? undefined : json['verified_type'],
+        'verifiedType': json['verified_type'] == null ? undefined : json['verified_type'],
         'wantRetweets': json['want_retweets'],
-        'withheldInCountries': !exists(json, 'withheld_in_countries') ? undefined : json['withheld_in_countries'],
+        'withheldInCountries': json['withheld_in_countries'] == null ? undefined : json['withheld_in_countries'],
     };
 }
 
 export function UserLegacyToJSON(value?: UserLegacy | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'blocked_by': value.blockedBy,
-        'blocking': value.blocking,
-        'can_dm': value.canDm,
-        'can_media_tag': value.canMediaTag,
-        'created_at': value.createdAt,
-        'default_profile': value.defaultProfile,
-        'default_profile_image': value.defaultProfileImage,
-        'description': value.description,
-        'entities': value.entities,
-        'fast_followers_count': value.fastFollowersCount,
-        'favourites_count': value.favouritesCount,
-        'follow_request_sent': value.followRequestSent,
-        'followed_by': value.followedBy,
-        'followers_count': value.followersCount,
-        'following': value.following,
-        'friends_count': value.friendsCount,
-        'has_custom_timelines': value.hasCustomTimelines,
-        'is_translator': value.isTranslator,
-        'listed_count': value.listedCount,
-        'location': value.location,
-        'media_count': value.mediaCount,
-        'muting': value.muting,
-        'name': value.name,
-        'normal_followers_count': value.normalFollowersCount,
-        'notifications': value.notifications,
-        'pinned_tweet_ids_str': value.pinnedTweetIdsStr,
-        'possibly_sensitive': value.possiblySensitive,
-        'profile_banner_extensions': value.profileBannerExtensions,
-        'profile_banner_url': value.profileBannerUrl,
-        'profile_image_extensions': value.profileImageExtensions,
-        'profile_image_url_https': value.profileImageUrlHttps,
-        'profile_interstitial_type': value.profileInterstitialType,
-        'protected': value._protected,
-        'screen_name': value.screenName,
-        'statuses_count': value.statusesCount,
-        'translator_type': value.translatorType,
-        'url': value.url,
-        'verified': value.verified,
-        'verified_type': value.verifiedType,
-        'want_retweets': value.wantRetweets,
-        'withheld_in_countries': value.withheldInCountries,
+        'blocked_by': value['blockedBy'],
+        'blocking': value['blocking'],
+        'can_dm': value['canDm'],
+        'can_media_tag': value['canMediaTag'],
+        'created_at': value['createdAt'],
+        'default_profile': value['defaultProfile'],
+        'default_profile_image': value['defaultProfileImage'],
+        'description': value['description'],
+        'entities': value['entities'],
+        'fast_followers_count': value['fastFollowersCount'],
+        'favourites_count': value['favouritesCount'],
+        'follow_request_sent': value['followRequestSent'],
+        'followed_by': value['followedBy'],
+        'followers_count': value['followersCount'],
+        'following': value['following'],
+        'friends_count': value['friendsCount'],
+        'has_custom_timelines': value['hasCustomTimelines'],
+        'is_translator': value['isTranslator'],
+        'listed_count': value['listedCount'],
+        'location': value['location'],
+        'media_count': value['mediaCount'],
+        'muting': value['muting'],
+        'name': value['name'],
+        'normal_followers_count': value['normalFollowersCount'],
+        'notifications': value['notifications'],
+        'pinned_tweet_ids_str': value['pinnedTweetIdsStr'],
+        'possibly_sensitive': value['possiblySensitive'],
+        'profile_banner_extensions': value['profileBannerExtensions'],
+        'profile_banner_url': value['profileBannerUrl'],
+        'profile_image_extensions': value['profileImageExtensions'],
+        'profile_image_url_https': value['profileImageUrlHttps'],
+        'profile_interstitial_type': value['profileInterstitialType'],
+        'protected': value['_protected'],
+        'screen_name': value['screenName'],
+        'statuses_count': value['statusesCount'],
+        'translator_type': value['translatorType'],
+        'url': value['url'],
+        'verified': value['verified'],
+        'verified_type': value['verifiedType'],
+        'want_retweets': value['wantRetweets'],
+        'withheld_in_countries': value['withheldInCountries'],
     };
 }
 

@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { InstructionType } from './InstructionType';
 import {
     InstructionTypeFromJSON,
@@ -56,12 +56,10 @@ export interface TimelineReplaceEntry {
  * Check if a given object implements the TimelineReplaceEntry interface.
  */
 export function instanceOfTimelineReplaceEntry(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "entry" in value;
-    isInstance = isInstance && "entryIdToReplace" in value;
-    isInstance = isInstance && "type" in value;
-
-    return isInstance;
+    if (!('entry' in value)) return false;
+    if (!('entryIdToReplace' in value)) return false;
+    if (!('type' in value)) return false;
+    return true;
 }
 
 export function TimelineReplaceEntryFromJSON(json: any): TimelineReplaceEntry {
@@ -69,7 +67,7 @@ export function TimelineReplaceEntryFromJSON(json: any): TimelineReplaceEntry {
 }
 
 export function TimelineReplaceEntryFromJSONTyped(json: any, ignoreDiscriminator: boolean): TimelineReplaceEntry {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -81,17 +79,14 @@ export function TimelineReplaceEntryFromJSONTyped(json: any, ignoreDiscriminator
 }
 
 export function TimelineReplaceEntryToJSON(value?: TimelineReplaceEntry | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'entry': TimelineAddEntryToJSON(value.entry),
-        'entry_id_to_replace': value.entryIdToReplace,
-        'type': InstructionTypeToJSON(value.type),
+        'entry': TimelineAddEntryToJSON(value['entry']),
+        'entry_id_to_replace': value['entryIdToReplace'],
+        'type': InstructionTypeToJSON(value['type']),
     };
 }
 

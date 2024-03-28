@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -145,29 +145,27 @@ export interface PostCreateTweetRequestFeatures {
  * Check if a given object implements the PostCreateTweetRequestFeatures interface.
  */
 export function instanceOfPostCreateTweetRequestFeatures(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "c9sTweetAnatomyModeratorBadgeEnabled" in value;
-    isInstance = isInstance && "freedomOfSpeechNotReachFetchEnabled" in value;
-    isInstance = isInstance && "graphqlIsTranslatableRwebTweetIsTranslatableEnabled" in value;
-    isInstance = isInstance && "longformNotetweetsConsumptionEnabled" in value;
-    isInstance = isInstance && "longformNotetweetsInlineMediaEnabled" in value;
-    isInstance = isInstance && "longformNotetweetsRichTextReadEnabled" in value;
-    isInstance = isInstance && "responsiveWebEditTweetApiEnabled" in value;
-    isInstance = isInstance && "responsiveWebEnhanceCardsEnabled" in value;
-    isInstance = isInstance && "responsiveWebGraphqlExcludeDirectiveEnabled" in value;
-    isInstance = isInstance && "responsiveWebGraphqlSkipUserProfileImageExtensionsEnabled" in value;
-    isInstance = isInstance && "responsiveWebGraphqlTimelineNavigationEnabled" in value;
-    isInstance = isInstance && "responsiveWebMediaDownloadVideoEnabled" in value;
-    isInstance = isInstance && "responsiveWebTwitterArticleTweetConsumptionEnabled" in value;
-    isInstance = isInstance && "rwebVideoTimestampsEnabled" in value;
-    isInstance = isInstance && "standardizedNudgesMisinfo" in value;
-    isInstance = isInstance && "tweetAwardsWebTippingEnabled" in value;
-    isInstance = isInstance && "tweetWithVisibilityResultsPreferGqlLimitedActionsPolicyEnabled" in value;
-    isInstance = isInstance && "tweetypieUnmentionOptimizationEnabled" in value;
-    isInstance = isInstance && "verifiedPhoneLabelEnabled" in value;
-    isInstance = isInstance && "viewCountsEverywhereApiEnabled" in value;
-
-    return isInstance;
+    if (!('c9sTweetAnatomyModeratorBadgeEnabled' in value)) return false;
+    if (!('freedomOfSpeechNotReachFetchEnabled' in value)) return false;
+    if (!('graphqlIsTranslatableRwebTweetIsTranslatableEnabled' in value)) return false;
+    if (!('longformNotetweetsConsumptionEnabled' in value)) return false;
+    if (!('longformNotetweetsInlineMediaEnabled' in value)) return false;
+    if (!('longformNotetweetsRichTextReadEnabled' in value)) return false;
+    if (!('responsiveWebEditTweetApiEnabled' in value)) return false;
+    if (!('responsiveWebEnhanceCardsEnabled' in value)) return false;
+    if (!('responsiveWebGraphqlExcludeDirectiveEnabled' in value)) return false;
+    if (!('responsiveWebGraphqlSkipUserProfileImageExtensionsEnabled' in value)) return false;
+    if (!('responsiveWebGraphqlTimelineNavigationEnabled' in value)) return false;
+    if (!('responsiveWebMediaDownloadVideoEnabled' in value)) return false;
+    if (!('responsiveWebTwitterArticleTweetConsumptionEnabled' in value)) return false;
+    if (!('rwebVideoTimestampsEnabled' in value)) return false;
+    if (!('standardizedNudgesMisinfo' in value)) return false;
+    if (!('tweetAwardsWebTippingEnabled' in value)) return false;
+    if (!('tweetWithVisibilityResultsPreferGqlLimitedActionsPolicyEnabled' in value)) return false;
+    if (!('tweetypieUnmentionOptimizationEnabled' in value)) return false;
+    if (!('verifiedPhoneLabelEnabled' in value)) return false;
+    if (!('viewCountsEverywhereApiEnabled' in value)) return false;
+    return true;
 }
 
 export function PostCreateTweetRequestFeaturesFromJSON(json: any): PostCreateTweetRequestFeatures {
@@ -175,7 +173,7 @@ export function PostCreateTweetRequestFeaturesFromJSON(json: any): PostCreateTwe
 }
 
 export function PostCreateTweetRequestFeaturesFromJSONTyped(json: any, ignoreDiscriminator: boolean): PostCreateTweetRequestFeatures {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -204,34 +202,31 @@ export function PostCreateTweetRequestFeaturesFromJSONTyped(json: any, ignoreDis
 }
 
 export function PostCreateTweetRequestFeaturesToJSON(value?: PostCreateTweetRequestFeatures | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'c9s_tweet_anatomy_moderator_badge_enabled': value.c9sTweetAnatomyModeratorBadgeEnabled,
-        'freedom_of_speech_not_reach_fetch_enabled': value.freedomOfSpeechNotReachFetchEnabled,
-        'graphql_is_translatable_rweb_tweet_is_translatable_enabled': value.graphqlIsTranslatableRwebTweetIsTranslatableEnabled,
-        'longform_notetweets_consumption_enabled': value.longformNotetweetsConsumptionEnabled,
-        'longform_notetweets_inline_media_enabled': value.longformNotetweetsInlineMediaEnabled,
-        'longform_notetweets_rich_text_read_enabled': value.longformNotetweetsRichTextReadEnabled,
-        'responsive_web_edit_tweet_api_enabled': value.responsiveWebEditTweetApiEnabled,
-        'responsive_web_enhance_cards_enabled': value.responsiveWebEnhanceCardsEnabled,
-        'responsive_web_graphql_exclude_directive_enabled': value.responsiveWebGraphqlExcludeDirectiveEnabled,
-        'responsive_web_graphql_skip_user_profile_image_extensions_enabled': value.responsiveWebGraphqlSkipUserProfileImageExtensionsEnabled,
-        'responsive_web_graphql_timeline_navigation_enabled': value.responsiveWebGraphqlTimelineNavigationEnabled,
-        'responsive_web_media_download_video_enabled': value.responsiveWebMediaDownloadVideoEnabled,
-        'responsive_web_twitter_article_tweet_consumption_enabled': value.responsiveWebTwitterArticleTweetConsumptionEnabled,
-        'rweb_video_timestamps_enabled': value.rwebVideoTimestampsEnabled,
-        'standardized_nudges_misinfo': value.standardizedNudgesMisinfo,
-        'tweet_awards_web_tipping_enabled': value.tweetAwardsWebTippingEnabled,
-        'tweet_with_visibility_results_prefer_gql_limited_actions_policy_enabled': value.tweetWithVisibilityResultsPreferGqlLimitedActionsPolicyEnabled,
-        'tweetypie_unmention_optimization_enabled': value.tweetypieUnmentionOptimizationEnabled,
-        'verified_phone_label_enabled': value.verifiedPhoneLabelEnabled,
-        'view_counts_everywhere_api_enabled': value.viewCountsEverywhereApiEnabled,
+        'c9s_tweet_anatomy_moderator_badge_enabled': value['c9sTweetAnatomyModeratorBadgeEnabled'],
+        'freedom_of_speech_not_reach_fetch_enabled': value['freedomOfSpeechNotReachFetchEnabled'],
+        'graphql_is_translatable_rweb_tweet_is_translatable_enabled': value['graphqlIsTranslatableRwebTweetIsTranslatableEnabled'],
+        'longform_notetweets_consumption_enabled': value['longformNotetweetsConsumptionEnabled'],
+        'longform_notetweets_inline_media_enabled': value['longformNotetweetsInlineMediaEnabled'],
+        'longform_notetweets_rich_text_read_enabled': value['longformNotetweetsRichTextReadEnabled'],
+        'responsive_web_edit_tweet_api_enabled': value['responsiveWebEditTweetApiEnabled'],
+        'responsive_web_enhance_cards_enabled': value['responsiveWebEnhanceCardsEnabled'],
+        'responsive_web_graphql_exclude_directive_enabled': value['responsiveWebGraphqlExcludeDirectiveEnabled'],
+        'responsive_web_graphql_skip_user_profile_image_extensions_enabled': value['responsiveWebGraphqlSkipUserProfileImageExtensionsEnabled'],
+        'responsive_web_graphql_timeline_navigation_enabled': value['responsiveWebGraphqlTimelineNavigationEnabled'],
+        'responsive_web_media_download_video_enabled': value['responsiveWebMediaDownloadVideoEnabled'],
+        'responsive_web_twitter_article_tweet_consumption_enabled': value['responsiveWebTwitterArticleTweetConsumptionEnabled'],
+        'rweb_video_timestamps_enabled': value['rwebVideoTimestampsEnabled'],
+        'standardized_nudges_misinfo': value['standardizedNudgesMisinfo'],
+        'tweet_awards_web_tipping_enabled': value['tweetAwardsWebTippingEnabled'],
+        'tweet_with_visibility_results_prefer_gql_limited_actions_policy_enabled': value['tweetWithVisibilityResultsPreferGqlLimitedActionsPolicyEnabled'],
+        'tweetypie_unmention_optimization_enabled': value['tweetypieUnmentionOptimizationEnabled'],
+        'verified_phone_label_enabled': value['verifiedPhoneLabelEnabled'],
+        'view_counts_everywhere_api_enabled': value['viewCountsEverywhereApiEnabled'],
     };
 }
 

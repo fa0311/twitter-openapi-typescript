@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -43,12 +43,10 @@ export interface UserProfessionalCategory {
  * Check if a given object implements the UserProfessionalCategory interface.
  */
 export function instanceOfUserProfessionalCategory(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "iconName" in value;
-    isInstance = isInstance && "id" in value;
-    isInstance = isInstance && "name" in value;
-
-    return isInstance;
+    if (!('iconName' in value)) return false;
+    if (!('id' in value)) return false;
+    if (!('name' in value)) return false;
+    return true;
 }
 
 export function UserProfessionalCategoryFromJSON(json: any): UserProfessionalCategory {
@@ -56,7 +54,7 @@ export function UserProfessionalCategoryFromJSON(json: any): UserProfessionalCat
 }
 
 export function UserProfessionalCategoryFromJSONTyped(json: any, ignoreDiscriminator: boolean): UserProfessionalCategory {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -68,17 +66,14 @@ export function UserProfessionalCategoryFromJSONTyped(json: any, ignoreDiscrimin
 }
 
 export function UserProfessionalCategoryToJSON(value?: UserProfessionalCategory | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'icon_name': value.iconName,
-        'id': value.id,
-        'name': value.name,
+        'icon_name': value['iconName'],
+        'id': value['id'],
+        'name': value['name'],
     };
 }
 

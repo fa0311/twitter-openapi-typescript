@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 /**
  * 
  * @export
@@ -47,11 +47,9 @@ export type UserVerificationInfoReasonDescriptionEntitiesRefUrlTypeEnum = typeof
  * Check if a given object implements the UserVerificationInfoReasonDescriptionEntitiesRef interface.
  */
 export function instanceOfUserVerificationInfoReasonDescriptionEntitiesRef(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "url" in value;
-    isInstance = isInstance && "urlType" in value;
-
-    return isInstance;
+    if (!('url' in value)) return false;
+    if (!('urlType' in value)) return false;
+    return true;
 }
 
 export function UserVerificationInfoReasonDescriptionEntitiesRefFromJSON(json: any): UserVerificationInfoReasonDescriptionEntitiesRef {
@@ -59,7 +57,7 @@ export function UserVerificationInfoReasonDescriptionEntitiesRefFromJSON(json: a
 }
 
 export function UserVerificationInfoReasonDescriptionEntitiesRefFromJSONTyped(json: any, ignoreDiscriminator: boolean): UserVerificationInfoReasonDescriptionEntitiesRef {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
@@ -70,16 +68,13 @@ export function UserVerificationInfoReasonDescriptionEntitiesRefFromJSONTyped(js
 }
 
 export function UserVerificationInfoReasonDescriptionEntitiesRefToJSON(value?: UserVerificationInfoReasonDescriptionEntitiesRef | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        'url': value.url,
-        'url_type': value.urlType,
+        'url': value['url'],
+        'url_type': value['urlType'],
     };
 }
 

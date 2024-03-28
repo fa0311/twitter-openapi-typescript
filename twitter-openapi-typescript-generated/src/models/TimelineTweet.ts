@@ -12,7 +12,7 @@
  * Do not edit the class manually.
  */
 
-import { exists, mapValues } from '../runtime';
+import { mapValues } from '../runtime';
 import type { ContentItemType } from './ContentItemType';
 import {
     ContentItemTypeFromJSON,
@@ -85,7 +85,7 @@ export interface TimelineTweet {
      * @type {string}
      * @memberof TimelineTweet
      */
-    tweetDisplayType: string;
+    tweetDisplayType: TimelineTweetTweetDisplayTypeEnum;
     /**
      * 
      * @type {ItemResult}
@@ -94,17 +94,28 @@ export interface TimelineTweet {
     tweetResults: ItemResult;
 }
 
+
+/**
+ * @export
+ */
+export const TimelineTweetTweetDisplayTypeEnum = {
+    Tweet: 'Tweet',
+    SelfThread: 'SelfThread',
+    MediaGrid: 'MediaGrid',
+    CondensedTweet: 'CondensedTweet'
+} as const;
+export type TimelineTweetTweetDisplayTypeEnum = typeof TimelineTweetTweetDisplayTypeEnum[keyof typeof TimelineTweetTweetDisplayTypeEnum];
+
+
 /**
  * Check if a given object implements the TimelineTweet interface.
  */
 export function instanceOfTimelineTweet(value: object): boolean {
-    let isInstance = true;
-    isInstance = isInstance && "typename" in value;
-    isInstance = isInstance && "itemType" in value;
-    isInstance = isInstance && "tweetDisplayType" in value;
-    isInstance = isInstance && "tweetResults" in value;
-
-    return isInstance;
+    if (!('typename' in value)) return false;
+    if (!('itemType' in value)) return false;
+    if (!('tweetDisplayType' in value)) return false;
+    if (!('tweetResults' in value)) return false;
+    return true;
 }
 
 export function TimelineTweetFromJSON(json: any): TimelineTweet {
@@ -112,37 +123,34 @@ export function TimelineTweetFromJSON(json: any): TimelineTweet {
 }
 
 export function TimelineTweetFromJSONTyped(json: any, ignoreDiscriminator: boolean): TimelineTweet {
-    if ((json === undefined) || (json === null)) {
+    if (json == null) {
         return json;
     }
     return {
         
         'typename': TypeNameFromJSON(json['__typename']),
-        'highlights': !exists(json, 'highlights') ? undefined : HighlightFromJSON(json['highlights']),
+        'highlights': json['highlights'] == null ? undefined : HighlightFromJSON(json['highlights']),
         'itemType': ContentItemTypeFromJSON(json['itemType']),
-        'promotedMetadata': !exists(json, 'promotedMetadata') ? undefined : json['promotedMetadata'],
-        'socialContext': !exists(json, 'socialContext') ? undefined : SocialContextUnionFromJSON(json['socialContext']),
+        'promotedMetadata': json['promotedMetadata'] == null ? undefined : json['promotedMetadata'],
+        'socialContext': json['socialContext'] == null ? undefined : SocialContextUnionFromJSON(json['socialContext']),
         'tweetDisplayType': json['tweetDisplayType'],
         'tweetResults': ItemResultFromJSON(json['tweet_results']),
     };
 }
 
 export function TimelineTweetToJSON(value?: TimelineTweet | null): any {
-    if (value === undefined) {
-        return undefined;
-    }
-    if (value === null) {
-        return null;
+    if (value == null) {
+        return value;
     }
     return {
         
-        '__typename': TypeNameToJSON(value.typename),
-        'highlights': HighlightToJSON(value.highlights),
-        'itemType': ContentItemTypeToJSON(value.itemType),
-        'promotedMetadata': value.promotedMetadata,
-        'socialContext': SocialContextUnionToJSON(value.socialContext),
-        'tweetDisplayType': value.tweetDisplayType,
-        'tweet_results': ItemResultToJSON(value.tweetResults),
+        '__typename': TypeNameToJSON(value['typename']),
+        'highlights': HighlightToJSON(value['highlights']),
+        'itemType': ContentItemTypeToJSON(value['itemType']),
+        'promotedMetadata': value['promotedMetadata'],
+        'socialContext': SocialContextUnionToJSON(value['socialContext']),
+        'tweetDisplayType': value['tweetDisplayType'],
+        'tweet_results': ItemResultToJSON(value['tweetResults']),
     };
 }
 

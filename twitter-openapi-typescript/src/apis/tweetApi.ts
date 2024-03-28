@@ -6,7 +6,15 @@ import {
   TwitterApiUtilsResponse,
   initOverrides,
 } from '@/models';
-import { buildHeader, entriesCursor, errorCheck, getKwargs, instructionToEntry, tweetEntriesConverter } from '@/utils';
+import {
+  buildHeader,
+  entriesCursor,
+  errorCheck,
+  getKwargs,
+  instructionConverter,
+  instructionToEntry,
+  tweetEntriesConverter,
+} from '@/utils';
 import * as i from 'twitter-openapi-typescript-generated';
 
 type GetTweetDetailParam = {
@@ -96,7 +104,7 @@ export class TweetApiUtils {
     const checked = errorCheck(await response.value());
     const instruction = param.convertFn(checked);
     const entry = instructionToEntry(instruction);
-    const data = tweetEntriesConverter(entry);
+    const data = [...tweetEntriesConverter(entry), ...instructionConverter(instruction)];
     return {
       raw: {
         response: response.raw,

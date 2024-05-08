@@ -35,6 +35,7 @@ export interface GetTweetResultByRestIdRequest {
     pathQueryId: string;
     variables: string;
     features: string;
+    fieldToggles: string;
 }
 
 /**
@@ -88,11 +89,15 @@ export class DefaultApi extends runtime.BaseAPI {
         }
 
         if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Priority"] = await this.configuration.apiKey("Priority"); // Priority authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
             headerParameters["Sec-Fetch-Dest"] = await this.configuration.apiKey("Sec-Fetch-Dest"); // SecFetchDest authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Pragma"] = await this.configuration.apiKey("Pragma"); // Pragma authentication
+            headerParameters["Referer"] = await this.configuration.apiKey("Referer"); // Referer authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
@@ -141,10 +146,6 @@ export class DefaultApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.apiKey) {
             headerParameters["x-twitter-auth-type"] = await this.configuration.apiKey("x-twitter-auth-type"); // AuthType authentication
-        }
-
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Cache-Control"] = await this.configuration.apiKey("Cache-Control"); // CacheControl authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
@@ -198,6 +199,13 @@ export class DefaultApi extends runtime.BaseAPI {
             );
         }
 
+        if (requestParameters['fieldToggles'] == null) {
+            throw new runtime.RequiredError(
+                'fieldToggles',
+                'Required parameter "fieldToggles" was null or undefined when calling getTweetResultByRestId().'
+            );
+        }
+
         const queryParameters: any = {};
 
         if (requestParameters['variables'] != null) {
@@ -206,6 +214,10 @@ export class DefaultApi extends runtime.BaseAPI {
 
         if (requestParameters['features'] != null) {
             queryParameters['features'] = requestParameters['features'];
+        }
+
+        if (requestParameters['fieldToggles'] != null) {
+            queryParameters['fieldToggles'] = requestParameters['fieldToggles'];
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -219,11 +231,15 @@ export class DefaultApi extends runtime.BaseAPI {
         }
 
         if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Priority"] = await this.configuration.apiKey("Priority"); // Priority authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
             headerParameters["Sec-Fetch-Dest"] = await this.configuration.apiKey("Sec-Fetch-Dest"); // SecFetchDest authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Pragma"] = await this.configuration.apiKey("Pragma"); // Pragma authentication
+            headerParameters["Referer"] = await this.configuration.apiKey("Referer"); // Referer authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
@@ -272,10 +288,6 @@ export class DefaultApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.apiKey) {
             headerParameters["x-twitter-auth-type"] = await this.configuration.apiKey("x-twitter-auth-type"); // AuthType authentication
-        }
-
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Cache-Control"] = await this.configuration.apiKey("Cache-Control"); // CacheControl authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {

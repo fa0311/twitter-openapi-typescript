@@ -1,4 +1,4 @@
 node_modules
-.env
+cookies.json
 dist
 logs

@@ -15,10 +15,14 @@
 
 import * as runtime from '../runtime';
 import type {
+  PostCreateBookmark200Response,
+  PostCreateBookmarkRequest,
   PostCreateRetweet200Response,
   PostCreateRetweetRequest,
   PostCreateTweet200Response,
   PostCreateTweetRequest,
+  PostDeleteBookmark200Response,
+  PostDeleteBookmarkRequest,
   PostDeleteRetweet200Response,
   PostDeleteRetweetRequest,
   PostDeleteTweet200Response,
@@ -29,6 +33,10 @@ import type {
   PostUnfavoriteTweetRequest,
 } from '../models/index';
 import {
+    PostCreateBookmark200ResponseFromJSON,
+    PostCreateBookmark200ResponseToJSON,
+    PostCreateBookmarkRequestFromJSON,
+    PostCreateBookmarkRequestToJSON,
     PostCreateRetweet200ResponseFromJSON,
     PostCreateRetweet200ResponseToJSON,
     PostCreateRetweetRequestFromJSON,
@@ -37,6 +45,10 @@ import {
     PostCreateTweet200ResponseToJSON,
     PostCreateTweetRequestFromJSON,
     PostCreateTweetRequestToJSON,
+    PostDeleteBookmark200ResponseFromJSON,
+    PostDeleteBookmark200ResponseToJSON,
+    PostDeleteBookmarkRequestFromJSON,
+    PostDeleteBookmarkRequestToJSON,
     PostDeleteRetweet200ResponseFromJSON,
     PostDeleteRetweet200ResponseToJSON,
     PostDeleteRetweetRequestFromJSON,
@@ -55,6 +67,11 @@ import {
     PostUnfavoriteTweetRequestToJSON,
 } from '../models/index';
 
+export interface PostCreateBookmarkOperationRequest {
+    pathQueryId: string;
+    postCreateBookmarkRequest: PostCreateBookmarkRequest;
+}
+
 export interface PostCreateRetweetOperationRequest {
     pathQueryId: string;
     postCreateRetweetRequest: PostCreateRetweetRequest;
@@ -63,6 +80,11 @@ export interface PostCreateRetweetOperationRequest {
 export interface PostCreateTweetOperationRequest {
     pathQueryId: string;
     postCreateTweetRequest: PostCreateTweetRequest;
+}
+
+export interface PostDeleteBookmarkOperationRequest {
+    pathQueryId: string;
+    postDeleteBookmarkRequest: PostDeleteBookmarkRequest;
 }
 
 export interface PostDeleteRetweetOperationRequest {
@@ -89,6 +111,125 @@ export interface PostUnfavoriteTweetOperationRequest {
  * 
  */
 export class PostApi extends runtime.BaseAPI {
+
+    /**
+     * create Bookmark
+     */
+    async postCreateBookmarkRaw(requestParameters: PostCreateBookmarkOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostCreateBookmark200Response>> {
+        if (requestParameters['pathQueryId'] == null) {
+            throw new runtime.RequiredError(
+                'pathQueryId',
+                'Required parameter "pathQueryId" was null or undefined when calling postCreateBookmark().'
+            );
+        }
+
+        if (requestParameters['postCreateBookmarkRequest'] == null) {
+            throw new runtime.RequiredError(
+                'postCreateBookmarkRequest',
+                'Required parameter "postCreateBookmarkRequest" was null or undefined when calling postCreateBookmark().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-client-language"] = await this.configuration.apiKey("x-twitter-client-language"); // ClientLanguage authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Accept"] = await this.configuration.apiKey("Accept"); // Accept authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Priority"] = await this.configuration.apiKey("Priority"); // Priority authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Fetch-Dest"] = await this.configuration.apiKey("Sec-Fetch-Dest"); // SecFetchDest authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Referer"] = await this.configuration.apiKey("Referer"); // Referer authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Ch-Ua-Platform"] = await this.configuration.apiKey("Sec-Ch-Ua-Platform"); // SecChUaPlatform authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Fetch-Mode"] = await this.configuration.apiKey("Sec-Fetch-Mode"); // SecFetchMode authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-csrf-token"] = await this.configuration.apiKey("x-csrf-token"); // CsrfToken authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-guest-token"] = await this.configuration.apiKey("x-guest-token"); // GuestToken authentication
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BearerAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Ch-Ua"] = await this.configuration.apiKey("Sec-Ch-Ua"); // SecChUa authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-active-user"] = await this.configuration.apiKey("x-twitter-active-user"); // ActiveUser authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["user-agent"] = await this.configuration.apiKey("user-agent"); // UserAgent authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Accept-Language"] = await this.configuration.apiKey("Accept-Language"); // AcceptLanguage authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Fetch-Site"] = await this.configuration.apiKey("Sec-Fetch-Site"); // SecFetchSite authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-auth-type"] = await this.configuration.apiKey("x-twitter-auth-type"); // AuthType authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Ch-Ua-Mobile"] = await this.configuration.apiKey("Sec-Ch-Ua-Mobile"); // SecChUaMobile authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Accept-Encoding"] = await this.configuration.apiKey("Accept-Encoding"); // AcceptEncoding authentication
+        }
+
+        const response = await this.request({
+            path: `/graphql/{pathQueryId}/CreateBookmark`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters['pathQueryId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: PostCreateBookmarkRequestToJSON(requestParameters['postCreateBookmarkRequest']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => PostCreateBookmark200ResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * create Bookmark
+     */
+    async postCreateBookmark(requestParameters: PostCreateBookmarkOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PostCreateBookmark200Response> {
+        const response = await this.postCreateBookmarkRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
 
     /**
      * create Retweet
@@ -325,6 +466,125 @@ export class PostApi extends runtime.BaseAPI {
      */
     async postCreateTweet(requestParameters: PostCreateTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PostCreateTweet200Response> {
         const response = await this.postCreateTweetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * delete Bookmark
+     */
+    async postDeleteBookmarkRaw(requestParameters: PostDeleteBookmarkOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostDeleteBookmark200Response>> {
+        if (requestParameters['pathQueryId'] == null) {
+            throw new runtime.RequiredError(
+                'pathQueryId',
+                'Required parameter "pathQueryId" was null or undefined when calling postDeleteBookmark().'
+            );
+        }
+
+        if (requestParameters['postDeleteBookmarkRequest'] == null) {
+            throw new runtime.RequiredError(
+                'postDeleteBookmarkRequest',
+                'Required parameter "postDeleteBookmarkRequest" was null or undefined when calling postDeleteBookmark().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-client-language"] = await this.configuration.apiKey("x-twitter-client-language"); // ClientLanguage authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Accept"] = await this.configuration.apiKey("Accept"); // Accept authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Priority"] = await this.configuration.apiKey("Priority"); // Priority authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Fetch-Dest"] = await this.configuration.apiKey("Sec-Fetch-Dest"); // SecFetchDest authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Referer"] = await this.configuration.apiKey("Referer"); // Referer authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Ch-Ua-Platform"] = await this.configuration.apiKey("Sec-Ch-Ua-Platform"); // SecChUaPlatform authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Fetch-Mode"] = await this.configuration.apiKey("Sec-Fetch-Mode"); // SecFetchMode authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-csrf-token"] = await this.configuration.apiKey("x-csrf-token"); // CsrfToken authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-guest-token"] = await this.configuration.apiKey("x-guest-token"); // GuestToken authentication
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BearerAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Ch-Ua"] = await this.configuration.apiKey("Sec-Ch-Ua"); // SecChUa authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-active-user"] = await this.configuration.apiKey("x-twitter-active-user"); // ActiveUser authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["user-agent"] = await this.configuration.apiKey("user-agent"); // UserAgent authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Accept-Language"] = await this.configuration.apiKey("Accept-Language"); // AcceptLanguage authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Fetch-Site"] = await this.configuration.apiKey("Sec-Fetch-Site"); // SecFetchSite authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-auth-type"] = await this.configuration.apiKey("x-twitter-auth-type"); // AuthType authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Ch-Ua-Mobile"] = await this.configuration.apiKey("Sec-Ch-Ua-Mobile"); // SecChUaMobile authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Accept-Encoding"] = await this.configuration.apiKey("Accept-Encoding"); // AcceptEncoding authentication
+        }
+
+        const response = await this.request({
+            path: `/graphql/{pathQueryId}/DeleteBookmark`.replace(`{${"pathQueryId"}}`, encodeURIComponent(String(requestParameters['pathQueryId']))),
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: PostDeleteBookmarkRequestToJSON(requestParameters['postDeleteBookmarkRequest']),
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => PostDeleteBookmark200ResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * delete Bookmark
+     */
+    async postDeleteBookmark(requestParameters: PostDeleteBookmarkOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PostDeleteBookmark200Response> {
+        const response = await this.postDeleteBookmarkRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

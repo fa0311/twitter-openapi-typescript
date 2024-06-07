@@ -13,6 +13,18 @@
  */
 
 import { mapValues } from '../runtime';
+import type { AdditionalMediaInfo } from './AdditionalMediaInfo';
+import {
+    AdditionalMediaInfoFromJSON,
+    AdditionalMediaInfoFromJSONTyped,
+    AdditionalMediaInfoToJSON,
+} from './AdditionalMediaInfo';
+import type { AllowDownloadStatus } from './AllowDownloadStatus';
+import {
+    AllowDownloadStatusFromJSON,
+    AllowDownloadStatusFromJSONTyped,
+    AllowDownloadStatusToJSON,
+} from './AllowDownloadStatus';
 import type { ExtMediaAvailability } from './ExtMediaAvailability';
 import {
     ExtMediaAvailabilityFromJSON,
@@ -25,12 +37,24 @@ import {
     MediaOriginalInfoFromJSONTyped,
     MediaOriginalInfoToJSON,
 } from './MediaOriginalInfo';
+import type { MediaResults } from './MediaResults';
+import {
+    MediaResultsFromJSON,
+    MediaResultsFromJSONTyped,
+    MediaResultsToJSON,
+} from './MediaResults';
 import type { MediaSizes } from './MediaSizes';
 import {
     MediaSizesFromJSON,
     MediaSizesFromJSONTyped,
     MediaSizesToJSON,
 } from './MediaSizes';
+import type { MediaVideoInfo } from './MediaVideoInfo';
+import {
+    MediaVideoInfoFromJSON,
+    MediaVideoInfoFromJSONTyped,
+    MediaVideoInfoToJSON,
+} from './MediaVideoInfo';
 import type { SensitiveMediaWarning } from './SensitiveMediaWarning';
 import {
     SensitiveMediaWarningFromJSON,
@@ -46,10 +70,16 @@ import {
 export interface Media {
     /**
      * 
-     * @type {{ [key: string]: any; }}
+     * @type {AdditionalMediaInfo}
      * @memberof Media
      */
-    additionalMediaInfo?: { [key: string]: any; };
+    additionalMediaInfo?: AdditionalMediaInfo;
+    /**
+     * 
+     * @type {AllowDownloadStatus}
+     * @memberof Media
+     */
+    allowDownloadStatus?: AllowDownloadStatus;
     /**
      * 
      * @type {string}
@@ -100,6 +130,12 @@ export interface Media {
     mediaKey: string;
     /**
      * 
+     * @type {MediaResults}
+     * @memberof Media
+     */
+    mediaResults?: MediaResults;
+    /**
+     * 
      * @type {string}
      * @memberof Media
      */
@@ -148,10 +184,10 @@ export interface Media {
     url: string;
     /**
      * 
-     * @type {{ [key: string]: any; }}
+     * @type {MediaVideoInfo}
      * @memberof Media
      */
-    videoInfo?: { [key: string]: any; };
+    videoInfo?: MediaVideoInfo;
 }
 
 
@@ -194,7 +230,8 @@ export function MediaFromJSONTyped(json: any, ignoreDiscriminator: boolean): Med
     }
     return {
         
-        'additionalMediaInfo': json['additional_media_info'] == null ? undefined : json['additional_media_info'],
+        'additionalMediaInfo': json['additional_media_info'] == null ? undefined : AdditionalMediaInfoFromJSON(json['additional_media_info']),
+        'allowDownloadStatus': json['allow_download_status'] == null ? undefined : AllowDownloadStatusFromJSON(json['allow_download_status']),
         'displayUrl': json['display_url'],
         'expandedUrl': json['expanded_url'],
         'extAltText': json['ext_alt_text'] == null ? undefined : json['ext_alt_text'],
@@ -203,6 +240,7 @@ export function MediaFromJSONTyped(json: any, ignoreDiscriminator: boolean): Med
         'idStr': json['id_str'],
         'indices': json['indices'],
         'mediaKey': json['media_key'],
+        'mediaResults': json['media_results'] == null ? undefined : MediaResultsFromJSON(json['media_results']),
         'mediaUrlHttps': json['media_url_https'],
         'originalInfo': MediaOriginalInfoFromJSON(json['original_info']),
         'sensitiveMediaWarning': json['sensitive_media_warning'] == null ? undefined : SensitiveMediaWarningFromJSON(json['sensitive_media_warning']),
@@ -211,7 +249,7 @@ export function MediaFromJSONTyped(json: any, ignoreDiscriminator: boolean): Med
         'sourceUserIdStr': json['source_user_id_str'] == null ? undefined : json['source_user_id_str'],
         'type': json['type'],
         'url': json['url'],
-        'videoInfo': json['video_info'] == null ? undefined : json['video_info'],
+        'videoInfo': json['video_info'] == null ? undefined : MediaVideoInfoFromJSON(json['video_info']),
     };
 }
 
@@ -221,7 +259,8 @@ export function MediaToJSON(value?: Media | null): any {
     }
     return {
         
-        'additional_media_info': value['additionalMediaInfo'],
+        'additional_media_info': AdditionalMediaInfoToJSON(value['additionalMediaInfo']),
+        'allow_download_status': AllowDownloadStatusToJSON(value['allowDownloadStatus']),
         'display_url': value['displayUrl'],
         'expanded_url': value['expandedUrl'],
         'ext_alt_text': value['extAltText'],
@@ -230,6 +269,7 @@ export function MediaToJSON(value?: Media | null): any {
         'id_str': value['idStr'],
         'indices': value['indices'],
         'media_key': value['mediaKey'],
+        'media_results': MediaResultsToJSON(value['mediaResults']),
         'media_url_https': value['mediaUrlHttps'],
         'original_info': MediaOriginalInfoToJSON(value['originalInfo']),
         'sensitive_media_warning': SensitiveMediaWarningToJSON(value['sensitiveMediaWarning']),
@@ -238,7 +278,7 @@ export function MediaToJSON(value?: Media | null): any {
         'source_user_id_str': value['sourceUserIdStr'],
         'type': value['type'],
         'url': value['url'],
-        'video_info': value['videoInfo'],
+        'video_info': MediaVideoInfoToJSON(value['videoInfo']),
     };
 }
 

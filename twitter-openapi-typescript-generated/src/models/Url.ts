@@ -30,7 +30,7 @@ export interface Url {
      * @type {string}
      * @memberof Url
      */
-    expandedUrl: string;
+    expandedUrl?: string;
     /**
      * 
      * @type {Array<number>}
@@ -50,7 +50,6 @@ export interface Url {
  */
 export function instanceOfUrl(value: object): boolean {
     if (!('displayUrl' in value)) return false;
-    if (!('expandedUrl' in value)) return false;
     if (!('indices' in value)) return false;
     if (!('url' in value)) return false;
     return true;
@@ -67,7 +66,7 @@ export function UrlFromJSONTyped(json: any, ignoreDiscriminator: boolean): Url {
     return {
         
         'displayUrl': json['display_url'],
-        'expandedUrl': json['expanded_url'],
+        'expandedUrl': json['expanded_url'] == null ? undefined : json['expanded_url'],
         'indices': json['indices'],
         'url': json['url'],
     };

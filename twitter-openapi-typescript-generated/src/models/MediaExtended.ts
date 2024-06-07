@@ -19,6 +19,12 @@ import {
     AdditionalMediaInfoFromJSONTyped,
     AdditionalMediaInfoToJSON,
 } from './AdditionalMediaInfo';
+import type { AllowDownloadStatus } from './AllowDownloadStatus';
+import {
+    AllowDownloadStatusFromJSON,
+    AllowDownloadStatusFromJSONTyped,
+    AllowDownloadStatusToJSON,
+} from './AllowDownloadStatus';
 import type { ExtMediaAvailability } from './ExtMediaAvailability';
 import {
     ExtMediaAvailabilityFromJSON,
@@ -31,6 +37,12 @@ import {
     MediaOriginalInfoFromJSONTyped,
     MediaOriginalInfoToJSON,
 } from './MediaOriginalInfo';
+import type { MediaResults } from './MediaResults';
+import {
+    MediaResultsFromJSON,
+    MediaResultsFromJSONTyped,
+    MediaResultsToJSON,
+} from './MediaResults';
 import type { MediaSizes } from './MediaSizes';
 import {
     MediaSizesFromJSON,
@@ -68,6 +80,12 @@ export interface MediaExtended {
      * @memberof MediaExtended
      */
     additionalMediaInfo?: AdditionalMediaInfo;
+    /**
+     * 
+     * @type {AllowDownloadStatus}
+     * @memberof MediaExtended
+     */
+    allowDownloadStatus?: AllowDownloadStatus;
     /**
      * 
      * @type {string}
@@ -122,6 +140,12 @@ export interface MediaExtended {
      * @memberof MediaExtended
      */
     mediaKey: string;
+    /**
+     * 
+     * @type {MediaResults}
+     * @memberof MediaExtended
+     */
+    mediaResults?: MediaResults;
     /**
      * 
      * @type {string}
@@ -218,6 +242,7 @@ export function MediaExtendedFromJSONTyped(json: any, ignoreDiscriminator: boole
     return {
         
         'additionalMediaInfo': json['additional_media_info'] == null ? undefined : AdditionalMediaInfoFromJSON(json['additional_media_info']),
+        'allowDownloadStatus': json['allow_download_status'] == null ? undefined : AllowDownloadStatusFromJSON(json['allow_download_status']),
         'displayUrl': json['display_url'],
         'expandedUrl': json['expanded_url'],
         'extAltText': json['ext_alt_text'] == null ? undefined : json['ext_alt_text'],
@@ -227,6 +252,7 @@ export function MediaExtendedFromJSONTyped(json: any, ignoreDiscriminator: boole
         'indices': json['indices'],
         'mediaStats': json['mediaStats'] == null ? undefined : MediaStatsFromJSON(json['mediaStats']),
         'mediaKey': json['media_key'],
+        'mediaResults': json['media_results'] == null ? undefined : MediaResultsFromJSON(json['media_results']),
         'mediaUrlHttps': json['media_url_https'],
         'originalInfo': MediaOriginalInfoFromJSON(json['original_info']),
         'sensitiveMediaWarning': json['sensitive_media_warning'] == null ? undefined : SensitiveMediaWarningFromJSON(json['sensitive_media_warning']),
@@ -246,6 +272,7 @@ export function MediaExtendedToJSON(value?: MediaExtended | null): any {
     return {
         
         'additional_media_info': AdditionalMediaInfoToJSON(value['additionalMediaInfo']),
+        'allow_download_status': AllowDownloadStatusToJSON(value['allowDownloadStatus']),
         'display_url': value['displayUrl'],
         'expanded_url': value['expandedUrl'],
         'ext_alt_text': value['extAltText'],
@@ -255,6 +282,7 @@ export function MediaExtendedToJSON(value?: MediaExtended | null): any {
         'indices': value['indices'],
         'mediaStats': MediaStatsToJSON(value['mediaStats']),
         'media_key': value['mediaKey'],
+        'media_results': MediaResultsToJSON(value['mediaResults']),
         'media_url_https': value['mediaUrlHttps'],
         'original_info': MediaOriginalInfoToJSON(value['originalInfo']),
         'sensitive_media_warning': SensitiveMediaWarningToJSON(value['sensitiveMediaWarning']),

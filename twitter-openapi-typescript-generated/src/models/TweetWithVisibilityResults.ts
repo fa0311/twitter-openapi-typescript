@@ -13,6 +13,12 @@
  */
 
 import { mapValues } from '../runtime';
+import type { MediaVisibilityResults } from './MediaVisibilityResults';
+import {
+    MediaVisibilityResultsFromJSON,
+    MediaVisibilityResultsFromJSONTyped,
+    MediaVisibilityResultsToJSON,
+} from './MediaVisibilityResults';
 import type { Tweet } from './Tweet';
 import {
     TweetFromJSON,
@@ -52,6 +58,12 @@ export interface TweetWithVisibilityResults {
     limitedActionResults?: { [key: string]: any; };
     /**
      * 
+     * @type {MediaVisibilityResults}
+     * @memberof TweetWithVisibilityResults
+     */
+    mediaVisibilityResults?: MediaVisibilityResults;
+    /**
+     * 
      * @type {Tweet}
      * @memberof TweetWithVisibilityResults
      */
@@ -85,6 +97,7 @@ export function TweetWithVisibilityResultsFromJSONTyped(json: any, ignoreDiscrim
         
         'typename': TypeNameFromJSON(json['__typename']),
         'limitedActionResults': json['limitedActionResults'] == null ? undefined : json['limitedActionResults'],
+        'mediaVisibilityResults': json['mediaVisibilityResults'] == null ? undefined : MediaVisibilityResultsFromJSON(json['mediaVisibilityResults']),
         'tweet': TweetFromJSON(json['tweet']),
         'tweetInterstitial': json['tweetInterstitial'] == null ? undefined : TweetInterstitialFromJSON(json['tweetInterstitial']),
     };
@@ -98,6 +111,7 @@ export function TweetWithVisibilityResultsToJSON(value?: TweetWithVisibilityResu
         
         '__typename': TypeNameToJSON(value['typename']),
         'limitedActionResults': value['limitedActionResults'],
+        'mediaVisibilityResults': MediaVisibilityResultsToJSON(value['mediaVisibilityResults']),
         'tweet': TweetToJSON(value['tweet']),
         'tweetInterstitial': TweetInterstitialToJSON(value['tweetInterstitial']),
     };

@@ -16,12 +16,15 @@ src/index.ts
 src/models/AdditionalMediaInfo.ts
 src/models/AdditionalMediaInfoCallToActions.ts
 src/models/AdditionalMediaInfoCallToActionsUrl.ts
+src/models/AllowDownloadStatus.ts
 src/models/Article.ts
 src/models/ArticleCoverMedia.ts
 src/models/ArticleCoverMediaColorInfo.ts
 src/models/ArticleCoverMediaColorInfoPalette.ts
 src/models/ArticleCoverMediaColorInfoPaletteRGB.ts
 src/models/ArticleCoverMediaInfo.ts
+src/models/ArticleLifecycleState.ts
+src/models/ArticleMetadata.ts
 src/models/ArticleResult.ts
 src/models/ArticleResults.ts
 src/models/AuthorCommunityRelationship.ts
@@ -54,6 +57,8 @@ src/models/ContentEntryType.ts
 src/models/ContentItemType.ts
 src/models/ContentUnion.ts
 src/models/CoverCta.ts
+src/models/CreateBookmarkResponse.ts
+src/models/CreateBookmarkResponseData.ts
 src/models/CreateRetweet.ts
 src/models/CreateRetweetResponse.ts
 src/models/CreateRetweetResponseData.ts
@@ -64,6 +69,8 @@ src/models/CreateTweetResponseData.ts
 src/models/CreateTweetResponseResult.ts
 src/models/CtaClientEventInfo.ts
 src/models/CursorType.ts
+src/models/DeleteBookmarkResponse.ts
+src/models/DeleteBookmarkResponseData.ts
 src/models/DeleteRetweet.ts
 src/models/DeleteRetweetResponse.ts
 src/models/DeleteRetweetResponseData.ts
@@ -118,11 +125,15 @@ src/models/Media.ts
 src/models/MediaExtended.ts
 src/models/MediaOriginalInfo.ts
 src/models/MediaOriginalInfoFocusRect.ts
+src/models/MediaResult.ts
+src/models/MediaResults.ts
 src/models/MediaSize.ts
 src/models/MediaSizes.ts
 src/models/MediaStats.ts
 src/models/MediaVideoInfo.ts
 src/models/MediaVideoInfoVariant.ts
+src/models/MediaVisibilityResults.ts
+src/models/MediaVisibilityResultsBlurredImageInterstitial.ts
 src/models/ModelError.ts
 src/models/ModuleEntry.ts
 src/models/ModuleItem.ts
@@ -136,6 +147,9 @@ src/models/NoteTweetResultRichTextTag.ts
 src/models/OneFactorLoginEligibility.ts
 src/models/Other200Response.ts
 src/models/OtherResponse.ts
+src/models/PostCreateBookmark200Response.ts
+src/models/PostCreateBookmarkRequest.ts
+src/models/PostCreateBookmarkRequestVariables.ts
 src/models/PostCreateRetweet200Response.ts
 src/models/PostCreateRetweetRequest.ts
 src/models/PostCreateRetweetRequestVariables.ts
@@ -146,6 +160,8 @@ src/models/PostCreateTweetRequestVariables.ts
 src/models/PostCreateTweetRequestVariablesMedia.ts
 src/models/PostCreateTweetRequestVariablesMediaMediaEntitiesInner.ts
 src/models/PostCreateTweetRequestVariablesReply.ts
+src/models/PostDeleteBookmark200Response.ts
+src/models/PostDeleteBookmarkRequest.ts
 src/models/PostDeleteRetweet200Response.ts
 src/models/PostDeleteRetweetRequest.ts
 src/models/PostDeleteRetweetRequestVariables.ts
@@ -256,6 +272,8 @@ src/models/UserHighlightsTweetsResult.ts
 src/models/UserHighlightsTweetsTimeline.ts
 src/models/UserHighlightsTweetsUser.ts
 src/models/UserLegacy.ts
+src/models/UserLegacyExtendedProfile.ts
+src/models/UserLegacyExtendedProfileBirthdate.ts
 src/models/UserProfessional.ts
 src/models/UserProfessionalCategory.ts
 src/models/UserResponse.ts
@@ -265,6 +283,7 @@ src/models/UserResultByScreenNameLegacy.ts
 src/models/UserResultByScreenNameResult.ts
 src/models/UserResultCore.ts
 src/models/UserResults.ts
+src/models/UserTipJarSettings.ts
 src/models/UserTweetsData.ts
 src/models/UserTweetsResponse.ts
 src/models/UserTweetsResult.ts

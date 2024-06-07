@@ -1,6 +1,6 @@
 {
   "name": "twitter-openapi-typescript",
-  "version": "0.0.31",
+  "version": "0.0.34",
   "description": "Implementation of Twitter internal API in TypeScript",
   "scripts": {
     "test": "jest",
@@ -21,14 +21,13 @@
   "main": "./dist/src/index.js",
   "typings": "./dist/src/index.d.ts",
   "dependencies": {
-    "twitter-openapi-typescript-generated": "^0.0.19"
+    "twitter-openapi-typescript-generated": "^0.0.22"
   },
   "devDependencies": {
     "@types/jest": "*",
     "@types/node": "*",
     "@typescript-eslint/eslint-plugin": "*",
     "@typescript-eslint/parser": "*",
-    "dotenv": "^16.3.0",
     "eslint": "^8.50.0",
     "eslint-config-standard-with-typescript": "*",
     "eslint-plugin-import": "*",

@@ -19,6 +19,18 @@ import {
     ArticleCoverMediaFromJSONTyped,
     ArticleCoverMediaToJSON,
 } from './ArticleCoverMedia';
+import type { ArticleLifecycleState } from './ArticleLifecycleState';
+import {
+    ArticleLifecycleStateFromJSON,
+    ArticleLifecycleStateFromJSONTyped,
+    ArticleLifecycleStateToJSON,
+} from './ArticleLifecycleState';
+import type { ArticleMetadata } from './ArticleMetadata';
+import {
+    ArticleMetadataFromJSON,
+    ArticleMetadataFromJSONTyped,
+    ArticleMetadataToJSON,
+} from './ArticleMetadata';
 
 /**
  * 
@@ -38,6 +50,18 @@ export interface ArticleResult {
      * @memberof ArticleResult
      */
     id: string;
+    /**
+     * 
+     * @type {ArticleLifecycleState}
+     * @memberof ArticleResult
+     */
+    lifecycleState?: ArticleLifecycleState;
+    /**
+     * 
+     * @type {ArticleMetadata}
+     * @memberof ArticleResult
+     */
+    metadata: ArticleMetadata;
     /**
      * 
      * @type {string}
@@ -64,6 +88,7 @@ export interface ArticleResult {
 export function instanceOfArticleResult(value: object): boolean {
     if (!('coverMedia' in value)) return false;
     if (!('id' in value)) return false;
+    if (!('metadata' in value)) return false;
     if (!('previewText' in value)) return false;
     if (!('restId' in value)) return false;
     if (!('title' in value)) return false;
@@ -82,6 +107,8 @@ export function ArticleResultFromJSONTyped(json: any, ignoreDiscriminator: boole
         
         'coverMedia': ArticleCoverMediaFromJSON(json['cover_media']),
         'id': json['id'],
+        'lifecycleState': json['lifecycle_state'] == null ? undefined : ArticleLifecycleStateFromJSON(json['lifecycle_state']),
+        'metadata': ArticleMetadataFromJSON(json['metadata']),
         'previewText': json['preview_text'],
         'restId': json['rest_id'],
         'title': json['title'],
@@ -96,6 +123,8 @@ export function ArticleResultToJSON(value?: ArticleResult | null): any {
         
         'cover_media': ArticleCoverMediaToJSON(value['coverMedia']),
         'id': value['id'],
+        'lifecycle_state': ArticleLifecycleStateToJSON(value['lifecycleState']),
+        'metadata': ArticleMetadataToJSON(value['metadata']),
         'preview_text': value['previewText'],
         'rest_id': value['restId'],
         'title': value['title'],

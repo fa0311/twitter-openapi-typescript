@@ -31,12 +31,24 @@ import {
     UserLegacyFromJSONTyped,
     UserLegacyToJSON,
 } from './UserLegacy';
+import type { UserLegacyExtendedProfile } from './UserLegacyExtendedProfile';
+import {
+    UserLegacyExtendedProfileFromJSON,
+    UserLegacyExtendedProfileFromJSONTyped,
+    UserLegacyExtendedProfileToJSON,
+} from './UserLegacyExtendedProfile';
 import type { UserProfessional } from './UserProfessional';
 import {
     UserProfessionalFromJSON,
     UserProfessionalFromJSONTyped,
     UserProfessionalToJSON,
 } from './UserProfessional';
+import type { UserTipJarSettings } from './UserTipJarSettings';
+import {
+    UserTipJarSettingsFromJSON,
+    UserTipJarSettingsFromJSONTyped,
+    UserTipJarSettingsToJSON,
+} from './UserTipJarSettings';
 import type { UserVerificationInfo } from './UserVerificationInfo';
 import {
     UserVerificationInfoFromJSON,
@@ -118,6 +130,12 @@ export interface User {
     legacy: UserLegacy;
     /**
      * 
+     * @type {UserLegacyExtendedProfile}
+     * @memberof User
+     */
+    legacyExtendedProfile?: UserLegacyExtendedProfile;
+    /**
+     * 
      * @type {UserProfessional}
      * @memberof User
      */
@@ -152,6 +170,12 @@ export interface User {
      * @memberof User
      */
     superFollowing: boolean;
+    /**
+     * 
+     * @type {UserTipJarSettings}
+     * @memberof User
+     */
+    tipjarSettings?: UserTipJarSettings;
     /**
      * 
      * @type {number}
@@ -216,12 +240,14 @@ export function UserFromJSONTyped(json: any, ignoreDiscriminator: boolean): User
         'isBlueVerified': json['is_blue_verified'],
         'isProfileTranslatable': json['is_profile_translatable'] == null ? undefined : json['is_profile_translatable'],
         'legacy': UserLegacyFromJSON(json['legacy']),
+        'legacyExtendedProfile': json['legacy_extended_profile'] == null ? undefined : UserLegacyExtendedProfileFromJSON(json['legacy_extended_profile']),
         'professional': json['professional'] == null ? undefined : UserProfessionalFromJSON(json['professional']),
         'profileImageShape': json['profile_image_shape'],
         'restId': json['rest_id'],
         'superFollowEligible': json['super_follow_eligible'],
         'superFollowedBy': json['super_followed_by'],
         'superFollowing': json['super_following'],
+        'tipjarSettings': json['tipjar_settings'] == null ? undefined : UserTipJarSettingsFromJSON(json['tipjar_settings']),
         'userSeedTweetCount': json['user_seed_tweet_count'] == null ? undefined : json['user_seed_tweet_count'],
         'verificationInfo': json['verification_info'] == null ? undefined : UserVerificationInfoFromJSON(json['verification_info']),
     };
@@ -244,12 +270,14 @@ export function UserToJSON(value?: User | null): any {
         'is_blue_verified': value['isBlueVerified'],
         'is_profile_translatable': value['isProfileTranslatable'],
         'legacy': UserLegacyToJSON(value['legacy']),
+        'legacy_extended_profile': UserLegacyExtendedProfileToJSON(value['legacyExtendedProfile']),
         'professional': UserProfessionalToJSON(value['professional']),
         'profile_image_shape': value['profileImageShape'],
         'rest_id': value['restId'],
         'super_follow_eligible': value['superFollowEligible'],
         'super_followed_by': value['superFollowedBy'],
         'super_following': value['superFollowing'],
+        'tipjar_settings': UserTipJarSettingsToJSON(value['tipjarSettings']),
         'user_seed_tweet_count': value['userSeedTweetCount'],
         'verification_info': UserVerificationInfoToJSON(value['verificationInfo']),
     };

@@ -44,11 +44,15 @@ export class OtherApi extends runtime.BaseAPI {
         }
 
         if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Priority"] = await this.configuration.apiKey("Priority"); // Priority authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
             headerParameters["Sec-Fetch-Dest"] = await this.configuration.apiKey("Sec-Fetch-Dest"); // SecFetchDest authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Pragma"] = await this.configuration.apiKey("Pragma"); // Pragma authentication
+            headerParameters["Referer"] = await this.configuration.apiKey("Referer"); // Referer authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
@@ -97,10 +101,6 @@ export class OtherApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.apiKey) {
             headerParameters["x-twitter-auth-type"] = await this.configuration.apiKey("x-twitter-auth-type"); // AuthType authentication
-        }
-
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Cache-Control"] = await this.configuration.apiKey("Cache-Control"); // CacheControl authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {

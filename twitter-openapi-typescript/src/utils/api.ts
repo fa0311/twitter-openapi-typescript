@@ -29,11 +29,30 @@ export const instructionToEntry = (item: i.InstructionUnion[]): i.TimelineAddEnt
   return item.flatMap((e) => {
     if (e.type == i.InstructionType.TimelineAddEntries) {
       return (e as i.TimelineAddEntries).entries;
+    } else if (e.type == i.InstructionType.TimelineAddToModule) {
+      return [];
     } else if (e.type == i.InstructionType.TimelineReplaceEntry) {
       return [(e as i.TimelineReplaceEntry).entry];
     }
     return [];
   });
+};
+
+export const instructionConverter = (item: i.InstructionUnion[]): TweetApiUtilsData[] => {
+  return item
+    .flatMap((e) => {
+      if (e.type == i.InstructionType.TimelineAddEntries) {
+        return [];
+      } else if (e.type == i.InstructionType.TimelineAddToModule) {
+        const item = (e as i.TimelineAddToModule).moduleItems ?? [];
+        return moduleConverter(item);
+      } else if (e.type == i.InstructionType.TimelineReplaceEntry) {
+        return [];
+      }
+      return [];
+    })
+    .filter((e): e is NonNullable<typeof e> => e != undefined)
+    .flat();
 };
 
 export const tweetEntriesConverter = (item: i.TimelineAddEntry[]): TweetApiUtilsData[] => {
@@ -51,34 +70,39 @@ export const tweetEntriesConverter = (item: i.TimelineAddEntry[]): TweetApiUtils
         ];
       } else if (e.content.entryType == i.ContentEntryType.TimelineTimelineModule) {
         const item = (e.content as i.TimelineTimelineModule).items ?? [];
-        const timelineList = item
-          .filter((e) => e.item.itemContent.itemType == i.ContentItemType.TimelineTweet)
-          .map((e) => e.item.itemContent as i.TimelineTweet);
-        if (timelineList.length == 0) return undefined;
-
-        const displayType = (e.content as i.TimelineTimelineModule).displayType;
-        if (displayType == i.DisplayType.VerticalGrid) {
-          return timelineList.map((e) =>
-            buildTweetApiUtils({
-              result: e.tweetResults,
-              promotedMetadata: e.promotedMetadata,
-            }),
-          );
-        } else {
-          const timeline = timelineList[0];
-          return [
-            buildTweetApiUtils({
-              result: timeline.tweetResults,
-              promotedMetadata: timeline.promotedMetadata,
-              reply: timelineList.slice(1),
-            }),
-          ];
-        }
+        return moduleConverter(item);
       }
     })
     .filter((e): e is NonNullable<typeof e> => e != undefined)
     .map((e) => e.filter((e): e is NonNullable<typeof e> => e != undefined))
     .flat();
+};
+
+export const moduleConverter = (item: i.ModuleItem[]): TweetApiUtilsData[] => {
+  const timelineList = item
+    .filter((e) => e.item.itemContent.itemType == i.ContentItemType.TimelineTweet)
+    .map((e) => e.item.itemContent as i.TimelineTweet);
+  if (timelineList.length == 0) return [];
+
+  if (timelineList[0].tweetDisplayType == i.TimelineTweetTweetDisplayTypeEnum.MediaGrid) {
+    return timelineList
+      .map((e) =>
+        buildTweetApiUtils({
+          result: e.tweetResults,
+          promotedMetadata: e.promotedMetadata,
+        }),
+      )
+      .filter((e): e is NonNullable<typeof e> => e != undefined);
+  } else {
+    const timeline = timelineList[0];
+    return [
+      buildTweetApiUtils({
+        result: timeline.tweetResults,
+        promotedMetadata: timeline.promotedMetadata,
+        reply: timelineList.slice(1),
+      }),
+    ].filter((e): e is NonNullable<typeof e> => e != undefined);
+  }
 };
 
 type buildTweetApiUtilsArgs = {

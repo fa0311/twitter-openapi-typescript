@@ -13,7 +13,7 @@
  */
 
 
-export const BASE_PATH = "https://twitter.com/i/api".replace(/\/+$/, "");
+export const BASE_PATH = "https://x.com/i/api".replace(/\/+$/, "");
 
 export interface ConfigurationParameters {
     basePath?: string; // override base path

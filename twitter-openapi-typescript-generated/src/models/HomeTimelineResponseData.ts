@@ -37,8 +37,8 @@ export interface HomeTimelineResponseData {
 /**
  * Check if a given object implements the HomeTimelineResponseData interface.
  */
-export function instanceOfHomeTimelineResponseData(value: object): boolean {
-    if (!('home' in value)) return false;
+export function instanceOfHomeTimelineResponseData(value: object): value is HomeTimelineResponseData {
+    if (!('home' in value) || value['home'] === undefined) return false;
     return true;
 }
 

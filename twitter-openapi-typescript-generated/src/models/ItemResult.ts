@@ -13,18 +13,18 @@
  */
 
 import { mapValues } from '../runtime';
-import type { TweetUnion } from './TweetUnion';
-import {
-    TweetUnionFromJSON,
-    TweetUnionFromJSONTyped,
-    TweetUnionToJSON,
-} from './TweetUnion';
 import type { TypeName } from './TypeName';
 import {
     TypeNameFromJSON,
     TypeNameFromJSONTyped,
     TypeNameToJSON,
 } from './TypeName';
+import type { TweetUnion } from './TweetUnion';
+import {
+    TweetUnionFromJSON,
+    TweetUnionFromJSONTyped,
+    TweetUnionToJSON,
+} from './TweetUnion';
 
 /**
  * 
@@ -46,10 +46,12 @@ export interface ItemResult {
     result?: TweetUnion;
 }
 
+
+
 /**
  * Check if a given object implements the ItemResult interface.
  */
-export function instanceOfItemResult(value: object): boolean {
+export function instanceOfItemResult(value: object): value is ItemResult {
     return true;
 }
 

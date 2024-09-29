@@ -37,7 +37,7 @@ export interface QuotedRefResult {
 /**
  * Check if a given object implements the QuotedRefResult interface.
  */
-export function instanceOfQuotedRefResult(value: object): boolean {
+export function instanceOfQuotedRefResult(value: object): value is QuotedRefResult {
     return true;
 }
 

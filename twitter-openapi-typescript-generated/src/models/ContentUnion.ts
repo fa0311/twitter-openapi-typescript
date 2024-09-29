@@ -51,11 +51,11 @@ export function ContentUnionFromJSONTyped(json: any, ignoreDiscriminator: boolea
     }
     switch (json['entryType']) {
         case 'TimelineTimelineCursor':
-            return {...TimelineTimelineCursorFromJSONTyped(json, true), entryType: 'TimelineTimelineCursor'};
+            return Object.assign({}, TimelineTimelineCursorFromJSONTyped(json, true), { entryType: 'TimelineTimelineCursor' } as const);
         case 'TimelineTimelineItem':
-            return {...TimelineTimelineItemFromJSONTyped(json, true), entryType: 'TimelineTimelineItem'};
+            return Object.assign({}, TimelineTimelineItemFromJSONTyped(json, true), { entryType: 'TimelineTimelineItem' } as const);
         case 'TimelineTimelineModule':
-            return {...TimelineTimelineModuleFromJSONTyped(json, true), entryType: 'TimelineTimelineModule'};
+            return Object.assign({}, TimelineTimelineModuleFromJSONTyped(json, true), { entryType: 'TimelineTimelineModule' } as const);
         default:
             throw new Error(`No variant of ContentUnion exists with 'entryType=${json['entryType']}'`);
     }

@@ -14,7 +14,7 @@ test('postCreateReplyTweet', async () => {
   const time = new Date().toISOString();
   const response = await client.getPostApi().postCreateTweet({
     tweetText: `Test[${time}]`,
-    inReplyToTweetId: '1726807635754914204',
+    inReplyToTweetId: '1788174612037320809',
   });
   expect(response.raw.response.ok).toBe(true);
 });

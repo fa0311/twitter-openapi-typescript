@@ -64,15 +64,17 @@ export interface UserResultByScreenNameResult {
     restId: string;
 }
 
+
+
 /**
  * Check if a given object implements the UserResultByScreenNameResult interface.
  */
-export function instanceOfUserResultByScreenNameResult(value: object): boolean {
-    if (!('typename' in value)) return false;
-    if (!('id' in value)) return false;
-    if (!('legacy' in value)) return false;
-    if (!('profilemodules' in value)) return false;
-    if (!('restId' in value)) return false;
+export function instanceOfUserResultByScreenNameResult(value: object): value is UserResultByScreenNameResult {
+    if (!('typename' in value) || value['typename'] === undefined) return false;
+    if (!('id' in value) || value['id'] === undefined) return false;
+    if (!('legacy' in value) || value['legacy'] === undefined) return false;
+    if (!('profilemodules' in value) || value['profilemodules'] === undefined) return false;
+    if (!('restId' in value) || value['restId'] === undefined) return false;
     return true;
 }
 

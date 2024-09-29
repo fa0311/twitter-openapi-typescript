@@ -13,30 +13,30 @@
  */
 
 import { mapValues } from '../runtime';
-import type { ContentItemType } from './ContentItemType';
-import {
-    ContentItemTypeFromJSON,
-    ContentItemTypeFromJSONTyped,
-    ContentItemTypeToJSON,
-} from './ContentItemType';
-import type { SocialContextUnion } from './SocialContextUnion';
-import {
-    SocialContextUnionFromJSON,
-    SocialContextUnionFromJSONTyped,
-    SocialContextUnionToJSON,
-} from './SocialContextUnion';
 import type { TypeName } from './TypeName';
 import {
     TypeNameFromJSON,
     TypeNameFromJSONTyped,
     TypeNameToJSON,
 } from './TypeName';
+import type { SocialContextUnion } from './SocialContextUnion';
+import {
+    SocialContextUnionFromJSON,
+    SocialContextUnionFromJSONTyped,
+    SocialContextUnionToJSON,
+} from './SocialContextUnion';
 import type { UserResults } from './UserResults';
 import {
     UserResultsFromJSON,
     UserResultsFromJSONTyped,
     UserResultsToJSON,
 } from './UserResults';
+import type { ContentItemType } from './ContentItemType';
+import {
+    ContentItemTypeFromJSON,
+    ContentItemTypeFromJSONTyped,
+    ContentItemTypeToJSON,
+} from './ContentItemType';
 
 /**
  * 
@@ -91,11 +91,11 @@ export type TimelineUserUserDisplayTypeEnum = typeof TimelineUserUserDisplayType
 /**
  * Check if a given object implements the TimelineUser interface.
  */
-export function instanceOfTimelineUser(value: object): boolean {
-    if (!('typename' in value)) return false;
-    if (!('itemType' in value)) return false;
-    if (!('userDisplayType' in value)) return false;
-    if (!('userResults' in value)) return false;
+export function instanceOfTimelineUser(value: object): value is TimelineUser {
+    if (!('typename' in value) || value['typename'] === undefined) return false;
+    if (!('itemType' in value) || value['itemType'] === undefined) return false;
+    if (!('userDisplayType' in value) || value['userDisplayType'] === undefined) return false;
+    if (!('userResults' in value) || value['userResults'] === undefined) return false;
     return true;
 }
 

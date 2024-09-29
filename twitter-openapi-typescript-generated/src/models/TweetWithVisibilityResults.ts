@@ -13,6 +13,12 @@
  */
 
 import { mapValues } from '../runtime';
+import type { TypeName } from './TypeName';
+import {
+    TypeNameFromJSON,
+    TypeNameFromJSONTyped,
+    TypeNameToJSON,
+} from './TypeName';
 import type { MediaVisibilityResults } from './MediaVisibilityResults';
 import {
     MediaVisibilityResultsFromJSON,
@@ -31,12 +37,6 @@ import {
     TweetInterstitialFromJSONTyped,
     TweetInterstitialToJSON,
 } from './TweetInterstitial';
-import type { TypeName } from './TypeName';
-import {
-    TypeNameFromJSON,
-    TypeNameFromJSONTyped,
-    TypeNameToJSON,
-} from './TypeName';
 
 /**
  * 
@@ -76,12 +76,14 @@ export interface TweetWithVisibilityResults {
     tweetInterstitial?: TweetInterstitial;
 }
 
+
+
 /**
  * Check if a given object implements the TweetWithVisibilityResults interface.
  */
-export function instanceOfTweetWithVisibilityResults(value: object): boolean {
-    if (!('typename' in value)) return false;
-    if (!('tweet' in value)) return false;
+export function instanceOfTweetWithVisibilityResults(value: object): value is TweetWithVisibilityResults {
+    if (!('typename' in value) || value['typename'] === undefined) return false;
+    if (!('tweet' in value) || value['tweet'] === undefined) return false;
     return true;
 }
 

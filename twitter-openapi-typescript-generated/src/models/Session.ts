@@ -13,18 +13,18 @@
  */
 
 import { mapValues } from '../runtime';
-import type { CommunitiesActions } from './CommunitiesActions';
-import {
-    CommunitiesActionsFromJSON,
-    CommunitiesActionsFromJSONTyped,
-    CommunitiesActionsToJSON,
-} from './CommunitiesActions';
 import type { OneFactorLoginEligibility } from './OneFactorLoginEligibility';
 import {
     OneFactorLoginEligibilityFromJSON,
     OneFactorLoginEligibilityFromJSONTyped,
     OneFactorLoginEligibilityToJSON,
 } from './OneFactorLoginEligibility';
+import type { CommunitiesActions } from './CommunitiesActions';
+import {
+    CommunitiesActionsFromJSON,
+    CommunitiesActionsFromJSONTyped,
+    CommunitiesActionsToJSON,
+} from './CommunitiesActions';
 import type { UserFeatures } from './UserFeatures';
 import {
     UserFeaturesFromJSON,
@@ -137,20 +137,20 @@ export type SessionSuperFollowsApplicationStatusEnum = typeof SessionSuperFollow
 /**
  * Check if a given object implements the Session interface.
  */
-export function instanceOfSession(value: object): boolean {
-    if (!('communitiesActions' in value)) return false;
-    if (!('country' in value)) return false;
-    if (!('guestId' in value)) return false;
-    if (!('hasCommunityMemberships' in value)) return false;
-    if (!('isActiveCreator' in value)) return false;
-    if (!('isRestrictedSession' in value)) return false;
-    if (!('isSuperFollowSubscriber' in value)) return false;
-    if (!('language' in value)) return false;
-    if (!('oneFactorLoginEligibility' in value)) return false;
-    if (!('superFollowersCount' in value)) return false;
-    if (!('superFollowsApplicationStatus' in value)) return false;
-    if (!('userFeatures' in value)) return false;
-    if (!('userId' in value)) return false;
+export function instanceOfSession(value: object): value is Session {
+    if (!('communitiesActions' in value) || value['communitiesActions'] === undefined) return false;
+    if (!('country' in value) || value['country'] === undefined) return false;
+    if (!('guestId' in value) || value['guestId'] === undefined) return false;
+    if (!('hasCommunityMemberships' in value) || value['hasCommunityMemberships'] === undefined) return false;
+    if (!('isActiveCreator' in value) || value['isActiveCreator'] === undefined) return false;
+    if (!('isRestrictedSession' in value) || value['isRestrictedSession'] === undefined) return false;
+    if (!('isSuperFollowSubscriber' in value) || value['isSuperFollowSubscriber'] === undefined) return false;
+    if (!('language' in value) || value['language'] === undefined) return false;
+    if (!('oneFactorLoginEligibility' in value) || value['oneFactorLoginEligibility'] === undefined) return false;
+    if (!('superFollowersCount' in value) || value['superFollowersCount'] === undefined) return false;
+    if (!('superFollowsApplicationStatus' in value) || value['superFollowsApplicationStatus'] === undefined) return false;
+    if (!('userFeatures' in value) || value['userFeatures'] === undefined) return false;
+    if (!('userId' in value) || value['userId'] === undefined) return false;
     return true;
 }
 

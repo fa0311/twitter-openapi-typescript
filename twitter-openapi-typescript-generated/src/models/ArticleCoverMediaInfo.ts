@@ -13,18 +13,18 @@
  */
 
 import { mapValues } from '../runtime';
-import type { ArticleCoverMediaColorInfo } from './ArticleCoverMediaColorInfo';
-import {
-    ArticleCoverMediaColorInfoFromJSON,
-    ArticleCoverMediaColorInfoFromJSONTyped,
-    ArticleCoverMediaColorInfoToJSON,
-} from './ArticleCoverMediaColorInfo';
 import type { TypeName } from './TypeName';
 import {
     TypeNameFromJSON,
     TypeNameFromJSONTyped,
     TypeNameToJSON,
 } from './TypeName';
+import type { ArticleCoverMediaColorInfo } from './ArticleCoverMediaColorInfo';
+import {
+    ArticleCoverMediaColorInfoFromJSON,
+    ArticleCoverMediaColorInfoFromJSONTyped,
+    ArticleCoverMediaColorInfoToJSON,
+} from './ArticleCoverMediaColorInfo';
 
 /**
  * 
@@ -64,14 +64,16 @@ export interface ArticleCoverMediaInfo {
     originalImgWidth: number;
 }
 
+
+
 /**
  * Check if a given object implements the ArticleCoverMediaInfo interface.
  */
-export function instanceOfArticleCoverMediaInfo(value: object): boolean {
-    if (!('colorInfo' in value)) return false;
-    if (!('originalImgHeight' in value)) return false;
-    if (!('originalImgUrl' in value)) return false;
-    if (!('originalImgWidth' in value)) return false;
+export function instanceOfArticleCoverMediaInfo(value: object): value is ArticleCoverMediaInfo {
+    if (!('colorInfo' in value) || value['colorInfo'] === undefined) return false;
+    if (!('originalImgHeight' in value) || value['originalImgHeight'] === undefined) return false;
+    if (!('originalImgUrl' in value) || value['originalImgUrl'] === undefined) return false;
+    if (!('originalImgWidth' in value) || value['originalImgWidth'] === undefined) return false;
     return true;
 }
 

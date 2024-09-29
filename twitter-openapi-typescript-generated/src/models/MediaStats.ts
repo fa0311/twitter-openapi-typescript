@@ -30,8 +30,8 @@ export interface MediaStats {
 /**
  * Check if a given object implements the MediaStats interface.
  */
-export function instanceOfMediaStats(value: object): boolean {
-    if (!('viewCount' in value)) return false;
+export function instanceOfMediaStats(value: object): value is MediaStats {
+    if (!('viewCount' in value) || value['viewCount'] === undefined) return false;
     return true;
 }
 

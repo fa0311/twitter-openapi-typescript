@@ -30,8 +30,8 @@ export interface ArticleMetadata {
 /**
  * Check if a given object implements the ArticleMetadata interface.
  */
-export function instanceOfArticleMetadata(value: object): boolean {
-    if (!('firstPublishedAtSecs' in value)) return false;
+export function instanceOfArticleMetadata(value: object): value is ArticleMetadata {
+    if (!('firstPublishedAtSecs' in value) || value['firstPublishedAtSecs'] === undefined) return false;
     return true;
 }
 

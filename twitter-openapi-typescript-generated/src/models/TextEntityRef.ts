@@ -60,10 +60,10 @@ export type TextEntityRefUrlTypeEnum = typeof TextEntityRefUrlTypeEnum[keyof typ
 /**
  * Check if a given object implements the TextEntityRef interface.
  */
-export function instanceOfTextEntityRef(value: object): boolean {
-    if (!('type' in value)) return false;
-    if (!('url' in value)) return false;
-    if (!('urlType' in value)) return false;
+export function instanceOfTextEntityRef(value: object): value is TextEntityRef {
+    if (!('type' in value) || value['type'] === undefined) return false;
+    if (!('url' in value) || value['url'] === undefined) return false;
+    if (!('urlType' in value) || value['urlType'] === undefined) return false;
     return true;
 }
 

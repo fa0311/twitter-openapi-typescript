@@ -37,8 +37,8 @@ export interface CreateRetweetResponseData {
 /**
  * Check if a given object implements the CreateRetweetResponseData interface.
  */
-export function instanceOfCreateRetweetResponseData(value: object): boolean {
-    if (!('createRetweet' in value)) return false;
+export function instanceOfCreateRetweetResponseData(value: object): value is CreateRetweetResponseData {
+    if (!('createRetweet' in value) || value['createRetweet'] === undefined) return false;
     return true;
 }
 

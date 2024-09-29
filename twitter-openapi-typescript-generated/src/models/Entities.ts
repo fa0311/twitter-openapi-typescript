@@ -79,11 +79,11 @@ export interface Entities {
 /**
  * Check if a given object implements the Entities interface.
  */
-export function instanceOfEntities(value: object): boolean {
-    if (!('hashtags' in value)) return false;
-    if (!('symbols' in value)) return false;
-    if (!('urls' in value)) return false;
-    if (!('userMentions' in value)) return false;
+export function instanceOfEntities(value: object): value is Entities {
+    if (!('hashtags' in value) || value['hashtags'] === undefined) return false;
+    if (!('symbols' in value) || value['symbols'] === undefined) return false;
+    if (!('urls' in value) || value['urls'] === undefined) return false;
+    if (!('userMentions' in value) || value['userMentions'] === undefined) return false;
     return true;
 }
 

@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { TimelineCoverBehaviorUrl } from './TimelineCoverBehaviorUrl';
+import {
+    TimelineCoverBehaviorUrlFromJSON,
+    TimelineCoverBehaviorUrlFromJSONTyped,
+    TimelineCoverBehaviorUrlToJSON,
+} from './TimelineCoverBehaviorUrl';
+
 /**
  * 
  * @export
@@ -25,6 +32,12 @@ export interface TimelineCoverBehavior {
      * @memberof TimelineCoverBehavior
      */
     type: TimelineCoverBehaviorTypeEnum;
+    /**
+     * 
+     * @type {TimelineCoverBehaviorUrl}
+     * @memberof TimelineCoverBehavior
+     */
+    url?: TimelineCoverBehaviorUrl;
 }
 
 
@@ -32,7 +45,8 @@ export interface TimelineCoverBehavior {
  * @export
  */
 export const TimelineCoverBehaviorTypeEnum = {
-    TimelineCoverBehaviorDismiss: 'TimelineCoverBehaviorDismiss'
+    TimelineCoverBehaviorDismiss: 'TimelineCoverBehaviorDismiss',
+    TimelineCoverBehaviorNavigate: 'TimelineCoverBehaviorNavigate'
 } as const;
 export type TimelineCoverBehaviorTypeEnum = typeof TimelineCoverBehaviorTypeEnum[keyof typeof TimelineCoverBehaviorTypeEnum];
 
@@ -40,8 +54,8 @@ export type TimelineCoverBehaviorTypeEnum = typeof TimelineCoverBehaviorTypeEnum
 /**
  * Check if a given object implements the TimelineCoverBehavior interface.
  */
-export function instanceOfTimelineCoverBehavior(value: object): boolean {
-    if (!('type' in value)) return false;
+export function instanceOfTimelineCoverBehavior(value: object): value is TimelineCoverBehavior {
+    if (!('type' in value) || value['type'] === undefined) return false;
     return true;
 }
 
@@ -56,6 +70,7 @@ export function TimelineCoverBehaviorFromJSONTyped(json: any, ignoreDiscriminato
     return {
         
         'type': json['type'],
+        'url': json['url'] == null ? undefined : TimelineCoverBehaviorUrlFromJSON(json['url']),
     };
 }
 
@@ -66,6 +81,7 @@ export function TimelineCoverBehaviorToJSON(value?: TimelineCoverBehavior | null
     return {
         
         'type': value['type'],
+        'url': TimelineCoverBehaviorUrlToJSON(value['url']),
     };
 }
 

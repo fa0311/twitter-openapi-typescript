@@ -49,10 +49,10 @@ export interface UserVerificationInfoReason {
 /**
  * Check if a given object implements the UserVerificationInfoReason interface.
  */
-export function instanceOfUserVerificationInfoReason(value: object): boolean {
-    if (!('description' in value)) return false;
-    if (!('overrideVerifiedYear' in value)) return false;
-    if (!('verifiedSinceMsec' in value)) return false;
+export function instanceOfUserVerificationInfoReason(value: object): value is UserVerificationInfoReason {
+    if (!('description' in value) || value['description'] === undefined) return false;
+    if (!('overrideVerifiedYear' in value) || value['overrideVerifiedYear'] === undefined) return false;
+    if (!('verifiedSinceMsec' in value) || value['verifiedSinceMsec'] === undefined) return false;
     return true;
 }
 

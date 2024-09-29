@@ -49,9 +49,9 @@ export interface MediaOriginalInfo {
 /**
  * Check if a given object implements the MediaOriginalInfo interface.
  */
-export function instanceOfMediaOriginalInfo(value: object): boolean {
-    if (!('height' in value)) return false;
-    if (!('width' in value)) return false;
+export function instanceOfMediaOriginalInfo(value: object): value is MediaOriginalInfo {
+    if (!('height' in value) || value['height'] === undefined) return false;
+    if (!('width' in value) || value['width'] === undefined) return false;
     return true;
 }
 

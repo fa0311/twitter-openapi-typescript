@@ -46,12 +46,14 @@ export interface UserHighlightsTweetsResult {
     timeline: UserHighlightsTweetsTimeline;
 }
 
+
+
 /**
  * Check if a given object implements the UserHighlightsTweetsResult interface.
  */
-export function instanceOfUserHighlightsTweetsResult(value: object): boolean {
-    if (!('typename' in value)) return false;
-    if (!('timeline' in value)) return false;
+export function instanceOfUserHighlightsTweetsResult(value: object): value is UserHighlightsTweetsResult {
+    if (!('typename' in value) || value['typename'] === undefined) return false;
+    if (!('timeline' in value) || value['timeline'] === undefined) return false;
     return true;
 }
 

@@ -13,18 +13,18 @@
  */
 
 import { mapValues } from '../runtime';
-import type { SuperFollowsReplyUserResultLegacy } from './SuperFollowsReplyUserResultLegacy';
-import {
-    SuperFollowsReplyUserResultLegacyFromJSON,
-    SuperFollowsReplyUserResultLegacyFromJSONTyped,
-    SuperFollowsReplyUserResultLegacyToJSON,
-} from './SuperFollowsReplyUserResultLegacy';
 import type { TypeName } from './TypeName';
 import {
     TypeNameFromJSON,
     TypeNameFromJSONTyped,
     TypeNameToJSON,
 } from './TypeName';
+import type { SuperFollowsReplyUserResultLegacy } from './SuperFollowsReplyUserResultLegacy';
+import {
+    SuperFollowsReplyUserResultLegacyFromJSON,
+    SuperFollowsReplyUserResultLegacyFromJSONTyped,
+    SuperFollowsReplyUserResultLegacyToJSON,
+} from './SuperFollowsReplyUserResultLegacy';
 
 /**
  * 
@@ -46,12 +46,14 @@ export interface SuperFollowsReplyUserResultData {
     legacy: SuperFollowsReplyUserResultLegacy;
 }
 
+
+
 /**
  * Check if a given object implements the SuperFollowsReplyUserResultData interface.
  */
-export function instanceOfSuperFollowsReplyUserResultData(value: object): boolean {
-    if (!('typename' in value)) return false;
-    if (!('legacy' in value)) return false;
+export function instanceOfSuperFollowsReplyUserResultData(value: object): value is SuperFollowsReplyUserResultData {
+    if (!('typename' in value) || value['typename'] === undefined) return false;
+    if (!('legacy' in value) || value['legacy'] === undefined) return false;
     return true;
 }
 

@@ -30,8 +30,8 @@ export interface UserFeatures {
 /**
  * Check if a given object implements the UserFeatures interface.
  */
-export function instanceOfUserFeatures(value: object): boolean {
-    if (!('mediatoolStudioLibrary' in value)) return false;
+export function instanceOfUserFeatures(value: object): value is UserFeatures {
+    if (!('mediatoolStudioLibrary' in value) || value['mediatoolStudioLibrary'] === undefined) return false;
     return true;
 }
 

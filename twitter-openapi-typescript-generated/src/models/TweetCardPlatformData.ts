@@ -37,8 +37,8 @@ export interface TweetCardPlatformData {
 /**
  * Check if a given object implements the TweetCardPlatformData interface.
  */
-export function instanceOfTweetCardPlatformData(value: object): boolean {
-    if (!('platform' in value)) return false;
+export function instanceOfTweetCardPlatformData(value: object): value is TweetCardPlatformData {
+    if (!('platform' in value) || value['platform'] === undefined) return false;
     return true;
 }
 

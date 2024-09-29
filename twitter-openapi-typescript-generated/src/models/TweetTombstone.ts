@@ -35,10 +35,12 @@ export interface TweetTombstone {
     typename?: TypeName;
 }
 
+
+
 /**
  * Check if a given object implements the TweetTombstone interface.
  */
-export function instanceOfTweetTombstone(value: object): boolean {
+export function instanceOfTweetTombstone(value: object): value is TweetTombstone {
     return true;
 }
 

@@ -46,12 +46,14 @@ export interface TimelineAddEntries {
     type: InstructionType;
 }
 
+
+
 /**
  * Check if a given object implements the TimelineAddEntries interface.
  */
-export function instanceOfTimelineAddEntries(value: object): boolean {
-    if (!('entries' in value)) return false;
-    if (!('type' in value)) return false;
+export function instanceOfTimelineAddEntries(value: object): value is TimelineAddEntries {
+    if (!('entries' in value) || value['entries'] === undefined) return false;
+    if (!('type' in value) || value['type'] === undefined) return false;
     return true;
 }
 

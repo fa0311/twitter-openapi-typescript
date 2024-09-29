@@ -13,18 +13,18 @@
  */
 
 import { mapValues } from '../runtime';
-import type { SocialContextUnionType } from './SocialContextUnionType';
-import {
-    SocialContextUnionTypeFromJSON,
-    SocialContextUnionTypeFromJSONTyped,
-    SocialContextUnionTypeToJSON,
-} from './SocialContextUnionType';
 import type { TopicContext } from './TopicContext';
 import {
     TopicContextFromJSON,
     TopicContextFromJSONTyped,
     TopicContextToJSON,
 } from './TopicContext';
+import type { SocialContextUnionType } from './SocialContextUnionType';
+import {
+    SocialContextUnionTypeFromJSON,
+    SocialContextUnionTypeFromJSONTyped,
+    SocialContextUnionTypeToJSON,
+} from './SocialContextUnionType';
 
 /**
  * 
@@ -65,7 +65,7 @@ export type TimelineTopicContextFunctionalityTypeEnum = typeof TimelineTopicCont
 /**
  * Check if a given object implements the TimelineTopicContext interface.
  */
-export function instanceOfTimelineTopicContext(value: object): boolean {
+export function instanceOfTimelineTopicContext(value: object): value is TimelineTopicContext {
     return true;
 }
 

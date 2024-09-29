@@ -28,6 +28,17 @@ export const ContentItemType = {
 export type ContentItemType = typeof ContentItemType[keyof typeof ContentItemType];
 
 
+export function instanceOfContentItemType(value: any): boolean {
+    for (const key in ContentItemType) {
+        if (Object.prototype.hasOwnProperty.call(ContentItemType, key)) {
+            if (ContentItemType[key as keyof typeof ContentItemType] === value) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
 export function ContentItemTypeFromJSON(json: any): ContentItemType {
     return ContentItemTypeFromJSONTyped(json, false);
 }

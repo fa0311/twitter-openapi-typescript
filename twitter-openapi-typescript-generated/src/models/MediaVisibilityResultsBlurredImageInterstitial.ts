@@ -49,10 +49,10 @@ export interface MediaVisibilityResultsBlurredImageInterstitial {
 /**
  * Check if a given object implements the MediaVisibilityResultsBlurredImageInterstitial interface.
  */
-export function instanceOfMediaVisibilityResultsBlurredImageInterstitial(value: object): boolean {
-    if (!('opacity' in value)) return false;
-    if (!('text' in value)) return false;
-    if (!('title' in value)) return false;
+export function instanceOfMediaVisibilityResultsBlurredImageInterstitial(value: object): value is MediaVisibilityResultsBlurredImageInterstitial {
+    if (!('opacity' in value) || value['opacity'] === undefined) return false;
+    if (!('text' in value) || value['text'] === undefined) return false;
+    if (!('title' in value) || value['title'] === undefined) return false;
     return true;
 }
 

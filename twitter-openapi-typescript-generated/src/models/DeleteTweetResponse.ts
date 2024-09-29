@@ -37,8 +37,8 @@ export interface DeleteTweetResponse {
 /**
  * Check if a given object implements the DeleteTweetResponse interface.
  */
-export function instanceOfDeleteTweetResponse(value: object): boolean {
-    if (!('data' in value)) return false;
+export function instanceOfDeleteTweetResponse(value: object): value is DeleteTweetResponse {
+    if (!('data' in value) || value['data'] === undefined) return false;
     return true;
 }
 

@@ -43,9 +43,9 @@ export interface UserResultByScreenName {
 /**
  * Check if a given object implements the UserResultByScreenName interface.
  */
-export function instanceOfUserResultByScreenName(value: object): boolean {
-    if (!('id' in value)) return false;
-    if (!('result' in value)) return false;
+export function instanceOfUserResultByScreenName(value: object): value is UserResultByScreenName {
+    if (!('id' in value) || value['id'] === undefined) return false;
+    if (!('result' in value) || value['result'] === undefined) return false;
     return true;
 }
 

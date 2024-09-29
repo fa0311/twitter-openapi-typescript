@@ -54,12 +54,12 @@ export interface TweetPreviousCounts {
 /**
  * Check if a given object implements the TweetPreviousCounts interface.
  */
-export function instanceOfTweetPreviousCounts(value: object): boolean {
-    if (!('bookmarkCount' in value)) return false;
-    if (!('favoriteCount' in value)) return false;
-    if (!('quoteCount' in value)) return false;
-    if (!('replyCount' in value)) return false;
-    if (!('retweetCount' in value)) return false;
+export function instanceOfTweetPreviousCounts(value: object): value is TweetPreviousCounts {
+    if (!('bookmarkCount' in value) || value['bookmarkCount'] === undefined) return false;
+    if (!('favoriteCount' in value) || value['favoriteCount'] === undefined) return false;
+    if (!('quoteCount' in value) || value['quoteCount'] === undefined) return false;
+    if (!('replyCount' in value) || value['replyCount'] === undefined) return false;
+    if (!('retweetCount' in value) || value['retweetCount'] === undefined) return false;
     return true;
 }
 

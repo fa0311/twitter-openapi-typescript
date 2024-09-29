@@ -42,9 +42,9 @@ export interface CommunityRule {
 /**
  * Check if a given object implements the CommunityRule interface.
  */
-export function instanceOfCommunityRule(value: object): boolean {
-    if (!('name' in value)) return false;
-    if (!('restId' in value)) return false;
+export function instanceOfCommunityRule(value: object): value is CommunityRule {
+    if (!('name' in value) || value['name'] === undefined) return false;
+    if (!('restId' in value) || value['restId'] === undefined) return false;
     return true;
 }
 

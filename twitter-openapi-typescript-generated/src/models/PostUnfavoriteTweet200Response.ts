@@ -42,7 +42,14 @@ export function PostUnfavoriteTweet200ResponseFromJSONTyped(json: any, ignoreDis
     if (json == null) {
         return json;
     }
-    return { ...ErrorsFromJSONTyped(json, true), ...UnfavoriteTweetResponseDataFromJSONTyped(json, true) };
+    if (instanceOfErrors(json)) {
+        return ErrorsFromJSONTyped(json, true);
+    }
+    if (instanceOfUnfavoriteTweetResponseData(json)) {
+        return UnfavoriteTweetResponseDataFromJSONTyped(json, true);
+    }
+
+    return {} as any;
 }
 
 export function PostUnfavoriteTweet200ResponseToJSON(value?: PostUnfavoriteTweet200Response | null): any {

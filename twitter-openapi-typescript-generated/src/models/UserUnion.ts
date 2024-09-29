@@ -44,9 +44,9 @@ export function UserUnionFromJSONTyped(json: any, ignoreDiscriminator: boolean):
     }
     switch (json['__typename']) {
         case 'User':
-            return {...UserFromJSONTyped(json, true), typename: 'User'};
+            return Object.assign({}, UserFromJSONTyped(json, true), { typename: 'User' } as const);
         case 'UserUnavailable':
-            return {...UserUnavailableFromJSONTyped(json, true), typename: 'UserUnavailable'};
+            return Object.assign({}, UserUnavailableFromJSONTyped(json, true), { typename: 'UserUnavailable' } as const);
         default:
             throw new Error(`No variant of UserUnion exists with 'typename=${json['typename']}'`);
     }

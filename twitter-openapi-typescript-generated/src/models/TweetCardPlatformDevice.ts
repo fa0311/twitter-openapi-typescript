@@ -36,9 +36,9 @@ export interface TweetCardPlatformDevice {
 /**
  * Check if a given object implements the TweetCardPlatformDevice interface.
  */
-export function instanceOfTweetCardPlatformDevice(value: object): boolean {
-    if (!('name' in value)) return false;
-    if (!('version' in value)) return false;
+export function instanceOfTweetCardPlatformDevice(value: object): value is TweetCardPlatformDevice {
+    if (!('name' in value) || value['name'] === undefined) return false;
+    if (!('version' in value) || value['version'] === undefined) return false;
     return true;
 }
 

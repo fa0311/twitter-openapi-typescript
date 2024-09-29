@@ -49,10 +49,10 @@ export interface TimelineAddEntry {
 /**
  * Check if a given object implements the TimelineAddEntry interface.
  */
-export function instanceOfTimelineAddEntry(value: object): boolean {
-    if (!('content' in value)) return false;
-    if (!('entryId' in value)) return false;
-    if (!('sortIndex' in value)) return false;
+export function instanceOfTimelineAddEntry(value: object): value is TimelineAddEntry {
+    if (!('content' in value) || value['content'] === undefined) return false;
+    if (!('entryId' in value) || value['entryId'] === undefined) return false;
+    if (!('sortIndex' in value) || value['sortIndex'] === undefined) return false;
     return true;
 }
 

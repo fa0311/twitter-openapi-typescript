@@ -42,7 +42,14 @@ export function GetFavoriters200ResponseFromJSONTyped(json: any, ignoreDiscrimin
     if (json == null) {
         return json;
     }
-    return { ...ErrorsFromJSONTyped(json, true), ...TweetFavoritersResponseFromJSONTyped(json, true) };
+    if (instanceOfErrors(json)) {
+        return ErrorsFromJSONTyped(json, true);
+    }
+    if (instanceOfTweetFavoritersResponse(json)) {
+        return TweetFavoritersResponseFromJSONTyped(json, true);
+    }
+
+    return {} as any;
 }
 
 export function GetFavoriters200ResponseToJSON(value?: GetFavoriters200Response | null): any {

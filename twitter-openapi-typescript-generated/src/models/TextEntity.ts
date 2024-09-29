@@ -49,10 +49,10 @@ export interface TextEntity {
 /**
  * Check if a given object implements the TextEntity interface.
  */
-export function instanceOfTextEntity(value: object): boolean {
-    if (!('fromIndex' in value)) return false;
-    if (!('ref' in value)) return false;
-    if (!('toIndex' in value)) return false;
+export function instanceOfTextEntity(value: object): value is TextEntity {
+    if (!('fromIndex' in value) || value['fromIndex'] === undefined) return false;
+    if (!('ref' in value) || value['ref'] === undefined) return false;
+    if (!('toIndex' in value) || value['toIndex'] === undefined) return false;
     return true;
 }
 

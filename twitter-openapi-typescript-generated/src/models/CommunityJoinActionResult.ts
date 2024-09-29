@@ -34,11 +34,13 @@ export interface CommunityJoinActionResult {
     typename: TypeName;
 }
 
+
+
 /**
  * Check if a given object implements the CommunityJoinActionResult interface.
  */
-export function instanceOfCommunityJoinActionResult(value: object): boolean {
-    if (!('typename' in value)) return false;
+export function instanceOfCommunityJoinActionResult(value: object): value is CommunityJoinActionResult {
+    if (!('typename' in value) || value['typename'] === undefined) return false;
     return true;
 }
 

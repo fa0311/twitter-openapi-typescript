@@ -30,6 +30,17 @@ export const InstructionType = {
 export type InstructionType = typeof InstructionType[keyof typeof InstructionType];
 
 
+export function instanceOfInstructionType(value: any): boolean {
+    for (const key in InstructionType) {
+        if (Object.prototype.hasOwnProperty.call(InstructionType, key)) {
+            if (InstructionType[key as keyof typeof InstructionType] === value) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
 export function InstructionTypeFromJSON(json: any): InstructionType {
     return InstructionTypeFromJSONTyped(json, false);
 }

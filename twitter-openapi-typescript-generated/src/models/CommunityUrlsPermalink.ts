@@ -30,8 +30,8 @@ export interface CommunityUrlsPermalink {
 /**
  * Check if a given object implements the CommunityUrlsPermalink interface.
  */
-export function instanceOfCommunityUrlsPermalink(value: object): boolean {
-    if (!('url' in value)) return false;
+export function instanceOfCommunityUrlsPermalink(value: object): value is CommunityUrlsPermalink {
+    if (!('url' in value) || value['url'] === undefined) return false;
     return true;
 }
 

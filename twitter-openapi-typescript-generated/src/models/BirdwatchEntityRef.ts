@@ -67,8 +67,8 @@ export type BirdwatchEntityRefUrlTypeEnum = typeof BirdwatchEntityRefUrlTypeEnum
 /**
  * Check if a given object implements the BirdwatchEntityRef interface.
  */
-export function instanceOfBirdwatchEntityRef(value: object): boolean {
-    if (!('type' in value)) return false;
+export function instanceOfBirdwatchEntityRef(value: object): value is BirdwatchEntityRef {
+    if (!('type' in value) || value['type'] === undefined) return false;
     return true;
 }
 

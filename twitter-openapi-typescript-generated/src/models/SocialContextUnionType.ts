@@ -24,6 +24,17 @@ export const SocialContextUnionType = {
 export type SocialContextUnionType = typeof SocialContextUnionType[keyof typeof SocialContextUnionType];
 
 
+export function instanceOfSocialContextUnionType(value: any): boolean {
+    for (const key in SocialContextUnionType) {
+        if (Object.prototype.hasOwnProperty.call(SocialContextUnionType, key)) {
+            if (SocialContextUnionType[key as keyof typeof SocialContextUnionType] === value) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
 export function SocialContextUnionTypeFromJSON(json: any): SocialContextUnionType {
     return SocialContextUnionTypeFromJSONTyped(json, false);
 }

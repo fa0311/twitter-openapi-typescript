@@ -30,8 +30,8 @@ export interface TweetLegacyScopes {
 /**
  * Check if a given object implements the TweetLegacyScopes interface.
  */
-export function instanceOfTweetLegacyScopes(value: object): boolean {
-    if (!('followers' in value)) return false;
+export function instanceOfTweetLegacyScopes(value: object): value is TweetLegacyScopes {
+    if (!('followers' in value) || value['followers'] === undefined) return false;
     return true;
 }
 

@@ -42,7 +42,14 @@ export function PostDeleteBookmark200ResponseFromJSONTyped(json: any, ignoreDisc
     if (json == null) {
         return json;
     }
-    return { ...DeleteBookmarkResponseFromJSONTyped(json, true), ...ErrorsFromJSONTyped(json, true) };
+    if (instanceOfDeleteBookmarkResponse(json)) {
+        return DeleteBookmarkResponseFromJSONTyped(json, true);
+    }
+    if (instanceOfErrors(json)) {
+        return ErrorsFromJSONTyped(json, true);
+    }
+
+    return {} as any;
 }
 
 export function PostDeleteBookmark200ResponseToJSON(value?: PostDeleteBookmark200Response | null): any {

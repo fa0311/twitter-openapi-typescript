@@ -49,10 +49,10 @@ export interface TweetInterstitialTextEntity {
 /**
  * Check if a given object implements the TweetInterstitialTextEntity interface.
  */
-export function instanceOfTweetInterstitialTextEntity(value: object): boolean {
-    if (!('fromIndex' in value)) return false;
-    if (!('ref' in value)) return false;
-    if (!('toIndex' in value)) return false;
+export function instanceOfTweetInterstitialTextEntity(value: object): value is TweetInterstitialTextEntity {
+    if (!('fromIndex' in value) || value['fromIndex'] === undefined) return false;
+    if (!('ref' in value) || value['ref'] === undefined) return false;
+    if (!('toIndex' in value) || value['toIndex'] === undefined) return false;
     return true;
 }
 

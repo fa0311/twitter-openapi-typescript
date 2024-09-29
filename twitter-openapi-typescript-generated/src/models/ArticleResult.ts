@@ -13,18 +13,18 @@
  */
 
 import { mapValues } from '../runtime';
-import type { ArticleCoverMedia } from './ArticleCoverMedia';
-import {
-    ArticleCoverMediaFromJSON,
-    ArticleCoverMediaFromJSONTyped,
-    ArticleCoverMediaToJSON,
-} from './ArticleCoverMedia';
 import type { ArticleLifecycleState } from './ArticleLifecycleState';
 import {
     ArticleLifecycleStateFromJSON,
     ArticleLifecycleStateFromJSONTyped,
     ArticleLifecycleStateToJSON,
 } from './ArticleLifecycleState';
+import type { ArticleCoverMedia } from './ArticleCoverMedia';
+import {
+    ArticleCoverMediaFromJSON,
+    ArticleCoverMediaFromJSONTyped,
+    ArticleCoverMediaToJSON,
+} from './ArticleCoverMedia';
 import type { ArticleMetadata } from './ArticleMetadata';
 import {
     ArticleMetadataFromJSON,
@@ -85,13 +85,13 @@ export interface ArticleResult {
 /**
  * Check if a given object implements the ArticleResult interface.
  */
-export function instanceOfArticleResult(value: object): boolean {
-    if (!('coverMedia' in value)) return false;
-    if (!('id' in value)) return false;
-    if (!('metadata' in value)) return false;
-    if (!('previewText' in value)) return false;
-    if (!('restId' in value)) return false;
-    if (!('title' in value)) return false;
+export function instanceOfArticleResult(value: object): value is ArticleResult {
+    if (!('coverMedia' in value) || value['coverMedia'] === undefined) return false;
+    if (!('id' in value) || value['id'] === undefined) return false;
+    if (!('metadata' in value) || value['metadata'] === undefined) return false;
+    if (!('previewText' in value) || value['previewText'] === undefined) return false;
+    if (!('restId' in value) || value['restId'] === undefined) return false;
+    if (!('title' in value) || value['title'] === undefined) return false;
     return true;
 }
 

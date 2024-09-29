@@ -30,8 +30,8 @@ export interface CommunitiesActions {
 /**
  * Check if a given object implements the CommunitiesActions interface.
  */
-export function instanceOfCommunitiesActions(value: object): boolean {
-    if (!('create' in value)) return false;
+export function instanceOfCommunitiesActions(value: object): value is CommunitiesActions {
+    if (!('create' in value) || value['create'] === undefined) return false;
     return true;
 }
 

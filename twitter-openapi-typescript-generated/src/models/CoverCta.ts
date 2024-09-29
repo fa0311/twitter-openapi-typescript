@@ -13,6 +13,12 @@
  */
 
 import { mapValues } from '../runtime';
+import type { TimelineCoverBehavior } from './TimelineCoverBehavior';
+import {
+    TimelineCoverBehaviorFromJSON,
+    TimelineCoverBehaviorFromJSONTyped,
+    TimelineCoverBehaviorToJSON,
+} from './TimelineCoverBehavior';
 import type { Callback } from './Callback';
 import {
     CallbackFromJSON,
@@ -25,12 +31,6 @@ import {
     CtaClientEventInfoFromJSONTyped,
     CtaClientEventInfoToJSON,
 } from './CtaClientEventInfo';
-import type { TimelineCoverBehavior } from './TimelineCoverBehavior';
-import {
-    TimelineCoverBehaviorFromJSON,
-    TimelineCoverBehaviorFromJSONTyped,
-    TimelineCoverBehaviorToJSON,
-} from './TimelineCoverBehavior';
 
 /**
  * 
@@ -83,10 +83,10 @@ export type CoverCtaButtonStyleEnum = typeof CoverCtaButtonStyleEnum[keyof typeo
 /**
  * Check if a given object implements the CoverCta interface.
  */
-export function instanceOfCoverCta(value: object): boolean {
-    if (!('callbacks' in value)) return false;
-    if (!('clientEventInfo' in value)) return false;
-    if (!('ctaBehavior' in value)) return false;
+export function instanceOfCoverCta(value: object): value is CoverCta {
+    if (!('callbacks' in value) || value['callbacks'] === undefined) return false;
+    if (!('clientEventInfo' in value) || value['clientEventInfo'] === undefined) return false;
+    if (!('ctaBehavior' in value) || value['ctaBehavior'] === undefined) return false;
     return true;
 }
 

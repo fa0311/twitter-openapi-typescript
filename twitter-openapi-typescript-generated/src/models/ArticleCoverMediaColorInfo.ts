@@ -37,8 +37,8 @@ export interface ArticleCoverMediaColorInfo {
 /**
  * Check if a given object implements the ArticleCoverMediaColorInfo interface.
  */
-export function instanceOfArticleCoverMediaColorInfo(value: object): boolean {
-    if (!('palette' in value)) return false;
+export function instanceOfArticleCoverMediaColorInfo(value: object): value is ArticleCoverMediaColorInfo {
+    if (!('palette' in value) || value['palette'] === undefined) return false;
     return true;
 }
 

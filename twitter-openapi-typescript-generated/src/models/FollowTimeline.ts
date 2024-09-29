@@ -37,8 +37,8 @@ export interface FollowTimeline {
 /**
  * Check if a given object implements the FollowTimeline interface.
  */
-export function instanceOfFollowTimeline(value: object): boolean {
-    if (!('timeline' in value)) return false;
+export function instanceOfFollowTimeline(value: object): value is FollowTimeline {
+    if (!('timeline' in value) || value['timeline'] === undefined) return false;
     return true;
 }
 

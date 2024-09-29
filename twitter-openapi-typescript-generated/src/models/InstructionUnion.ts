@@ -86,21 +86,21 @@ export function InstructionUnionFromJSONTyped(json: any, ignoreDiscriminator: bo
     }
     switch (json['type']) {
         case 'TimelineAddEntries':
-            return {...TimelineAddEntriesFromJSONTyped(json, true), type: 'TimelineAddEntries'};
+            return Object.assign({}, TimelineAddEntriesFromJSONTyped(json, true), { type: 'TimelineAddEntries' } as const);
         case 'TimelineAddToModule':
-            return {...TimelineAddToModuleFromJSONTyped(json, true), type: 'TimelineAddToModule'};
+            return Object.assign({}, TimelineAddToModuleFromJSONTyped(json, true), { type: 'TimelineAddToModule' } as const);
         case 'TimelineClearCache':
-            return {...TimelineClearCacheFromJSONTyped(json, true), type: 'TimelineClearCache'};
+            return Object.assign({}, TimelineClearCacheFromJSONTyped(json, true), { type: 'TimelineClearCache' } as const);
         case 'TimelinePinEntry':
-            return {...TimelinePinEntryFromJSONTyped(json, true), type: 'TimelinePinEntry'};
+            return Object.assign({}, TimelinePinEntryFromJSONTyped(json, true), { type: 'TimelinePinEntry' } as const);
         case 'TimelineReplaceEntry':
-            return {...TimelineReplaceEntryFromJSONTyped(json, true), type: 'TimelineReplaceEntry'};
+            return Object.assign({}, TimelineReplaceEntryFromJSONTyped(json, true), { type: 'TimelineReplaceEntry' } as const);
         case 'TimelineShowAlert':
-            return {...TimelineShowAlertFromJSONTyped(json, true), type: 'TimelineShowAlert'};
+            return Object.assign({}, TimelineShowAlertFromJSONTyped(json, true), { type: 'TimelineShowAlert' } as const);
         case 'TimelineShowCover':
-            return {...TimelineShowCoverFromJSONTyped(json, true), type: 'TimelineShowCover'};
+            return Object.assign({}, TimelineShowCoverFromJSONTyped(json, true), { type: 'TimelineShowCover' } as const);
         case 'TimelineTerminateTimeline':
-            return {...TimelineTerminateTimelineFromJSONTyped(json, true), type: 'TimelineTerminateTimeline'};
+            return Object.assign({}, TimelineTerminateTimelineFromJSONTyped(json, true), { type: 'TimelineTerminateTimeline' } as const);
         default:
             throw new Error(`No variant of InstructionUnion exists with 'type=${json['type']}'`);
     }

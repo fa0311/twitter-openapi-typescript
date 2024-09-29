@@ -53,10 +53,10 @@ export type NoteTweetResultRichTextTagRichtextTypesEnum = typeof NoteTweetResult
 /**
  * Check if a given object implements the NoteTweetResultRichTextTag interface.
  */
-export function instanceOfNoteTweetResultRichTextTag(value: object): boolean {
-    if (!('fromIndex' in value)) return false;
-    if (!('richtextTypes' in value)) return false;
-    if (!('toIndex' in value)) return false;
+export function instanceOfNoteTweetResultRichTextTag(value: object): value is NoteTweetResultRichTextTag {
+    if (!('fromIndex' in value) || value['fromIndex'] === undefined) return false;
+    if (!('richtextTypes' in value) || value['richtextTypes'] === undefined) return false;
+    if (!('toIndex' in value) || value['toIndex'] === undefined) return false;
     return true;
 }
 

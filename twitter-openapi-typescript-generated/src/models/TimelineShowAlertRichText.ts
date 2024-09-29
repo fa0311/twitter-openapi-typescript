@@ -36,7 +36,7 @@ export interface TimelineShowAlertRichText {
 /**
  * Check if a given object implements the TimelineShowAlertRichText interface.
  */
-export function instanceOfTimelineShowAlertRichText(value: object): boolean {
+export function instanceOfTimelineShowAlertRichText(value: object): value is TimelineShowAlertRichText {
     return true;
 }
 

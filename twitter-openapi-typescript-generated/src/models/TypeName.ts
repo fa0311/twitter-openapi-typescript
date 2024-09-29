@@ -45,6 +45,17 @@ export const TypeName = {
 export type TypeName = typeof TypeName[keyof typeof TypeName];
 
 
+export function instanceOfTypeName(value: any): boolean {
+    for (const key in TypeName) {
+        if (Object.prototype.hasOwnProperty.call(TypeName, key)) {
+            if (TypeName[key as keyof typeof TypeName] === value) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
 export function TypeNameFromJSON(json: any): TypeName {
     return TypeNameFromJSONTyped(json, false);
 }

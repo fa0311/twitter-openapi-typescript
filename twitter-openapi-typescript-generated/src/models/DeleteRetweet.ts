@@ -37,8 +37,8 @@ export interface DeleteRetweet {
 /**
  * Check if a given object implements the DeleteRetweet interface.
  */
-export function instanceOfDeleteRetweet(value: object): boolean {
-    if (!('result' in value)) return false;
+export function instanceOfDeleteRetweet(value: object): value is DeleteRetweet {
+    if (!('result' in value) || value['result'] === undefined) return false;
     return true;
 }
 

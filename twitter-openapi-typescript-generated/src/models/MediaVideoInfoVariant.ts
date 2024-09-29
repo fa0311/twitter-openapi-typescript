@@ -42,9 +42,9 @@ export interface MediaVideoInfoVariant {
 /**
  * Check if a given object implements the MediaVideoInfoVariant interface.
  */
-export function instanceOfMediaVideoInfoVariant(value: object): boolean {
-    if (!('contentType' in value)) return false;
-    if (!('url' in value)) return false;
+export function instanceOfMediaVideoInfoVariant(value: object): value is MediaVideoInfoVariant {
+    if (!('contentType' in value) || value['contentType'] === undefined) return false;
+    if (!('url' in value) || value['url'] === undefined) return false;
     return true;
 }
 

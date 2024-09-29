@@ -52,13 +52,15 @@ export interface TimelineReplaceEntry {
     type: InstructionType;
 }
 
+
+
 /**
  * Check if a given object implements the TimelineReplaceEntry interface.
  */
-export function instanceOfTimelineReplaceEntry(value: object): boolean {
-    if (!('entry' in value)) return false;
-    if (!('entryIdToReplace' in value)) return false;
-    if (!('type' in value)) return false;
+export function instanceOfTimelineReplaceEntry(value: object): value is TimelineReplaceEntry {
+    if (!('entry' in value) || value['entry'] === undefined) return false;
+    if (!('entryIdToReplace' in value) || value['entryIdToReplace'] === undefined) return false;
+    if (!('type' in value) || value['type'] === undefined) return false;
     return true;
 }
 

@@ -79,8 +79,8 @@ export interface TweetCardLegacyBindingValueData {
 /**
  * Check if a given object implements the TweetCardLegacyBindingValueData interface.
  */
-export function instanceOfTweetCardLegacyBindingValueData(value: object): boolean {
-    if (!('type' in value)) return false;
+export function instanceOfTweetCardLegacyBindingValueData(value: object): value is TweetCardLegacyBindingValueData {
+    if (!('type' in value) || value['type'] === undefined) return false;
     return true;
 }
 

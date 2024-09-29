@@ -13,12 +13,12 @@
  */
 
 import { mapValues } from '../runtime';
-import type { ContentEntryType } from './ContentEntryType';
+import type { TypeName } from './TypeName';
 import {
-    ContentEntryTypeFromJSON,
-    ContentEntryTypeFromJSONTyped,
-    ContentEntryTypeToJSON,
-} from './ContentEntryType';
+    TypeNameFromJSON,
+    TypeNameFromJSONTyped,
+    TypeNameToJSON,
+} from './TypeName';
 import type { CursorType } from './CursorType';
 import {
     CursorTypeFromJSON,
@@ -31,12 +31,12 @@ import {
     DisplayTreatmentFromJSONTyped,
     DisplayTreatmentToJSON,
 } from './DisplayTreatment';
-import type { TypeName } from './TypeName';
+import type { ContentEntryType } from './ContentEntryType';
 import {
-    TypeNameFromJSON,
-    TypeNameFromJSONTyped,
-    TypeNameToJSON,
-} from './TypeName';
+    ContentEntryTypeFromJSON,
+    ContentEntryTypeFromJSONTyped,
+    ContentEntryTypeToJSON,
+} from './ContentEntryType';
 
 /**
  * 
@@ -79,7 +79,7 @@ export interface TimelineTimelineCursor {
      * @type {boolean}
      * @memberof TimelineTimelineCursor
      */
-    stopOnEmptyResponse: boolean;
+    stopOnEmptyResponse?: boolean;
     /**
      * 
      * @type {string}
@@ -88,14 +88,15 @@ export interface TimelineTimelineCursor {
     value: string;
 }
 
+
+
 /**
  * Check if a given object implements the TimelineTimelineCursor interface.
  */
-export function instanceOfTimelineTimelineCursor(value: object): boolean {
-    if (!('typename' in value)) return false;
-    if (!('cursorType' in value)) return false;
-    if (!('stopOnEmptyResponse' in value)) return false;
-    if (!('value' in value)) return false;
+export function instanceOfTimelineTimelineCursor(value: object): value is TimelineTimelineCursor {
+    if (!('typename' in value) || value['typename'] === undefined) return false;
+    if (!('cursorType' in value) || value['cursorType'] === undefined) return false;
+    if (!('value' in value) || value['value'] === undefined) return false;
     return true;
 }
 
@@ -114,7 +115,7 @@ export function TimelineTimelineCursorFromJSONTyped(json: any, ignoreDiscriminat
         'displayTreatment': json['displayTreatment'] == null ? undefined : DisplayTreatmentFromJSON(json['displayTreatment']),
         'entryType': json['entryType'] == null ? undefined : ContentEntryTypeFromJSON(json['entryType']),
         'itemType': json['itemType'] == null ? undefined : ContentEntryTypeFromJSON(json['itemType']),
-        'stopOnEmptyResponse': json['stopOnEmptyResponse'],
+        'stopOnEmptyResponse': json['stopOnEmptyResponse'] == null ? undefined : json['stopOnEmptyResponse'],
         'value': json['value'],
     };
 }

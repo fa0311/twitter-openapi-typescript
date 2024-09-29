@@ -53,9 +53,9 @@ export type CommunityDeleteActionResultReasonEnum = typeof CommunityDeleteAction
 /**
  * Check if a given object implements the CommunityDeleteActionResult interface.
  */
-export function instanceOfCommunityDeleteActionResult(value: object): boolean {
-    if (!('typename' in value)) return false;
-    if (!('reason' in value)) return false;
+export function instanceOfCommunityDeleteActionResult(value: object): value is CommunityDeleteActionResult {
+    if (!('typename' in value) || value['typename'] === undefined) return false;
+    if (!('reason' in value) || value['reason'] === undefined) return false;
     return true;
 }
 

@@ -42,10 +42,10 @@ export interface ArticleCoverMediaColorInfoPaletteRGB {
 /**
  * Check if a given object implements the ArticleCoverMediaColorInfoPaletteRGB interface.
  */
-export function instanceOfArticleCoverMediaColorInfoPaletteRGB(value: object): boolean {
-    if (!('blue' in value)) return false;
-    if (!('green' in value)) return false;
-    if (!('red' in value)) return false;
+export function instanceOfArticleCoverMediaColorInfoPaletteRGB(value: object): value is ArticleCoverMediaColorInfoPaletteRGB {
+    if (!('blue' in value) || value['blue'] === undefined) return false;
+    if (!('green' in value) || value['green'] === undefined) return false;
+    if (!('red' in value) || value['red'] === undefined) return false;
     return true;
 }
 

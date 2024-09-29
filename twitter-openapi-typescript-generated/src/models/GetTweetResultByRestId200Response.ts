@@ -42,7 +42,14 @@ export function GetTweetResultByRestId200ResponseFromJSONTyped(json: any, ignore
     if (json == null) {
         return json;
     }
-    return { ...ErrorsFromJSONTyped(json, true), ...TweetResultByRestIdResponseFromJSONTyped(json, true) };
+    if (instanceOfErrors(json)) {
+        return ErrorsFromJSONTyped(json, true);
+    }
+    if (instanceOfTweetResultByRestIdResponse(json)) {
+        return TweetResultByRestIdResponseFromJSONTyped(json, true);
+    }
+
+    return {} as any;
 }
 
 export function GetTweetResultByRestId200ResponseToJSON(value?: GetTweetResultByRestId200Response | null): any {

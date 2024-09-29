@@ -42,7 +42,14 @@ export function GetHomeLatestTimeline200ResponseFromJSONTyped(json: any, ignoreD
     if (json == null) {
         return json;
     }
-    return { ...ErrorsFromJSONTyped(json, true), ...TimelineResponseFromJSONTyped(json, true) };
+    if (instanceOfErrors(json)) {
+        return ErrorsFromJSONTyped(json, true);
+    }
+    if (instanceOfTimelineResponse(json)) {
+        return TimelineResponseFromJSONTyped(json, true);
+    }
+
+    return {} as any;
 }
 
 export function GetHomeLatestTimeline200ResponseToJSON(value?: GetHomeLatestTimeline200Response | null): any {

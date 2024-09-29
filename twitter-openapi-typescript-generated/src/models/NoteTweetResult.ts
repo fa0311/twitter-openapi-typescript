@@ -37,8 +37,8 @@ export interface NoteTweetResult {
 /**
  * Check if a given object implements the NoteTweetResult interface.
  */
-export function instanceOfNoteTweetResult(value: object): boolean {
-    if (!('result' in value)) return false;
+export function instanceOfNoteTweetResult(value: object): value is NoteTweetResult {
+    if (!('result' in value) || value['result'] === undefined) return false;
     return true;
 }
 

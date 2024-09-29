@@ -60,10 +60,10 @@ export type TweetInterstitialTextEntityRefUrlTypeEnum = typeof TweetInterstitial
 /**
  * Check if a given object implements the TweetInterstitialTextEntityRef interface.
  */
-export function instanceOfTweetInterstitialTextEntityRef(value: object): boolean {
-    if (!('type' in value)) return false;
-    if (!('url' in value)) return false;
-    if (!('urlType' in value)) return false;
+export function instanceOfTweetInterstitialTextEntityRef(value: object): value is TweetInterstitialTextEntityRef {
+    if (!('type' in value) || value['type'] === undefined) return false;
+    if (!('url' in value) || value['url'] === undefined) return false;
+    if (!('urlType' in value) || value['urlType'] === undefined) return false;
     return true;
 }
 

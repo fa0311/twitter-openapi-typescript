@@ -13,54 +13,36 @@
  */
 
 import { mapValues } from '../runtime';
-import type { Article } from './Article';
-import {
-    ArticleFromJSON,
-    ArticleFromJSONTyped,
-    ArticleToJSON,
-} from './Article';
-import type { AuthorCommunityRelationship } from './AuthorCommunityRelationship';
-import {
-    AuthorCommunityRelationshipFromJSON,
-    AuthorCommunityRelationshipFromJSONTyped,
-    AuthorCommunityRelationshipToJSON,
-} from './AuthorCommunityRelationship';
-import type { BirdwatchPivot } from './BirdwatchPivot';
-import {
-    BirdwatchPivotFromJSON,
-    BirdwatchPivotFromJSONTyped,
-    BirdwatchPivotToJSON,
-} from './BirdwatchPivot';
-import type { ItemResult } from './ItemResult';
-import {
-    ItemResultFromJSON,
-    ItemResultFromJSONTyped,
-    ItemResultToJSON,
-} from './ItemResult';
 import type { NoteTweet } from './NoteTweet';
 import {
     NoteTweetFromJSON,
     NoteTweetFromJSONTyped,
     NoteTweetToJSON,
 } from './NoteTweet';
-import type { QuotedRefResult } from './QuotedRefResult';
+import type { TypeName } from './TypeName';
 import {
-    QuotedRefResultFromJSON,
-    QuotedRefResultFromJSONTyped,
-    QuotedRefResultToJSON,
-} from './QuotedRefResult';
+    TypeNameFromJSON,
+    TypeNameFromJSONTyped,
+    TypeNameToJSON,
+} from './TypeName';
 import type { SuperFollowsReplyUserResult } from './SuperFollowsReplyUserResult';
 import {
     SuperFollowsReplyUserResultFromJSON,
     SuperFollowsReplyUserResultFromJSONTyped,
     SuperFollowsReplyUserResultToJSON,
 } from './SuperFollowsReplyUserResult';
-import type { TweetCard } from './TweetCard';
+import type { UserResultCore } from './UserResultCore';
 import {
-    TweetCardFromJSON,
-    TweetCardFromJSONTyped,
-    TweetCardToJSON,
-} from './TweetCard';
+    UserResultCoreFromJSON,
+    UserResultCoreFromJSONTyped,
+    UserResultCoreToJSON,
+} from './UserResultCore';
+import type { Article } from './Article';
+import {
+    ArticleFromJSON,
+    ArticleFromJSONTyped,
+    ArticleToJSON,
+} from './Article';
 import type { TweetEditControl } from './TweetEditControl';
 import {
     TweetEditControlFromJSON,
@@ -73,12 +55,6 @@ import {
     TweetEditPrespectiveFromJSONTyped,
     TweetEditPrespectiveToJSON,
 } from './TweetEditPrespective';
-import type { TweetLegacy } from './TweetLegacy';
-import {
-    TweetLegacyFromJSON,
-    TweetLegacyFromJSONTyped,
-    TweetLegacyToJSON,
-} from './TweetLegacy';
 import type { TweetPreviousCounts } from './TweetPreviousCounts';
 import {
     TweetPreviousCountsFromJSON,
@@ -91,24 +67,54 @@ import {
     TweetViewFromJSONTyped,
     TweetViewToJSON,
 } from './TweetView';
-import type { TypeName } from './TypeName';
+import type { TweetCard } from './TweetCard';
 import {
-    TypeNameFromJSON,
-    TypeNameFromJSONTyped,
-    TypeNameToJSON,
-} from './TypeName';
+    TweetCardFromJSON,
+    TweetCardFromJSONTyped,
+    TweetCardToJSON,
+} from './TweetCard';
+import type { AuthorCommunityRelationship } from './AuthorCommunityRelationship';
+import {
+    AuthorCommunityRelationshipFromJSON,
+    AuthorCommunityRelationshipFromJSONTyped,
+    AuthorCommunityRelationshipToJSON,
+} from './AuthorCommunityRelationship';
 import type { UnifiedCard } from './UnifiedCard';
 import {
     UnifiedCardFromJSON,
     UnifiedCardFromJSONTyped,
     UnifiedCardToJSON,
 } from './UnifiedCard';
-import type { UserResultCore } from './UserResultCore';
+import type { ItemResult } from './ItemResult';
 import {
-    UserResultCoreFromJSON,
-    UserResultCoreFromJSONTyped,
-    UserResultCoreToJSON,
-} from './UserResultCore';
+    ItemResultFromJSON,
+    ItemResultFromJSONTyped,
+    ItemResultToJSON,
+} from './ItemResult';
+import type { QuotedRefResult } from './QuotedRefResult';
+import {
+    QuotedRefResultFromJSON,
+    QuotedRefResultFromJSONTyped,
+    QuotedRefResultToJSON,
+} from './QuotedRefResult';
+import type { BirdwatchPivot } from './BirdwatchPivot';
+import {
+    BirdwatchPivotFromJSON,
+    BirdwatchPivotFromJSONTyped,
+    BirdwatchPivotToJSON,
+} from './BirdwatchPivot';
+import type { TweetLegacy } from './TweetLegacy';
+import {
+    TweetLegacyFromJSON,
+    TweetLegacyFromJSONTyped,
+    TweetLegacyToJSON,
+} from './TweetLegacy';
+import type { Community } from './Community';
+import {
+    CommunityFromJSON,
+    CommunityFromJSONTyped,
+    CommunityToJSON,
+} from './Community';
 
 /**
  * 
@@ -146,6 +152,12 @@ export interface Tweet {
      * @memberof Tweet
      */
     card?: TweetCard;
+    /**
+     * 
+     * @type {Community}
+     * @memberof Tweet
+     */
+    communityResults?: Community;
     /**
      * 
      * @type {UserResultCore}
@@ -250,11 +262,13 @@ export interface Tweet {
     views?: TweetView;
 }
 
+
+
 /**
  * Check if a given object implements the Tweet interface.
  */
-export function instanceOfTweet(value: object): boolean {
-    if (!('restId' in value)) return false;
+export function instanceOfTweet(value: object): value is Tweet {
+    if (!('restId' in value) || value['restId'] === undefined) return false;
     return true;
 }
 
@@ -273,6 +287,7 @@ export function TweetFromJSONTyped(json: any, ignoreDiscriminator: boolean): Twe
         'authorCommunityRelationship': json['author_community_relationship'] == null ? undefined : AuthorCommunityRelationshipFromJSON(json['author_community_relationship']),
         'birdwatchPivot': json['birdwatch_pivot'] == null ? undefined : BirdwatchPivotFromJSON(json['birdwatch_pivot']),
         'card': json['card'] == null ? undefined : TweetCardFromJSON(json['card']),
+        'communityResults': json['community_results'] == null ? undefined : CommunityFromJSON(json['community_results']),
         'core': json['core'] == null ? undefined : UserResultCoreFromJSON(json['core']),
         'editControl': json['edit_control'] == null ? undefined : TweetEditControlFromJSON(json['edit_control']),
         'editPrespective': json['edit_prespective'] == null ? undefined : TweetEditPrespectiveFromJSON(json['edit_prespective']),
@@ -304,6 +319,7 @@ export function TweetToJSON(value?: Tweet | null): any {
         'author_community_relationship': AuthorCommunityRelationshipToJSON(value['authorCommunityRelationship']),
         'birdwatch_pivot': BirdwatchPivotToJSON(value['birdwatchPivot']),
         'card': TweetCardToJSON(value['card']),
+        'community_results': CommunityToJSON(value['communityResults']),
         'core': UserResultCoreToJSON(value['core']),
         'edit_control': TweetEditControlToJSON(value['editControl']),
         'edit_prespective': TweetEditPrespectiveToJSON(value['editPrespective']),

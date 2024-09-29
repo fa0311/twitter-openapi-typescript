@@ -30,8 +30,8 @@ export interface SelfThread {
 /**
  * Check if a given object implements the SelfThread interface.
  */
-export function instanceOfSelfThread(value: object): boolean {
-    if (!('idStr' in value)) return false;
+export function instanceOfSelfThread(value: object): value is SelfThread {
+    if (!('idStr' in value) || value['idStr'] === undefined) return false;
     return true;
 }
 

@@ -43,9 +43,9 @@ export interface NoteTweet {
 /**
  * Check if a given object implements the NoteTweet interface.
  */
-export function instanceOfNoteTweet(value: object): boolean {
-    if (!('isExpandable' in value)) return false;
-    if (!('noteTweetResults' in value)) return false;
+export function instanceOfNoteTweet(value: object): value is NoteTweet {
+    if (!('isExpandable' in value) || value['isExpandable'] === undefined) return false;
+    if (!('noteTweetResults' in value) || value['noteTweetResults'] === undefined) return false;
     return true;
 }
 

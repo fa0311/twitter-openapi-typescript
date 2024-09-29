@@ -42,7 +42,14 @@ export function GetFollowers200ResponseFromJSONTyped(json: any, ignoreDiscrimina
     if (json == null) {
         return json;
     }
-    return { ...ErrorsFromJSONTyped(json, true), ...FollowResponseFromJSONTyped(json, true) };
+    if (instanceOfErrors(json)) {
+        return ErrorsFromJSONTyped(json, true);
+    }
+    if (instanceOfFollowResponse(json)) {
+        return FollowResponseFromJSONTyped(json, true);
+    }
+
+    return {} as any;
 }
 
 export function GetFollowers200ResponseToJSON(value?: GetFollowers200Response | null): any {

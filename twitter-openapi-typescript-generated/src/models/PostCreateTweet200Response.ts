@@ -42,7 +42,14 @@ export function PostCreateTweet200ResponseFromJSONTyped(json: any, ignoreDiscrim
     if (json == null) {
         return json;
     }
-    return { ...CreateTweetResponseFromJSONTyped(json, true), ...ErrorsFromJSONTyped(json, true) };
+    if (instanceOfCreateTweetResponse(json)) {
+        return CreateTweetResponseFromJSONTyped(json, true);
+    }
+    if (instanceOfErrors(json)) {
+        return ErrorsFromJSONTyped(json, true);
+    }
+
+    return {} as any;
 }
 
 export function PostCreateTweet200ResponseToJSON(value?: PostCreateTweet200Response | null): any {

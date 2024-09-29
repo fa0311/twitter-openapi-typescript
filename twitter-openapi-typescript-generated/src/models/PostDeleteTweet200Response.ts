@@ -42,7 +42,14 @@ export function PostDeleteTweet200ResponseFromJSONTyped(json: any, ignoreDiscrim
     if (json == null) {
         return json;
     }
-    return { ...DeleteTweetResponseFromJSONTyped(json, true), ...ErrorsFromJSONTyped(json, true) };
+    if (instanceOfDeleteTweetResponse(json)) {
+        return DeleteTweetResponseFromJSONTyped(json, true);
+    }
+    if (instanceOfErrors(json)) {
+        return ErrorsFromJSONTyped(json, true);
+    }
+
+    return {} as any;
 }
 
 export function PostDeleteTweet200ResponseToJSON(value?: PostDeleteTweet200Response | null): any {

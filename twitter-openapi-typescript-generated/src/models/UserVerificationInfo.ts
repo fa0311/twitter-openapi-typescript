@@ -43,8 +43,8 @@ export interface UserVerificationInfo {
 /**
  * Check if a given object implements the UserVerificationInfo interface.
  */
-export function instanceOfUserVerificationInfo(value: object): boolean {
-    if (!('isIdentityVerified' in value)) return false;
+export function instanceOfUserVerificationInfo(value: object): value is UserVerificationInfo {
+    if (!('isIdentityVerified' in value) || value['isIdentityVerified'] === undefined) return false;
     return true;
 }
 

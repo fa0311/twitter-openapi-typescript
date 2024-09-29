@@ -43,9 +43,9 @@ export interface Retweet {
 /**
  * Check if a given object implements the Retweet interface.
  */
-export function instanceOfRetweet(value: object): boolean {
-    if (!('legacy' in value)) return false;
-    if (!('restId' in value)) return false;
+export function instanceOfRetweet(value: object): value is Retweet {
+    if (!('legacy' in value) || value['legacy'] === undefined) return false;
+    if (!('restId' in value) || value['restId'] === undefined) return false;
     return true;
 }
 

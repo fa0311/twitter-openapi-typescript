@@ -37,8 +37,8 @@ export interface ListLatestTweetsTimelineResponse {
 /**
  * Check if a given object implements the ListLatestTweetsTimelineResponse interface.
  */
-export function instanceOfListLatestTweetsTimelineResponse(value: object): boolean {
-    if (!('data' in value)) return false;
+export function instanceOfListLatestTweetsTimelineResponse(value: object): value is ListLatestTweetsTimelineResponse {
+    if (!('data' in value) || value['data'] === undefined) return false;
     return true;
 }
 

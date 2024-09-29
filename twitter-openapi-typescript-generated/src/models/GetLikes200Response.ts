@@ -42,7 +42,14 @@ export function GetLikes200ResponseFromJSONTyped(json: any, ignoreDiscriminator:
     if (json == null) {
         return json;
     }
-    return { ...ErrorsFromJSONTyped(json, true), ...UserTweetsResponseFromJSONTyped(json, true) };
+    if (instanceOfErrors(json)) {
+        return ErrorsFromJSONTyped(json, true);
+    }
+    if (instanceOfUserTweetsResponse(json)) {
+        return UserTweetsResponseFromJSONTyped(json, true);
+    }
+
+    return {} as any;
 }
 
 export function GetLikes200ResponseToJSON(value?: GetLikes200Response | null): any {

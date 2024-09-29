@@ -37,8 +37,8 @@ export interface BookmarksTimeline {
 /**
  * Check if a given object implements the BookmarksTimeline interface.
  */
-export function instanceOfBookmarksTimeline(value: object): boolean {
-    if (!('timeline' in value)) return false;
+export function instanceOfBookmarksTimeline(value: object): value is BookmarksTimeline {
+    if (!('timeline' in value) || value['timeline'] === undefined) return false;
     return true;
 }
 

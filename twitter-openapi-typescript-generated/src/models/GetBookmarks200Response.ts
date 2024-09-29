@@ -42,7 +42,14 @@ export function GetBookmarks200ResponseFromJSONTyped(json: any, ignoreDiscrimina
     if (json == null) {
         return json;
     }
-    return { ...BookmarksResponseFromJSONTyped(json, true), ...ErrorsFromJSONTyped(json, true) };
+    if (instanceOfBookmarksResponse(json)) {
+        return BookmarksResponseFromJSONTyped(json, true);
+    }
+    if (instanceOfErrors(json)) {
+        return ErrorsFromJSONTyped(json, true);
+    }
+
+    return {} as any;
 }
 
 export function GetBookmarks200ResponseToJSON(value?: GetBookmarks200Response | null): any {

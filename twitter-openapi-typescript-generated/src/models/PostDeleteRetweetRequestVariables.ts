@@ -36,9 +36,9 @@ export interface PostDeleteRetweetRequestVariables {
 /**
  * Check if a given object implements the PostDeleteRetweetRequestVariables interface.
  */
-export function instanceOfPostDeleteRetweetRequestVariables(value: object): boolean {
-    if (!('darkRequest' in value)) return false;
-    if (!('sourceTweetId' in value)) return false;
+export function instanceOfPostDeleteRetweetRequestVariables(value: object): value is PostDeleteRetweetRequestVariables {
+    if (!('darkRequest' in value) || value['darkRequest'] === undefined) return false;
+    if (!('sourceTweetId' in value) || value['sourceTweetId'] === undefined) return false;
     return true;
 }
 

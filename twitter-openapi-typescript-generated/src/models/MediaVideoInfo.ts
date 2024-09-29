@@ -49,9 +49,9 @@ export interface MediaVideoInfo {
 /**
  * Check if a given object implements the MediaVideoInfo interface.
  */
-export function instanceOfMediaVideoInfo(value: object): boolean {
-    if (!('aspectRatio' in value)) return false;
-    if (!('variants' in value)) return false;
+export function instanceOfMediaVideoInfo(value: object): value is MediaVideoInfo {
+    if (!('aspectRatio' in value) || value['aspectRatio'] === undefined) return false;
+    if (!('variants' in value) || value['variants'] === undefined) return false;
     return true;
 }
 

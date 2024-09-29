@@ -66,7 +66,7 @@ export interface TopicContext {
 /**
  * Check if a given object implements the TopicContext interface.
  */
-export function instanceOfTopicContext(value: object): boolean {
+export function instanceOfTopicContext(value: object): value is TopicContext {
     return true;
 }
 

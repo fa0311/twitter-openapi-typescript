@@ -37,8 +37,8 @@ export interface TweetResultByRestIdData {
 /**
  * Check if a given object implements the TweetResultByRestIdData interface.
  */
-export function instanceOfTweetResultByRestIdData(value: object): boolean {
-    if (!('tweetResult' in value)) return false;
+export function instanceOfTweetResultByRestIdData(value: object): value is TweetResultByRestIdData {
+    if (!('tweetResult' in value) || value['tweetResult'] === undefined) return false;
     return true;
 }
 

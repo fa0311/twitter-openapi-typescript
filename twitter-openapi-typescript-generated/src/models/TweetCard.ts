@@ -43,7 +43,7 @@ export interface TweetCard {
 /**
  * Check if a given object implements the TweetCard interface.
  */
-export function instanceOfTweetCard(value: object): boolean {
+export function instanceOfTweetCard(value: object): value is TweetCard {
     return true;
 }
 

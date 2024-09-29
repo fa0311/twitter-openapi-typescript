@@ -13,6 +13,18 @@
  */
 
 import { mapValues } from '../runtime';
+import type { TypeName } from './TypeName';
+import {
+    TypeNameFromJSON,
+    TypeNameFromJSONTyped,
+    TypeNameToJSON,
+} from './TypeName';
+import type { ItemContentUnion } from './ItemContentUnion';
+import {
+    ItemContentUnionFromJSON,
+    ItemContentUnionFromJSONTyped,
+    ItemContentUnionToJSON,
+} from './ItemContentUnion';
 import type { ClientEventInfo } from './ClientEventInfo';
 import {
     ClientEventInfoFromJSON,
@@ -25,18 +37,6 @@ import {
     ContentEntryTypeFromJSONTyped,
     ContentEntryTypeToJSON,
 } from './ContentEntryType';
-import type { ItemContentUnion } from './ItemContentUnion';
-import {
-    ItemContentUnionFromJSON,
-    ItemContentUnionFromJSONTyped,
-    ItemContentUnionToJSON,
-} from './ItemContentUnion';
-import type { TypeName } from './TypeName';
-import {
-    TypeNameFromJSON,
-    TypeNameFromJSONTyped,
-    TypeNameToJSON,
-} from './TypeName';
 
 /**
  * 
@@ -76,13 +76,15 @@ export interface TimelineTimelineItem {
     itemContent: ItemContentUnion;
 }
 
+
+
 /**
  * Check if a given object implements the TimelineTimelineItem interface.
  */
-export function instanceOfTimelineTimelineItem(value: object): boolean {
-    if (!('typename' in value)) return false;
-    if (!('entryType' in value)) return false;
-    if (!('itemContent' in value)) return false;
+export function instanceOfTimelineTimelineItem(value: object): value is TimelineTimelineItem {
+    if (!('typename' in value) || value['typename'] === undefined) return false;
+    if (!('entryType' in value) || value['entryType'] === undefined) return false;
+    if (!('itemContent' in value) || value['itemContent'] === undefined) return false;
     return true;
 }
 

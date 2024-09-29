@@ -30,8 +30,8 @@ export interface SuperFollowsReplyUserResultLegacy {
 /**
  * Check if a given object implements the SuperFollowsReplyUserResultLegacy interface.
  */
-export function instanceOfSuperFollowsReplyUserResultLegacy(value: object): boolean {
-    if (!('screenName' in value)) return false;
+export function instanceOfSuperFollowsReplyUserResultLegacy(value: object): value is SuperFollowsReplyUserResultLegacy {
+    if (!('screenName' in value) || value['screenName'] === undefined) return false;
     return true;
 }
 

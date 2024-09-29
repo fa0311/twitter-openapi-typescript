@@ -37,8 +37,8 @@ export interface Community {
 /**
  * Check if a given object implements the Community interface.
  */
-export function instanceOfCommunity(value: object): boolean {
-    if (!('result' in value)) return false;
+export function instanceOfCommunity(value: object): value is Community {
+    if (!('result' in value) || value['result'] === undefined) return false;
     return true;
 }
 

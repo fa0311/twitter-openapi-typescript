@@ -43,9 +43,9 @@ export interface PostDeleteBookmarkRequest {
 /**
  * Check if a given object implements the PostDeleteBookmarkRequest interface.
  */
-export function instanceOfPostDeleteBookmarkRequest(value: object): boolean {
-    if (!('queryId' in value)) return false;
-    if (!('variables' in value)) return false;
+export function instanceOfPostDeleteBookmarkRequest(value: object): value is PostDeleteBookmarkRequest {
+    if (!('queryId' in value) || value['queryId'] === undefined) return false;
+    if (!('variables' in value) || value['variables'] === undefined) return false;
     return true;
 }
 

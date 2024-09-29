@@ -13,30 +13,30 @@
  */
 
 import { mapValues } from '../runtime';
-import type { BirdwatchPivotCallToAction } from './BirdwatchPivotCallToAction';
-import {
-    BirdwatchPivotCallToActionFromJSON,
-    BirdwatchPivotCallToActionFromJSONTyped,
-    BirdwatchPivotCallToActionToJSON,
-} from './BirdwatchPivotCallToAction';
 import type { BirdwatchPivotFooter } from './BirdwatchPivotFooter';
 import {
     BirdwatchPivotFooterFromJSON,
     BirdwatchPivotFooterFromJSONTyped,
     BirdwatchPivotFooterToJSON,
 } from './BirdwatchPivotFooter';
-import type { BirdwatchPivotNote } from './BirdwatchPivotNote';
-import {
-    BirdwatchPivotNoteFromJSON,
-    BirdwatchPivotNoteFromJSONTyped,
-    BirdwatchPivotNoteToJSON,
-} from './BirdwatchPivotNote';
 import type { BirdwatchPivotSubtitle } from './BirdwatchPivotSubtitle';
 import {
     BirdwatchPivotSubtitleFromJSON,
     BirdwatchPivotSubtitleFromJSONTyped,
     BirdwatchPivotSubtitleToJSON,
 } from './BirdwatchPivotSubtitle';
+import type { BirdwatchPivotNote } from './BirdwatchPivotNote';
+import {
+    BirdwatchPivotNoteFromJSON,
+    BirdwatchPivotNoteFromJSONTyped,
+    BirdwatchPivotNoteToJSON,
+} from './BirdwatchPivotNote';
+import type { BirdwatchPivotCallToAction } from './BirdwatchPivotCallToAction';
+import {
+    BirdwatchPivotCallToActionFromJSON,
+    BirdwatchPivotCallToActionFromJSONTyped,
+    BirdwatchPivotCallToActionToJSON,
+} from './BirdwatchPivotCallToAction';
 
 /**
  * 
@@ -121,14 +121,14 @@ export type BirdwatchPivotVisualStyleEnum = typeof BirdwatchPivotVisualStyleEnum
 /**
  * Check if a given object implements the BirdwatchPivot interface.
  */
-export function instanceOfBirdwatchPivot(value: object): boolean {
-    if (!('destinationUrl' in value)) return false;
-    if (!('footer' in value)) return false;
-    if (!('iconType' in value)) return false;
-    if (!('note' in value)) return false;
-    if (!('shorttitle' in value)) return false;
-    if (!('subtitle' in value)) return false;
-    if (!('title' in value)) return false;
+export function instanceOfBirdwatchPivot(value: object): value is BirdwatchPivot {
+    if (!('destinationUrl' in value) || value['destinationUrl'] === undefined) return false;
+    if (!('footer' in value) || value['footer'] === undefined) return false;
+    if (!('iconType' in value) || value['iconType'] === undefined) return false;
+    if (!('note' in value) || value['note'] === undefined) return false;
+    if (!('shorttitle' in value) || value['shorttitle'] === undefined) return false;
+    if (!('subtitle' in value) || value['subtitle'] === undefined) return false;
+    if (!('title' in value) || value['title'] === undefined) return false;
     return true;
 }
 

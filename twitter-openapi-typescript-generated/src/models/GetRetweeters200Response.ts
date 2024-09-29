@@ -42,7 +42,14 @@ export function GetRetweeters200ResponseFromJSONTyped(json: any, ignoreDiscrimin
     if (json == null) {
         return json;
     }
-    return { ...ErrorsFromJSONTyped(json, true), ...TweetRetweetersResponseFromJSONTyped(json, true) };
+    if (instanceOfErrors(json)) {
+        return ErrorsFromJSONTyped(json, true);
+    }
+    if (instanceOfTweetRetweetersResponse(json)) {
+        return TweetRetweetersResponseFromJSONTyped(json, true);
+    }
+
+    return {} as any;
 }
 
 export function GetRetweeters200ResponseToJSON(value?: GetRetweeters200Response | null): any {

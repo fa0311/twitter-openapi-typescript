@@ -24,25 +24,25 @@ export interface UserLegacy {
      * @type {boolean}
      * @memberof UserLegacy
      */
-    blockedBy: boolean;
+    blockedBy?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof UserLegacy
      */
-    blocking: boolean;
+    blocking?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof UserLegacy
      */
-    canDm: boolean;
+    canDm?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof UserLegacy
      */
-    canMediaTag: boolean;
+    canMediaTag?: boolean;
     /**
      * 
      * @type {string}
@@ -150,7 +150,7 @@ export interface UserLegacy {
      * @type {boolean}
      * @memberof UserLegacy
      */
-    muting: boolean;
+    muting?: boolean;
     /**
      * 
      * @type {string}
@@ -258,7 +258,7 @@ export interface UserLegacy {
      * @type {boolean}
      * @memberof UserLegacy
      */
-    wantRetweets: boolean;
+    wantRetweets?: boolean;
     /**
      * 
      * @type {Array<string>}
@@ -281,37 +281,31 @@ export type UserLegacyVerifiedTypeEnum = typeof UserLegacyVerifiedTypeEnum[keyof
 /**
  * Check if a given object implements the UserLegacy interface.
  */
-export function instanceOfUserLegacy(value: object): boolean {
-    if (!('blockedBy' in value)) return false;
-    if (!('blocking' in value)) return false;
-    if (!('canDm' in value)) return false;
-    if (!('canMediaTag' in value)) return false;
-    if (!('createdAt' in value)) return false;
-    if (!('defaultProfile' in value)) return false;
-    if (!('defaultProfileImage' in value)) return false;
-    if (!('description' in value)) return false;
-    if (!('entities' in value)) return false;
-    if (!('fastFollowersCount' in value)) return false;
-    if (!('favouritesCount' in value)) return false;
-    if (!('followersCount' in value)) return false;
-    if (!('friendsCount' in value)) return false;
-    if (!('hasCustomTimelines' in value)) return false;
-    if (!('isTranslator' in value)) return false;
-    if (!('listedCount' in value)) return false;
-    if (!('location' in value)) return false;
-    if (!('mediaCount' in value)) return false;
-    if (!('muting' in value)) return false;
-    if (!('name' in value)) return false;
-    if (!('normalFollowersCount' in value)) return false;
-    if (!('pinnedTweetIdsStr' in value)) return false;
-    if (!('possiblySensitive' in value)) return false;
-    if (!('profileImageUrlHttps' in value)) return false;
-    if (!('profileInterstitialType' in value)) return false;
-    if (!('screenName' in value)) return false;
-    if (!('statusesCount' in value)) return false;
-    if (!('translatorType' in value)) return false;
-    if (!('verified' in value)) return false;
-    if (!('wantRetweets' in value)) return false;
+export function instanceOfUserLegacy(value: object): value is UserLegacy {
+    if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
+    if (!('defaultProfile' in value) || value['defaultProfile'] === undefined) return false;
+    if (!('defaultProfileImage' in value) || value['defaultProfileImage'] === undefined) return false;
+    if (!('description' in value) || value['description'] === undefined) return false;
+    if (!('entities' in value) || value['entities'] === undefined) return false;
+    if (!('fastFollowersCount' in value) || value['fastFollowersCount'] === undefined) return false;
+    if (!('favouritesCount' in value) || value['favouritesCount'] === undefined) return false;
+    if (!('followersCount' in value) || value['followersCount'] === undefined) return false;
+    if (!('friendsCount' in value) || value['friendsCount'] === undefined) return false;
+    if (!('hasCustomTimelines' in value) || value['hasCustomTimelines'] === undefined) return false;
+    if (!('isTranslator' in value) || value['isTranslator'] === undefined) return false;
+    if (!('listedCount' in value) || value['listedCount'] === undefined) return false;
+    if (!('location' in value) || value['location'] === undefined) return false;
+    if (!('mediaCount' in value) || value['mediaCount'] === undefined) return false;
+    if (!('name' in value) || value['name'] === undefined) return false;
+    if (!('normalFollowersCount' in value) || value['normalFollowersCount'] === undefined) return false;
+    if (!('pinnedTweetIdsStr' in value) || value['pinnedTweetIdsStr'] === undefined) return false;
+    if (!('possiblySensitive' in value) || value['possiblySensitive'] === undefined) return false;
+    if (!('profileImageUrlHttps' in value) || value['profileImageUrlHttps'] === undefined) return false;
+    if (!('profileInterstitialType' in value) || value['profileInterstitialType'] === undefined) return false;
+    if (!('screenName' in value) || value['screenName'] === undefined) return false;
+    if (!('statusesCount' in value) || value['statusesCount'] === undefined) return false;
+    if (!('translatorType' in value) || value['translatorType'] === undefined) return false;
+    if (!('verified' in value) || value['verified'] === undefined) return false;
     return true;
 }
 
@@ -325,10 +319,10 @@ export function UserLegacyFromJSONTyped(json: any, ignoreDiscriminator: boolean)
     }
     return {
         
-        'blockedBy': json['blocked_by'],
-        'blocking': json['blocking'],
-        'canDm': json['can_dm'],
-        'canMediaTag': json['can_media_tag'],
+        'blockedBy': json['blocked_by'] == null ? undefined : json['blocked_by'],
+        'blocking': json['blocking'] == null ? undefined : json['blocking'],
+        'canDm': json['can_dm'] == null ? undefined : json['can_dm'],
+        'canMediaTag': json['can_media_tag'] == null ? undefined : json['can_media_tag'],
         'createdAt': json['created_at'],
         'defaultProfile': json['default_profile'],
         'defaultProfileImage': json['default_profile_image'],
@@ -346,7 +340,7 @@ export function UserLegacyFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'listedCount': json['listed_count'],
         'location': json['location'],
         'mediaCount': json['media_count'],
-        'muting': json['muting'],
+        'muting': json['muting'] == null ? undefined : json['muting'],
         'name': json['name'],
         'normalFollowersCount': json['normal_followers_count'],
         'notifications': json['notifications'] == null ? undefined : json['notifications'],
@@ -364,7 +358,7 @@ export function UserLegacyFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'url': json['url'] == null ? undefined : json['url'],
         'verified': json['verified'],
         'verifiedType': json['verified_type'] == null ? undefined : json['verified_type'],
-        'wantRetweets': json['want_retweets'],
+        'wantRetweets': json['want_retweets'] == null ? undefined : json['want_retweets'],
         'withheldInCountries': json['withheld_in_countries'] == null ? undefined : json['withheld_in_countries'],
     };
 }

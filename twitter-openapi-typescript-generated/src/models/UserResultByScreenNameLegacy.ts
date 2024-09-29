@@ -66,7 +66,7 @@ export interface UserResultByScreenNameLegacy {
 /**
  * Check if a given object implements the UserResultByScreenNameLegacy interface.
  */
-export function instanceOfUserResultByScreenNameLegacy(value: object): boolean {
+export function instanceOfUserResultByScreenNameLegacy(value: object): value is UserResultByScreenNameLegacy {
     return true;
 }
 

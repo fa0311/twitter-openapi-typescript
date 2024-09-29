@@ -37,8 +37,8 @@ export interface SuperFollowsReplyUserResult {
 /**
  * Check if a given object implements the SuperFollowsReplyUserResult interface.
  */
-export function instanceOfSuperFollowsReplyUserResult(value: object): boolean {
-    if (!('result' in value)) return false;
+export function instanceOfSuperFollowsReplyUserResult(value: object): value is SuperFollowsReplyUserResult {
+    if (!('result' in value) || value['result'] === undefined) return false;
     return true;
 }
 

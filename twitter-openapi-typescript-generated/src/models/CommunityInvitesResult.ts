@@ -59,10 +59,10 @@ export type CommunityInvitesResultReasonEnum = typeof CommunityInvitesResultReas
 /**
  * Check if a given object implements the CommunityInvitesResult interface.
  */
-export function instanceOfCommunityInvitesResult(value: object): boolean {
-    if (!('typename' in value)) return false;
-    if (!('message' in value)) return false;
-    if (!('reason' in value)) return false;
+export function instanceOfCommunityInvitesResult(value: object): value is CommunityInvitesResult {
+    if (!('typename' in value) || value['typename'] === undefined) return false;
+    if (!('message' in value) || value['message'] === undefined) return false;
+    if (!('reason' in value) || value['reason'] === undefined) return false;
     return true;
 }
 

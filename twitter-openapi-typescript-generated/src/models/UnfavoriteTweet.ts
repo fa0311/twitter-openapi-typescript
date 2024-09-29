@@ -30,8 +30,8 @@ export interface UnfavoriteTweet {
 /**
  * Check if a given object implements the UnfavoriteTweet interface.
  */
-export function instanceOfUnfavoriteTweet(value: object): boolean {
-    if (!('unfavoriteTweet' in value)) return false;
+export function instanceOfUnfavoriteTweet(value: object): value is UnfavoriteTweet {
+    if (!('unfavoriteTweet' in value) || value['unfavoriteTweet'] === undefined) return false;
     return true;
 }
 

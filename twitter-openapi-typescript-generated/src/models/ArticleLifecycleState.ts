@@ -30,8 +30,8 @@ export interface ArticleLifecycleState {
 /**
  * Check if a given object implements the ArticleLifecycleState interface.
  */
-export function instanceOfArticleLifecycleState(value: object): boolean {
-    if (!('modifiedAtSecs' in value)) return false;
+export function instanceOfArticleLifecycleState(value: object): value is ArticleLifecycleState {
+    if (!('modifiedAtSecs' in value) || value['modifiedAtSecs'] === undefined) return false;
     return true;
 }
 

@@ -34,11 +34,13 @@ export interface TimelineClearCache {
     type: InstructionType;
 }
 
+
+
 /**
  * Check if a given object implements the TimelineClearCache interface.
  */
-export function instanceOfTimelineClearCache(value: object): boolean {
-    if (!('type' in value)) return false;
+export function instanceOfTimelineClearCache(value: object): value is TimelineClearCache {
+    if (!('type' in value) || value['type'] === undefined) return false;
     return true;
 }
 

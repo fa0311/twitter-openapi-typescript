@@ -36,9 +36,9 @@ export interface PostCreateRetweetRequestVariables {
 /**
  * Check if a given object implements the PostCreateRetweetRequestVariables interface.
  */
-export function instanceOfPostCreateRetweetRequestVariables(value: object): boolean {
-    if (!('darkRequest' in value)) return false;
-    if (!('tweetId' in value)) return false;
+export function instanceOfPostCreateRetweetRequestVariables(value: object): value is PostCreateRetweetRequestVariables {
+    if (!('darkRequest' in value) || value['darkRequest'] === undefined) return false;
+    if (!('tweetId' in value) || value['tweetId'] === undefined) return false;
     return true;
 }
 

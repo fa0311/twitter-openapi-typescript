@@ -19,18 +19,18 @@ import {
     CallbackFromJSONTyped,
     CallbackToJSON,
 } from './Callback';
-import type { CoverCta } from './CoverCta';
-import {
-    CoverCtaFromJSON,
-    CoverCtaFromJSONTyped,
-    CoverCtaToJSON,
-} from './CoverCta';
 import type { Text } from './Text';
 import {
     TextFromJSON,
     TextFromJSONTyped,
     TextToJSON,
 } from './Text';
+import type { CoverCta } from './CoverCta';
+import {
+    CoverCtaFromJSON,
+    CoverCtaFromJSONTyped,
+    CoverCtaToJSON,
+} from './CoverCta';
 
 /**
  * 
@@ -103,14 +103,14 @@ export type TimelineHalfCoverTypeEnum = typeof TimelineHalfCoverTypeEnum[keyof t
 /**
  * Check if a given object implements the TimelineHalfCover interface.
  */
-export function instanceOfTimelineHalfCover(value: object): boolean {
-    if (!('dismissible' in value)) return false;
-    if (!('halfCoverDisplayType' in value)) return false;
-    if (!('impressionCallbacks' in value)) return false;
-    if (!('primaryCoverCta' in value)) return false;
-    if (!('primaryText' in value)) return false;
-    if (!('secondaryText' in value)) return false;
-    if (!('type' in value)) return false;
+export function instanceOfTimelineHalfCover(value: object): value is TimelineHalfCover {
+    if (!('dismissible' in value) || value['dismissible'] === undefined) return false;
+    if (!('halfCoverDisplayType' in value) || value['halfCoverDisplayType'] === undefined) return false;
+    if (!('impressionCallbacks' in value) || value['impressionCallbacks'] === undefined) return false;
+    if (!('primaryCoverCta' in value) || value['primaryCoverCta'] === undefined) return false;
+    if (!('primaryText' in value) || value['primaryText'] === undefined) return false;
+    if (!('secondaryText' in value) || value['secondaryText'] === undefined) return false;
+    if (!('type' in value) || value['type'] === undefined) return false;
     return true;
 }
 

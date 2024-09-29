@@ -36,9 +36,9 @@ export interface NoteTweetResultMediaInlineMedia {
 /**
  * Check if a given object implements the NoteTweetResultMediaInlineMedia interface.
  */
-export function instanceOfNoteTweetResultMediaInlineMedia(value: object): boolean {
-    if (!('index' in value)) return false;
-    if (!('mediaId' in value)) return false;
+export function instanceOfNoteTweetResultMediaInlineMedia(value: object): value is NoteTweetResultMediaInlineMedia {
+    if (!('index' in value) || value['index'] === undefined) return false;
+    if (!('mediaId' in value) || value['mediaId'] === undefined) return false;
     return true;
 }
 

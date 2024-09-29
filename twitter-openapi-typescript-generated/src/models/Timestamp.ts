@@ -42,10 +42,10 @@ export interface Timestamp {
 /**
  * Check if a given object implements the Timestamp interface.
  */
-export function instanceOfTimestamp(value: object): boolean {
-    if (!('indices' in value)) return false;
-    if (!('seconds' in value)) return false;
-    if (!('text' in value)) return false;
+export function instanceOfTimestamp(value: object): value is Timestamp {
+    if (!('indices' in value) || value['indices'] === undefined) return false;
+    if (!('seconds' in value) || value['seconds'] === undefined) return false;
+    if (!('text' in value) || value['text'] === undefined) return false;
     return true;
 }
 

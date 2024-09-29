@@ -61,7 +61,7 @@ export type SocialContextLandingUrlUrlTypeEnum = typeof SocialContextLandingUrlU
 /**
  * Check if a given object implements the SocialContextLandingUrl interface.
  */
-export function instanceOfSocialContextLandingUrl(value: object): boolean {
+export function instanceOfSocialContextLandingUrl(value: object): value is SocialContextLandingUrl {
     return true;
 }
 

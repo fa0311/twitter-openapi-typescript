@@ -13,18 +13,18 @@
  */
 
 import { mapValues } from '../runtime';
-import type { FollowTimeline } from './FollowTimeline';
-import {
-    FollowTimelineFromJSON,
-    FollowTimelineFromJSONTyped,
-    FollowTimelineToJSON,
-} from './FollowTimeline';
 import type { TypeName } from './TypeName';
 import {
     TypeNameFromJSON,
     TypeNameFromJSONTyped,
     TypeNameToJSON,
 } from './TypeName';
+import type { FollowTimeline } from './FollowTimeline';
+import {
+    FollowTimelineFromJSON,
+    FollowTimelineFromJSONTyped,
+    FollowTimelineToJSON,
+} from './FollowTimeline';
 
 /**
  * 
@@ -46,12 +46,14 @@ export interface FollowResponseResult {
     timeline: FollowTimeline;
 }
 
+
+
 /**
  * Check if a given object implements the FollowResponseResult interface.
  */
-export function instanceOfFollowResponseResult(value: object): boolean {
-    if (!('typename' in value)) return false;
-    if (!('timeline' in value)) return false;
+export function instanceOfFollowResponseResult(value: object): value is FollowResponseResult {
+    if (!('typename' in value) || value['typename'] === undefined) return false;
+    if (!('timeline' in value) || value['timeline'] === undefined) return false;
     return true;
 }
 

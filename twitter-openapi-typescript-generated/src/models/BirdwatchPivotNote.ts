@@ -30,8 +30,8 @@ export interface BirdwatchPivotNote {
 /**
  * Check if a given object implements the BirdwatchPivotNote interface.
  */
-export function instanceOfBirdwatchPivotNote(value: object): boolean {
-    if (!('restId' in value)) return false;
+export function instanceOfBirdwatchPivotNote(value: object): value is BirdwatchPivotNote {
+    if (!('restId' in value) || value['restId'] === undefined) return false;
     return true;
 }
 

@@ -13,18 +13,18 @@
  */
 
 import { mapValues } from '../runtime';
-import type { Community } from './Community';
-import {
-    CommunityFromJSON,
-    CommunityFromJSONTyped,
-    CommunityToJSON,
-} from './Community';
 import type { UserResults } from './UserResults';
 import {
     UserResultsFromJSON,
     UserResultsFromJSONTyped,
     UserResultsToJSON,
 } from './UserResults';
+import type { Community } from './Community';
+import {
+    CommunityFromJSON,
+    CommunityFromJSONTyped,
+    CommunityToJSON,
+} from './Community';
 
 /**
  * 
@@ -65,8 +65,8 @@ export type AuthorCommunityRelationshipRoleEnum = typeof AuthorCommunityRelation
 /**
  * Check if a given object implements the AuthorCommunityRelationship interface.
  */
-export function instanceOfAuthorCommunityRelationship(value: object): boolean {
-    if (!('communityResults' in value)) return false;
+export function instanceOfAuthorCommunityRelationship(value: object): value is AuthorCommunityRelationship {
+    if (!('communityResults' in value) || value['communityResults'] === undefined) return false;
     return true;
 }
 

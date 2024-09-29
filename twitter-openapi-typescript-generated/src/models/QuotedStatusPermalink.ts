@@ -42,10 +42,10 @@ export interface QuotedStatusPermalink {
 /**
  * Check if a given object implements the QuotedStatusPermalink interface.
  */
-export function instanceOfQuotedStatusPermalink(value: object): boolean {
-    if (!('display' in value)) return false;
-    if (!('expanded' in value)) return false;
-    if (!('url' in value)) return false;
+export function instanceOfQuotedStatusPermalink(value: object): value is QuotedStatusPermalink {
+    if (!('display' in value) || value['display'] === undefined) return false;
+    if (!('expanded' in value) || value['expanded'] === undefined) return false;
+    if (!('url' in value) || value['url'] === undefined) return false;
     return true;
 }
 

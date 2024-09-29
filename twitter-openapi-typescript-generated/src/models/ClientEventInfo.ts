@@ -42,7 +42,7 @@ export interface ClientEventInfo {
 /**
  * Check if a given object implements the ClientEventInfo interface.
  */
-export function instanceOfClientEventInfo(value: object): boolean {
+export function instanceOfClientEventInfo(value: object): value is ClientEventInfo {
     return true;
 }
 

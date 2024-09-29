@@ -1,6 +1,7 @@
 import { DefaultFlag, TwitterApiUtilsResponse, initOverrides } from '@/models';
 import { buildHeader, errorCheck } from '@/utils';
 import * as i from 'twitter-openapi-typescript-generated';
+import { PostCreateTweetRequestVariablesToJSON } from 'twitter-openapi-typescript-generated';
 
 type PostCreateTweetParam = {
   tweetText: string;
@@ -67,6 +68,8 @@ export class PostApiUtils {
       };
     }
 
+    variables.disallowedReplyOptions = null as any;
+
     const response = await this.api.postCreateTweetRaw({
       pathQueryId: this.flag[queryId]['queryId'],
       postCreateTweetRequest: {
@@ -75,6 +78,7 @@ export class PostApiUtils {
         variables: { ...variables, ...args },
       },
     });
+    const a = PostCreateTweetRequestVariablesToJSON(variables);
 
     return {
       raw: { response: response.raw },

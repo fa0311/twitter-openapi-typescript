@@ -147,7 +147,7 @@ export class UserListApiUtils {
     };
     const response = await this.request({
       apiFn: this.api.getFavoritersRaw,
-      convertFn: (e) => e.data.favoritersTimeline.timeline.instructions,
+      convertFn: (e) => e.data.favoritersTimeline.timeline!.instructions,
       key: 'Favoriters',
       param: args,
     });
@@ -163,7 +163,7 @@ export class UserListApiUtils {
     };
     const response = await this.request({
       apiFn: this.api.getRetweetersRaw,
-      convertFn: (e) => e.data.retweetersTimeline.timeline.instructions,
+      convertFn: (e) => e.data.retweetersTimeline.timeline!.instructions,
       key: 'Retweeters',
       param: args,
     });

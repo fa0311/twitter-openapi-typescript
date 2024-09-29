@@ -24,7 +24,25 @@ export interface PostCreateTweetRequestFeatures {
      * @type {boolean}
      * @memberof PostCreateTweetRequestFeatures
      */
+    articlesPreviewEnabled: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof PostCreateTweetRequestFeatures
+     */
     c9sTweetAnatomyModeratorBadgeEnabled: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof PostCreateTweetRequestFeatures
+     */
+    communitiesWebEnableTweetCommunityResultsFetch: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof PostCreateTweetRequestFeatures
+     */
+    creatorSubscriptionsQuoteTweetPreviewEnabled: boolean;
     /**
      * 
      * @type {boolean}
@@ -90,13 +108,13 @@ export interface PostCreateTweetRequestFeatures {
      * @type {boolean}
      * @memberof PostCreateTweetRequestFeatures
      */
-    responsiveWebMediaDownloadVideoEnabled: boolean;
+    responsiveWebTwitterArticleTweetConsumptionEnabled: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof PostCreateTweetRequestFeatures
      */
-    responsiveWebTwitterArticleTweetConsumptionEnabled: boolean;
+    rwebTipjarConsumptionEnabled: boolean;
     /**
      * 
      * @type {boolean}
@@ -126,12 +144,6 @@ export interface PostCreateTweetRequestFeatures {
      * @type {boolean}
      * @memberof PostCreateTweetRequestFeatures
      */
-    tweetypieUnmentionOptimizationEnabled: boolean;
-    /**
-     * 
-     * @type {boolean}
-     * @memberof PostCreateTweetRequestFeatures
-     */
     verifiedPhoneLabelEnabled: boolean;
     /**
      * 
@@ -144,27 +156,29 @@ export interface PostCreateTweetRequestFeatures {
 /**
  * Check if a given object implements the PostCreateTweetRequestFeatures interface.
  */
-export function instanceOfPostCreateTweetRequestFeatures(value: object): boolean {
-    if (!('c9sTweetAnatomyModeratorBadgeEnabled' in value)) return false;
-    if (!('freedomOfSpeechNotReachFetchEnabled' in value)) return false;
-    if (!('graphqlIsTranslatableRwebTweetIsTranslatableEnabled' in value)) return false;
-    if (!('longformNotetweetsConsumptionEnabled' in value)) return false;
-    if (!('longformNotetweetsInlineMediaEnabled' in value)) return false;
-    if (!('longformNotetweetsRichTextReadEnabled' in value)) return false;
-    if (!('responsiveWebEditTweetApiEnabled' in value)) return false;
-    if (!('responsiveWebEnhanceCardsEnabled' in value)) return false;
-    if (!('responsiveWebGraphqlExcludeDirectiveEnabled' in value)) return false;
-    if (!('responsiveWebGraphqlSkipUserProfileImageExtensionsEnabled' in value)) return false;
-    if (!('responsiveWebGraphqlTimelineNavigationEnabled' in value)) return false;
-    if (!('responsiveWebMediaDownloadVideoEnabled' in value)) return false;
-    if (!('responsiveWebTwitterArticleTweetConsumptionEnabled' in value)) return false;
-    if (!('rwebVideoTimestampsEnabled' in value)) return false;
-    if (!('standardizedNudgesMisinfo' in value)) return false;
-    if (!('tweetAwardsWebTippingEnabled' in value)) return false;
-    if (!('tweetWithVisibilityResultsPreferGqlLimitedActionsPolicyEnabled' in value)) return false;
-    if (!('tweetypieUnmentionOptimizationEnabled' in value)) return false;
-    if (!('verifiedPhoneLabelEnabled' in value)) return false;
-    if (!('viewCountsEverywhereApiEnabled' in value)) return false;
+export function instanceOfPostCreateTweetRequestFeatures(value: object): value is PostCreateTweetRequestFeatures {
+    if (!('articlesPreviewEnabled' in value) || value['articlesPreviewEnabled'] === undefined) return false;
+    if (!('c9sTweetAnatomyModeratorBadgeEnabled' in value) || value['c9sTweetAnatomyModeratorBadgeEnabled'] === undefined) return false;
+    if (!('communitiesWebEnableTweetCommunityResultsFetch' in value) || value['communitiesWebEnableTweetCommunityResultsFetch'] === undefined) return false;
+    if (!('creatorSubscriptionsQuoteTweetPreviewEnabled' in value) || value['creatorSubscriptionsQuoteTweetPreviewEnabled'] === undefined) return false;
+    if (!('freedomOfSpeechNotReachFetchEnabled' in value) || value['freedomOfSpeechNotReachFetchEnabled'] === undefined) return false;
+    if (!('graphqlIsTranslatableRwebTweetIsTranslatableEnabled' in value) || value['graphqlIsTranslatableRwebTweetIsTranslatableEnabled'] === undefined) return false;
+    if (!('longformNotetweetsConsumptionEnabled' in value) || value['longformNotetweetsConsumptionEnabled'] === undefined) return false;
+    if (!('longformNotetweetsInlineMediaEnabled' in value) || value['longformNotetweetsInlineMediaEnabled'] === undefined) return false;
+    if (!('longformNotetweetsRichTextReadEnabled' in value) || value['longformNotetweetsRichTextReadEnabled'] === undefined) return false;
+    if (!('responsiveWebEditTweetApiEnabled' in value) || value['responsiveWebEditTweetApiEnabled'] === undefined) return false;
+    if (!('responsiveWebEnhanceCardsEnabled' in value) || value['responsiveWebEnhanceCardsEnabled'] === undefined) return false;
+    if (!('responsiveWebGraphqlExcludeDirectiveEnabled' in value) || value['responsiveWebGraphqlExcludeDirectiveEnabled'] === undefined) return false;
+    if (!('responsiveWebGraphqlSkipUserProfileImageExtensionsEnabled' in value) || value['responsiveWebGraphqlSkipUserProfileImageExtensionsEnabled'] === undefined) return false;
+    if (!('responsiveWebGraphqlTimelineNavigationEnabled' in value) || value['responsiveWebGraphqlTimelineNavigationEnabled'] === undefined) return false;
+    if (!('responsiveWebTwitterArticleTweetConsumptionEnabled' in value) || value['responsiveWebTwitterArticleTweetConsumptionEnabled'] === undefined) return false;
+    if (!('rwebTipjarConsumptionEnabled' in value) || value['rwebTipjarConsumptionEnabled'] === undefined) return false;
+    if (!('rwebVideoTimestampsEnabled' in value) || value['rwebVideoTimestampsEnabled'] === undefined) return false;
+    if (!('standardizedNudgesMisinfo' in value) || value['standardizedNudgesMisinfo'] === undefined) return false;
+    if (!('tweetAwardsWebTippingEnabled' in value) || value['tweetAwardsWebTippingEnabled'] === undefined) return false;
+    if (!('tweetWithVisibilityResultsPreferGqlLimitedActionsPolicyEnabled' in value) || value['tweetWithVisibilityResultsPreferGqlLimitedActionsPolicyEnabled'] === undefined) return false;
+    if (!('verifiedPhoneLabelEnabled' in value) || value['verifiedPhoneLabelEnabled'] === undefined) return false;
+    if (!('viewCountsEverywhereApiEnabled' in value) || value['viewCountsEverywhereApiEnabled'] === undefined) return false;
     return true;
 }
 
@@ -178,7 +192,10 @@ export function PostCreateTweetRequestFeaturesFromJSONTyped(json: any, ignoreDis
     }
     return {
         
+        'articlesPreviewEnabled': json['articles_preview_enabled'],
         'c9sTweetAnatomyModeratorBadgeEnabled': json['c9s_tweet_anatomy_moderator_badge_enabled'],
+        'communitiesWebEnableTweetCommunityResultsFetch': json['communities_web_enable_tweet_community_results_fetch'],
+        'creatorSubscriptionsQuoteTweetPreviewEnabled': json['creator_subscriptions_quote_tweet_preview_enabled'],
         'freedomOfSpeechNotReachFetchEnabled': json['freedom_of_speech_not_reach_fetch_enabled'],
         'graphqlIsTranslatableRwebTweetIsTranslatableEnabled': json['graphql_is_translatable_rweb_tweet_is_translatable_enabled'],
         'longformNotetweetsConsumptionEnabled': json['longform_notetweets_consumption_enabled'],
@@ -189,13 +206,12 @@ export function PostCreateTweetRequestFeaturesFromJSONTyped(json: any, ignoreDis
         'responsiveWebGraphqlExcludeDirectiveEnabled': json['responsive_web_graphql_exclude_directive_enabled'],
         'responsiveWebGraphqlSkipUserProfileImageExtensionsEnabled': json['responsive_web_graphql_skip_user_profile_image_extensions_enabled'],
         'responsiveWebGraphqlTimelineNavigationEnabled': json['responsive_web_graphql_timeline_navigation_enabled'],
-        'responsiveWebMediaDownloadVideoEnabled': json['responsive_web_media_download_video_enabled'],
         'responsiveWebTwitterArticleTweetConsumptionEnabled': json['responsive_web_twitter_article_tweet_consumption_enabled'],
+        'rwebTipjarConsumptionEnabled': json['rweb_tipjar_consumption_enabled'],
         'rwebVideoTimestampsEnabled': json['rweb_video_timestamps_enabled'],
         'standardizedNudgesMisinfo': json['standardized_nudges_misinfo'],
         'tweetAwardsWebTippingEnabled': json['tweet_awards_web_tipping_enabled'],
         'tweetWithVisibilityResultsPreferGqlLimitedActionsPolicyEnabled': json['tweet_with_visibility_results_prefer_gql_limited_actions_policy_enabled'],
-        'tweetypieUnmentionOptimizationEnabled': json['tweetypie_unmention_optimization_enabled'],
         'verifiedPhoneLabelEnabled': json['verified_phone_label_enabled'],
         'viewCountsEverywhereApiEnabled': json['view_counts_everywhere_api_enabled'],
     };
@@ -207,7 +223,10 @@ export function PostCreateTweetRequestFeaturesToJSON(value?: PostCreateTweetRequ
     }
     return {
         
+        'articles_preview_enabled': value['articlesPreviewEnabled'],
         'c9s_tweet_anatomy_moderator_badge_enabled': value['c9sTweetAnatomyModeratorBadgeEnabled'],
+        'communities_web_enable_tweet_community_results_fetch': value['communitiesWebEnableTweetCommunityResultsFetch'],
+        'creator_subscriptions_quote_tweet_preview_enabled': value['creatorSubscriptionsQuoteTweetPreviewEnabled'],
         'freedom_of_speech_not_reach_fetch_enabled': value['freedomOfSpeechNotReachFetchEnabled'],
         'graphql_is_translatable_rweb_tweet_is_translatable_enabled': value['graphqlIsTranslatableRwebTweetIsTranslatableEnabled'],
         'longform_notetweets_consumption_enabled': value['longformNotetweetsConsumptionEnabled'],
@@ -218,13 +237,12 @@ export function PostCreateTweetRequestFeaturesToJSON(value?: PostCreateTweetRequ
         'responsive_web_graphql_exclude_directive_enabled': value['responsiveWebGraphqlExcludeDirectiveEnabled'],
         'responsive_web_graphql_skip_user_profile_image_extensions_enabled': value['responsiveWebGraphqlSkipUserProfileImageExtensionsEnabled'],
         'responsive_web_graphql_timeline_navigation_enabled': value['responsiveWebGraphqlTimelineNavigationEnabled'],
-        'responsive_web_media_download_video_enabled': value['responsiveWebMediaDownloadVideoEnabled'],
         'responsive_web_twitter_article_tweet_consumption_enabled': value['responsiveWebTwitterArticleTweetConsumptionEnabled'],
+        'rweb_tipjar_consumption_enabled': value['rwebTipjarConsumptionEnabled'],
         'rweb_video_timestamps_enabled': value['rwebVideoTimestampsEnabled'],
         'standardized_nudges_misinfo': value['standardizedNudgesMisinfo'],
         'tweet_awards_web_tipping_enabled': value['tweetAwardsWebTippingEnabled'],
         'tweet_with_visibility_results_prefer_gql_limited_actions_policy_enabled': value['tweetWithVisibilityResultsPreferGqlLimitedActionsPolicyEnabled'],
-        'tweetypie_unmention_optimization_enabled': value['tweetypieUnmentionOptimizationEnabled'],
         'verified_phone_label_enabled': value['verifiedPhoneLabelEnabled'],
         'view_counts_everywhere_api_enabled': value['viewCountsEverywhereApiEnabled'],
     };

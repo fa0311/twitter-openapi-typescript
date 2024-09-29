@@ -36,9 +36,9 @@ export interface PrimaryCommunityTopic {
 /**
  * Check if a given object implements the PrimaryCommunityTopic interface.
  */
-export function instanceOfPrimaryCommunityTopic(value: object): boolean {
-    if (!('topicId' in value)) return false;
-    if (!('topicName' in value)) return false;
+export function instanceOfPrimaryCommunityTopic(value: object): value is PrimaryCommunityTopic {
+    if (!('topicId' in value) || value['topicId'] === undefined) return false;
+    if (!('topicName' in value) || value['topicName'] === undefined) return false;
     return true;
 }
 

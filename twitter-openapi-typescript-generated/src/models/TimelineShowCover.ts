@@ -13,18 +13,18 @@
  */
 
 import { mapValues } from '../runtime';
-import type { ClientEventInfo } from './ClientEventInfo';
-import {
-    ClientEventInfoFromJSON,
-    ClientEventInfoFromJSONTyped,
-    ClientEventInfoToJSON,
-} from './ClientEventInfo';
 import type { InstructionType } from './InstructionType';
 import {
     InstructionTypeFromJSON,
     InstructionTypeFromJSONTyped,
     InstructionTypeToJSON,
 } from './InstructionType';
+import type { ClientEventInfo } from './ClientEventInfo';
+import {
+    ClientEventInfoFromJSON,
+    ClientEventInfoFromJSONTyped,
+    ClientEventInfoToJSON,
+} from './ClientEventInfo';
 import type { TimelineHalfCover } from './TimelineHalfCover';
 import {
     TimelineHalfCoverFromJSON,
@@ -58,13 +58,15 @@ export interface TimelineShowCover {
     type: InstructionType;
 }
 
+
+
 /**
  * Check if a given object implements the TimelineShowCover interface.
  */
-export function instanceOfTimelineShowCover(value: object): boolean {
-    if (!('clientEventInfo' in value)) return false;
-    if (!('cover' in value)) return false;
-    if (!('type' in value)) return false;
+export function instanceOfTimelineShowCover(value: object): value is TimelineShowCover {
+    if (!('clientEventInfo' in value) || value['clientEventInfo'] === undefined) return false;
+    if (!('cover' in value) || value['cover'] === undefined) return false;
+    if (!('type' in value) || value['type'] === undefined) return false;
     return true;
 }
 

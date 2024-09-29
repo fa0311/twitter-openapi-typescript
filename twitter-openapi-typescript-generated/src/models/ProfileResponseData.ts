@@ -37,8 +37,8 @@ export interface ProfileResponseData {
 /**
  * Check if a given object implements the ProfileResponseData interface.
  */
-export function instanceOfProfileResponseData(value: object): boolean {
-    if (!('userResultByScreenName' in value)) return false;
+export function instanceOfProfileResponseData(value: object): value is ProfileResponseData {
+    if (!('userResultByScreenName' in value) || value['userResultByScreenName'] === undefined) return false;
     return true;
 }
 

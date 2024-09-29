@@ -13,30 +13,30 @@
  */
 
 import { mapValues } from '../runtime';
-import type { CommunityDeleteActionResult } from './CommunityDeleteActionResult';
-import {
-    CommunityDeleteActionResultFromJSON,
-    CommunityDeleteActionResultFromJSONTyped,
-    CommunityDeleteActionResultToJSON,
-} from './CommunityDeleteActionResult';
 import type { CommunityJoinActionResult } from './CommunityJoinActionResult';
 import {
     CommunityJoinActionResultFromJSON,
     CommunityJoinActionResultFromJSONTyped,
     CommunityJoinActionResultToJSON,
 } from './CommunityJoinActionResult';
-import type { CommunityLeaveActionResult } from './CommunityLeaveActionResult';
+import type { CommunityDeleteActionResult } from './CommunityDeleteActionResult';
 import {
-    CommunityLeaveActionResultFromJSON,
-    CommunityLeaveActionResultFromJSONTyped,
-    CommunityLeaveActionResultToJSON,
-} from './CommunityLeaveActionResult';
+    CommunityDeleteActionResultFromJSON,
+    CommunityDeleteActionResultFromJSONTyped,
+    CommunityDeleteActionResultToJSON,
+} from './CommunityDeleteActionResult';
 import type { CommunityPinActionResult } from './CommunityPinActionResult';
 import {
     CommunityPinActionResultFromJSON,
     CommunityPinActionResultFromJSONTyped,
     CommunityPinActionResultToJSON,
 } from './CommunityPinActionResult';
+import type { CommunityLeaveActionResult } from './CommunityLeaveActionResult';
+import {
+    CommunityLeaveActionResultFromJSON,
+    CommunityLeaveActionResultFromJSONTyped,
+    CommunityLeaveActionResultToJSON,
+} from './CommunityLeaveActionResult';
 
 /**
  * 
@@ -73,11 +73,11 @@ export interface CommunityActions {
 /**
  * Check if a given object implements the CommunityActions interface.
  */
-export function instanceOfCommunityActions(value: object): boolean {
-    if (!('deleteActionResult' in value)) return false;
-    if (!('joinActionResult' in value)) return false;
-    if (!('leaveActionResult' in value)) return false;
-    if (!('pinActionResult' in value)) return false;
+export function instanceOfCommunityActions(value: object): value is CommunityActions {
+    if (!('deleteActionResult' in value) || value['deleteActionResult'] === undefined) return false;
+    if (!('joinActionResult' in value) || value['joinActionResult'] === undefined) return false;
+    if (!('leaveActionResult' in value) || value['leaveActionResult'] === undefined) return false;
+    if (!('pinActionResult' in value) || value['pinActionResult'] === undefined) return false;
     return true;
 }
 

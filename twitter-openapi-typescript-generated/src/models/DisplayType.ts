@@ -26,6 +26,17 @@ export const DisplayType = {
 export type DisplayType = typeof DisplayType[keyof typeof DisplayType];
 
 
+export function instanceOfDisplayType(value: any): boolean {
+    for (const key in DisplayType) {
+        if (Object.prototype.hasOwnProperty.call(DisplayType, key)) {
+            if (DisplayType[key as keyof typeof DisplayType] === value) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
 export function DisplayTypeFromJSON(json: any): DisplayType {
     return DisplayTypeFromJSONTyped(json, false);
 }

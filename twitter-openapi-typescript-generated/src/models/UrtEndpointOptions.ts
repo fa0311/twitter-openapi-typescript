@@ -43,9 +43,9 @@ export interface UrtEndpointOptions {
 /**
  * Check if a given object implements the UrtEndpointOptions interface.
  */
-export function instanceOfUrtEndpointOptions(value: object): boolean {
-    if (!('requestParams' in value)) return false;
-    if (!('title' in value)) return false;
+export function instanceOfUrtEndpointOptions(value: object): value is UrtEndpointOptions {
+    if (!('requestParams' in value) || value['requestParams'] === undefined) return false;
+    if (!('title' in value) || value['title'] === undefined) return false;
     return true;
 }
 

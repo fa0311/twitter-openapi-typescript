@@ -13,18 +13,18 @@
  */
 
 import { mapValues } from '../runtime';
-import type { TweetCardLegacyBindingValue } from './TweetCardLegacyBindingValue';
-import {
-    TweetCardLegacyBindingValueFromJSON,
-    TweetCardLegacyBindingValueFromJSONTyped,
-    TweetCardLegacyBindingValueToJSON,
-} from './TweetCardLegacyBindingValue';
 import type { TweetCardPlatformData } from './TweetCardPlatformData';
 import {
     TweetCardPlatformDataFromJSON,
     TweetCardPlatformDataFromJSONTyped,
     TweetCardPlatformDataToJSON,
 } from './TweetCardPlatformData';
+import type { TweetCardLegacyBindingValue } from './TweetCardLegacyBindingValue';
+import {
+    TweetCardLegacyBindingValueFromJSON,
+    TweetCardLegacyBindingValueFromJSONTyped,
+    TweetCardLegacyBindingValueToJSON,
+} from './TweetCardLegacyBindingValue';
 import type { UserResults } from './UserResults';
 import {
     UserResultsFromJSON,
@@ -73,10 +73,10 @@ export interface TweetCardLegacy {
 /**
  * Check if a given object implements the TweetCardLegacy interface.
  */
-export function instanceOfTweetCardLegacy(value: object): boolean {
-    if (!('bindingValues' in value)) return false;
-    if (!('name' in value)) return false;
-    if (!('url' in value)) return false;
+export function instanceOfTweetCardLegacy(value: object): value is TweetCardLegacy {
+    if (!('bindingValues' in value) || value['bindingValues'] === undefined) return false;
+    if (!('name' in value) || value['name'] === undefined) return false;
+    if (!('url' in value) || value['url'] === undefined) return false;
     return true;
 }
 

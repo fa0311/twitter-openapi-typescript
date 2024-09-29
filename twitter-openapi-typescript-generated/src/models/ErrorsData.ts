@@ -16,46 +16,45 @@ import { mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface Tracing
+ * @interface ErrorsData
  */
-export interface Tracing {
+export interface ErrorsData {
     /**
      * 
      * @type {string}
-     * @memberof Tracing
+     * @memberof ErrorsData
      */
-    traceId: string;
+    user?: string;
 }
 
 /**
- * Check if a given object implements the Tracing interface.
+ * Check if a given object implements the ErrorsData interface.
  */
-export function instanceOfTracing(value: object): value is Tracing {
-    if (!('traceId' in value) || value['traceId'] === undefined) return false;
+export function instanceOfErrorsData(value: object): value is ErrorsData {
     return true;
 }
 
-export function TracingFromJSON(json: any): Tracing {
-    return TracingFromJSONTyped(json, false);
+export function ErrorsDataFromJSON(json: any): ErrorsData {
+    return ErrorsDataFromJSONTyped(json, false);
 }
 
-export function TracingFromJSONTyped(json: any, ignoreDiscriminator: boolean): Tracing {
+export function ErrorsDataFromJSONTyped(json: any, ignoreDiscriminator: boolean): ErrorsData {
     if (json == null) {
         return json;
     }
     return {
         
-        'traceId': json['trace_id'],
+        'user': json['user'] == null ? undefined : json['user'],
     };
 }
 
-export function TracingToJSON(value?: Tracing | null): any {
+export function ErrorsDataToJSON(value?: ErrorsData | null): any {
     if (value == null) {
         return value;
     }
     return {
         
-        'trace_id': value['traceId'],
+        'user': value['user'],
     };
 }
 

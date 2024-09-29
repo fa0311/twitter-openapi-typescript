@@ -42,7 +42,14 @@ export function GetUserByRestId200ResponseFromJSONTyped(json: any, ignoreDiscrim
     if (json == null) {
         return json;
     }
-    return { ...ErrorsFromJSONTyped(json, true), ...UserResponseFromJSONTyped(json, true) };
+    if (instanceOfErrors(json)) {
+        return ErrorsFromJSONTyped(json, true);
+    }
+    if (instanceOfUserResponse(json)) {
+        return UserResponseFromJSONTyped(json, true);
+    }
+
+    return {} as any;
 }
 
 export function GetUserByRestId200ResponseToJSON(value?: GetUserByRestId200Response | null): any {

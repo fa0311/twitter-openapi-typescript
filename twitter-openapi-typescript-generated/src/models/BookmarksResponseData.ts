@@ -37,8 +37,8 @@ export interface BookmarksResponseData {
 /**
  * Check if a given object implements the BookmarksResponseData interface.
  */
-export function instanceOfBookmarksResponseData(value: object): boolean {
-    if (!('bookmarkTimelineV2' in value)) return false;
+export function instanceOfBookmarksResponseData(value: object): value is BookmarksResponseData {
+    if (!('bookmarkTimelineV2' in value) || value['bookmarkTimelineV2'] === undefined) return false;
     return true;
 }
 

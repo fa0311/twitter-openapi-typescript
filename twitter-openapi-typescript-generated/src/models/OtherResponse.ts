@@ -37,7 +37,7 @@ export interface OtherResponse {
 /**
  * Check if a given object implements the OtherResponse interface.
  */
-export function instanceOfOtherResponse(value: object): boolean {
+export function instanceOfOtherResponse(value: object): value is OtherResponse {
     return true;
 }
 

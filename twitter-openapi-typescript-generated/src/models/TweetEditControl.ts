@@ -67,7 +67,7 @@ export interface TweetEditControl {
 /**
  * Check if a given object implements the TweetEditControl interface.
  */
-export function instanceOfTweetEditControl(value: object): boolean {
+export function instanceOfTweetEditControl(value: object): value is TweetEditControl {
     return true;
 }
 

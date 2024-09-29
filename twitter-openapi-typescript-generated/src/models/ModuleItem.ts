@@ -43,9 +43,9 @@ export interface ModuleItem {
 /**
  * Check if a given object implements the ModuleItem interface.
  */
-export function instanceOfModuleItem(value: object): boolean {
-    if (!('entryId' in value)) return false;
-    if (!('item' in value)) return false;
+export function instanceOfModuleItem(value: object): value is ModuleItem {
+    if (!('entryId' in value) || value['entryId'] === undefined) return false;
+    if (!('item' in value) || value['item'] === undefined) return false;
     return true;
 }
 

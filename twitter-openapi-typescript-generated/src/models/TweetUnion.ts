@@ -26,6 +26,13 @@ import {
     TweetTombstoneFromJSONTyped,
     TweetTombstoneToJSON,
 } from './TweetTombstone';
+import type { TweetUnavailable } from './TweetUnavailable';
+import {
+    instanceOfTweetUnavailable,
+    TweetUnavailableFromJSON,
+    TweetUnavailableFromJSONTyped,
+    TweetUnavailableToJSON,
+} from './TweetUnavailable';
 import type { TweetWithVisibilityResults } from './TweetWithVisibilityResults';
 import {
     instanceOfTweetWithVisibilityResults,
@@ -39,7 +46,7 @@ import {
  * 
  * @export
  */
-export type TweetUnion = { typename: 'Tweet' } & Tweet | { typename: 'TweetTombstone' } & TweetTombstone | { typename: 'TweetWithVisibilityResults' } & TweetWithVisibilityResults;
+export type TweetUnion = { typename: 'Tweet' } & Tweet | { typename: 'TweetTombstone' } & TweetTombstone | { typename: 'TweetUnavailable' } & TweetUnavailable | { typename: 'TweetWithVisibilityResults' } & TweetWithVisibilityResults;
 
 export function TweetUnionFromJSON(json: any): TweetUnion {
     return TweetUnionFromJSONTyped(json, false);
@@ -51,11 +58,13 @@ export function TweetUnionFromJSONTyped(json: any, ignoreDiscriminator: boolean)
     }
     switch (json['__typename']) {
         case 'Tweet':
-            return {...TweetFromJSONTyped(json, true), typename: 'Tweet'};
+            return Object.assign({}, TweetFromJSONTyped(json, true), { typename: 'Tweet' } as const);
         case 'TweetTombstone':
-            return {...TweetTombstoneFromJSONTyped(json, true), typename: 'TweetTombstone'};
+            return Object.assign({}, TweetTombstoneFromJSONTyped(json, true), { typename: 'TweetTombstone' } as const);
+        case 'TweetUnavailable':
+            return Object.assign({}, TweetUnavailableFromJSONTyped(json, true), { typename: 'TweetUnavailable' } as const);
         case 'TweetWithVisibilityResults':
-            return {...TweetWithVisibilityResultsFromJSONTyped(json, true), typename: 'TweetWithVisibilityResults'};
+            return Object.assign({}, TweetWithVisibilityResultsFromJSONTyped(json, true), { typename: 'TweetWithVisibilityResults' } as const);
         default:
             throw new Error(`No variant of TweetUnion exists with 'typename=${json['typename']}'`);
     }
@@ -70,6 +79,8 @@ export function TweetUnionToJSON(value?: TweetUnion | null): any {
             return TweetToJSON(value);
         case 'TweetTombstone':
             return TweetTombstoneToJSON(value);
+        case 'TweetUnavailable':
+            return TweetUnavailableToJSON(value);
         case 'TweetWithVisibilityResults':
             return TweetWithVisibilityResultsToJSON(value);
         default:

@@ -30,8 +30,8 @@ export interface DeleteTweetResponseResult {
 /**
  * Check if a given object implements the DeleteTweetResponseResult interface.
  */
-export function instanceOfDeleteTweetResponseResult(value: object): boolean {
-    if (!('tweetResults' in value)) return false;
+export function instanceOfDeleteTweetResponseResult(value: object): value is DeleteTweetResponseResult {
+    if (!('tweetResults' in value) || value['tweetResults'] === undefined) return false;
     return true;
 }
 

@@ -37,7 +37,7 @@ export interface UserLegacyExtendedProfile {
 /**
  * Check if a given object implements the UserLegacyExtendedProfile interface.
  */
-export function instanceOfUserLegacyExtendedProfile(value: object): boolean {
+export function instanceOfUserLegacyExtendedProfile(value: object): value is UserLegacyExtendedProfile {
     return true;
 }
 

@@ -55,9 +55,9 @@ export type TimelineTerminateTimelineDirectionEnum = typeof TimelineTerminateTim
 /**
  * Check if a given object implements the TimelineTerminateTimeline interface.
  */
-export function instanceOfTimelineTerminateTimeline(value: object): boolean {
-    if (!('direction' in value)) return false;
-    if (!('type' in value)) return false;
+export function instanceOfTimelineTerminateTimeline(value: object): value is TimelineTerminateTimeline {
+    if (!('direction' in value) || value['direction'] === undefined) return false;
+    if (!('type' in value) || value['type'] === undefined) return false;
     return true;
 }
 

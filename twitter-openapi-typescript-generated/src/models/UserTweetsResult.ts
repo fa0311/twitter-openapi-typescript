@@ -13,18 +13,18 @@
  */
 
 import { mapValues } from '../runtime';
-import type { TimelineV2 } from './TimelineV2';
-import {
-    TimelineV2FromJSON,
-    TimelineV2FromJSONTyped,
-    TimelineV2ToJSON,
-} from './TimelineV2';
 import type { TypeName } from './TypeName';
 import {
     TypeNameFromJSON,
     TypeNameFromJSONTyped,
     TypeNameToJSON,
 } from './TypeName';
+import type { TimelineV2 } from './TimelineV2';
+import {
+    TimelineV2FromJSON,
+    TimelineV2FromJSONTyped,
+    TimelineV2ToJSON,
+} from './TimelineV2';
 
 /**
  * 
@@ -46,12 +46,14 @@ export interface UserTweetsResult {
     timelineV2: TimelineV2;
 }
 
+
+
 /**
  * Check if a given object implements the UserTweetsResult interface.
  */
-export function instanceOfUserTweetsResult(value: object): boolean {
-    if (!('typename' in value)) return false;
-    if (!('timelineV2' in value)) return false;
+export function instanceOfUserTweetsResult(value: object): value is UserTweetsResult {
+    if (!('typename' in value) || value['typename'] === undefined) return false;
+    if (!('timelineV2' in value) || value['timelineV2'] === undefined) return false;
     return true;
 }
 

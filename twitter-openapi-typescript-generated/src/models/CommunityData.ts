@@ -13,24 +13,36 @@
  */
 
 import { mapValues } from '../runtime';
+import type { PrimaryCommunityTopic } from './PrimaryCommunityTopic';
+import {
+    PrimaryCommunityTopicFromJSON,
+    PrimaryCommunityTopicFromJSONTyped,
+    PrimaryCommunityTopicToJSON,
+} from './PrimaryCommunityTopic';
 import type { CommunityActions } from './CommunityActions';
 import {
     CommunityActionsFromJSON,
     CommunityActionsFromJSONTyped,
     CommunityActionsToJSON,
 } from './CommunityActions';
-import type { CommunityInvitesResult } from './CommunityInvitesResult';
+import type { TypeName } from './TypeName';
 import {
-    CommunityInvitesResultFromJSON,
-    CommunityInvitesResultFromJSONTyped,
-    CommunityInvitesResultToJSON,
-} from './CommunityInvitesResult';
+    TypeNameFromJSON,
+    TypeNameFromJSONTyped,
+    TypeNameToJSON,
+} from './TypeName';
 import type { CommunityJoinRequestsResult } from './CommunityJoinRequestsResult';
 import {
     CommunityJoinRequestsResultFromJSON,
     CommunityJoinRequestsResultFromJSONTyped,
     CommunityJoinRequestsResultToJSON,
 } from './CommunityJoinRequestsResult';
+import type { CommunityInvitesResult } from './CommunityInvitesResult';
+import {
+    CommunityInvitesResultFromJSON,
+    CommunityInvitesResultFromJSONTyped,
+    CommunityInvitesResultToJSON,
+} from './CommunityInvitesResult';
 import type { CommunityRule } from './CommunityRule';
 import {
     CommunityRuleFromJSON,
@@ -43,18 +55,6 @@ import {
     CommunityUrlsFromJSONTyped,
     CommunityUrlsToJSON,
 } from './CommunityUrls';
-import type { PrimaryCommunityTopic } from './PrimaryCommunityTopic';
-import {
-    PrimaryCommunityTopicFromJSON,
-    PrimaryCommunityTopicFromJSONTyped,
-    PrimaryCommunityTopicToJSON,
-} from './PrimaryCommunityTopic';
-import type { TypeName } from './TypeName';
-import {
-    TypeNameFromJSON,
-    TypeNameFromJSONTyped,
-    TypeNameToJSON,
-} from './TypeName';
 import type { UserResults } from './UserResults';
 import {
     UserResultsFromJSON,
@@ -255,25 +255,25 @@ export type CommunityDataRoleEnum = typeof CommunityDataRoleEnum[keyof typeof Co
 /**
  * Check if a given object implements the CommunityData interface.
  */
-export function instanceOfCommunityData(value: object): boolean {
-    if (!('typename' in value)) return false;
-    if (!('actions' in value)) return false;
-    if (!('adminResults' in value)) return false;
-    if (!('creatorResults' in value)) return false;
-    if (!('description' in value)) return false;
-    if (!('idStr' in value)) return false;
-    if (!('invitesPolicy' in value)) return false;
-    if (!('invitesResult' in value)) return false;
-    if (!('isPinned' in value)) return false;
-    if (!('joinPolicy' in value)) return false;
-    if (!('memberCount' in value)) return false;
-    if (!('membersFacepileResults' in value)) return false;
-    if (!('moderatorCount' in value)) return false;
-    if (!('name' in value)) return false;
-    if (!('question' in value)) return false;
-    if (!('role' in value)) return false;
-    if (!('rules' in value)) return false;
-    if (!('searchTags' in value)) return false;
+export function instanceOfCommunityData(value: object): value is CommunityData {
+    if (!('typename' in value) || value['typename'] === undefined) return false;
+    if (!('actions' in value) || value['actions'] === undefined) return false;
+    if (!('adminResults' in value) || value['adminResults'] === undefined) return false;
+    if (!('creatorResults' in value) || value['creatorResults'] === undefined) return false;
+    if (!('description' in value) || value['description'] === undefined) return false;
+    if (!('idStr' in value) || value['idStr'] === undefined) return false;
+    if (!('invitesPolicy' in value) || value['invitesPolicy'] === undefined) return false;
+    if (!('invitesResult' in value) || value['invitesResult'] === undefined) return false;
+    if (!('isPinned' in value) || value['isPinned'] === undefined) return false;
+    if (!('joinPolicy' in value) || value['joinPolicy'] === undefined) return false;
+    if (!('memberCount' in value) || value['memberCount'] === undefined) return false;
+    if (!('membersFacepileResults' in value) || value['membersFacepileResults'] === undefined) return false;
+    if (!('moderatorCount' in value) || value['moderatorCount'] === undefined) return false;
+    if (!('name' in value) || value['name'] === undefined) return false;
+    if (!('question' in value) || value['question'] === undefined) return false;
+    if (!('role' in value) || value['role'] === undefined) return false;
+    if (!('rules' in value) || value['rules'] === undefined) return false;
+    if (!('searchTags' in value) || value['searchTags'] === undefined) return false;
     return true;
 }
 

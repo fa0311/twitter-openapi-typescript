@@ -37,8 +37,8 @@ export interface NoteTweetResultMedia {
 /**
  * Check if a given object implements the NoteTweetResultMedia interface.
  */
-export function instanceOfNoteTweetResultMedia(value: object): boolean {
-    if (!('inlineMedia' in value)) return false;
+export function instanceOfNoteTweetResultMedia(value: object): value is NoteTweetResultMedia {
+    if (!('inlineMedia' in value) || value['inlineMedia'] === undefined) return false;
     return true;
 }
 

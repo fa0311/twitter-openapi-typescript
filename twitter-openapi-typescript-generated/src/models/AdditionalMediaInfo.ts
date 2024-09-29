@@ -13,18 +13,18 @@
  */
 
 import { mapValues } from '../runtime';
-import type { AdditionalMediaInfoCallToActions } from './AdditionalMediaInfoCallToActions';
-import {
-    AdditionalMediaInfoCallToActionsFromJSON,
-    AdditionalMediaInfoCallToActionsFromJSONTyped,
-    AdditionalMediaInfoCallToActionsToJSON,
-} from './AdditionalMediaInfoCallToActions';
 import type { UserResultCore } from './UserResultCore';
 import {
     UserResultCoreFromJSON,
     UserResultCoreFromJSONTyped,
     UserResultCoreToJSON,
 } from './UserResultCore';
+import type { AdditionalMediaInfoCallToActions } from './AdditionalMediaInfoCallToActions';
+import {
+    AdditionalMediaInfoCallToActionsFromJSON,
+    AdditionalMediaInfoCallToActionsFromJSONTyped,
+    AdditionalMediaInfoCallToActionsToJSON,
+} from './AdditionalMediaInfoCallToActions';
 
 /**
  * 
@@ -73,8 +73,8 @@ export interface AdditionalMediaInfo {
 /**
  * Check if a given object implements the AdditionalMediaInfo interface.
  */
-export function instanceOfAdditionalMediaInfo(value: object): boolean {
-    if (!('monetizable' in value)) return false;
+export function instanceOfAdditionalMediaInfo(value: object): value is AdditionalMediaInfo {
+    if (!('monetizable' in value) || value['monetizable'] === undefined) return false;
     return true;
 }
 

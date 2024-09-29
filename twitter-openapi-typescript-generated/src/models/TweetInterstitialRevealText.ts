@@ -49,10 +49,10 @@ export interface TweetInterstitialRevealText {
 /**
  * Check if a given object implements the TweetInterstitialRevealText interface.
  */
-export function instanceOfTweetInterstitialRevealText(value: object): boolean {
-    if (!('entities' in value)) return false;
-    if (!('rtl' in value)) return false;
-    if (!('text' in value)) return false;
+export function instanceOfTweetInterstitialRevealText(value: object): value is TweetInterstitialRevealText {
+    if (!('entities' in value) || value['entities'] === undefined) return false;
+    if (!('rtl' in value) || value['rtl'] === undefined) return false;
+    if (!('text' in value) || value['text'] === undefined) return false;
     return true;
 }
 

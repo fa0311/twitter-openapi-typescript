@@ -30,8 +30,8 @@ export interface CreateBookmarkResponseData {
 /**
  * Check if a given object implements the CreateBookmarkResponseData interface.
  */
-export function instanceOfCreateBookmarkResponseData(value: object): boolean {
-    if (!('tweetBookmarkPut' in value)) return false;
+export function instanceOfCreateBookmarkResponseData(value: object): value is CreateBookmarkResponseData {
+    if (!('tweetBookmarkPut' in value) || value['tweetBookmarkPut'] === undefined) return false;
     return true;
 }
 

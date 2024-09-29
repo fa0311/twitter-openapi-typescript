@@ -13,24 +13,24 @@
  */
 
 import { mapValues } from '../runtime';
-import type { TweetInterstitialRevealText } from './TweetInterstitialRevealText';
-import {
-    TweetInterstitialRevealTextFromJSON,
-    TweetInterstitialRevealTextFromJSONTyped,
-    TweetInterstitialRevealTextToJSON,
-} from './TweetInterstitialRevealText';
-import type { TweetInterstitialText } from './TweetInterstitialText';
-import {
-    TweetInterstitialTextFromJSON,
-    TweetInterstitialTextFromJSONTyped,
-    TweetInterstitialTextToJSON,
-} from './TweetInterstitialText';
 import type { TypeName } from './TypeName';
 import {
     TypeNameFromJSON,
     TypeNameFromJSONTyped,
     TypeNameToJSON,
 } from './TypeName';
+import type { TweetInterstitialText } from './TweetInterstitialText';
+import {
+    TweetInterstitialTextFromJSON,
+    TweetInterstitialTextFromJSONTyped,
+    TweetInterstitialTextToJSON,
+} from './TweetInterstitialText';
+import type { TweetInterstitialRevealText } from './TweetInterstitialRevealText';
+import {
+    TweetInterstitialRevealTextFromJSON,
+    TweetInterstitialRevealTextFromJSONTyped,
+    TweetInterstitialRevealTextToJSON,
+} from './TweetInterstitialRevealText';
 
 /**
  * 
@@ -77,11 +77,11 @@ export type TweetInterstitialDisplayTypeEnum = typeof TweetInterstitialDisplayTy
 /**
  * Check if a given object implements the TweetInterstitial interface.
  */
-export function instanceOfTweetInterstitial(value: object): boolean {
-    if (!('typename' in value)) return false;
-    if (!('displayType' in value)) return false;
-    if (!('revealText' in value)) return false;
-    if (!('text' in value)) return false;
+export function instanceOfTweetInterstitial(value: object): value is TweetInterstitial {
+    if (!('typename' in value) || value['typename'] === undefined) return false;
+    if (!('displayType' in value) || value['displayType'] === undefined) return false;
+    if (!('revealText' in value) || value['revealText'] === undefined) return false;
+    if (!('text' in value) || value['text'] === undefined) return false;
     return true;
 }
 

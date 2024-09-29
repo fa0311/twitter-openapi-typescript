@@ -37,8 +37,8 @@ export interface UserHighlightsTweetsData {
 /**
  * Check if a given object implements the UserHighlightsTweetsData interface.
  */
-export function instanceOfUserHighlightsTweetsData(value: object): boolean {
-    if (!('user' in value)) return false;
+export function instanceOfUserHighlightsTweetsData(value: object): value is UserHighlightsTweetsData {
+    if (!('user' in value) || value['user'] === undefined) return false;
     return true;
 }
 

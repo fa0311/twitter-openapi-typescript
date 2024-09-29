@@ -36,9 +36,9 @@ export interface PostCreateTweetRequestVariablesReply {
 /**
  * Check if a given object implements the PostCreateTweetRequestVariablesReply interface.
  */
-export function instanceOfPostCreateTweetRequestVariablesReply(value: object): boolean {
-    if (!('excludeReplyUserIds' in value)) return false;
-    if (!('inReplyToTweetId' in value)) return false;
+export function instanceOfPostCreateTweetRequestVariablesReply(value: object): value is PostCreateTweetRequestVariablesReply {
+    if (!('excludeReplyUserIds' in value) || value['excludeReplyUserIds'] === undefined) return false;
+    if (!('inReplyToTweetId' in value) || value['inReplyToTweetId'] === undefined) return false;
     return true;
 }
 

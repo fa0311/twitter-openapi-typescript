@@ -36,9 +36,9 @@ export interface UserHighlightsInfo {
 /**
  * Check if a given object implements the UserHighlightsInfo interface.
  */
-export function instanceOfUserHighlightsInfo(value: object): boolean {
-    if (!('canHighlightTweets' in value)) return false;
-    if (!('highlightedTweets' in value)) return false;
+export function instanceOfUserHighlightsInfo(value: object): value is UserHighlightsInfo {
+    if (!('canHighlightTweets' in value) || value['canHighlightTweets'] === undefined) return false;
+    if (!('highlightedTweets' in value) || value['highlightedTweets'] === undefined) return false;
     return true;
 }
 

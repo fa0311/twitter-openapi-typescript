@@ -40,8 +40,8 @@ export type UnifiedCardCardFetchStateEnum = typeof UnifiedCardCardFetchStateEnum
 /**
  * Check if a given object implements the UnifiedCard interface.
  */
-export function instanceOfUnifiedCard(value: object): boolean {
-    if (!('cardFetchState' in value)) return false;
+export function instanceOfUnifiedCard(value: object): value is UnifiedCard {
+    if (!('cardFetchState' in value) || value['cardFetchState'] === undefined) return false;
     return true;
 }
 

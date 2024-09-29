@@ -37,8 +37,8 @@ export interface UserResultCore {
 /**
  * Check if a given object implements the UserResultCore interface.
  */
-export function instanceOfUserResultCore(value: object): boolean {
-    if (!('userResults' in value)) return false;
+export function instanceOfUserResultCore(value: object): value is UserResultCore {
+    if (!('userResults' in value) || value['userResults'] === undefined) return false;
     return true;
 }
 

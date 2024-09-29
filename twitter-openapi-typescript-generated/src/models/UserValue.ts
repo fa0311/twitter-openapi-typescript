@@ -30,8 +30,8 @@ export interface UserValue {
 /**
  * Check if a given object implements the UserValue interface.
  */
-export function instanceOfUserValue(value: object): boolean {
-    if (!('idStr' in value)) return false;
+export function instanceOfUserValue(value: object): value is UserValue {
+    if (!('idStr' in value) || value['idStr'] === undefined) return false;
     return true;
 }
 

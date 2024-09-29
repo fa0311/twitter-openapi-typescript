@@ -25,42 +25,42 @@ import {
     AllowDownloadStatusFromJSONTyped,
     AllowDownloadStatusToJSON,
 } from './AllowDownloadStatus';
-import type { ExtMediaAvailability } from './ExtMediaAvailability';
-import {
-    ExtMediaAvailabilityFromJSON,
-    ExtMediaAvailabilityFromJSONTyped,
-    ExtMediaAvailabilityToJSON,
-} from './ExtMediaAvailability';
-import type { MediaOriginalInfo } from './MediaOriginalInfo';
-import {
-    MediaOriginalInfoFromJSON,
-    MediaOriginalInfoFromJSONTyped,
-    MediaOriginalInfoToJSON,
-} from './MediaOriginalInfo';
 import type { MediaResults } from './MediaResults';
 import {
     MediaResultsFromJSON,
     MediaResultsFromJSONTyped,
     MediaResultsToJSON,
 } from './MediaResults';
-import type { MediaSizes } from './MediaSizes';
-import {
-    MediaSizesFromJSON,
-    MediaSizesFromJSONTyped,
-    MediaSizesToJSON,
-} from './MediaSizes';
-import type { MediaVideoInfo } from './MediaVideoInfo';
-import {
-    MediaVideoInfoFromJSON,
-    MediaVideoInfoFromJSONTyped,
-    MediaVideoInfoToJSON,
-} from './MediaVideoInfo';
 import type { SensitiveMediaWarning } from './SensitiveMediaWarning';
 import {
     SensitiveMediaWarningFromJSON,
     SensitiveMediaWarningFromJSONTyped,
     SensitiveMediaWarningToJSON,
 } from './SensitiveMediaWarning';
+import type { ExtMediaAvailability } from './ExtMediaAvailability';
+import {
+    ExtMediaAvailabilityFromJSON,
+    ExtMediaAvailabilityFromJSONTyped,
+    ExtMediaAvailabilityToJSON,
+} from './ExtMediaAvailability';
+import type { MediaVideoInfo } from './MediaVideoInfo';
+import {
+    MediaVideoInfoFromJSON,
+    MediaVideoInfoFromJSONTyped,
+    MediaVideoInfoToJSON,
+} from './MediaVideoInfo';
+import type { MediaSizes } from './MediaSizes';
+import {
+    MediaSizesFromJSON,
+    MediaSizesFromJSONTyped,
+    MediaSizesToJSON,
+} from './MediaSizes';
+import type { MediaOriginalInfo } from './MediaOriginalInfo';
+import {
+    MediaOriginalInfoFromJSON,
+    MediaOriginalInfoFromJSONTyped,
+    MediaOriginalInfoToJSON,
+} from './MediaOriginalInfo';
 
 /**
  * 
@@ -205,18 +205,18 @@ export type MediaTypeEnum = typeof MediaTypeEnum[keyof typeof MediaTypeEnum];
 /**
  * Check if a given object implements the Media interface.
  */
-export function instanceOfMedia(value: object): boolean {
-    if (!('displayUrl' in value)) return false;
-    if (!('expandedUrl' in value)) return false;
-    if (!('extMediaAvailability' in value)) return false;
-    if (!('idStr' in value)) return false;
-    if (!('indices' in value)) return false;
-    if (!('mediaKey' in value)) return false;
-    if (!('mediaUrlHttps' in value)) return false;
-    if (!('originalInfo' in value)) return false;
-    if (!('sizes' in value)) return false;
-    if (!('type' in value)) return false;
-    if (!('url' in value)) return false;
+export function instanceOfMedia(value: object): value is Media {
+    if (!('displayUrl' in value) || value['displayUrl'] === undefined) return false;
+    if (!('expandedUrl' in value) || value['expandedUrl'] === undefined) return false;
+    if (!('extMediaAvailability' in value) || value['extMediaAvailability'] === undefined) return false;
+    if (!('idStr' in value) || value['idStr'] === undefined) return false;
+    if (!('indices' in value) || value['indices'] === undefined) return false;
+    if (!('mediaKey' in value) || value['mediaKey'] === undefined) return false;
+    if (!('mediaUrlHttps' in value) || value['mediaUrlHttps'] === undefined) return false;
+    if (!('originalInfo' in value) || value['originalInfo'] === undefined) return false;
+    if (!('sizes' in value) || value['sizes'] === undefined) return false;
+    if (!('type' in value) || value['type'] === undefined) return false;
+    if (!('url' in value) || value['url'] === undefined) return false;
     return true;
 }
 

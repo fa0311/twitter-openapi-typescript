@@ -37,8 +37,8 @@ export interface Article {
 /**
  * Check if a given object implements the Article interface.
  */
-export function instanceOfArticle(value: object): boolean {
-    if (!('articleResults' in value)) return false;
+export function instanceOfArticle(value: object): value is Article {
+    if (!('articleResults' in value) || value['articleResults'] === undefined) return false;
     return true;
 }
 

@@ -42,10 +42,10 @@ export interface SensitiveMediaWarning {
 /**
  * Check if a given object implements the SensitiveMediaWarning interface.
  */
-export function instanceOfSensitiveMediaWarning(value: object): boolean {
-    if (!('adultContent' in value)) return false;
-    if (!('graphicViolence' in value)) return false;
-    if (!('other' in value)) return false;
+export function instanceOfSensitiveMediaWarning(value: object): value is SensitiveMediaWarning {
+    if (!('adultContent' in value) || value['adultContent'] === undefined) return false;
+    if (!('graphicViolence' in value) || value['graphicViolence'] === undefined) return false;
+    if (!('other' in value) || value['other'] === undefined) return false;
     return true;
 }
 

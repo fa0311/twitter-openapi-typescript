@@ -55,10 +55,10 @@ export interface PostCreateTweetRequest {
 /**
  * Check if a given object implements the PostCreateTweetRequest interface.
  */
-export function instanceOfPostCreateTweetRequest(value: object): boolean {
-    if (!('features' in value)) return false;
-    if (!('queryId' in value)) return false;
-    if (!('variables' in value)) return false;
+export function instanceOfPostCreateTweetRequest(value: object): value is PostCreateTweetRequest {
+    if (!('features' in value) || value['features'] === undefined) return false;
+    if (!('queryId' in value) || value['queryId'] === undefined) return false;
+    if (!('variables' in value) || value['variables'] === undefined) return false;
     return true;
 }
 

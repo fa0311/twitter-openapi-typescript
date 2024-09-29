@@ -13,12 +13,6 @@
  */
 
 import { mapValues } from '../runtime';
-import type { Entities } from './Entities';
-import {
-    EntitiesFromJSON,
-    EntitiesFromJSONTyped,
-    EntitiesToJSON,
-} from './Entities';
 import type { NoteTweetResultMedia } from './NoteTweetResultMedia';
 import {
     NoteTweetResultMediaFromJSON,
@@ -31,6 +25,12 @@ import {
     NoteTweetResultRichTextFromJSONTyped,
     NoteTweetResultRichTextToJSON,
 } from './NoteTweetResultRichText';
+import type { Entities } from './Entities';
+import {
+    EntitiesFromJSON,
+    EntitiesFromJSONTyped,
+    EntitiesToJSON,
+} from './Entities';
 
 /**
  * 
@@ -73,10 +73,10 @@ export interface NoteTweetResultData {
 /**
  * Check if a given object implements the NoteTweetResultData interface.
  */
-export function instanceOfNoteTweetResultData(value: object): boolean {
-    if (!('entitySet' in value)) return false;
-    if (!('id' in value)) return false;
-    if (!('text' in value)) return false;
+export function instanceOfNoteTweetResultData(value: object): value is NoteTweetResultData {
+    if (!('entitySet' in value) || value['entitySet'] === undefined) return false;
+    if (!('id' in value) || value['id'] === undefined) return false;
+    if (!('text' in value) || value['text'] === undefined) return false;
     return true;
 }
 

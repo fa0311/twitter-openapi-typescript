@@ -55,11 +55,11 @@ export interface MediaSizes {
 /**
  * Check if a given object implements the MediaSizes interface.
  */
-export function instanceOfMediaSizes(value: object): boolean {
-    if (!('large' in value)) return false;
-    if (!('medium' in value)) return false;
-    if (!('small' in value)) return false;
-    if (!('thumb' in value)) return false;
+export function instanceOfMediaSizes(value: object): value is MediaSizes {
+    if (!('large' in value) || value['large'] === undefined) return false;
+    if (!('medium' in value) || value['medium'] === undefined) return false;
+    if (!('small' in value) || value['small'] === undefined) return false;
+    if (!('thumb' in value) || value['thumb'] === undefined) return false;
     return true;
 }
 

@@ -43,9 +43,9 @@ export interface Text {
 /**
  * Check if a given object implements the Text interface.
  */
-export function instanceOfText(value: object): boolean {
-    if (!('entities' in value)) return false;
-    if (!('text' in value)) return false;
+export function instanceOfText(value: object): value is Text {
+    if (!('entities' in value) || value['entities'] === undefined) return false;
+    if (!('text' in value) || value['text'] === undefined) return false;
     return true;
 }
 

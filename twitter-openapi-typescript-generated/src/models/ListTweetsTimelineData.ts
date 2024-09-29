@@ -37,8 +37,8 @@ export interface ListTweetsTimelineData {
 /**
  * Check if a given object implements the ListTweetsTimelineData interface.
  */
-export function instanceOfListTweetsTimelineData(value: object): boolean {
-    if (!('list' in value)) return false;
+export function instanceOfListTweetsTimelineData(value: object): value is ListTweetsTimelineData {
+    if (!('list' in value) || value['list'] === undefined) return false;
     return true;
 }
 

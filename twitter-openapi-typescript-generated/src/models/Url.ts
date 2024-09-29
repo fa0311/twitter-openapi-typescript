@@ -48,10 +48,10 @@ export interface Url {
 /**
  * Check if a given object implements the Url interface.
  */
-export function instanceOfUrl(value: object): boolean {
-    if (!('displayUrl' in value)) return false;
-    if (!('indices' in value)) return false;
-    if (!('url' in value)) return false;
+export function instanceOfUrl(value: object): value is Url {
+    if (!('displayUrl' in value) || value['displayUrl'] === undefined) return false;
+    if (!('indices' in value) || value['indices'] === undefined) return false;
+    if (!('url' in value) || value['url'] === undefined) return false;
     return true;
 }
 

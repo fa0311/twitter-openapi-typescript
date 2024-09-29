@@ -37,8 +37,8 @@ export interface SearchTimelineResponse {
 /**
  * Check if a given object implements the SearchTimelineResponse interface.
  */
-export function instanceOfSearchTimelineResponse(value: object): boolean {
-    if (!('data' in value)) return false;
+export function instanceOfSearchTimelineResponse(value: object): value is SearchTimelineResponse {
+    if (!('data' in value) || value['data'] === undefined) return false;
     return true;
 }
 

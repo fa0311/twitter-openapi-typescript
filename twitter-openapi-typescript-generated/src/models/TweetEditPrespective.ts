@@ -36,7 +36,7 @@ export interface TweetEditPrespective {
 /**
  * Check if a given object implements the TweetEditPrespective interface.
  */
-export function instanceOfTweetEditPrespective(value: object): boolean {
+export function instanceOfTweetEditPrespective(value: object): value is TweetEditPrespective {
     return true;
 }
 

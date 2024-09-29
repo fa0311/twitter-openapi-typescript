@@ -13,18 +13,18 @@
  */
 
 import { mapValues } from '../runtime';
-import type { InstructionType } from './InstructionType';
-import {
-    InstructionTypeFromJSON,
-    InstructionTypeFromJSONTyped,
-    InstructionTypeToJSON,
-} from './InstructionType';
 import type { ModuleItem } from './ModuleItem';
 import {
     ModuleItemFromJSON,
     ModuleItemFromJSONTyped,
     ModuleItemToJSON,
 } from './ModuleItem';
+import type { InstructionType } from './InstructionType';
+import {
+    InstructionTypeFromJSON,
+    InstructionTypeFromJSONTyped,
+    InstructionTypeToJSON,
+} from './InstructionType';
 
 /**
  * 
@@ -58,13 +58,15 @@ export interface TimelineAddToModule {
     type: InstructionType;
 }
 
+
+
 /**
  * Check if a given object implements the TimelineAddToModule interface.
  */
-export function instanceOfTimelineAddToModule(value: object): boolean {
-    if (!('moduleEntryId' in value)) return false;
-    if (!('moduleItems' in value)) return false;
-    if (!('type' in value)) return false;
+export function instanceOfTimelineAddToModule(value: object): value is TimelineAddToModule {
+    if (!('moduleEntryId' in value) || value['moduleEntryId'] === undefined) return false;
+    if (!('moduleItems' in value) || value['moduleItems'] === undefined) return false;
+    if (!('type' in value) || value['type'] === undefined) return false;
     return true;
 }
 

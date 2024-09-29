@@ -25,6 +25,17 @@ export const ContentEntryType = {
 export type ContentEntryType = typeof ContentEntryType[keyof typeof ContentEntryType];
 
 
+export function instanceOfContentEntryType(value: any): boolean {
+    for (const key in ContentEntryType) {
+        if (Object.prototype.hasOwnProperty.call(ContentEntryType, key)) {
+            if (ContentEntryType[key as keyof typeof ContentEntryType] === value) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
 export function ContentEntryTypeFromJSON(json: any): ContentEntryType {
     return ContentEntryTypeFromJSONTyped(json, false);
 }

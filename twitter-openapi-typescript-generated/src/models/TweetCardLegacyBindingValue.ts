@@ -43,9 +43,9 @@ export interface TweetCardLegacyBindingValue {
 /**
  * Check if a given object implements the TweetCardLegacyBindingValue interface.
  */
-export function instanceOfTweetCardLegacyBindingValue(value: object): boolean {
-    if (!('key' in value)) return false;
-    if (!('value' in value)) return false;
+export function instanceOfTweetCardLegacyBindingValue(value: object): value is TweetCardLegacyBindingValue {
+    if (!('key' in value) || value['key'] === undefined) return false;
+    if (!('value' in value) || value['value'] === undefined) return false;
     return true;
 }
 

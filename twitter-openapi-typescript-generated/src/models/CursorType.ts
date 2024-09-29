@@ -27,6 +27,17 @@ export const CursorType = {
 export type CursorType = typeof CursorType[keyof typeof CursorType];
 
 
+export function instanceOfCursorType(value: any): boolean {
+    for (const key in CursorType) {
+        if (Object.prototype.hasOwnProperty.call(CursorType, key)) {
+            if (CursorType[key as keyof typeof CursorType] === value) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
 export function CursorTypeFromJSON(json: any): CursorType {
     return CursorTypeFromJSONTyped(json, false);
 }

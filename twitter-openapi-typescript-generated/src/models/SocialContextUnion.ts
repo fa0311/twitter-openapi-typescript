@@ -44,9 +44,9 @@ export function SocialContextUnionFromJSONTyped(json: any, ignoreDiscriminator: 
     }
     switch (json['type']) {
         case 'TimelineGeneralContext':
-            return {...TimelineGeneralContextFromJSONTyped(json, true), type: 'TimelineGeneralContext'};
+            return Object.assign({}, TimelineGeneralContextFromJSONTyped(json, true), { type: 'TimelineGeneralContext' } as const);
         case 'TimelineTopicContext':
-            return {...TimelineTopicContextFromJSONTyped(json, true), type: 'TimelineTopicContext'};
+            return Object.assign({}, TimelineTopicContextFromJSONTyped(json, true), { type: 'TimelineTopicContext' } as const);
         default:
             throw new Error(`No variant of SocialContextUnion exists with 'type=${json['type']}'`);
     }

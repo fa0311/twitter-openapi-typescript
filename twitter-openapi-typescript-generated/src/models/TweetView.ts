@@ -47,8 +47,8 @@ export type TweetViewStateEnum = typeof TweetViewStateEnum[keyof typeof TweetVie
 /**
  * Check if a given object implements the TweetView interface.
  */
-export function instanceOfTweetView(value: object): boolean {
-    if (!('state' in value)) return false;
+export function instanceOfTweetView(value: object): value is TweetView {
+    if (!('state' in value) || value['state'] === undefined) return false;
     return true;
 }
 

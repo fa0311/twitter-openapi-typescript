@@ -30,8 +30,8 @@ export interface Callback {
 /**
  * Check if a given object implements the Callback interface.
  */
-export function instanceOfCallback(value: object): boolean {
-    if (!('endpoint' in value)) return false;
+export function instanceOfCallback(value: object): value is Callback {
+    if (!('endpoint' in value) || value['endpoint'] === undefined) return false;
     return true;
 }
 

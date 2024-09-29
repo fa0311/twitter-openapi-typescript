@@ -30,8 +30,8 @@ export interface OneFactorLoginEligibility {
 /**
  * Check if a given object implements the OneFactorLoginEligibility interface.
  */
-export function instanceOfOneFactorLoginEligibility(value: object): boolean {
-    if (!('fetchStatus' in value)) return false;
+export function instanceOfOneFactorLoginEligibility(value: object): value is OneFactorLoginEligibility {
+    if (!('fetchStatus' in value) || value['fetchStatus'] === undefined) return false;
     return true;
 }
 

@@ -46,9 +46,9 @@ export type UserVerificationInfoReasonDescriptionEntitiesRefUrlTypeEnum = typeof
 /**
  * Check if a given object implements the UserVerificationInfoReasonDescriptionEntitiesRef interface.
  */
-export function instanceOfUserVerificationInfoReasonDescriptionEntitiesRef(value: object): boolean {
-    if (!('url' in value)) return false;
-    if (!('urlType' in value)) return false;
+export function instanceOfUserVerificationInfoReasonDescriptionEntitiesRef(value: object): value is UserVerificationInfoReasonDescriptionEntitiesRef {
+    if (!('url' in value) || value['url'] === undefined) return false;
+    if (!('urlType' in value) || value['urlType'] === undefined) return false;
     return true;
 }
 

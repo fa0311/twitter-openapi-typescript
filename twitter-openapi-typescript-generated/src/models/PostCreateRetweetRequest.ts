@@ -43,9 +43,9 @@ export interface PostCreateRetweetRequest {
 /**
  * Check if a given object implements the PostCreateRetweetRequest interface.
  */
-export function instanceOfPostCreateRetweetRequest(value: object): boolean {
-    if (!('queryId' in value)) return false;
-    if (!('variables' in value)) return false;
+export function instanceOfPostCreateRetweetRequest(value: object): value is PostCreateRetweetRequest {
+    if (!('queryId' in value) || value['queryId'] === undefined) return false;
+    if (!('variables' in value) || value['variables'] === undefined) return false;
     return true;
 }
 

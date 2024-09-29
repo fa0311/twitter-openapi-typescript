@@ -19,65 +19,59 @@ import {
     TypeNameFromJSONTyped,
     TypeNameToJSON,
 } from './TypeName';
-import type { TweetUnion } from './TweetUnion';
-import {
-    TweetUnionFromJSON,
-    TweetUnionFromJSONTyped,
-    TweetUnionToJSON,
-} from './TweetUnion';
 
 /**
  * 
  * @export
- * @interface ItemResult
+ * @interface TweetUnavailable
  */
-export interface ItemResult {
+export interface TweetUnavailable {
     /**
      * 
      * @type {TypeName}
-     * @memberof ItemResult
+     * @memberof TweetUnavailable
      */
     typename?: TypeName;
     /**
      * 
-     * @type {TweetUnion}
-     * @memberof ItemResult
+     * @type {string}
+     * @memberof TweetUnavailable
      */
-    result?: TweetUnion;
+    reason?: string;
 }
 
 
 
 /**
- * Check if a given object implements the ItemResult interface.
+ * Check if a given object implements the TweetUnavailable interface.
  */
-export function instanceOfItemResult(value: object): value is ItemResult {
+export function instanceOfTweetUnavailable(value: object): value is TweetUnavailable {
     return true;
 }
 
-export function ItemResultFromJSON(json: any): ItemResult {
-    return ItemResultFromJSONTyped(json, false);
+export function TweetUnavailableFromJSON(json: any): TweetUnavailable {
+    return TweetUnavailableFromJSONTyped(json, false);
 }
 
-export function ItemResultFromJSONTyped(json: any, ignoreDiscriminator: boolean): ItemResult {
+export function TweetUnavailableFromJSONTyped(json: any, ignoreDiscriminator: boolean): TweetUnavailable {
     if (json == null) {
         return json;
     }
     return {
         
         'typename': json['__typename'] == null ? undefined : TypeNameFromJSON(json['__typename']),
-        'result': json['result'] == null ? undefined : TweetUnionFromJSON(json['result']),
+        'reason': json['reason'] == null ? undefined : json['reason'],
     };
 }
 
-export function ItemResultToJSON(value?: ItemResult | null): any {
+export function TweetUnavailableToJSON(value?: TweetUnavailable | null): any {
     if (value == null) {
         return value;
     }
     return {
         
         '__typename': TypeNameToJSON(value['typename']),
-        'result': TweetUnionToJSON(value['result']),
+        'reason': value['reason'],
     };
 }
 

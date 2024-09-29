@@ -46,12 +46,14 @@ export interface UserUnavailable {
     reason: string;
 }
 
+
+
 /**
  * Check if a given object implements the UserUnavailable interface.
  */
-export function instanceOfUserUnavailable(value: object): boolean {
-    if (!('typename' in value)) return false;
-    if (!('reason' in value)) return false;
+export function instanceOfUserUnavailable(value: object): value is UserUnavailable {
+    if (!('typename' in value) || value['typename'] === undefined) return false;
+    if (!('reason' in value) || value['reason'] === undefined) return false;
     return true;
 }
 

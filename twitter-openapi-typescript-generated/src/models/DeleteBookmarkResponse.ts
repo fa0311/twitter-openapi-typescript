@@ -37,8 +37,8 @@ export interface DeleteBookmarkResponse {
 /**
  * Check if a given object implements the DeleteBookmarkResponse interface.
  */
-export function instanceOfDeleteBookmarkResponse(value: object): boolean {
-    if (!('data' in value)) return false;
+export function instanceOfDeleteBookmarkResponse(value: object): value is DeleteBookmarkResponse {
+    if (!('data' in value) || value['data'] === undefined) return false;
     return true;
 }
 

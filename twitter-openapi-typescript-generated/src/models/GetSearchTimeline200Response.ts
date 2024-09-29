@@ -42,7 +42,14 @@ export function GetSearchTimeline200ResponseFromJSONTyped(json: any, ignoreDiscr
     if (json == null) {
         return json;
     }
-    return { ...ErrorsFromJSONTyped(json, true), ...SearchTimelineResponseFromJSONTyped(json, true) };
+    if (instanceOfErrors(json)) {
+        return ErrorsFromJSONTyped(json, true);
+    }
+    if (instanceOfSearchTimelineResponse(json)) {
+        return SearchTimelineResponseFromJSONTyped(json, true);
+    }
+
+    return {} as any;
 }
 
 export function GetSearchTimeline200ResponseToJSON(value?: GetSearchTimeline200Response | null): any {

@@ -43,9 +43,9 @@ export interface PostCreateTweetRequestVariablesMedia {
 /**
  * Check if a given object implements the PostCreateTweetRequestVariablesMedia interface.
  */
-export function instanceOfPostCreateTweetRequestVariablesMedia(value: object): boolean {
-    if (!('mediaEntities' in value)) return false;
-    if (!('possiblySensitive' in value)) return false;
+export function instanceOfPostCreateTweetRequestVariablesMedia(value: object): value is PostCreateTweetRequestVariablesMedia {
+    if (!('mediaEntities' in value) || value['mediaEntities'] === undefined) return false;
+    if (!('possiblySensitive' in value) || value['possiblySensitive'] === undefined) return false;
     return true;
 }
 

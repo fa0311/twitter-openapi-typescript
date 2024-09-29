@@ -59,10 +59,10 @@ export type CommunityLeaveActionResultReasonEnum = typeof CommunityLeaveActionRe
 /**
  * Check if a given object implements the CommunityLeaveActionResult interface.
  */
-export function instanceOfCommunityLeaveActionResult(value: object): boolean {
-    if (!('typename' in value)) return false;
-    if (!('message' in value)) return false;
-    if (!('reason' in value)) return false;
+export function instanceOfCommunityLeaveActionResult(value: object): value is CommunityLeaveActionResult {
+    if (!('typename' in value) || value['typename'] === undefined) return false;
+    if (!('message' in value) || value['message'] === undefined) return false;
+    if (!('reason' in value) || value['reason'] === undefined) return false;
     return true;
 }
 

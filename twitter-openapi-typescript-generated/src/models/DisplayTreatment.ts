@@ -30,8 +30,8 @@ export interface DisplayTreatment {
 /**
  * Check if a given object implements the DisplayTreatment interface.
  */
-export function instanceOfDisplayTreatment(value: object): boolean {
-    if (!('actionText' in value)) return false;
+export function instanceOfDisplayTreatment(value: object): value is DisplayTreatment {
+    if (!('actionText' in value) || value['actionText'] === undefined) return false;
     return true;
 }
 

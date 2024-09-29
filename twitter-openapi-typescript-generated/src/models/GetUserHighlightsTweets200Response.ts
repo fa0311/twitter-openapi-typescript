@@ -42,7 +42,14 @@ export function GetUserHighlightsTweets200ResponseFromJSONTyped(json: any, ignor
     if (json == null) {
         return json;
     }
-    return { ...ErrorsFromJSONTyped(json, true), ...UserHighlightsTweetsResponseFromJSONTyped(json, true) };
+    if (instanceOfErrors(json)) {
+        return ErrorsFromJSONTyped(json, true);
+    }
+    if (instanceOfUserHighlightsTweetsResponse(json)) {
+        return UserHighlightsTweetsResponseFromJSONTyped(json, true);
+    }
+
+    return {} as any;
 }
 
 export function GetUserHighlightsTweets200ResponseToJSON(value?: GetUserHighlightsTweets200Response | null): any {

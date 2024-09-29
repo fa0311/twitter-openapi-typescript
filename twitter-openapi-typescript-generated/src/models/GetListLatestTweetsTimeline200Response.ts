@@ -42,7 +42,14 @@ export function GetListLatestTweetsTimeline200ResponseFromJSONTyped(json: any, i
     if (json == null) {
         return json;
     }
-    return { ...ErrorsFromJSONTyped(json, true), ...ListLatestTweetsTimelineResponseFromJSONTyped(json, true) };
+    if (instanceOfErrors(json)) {
+        return ErrorsFromJSONTyped(json, true);
+    }
+    if (instanceOfListLatestTweetsTimelineResponse(json)) {
+        return ListLatestTweetsTimelineResponseFromJSONTyped(json, true);
+    }
+
+    return {} as any;
 }
 
 export function GetListLatestTweetsTimeline200ResponseToJSON(value?: GetListLatestTweetsTimeline200Response | null): any {

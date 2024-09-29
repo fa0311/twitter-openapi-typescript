@@ -48,11 +48,11 @@ export interface MediaOriginalInfoFocusRect {
 /**
  * Check if a given object implements the MediaOriginalInfoFocusRect interface.
  */
-export function instanceOfMediaOriginalInfoFocusRect(value: object): boolean {
-    if (!('h' in value)) return false;
-    if (!('w' in value)) return false;
-    if (!('x' in value)) return false;
-    if (!('y' in value)) return false;
+export function instanceOfMediaOriginalInfoFocusRect(value: object): value is MediaOriginalInfoFocusRect {
+    if (!('h' in value) || value['h'] === undefined) return false;
+    if (!('w' in value) || value['w'] === undefined) return false;
+    if (!('x' in value) || value['x'] === undefined) return false;
+    if (!('y' in value) || value['y'] === undefined) return false;
     return true;
 }
 

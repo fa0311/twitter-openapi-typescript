@@ -31,14 +31,13 @@ export interface TimelineV2 {
      * @type {Timeline}
      * @memberof TimelineV2
      */
-    timeline: Timeline;
+    timeline?: Timeline;
 }
 
 /**
  * Check if a given object implements the TimelineV2 interface.
  */
-export function instanceOfTimelineV2(value: object): boolean {
-    if (!('timeline' in value)) return false;
+export function instanceOfTimelineV2(value: object): value is TimelineV2 {
     return true;
 }
 
@@ -52,7 +51,7 @@ export function TimelineV2FromJSONTyped(json: any, ignoreDiscriminator: boolean)
     }
     return {
         
-        'timeline': TimelineFromJSON(json['timeline']),
+        'timeline': json['timeline'] == null ? undefined : TimelineFromJSON(json['timeline']),
     };
 }
 

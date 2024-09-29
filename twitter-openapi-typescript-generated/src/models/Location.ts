@@ -36,9 +36,9 @@ export interface Location {
 /**
  * Check if a given object implements the Location interface.
  */
-export function instanceOfLocation(value: object): boolean {
-    if (!('column' in value)) return false;
-    if (!('line' in value)) return false;
+export function instanceOfLocation(value: object): value is Location {
+    if (!('column' in value) || value['column'] === undefined) return false;
+    if (!('line' in value) || value['line'] === undefined) return false;
     return true;
 }
 

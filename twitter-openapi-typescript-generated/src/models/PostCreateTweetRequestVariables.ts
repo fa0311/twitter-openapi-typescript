@@ -13,18 +13,18 @@
  */
 
 import { mapValues } from '../runtime';
-import type { PostCreateTweetRequestVariablesMedia } from './PostCreateTweetRequestVariablesMedia';
-import {
-    PostCreateTweetRequestVariablesMediaFromJSON,
-    PostCreateTweetRequestVariablesMediaFromJSONTyped,
-    PostCreateTweetRequestVariablesMediaToJSON,
-} from './PostCreateTweetRequestVariablesMedia';
 import type { PostCreateTweetRequestVariablesReply } from './PostCreateTweetRequestVariablesReply';
 import {
     PostCreateTweetRequestVariablesReplyFromJSON,
     PostCreateTweetRequestVariablesReplyFromJSONTyped,
     PostCreateTweetRequestVariablesReplyToJSON,
 } from './PostCreateTweetRequestVariablesReply';
+import type { PostCreateTweetRequestVariablesMedia } from './PostCreateTweetRequestVariablesMedia';
+import {
+    PostCreateTweetRequestVariablesMediaFromJSON,
+    PostCreateTweetRequestVariablesMediaFromJSONTyped,
+    PostCreateTweetRequestVariablesMediaToJSON,
+} from './PostCreateTweetRequestVariablesMedia';
 
 /**
  * 
@@ -38,6 +38,12 @@ export interface PostCreateTweetRequestVariables {
      * @memberof PostCreateTweetRequestVariables
      */
     darkRequest: boolean;
+    /**
+     * 
+     * @type {object}
+     * @memberof PostCreateTweetRequestVariables
+     */
+    disallowedReplyOptions?: object;
     /**
      * 
      * @type {PostCreateTweetRequestVariablesMedia}
@@ -67,11 +73,11 @@ export interface PostCreateTweetRequestVariables {
 /**
  * Check if a given object implements the PostCreateTweetRequestVariables interface.
  */
-export function instanceOfPostCreateTweetRequestVariables(value: object): boolean {
-    if (!('darkRequest' in value)) return false;
-    if (!('media' in value)) return false;
-    if (!('semanticAnnotationIds' in value)) return false;
-    if (!('tweetText' in value)) return false;
+export function instanceOfPostCreateTweetRequestVariables(value: object): value is PostCreateTweetRequestVariables {
+    if (!('darkRequest' in value) || value['darkRequest'] === undefined) return false;
+    if (!('media' in value) || value['media'] === undefined) return false;
+    if (!('semanticAnnotationIds' in value) || value['semanticAnnotationIds'] === undefined) return false;
+    if (!('tweetText' in value) || value['tweetText'] === undefined) return false;
     return true;
 }
 
@@ -86,6 +92,7 @@ export function PostCreateTweetRequestVariablesFromJSONTyped(json: any, ignoreDi
     return {
         
         'darkRequest': json['dark_request'],
+        'disallowedReplyOptions': json['disallowed_reply_options'] == null ? undefined : json['disallowed_reply_options'],
         'media': PostCreateTweetRequestVariablesMediaFromJSON(json['media']),
         'reply': json['reply'] == null ? undefined : PostCreateTweetRequestVariablesReplyFromJSON(json['reply']),
         'semanticAnnotationIds': json['semantic_annotation_ids'],
@@ -100,6 +107,7 @@ export function PostCreateTweetRequestVariablesToJSON(value?: PostCreateTweetReq
     return {
         
         'dark_request': value['darkRequest'],
+        'disallowed_reply_options': value['disallowedReplyOptions'],
         'media': PostCreateTweetRequestVariablesMediaToJSON(value['media']),
         'reply': PostCreateTweetRequestVariablesReplyToJSON(value['reply']),
         'semantic_annotation_ids': value['semanticAnnotationIds'],

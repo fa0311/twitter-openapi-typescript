@@ -13,12 +13,12 @@
  */
 
 import { mapValues } from '../runtime';
-import type { PostCreateRetweetRequestVariables } from './PostCreateRetweetRequestVariables';
+import type { PostCreateBookmarkRequestVariables } from './PostCreateBookmarkRequestVariables';
 import {
-    PostCreateRetweetRequestVariablesFromJSON,
-    PostCreateRetweetRequestVariablesFromJSONTyped,
-    PostCreateRetweetRequestVariablesToJSON,
-} from './PostCreateRetweetRequestVariables';
+    PostCreateBookmarkRequestVariablesFromJSON,
+    PostCreateBookmarkRequestVariablesFromJSONTyped,
+    PostCreateBookmarkRequestVariablesToJSON,
+} from './PostCreateBookmarkRequestVariables';
 
 /**
  * 
@@ -34,18 +34,18 @@ export interface PostFavoriteTweetRequest {
     queryId: string;
     /**
      * 
-     * @type {PostCreateRetweetRequestVariables}
+     * @type {PostCreateBookmarkRequestVariables}
      * @memberof PostFavoriteTweetRequest
      */
-    variables: PostCreateRetweetRequestVariables;
+    variables: PostCreateBookmarkRequestVariables;
 }
 
 /**
  * Check if a given object implements the PostFavoriteTweetRequest interface.
  */
-export function instanceOfPostFavoriteTweetRequest(value: object): boolean {
-    if (!('queryId' in value)) return false;
-    if (!('variables' in value)) return false;
+export function instanceOfPostFavoriteTweetRequest(value: object): value is PostFavoriteTweetRequest {
+    if (!('queryId' in value) || value['queryId'] === undefined) return false;
+    if (!('variables' in value) || value['variables'] === undefined) return false;
     return true;
 }
 
@@ -60,7 +60,7 @@ export function PostFavoriteTweetRequestFromJSONTyped(json: any, ignoreDiscrimin
     return {
         
         'queryId': json['queryId'],
-        'variables': PostCreateRetweetRequestVariablesFromJSON(json['variables']),
+        'variables': PostCreateBookmarkRequestVariablesFromJSON(json['variables']),
     };
 }
 
@@ -71,7 +71,7 @@ export function PostFavoriteTweetRequestToJSON(value?: PostFavoriteTweetRequest 
     return {
         
         'queryId': value['queryId'],
-        'variables': PostCreateRetweetRequestVariablesToJSON(value['variables']),
+        'variables': PostCreateBookmarkRequestVariablesToJSON(value['variables']),
     };
 }
 

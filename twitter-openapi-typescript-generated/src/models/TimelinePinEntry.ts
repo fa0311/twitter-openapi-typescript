@@ -46,12 +46,14 @@ export interface TimelinePinEntry {
     type: InstructionType;
 }
 
+
+
 /**
  * Check if a given object implements the TimelinePinEntry interface.
  */
-export function instanceOfTimelinePinEntry(value: object): boolean {
-    if (!('entry' in value)) return false;
-    if (!('type' in value)) return false;
+export function instanceOfTimelinePinEntry(value: object): value is TimelinePinEntry {
+    if (!('entry' in value) || value['entry'] === undefined) return false;
+    if (!('type' in value) || value['type'] === undefined) return false;
     return true;
 }
 

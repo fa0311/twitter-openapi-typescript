@@ -13,24 +13,6 @@
  */
 
 import { mapValues } from '../runtime';
-import type { ContentEntryType } from './ContentEntryType';
-import {
-    ContentEntryTypeFromJSON,
-    ContentEntryTypeFromJSONTyped,
-    ContentEntryTypeToJSON,
-} from './ContentEntryType';
-import type { DisplayType } from './DisplayType';
-import {
-    DisplayTypeFromJSON,
-    DisplayTypeFromJSONTyped,
-    DisplayTypeToJSON,
-} from './DisplayType';
-import type { FeedbackInfo } from './FeedbackInfo';
-import {
-    FeedbackInfoFromJSON,
-    FeedbackInfoFromJSONTyped,
-    FeedbackInfoToJSON,
-} from './FeedbackInfo';
 import type { ModuleItem } from './ModuleItem';
 import {
     ModuleItemFromJSON,
@@ -43,6 +25,24 @@ import {
     TypeNameFromJSONTyped,
     TypeNameToJSON,
 } from './TypeName';
+import type { DisplayType } from './DisplayType';
+import {
+    DisplayTypeFromJSON,
+    DisplayTypeFromJSONTyped,
+    DisplayTypeToJSON,
+} from './DisplayType';
+import type { FeedbackInfo } from './FeedbackInfo';
+import {
+    FeedbackInfoFromJSON,
+    FeedbackInfoFromJSONTyped,
+    FeedbackInfoToJSON,
+} from './FeedbackInfo';
+import type { ContentEntryType } from './ContentEntryType';
+import {
+    ContentEntryTypeFromJSON,
+    ContentEntryTypeFromJSONTyped,
+    ContentEntryTypeToJSON,
+} from './ContentEntryType';
 
 /**
  * 
@@ -106,14 +106,16 @@ export interface TimelineTimelineModule {
     metadata?: { [key: string]: any; };
 }
 
+
+
 /**
  * Check if a given object implements the TimelineTimelineModule interface.
  */
-export function instanceOfTimelineTimelineModule(value: object): boolean {
-    if (!('typename' in value)) return false;
-    if (!('clientEventInfo' in value)) return false;
-    if (!('displayType' in value)) return false;
-    if (!('entryType' in value)) return false;
+export function instanceOfTimelineTimelineModule(value: object): value is TimelineTimelineModule {
+    if (!('typename' in value) || value['typename'] === undefined) return false;
+    if (!('clientEventInfo' in value) || value['clientEventInfo'] === undefined) return false;
+    if (!('displayType' in value) || value['displayType'] === undefined) return false;
+    if (!('entryType' in value) || value['entryType'] === undefined) return false;
     return true;
 }
 

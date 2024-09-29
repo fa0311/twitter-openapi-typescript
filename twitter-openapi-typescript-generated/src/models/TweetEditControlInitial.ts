@@ -48,11 +48,11 @@ export interface TweetEditControlInitial {
 /**
  * Check if a given object implements the TweetEditControlInitial interface.
  */
-export function instanceOfTweetEditControlInitial(value: object): boolean {
-    if (!('editTweetIds' in value)) return false;
-    if (!('editableUntilMsecs' in value)) return false;
-    if (!('editsRemaining' in value)) return false;
-    if (!('isEditEligible' in value)) return false;
+export function instanceOfTweetEditControlInitial(value: object): value is TweetEditControlInitial {
+    if (!('editTweetIds' in value) || value['editTweetIds'] === undefined) return false;
+    if (!('editableUntilMsecs' in value) || value['editableUntilMsecs'] === undefined) return false;
+    if (!('editsRemaining' in value) || value['editsRemaining'] === undefined) return false;
+    if (!('isEditEligible' in value) || value['isEditEligible'] === undefined) return false;
     return true;
 }
 

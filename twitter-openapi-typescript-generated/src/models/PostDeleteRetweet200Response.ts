@@ -42,7 +42,14 @@ export function PostDeleteRetweet200ResponseFromJSONTyped(json: any, ignoreDiscr
     if (json == null) {
         return json;
     }
-    return { ...DeleteRetweetResponseFromJSONTyped(json, true), ...ErrorsFromJSONTyped(json, true) };
+    if (instanceOfDeleteRetweetResponse(json)) {
+        return DeleteRetweetResponseFromJSONTyped(json, true);
+    }
+    if (instanceOfErrors(json)) {
+        return ErrorsFromJSONTyped(json, true);
+    }
+
+    return {} as any;
 }
 
 export function PostDeleteRetweet200ResponseToJSON(value?: PostDeleteRetweet200Response | null): any {

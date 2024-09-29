@@ -42,7 +42,14 @@ export function PostCreateRetweet200ResponseFromJSONTyped(json: any, ignoreDiscr
     if (json == null) {
         return json;
     }
-    return { ...CreateRetweetResponseFromJSONTyped(json, true), ...ErrorsFromJSONTyped(json, true) };
+    if (instanceOfCreateRetweetResponse(json)) {
+        return CreateRetweetResponseFromJSONTyped(json, true);
+    }
+    if (instanceOfErrors(json)) {
+        return ErrorsFromJSONTyped(json, true);
+    }
+
+    return {} as any;
 }
 
 export function PostCreateRetweet200ResponseToJSON(value?: PostCreateRetweet200Response | null): any {

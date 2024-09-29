@@ -36,9 +36,9 @@ export interface PostCreateTweetRequestVariablesMediaMediaEntitiesInner {
 /**
  * Check if a given object implements the PostCreateTweetRequestVariablesMediaMediaEntitiesInner interface.
  */
-export function instanceOfPostCreateTweetRequestVariablesMediaMediaEntitiesInner(value: object): boolean {
-    if (!('mediaId' in value)) return false;
-    if (!('taggedUsers' in value)) return false;
+export function instanceOfPostCreateTweetRequestVariablesMediaMediaEntitiesInner(value: object): value is PostCreateTweetRequestVariablesMediaMediaEntitiesInner {
+    if (!('mediaId' in value) || value['mediaId'] === undefined) return false;
+    if (!('taggedUsers' in value) || value['taggedUsers'] === undefined) return false;
     return true;
 }
 

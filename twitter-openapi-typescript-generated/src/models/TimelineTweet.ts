@@ -13,12 +13,12 @@
  */
 
 import { mapValues } from '../runtime';
-import type { ContentItemType } from './ContentItemType';
+import type { TypeName } from './TypeName';
 import {
-    ContentItemTypeFromJSON,
-    ContentItemTypeFromJSONTyped,
-    ContentItemTypeToJSON,
-} from './ContentItemType';
+    TypeNameFromJSON,
+    TypeNameFromJSONTyped,
+    TypeNameToJSON,
+} from './TypeName';
 import type { Highlight } from './Highlight';
 import {
     HighlightFromJSON,
@@ -37,12 +37,12 @@ import {
     SocialContextUnionFromJSONTyped,
     SocialContextUnionToJSON,
 } from './SocialContextUnion';
-import type { TypeName } from './TypeName';
+import type { ContentItemType } from './ContentItemType';
 import {
-    TypeNameFromJSON,
-    TypeNameFromJSONTyped,
-    TypeNameToJSON,
-} from './TypeName';
+    ContentItemTypeFromJSON,
+    ContentItemTypeFromJSONTyped,
+    ContentItemTypeToJSON,
+} from './ContentItemType';
 
 /**
  * 
@@ -110,11 +110,11 @@ export type TimelineTweetTweetDisplayTypeEnum = typeof TimelineTweetTweetDisplay
 /**
  * Check if a given object implements the TimelineTweet interface.
  */
-export function instanceOfTimelineTweet(value: object): boolean {
-    if (!('typename' in value)) return false;
-    if (!('itemType' in value)) return false;
-    if (!('tweetDisplayType' in value)) return false;
-    if (!('tweetResults' in value)) return false;
+export function instanceOfTimelineTweet(value: object): value is TimelineTweet {
+    if (!('typename' in value) || value['typename'] === undefined) return false;
+    if (!('itemType' in value) || value['itemType'] === undefined) return false;
+    if (!('tweetDisplayType' in value) || value['tweetDisplayType'] === undefined) return false;
+    if (!('tweetResults' in value) || value['tweetResults'] === undefined) return false;
     return true;
 }
 

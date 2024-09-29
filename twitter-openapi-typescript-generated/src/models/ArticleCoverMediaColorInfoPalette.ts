@@ -43,9 +43,9 @@ export interface ArticleCoverMediaColorInfoPalette {
 /**
  * Check if a given object implements the ArticleCoverMediaColorInfoPalette interface.
  */
-export function instanceOfArticleCoverMediaColorInfoPalette(value: object): boolean {
-    if (!('percentage' in value)) return false;
-    if (!('rgb' in value)) return false;
+export function instanceOfArticleCoverMediaColorInfoPalette(value: object): value is ArticleCoverMediaColorInfoPalette {
+    if (!('percentage' in value) || value['percentage'] === undefined) return false;
+    if (!('rgb' in value) || value['rgb'] === undefined) return false;
     return true;
 }
 

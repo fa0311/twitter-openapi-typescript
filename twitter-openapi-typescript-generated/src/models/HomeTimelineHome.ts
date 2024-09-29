@@ -37,8 +37,8 @@ export interface HomeTimelineHome {
 /**
  * Check if a given object implements the HomeTimelineHome interface.
  */
-export function instanceOfHomeTimelineHome(value: object): boolean {
-    if (!('homeTimelineUrt' in value)) return false;
+export function instanceOfHomeTimelineHome(value: object): value is HomeTimelineHome {
+    if (!('homeTimelineUrt' in value) || value['homeTimelineUrt'] === undefined) return false;
     return true;
 }
 

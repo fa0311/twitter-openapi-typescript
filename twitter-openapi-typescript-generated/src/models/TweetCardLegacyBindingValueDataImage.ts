@@ -48,10 +48,10 @@ export interface TweetCardLegacyBindingValueDataImage {
 /**
  * Check if a given object implements the TweetCardLegacyBindingValueDataImage interface.
  */
-export function instanceOfTweetCardLegacyBindingValueDataImage(value: object): boolean {
-    if (!('height' in value)) return false;
-    if (!('url' in value)) return false;
-    if (!('width' in value)) return false;
+export function instanceOfTweetCardLegacyBindingValueDataImage(value: object): value is TweetCardLegacyBindingValueDataImage {
+    if (!('height' in value) || value['height'] === undefined) return false;
+    if (!('url' in value) || value['url'] === undefined) return false;
+    if (!('width' in value) || value['width'] === undefined) return false;
     return true;
 }
 

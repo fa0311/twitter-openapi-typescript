@@ -43,9 +43,9 @@ export interface UserVerificationInfoReasonDescription {
 /**
  * Check if a given object implements the UserVerificationInfoReasonDescription interface.
  */
-export function instanceOfUserVerificationInfoReasonDescription(value: object): boolean {
-    if (!('entities' in value)) return false;
-    if (!('text' in value)) return false;
+export function instanceOfUserVerificationInfoReasonDescription(value: object): value is UserVerificationInfoReasonDescription {
+    if (!('entities' in value) || value['entities'] === undefined) return false;
+    if (!('text' in value) || value['text'] === undefined) return false;
     return true;
 }
 

@@ -49,10 +49,10 @@ export interface UserVerificationInfoReasonDescriptionEntities {
 /**
  * Check if a given object implements the UserVerificationInfoReasonDescriptionEntities interface.
  */
-export function instanceOfUserVerificationInfoReasonDescriptionEntities(value: object): boolean {
-    if (!('fromIndex' in value)) return false;
-    if (!('ref' in value)) return false;
-    if (!('toIndex' in value)) return false;
+export function instanceOfUserVerificationInfoReasonDescriptionEntities(value: object): value is UserVerificationInfoReasonDescriptionEntities {
+    if (!('fromIndex' in value) || value['fromIndex'] === undefined) return false;
+    if (!('ref' in value) || value['ref'] === undefined) return false;
+    if (!('toIndex' in value) || value['toIndex'] === undefined) return false;
     return true;
 }
 

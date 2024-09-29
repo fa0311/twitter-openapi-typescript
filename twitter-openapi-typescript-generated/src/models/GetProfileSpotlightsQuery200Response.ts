@@ -42,7 +42,14 @@ export function GetProfileSpotlightsQuery200ResponseFromJSONTyped(json: any, ign
     if (json == null) {
         return json;
     }
-    return { ...ErrorsFromJSONTyped(json, true), ...ProfileResponseFromJSONTyped(json, true) };
+    if (instanceOfErrors(json)) {
+        return ErrorsFromJSONTyped(json, true);
+    }
+    if (instanceOfProfileResponse(json)) {
+        return ProfileResponseFromJSONTyped(json, true);
+    }
+
+    return {} as any;
 }
 
 export function GetProfileSpotlightsQuery200ResponseToJSON(value?: GetProfileSpotlightsQuery200Response | null): any {

@@ -37,8 +37,8 @@ export interface TweetDetailResponseData {
 /**
  * Check if a given object implements the TweetDetailResponseData interface.
  */
-export function instanceOfTweetDetailResponseData(value: object): boolean {
-    if (!('threadedConversationWithInjectionsV2' in value)) return false;
+export function instanceOfTweetDetailResponseData(value: object): value is TweetDetailResponseData {
+    if (!('threadedConversationWithInjectionsV2' in value) || value['threadedConversationWithInjectionsV2'] === undefined) return false;
     return true;
 }
 

@@ -42,10 +42,10 @@ export interface BirdwatchPivotCallToAction {
 /**
  * Check if a given object implements the BirdwatchPivotCallToAction interface.
  */
-export function instanceOfBirdwatchPivotCallToAction(value: object): boolean {
-    if (!('destinationUrl' in value)) return false;
-    if (!('prompt' in value)) return false;
-    if (!('title' in value)) return false;
+export function instanceOfBirdwatchPivotCallToAction(value: object): value is BirdwatchPivotCallToAction {
+    if (!('destinationUrl' in value) || value['destinationUrl'] === undefined) return false;
+    if (!('prompt' in value) || value['prompt'] === undefined) return false;
+    if (!('title' in value) || value['title'] === undefined) return false;
     return true;
 }
 

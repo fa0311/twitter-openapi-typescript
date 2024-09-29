@@ -82,11 +82,10 @@ src/models/DisplayTreatment.ts
 src/models/DisplayType.ts
 src/models/Entities.ts
 src/models/ErrorExtensions.ts
-src/models/ErrorResponse.ts
 src/models/Errors.ts
+src/models/ErrorsData.ts
 src/models/ExtMediaAvailability.ts
 src/models/ExtendedEntities.ts
-src/models/Extensions.ts
 src/models/FavoriteTweet.ts
 src/models/FavoriteTweetResponseData.ts
 src/models/FeedbackInfo.ts
@@ -145,7 +144,6 @@ src/models/NoteTweetResultMediaInlineMedia.ts
 src/models/NoteTweetResultRichText.ts
 src/models/NoteTweetResultRichTextTag.ts
 src/models/OneFactorLoginEligibility.ts
-src/models/Other200Response.ts
 src/models/OtherResponse.ts
 src/models/PostCreateBookmark200Response.ts
 src/models/PostCreateBookmarkRequest.ts
@@ -202,6 +200,7 @@ src/models/TimelineAddToModule.ts
 src/models/TimelineClearCache.ts
 src/models/TimelineCommunity.ts
 src/models/TimelineCoverBehavior.ts
+src/models/TimelineCoverBehaviorUrl.ts
 src/models/TimelineGeneralContext.ts
 src/models/TimelineHalfCover.ts
 src/models/TimelineMessagePrompt.ts
@@ -253,6 +252,7 @@ src/models/TweetResultByRestIdResponse.ts
 src/models/TweetRetweetersResponse.ts
 src/models/TweetRetweetersResponseData.ts
 src/models/TweetTombstone.ts
+src/models/TweetUnavailable.ts
 src/models/TweetUnion.ts
 src/models/TweetView.ts
 src/models/TweetWithVisibilityResults.ts

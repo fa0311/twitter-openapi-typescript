@@ -47,7 +47,7 @@ export type ExtMediaAvailabilityStatusEnum = typeof ExtMediaAvailabilityStatusEn
 /**
  * Check if a given object implements the ExtMediaAvailability interface.
  */
-export function instanceOfExtMediaAvailability(value: object): boolean {
+export function instanceOfExtMediaAvailability(value: object): value is ExtMediaAvailability {
     return true;
 }
 

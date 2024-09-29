@@ -13,12 +13,6 @@
  */
 
 import { mapValues } from '../runtime';
-import type { Entities } from './Entities';
-import {
-    EntitiesFromJSON,
-    EntitiesFromJSONTyped,
-    EntitiesToJSON,
-} from './Entities';
 import type { ExtendedEntities } from './ExtendedEntities';
 import {
     ExtendedEntitiesFromJSON,
@@ -31,24 +25,30 @@ import {
     ItemResultFromJSONTyped,
     ItemResultToJSON,
 } from './ItemResult';
-import type { QuotedStatusPermalink } from './QuotedStatusPermalink';
-import {
-    QuotedStatusPermalinkFromJSON,
-    QuotedStatusPermalinkFromJSONTyped,
-    QuotedStatusPermalinkToJSON,
-} from './QuotedStatusPermalink';
-import type { SelfThread } from './SelfThread';
-import {
-    SelfThreadFromJSON,
-    SelfThreadFromJSONTyped,
-    SelfThreadToJSON,
-} from './SelfThread';
 import type { TweetLegacyScopes } from './TweetLegacyScopes';
 import {
     TweetLegacyScopesFromJSON,
     TweetLegacyScopesFromJSONTyped,
     TweetLegacyScopesToJSON,
 } from './TweetLegacyScopes';
+import type { SelfThread } from './SelfThread';
+import {
+    SelfThreadFromJSON,
+    SelfThreadFromJSONTyped,
+    SelfThreadToJSON,
+} from './SelfThread';
+import type { QuotedStatusPermalink } from './QuotedStatusPermalink';
+import {
+    QuotedStatusPermalinkFromJSON,
+    QuotedStatusPermalinkFromJSONTyped,
+    QuotedStatusPermalinkToJSON,
+} from './QuotedStatusPermalink';
+import type { Entities } from './Entities';
+import {
+    EntitiesFromJSON,
+    EntitiesFromJSONTyped,
+    EntitiesToJSON,
+} from './Entities';
 
 /**
  * 
@@ -262,24 +262,24 @@ export type TweetLegacyLimitedActionsEnum = typeof TweetLegacyLimitedActionsEnum
 /**
  * Check if a given object implements the TweetLegacy interface.
  */
-export function instanceOfTweetLegacy(value: object): boolean {
-    if (!('bookmarkCount' in value)) return false;
-    if (!('bookmarked' in value)) return false;
-    if (!('conversationIdStr' in value)) return false;
-    if (!('createdAt' in value)) return false;
-    if (!('displayTextRange' in value)) return false;
-    if (!('entities' in value)) return false;
-    if (!('favoriteCount' in value)) return false;
-    if (!('favorited' in value)) return false;
-    if (!('fullText' in value)) return false;
-    if (!('idStr' in value)) return false;
-    if (!('isQuoteStatus' in value)) return false;
-    if (!('lang' in value)) return false;
-    if (!('quoteCount' in value)) return false;
-    if (!('replyCount' in value)) return false;
-    if (!('retweetCount' in value)) return false;
-    if (!('retweeted' in value)) return false;
-    if (!('userIdStr' in value)) return false;
+export function instanceOfTweetLegacy(value: object): value is TweetLegacy {
+    if (!('bookmarkCount' in value) || value['bookmarkCount'] === undefined) return false;
+    if (!('bookmarked' in value) || value['bookmarked'] === undefined) return false;
+    if (!('conversationIdStr' in value) || value['conversationIdStr'] === undefined) return false;
+    if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
+    if (!('displayTextRange' in value) || value['displayTextRange'] === undefined) return false;
+    if (!('entities' in value) || value['entities'] === undefined) return false;
+    if (!('favoriteCount' in value) || value['favoriteCount'] === undefined) return false;
+    if (!('favorited' in value) || value['favorited'] === undefined) return false;
+    if (!('fullText' in value) || value['fullText'] === undefined) return false;
+    if (!('idStr' in value) || value['idStr'] === undefined) return false;
+    if (!('isQuoteStatus' in value) || value['isQuoteStatus'] === undefined) return false;
+    if (!('lang' in value) || value['lang'] === undefined) return false;
+    if (!('quoteCount' in value) || value['quoteCount'] === undefined) return false;
+    if (!('replyCount' in value) || value['replyCount'] === undefined) return false;
+    if (!('retweetCount' in value) || value['retweetCount'] === undefined) return false;
+    if (!('retweeted' in value) || value['retweeted'] === undefined) return false;
+    if (!('userIdStr' in value) || value['userIdStr'] === undefined) return false;
     return true;
 }
 

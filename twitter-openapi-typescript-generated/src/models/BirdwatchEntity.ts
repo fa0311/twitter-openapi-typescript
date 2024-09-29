@@ -49,10 +49,10 @@ export interface BirdwatchEntity {
 /**
  * Check if a given object implements the BirdwatchEntity interface.
  */
-export function instanceOfBirdwatchEntity(value: object): boolean {
-    if (!('fromIndex' in value)) return false;
-    if (!('ref' in value)) return false;
-    if (!('toIndex' in value)) return false;
+export function instanceOfBirdwatchEntity(value: object): value is BirdwatchEntity {
+    if (!('fromIndex' in value) || value['fromIndex'] === undefined) return false;
+    if (!('ref' in value) || value['ref'] === undefined) return false;
+    if (!('toIndex' in value) || value['toIndex'] === undefined) return false;
     return true;
 }
 

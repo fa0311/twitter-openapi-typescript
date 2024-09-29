@@ -42,7 +42,14 @@ export function GetTweetDetail200ResponseFromJSONTyped(json: any, ignoreDiscrimi
     if (json == null) {
         return json;
     }
-    return { ...ErrorsFromJSONTyped(json, true), ...TweetDetailResponseFromJSONTyped(json, true) };
+    if (instanceOfErrors(json)) {
+        return ErrorsFromJSONTyped(json, true);
+    }
+    if (instanceOfTweetDetailResponse(json)) {
+        return TweetDetailResponseFromJSONTyped(json, true);
+    }
+
+    return {} as any;
 }
 
 export function GetTweetDetail200ResponseToJSON(value?: GetTweetDetail200Response | null): any {

@@ -77,7 +77,7 @@ export type TimelineGeneralContextContextTypeEnum = typeof TimelineGeneralContex
 /**
  * Check if a given object implements the TimelineGeneralContext interface.
  */
-export function instanceOfTimelineGeneralContext(value: object): boolean {
+export function instanceOfTimelineGeneralContext(value: object): value is TimelineGeneralContext {
     return true;
 }
 

@@ -37,7 +37,7 @@ export interface ListTweetsTimeline {
 /**
  * Check if a given object implements the ListTweetsTimeline interface.
  */
-export function instanceOfListTweetsTimeline(value: object): boolean {
+export function instanceOfListTweetsTimeline(value: object): value is ListTweetsTimeline {
     return true;
 }
 

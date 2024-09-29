@@ -37,8 +37,8 @@ export interface SearchByRawQuery {
 /**
  * Check if a given object implements the SearchByRawQuery interface.
  */
-export function instanceOfSearchByRawQuery(value: object): boolean {
-    if (!('searchTimeline' in value)) return false;
+export function instanceOfSearchByRawQuery(value: object): value is SearchByRawQuery {
+    if (!('searchTimeline' in value) || value['searchTimeline'] === undefined) return false;
     return true;
 }
 

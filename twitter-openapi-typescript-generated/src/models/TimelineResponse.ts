@@ -37,8 +37,8 @@ export interface TimelineResponse {
 /**
  * Check if a given object implements the TimelineResponse interface.
  */
-export function instanceOfTimelineResponse(value: object): boolean {
-    if (!('data' in value)) return false;
+export function instanceOfTimelineResponse(value: object): value is TimelineResponse {
+    if (!('data' in value) || value['data'] === undefined) return false;
     return true;
 }
 

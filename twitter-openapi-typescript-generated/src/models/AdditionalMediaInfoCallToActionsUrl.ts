@@ -30,8 +30,8 @@ export interface AdditionalMediaInfoCallToActionsUrl {
 /**
  * Check if a given object implements the AdditionalMediaInfoCallToActionsUrl interface.
  */
-export function instanceOfAdditionalMediaInfoCallToActionsUrl(value: object): boolean {
-    if (!('url' in value)) return false;
+export function instanceOfAdditionalMediaInfoCallToActionsUrl(value: object): value is AdditionalMediaInfoCallToActionsUrl {
+    if (!('url' in value) || value['url'] === undefined) return false;
     return true;
 }
 

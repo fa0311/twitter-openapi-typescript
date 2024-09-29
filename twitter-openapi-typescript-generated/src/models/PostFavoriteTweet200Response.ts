@@ -42,7 +42,14 @@ export function PostFavoriteTweet200ResponseFromJSONTyped(json: any, ignoreDiscr
     if (json == null) {
         return json;
     }
-    return { ...ErrorsFromJSONTyped(json, true), ...FavoriteTweetResponseDataFromJSONTyped(json, true) };
+    if (instanceOfErrors(json)) {
+        return ErrorsFromJSONTyped(json, true);
+    }
+    if (instanceOfFavoriteTweetResponseData(json)) {
+        return FavoriteTweetResponseDataFromJSONTyped(json, true);
+    }
+
+    return {} as any;
 }
 
 export function PostFavoriteTweet200ResponseToJSON(value?: PostFavoriteTweet200Response | null): any {

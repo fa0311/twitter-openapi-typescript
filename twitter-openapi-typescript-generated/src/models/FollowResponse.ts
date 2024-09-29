@@ -37,8 +37,8 @@ export interface FollowResponse {
 /**
  * Check if a given object implements the FollowResponse interface.
  */
-export function instanceOfFollowResponse(value: object): boolean {
-    if (!('data' in value)) return false;
+export function instanceOfFollowResponse(value: object): value is FollowResponse {
+    if (!('data' in value) || value['data'] === undefined) return false;
     return true;
 }
 

@@ -37,8 +37,8 @@ export interface Highlight {
 /**
  * Check if a given object implements the Highlight interface.
  */
-export function instanceOfHighlight(value: object): boolean {
-    if (!('textHighlights' in value)) return false;
+export function instanceOfHighlight(value: object): value is Highlight {
+    if (!('textHighlights' in value) || value['textHighlights'] === undefined) return false;
     return true;
 }
 

@@ -30,8 +30,8 @@ export interface PostCreateBookmarkRequestVariables {
 /**
  * Check if a given object implements the PostCreateBookmarkRequestVariables interface.
  */
-export function instanceOfPostCreateBookmarkRequestVariables(value: object): boolean {
-    if (!('tweetId' in value)) return false;
+export function instanceOfPostCreateBookmarkRequestVariables(value: object): value is PostCreateBookmarkRequestVariables {
+    if (!('tweetId' in value) || value['tweetId'] === undefined) return false;
     return true;
 }
 

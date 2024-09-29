@@ -13,18 +13,18 @@
  */
 
 import { mapValues } from '../runtime';
-import type { InstructionType } from './InstructionType';
-import {
-    InstructionTypeFromJSON,
-    InstructionTypeFromJSONTyped,
-    InstructionTypeToJSON,
-} from './InstructionType';
 import type { TimelineShowAlertRichText } from './TimelineShowAlertRichText';
 import {
     TimelineShowAlertRichTextFromJSON,
     TimelineShowAlertRichTextFromJSONTyped,
     TimelineShowAlertRichTextToJSON,
 } from './TimelineShowAlertRichText';
+import type { InstructionType } from './InstructionType';
+import {
+    InstructionTypeFromJSON,
+    InstructionTypeFromJSONTyped,
+    InstructionTypeToJSON,
+} from './InstructionType';
 import type { UserResults } from './UserResults';
 import {
     UserResultsFromJSON,
@@ -115,10 +115,10 @@ export type TimelineShowAlertDisplayLocationEnum = typeof TimelineShowAlertDispl
 /**
  * Check if a given object implements the TimelineShowAlert interface.
  */
-export function instanceOfTimelineShowAlert(value: object): boolean {
-    if (!('richText' in value)) return false;
-    if (!('type' in value)) return false;
-    if (!('usersResults' in value)) return false;
+export function instanceOfTimelineShowAlert(value: object): value is TimelineShowAlert {
+    if (!('richText' in value) || value['richText'] === undefined) return false;
+    if (!('type' in value) || value['type'] === undefined) return false;
+    if (!('usersResults' in value) || value['usersResults'] === undefined) return false;
     return true;
 }
 

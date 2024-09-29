@@ -34,11 +34,13 @@ export interface CommunityPinActionResult {
     typename: TypeName;
 }
 
+
+
 /**
  * Check if a given object implements the CommunityPinActionResult interface.
  */
-export function instanceOfCommunityPinActionResult(value: object): boolean {
-    if (!('typename' in value)) return false;
+export function instanceOfCommunityPinActionResult(value: object): value is CommunityPinActionResult {
+    if (!('typename' in value) || value['typename'] === undefined) return false;
     return true;
 }
 

@@ -30,8 +30,8 @@ export interface MediaResult {
 /**
  * Check if a given object implements the MediaResult interface.
  */
-export function instanceOfMediaResult(value: object): boolean {
-    if (!('mediaKey' in value)) return false;
+export function instanceOfMediaResult(value: object): value is MediaResult {
+    if (!('mediaKey' in value) || value['mediaKey'] === undefined) return false;
     return true;
 }
 

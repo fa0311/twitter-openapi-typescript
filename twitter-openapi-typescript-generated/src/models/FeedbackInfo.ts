@@ -30,7 +30,7 @@ export interface FeedbackInfo {
 /**
  * Check if a given object implements the FeedbackInfo interface.
  */
-export function instanceOfFeedbackInfo(value: object): boolean {
+export function instanceOfFeedbackInfo(value: object): value is FeedbackInfo {
     return true;
 }
 

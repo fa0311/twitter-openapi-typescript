@@ -37,8 +37,8 @@ export interface FavoriteTweetResponseData {
 /**
  * Check if a given object implements the FavoriteTweetResponseData interface.
  */
-export function instanceOfFavoriteTweetResponseData(value: object): boolean {
-    if (!('data' in value)) return false;
+export function instanceOfFavoriteTweetResponseData(value: object): value is FavoriteTweetResponseData {
+    if (!('data' in value) || value['data'] === undefined) return false;
     return true;
 }
 

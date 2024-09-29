@@ -36,9 +36,9 @@ export interface TextHighlight {
 /**
  * Check if a given object implements the TextHighlight interface.
  */
-export function instanceOfTextHighlight(value: object): boolean {
-    if (!('endIndex' in value)) return false;
-    if (!('startIndex' in value)) return false;
+export function instanceOfTextHighlight(value: object): value is TextHighlight {
+    if (!('endIndex' in value) || value['endIndex'] === undefined) return false;
+    if (!('startIndex' in value) || value['startIndex'] === undefined) return false;
     return true;
 }
 

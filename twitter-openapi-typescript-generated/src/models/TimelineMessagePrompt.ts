@@ -35,10 +35,12 @@ export interface TimelineMessagePrompt {
     typename?: TypeName;
 }
 
+
+
 /**
  * Check if a given object implements the TimelineMessagePrompt interface.
  */
-export function instanceOfTimelineMessagePrompt(value: object): boolean {
+export function instanceOfTimelineMessagePrompt(value: object): value is TimelineMessagePrompt {
     return true;
 }
 

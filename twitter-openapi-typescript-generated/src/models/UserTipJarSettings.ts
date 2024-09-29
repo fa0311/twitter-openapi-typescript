@@ -24,6 +24,12 @@ export interface UserTipJarSettings {
      * @type {string}
      * @memberof UserTipJarSettings
      */
+    bandcampHandle?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserTipJarSettings
+     */
     bitcoinHandle?: string;
     /**
      * 
@@ -66,7 +72,7 @@ export interface UserTipJarSettings {
 /**
  * Check if a given object implements the UserTipJarSettings interface.
  */
-export function instanceOfUserTipJarSettings(value: object): boolean {
+export function instanceOfUserTipJarSettings(value: object): value is UserTipJarSettings {
     return true;
 }
 
@@ -80,6 +86,7 @@ export function UserTipJarSettingsFromJSONTyped(json: any, ignoreDiscriminator: 
     }
     return {
         
+        'bandcampHandle': json['bandcamp_handle'] == null ? undefined : json['bandcamp_handle'],
         'bitcoinHandle': json['bitcoin_handle'] == null ? undefined : json['bitcoin_handle'],
         'cashAppHandle': json['cash_app_handle'] == null ? undefined : json['cash_app_handle'],
         'ethereumHandle': json['ethereum_handle'] == null ? undefined : json['ethereum_handle'],
@@ -96,6 +103,7 @@ export function UserTipJarSettingsToJSON(value?: UserTipJarSettings | null): any
     }
     return {
         
+        'bandcamp_handle': value['bandcampHandle'],
         'bitcoin_handle': value['bitcoinHandle'],
         'cash_app_handle': value['cashAppHandle'],
         'ethereum_handle': value['ethereumHandle'],

@@ -43,7 +43,7 @@ export interface AdditionalMediaInfoCallToActions {
 /**
  * Check if a given object implements the AdditionalMediaInfoCallToActions interface.
  */
-export function instanceOfAdditionalMediaInfoCallToActions(value: object): boolean {
+export function instanceOfAdditionalMediaInfoCallToActions(value: object): value is AdditionalMediaInfoCallToActions {
     return true;
 }
 

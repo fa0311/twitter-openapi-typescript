@@ -24,14 +24,13 @@ export interface AllowDownloadStatus {
      * @type {boolean}
      * @memberof AllowDownloadStatus
      */
-    allowDownload: boolean;
+    allowDownload?: boolean;
 }
 
 /**
  * Check if a given object implements the AllowDownloadStatus interface.
  */
-export function instanceOfAllowDownloadStatus(value: object): boolean {
-    if (!('allowDownload' in value)) return false;
+export function instanceOfAllowDownloadStatus(value: object): value is AllowDownloadStatus {
     return true;
 }
 
@@ -45,7 +44,7 @@ export function AllowDownloadStatusFromJSONTyped(json: any, ignoreDiscriminator:
     }
     return {
         
-        'allowDownload': json['allow_download'],
+        'allowDownload': json['allow_download'] == null ? undefined : json['allow_download'],
     };
 }
 

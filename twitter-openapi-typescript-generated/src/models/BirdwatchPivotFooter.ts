@@ -43,9 +43,9 @@ export interface BirdwatchPivotFooter {
 /**
  * Check if a given object implements the BirdwatchPivotFooter interface.
  */
-export function instanceOfBirdwatchPivotFooter(value: object): boolean {
-    if (!('entities' in value)) return false;
-    if (!('text' in value)) return false;
+export function instanceOfBirdwatchPivotFooter(value: object): value is BirdwatchPivotFooter {
+    if (!('entities' in value) || value['entities'] === undefined) return false;
+    if (!('text' in value) || value['text'] === undefined) return false;
     return true;
 }
 

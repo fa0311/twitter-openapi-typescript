@@ -55,11 +55,11 @@ export interface ArticleCoverMedia {
 /**
  * Check if a given object implements the ArticleCoverMedia interface.
  */
-export function instanceOfArticleCoverMedia(value: object): boolean {
-    if (!('id' in value)) return false;
-    if (!('mediaId' in value)) return false;
-    if (!('mediaInfo' in value)) return false;
-    if (!('mediaKey' in value)) return false;
+export function instanceOfArticleCoverMedia(value: object): value is ArticleCoverMedia {
+    if (!('id' in value) || value['id'] === undefined) return false;
+    if (!('mediaId' in value) || value['mediaId'] === undefined) return false;
+    if (!('mediaInfo' in value) || value['mediaInfo'] === undefined) return false;
+    if (!('mediaKey' in value) || value['mediaKey'] === undefined) return false;
     return true;
 }
 

@@ -40,8 +40,8 @@ export type TweetCardPlatformAudienceNameEnum = typeof TweetCardPlatformAudience
 /**
  * Check if a given object implements the TweetCardPlatformAudience interface.
  */
-export function instanceOfTweetCardPlatformAudience(value: object): boolean {
-    if (!('name' in value)) return false;
+export function instanceOfTweetCardPlatformAudience(value: object): value is TweetCardPlatformAudience {
+    if (!('name' in value) || value['name'] === undefined) return false;
     return true;
 }
 

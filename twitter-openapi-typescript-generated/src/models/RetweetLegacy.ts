@@ -30,8 +30,8 @@ export interface RetweetLegacy {
 /**
  * Check if a given object implements the RetweetLegacy interface.
  */
-export function instanceOfRetweetLegacy(value: object): boolean {
-    if (!('fullText' in value)) return false;
+export function instanceOfRetweetLegacy(value: object): value is RetweetLegacy {
+    if (!('fullText' in value) || value['fullText'] === undefined) return false;
     return true;
 }
 

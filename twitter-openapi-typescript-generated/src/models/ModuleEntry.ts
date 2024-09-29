@@ -13,6 +13,12 @@
  */
 
 import { mapValues } from '../runtime';
+import type { ItemContentUnion } from './ItemContentUnion';
+import {
+    ItemContentUnionFromJSON,
+    ItemContentUnionFromJSONTyped,
+    ItemContentUnionToJSON,
+} from './ItemContentUnion';
 import type { ClientEventInfo } from './ClientEventInfo';
 import {
     ClientEventInfoFromJSON,
@@ -25,12 +31,6 @@ import {
     FeedbackInfoFromJSONTyped,
     FeedbackInfoToJSON,
 } from './FeedbackInfo';
-import type { ItemContentUnion } from './ItemContentUnion';
-import {
-    ItemContentUnionFromJSON,
-    ItemContentUnionFromJSONTyped,
-    ItemContentUnionToJSON,
-} from './ItemContentUnion';
 
 /**
  * 
@@ -61,8 +61,8 @@ export interface ModuleEntry {
 /**
  * Check if a given object implements the ModuleEntry interface.
  */
-export function instanceOfModuleEntry(value: object): boolean {
-    if (!('itemContent' in value)) return false;
+export function instanceOfModuleEntry(value: object): value is ModuleEntry {
+    if (!('itemContent' in value) || value['itemContent'] === undefined) return false;
     return true;
 }
 

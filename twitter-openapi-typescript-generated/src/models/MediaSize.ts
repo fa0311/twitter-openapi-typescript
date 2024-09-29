@@ -53,10 +53,10 @@ export type MediaSizeResizeEnum = typeof MediaSizeResizeEnum[keyof typeof MediaS
 /**
  * Check if a given object implements the MediaSize interface.
  */
-export function instanceOfMediaSize(value: object): boolean {
-    if (!('h' in value)) return false;
-    if (!('resize' in value)) return false;
-    if (!('w' in value)) return false;
+export function instanceOfMediaSize(value: object): value is MediaSize {
+    if (!('h' in value) || value['h'] === undefined) return false;
+    if (!('resize' in value) || value['resize'] === undefined) return false;
+    if (!('w' in value) || value['w'] === undefined) return false;
     return true;
 }
 

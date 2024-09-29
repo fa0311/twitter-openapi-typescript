@@ -37,8 +37,8 @@ export interface NoteTweetResultRichText {
 /**
  * Check if a given object implements the NoteTweetResultRichText interface.
  */
-export function instanceOfNoteTweetResultRichText(value: object): boolean {
-    if (!('richtextTags' in value)) return false;
+export function instanceOfNoteTweetResultRichText(value: object): value is NoteTweetResultRichText {
+    if (!('richtextTags' in value) || value['richtextTags'] === undefined) return false;
     return true;
 }
 

@@ -13,12 +13,25 @@
  */
 
 import { mapValues } from '../runtime';
+import type { ErrorsData } from './ErrorsData';
+import {
+    ErrorsDataFromJSON,
+    ErrorsDataFromJSONTyped,
+    ErrorsDataToJSON,
+} from './ErrorsData';
+
 /**
  * 
  * @export
  * @interface Errors
  */
 export interface Errors {
+    /**
+     * 
+     * @type {ErrorsData}
+     * @memberof Errors
+     */
+    data?: ErrorsData;
     /**
      * 
      * @type {Array<Error>}
@@ -30,8 +43,8 @@ export interface Errors {
 /**
  * Check if a given object implements the Errors interface.
  */
-export function instanceOfErrors(value: object): boolean {
-    if (!('errors' in value)) return false;
+export function instanceOfErrors(value: object): value is Errors {
+    if (!('errors' in value) || value['errors'] === undefined) return false;
     return true;
 }
 
@@ -45,6 +58,7 @@ export function ErrorsFromJSONTyped(json: any, ignoreDiscriminator: boolean): Er
     }
     return {
         
+        'data': json['data'] == null ? undefined : ErrorsDataFromJSON(json['data']),
         'errors': json['errors'],
     };
 }
@@ -55,6 +69,7 @@ export function ErrorsToJSON(value?: Errors | null): any {
     }
     return {
         
+        'data': ErrorsDataToJSON(value['data']),
         'errors': value['errors'],
     };
 }

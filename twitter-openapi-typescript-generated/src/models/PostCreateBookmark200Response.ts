@@ -42,7 +42,14 @@ export function PostCreateBookmark200ResponseFromJSONTyped(json: any, ignoreDisc
     if (json == null) {
         return json;
     }
-    return { ...CreateBookmarkResponseFromJSONTyped(json, true), ...ErrorsFromJSONTyped(json, true) };
+    if (instanceOfCreateBookmarkResponse(json)) {
+        return CreateBookmarkResponseFromJSONTyped(json, true);
+    }
+    if (instanceOfErrors(json)) {
+        return ErrorsFromJSONTyped(json, true);
+    }
+
+    return {} as any;
 }
 
 export function PostCreateBookmark200ResponseToJSON(value?: PostCreateBookmark200Response | null): any {

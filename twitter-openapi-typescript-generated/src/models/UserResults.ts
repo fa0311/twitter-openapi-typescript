@@ -37,7 +37,7 @@ export interface UserResults {
 /**
  * Check if a given object implements the UserResults interface.
  */
-export function instanceOfUserResults(value: object): boolean {
+export function instanceOfUserResults(value: object): value is UserResults {
     return true;
 }
 

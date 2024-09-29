@@ -37,8 +37,8 @@ export interface UsersResponse {
 /**
  * Check if a given object implements the UsersResponse interface.
  */
-export function instanceOfUsersResponse(value: object): boolean {
-    if (!('data' in value)) return false;
+export function instanceOfUsersResponse(value: object): value is UsersResponse {
+    if (!('data' in value) || value['data'] === undefined) return false;
     return true;
 }
 

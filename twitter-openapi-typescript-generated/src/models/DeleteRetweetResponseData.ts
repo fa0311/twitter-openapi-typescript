@@ -37,7 +37,7 @@ export interface DeleteRetweetResponseData {
 /**
  * Check if a given object implements the DeleteRetweetResponseData interface.
  */
-export function instanceOfDeleteRetweetResponseData(value: object): boolean {
+export function instanceOfDeleteRetweetResponseData(value: object): value is DeleteRetweetResponseData {
     return true;
 }
 

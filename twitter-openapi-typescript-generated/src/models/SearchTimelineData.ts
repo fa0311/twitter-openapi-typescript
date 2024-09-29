@@ -37,8 +37,8 @@ export interface SearchTimelineData {
 /**
  * Check if a given object implements the SearchTimelineData interface.
  */
-export function instanceOfSearchTimelineData(value: object): boolean {
-    if (!('searchByRawQuery' in value)) return false;
+export function instanceOfSearchTimelineData(value: object): value is SearchTimelineData {
+    if (!('searchByRawQuery' in value) || value['searchByRawQuery'] === undefined) return false;
     return true;
 }
 

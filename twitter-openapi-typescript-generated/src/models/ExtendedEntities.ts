@@ -37,8 +37,8 @@ export interface ExtendedEntities {
 /**
  * Check if a given object implements the ExtendedEntities interface.
  */
-export function instanceOfExtendedEntities(value: object): boolean {
-    if (!('media' in value)) return false;
+export function instanceOfExtendedEntities(value: object): value is ExtendedEntities {
+    if (!('media' in value) || value['media'] === undefined) return false;
     return true;
 }
 

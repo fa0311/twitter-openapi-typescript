@@ -13,18 +13,24 @@
  */
 
 import { mapValues } from '../runtime';
-import type { TypeName } from './TypeName';
-import {
-    TypeNameFromJSON,
-    TypeNameFromJSONTyped,
-    TypeNameToJSON,
-} from './TypeName';
 import type { UserHighlightsInfo } from './UserHighlightsInfo';
 import {
     UserHighlightsInfoFromJSON,
     UserHighlightsInfoFromJSONTyped,
     UserHighlightsInfoToJSON,
 } from './UserHighlightsInfo';
+import type { TypeName } from './TypeName';
+import {
+    TypeNameFromJSON,
+    TypeNameFromJSONTyped,
+    TypeNameToJSON,
+} from './TypeName';
+import type { UserVerificationInfo } from './UserVerificationInfo';
+import {
+    UserVerificationInfoFromJSON,
+    UserVerificationInfoFromJSONTyped,
+    UserVerificationInfoToJSON,
+} from './UserVerificationInfo';
 import type { UserLegacy } from './UserLegacy';
 import {
     UserLegacyFromJSON,
@@ -37,24 +43,18 @@ import {
     UserLegacyExtendedProfileFromJSONTyped,
     UserLegacyExtendedProfileToJSON,
 } from './UserLegacyExtendedProfile';
-import type { UserProfessional } from './UserProfessional';
-import {
-    UserProfessionalFromJSON,
-    UserProfessionalFromJSONTyped,
-    UserProfessionalToJSON,
-} from './UserProfessional';
 import type { UserTipJarSettings } from './UserTipJarSettings';
 import {
     UserTipJarSettingsFromJSON,
     UserTipJarSettingsFromJSONTyped,
     UserTipJarSettingsToJSON,
 } from './UserTipJarSettings';
-import type { UserVerificationInfo } from './UserVerificationInfo';
+import type { UserProfessional } from './UserProfessional';
 import {
-    UserVerificationInfoFromJSON,
-    UserVerificationInfoFromJSONTyped,
-    UserVerificationInfoToJSON,
-} from './UserVerificationInfo';
+    UserProfessionalFromJSON,
+    UserProfessionalFromJSONTyped,
+    UserProfessionalToJSON,
+} from './UserProfessional';
 
 /**
  * 
@@ -92,6 +92,12 @@ export interface User {
      * @memberof User
      */
     hasGraduatedAccess?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof User
+     */
+    hasHiddenLikesOnProfile?: boolean;
     /**
      * 
      * @type {boolean}
@@ -136,6 +142,12 @@ export interface User {
     legacyExtendedProfile?: UserLegacyExtendedProfile;
     /**
      * 
+     * @type {boolean}
+     * @memberof User
+     */
+    premiumGiftingEligible?: boolean;
+    /**
+     * 
      * @type {UserProfessional}
      * @memberof User
      */
@@ -157,19 +169,19 @@ export interface User {
      * @type {boolean}
      * @memberof User
      */
-    superFollowEligible: boolean;
+    superFollowEligible?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof User
      */
-    superFollowedBy: boolean;
+    superFollowedBy?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof User
      */
-    superFollowing: boolean;
+    superFollowing?: boolean;
     /**
      * 
      * @type {UserTipJarSettings}
@@ -205,17 +217,14 @@ export type UserProfileImageShapeEnum = typeof UserProfileImageShapeEnum[keyof t
 /**
  * Check if a given object implements the User interface.
  */
-export function instanceOfUser(value: object): boolean {
-    if (!('typename' in value)) return false;
-    if (!('affiliatesHighlightedLabel' in value)) return false;
-    if (!('id' in value)) return false;
-    if (!('isBlueVerified' in value)) return false;
-    if (!('legacy' in value)) return false;
-    if (!('profileImageShape' in value)) return false;
-    if (!('restId' in value)) return false;
-    if (!('superFollowEligible' in value)) return false;
-    if (!('superFollowedBy' in value)) return false;
-    if (!('superFollowing' in value)) return false;
+export function instanceOfUser(value: object): value is User {
+    if (!('typename' in value) || value['typename'] === undefined) return false;
+    if (!('affiliatesHighlightedLabel' in value) || value['affiliatesHighlightedLabel'] === undefined) return false;
+    if (!('id' in value) || value['id'] === undefined) return false;
+    if (!('isBlueVerified' in value) || value['isBlueVerified'] === undefined) return false;
+    if (!('legacy' in value) || value['legacy'] === undefined) return false;
+    if (!('profileImageShape' in value) || value['profileImageShape'] === undefined) return false;
+    if (!('restId' in value) || value['restId'] === undefined) return false;
     return true;
 }
 
@@ -234,6 +243,7 @@ export function UserFromJSONTyped(json: any, ignoreDiscriminator: boolean): User
         'businessAccount': json['business_account'] == null ? undefined : json['business_account'],
         'creatorSubscriptionsCount': json['creator_subscriptions_count'] == null ? undefined : json['creator_subscriptions_count'],
         'hasGraduatedAccess': json['has_graduated_access'] == null ? undefined : json['has_graduated_access'],
+        'hasHiddenLikesOnProfile': json['has_hidden_likes_on_profile'] == null ? undefined : json['has_hidden_likes_on_profile'],
         'hasNftAvatar': json['has_nft_avatar'] == null ? undefined : json['has_nft_avatar'],
         'highlightsInfo': json['highlights_info'] == null ? undefined : UserHighlightsInfoFromJSON(json['highlights_info']),
         'id': json['id'],
@@ -241,12 +251,13 @@ export function UserFromJSONTyped(json: any, ignoreDiscriminator: boolean): User
         'isProfileTranslatable': json['is_profile_translatable'] == null ? undefined : json['is_profile_translatable'],
         'legacy': UserLegacyFromJSON(json['legacy']),
         'legacyExtendedProfile': json['legacy_extended_profile'] == null ? undefined : UserLegacyExtendedProfileFromJSON(json['legacy_extended_profile']),
+        'premiumGiftingEligible': json['premium_gifting_eligible'] == null ? undefined : json['premium_gifting_eligible'],
         'professional': json['professional'] == null ? undefined : UserProfessionalFromJSON(json['professional']),
         'profileImageShape': json['profile_image_shape'],
         'restId': json['rest_id'],
-        'superFollowEligible': json['super_follow_eligible'],
-        'superFollowedBy': json['super_followed_by'],
-        'superFollowing': json['super_following'],
+        'superFollowEligible': json['super_follow_eligible'] == null ? undefined : json['super_follow_eligible'],
+        'superFollowedBy': json['super_followed_by'] == null ? undefined : json['super_followed_by'],
+        'superFollowing': json['super_following'] == null ? undefined : json['super_following'],
         'tipjarSettings': json['tipjar_settings'] == null ? undefined : UserTipJarSettingsFromJSON(json['tipjar_settings']),
         'userSeedTweetCount': json['user_seed_tweet_count'] == null ? undefined : json['user_seed_tweet_count'],
         'verificationInfo': json['verification_info'] == null ? undefined : UserVerificationInfoFromJSON(json['verification_info']),
@@ -264,6 +275,7 @@ export function UserToJSON(value?: User | null): any {
         'business_account': value['businessAccount'],
         'creator_subscriptions_count': value['creatorSubscriptionsCount'],
         'has_graduated_access': value['hasGraduatedAccess'],
+        'has_hidden_likes_on_profile': value['hasHiddenLikesOnProfile'],
         'has_nft_avatar': value['hasNftAvatar'],
         'highlights_info': UserHighlightsInfoToJSON(value['highlightsInfo']),
         'id': value['id'],
@@ -271,6 +283,7 @@ export function UserToJSON(value?: User | null): any {
         'is_profile_translatable': value['isProfileTranslatable'],
         'legacy': UserLegacyToJSON(value['legacy']),
         'legacy_extended_profile': UserLegacyExtendedProfileToJSON(value['legacyExtendedProfile']),
+        'premium_gifting_eligible': value['premiumGiftingEligible'],
         'professional': UserProfessionalToJSON(value['professional']),
         'profile_image_shape': value['profileImageShape'],
         'rest_id': value['restId'],

@@ -40,8 +40,8 @@ export type CtaClientEventInfoActionEnum = typeof CtaClientEventInfoActionEnum[k
 /**
  * Check if a given object implements the CtaClientEventInfo interface.
  */
-export function instanceOfCtaClientEventInfo(value: object): boolean {
-    if (!('action' in value)) return false;
+export function instanceOfCtaClientEventInfo(value: object): value is CtaClientEventInfo {
+    if (!('action' in value) || value['action'] === undefined) return false;
     return true;
 }
 

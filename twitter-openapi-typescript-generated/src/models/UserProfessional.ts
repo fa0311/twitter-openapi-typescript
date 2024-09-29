@@ -60,10 +60,10 @@ export type UserProfessionalProfessionalTypeEnum = typeof UserProfessionalProfes
 /**
  * Check if a given object implements the UserProfessional interface.
  */
-export function instanceOfUserProfessional(value: object): boolean {
-    if (!('category' in value)) return false;
-    if (!('professionalType' in value)) return false;
-    if (!('restId' in value)) return false;
+export function instanceOfUserProfessional(value: object): value is UserProfessional {
+    if (!('category' in value) || value['category'] === undefined) return false;
+    if (!('professionalType' in value) || value['professionalType'] === undefined) return false;
+    if (!('restId' in value) || value['restId'] === undefined) return false;
     return true;
 }
 

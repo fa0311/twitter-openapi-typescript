@@ -43,9 +43,9 @@ export interface PostDeleteRetweetRequest {
 /**
  * Check if a given object implements the PostDeleteRetweetRequest interface.
  */
-export function instanceOfPostDeleteRetweetRequest(value: object): boolean {
-    if (!('queryId' in value)) return false;
-    if (!('variables' in value)) return false;
+export function instanceOfPostDeleteRetweetRequest(value: object): value is PostDeleteRetweetRequest {
+    if (!('queryId' in value) || value['queryId'] === undefined) return false;
+    if (!('variables' in value) || value['variables'] === undefined) return false;
     return true;
 }
 

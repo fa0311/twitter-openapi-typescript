@@ -35,10 +35,12 @@ export interface TimelineCommunity {
     typename?: TypeName;
 }
 
+
+
 /**
  * Check if a given object implements the TimelineCommunity interface.
  */
-export function instanceOfTimelineCommunity(value: object): boolean {
+export function instanceOfTimelineCommunity(value: object): value is TimelineCommunity {
     return true;
 }
 

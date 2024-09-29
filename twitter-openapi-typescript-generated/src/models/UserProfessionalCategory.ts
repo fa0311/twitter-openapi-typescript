@@ -42,10 +42,10 @@ export interface UserProfessionalCategory {
 /**
  * Check if a given object implements the UserProfessionalCategory interface.
  */
-export function instanceOfUserProfessionalCategory(value: object): boolean {
-    if (!('iconName' in value)) return false;
-    if (!('id' in value)) return false;
-    if (!('name' in value)) return false;
+export function instanceOfUserProfessionalCategory(value: object): value is UserProfessionalCategory {
+    if (!('iconName' in value) || value['iconName'] === undefined) return false;
+    if (!('id' in value) || value['id'] === undefined) return false;
+    if (!('name' in value) || value['name'] === undefined) return false;
     return true;
 }
 

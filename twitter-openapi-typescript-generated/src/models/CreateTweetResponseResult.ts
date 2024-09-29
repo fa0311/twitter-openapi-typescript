@@ -37,8 +37,8 @@ export interface CreateTweetResponseResult {
 /**
  * Check if a given object implements the CreateTweetResponseResult interface.
  */
-export function instanceOfCreateTweetResponseResult(value: object): boolean {
-    if (!('tweetResults' in value)) return false;
+export function instanceOfCreateTweetResponseResult(value: object): value is CreateTweetResponseResult {
+    if (!('tweetResults' in value) || value['tweetResults'] === undefined) return false;
     return true;
 }
 

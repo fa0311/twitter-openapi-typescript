@@ -43,9 +43,9 @@ export interface PostCreateBookmarkRequest {
 /**
  * Check if a given object implements the PostCreateBookmarkRequest interface.
  */
-export function instanceOfPostCreateBookmarkRequest(value: object): boolean {
-    if (!('queryId' in value)) return false;
-    if (!('variables' in value)) return false;
+export function instanceOfPostCreateBookmarkRequest(value: object): value is PostCreateBookmarkRequest {
+    if (!('queryId' in value) || value['queryId'] === undefined) return false;
+    if (!('variables' in value) || value['variables'] === undefined) return false;
     return true;
 }
 

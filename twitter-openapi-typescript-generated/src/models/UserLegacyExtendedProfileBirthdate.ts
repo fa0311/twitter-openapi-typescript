@@ -80,12 +80,12 @@ export type UserLegacyExtendedProfileBirthdateYearVisibilityEnum = typeof UserLe
 /**
  * Check if a given object implements the UserLegacyExtendedProfileBirthdate interface.
  */
-export function instanceOfUserLegacyExtendedProfileBirthdate(value: object): boolean {
-    if (!('day' in value)) return false;
-    if (!('month' in value)) return false;
-    if (!('visibility' in value)) return false;
-    if (!('year' in value)) return false;
-    if (!('yearVisibility' in value)) return false;
+export function instanceOfUserLegacyExtendedProfileBirthdate(value: object): value is UserLegacyExtendedProfileBirthdate {
+    if (!('day' in value) || value['day'] === undefined) return false;
+    if (!('month' in value) || value['month'] === undefined) return false;
+    if (!('visibility' in value) || value['visibility'] === undefined) return false;
+    if (!('year' in value) || value['year'] === undefined) return false;
+    if (!('yearVisibility' in value) || value['yearVisibility'] === undefined) return false;
     return true;
 }
 

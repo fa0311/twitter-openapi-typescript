@@ -19,18 +19,18 @@ import {
     ErrorExtensionsFromJSONTyped,
     ErrorExtensionsToJSON,
 } from './ErrorExtensions';
-import type { Location } from './Location';
-import {
-    LocationFromJSON,
-    LocationFromJSONTyped,
-    LocationToJSON,
-} from './Location';
 import type { Tracing } from './Tracing';
 import {
     TracingFromJSON,
     TracingFromJSONTyped,
     TracingToJSON,
 } from './Tracing';
+import type { Location } from './Location';
+import {
+    LocationFromJSON,
+    LocationFromJSONTyped,
+    LocationToJSON,
+} from './Location';
 
 /**
  * 
@@ -85,7 +85,7 @@ export interface ModelError {
      * @type {number}
      * @memberof ModelError
      */
-    retryAfter: number;
+    retryAfter?: number;
     /**
      * 
      * @type {string}
@@ -103,17 +103,16 @@ export interface ModelError {
 /**
  * Check if a given object implements the ModelError interface.
  */
-export function instanceOfModelError(value: object): boolean {
-    if (!('code' in value)) return false;
-    if (!('extensions' in value)) return false;
-    if (!('kind' in value)) return false;
-    if (!('locations' in value)) return false;
-    if (!('message' in value)) return false;
-    if (!('name' in value)) return false;
-    if (!('path' in value)) return false;
-    if (!('retryAfter' in value)) return false;
-    if (!('source' in value)) return false;
-    if (!('tracing' in value)) return false;
+export function instanceOfModelError(value: object): value is ModelError {
+    if (!('code' in value) || value['code'] === undefined) return false;
+    if (!('extensions' in value) || value['extensions'] === undefined) return false;
+    if (!('kind' in value) || value['kind'] === undefined) return false;
+    if (!('locations' in value) || value['locations'] === undefined) return false;
+    if (!('message' in value) || value['message'] === undefined) return false;
+    if (!('name' in value) || value['name'] === undefined) return false;
+    if (!('path' in value) || value['path'] === undefined) return false;
+    if (!('source' in value) || value['source'] === undefined) return false;
+    if (!('tracing' in value) || value['tracing'] === undefined) return false;
     return true;
 }
 
@@ -134,7 +133,7 @@ export function ModelErrorFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'message': json['message'],
         'name': json['name'],
         'path': json['path'],
-        'retryAfter': json['retry_after'],
+        'retryAfter': json['retry_after'] == null ? undefined : json['retry_after'],
         'source': json['source'],
         'tracing': TracingFromJSON(json['tracing']),
     };

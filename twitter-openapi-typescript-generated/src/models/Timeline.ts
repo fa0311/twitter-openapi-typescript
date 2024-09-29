@@ -49,8 +49,8 @@ export interface Timeline {
 /**
  * Check if a given object implements the Timeline interface.
  */
-export function instanceOfTimeline(value: object): boolean {
-    if (!('instructions' in value)) return false;
+export function instanceOfTimeline(value: object): value is Timeline {
+    if (!('instructions' in value) || value['instructions'] === undefined) return false;
     return true;
 }
 

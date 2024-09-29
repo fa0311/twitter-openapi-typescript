@@ -25,37 +25,13 @@ Learn more about people-friendly TypeScript packages here.
 
 ## twitter-openapi-typescript-generated
 
-> Note! twitter-openapi-typescript-generated is a package for advanced users who are familiar with Twitter's API. In general, [twitter-openapi-typescript](./twitter-openapi-typescript) should be used!
+Learn more about the automatically generated TypeScript package here.
 
-Build
+[README-generated.md](./README-generated.md)
 
-```shell
-git clone https://github.com/fa0311/twitter-openapi-typescript.git
-cd twitter-openapi-typescript-generated
-```
-
-```shell
-openapi-generator-cli version # 6.5.0
-```
-
-```shell
-java -jar tools/openapi-generator-cli.jar generate -g typescript-fetch -c tools/openapi-generator-config.yaml
-npm run build
-```
-
-Setup
-
-```shell
-npm i twitter-openapi-typescript-generated
-```
-
-License
+## License
 
 This project is dual licensed. You can choose one of the following licenses:
 
 - [Custom License](./LICENSE)
 - [GNU Affero General Public License v3.0](./LICENSE.AGPL)
-
-Usage
-
-[twitter-openapi-typescript-generated/README.md](./twitter-openapi-typescript-generated/README.md)

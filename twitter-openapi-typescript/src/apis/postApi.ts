@@ -9,7 +9,7 @@ type PostCreateTweetParam = {
   taggedUsers?: string[][];
   inReplyToTweetId?: string;
   attachmentUrl?: string;
-  conversationControl?: string;
+  conversationControl?: 'Community' | 'Verified' | 'ByInvitation' | (string & {});
   extraParam?: { [key: string]: any };
 };
 

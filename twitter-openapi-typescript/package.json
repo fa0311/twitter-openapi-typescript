@@ -1,6 +1,6 @@
 {
   "name": "twitter-openapi-typescript",
-  "version": "0.0.37",
+  "version": "0.0.38",
   "description": "Implementation of Twitter internal API in TypeScript",
   "scripts": {
     "test": "jest",

@@ -14,58 +14,47 @@ import * as i from 'twitter-openapi-typescript-generated';
 import { UsersApiUtils } from './apis/usersApi';
 
 export class TwitterOpenApi {
-  static hash = 'a18a24e4fd96967314c452a6ec2fe6e54f112351';
+  static hash = '0c64eebbfb93b3ed69c3aba923ec8d6894a39902';
   static url = `https://raw.githubusercontent.com/fa0311/twitter-openapi/${this.hash}/src/config/placeholder.json`;
-  static header = 'https://raw.githubusercontent.com/fa0311/latest-user-agent/main/output.json';
+  static header = 'https://raw.githubusercontent.com/fa0311/latest-user-agent/refs/heads/main/header.json';
   static twitter = 'https://x.com/home';
   static bearer =
     'AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA';
+  static additionalBrowserHeaders: { [key: string]: string } = {};
+  static additionalApiHeaders: { [key: string]: string } = {};
 
-  async get_headers(): Promise<{ api: { [key: string]: string }; browser: { [key: string]: string } }> {
+  async getHeaders(): Promise<{ api: { [key: string]: string }; browser: { [key: string]: string } }> {
     const raw = await TwitterOpenApi.fetchApi(TwitterOpenApi.header);
     const json = await raw.json();
+    const ignore = ['host', 'connection'];
+
+    const getHader = (name: string): { [key: string]: string } => {
+      return Object.entries(json[name]).reduce((a, [key, value]) => {
+        if (ignore.includes(key)) return a;
+        return { ...a, [key]: value };
+      }, {});
+    };
 
     return {
       api: {
-        accept: '*/*',
-        'accept-encoding': 'identity',
-        'accept-language': 'en-US,en;q=0.9',
-        'cache-control': 'no-cache',
+        ...getHader('chrome-fetch'),
         pragma: 'no-cache',
-        'sec-ch-ua': '"Chromium";v="116", "Not)A;Brand";v="24", "Google Chrome";v="116"',
-        'sec-ch-ua-mobile': '?0',
-        'sec-ch-ua-platform': '"Windows"',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-site',
+        referer: TwitterOpenApi.twitter,
+        priority: 'u=1, i',
         'client-language': 'en',
         'active-user': 'yes',
-        'user-agent': json['chrome-fetch'],
+        'x-twitter-client-language': 'en',
+        'x-twitter-active-user': 'yes',
+        // 'x-twitter-auth-type': 'xxxx'
+        // 'x-csrf-token': 'xxxx',
+        // 'x-guest-token': 'xxxx',
+        authorization: `Bearer ${TwitterOpenApi.bearer}`,
+        ...TwitterOpenApi.additionalApiHeaders,
       },
       browser: {
-        accept: 'text/plain, */*; q=0.01',
-        'accept-encoding': 'gzip, deflate, br',
-        'accept-language': 'en-US,en;q=0.9',
-        'cache-control': 'no-cache',
-        pragma: 'no-cache',
-        'sec-ch-ua': '"Chromium";v="116", "Not)A;Brand";v="24", "Google Chrome";v="116"',
-        'sec-ch-ua-mobile': '?0',
-        'sec-ch-ua-platform': '"Windows"',
-        'sec-fetch-dest': 'empty',
-        'sec-fetch-mode': 'cors',
-        'sec-fetch-site': 'same-site',
-        'user-agent': json['chrome'],
+        ...getHader('chrome'),
+        ...TwitterOpenApi.additionalBrowserHeaders,
       },
-    };
-  }
-
-  async get_api_key(): Promise<{ [key: string]: string }> {
-    const data = await this.get_headers();
-    return {
-      ...data.api,
-      'x-twitter-client-language': 'en',
-      'x-twitter-active-user': 'yes',
-      authorization: `Bearer ${TwitterOpenApi.bearer}`,
     };
   }
 
@@ -77,7 +66,7 @@ export class TwitterOpenApi {
     this.initOverrides = initOverrides;
   }
 
-  cookie_normalize(cookie: string[]): { [key: string]: string } {
+  cookieNormalize(cookie: string[]): { [key: string]: string } {
     return cookie.reduce((a, b) => {
       const [key, value] = b.split('; ')[0].split('=');
       return { ...a, [key]: value };
@@ -109,29 +98,23 @@ export class TwitterOpenApi {
     });
 
     if (response.headers.getSetCookie) {
-      cookies = { ...cookies, ...this.cookie_normalize(response.headers.getSetCookie()) };
+      cookies = { ...cookies, ...this.cookieNormalize(response.headers.getSetCookie()) };
     } else {
-      cookies = { ...cookies, ...this.cookie_normalize(response.headers.get('set-cookie')?.split(', ') || []) };
+      cookies = { ...cookies, ...this.cookieNormalize(response.headers.get('set-cookie')?.split(', ') || []) };
     }
     const html = await response.text();
-
-    // const html = await TwitterOpenApi.fetchApi(TwitterOpenApi.twitter, {
-    //   method: 'GET',
-    //   headers: { Cookie: this.cookieEncode(cookies) },
-    //   ...this.initOverrides,
-    // }).then((response) => response.text());
 
     const re = new RegExp('document.cookie="(.*?)";', 'g');
 
     const find = [...html.matchAll(re)].map((e) => e[1]);
-    cookies = { ...cookies, ...this.cookie_normalize(find) };
+    cookies = { ...cookies, ...this.cookieNormalize(find) };
 
     cookies = Object.entries(cookies)
       .filter(([key, value]) => key != 'ct0')
       .reduce((a, [key, value]) => ({ ...a, [key]: value }), {});
 
     if (!cookies['gt']) {
-      const activate_headers = await this.get_api_key();
+      const activate_headers = (await this.getHeaders()).api;
       const { guest_token } = await TwitterOpenApi.fetchApi('https://api.x.com/1.1/guest/activate.json', {
         method: 'POST',
         headers: activate_headers,
@@ -148,7 +131,7 @@ export class TwitterOpenApi {
   }
 
   async getClientFromCookies(cookies: { [key: string]: string }): Promise<TwitterOpenApiClient> {
-    const api_key = await this.get_api_key();
+    const api_key = (await this.getHeaders()).api;
     if (cookies['ct0']) {
       api_key['x-twitter-auth-type'] = 'OAuth2Session';
       api_key['x-csrf-token'] = cookies['ct0'];

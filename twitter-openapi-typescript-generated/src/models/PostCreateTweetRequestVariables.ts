@@ -19,6 +19,12 @@ import {
     PostCreateTweetRequestVariablesReplyFromJSONTyped,
     PostCreateTweetRequestVariablesReplyToJSON,
 } from './PostCreateTweetRequestVariablesReply';
+import type { PostCreateTweetRequestVariablesConversationControl } from './PostCreateTweetRequestVariablesConversationControl';
+import {
+    PostCreateTweetRequestVariablesConversationControlFromJSON,
+    PostCreateTweetRequestVariablesConversationControlFromJSONTyped,
+    PostCreateTweetRequestVariablesConversationControlToJSON,
+} from './PostCreateTweetRequestVariablesConversationControl';
 import type { PostCreateTweetRequestVariablesMedia } from './PostCreateTweetRequestVariablesMedia';
 import {
     PostCreateTweetRequestVariablesMediaFromJSON,
@@ -32,6 +38,18 @@ import {
  * @interface PostCreateTweetRequestVariables
  */
 export interface PostCreateTweetRequestVariables {
+    /**
+     * 
+     * @type {string}
+     * @memberof PostCreateTweetRequestVariables
+     */
+    attachmentUrl?: string;
+    /**
+     * 
+     * @type {PostCreateTweetRequestVariablesConversationControl}
+     * @memberof PostCreateTweetRequestVariables
+     */
+    conversationControl?: PostCreateTweetRequestVariablesConversationControl;
     /**
      * 
      * @type {boolean}
@@ -91,6 +109,8 @@ export function PostCreateTweetRequestVariablesFromJSONTyped(json: any, ignoreDi
     }
     return {
         
+        'attachmentUrl': json['attachment_url'] == null ? undefined : json['attachment_url'],
+        'conversationControl': json['conversation_control'] == null ? undefined : PostCreateTweetRequestVariablesConversationControlFromJSON(json['conversation_control']),
         'darkRequest': json['dark_request'],
         'disallowedReplyOptions': json['disallowed_reply_options'] == null ? undefined : json['disallowed_reply_options'],
         'media': PostCreateTweetRequestVariablesMediaFromJSON(json['media']),
@@ -106,6 +126,8 @@ export function PostCreateTweetRequestVariablesToJSON(value?: PostCreateTweetReq
     }
     return {
         
+        'attachment_url': value['attachmentUrl'],
+        'conversation_control': PostCreateTweetRequestVariablesConversationControlToJSON(value['conversationControl']),
         'dark_request': value['darkRequest'],
         'disallowed_reply_options': value['disallowedReplyOptions'],
         'media': PostCreateTweetRequestVariablesMediaToJSON(value['media']),

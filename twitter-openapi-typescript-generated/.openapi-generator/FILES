@@ -56,6 +56,7 @@ src/models/CommunityUrlsPermalink.ts
 src/models/ContentEntryType.ts
 src/models/ContentItemType.ts
 src/models/ContentUnion.ts
+src/models/ConversationControl.ts
 src/models/CoverCta.ts
 src/models/CreateBookmarkResponse.ts
 src/models/CreateBookmarkResponseData.ts
@@ -155,6 +156,7 @@ src/models/PostCreateTweet200Response.ts
 src/models/PostCreateTweetRequest.ts
 src/models/PostCreateTweetRequestFeatures.ts
 src/models/PostCreateTweetRequestVariables.ts
+src/models/PostCreateTweetRequestVariablesConversationControl.ts
 src/models/PostCreateTweetRequestVariablesMedia.ts
 src/models/PostCreateTweetRequestVariablesMediaMediaEntitiesInner.ts
 src/models/PostCreateTweetRequestVariablesReply.ts

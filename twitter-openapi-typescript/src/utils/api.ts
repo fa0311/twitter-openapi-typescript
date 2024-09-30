@@ -1,6 +1,13 @@
 import { ApiUtilsHeader, CursorApiUtilsResponse, TweetApiUtilsData, UserApiUtilsData } from '@/models';
 import * as i from 'twitter-openapi-typescript-generated';
 
+export const nonNullable = <T>(x: T | undefined): T => {
+  if (x == undefined) {
+    throw Error('No data');
+  }
+  return x;
+};
+
 export const getKwargs = (flag: { [key: string]: any }, additional: { [key: string]: any }): any => {
   const kwargs: { [key: string]: any } = { pathQueryId: flag.queryId };
   if (flag.variables != undefined) {

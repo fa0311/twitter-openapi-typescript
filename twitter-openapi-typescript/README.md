@@ -14,8 +14,13 @@ import { TwitterOpenApi } from 'twitter-openapi-typescript';
 const api = new TwitterOpenApi();
 const client = await api.getGuestClient();
 const response = await client.getUserApi().getUserByScreenName({ screenName: 'elonmusk' });
-console.log(response.data.legacy.screenName);
-console.log(`followCount: ${response.data.legacy.friendsCount} followersCount: ${response.data.legacy.followersCount}`);
+const userLegacy = response.data?.user?.legacy;
+if (userLegacy) {
+  console.log(userLegacy.screenName);
+  console.log(`followCount: ${userLegacy.friendsCount} followersCount: ${userLegacy.followersCount}`);
+} else {
+  console.log('User not found');
+}
 ```
 
 ### Login
@@ -28,10 +33,22 @@ const client = await api.getClientFromCookies({
 });
 ```
 
+### Multiple OS
+
+The Token can only be used on the same OS that issued the Token
+In other words, if the sec-ch-ua-platform does not match, the Token cannot be used.
+This library uses the Linux Chrome header by default.
+To use Token issued by Windows, do the following.
+
+````typescript
+TwitterOpenApi.additionalApiHeaders = {
+  'sec-ch-ua-platform': '"Windows"',
+};
+```
+
 ### List of APIs
 
 You should read the Test case.
-aaaaa
 
 <https://github.com/fa0311/twitter-openapi-typescript/tree/master/twitter-openapi-typescript/test/api>
 
@@ -41,13 +58,10 @@ Most values exist as static variables. There is no need to change them.
 
 ```typescript
 import { TwitterOpenApi } from 'twitter-openapi-typescript';
-TwitterOpenApi.url = 'twitter-openapi placeholder json url';
-TwitterOpenApi.twitter = 'twitter first access url';
-TwitterOpenApi.userAgent = 'user agent';
-TwitterOpenApi.bearer = 'bearer token';
-TwitterOpenApi.browser_headers = 'browser headers';
-TwitterOpenApi.api_key = 'api key';
-```
+TwitterOpenApi.additionalBrowserHeaders = {};
+TwitterOpenApi.additionalApiHeaders = {};
+TwitterOpenApi.fetchApi = fetch.bind(globalThis);
+````
 
 ## License
 

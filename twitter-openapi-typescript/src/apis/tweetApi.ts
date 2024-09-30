@@ -13,6 +13,7 @@ import {
   getKwargs,
   instructionConverter,
   instructionToEntry,
+  nonNullable,
   tweetEntriesConverter,
 } from '@/utils';
 import * as i from 'twitter-openapi-typescript-generated';
@@ -214,7 +215,7 @@ export class TweetApiUtils {
 
     const response = await this.request({
       apiFn: this.api.getUserTweetsRaw,
-      convertFn: (e) => e.data.user.result.timelineV2.timeline!.instructions,
+      convertFn: (e) => nonNullable(e.data.user.result.timelineV2.timeline).instructions,
       key: 'UserTweets',
       param: args,
     });
@@ -231,7 +232,7 @@ export class TweetApiUtils {
 
     const response = await this.request({
       apiFn: this.api.getUserTweetsAndRepliesRaw,
-      convertFn: (e) => e.data.user.result.timelineV2.timeline!.instructions,
+      convertFn: (e) => nonNullable(e.data.user.result.timelineV2.timeline).instructions,
       key: 'UserTweetsAndReplies',
       param: args,
     });
@@ -248,7 +249,7 @@ export class TweetApiUtils {
 
     const response = await this.request({
       apiFn: this.api.getUserMediaRaw,
-      convertFn: (e) => e.data.user.result.timelineV2.timeline!.instructions,
+      convertFn: (e) => nonNullable(e.data.user.result.timelineV2.timeline).instructions,
       key: 'UserMedia',
       param: args,
     });
@@ -264,7 +265,7 @@ export class TweetApiUtils {
 
     const response = await this.request({
       apiFn: this.api.getLikesRaw,
-      convertFn: (e) => e.data.user.result.timelineV2.timeline!.instructions,
+      convertFn: (e) => nonNullable(e.data.user.result.timelineV2.timeline).instructions,
       key: 'Likes',
       param: args,
     });

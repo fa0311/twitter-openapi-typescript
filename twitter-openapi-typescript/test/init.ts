@@ -27,6 +27,9 @@ export type Cookie = {
 };
 
 export const getClient = async () => {
+  TwitterOpenApi.additionalApiHeaders = {
+    'sec-ch-ua-platform': '"Windows"',
+  };
   const api = new TwitterOpenApi();
   const data = await fs.readFile('cookies.json', 'utf-8');
   const parsed = JSON.parse(data);

@@ -6,7 +6,10 @@ import { PostCreateTweetRequestVariablesToJSON } from 'twitter-openapi-typescrip
 type PostCreateTweetParam = {
   tweetText: string;
   mediaIds?: string[];
+  taggedUsers?: string[][];
   inReplyToTweetId?: string;
+  attachmentUrl?: string;
+  conversationControl?: string;
   extraParam?: { [key: string]: any };
 };
 
@@ -55,11 +58,19 @@ export class PostApiUtils {
     const queryId = 'CreateTweet';
     const features = i.PostCreateTweetRequestFeaturesFromJSON(this.flag[queryId]['features']);
     const variables = i.PostCreateTweetRequestVariablesFromJSON(this.flag[queryId]['variables']);
-    variables.media.mediaEntities =
-      param.mediaIds?.map((mediaId) => ({
+    if (param.taggedUsers) {
+      variables.media.mediaEntities = param.mediaIds!.map((mediaId, index) => ({
         mediaId: mediaId,
-        taggedUsers: [],
-      })) ?? [];
+        taggedUsers: param.taggedUsers?.[index] || [],
+      }));
+    }
+
+    variables.attachmentUrl = param.attachmentUrl;
+    if (param.conversationControl) {
+      variables.conversationControl = {
+        mode: param.conversationControl,
+      };
+    }
 
     if (param.inReplyToTweetId) {
       variables.reply = {

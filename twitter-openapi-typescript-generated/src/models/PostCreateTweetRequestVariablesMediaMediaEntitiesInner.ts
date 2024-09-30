@@ -27,10 +27,10 @@ export interface PostCreateTweetRequestVariablesMediaMediaEntitiesInner {
     mediaId: string;
     /**
      * 
-     * @type {Array<object>}
+     * @type {Array<string>}
      * @memberof PostCreateTweetRequestVariablesMediaMediaEntitiesInner
      */
-    taggedUsers: Array<object>;
+    taggedUsers: Array<string>;
 }
 
 /**

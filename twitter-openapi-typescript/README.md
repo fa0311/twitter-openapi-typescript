@@ -40,7 +40,7 @@ In other words, if the sec-ch-ua-platform does not match, the Token cannot be us
 This library uses the Linux Chrome header by default.
 To use Token issued by Windows, do the following.
 
-````typescript
+```typescript
 TwitterOpenApi.additionalApiHeaders = {
   'sec-ch-ua-platform': '"Windows"',
 };
@@ -61,7 +61,7 @@ import { TwitterOpenApi } from 'twitter-openapi-typescript';
 TwitterOpenApi.additionalBrowserHeaders = {};
 TwitterOpenApi.additionalApiHeaders = {};
 TwitterOpenApi.fetchApi = fetch.bind(globalThis);
-````
+```
 
 ## License
 

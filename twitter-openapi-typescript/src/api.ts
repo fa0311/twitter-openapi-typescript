@@ -23,6 +23,14 @@ export class TwitterOpenApi {
   static additionalBrowserHeaders: { [key: string]: string } = {};
   static additionalApiHeaders: { [key: string]: string } = {};
 
+  static fetchApi: i.FetchAPI = fetch.bind(globalThis);
+
+  initOverrides: initOverrides = {};
+
+  setInitOverrides(initOverrides: initOverrides): void {
+    this.initOverrides = initOverrides;
+  }
+
   async getHeaders(): Promise<{ api: { [key: string]: string }; browser: { [key: string]: string } }> {
     const raw = await TwitterOpenApi.fetchApi(TwitterOpenApi.header);
     const json = await raw.json();
@@ -38,11 +46,10 @@ export class TwitterOpenApi {
     return {
       api: {
         ...getHader('chrome-fetch'),
+        'accept-encoding': 'identity',
         pragma: 'no-cache',
         referer: TwitterOpenApi.twitter,
         priority: 'u=1, i',
-        'client-language': 'en',
-        'active-user': 'yes',
         'x-twitter-client-language': 'en',
         'x-twitter-active-user': 'yes',
         // 'x-twitter-auth-type': 'xxxx'
@@ -56,14 +63,6 @@ export class TwitterOpenApi {
         ...TwitterOpenApi.additionalBrowserHeaders,
       },
     };
-  }
-
-  static fetchApi: i.FetchAPI = fetch.bind(globalThis);
-
-  initOverrides: initOverrides = {};
-
-  setInitOverrides(initOverrides: initOverrides): void {
-    this.initOverrides = initOverrides;
   }
 
   cookieNormalize(cookie: string[]): { [key: string]: string } {
@@ -114,7 +113,7 @@ export class TwitterOpenApi {
       .reduce((a, [key, value]) => ({ ...a, [key]: value }), {});
 
     if (!cookies['gt']) {
-      const activate_headers = (await this.getHeaders()).api;
+      const activate_headers = { ...(await this.getHeaders()).api, cookie: this.cookieEncode(cookies) };
       const { guest_token } = await TwitterOpenApi.fetchApi('https://api.x.com/1.1/guest/activate.json', {
         method: 'POST',
         headers: activate_headers,

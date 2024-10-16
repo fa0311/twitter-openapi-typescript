@@ -29,6 +29,10 @@ Learn more about the automatically generated TypeScript package here.
 
 [README-generated.md](./README-generated.md)
 
+## Projects using twitter-openapi-typescript
+
+- [twitter-snap](https://github.com/fa0311/twitter-snap)
+
 ## License
 
 This project is dual licensed. You can choose one of the following licenses:

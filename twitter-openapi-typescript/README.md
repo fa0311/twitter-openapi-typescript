@@ -41,9 +41,10 @@ This library uses the Linux Chrome header by default.
 To use Token issued by Windows, do the following.
 
 ```typescript
-TwitterOpenApi.additionalApiHeaders = {
+const api = new TwitterOpenApi();
+api.setAdditionalApiHeaders({
   'sec-ch-ua-platform': '"Windows"',
-};
+});
 ```
 
 ### List of APIs
@@ -55,12 +56,15 @@ You should read the Test case.
 ### Customize in detail
 
 Most values exist as static variables. There is no need to change them.
+Changing them could result in account suspension.
+For advanced customization, use the  
+You can also use the `TwitterOpenApiClient` class directly
 
 ```typescript
 import { TwitterOpenApi } from 'twitter-openapi-typescript';
-TwitterOpenApi.additionalBrowserHeaders = {};
-TwitterOpenApi.additionalApiHeaders = {};
 TwitterOpenApi.fetchApi = fetch.bind(globalThis);
+TwitterOpenApi.twitter = 'https://x.com/home';
+TwitterOpenApi.bearer = 'xxxx';
 ```
 
 ## License

@@ -20,8 +20,6 @@ export class TwitterOpenApi {
   static twitter = 'https://x.com/home';
   static bearer =
     'AAAAAAAAAAAAAAAAAAAAANRILgAAAAAAnNwIzUejRCOuH5E6I8xnZz4puTs%3D1Zv7ttfk8LF81IUq16cHjhLTvJu4FA33AGWWjCpTnA';
-  static additionalBrowserHeaders: { [key: string]: string } = {};
-  static additionalApiHeaders: { [key: string]: string } = {};
 
   static fetchApi: i.FetchAPI = fetch.bind(globalThis);
 
@@ -30,9 +28,23 @@ export class TwitterOpenApi {
   setInitOverrides(initOverrides: initOverrides): void {
     this.initOverrides = initOverrides;
   }
+  additionalBrowserHeaders: { [key: string]: string } = {};
+
+  setAdditionalBrowserHeaders(headers: { [key: string]: string }): void {
+    this.additionalBrowserHeaders = headers;
+  }
+
+  additionalApiHeaders: { [key: string]: string } = {};
+
+  setAdditionalApiHeaders(headers: { [key: string]: string }): void {
+    this.additionalApiHeaders = headers;
+  }
 
   async getHeaders(): Promise<{ api: { [key: string]: string }; browser: { [key: string]: string } }> {
-    const raw = await TwitterOpenApi.fetchApi(TwitterOpenApi.header);
+    const raw = await TwitterOpenApi.fetchApi(TwitterOpenApi.header, {
+      method: 'GET',
+      ...this.initOverrides,
+    });
     const json = await raw.json();
     const ignore = ['host', 'connection'];
 
@@ -56,11 +68,11 @@ export class TwitterOpenApi {
         // 'x-csrf-token': 'xxxx',
         // 'x-guest-token': 'xxxx',
         authorization: `Bearer ${TwitterOpenApi.bearer}`,
-        ...TwitterOpenApi.additionalApiHeaders,
+        ...this.additionalApiHeaders,
       },
       browser: {
         ...getHader('chrome'),
-        ...TwitterOpenApi.additionalBrowserHeaders,
+        ...this.additionalBrowserHeaders,
       },
     };
   }

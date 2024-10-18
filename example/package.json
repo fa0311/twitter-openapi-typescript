@@ -8,9 +8,9 @@
         "start": "npx ts-node -r tsconfig-paths/register src/main.ts"
     },
     "dependencies": {
-        "https-proxy-agent": "^7.0.2",
-        "twitter-api-v2": "^1.15.2",
-        "twitter-openapi-typescript": "^0.0.27"
+        "https-proxy-agent": "^7.0.5",
+        "twitter-api-v2": "^1.18.0",
+        "twitter-openapi-typescript": "^0.0.40"
     },
     "devDependencies": {
         "@types/node": "*",

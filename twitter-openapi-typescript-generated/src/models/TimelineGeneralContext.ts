@@ -69,7 +69,8 @@ export const TimelineGeneralContextContextTypeEnum = {
     Location: 'Location',
     Sparkle: 'Sparkle',
     Conversation: 'Conversation',
-    List: 'List'
+    List: 'List',
+    Community: 'Community'
 } as const;
 export type TimelineGeneralContextContextTypeEnum = typeof TimelineGeneralContextContextTypeEnum[keyof typeof TimelineGeneralContextContextTypeEnum];
 

@@ -9,6 +9,22 @@ test('getUserByScreenName', async () => {
   expect(response.raw.response.ok).toBe(true);
 });
 
+test('getUserByScreenNameNotFound', async () => {
+  logger.log('getUserByScreenName');
+  const client = await getClient();
+  const response = await client.getUserApi().getUserByScreenName({ screenName: 'Wendoleecs' });
+  printUser(response.data);
+  expect(response.raw.response.ok).toBe(true);
+});
+
+test('getUserByScreenNameFreezed', async () => {
+  logger.log('getUserByScreenName');
+  const client = await getClient();
+  const response = await client.getUserApi().getUserByScreenName({ screenName: 'anal' });
+  printUser(response.data);
+  expect(response.raw.response.ok).toBe(true);
+});
+
 test('getUserByRestId', async () => {
   logger.log('getUserByRestId');
   const client = await getClient();

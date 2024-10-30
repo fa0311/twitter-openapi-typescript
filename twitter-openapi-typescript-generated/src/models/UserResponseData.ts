@@ -31,14 +31,13 @@ export interface UserResponseData {
      * @type {UserResults}
      * @memberof UserResponseData
      */
-    user: UserResults;
+    user?: UserResults;
 }
 
 /**
  * Check if a given object implements the UserResponseData interface.
  */
 export function instanceOfUserResponseData(value: object): value is UserResponseData {
-    if (!('user' in value) || value['user'] === undefined) return false;
     return true;
 }
 
@@ -52,7 +51,7 @@ export function UserResponseDataFromJSONTyped(json: any, ignoreDiscriminator: bo
     }
     return {
         
-        'user': UserResultsFromJSON(json['user']),
+        'user': json['user'] == null ? undefined : UserResultsFromJSON(json['user']),
     };
 }
 

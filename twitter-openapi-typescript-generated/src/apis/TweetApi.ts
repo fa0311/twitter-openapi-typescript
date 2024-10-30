@@ -62,6 +62,7 @@ export interface GetLikesRequest {
     pathQueryId: string;
     variables: string;
     features: string;
+    fieldToggles: string;
 }
 
 export interface GetListLatestTweetsTimelineRequest {
@@ -93,18 +94,21 @@ export interface GetUserMediaRequest {
     pathQueryId: string;
     variables: string;
     features: string;
+    fieldToggles: string;
 }
 
 export interface GetUserTweetsRequest {
     pathQueryId: string;
     variables: string;
     features: string;
+    fieldToggles: string;
 }
 
 export interface GetUserTweetsAndRepliesRequest {
     pathQueryId: string;
     variables: string;
     features: string;
+    fieldToggles: string;
 }
 
 /**
@@ -530,6 +534,13 @@ export class TweetApi extends runtime.BaseAPI {
             );
         }
 
+        if (requestParameters['fieldToggles'] == null) {
+            throw new runtime.RequiredError(
+                'fieldToggles',
+                'Required parameter "fieldToggles" was null or undefined when calling getLikes().'
+            );
+        }
+
         const queryParameters: any = {};
 
         if (requestParameters['variables'] != null) {
@@ -538,6 +549,10 @@ export class TweetApi extends runtime.BaseAPI {
 
         if (requestParameters['features'] != null) {
             queryParameters['features'] = requestParameters['features'];
+        }
+
+        if (requestParameters['fieldToggles'] != null) {
+            queryParameters['fieldToggles'] = requestParameters['fieldToggles'];
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -1196,6 +1211,13 @@ export class TweetApi extends runtime.BaseAPI {
             );
         }
 
+        if (requestParameters['fieldToggles'] == null) {
+            throw new runtime.RequiredError(
+                'fieldToggles',
+                'Required parameter "fieldToggles" was null or undefined when calling getUserMedia().'
+            );
+        }
+
         const queryParameters: any = {};
 
         if (requestParameters['variables'] != null) {
@@ -1204,6 +1226,10 @@ export class TweetApi extends runtime.BaseAPI {
 
         if (requestParameters['features'] != null) {
             queryParameters['features'] = requestParameters['features'];
+        }
+
+        if (requestParameters['fieldToggles'] != null) {
+            queryParameters['fieldToggles'] = requestParameters['fieldToggles'];
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -1327,6 +1353,13 @@ export class TweetApi extends runtime.BaseAPI {
             );
         }
 
+        if (requestParameters['fieldToggles'] == null) {
+            throw new runtime.RequiredError(
+                'fieldToggles',
+                'Required parameter "fieldToggles" was null or undefined when calling getUserTweets().'
+            );
+        }
+
         const queryParameters: any = {};
 
         if (requestParameters['variables'] != null) {
@@ -1335,6 +1368,10 @@ export class TweetApi extends runtime.BaseAPI {
 
         if (requestParameters['features'] != null) {
             queryParameters['features'] = requestParameters['features'];
+        }
+
+        if (requestParameters['fieldToggles'] != null) {
+            queryParameters['fieldToggles'] = requestParameters['fieldToggles'];
         }
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -1458,6 +1495,13 @@ export class TweetApi extends runtime.BaseAPI {
             );
         }
 
+        if (requestParameters['fieldToggles'] == null) {
+            throw new runtime.RequiredError(
+                'fieldToggles',
+                'Required parameter "fieldToggles" was null or undefined when calling getUserTweetsAndReplies().'
+            );
+        }
+
         const queryParameters: any = {};
 
         if (requestParameters['variables'] != null) {
@@ -1466,6 +1510,10 @@ export class TweetApi extends runtime.BaseAPI {
 
         if (requestParameters['features'] != null) {
             queryParameters['features'] = requestParameters['features'];
+        }
+
+        if (requestParameters['fieldToggles'] != null) {
+            queryParameters['fieldToggles'] = requestParameters['fieldToggles'];
         }
 
         const headerParameters: runtime.HTTPHeaders = {};

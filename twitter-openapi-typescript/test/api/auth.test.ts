@@ -10,5 +10,6 @@ test('test auth', async () => {
     console.log('request', args);
     return fn(...args);
   };
-  const response = that.getProfileSpotlightsQuery({ screenName: 'elonmusk' });
+  const response = await that.getProfileSpotlightsQuery({ screenName: 'elonmusk' });
+  console.log(response);
 });

@@ -31,6 +31,9 @@ export const getClient = async () => {
   api.setAdditionalApiHeaders({
     'sec-ch-ua-platform': '"Windows"',
   });
+  api.setAdditionalApiHeaders({
+    'sec-ch-ua-platform': '"Windows"',
+  });
   const data = await fs.readFile('cookies.json', 'utf-8');
   const parsed = JSON.parse(data);
   const cookies = parsed as Cookie[];

@@ -14,7 +14,7 @@ import * as i from 'twitter-openapi-typescript-generated';
 import { UsersApiUtils } from './apis/usersApi';
 
 export class TwitterOpenApi {
-  static hash = '0c64eebbfb93b3ed69c3aba923ec8d6894a39902';
+  static hash = '4b27150977e1bdd807de8969dc0ddd7918ac9923';
   static url = `https://raw.githubusercontent.com/fa0311/twitter-openapi/${this.hash}/src/config/placeholder.json`;
   static header = 'https://raw.githubusercontent.com/fa0311/latest-user-agent/refs/heads/main/header.json';
   static twitter = 'https://x.com/home';

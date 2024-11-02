@@ -25,6 +25,12 @@ export interface DisplayTreatment {
      * @memberof DisplayTreatment
      */
     actionText: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof DisplayTreatment
+     */
+    labelText?: string;
 }
 
 /**
@@ -46,6 +52,7 @@ export function DisplayTreatmentFromJSONTyped(json: any, ignoreDiscriminator: bo
     return {
         
         'actionText': json['actionText'],
+        'labelText': json['labelText'] == null ? undefined : json['labelText'],
     };
 }
 
@@ -56,6 +63,7 @@ export function DisplayTreatmentToJSON(value?: DisplayTreatment | null): any {
     return {
         
         'actionText': value['actionText'],
+        'labelText': value['labelText'],
     };
 }
 

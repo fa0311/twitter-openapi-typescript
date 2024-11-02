@@ -1,4 +1,4 @@
-## twitter-openapi-typescript-generated@0.0.26
+## twitter-openapi-typescript-generated@0.0.27
 
 This generator creates TypeScript/JavaScript client that utilizes [Fetch API](https://fetch.spec.whatwg.org/). The generated Node module can be used in the following environments:
 
@@ -36,7 +36,7 @@ navigate to the folder of your consuming project and run one of the following co
 _published:_
 
 ```
-npm install twitter-openapi-typescript-generated@0.0.26 --save
+npm install twitter-openapi-typescript-generated@0.0.27 --save
 ```
 
 _unPublished (not recommended):_

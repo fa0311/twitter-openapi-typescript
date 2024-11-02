@@ -101,23 +101,19 @@ export class UserListApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["x-twitter-client-language"] = await this.configuration.apiKey("x-twitter-client-language"); // ClientLanguage authentication
-        }
-
-        if (this.configuration && this.configuration.apiKey) {
             headerParameters["Accept"] = await this.configuration.apiKey("Accept"); // Accept authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Priority"] = await this.configuration.apiKey("Priority"); // Priority authentication
-        }
-
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Sec-Fetch-Dest"] = await this.configuration.apiKey("Sec-Fetch-Dest"); // SecFetchDest authentication
+            headerParameters["x-twitter-client-language"] = await this.configuration.apiKey("x-twitter-client-language"); // ClientLanguage authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
             headerParameters["Referer"] = await this.configuration.apiKey("Referer"); // Referer authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Fetch-Dest"] = await this.configuration.apiKey("Sec-Fetch-Dest"); // SecFetchDest authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
@@ -133,7 +129,7 @@ export class UserListApi extends runtime.BaseAPI {
         }
 
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["x-guest-token"] = await this.configuration.apiKey("x-guest-token"); // GuestToken authentication
+            headerParameters["x-client-uuid"] = await this.configuration.apiKey("x-client-uuid"); // ClientUuid authentication
         }
 
         if (this.configuration && this.configuration.accessToken) {
@@ -145,7 +141,15 @@ export class UserListApi extends runtime.BaseAPI {
             }
         }
         if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-guest-token"] = await this.configuration.apiKey("x-guest-token"); // GuestToken authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
             headerParameters["Sec-Ch-Ua"] = await this.configuration.apiKey("Sec-Ch-Ua"); // SecChUa authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-client-transaction-id"] = await this.configuration.apiKey("x-client-transaction-id"); // ClientTransactionId authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
@@ -232,23 +236,19 @@ export class UserListApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["x-twitter-client-language"] = await this.configuration.apiKey("x-twitter-client-language"); // ClientLanguage authentication
-        }
-
-        if (this.configuration && this.configuration.apiKey) {
             headerParameters["Accept"] = await this.configuration.apiKey("Accept"); // Accept authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Priority"] = await this.configuration.apiKey("Priority"); // Priority authentication
-        }
-
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Sec-Fetch-Dest"] = await this.configuration.apiKey("Sec-Fetch-Dest"); // SecFetchDest authentication
+            headerParameters["x-twitter-client-language"] = await this.configuration.apiKey("x-twitter-client-language"); // ClientLanguage authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
             headerParameters["Referer"] = await this.configuration.apiKey("Referer"); // Referer authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Fetch-Dest"] = await this.configuration.apiKey("Sec-Fetch-Dest"); // SecFetchDest authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
@@ -264,7 +264,7 @@ export class UserListApi extends runtime.BaseAPI {
         }
 
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["x-guest-token"] = await this.configuration.apiKey("x-guest-token"); // GuestToken authentication
+            headerParameters["x-client-uuid"] = await this.configuration.apiKey("x-client-uuid"); // ClientUuid authentication
         }
 
         if (this.configuration && this.configuration.accessToken) {
@@ -276,7 +276,15 @@ export class UserListApi extends runtime.BaseAPI {
             }
         }
         if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-guest-token"] = await this.configuration.apiKey("x-guest-token"); // GuestToken authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
             headerParameters["Sec-Ch-Ua"] = await this.configuration.apiKey("Sec-Ch-Ua"); // SecChUa authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-client-transaction-id"] = await this.configuration.apiKey("x-client-transaction-id"); // ClientTransactionId authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
@@ -363,23 +371,19 @@ export class UserListApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["x-twitter-client-language"] = await this.configuration.apiKey("x-twitter-client-language"); // ClientLanguage authentication
-        }
-
-        if (this.configuration && this.configuration.apiKey) {
             headerParameters["Accept"] = await this.configuration.apiKey("Accept"); // Accept authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Priority"] = await this.configuration.apiKey("Priority"); // Priority authentication
-        }
-
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Sec-Fetch-Dest"] = await this.configuration.apiKey("Sec-Fetch-Dest"); // SecFetchDest authentication
+            headerParameters["x-twitter-client-language"] = await this.configuration.apiKey("x-twitter-client-language"); // ClientLanguage authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
             headerParameters["Referer"] = await this.configuration.apiKey("Referer"); // Referer authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Fetch-Dest"] = await this.configuration.apiKey("Sec-Fetch-Dest"); // SecFetchDest authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
@@ -395,7 +399,7 @@ export class UserListApi extends runtime.BaseAPI {
         }
 
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["x-guest-token"] = await this.configuration.apiKey("x-guest-token"); // GuestToken authentication
+            headerParameters["x-client-uuid"] = await this.configuration.apiKey("x-client-uuid"); // ClientUuid authentication
         }
 
         if (this.configuration && this.configuration.accessToken) {
@@ -407,7 +411,15 @@ export class UserListApi extends runtime.BaseAPI {
             }
         }
         if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-guest-token"] = await this.configuration.apiKey("x-guest-token"); // GuestToken authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
             headerParameters["Sec-Ch-Ua"] = await this.configuration.apiKey("Sec-Ch-Ua"); // SecChUa authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-client-transaction-id"] = await this.configuration.apiKey("x-client-transaction-id"); // ClientTransactionId authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
@@ -494,23 +506,19 @@ export class UserListApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["x-twitter-client-language"] = await this.configuration.apiKey("x-twitter-client-language"); // ClientLanguage authentication
-        }
-
-        if (this.configuration && this.configuration.apiKey) {
             headerParameters["Accept"] = await this.configuration.apiKey("Accept"); // Accept authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Priority"] = await this.configuration.apiKey("Priority"); // Priority authentication
-        }
-
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Sec-Fetch-Dest"] = await this.configuration.apiKey("Sec-Fetch-Dest"); // SecFetchDest authentication
+            headerParameters["x-twitter-client-language"] = await this.configuration.apiKey("x-twitter-client-language"); // ClientLanguage authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
             headerParameters["Referer"] = await this.configuration.apiKey("Referer"); // Referer authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Fetch-Dest"] = await this.configuration.apiKey("Sec-Fetch-Dest"); // SecFetchDest authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
@@ -526,7 +534,7 @@ export class UserListApi extends runtime.BaseAPI {
         }
 
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["x-guest-token"] = await this.configuration.apiKey("x-guest-token"); // GuestToken authentication
+            headerParameters["x-client-uuid"] = await this.configuration.apiKey("x-client-uuid"); // ClientUuid authentication
         }
 
         if (this.configuration && this.configuration.accessToken) {
@@ -538,7 +546,15 @@ export class UserListApi extends runtime.BaseAPI {
             }
         }
         if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-guest-token"] = await this.configuration.apiKey("x-guest-token"); // GuestToken authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
             headerParameters["Sec-Ch-Ua"] = await this.configuration.apiKey("Sec-Ch-Ua"); // SecChUa authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-client-transaction-id"] = await this.configuration.apiKey("x-client-transaction-id"); // ClientTransactionId authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
@@ -625,23 +641,19 @@ export class UserListApi extends runtime.BaseAPI {
         const headerParameters: runtime.HTTPHeaders = {};
 
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["x-twitter-client-language"] = await this.configuration.apiKey("x-twitter-client-language"); // ClientLanguage authentication
-        }
-
-        if (this.configuration && this.configuration.apiKey) {
             headerParameters["Accept"] = await this.configuration.apiKey("Accept"); // Accept authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Priority"] = await this.configuration.apiKey("Priority"); // Priority authentication
-        }
-
-        if (this.configuration && this.configuration.apiKey) {
-            headerParameters["Sec-Fetch-Dest"] = await this.configuration.apiKey("Sec-Fetch-Dest"); // SecFetchDest authentication
+            headerParameters["x-twitter-client-language"] = await this.configuration.apiKey("x-twitter-client-language"); // ClientLanguage authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
             headerParameters["Referer"] = await this.configuration.apiKey("Referer"); // Referer authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Fetch-Dest"] = await this.configuration.apiKey("Sec-Fetch-Dest"); // SecFetchDest authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
@@ -657,7 +669,7 @@ export class UserListApi extends runtime.BaseAPI {
         }
 
         if (this.configuration && this.configuration.apiKey) {
-            headerParameters["x-guest-token"] = await this.configuration.apiKey("x-guest-token"); // GuestToken authentication
+            headerParameters["x-client-uuid"] = await this.configuration.apiKey("x-client-uuid"); // ClientUuid authentication
         }
 
         if (this.configuration && this.configuration.accessToken) {
@@ -669,7 +681,15 @@ export class UserListApi extends runtime.BaseAPI {
             }
         }
         if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-guest-token"] = await this.configuration.apiKey("x-guest-token"); // GuestToken authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
             headerParameters["Sec-Ch-Ua"] = await this.configuration.apiKey("Sec-Ch-Ua"); // SecChUa authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-client-transaction-id"] = await this.configuration.apiKey("x-client-transaction-id"); // ClientTransactionId authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {

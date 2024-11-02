@@ -49,6 +49,12 @@ import {
     TweetEditControlFromJSONTyped,
     TweetEditControlToJSON,
 } from './TweetEditControl';
+import type { CommunityRelationship } from './CommunityRelationship';
+import {
+    CommunityRelationshipFromJSON,
+    CommunityRelationshipFromJSONTyped,
+    CommunityRelationshipToJSON,
+} from './CommunityRelationship';
 import type { TweetEditPrespective } from './TweetEditPrespective';
 import {
     TweetEditPrespectiveFromJSON,
@@ -152,6 +158,12 @@ export interface Tweet {
      * @memberof Tweet
      */
     card?: TweetCard;
+    /**
+     * 
+     * @type {CommunityRelationship}
+     * @memberof Tweet
+     */
+    communityRelationship?: CommunityRelationship;
     /**
      * 
      * @type {Community}
@@ -287,6 +299,7 @@ export function TweetFromJSONTyped(json: any, ignoreDiscriminator: boolean): Twe
         'authorCommunityRelationship': json['author_community_relationship'] == null ? undefined : AuthorCommunityRelationshipFromJSON(json['author_community_relationship']),
         'birdwatchPivot': json['birdwatch_pivot'] == null ? undefined : BirdwatchPivotFromJSON(json['birdwatch_pivot']),
         'card': json['card'] == null ? undefined : TweetCardFromJSON(json['card']),
+        'communityRelationship': json['community_relationship'] == null ? undefined : CommunityRelationshipFromJSON(json['community_relationship']),
         'communityResults': json['community_results'] == null ? undefined : CommunityFromJSON(json['community_results']),
         'core': json['core'] == null ? undefined : UserResultCoreFromJSON(json['core']),
         'editControl': json['edit_control'] == null ? undefined : TweetEditControlFromJSON(json['edit_control']),
@@ -319,6 +332,7 @@ export function TweetToJSON(value?: Tweet | null): any {
         'author_community_relationship': AuthorCommunityRelationshipToJSON(value['authorCommunityRelationship']),
         'birdwatch_pivot': BirdwatchPivotToJSON(value['birdwatchPivot']),
         'card': TweetCardToJSON(value['card']),
+        'community_relationship': CommunityRelationshipToJSON(value['communityRelationship']),
         'community_results': CommunityToJSON(value['communityResults']),
         'core': UserResultCoreToJSON(value['core']),
         'edit_control': TweetEditControlToJSON(value['editControl']),

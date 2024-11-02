@@ -31,7 +31,7 @@ export interface PostCreateTweetRequestVariablesMedia {
      * @type {Array<PostCreateTweetRequestVariablesMediaMediaEntitiesInner>}
      * @memberof PostCreateTweetRequestVariablesMedia
      */
-    mediaEntities: Array<PostCreateTweetRequestVariablesMediaMediaEntitiesInner>;
+    mediaEntities?: Array<PostCreateTweetRequestVariablesMediaMediaEntitiesInner>;
     /**
      * 
      * @type {boolean}
@@ -44,7 +44,6 @@ export interface PostCreateTweetRequestVariablesMedia {
  * Check if a given object implements the PostCreateTweetRequestVariablesMedia interface.
  */
 export function instanceOfPostCreateTweetRequestVariablesMedia(value: object): value is PostCreateTweetRequestVariablesMedia {
-    if (!('mediaEntities' in value) || value['mediaEntities'] === undefined) return false;
     if (!('possiblySensitive' in value) || value['possiblySensitive'] === undefined) return false;
     return true;
 }
@@ -59,7 +58,7 @@ export function PostCreateTweetRequestVariablesMediaFromJSONTyped(json: any, ign
     }
     return {
         
-        'mediaEntities': ((json['media_entities'] as Array<any>).map(PostCreateTweetRequestVariablesMediaMediaEntitiesInnerFromJSON)),
+        'mediaEntities': json['media_entities'] == null ? undefined : ((json['media_entities'] as Array<any>).map(PostCreateTweetRequestVariablesMediaMediaEntitiesInnerFromJSON)),
         'possiblySensitive': json['possibly_sensitive'],
     };
 }
@@ -70,7 +69,7 @@ export function PostCreateTweetRequestVariablesMediaToJSON(value?: PostCreateTwe
     }
     return {
         
-        'media_entities': ((value['mediaEntities'] as Array<any>).map(PostCreateTweetRequestVariablesMediaMediaEntitiesInnerToJSON)),
+        'media_entities': value['mediaEntities'] == null ? undefined : ((value['mediaEntities'] as Array<any>).map(PostCreateTweetRequestVariablesMediaMediaEntitiesInnerToJSON)),
         'possibly_sensitive': value['possiblySensitive'],
     };
 }

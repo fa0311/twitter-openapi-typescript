@@ -57,7 +57,8 @@ export interface AuthorCommunityRelationship {
  * @export
  */
 export const AuthorCommunityRelationshipRoleEnum = {
-    Member: 'Member'
+    Member: 'Member',
+    Moderator: 'Moderator'
 } as const;
 export type AuthorCommunityRelationshipRoleEnum = typeof AuthorCommunityRelationshipRoleEnum[keyof typeof AuthorCommunityRelationshipRoleEnum];
 

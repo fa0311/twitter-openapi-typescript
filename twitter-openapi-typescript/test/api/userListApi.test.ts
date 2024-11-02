@@ -28,7 +28,7 @@ test('getFollowersYouKnow', async () => {
 test('getFavoriters', async () => {
   logger.log('getFavoriters');
   const client = await getClient();
-  const response = await client.getUserListApi().getFavoriters({ tweetId: '1349129669258448897' });
+  const response = await client.getUserListApi().getFavoriters({ tweetId: '1811571695544860784' });
   response.data.data.forEach((e) => printUser(e));
   expect(response.raw.response.ok).toBe(true);
 });

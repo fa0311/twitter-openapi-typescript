@@ -58,7 +58,7 @@ export class PostApiUtils {
     const queryId = 'CreateTweet';
     const features = i.PostCreateTweetRequestFeaturesFromJSON(this.flag[queryId]['features']);
     const variables = i.PostCreateTweetRequestVariablesFromJSON(this.flag[queryId]['variables']);
-    if (param.taggedUsers) {
+    if (param.mediaIds) {
       variables.media.mediaEntities = param.mediaIds!.map((mediaId, index) => ({
         mediaId: mediaId,
         taggedUsers: param.taggedUsers?.[index] || [],

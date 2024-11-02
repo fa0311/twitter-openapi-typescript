@@ -68,7 +68,7 @@ test('getUserMedia', async () => {
 test('getLikes', async () => {
   logger.log('getLikes');
   const client = await getClient();
-  const response = await client.getTweetApi().getLikes({ userId: '44196397' });
+  const response = await client.getTweetApi().getLikes({ userId: '1787148517779406848' }); //@ptcpz3
   response.data.data.filter((e) => !e.promotedMetadata).forEach((e) => printTweet(e));
   expect(response.raw.response.ok).toBe(true);
 });

@@ -38,6 +38,7 @@ export const TypeName = {
     CommunityJoinAction: 'CommunityJoinAction',
     CommunityLeaveActionUnavailable: 'CommunityLeaveActionUnavailable',
     CommunityTweetPinActionUnavailable: 'CommunityTweetPinActionUnavailable',
+    CommunityTweetUnpinActionUnavailable: 'CommunityTweetUnpinActionUnavailable',
     CommunityInvitesUnavailable: 'CommunityInvitesUnavailable',
     CommunityJoinRequestsUnavailable: 'CommunityJoinRequestsUnavailable',
     ApiImage: 'ApiImage'

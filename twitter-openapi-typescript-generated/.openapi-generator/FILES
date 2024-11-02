@@ -50,7 +50,9 @@ src/models/CommunityJoinActionResult.ts
 src/models/CommunityJoinRequestsResult.ts
 src/models/CommunityLeaveActionResult.ts
 src/models/CommunityPinActionResult.ts
+src/models/CommunityRelationship.ts
 src/models/CommunityRule.ts
+src/models/CommunityUnpinActionResult.ts
 src/models/CommunityUrls.ts
 src/models/CommunityUrlsPermalink.ts
 src/models/ContentEntryType.ts

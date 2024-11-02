@@ -187,7 +187,7 @@ export interface CommunityData {
      * @type {string}
      * @memberof CommunityData
      */
-    question: string;
+    question?: string;
     /**
      * 
      * @type {string}
@@ -270,7 +270,6 @@ export function instanceOfCommunityData(value: object): value is CommunityData {
     if (!('membersFacepileResults' in value) || value['membersFacepileResults'] === undefined) return false;
     if (!('moderatorCount' in value) || value['moderatorCount'] === undefined) return false;
     if (!('name' in value) || value['name'] === undefined) return false;
-    if (!('question' in value) || value['question'] === undefined) return false;
     if (!('role' in value) || value['role'] === undefined) return false;
     if (!('rules' in value) || value['rules'] === undefined) return false;
     if (!('searchTags' in value) || value['searchTags'] === undefined) return false;
@@ -306,7 +305,7 @@ export function CommunityDataFromJSONTyped(json: any, ignoreDiscriminator: boole
         'moderatorCount': json['moderator_count'],
         'name': json['name'],
         'primaryCommunityTopic': json['primary_community_topic'] == null ? undefined : PrimaryCommunityTopicFromJSON(json['primary_community_topic']),
-        'question': json['question'],
+        'question': json['question'] == null ? undefined : json['question'],
         'role': json['role'],
         'rules': ((json['rules'] as Array<any>).map(CommunityRuleFromJSON)),
         'searchTags': json['search_tags'],

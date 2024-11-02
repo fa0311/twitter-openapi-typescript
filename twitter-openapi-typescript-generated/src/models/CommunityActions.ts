@@ -37,6 +37,12 @@ import {
     CommunityLeaveActionResultFromJSONTyped,
     CommunityLeaveActionResultToJSON,
 } from './CommunityLeaveActionResult';
+import type { CommunityUnpinActionResult } from './CommunityUnpinActionResult';
+import {
+    CommunityUnpinActionResultFromJSON,
+    CommunityUnpinActionResultFromJSONTyped,
+    CommunityUnpinActionResultToJSON,
+} from './CommunityUnpinActionResult';
 
 /**
  * 
@@ -49,35 +55,37 @@ export interface CommunityActions {
      * @type {CommunityDeleteActionResult}
      * @memberof CommunityActions
      */
-    deleteActionResult: CommunityDeleteActionResult;
+    deleteActionResult?: CommunityDeleteActionResult;
     /**
      * 
      * @type {CommunityJoinActionResult}
      * @memberof CommunityActions
      */
-    joinActionResult: CommunityJoinActionResult;
+    joinActionResult?: CommunityJoinActionResult;
     /**
      * 
      * @type {CommunityLeaveActionResult}
      * @memberof CommunityActions
      */
-    leaveActionResult: CommunityLeaveActionResult;
+    leaveActionResult?: CommunityLeaveActionResult;
     /**
      * 
      * @type {CommunityPinActionResult}
      * @memberof CommunityActions
      */
-    pinActionResult: CommunityPinActionResult;
+    pinActionResult?: CommunityPinActionResult;
+    /**
+     * 
+     * @type {CommunityUnpinActionResult}
+     * @memberof CommunityActions
+     */
+    unpinActionResult?: CommunityUnpinActionResult;
 }
 
 /**
  * Check if a given object implements the CommunityActions interface.
  */
 export function instanceOfCommunityActions(value: object): value is CommunityActions {
-    if (!('deleteActionResult' in value) || value['deleteActionResult'] === undefined) return false;
-    if (!('joinActionResult' in value) || value['joinActionResult'] === undefined) return false;
-    if (!('leaveActionResult' in value) || value['leaveActionResult'] === undefined) return false;
-    if (!('pinActionResult' in value) || value['pinActionResult'] === undefined) return false;
     return true;
 }
 
@@ -91,10 +99,11 @@ export function CommunityActionsFromJSONTyped(json: any, ignoreDiscriminator: bo
     }
     return {
         
-        'deleteActionResult': CommunityDeleteActionResultFromJSON(json['delete_action_result']),
-        'joinActionResult': CommunityJoinActionResultFromJSON(json['join_action_result']),
-        'leaveActionResult': CommunityLeaveActionResultFromJSON(json['leave_action_result']),
-        'pinActionResult': CommunityPinActionResultFromJSON(json['pin_action_result']),
+        'deleteActionResult': json['delete_action_result'] == null ? undefined : CommunityDeleteActionResultFromJSON(json['delete_action_result']),
+        'joinActionResult': json['join_action_result'] == null ? undefined : CommunityJoinActionResultFromJSON(json['join_action_result']),
+        'leaveActionResult': json['leave_action_result'] == null ? undefined : CommunityLeaveActionResultFromJSON(json['leave_action_result']),
+        'pinActionResult': json['pin_action_result'] == null ? undefined : CommunityPinActionResultFromJSON(json['pin_action_result']),
+        'unpinActionResult': json['unpin_action_result'] == null ? undefined : CommunityUnpinActionResultFromJSON(json['unpin_action_result']),
     };
 }
 
@@ -108,6 +117,7 @@ export function CommunityActionsToJSON(value?: CommunityActions | null): any {
         'join_action_result': CommunityJoinActionResultToJSON(value['joinActionResult']),
         'leave_action_result': CommunityLeaveActionResultToJSON(value['leaveActionResult']),
         'pin_action_result': CommunityPinActionResultToJSON(value['pinActionResult']),
+        'unpin_action_result': CommunityUnpinActionResultToJSON(value['unpinActionResult']),
     };
 }
 

@@ -156,6 +156,8 @@ export const tweetResultsConverter = (tweetResults: i.ItemResult): i.Tweet | und
 export const userOrNullConverter = (userResults: i.UserUnion): i.User | undefined => {
   if (userResults.typename == i.TypeName.User) {
     return userResults as i.User;
+  } else if (userResults.typename == undefined) {
+    return userResults as i.User; // error
   }
 };
 

@@ -25,7 +25,7 @@ test('postDeleteTweet', async () => {
   const time = new Date().toISOString();
   const response = await client.getPostApi().postCreateTweet({ tweetText: `Test[${time}]` });
   expect(response.raw.response.ok).toBe(true);
-  const tweetId = response.data.data.createTweet.tweetResults.result.restId;
+  const tweetId = response.data.data.createTweet!.tweetResults.result.restId;
   logger.log(tweetId);
 
   const response2 = await client.getPostApi().postDeleteTweet({ tweetId: tweetId });

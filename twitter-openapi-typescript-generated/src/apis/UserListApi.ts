@@ -15,17 +15,17 @@
 
 import * as runtime from '../runtime';
 import type {
-  GetFavoriters200Response,
-  GetFollowers200Response,
-  GetRetweeters200Response,
+  FollowResponse,
+  TweetFavoritersResponse,
+  TweetRetweetersResponse,
 } from '../models/index';
 import {
-    GetFavoriters200ResponseFromJSON,
-    GetFavoriters200ResponseToJSON,
-    GetFollowers200ResponseFromJSON,
-    GetFollowers200ResponseToJSON,
-    GetRetweeters200ResponseFromJSON,
-    GetRetweeters200ResponseToJSON,
+    FollowResponseFromJSON,
+    FollowResponseToJSON,
+    TweetFavoritersResponseFromJSON,
+    TweetFavoritersResponseToJSON,
+    TweetRetweetersResponseFromJSON,
+    TweetRetweetersResponseToJSON,
 } from '../models/index';
 
 export interface GetFavoritersRequest {
@@ -66,7 +66,7 @@ export class UserListApi extends runtime.BaseAPI {
     /**
      * get tweet favoriters
      */
-    async getFavoritersRaw(requestParameters: GetFavoritersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetFavoriters200Response>> {
+    async getFavoritersRaw(requestParameters: GetFavoritersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TweetFavoritersResponse>> {
         if (requestParameters['pathQueryId'] == null) {
             throw new runtime.RequiredError(
                 'pathQueryId',
@@ -106,6 +106,10 @@ export class UserListApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.apiKey) {
             headerParameters["x-twitter-client-language"] = await this.configuration.apiKey("x-twitter-client-language"); // ClientLanguage authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Priority"] = await this.configuration.apiKey("Priority"); // Priority authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
@@ -187,13 +191,13 @@ export class UserListApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => GetFavoriters200ResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => TweetFavoritersResponseFromJSON(jsonValue));
     }
 
     /**
      * get tweet favoriters
      */
-    async getFavoriters(requestParameters: GetFavoritersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetFavoriters200Response> {
+    async getFavoriters(requestParameters: GetFavoritersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TweetFavoritersResponse> {
         const response = await this.getFavoritersRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -201,7 +205,7 @@ export class UserListApi extends runtime.BaseAPI {
     /**
      * get user list of followers
      */
-    async getFollowersRaw(requestParameters: GetFollowersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetFollowers200Response>> {
+    async getFollowersRaw(requestParameters: GetFollowersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FollowResponse>> {
         if (requestParameters['pathQueryId'] == null) {
             throw new runtime.RequiredError(
                 'pathQueryId',
@@ -241,6 +245,10 @@ export class UserListApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.apiKey) {
             headerParameters["x-twitter-client-language"] = await this.configuration.apiKey("x-twitter-client-language"); // ClientLanguage authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Priority"] = await this.configuration.apiKey("Priority"); // Priority authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
@@ -322,13 +330,13 @@ export class UserListApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => GetFollowers200ResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => FollowResponseFromJSON(jsonValue));
     }
 
     /**
      * get user list of followers
      */
-    async getFollowers(requestParameters: GetFollowersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetFollowers200Response> {
+    async getFollowers(requestParameters: GetFollowersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FollowResponse> {
         const response = await this.getFollowersRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -336,7 +344,7 @@ export class UserListApi extends runtime.BaseAPI {
     /**
      * get followers you know
      */
-    async getFollowersYouKnowRaw(requestParameters: GetFollowersYouKnowRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetFollowers200Response>> {
+    async getFollowersYouKnowRaw(requestParameters: GetFollowersYouKnowRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FollowResponse>> {
         if (requestParameters['pathQueryId'] == null) {
             throw new runtime.RequiredError(
                 'pathQueryId',
@@ -376,6 +384,10 @@ export class UserListApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.apiKey) {
             headerParameters["x-twitter-client-language"] = await this.configuration.apiKey("x-twitter-client-language"); // ClientLanguage authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Priority"] = await this.configuration.apiKey("Priority"); // Priority authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
@@ -457,13 +469,13 @@ export class UserListApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => GetFollowers200ResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => FollowResponseFromJSON(jsonValue));
     }
 
     /**
      * get followers you know
      */
-    async getFollowersYouKnow(requestParameters: GetFollowersYouKnowRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetFollowers200Response> {
+    async getFollowersYouKnow(requestParameters: GetFollowersYouKnowRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FollowResponse> {
         const response = await this.getFollowersYouKnowRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -471,7 +483,7 @@ export class UserListApi extends runtime.BaseAPI {
     /**
      * get user list of following
      */
-    async getFollowingRaw(requestParameters: GetFollowingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetFollowers200Response>> {
+    async getFollowingRaw(requestParameters: GetFollowingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FollowResponse>> {
         if (requestParameters['pathQueryId'] == null) {
             throw new runtime.RequiredError(
                 'pathQueryId',
@@ -511,6 +523,10 @@ export class UserListApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.apiKey) {
             headerParameters["x-twitter-client-language"] = await this.configuration.apiKey("x-twitter-client-language"); // ClientLanguage authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Priority"] = await this.configuration.apiKey("Priority"); // Priority authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
@@ -592,13 +608,13 @@ export class UserListApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => GetFollowers200ResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => FollowResponseFromJSON(jsonValue));
     }
 
     /**
      * get user list of following
      */
-    async getFollowing(requestParameters: GetFollowingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetFollowers200Response> {
+    async getFollowing(requestParameters: GetFollowingRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FollowResponse> {
         const response = await this.getFollowingRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -606,7 +622,7 @@ export class UserListApi extends runtime.BaseAPI {
     /**
      * get tweet retweeters
      */
-    async getRetweetersRaw(requestParameters: GetRetweetersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetRetweeters200Response>> {
+    async getRetweetersRaw(requestParameters: GetRetweetersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TweetRetweetersResponse>> {
         if (requestParameters['pathQueryId'] == null) {
             throw new runtime.RequiredError(
                 'pathQueryId',
@@ -646,6 +662,10 @@ export class UserListApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.apiKey) {
             headerParameters["x-twitter-client-language"] = await this.configuration.apiKey("x-twitter-client-language"); // ClientLanguage authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Priority"] = await this.configuration.apiKey("Priority"); // Priority authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
@@ -727,13 +747,13 @@ export class UserListApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => GetRetweeters200ResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => TweetRetweetersResponseFromJSON(jsonValue));
     }
 
     /**
      * get tweet retweeters
      */
-    async getRetweeters(requestParameters: GetRetweetersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetRetweeters200Response> {
+    async getRetweeters(requestParameters: GetRetweetersRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TweetRetweetersResponse> {
         const response = await this.getRetweetersRaw(requestParameters, initOverrides);
         return await response.value();
     }

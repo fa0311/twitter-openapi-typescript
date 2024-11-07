@@ -19,6 +19,12 @@ import {
     CreateTweetResponseDataFromJSONTyped,
     CreateTweetResponseDataToJSON,
 } from './CreateTweetResponseData';
+import type { ErrorResponse } from './ErrorResponse';
+import {
+    ErrorResponseFromJSON,
+    ErrorResponseFromJSONTyped,
+    ErrorResponseToJSON,
+} from './ErrorResponse';
 
 /**
  * 
@@ -32,6 +38,12 @@ export interface CreateTweetResponse {
      * @memberof CreateTweetResponse
      */
     data: CreateTweetResponseData;
+    /**
+     * 
+     * @type {Array<ErrorResponse>}
+     * @memberof CreateTweetResponse
+     */
+    errors?: Array<ErrorResponse>;
 }
 
 /**
@@ -53,6 +65,7 @@ export function CreateTweetResponseFromJSONTyped(json: any, ignoreDiscriminator:
     return {
         
         'data': CreateTweetResponseDataFromJSON(json['data']),
+        'errors': json['errors'] == null ? undefined : ((json['errors'] as Array<any>).map(ErrorResponseFromJSON)),
     };
 }
 
@@ -63,6 +76,7 @@ export function CreateTweetResponseToJSON(value?: CreateTweetResponse | null): a
     return {
         
         'data': CreateTweetResponseDataToJSON(value['data']),
+        'errors': value['errors'] == null ? undefined : ((value['errors'] as Array<any>).map(ErrorResponseToJSON)),
     };
 }
 

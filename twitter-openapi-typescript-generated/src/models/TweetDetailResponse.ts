@@ -13,6 +13,12 @@
  */
 
 import { mapValues } from '../runtime';
+import type { ErrorResponse } from './ErrorResponse';
+import {
+    ErrorResponseFromJSON,
+    ErrorResponseFromJSONTyped,
+    ErrorResponseToJSON,
+} from './ErrorResponse';
 import type { TweetDetailResponseData } from './TweetDetailResponseData';
 import {
     TweetDetailResponseDataFromJSON,
@@ -32,6 +38,12 @@ export interface TweetDetailResponse {
      * @memberof TweetDetailResponse
      */
     data: TweetDetailResponseData;
+    /**
+     * 
+     * @type {Array<ErrorResponse>}
+     * @memberof TweetDetailResponse
+     */
+    errors?: Array<ErrorResponse>;
 }
 
 /**
@@ -53,6 +65,7 @@ export function TweetDetailResponseFromJSONTyped(json: any, ignoreDiscriminator:
     return {
         
         'data': TweetDetailResponseDataFromJSON(json['data']),
+        'errors': json['errors'] == null ? undefined : ((json['errors'] as Array<any>).map(ErrorResponseFromJSON)),
     };
 }
 
@@ -63,6 +76,7 @@ export function TweetDetailResponseToJSON(value?: TweetDetailResponse | null): a
     return {
         
         'data': TweetDetailResponseDataToJSON(value['data']),
+        'errors': value['errors'] == null ? undefined : ((value['errors'] as Array<any>).map(ErrorResponseToJSON)),
     };
 }
 

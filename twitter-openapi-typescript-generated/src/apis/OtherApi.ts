@@ -15,11 +15,11 @@
 
 import * as runtime from '../runtime';
 import type {
-  OtherResponse,
+  OtherObjectAll,
 } from '../models/index';
 import {
-    OtherResponseFromJSON,
-    OtherResponseToJSON,
+    OtherObjectAllFromJSON,
+    OtherObjectAllToJSON,
 } from '../models/index';
 
 /**
@@ -30,7 +30,7 @@ export class OtherApi extends runtime.BaseAPI {
     /**
      * This is not an actual endpoint
      */
-    async otherRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<OtherResponse>> {
+    async otherRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<OtherObjectAll>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -41,6 +41,10 @@ export class OtherApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.apiKey) {
             headerParameters["x-twitter-client-language"] = await this.configuration.apiKey("x-twitter-client-language"); // ClientLanguage authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Priority"] = await this.configuration.apiKey("Priority"); // Priority authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
@@ -122,13 +126,13 @@ export class OtherApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => OtherResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => OtherObjectAllFromJSON(jsonValue));
     }
 
     /**
      * This is not an actual endpoint
      */
-    async other(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<OtherResponse> {
+    async other(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<OtherObjectAll> {
         const response = await this.otherRaw(initOverrides);
         return await response.value();
     }

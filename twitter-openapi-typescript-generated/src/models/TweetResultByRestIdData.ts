@@ -31,14 +31,13 @@ export interface TweetResultByRestIdData {
      * @type {ItemResult}
      * @memberof TweetResultByRestIdData
      */
-    tweetResult: ItemResult;
+    tweetResult?: ItemResult;
 }
 
 /**
  * Check if a given object implements the TweetResultByRestIdData interface.
  */
 export function instanceOfTweetResultByRestIdData(value: object): value is TweetResultByRestIdData {
-    if (!('tweetResult' in value) || value['tweetResult'] === undefined) return false;
     return true;
 }
 
@@ -52,7 +51,7 @@ export function TweetResultByRestIdDataFromJSONTyped(json: any, ignoreDiscrimina
     }
     return {
         
-        'tweetResult': ItemResultFromJSON(json['tweetResult']),
+        'tweetResult': json['tweetResult'] == null ? undefined : ItemResultFromJSON(json['tweetResult']),
     };
 }
 

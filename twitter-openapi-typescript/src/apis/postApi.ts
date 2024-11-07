@@ -1,5 +1,5 @@
 import { DefaultFlag, TwitterApiUtilsResponse, initOverrides } from '@/models';
-import { buildHeader, errorCheck } from '@/utils';
+import { buildHeader } from '@/utils';
 import * as i from 'twitter-openapi-typescript-generated';
 import { PostCreateTweetRequestVariablesToJSON } from 'twitter-openapi-typescript-generated';
 
@@ -94,7 +94,7 @@ export class PostApiUtils {
     return {
       raw: { response: response.raw },
       header: buildHeader(response.raw.headers),
-      data: errorCheck(await response.value()),
+      data: await response.value(),
     };
   }
 
@@ -115,7 +115,7 @@ export class PostApiUtils {
     return {
       raw: { response: response.raw },
       header: buildHeader(response.raw.headers),
-      data: errorCheck(await response.value()),
+      data: await response.value(),
     };
   }
 
@@ -136,7 +136,7 @@ export class PostApiUtils {
     return {
       raw: { response: response.raw },
       header: buildHeader(response.raw.headers),
-      data: errorCheck(await response.value()),
+      data: await response.value(),
     };
   }
   async postDeleteRetweet(param: PostDeleteRetweetParam): Promise<TwitterApiUtilsResponse<i.DeleteRetweetResponse>> {
@@ -156,13 +156,11 @@ export class PostApiUtils {
     return {
       raw: { response: response.raw },
       header: buildHeader(response.raw.headers),
-      data: errorCheck(await response.value()),
+      data: await response.value(),
     };
   }
 
-  async postFavoriteTweet(
-    param: PostFavoriteTweetParam,
-  ): Promise<TwitterApiUtilsResponse<i.FavoriteTweetResponseData>> {
+  async postFavoriteTweet(param: PostFavoriteTweetParam): Promise<TwitterApiUtilsResponse<i.FavoriteTweetResponse>> {
     const args = {
       tweetId: param.tweetId,
       ...param.extraParam,
@@ -179,13 +177,13 @@ export class PostApiUtils {
     return {
       raw: { response: response.raw },
       header: buildHeader(response.raw.headers),
-      data: errorCheck(await response.value()),
+      data: await response.value(),
     };
   }
 
   async postUnfavoriteTweet(
     param: PostUnfavoriteTweetParam,
-  ): Promise<TwitterApiUtilsResponse<i.UnfavoriteTweetResponseData>> {
+  ): Promise<TwitterApiUtilsResponse<i.UnfavoriteTweetResponse>> {
     const args = {
       tweetId: param.tweetId,
       ...param.extraParam,
@@ -202,7 +200,7 @@ export class PostApiUtils {
     return {
       raw: { response: response.raw },
       header: buildHeader(response.raw.headers),
-      data: errorCheck(await response.value()),
+      data: await response.value(),
     };
   }
 }

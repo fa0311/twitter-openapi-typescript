@@ -15,56 +15,56 @@
 
 import * as runtime from '../runtime';
 import type {
-  PostCreateBookmark200Response,
+  CreateBookmarkResponse,
+  CreateRetweetResponse,
+  CreateTweetResponse,
+  DeleteBookmarkResponse,
+  DeleteRetweetResponse,
+  DeleteTweetResponse,
+  FavoriteTweetResponse,
   PostCreateBookmarkRequest,
-  PostCreateRetweet200Response,
   PostCreateRetweetRequest,
-  PostCreateTweet200Response,
   PostCreateTweetRequest,
-  PostDeleteBookmark200Response,
   PostDeleteBookmarkRequest,
-  PostDeleteRetweet200Response,
   PostDeleteRetweetRequest,
-  PostDeleteTweet200Response,
   PostDeleteTweetRequest,
-  PostFavoriteTweet200Response,
   PostFavoriteTweetRequest,
-  PostUnfavoriteTweet200Response,
   PostUnfavoriteTweetRequest,
+  UnfavoriteTweetResponse,
 } from '../models/index';
 import {
-    PostCreateBookmark200ResponseFromJSON,
-    PostCreateBookmark200ResponseToJSON,
+    CreateBookmarkResponseFromJSON,
+    CreateBookmarkResponseToJSON,
+    CreateRetweetResponseFromJSON,
+    CreateRetweetResponseToJSON,
+    CreateTweetResponseFromJSON,
+    CreateTweetResponseToJSON,
+    DeleteBookmarkResponseFromJSON,
+    DeleteBookmarkResponseToJSON,
+    DeleteRetweetResponseFromJSON,
+    DeleteRetweetResponseToJSON,
+    DeleteTweetResponseFromJSON,
+    DeleteTweetResponseToJSON,
+    FavoriteTweetResponseFromJSON,
+    FavoriteTweetResponseToJSON,
     PostCreateBookmarkRequestFromJSON,
     PostCreateBookmarkRequestToJSON,
-    PostCreateRetweet200ResponseFromJSON,
-    PostCreateRetweet200ResponseToJSON,
     PostCreateRetweetRequestFromJSON,
     PostCreateRetweetRequestToJSON,
-    PostCreateTweet200ResponseFromJSON,
-    PostCreateTweet200ResponseToJSON,
     PostCreateTweetRequestFromJSON,
     PostCreateTweetRequestToJSON,
-    PostDeleteBookmark200ResponseFromJSON,
-    PostDeleteBookmark200ResponseToJSON,
     PostDeleteBookmarkRequestFromJSON,
     PostDeleteBookmarkRequestToJSON,
-    PostDeleteRetweet200ResponseFromJSON,
-    PostDeleteRetweet200ResponseToJSON,
     PostDeleteRetweetRequestFromJSON,
     PostDeleteRetweetRequestToJSON,
-    PostDeleteTweet200ResponseFromJSON,
-    PostDeleteTweet200ResponseToJSON,
     PostDeleteTweetRequestFromJSON,
     PostDeleteTweetRequestToJSON,
-    PostFavoriteTweet200ResponseFromJSON,
-    PostFavoriteTweet200ResponseToJSON,
     PostFavoriteTweetRequestFromJSON,
     PostFavoriteTweetRequestToJSON,
-    PostUnfavoriteTweet200ResponseFromJSON,
-    PostUnfavoriteTweet200ResponseToJSON,
     PostUnfavoriteTweetRequestFromJSON,
     PostUnfavoriteTweetRequestToJSON,
+    UnfavoriteTweetResponseFromJSON,
+    UnfavoriteTweetResponseToJSON,
 } from '../models/index';
 
 export interface PostCreateBookmarkOperationRequest {
@@ -115,7 +115,7 @@ export class PostApi extends runtime.BaseAPI {
     /**
      * create Bookmark
      */
-    async postCreateBookmarkRaw(requestParameters: PostCreateBookmarkOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostCreateBookmark200Response>> {
+    async postCreateBookmarkRaw(requestParameters: PostCreateBookmarkOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateBookmarkResponse>> {
         if (requestParameters['pathQueryId'] == null) {
             throw new runtime.RequiredError(
                 'pathQueryId',
@@ -142,6 +142,10 @@ export class PostApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.apiKey) {
             headerParameters["x-twitter-client-language"] = await this.configuration.apiKey("x-twitter-client-language"); // ClientLanguage authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Priority"] = await this.configuration.apiKey("Priority"); // Priority authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
@@ -224,13 +228,13 @@ export class PostApi extends runtime.BaseAPI {
             body: PostCreateBookmarkRequestToJSON(requestParameters['postCreateBookmarkRequest']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => PostCreateBookmark200ResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateBookmarkResponseFromJSON(jsonValue));
     }
 
     /**
      * create Bookmark
      */
-    async postCreateBookmark(requestParameters: PostCreateBookmarkOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PostCreateBookmark200Response> {
+    async postCreateBookmark(requestParameters: PostCreateBookmarkOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreateBookmarkResponse> {
         const response = await this.postCreateBookmarkRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -238,7 +242,7 @@ export class PostApi extends runtime.BaseAPI {
     /**
      * create Retweet
      */
-    async postCreateRetweetRaw(requestParameters: PostCreateRetweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostCreateRetweet200Response>> {
+    async postCreateRetweetRaw(requestParameters: PostCreateRetweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateRetweetResponse>> {
         if (requestParameters['pathQueryId'] == null) {
             throw new runtime.RequiredError(
                 'pathQueryId',
@@ -265,6 +269,10 @@ export class PostApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.apiKey) {
             headerParameters["x-twitter-client-language"] = await this.configuration.apiKey("x-twitter-client-language"); // ClientLanguage authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Priority"] = await this.configuration.apiKey("Priority"); // Priority authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
@@ -347,13 +355,13 @@ export class PostApi extends runtime.BaseAPI {
             body: PostCreateRetweetRequestToJSON(requestParameters['postCreateRetweetRequest']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => PostCreateRetweet200ResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateRetweetResponseFromJSON(jsonValue));
     }
 
     /**
      * create Retweet
      */
-    async postCreateRetweet(requestParameters: PostCreateRetweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PostCreateRetweet200Response> {
+    async postCreateRetweet(requestParameters: PostCreateRetweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreateRetweetResponse> {
         const response = await this.postCreateRetweetRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -361,7 +369,7 @@ export class PostApi extends runtime.BaseAPI {
     /**
      * create Tweet
      */
-    async postCreateTweetRaw(requestParameters: PostCreateTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostCreateTweet200Response>> {
+    async postCreateTweetRaw(requestParameters: PostCreateTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateTweetResponse>> {
         if (requestParameters['pathQueryId'] == null) {
             throw new runtime.RequiredError(
                 'pathQueryId',
@@ -388,6 +396,10 @@ export class PostApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.apiKey) {
             headerParameters["x-twitter-client-language"] = await this.configuration.apiKey("x-twitter-client-language"); // ClientLanguage authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Priority"] = await this.configuration.apiKey("Priority"); // Priority authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
@@ -470,13 +482,13 @@ export class PostApi extends runtime.BaseAPI {
             body: PostCreateTweetRequestToJSON(requestParameters['postCreateTweetRequest']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => PostCreateTweet200ResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateTweetResponseFromJSON(jsonValue));
     }
 
     /**
      * create Tweet
      */
-    async postCreateTweet(requestParameters: PostCreateTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PostCreateTweet200Response> {
+    async postCreateTweet(requestParameters: PostCreateTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreateTweetResponse> {
         const response = await this.postCreateTweetRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -484,7 +496,7 @@ export class PostApi extends runtime.BaseAPI {
     /**
      * delete Bookmark
      */
-    async postDeleteBookmarkRaw(requestParameters: PostDeleteBookmarkOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostDeleteBookmark200Response>> {
+    async postDeleteBookmarkRaw(requestParameters: PostDeleteBookmarkOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeleteBookmarkResponse>> {
         if (requestParameters['pathQueryId'] == null) {
             throw new runtime.RequiredError(
                 'pathQueryId',
@@ -511,6 +523,10 @@ export class PostApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.apiKey) {
             headerParameters["x-twitter-client-language"] = await this.configuration.apiKey("x-twitter-client-language"); // ClientLanguage authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Priority"] = await this.configuration.apiKey("Priority"); // Priority authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
@@ -593,13 +609,13 @@ export class PostApi extends runtime.BaseAPI {
             body: PostDeleteBookmarkRequestToJSON(requestParameters['postDeleteBookmarkRequest']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => PostDeleteBookmark200ResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => DeleteBookmarkResponseFromJSON(jsonValue));
     }
 
     /**
      * delete Bookmark
      */
-    async postDeleteBookmark(requestParameters: PostDeleteBookmarkOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PostDeleteBookmark200Response> {
+    async postDeleteBookmark(requestParameters: PostDeleteBookmarkOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeleteBookmarkResponse> {
         const response = await this.postDeleteBookmarkRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -607,7 +623,7 @@ export class PostApi extends runtime.BaseAPI {
     /**
      * delete Retweet
      */
-    async postDeleteRetweetRaw(requestParameters: PostDeleteRetweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostDeleteRetweet200Response>> {
+    async postDeleteRetweetRaw(requestParameters: PostDeleteRetweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeleteRetweetResponse>> {
         if (requestParameters['pathQueryId'] == null) {
             throw new runtime.RequiredError(
                 'pathQueryId',
@@ -634,6 +650,10 @@ export class PostApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.apiKey) {
             headerParameters["x-twitter-client-language"] = await this.configuration.apiKey("x-twitter-client-language"); // ClientLanguage authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Priority"] = await this.configuration.apiKey("Priority"); // Priority authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
@@ -716,13 +736,13 @@ export class PostApi extends runtime.BaseAPI {
             body: PostDeleteRetweetRequestToJSON(requestParameters['postDeleteRetweetRequest']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => PostDeleteRetweet200ResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => DeleteRetweetResponseFromJSON(jsonValue));
     }
 
     /**
      * delete Retweet
      */
-    async postDeleteRetweet(requestParameters: PostDeleteRetweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PostDeleteRetweet200Response> {
+    async postDeleteRetweet(requestParameters: PostDeleteRetweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeleteRetweetResponse> {
         const response = await this.postDeleteRetweetRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -730,7 +750,7 @@ export class PostApi extends runtime.BaseAPI {
     /**
      * delete Retweet
      */
-    async postDeleteTweetRaw(requestParameters: PostDeleteTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostDeleteTweet200Response>> {
+    async postDeleteTweetRaw(requestParameters: PostDeleteTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeleteTweetResponse>> {
         if (requestParameters['pathQueryId'] == null) {
             throw new runtime.RequiredError(
                 'pathQueryId',
@@ -757,6 +777,10 @@ export class PostApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.apiKey) {
             headerParameters["x-twitter-client-language"] = await this.configuration.apiKey("x-twitter-client-language"); // ClientLanguage authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Priority"] = await this.configuration.apiKey("Priority"); // Priority authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
@@ -839,13 +863,13 @@ export class PostApi extends runtime.BaseAPI {
             body: PostDeleteTweetRequestToJSON(requestParameters['postDeleteTweetRequest']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => PostDeleteTweet200ResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => DeleteTweetResponseFromJSON(jsonValue));
     }
 
     /**
      * delete Retweet
      */
-    async postDeleteTweet(requestParameters: PostDeleteTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PostDeleteTweet200Response> {
+    async postDeleteTweet(requestParameters: PostDeleteTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeleteTweetResponse> {
         const response = await this.postDeleteTweetRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -853,7 +877,7 @@ export class PostApi extends runtime.BaseAPI {
     /**
      * favorite Tweet
      */
-    async postFavoriteTweetRaw(requestParameters: PostFavoriteTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostFavoriteTweet200Response>> {
+    async postFavoriteTweetRaw(requestParameters: PostFavoriteTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FavoriteTweetResponse>> {
         if (requestParameters['pathQueryId'] == null) {
             throw new runtime.RequiredError(
                 'pathQueryId',
@@ -880,6 +904,10 @@ export class PostApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.apiKey) {
             headerParameters["x-twitter-client-language"] = await this.configuration.apiKey("x-twitter-client-language"); // ClientLanguage authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Priority"] = await this.configuration.apiKey("Priority"); // Priority authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
@@ -962,13 +990,13 @@ export class PostApi extends runtime.BaseAPI {
             body: PostFavoriteTweetRequestToJSON(requestParameters['postFavoriteTweetRequest']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => PostFavoriteTweet200ResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => FavoriteTweetResponseFromJSON(jsonValue));
     }
 
     /**
      * favorite Tweet
      */
-    async postFavoriteTweet(requestParameters: PostFavoriteTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PostFavoriteTweet200Response> {
+    async postFavoriteTweet(requestParameters: PostFavoriteTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FavoriteTweetResponse> {
         const response = await this.postFavoriteTweetRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -976,7 +1004,7 @@ export class PostApi extends runtime.BaseAPI {
     /**
      * unfavorite Tweet
      */
-    async postUnfavoriteTweetRaw(requestParameters: PostUnfavoriteTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<PostUnfavoriteTweet200Response>> {
+    async postUnfavoriteTweetRaw(requestParameters: PostUnfavoriteTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UnfavoriteTweetResponse>> {
         if (requestParameters['pathQueryId'] == null) {
             throw new runtime.RequiredError(
                 'pathQueryId',
@@ -1003,6 +1031,10 @@ export class PostApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.apiKey) {
             headerParameters["x-twitter-client-language"] = await this.configuration.apiKey("x-twitter-client-language"); // ClientLanguage authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Priority"] = await this.configuration.apiKey("Priority"); // Priority authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
@@ -1085,13 +1117,13 @@ export class PostApi extends runtime.BaseAPI {
             body: PostUnfavoriteTweetRequestToJSON(requestParameters['postUnfavoriteTweetRequest']),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => PostUnfavoriteTweet200ResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => UnfavoriteTweetResponseFromJSON(jsonValue));
     }
 
     /**
      * unfavorite Tweet
      */
-    async postUnfavoriteTweet(requestParameters: PostUnfavoriteTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<PostUnfavoriteTweet200Response> {
+    async postUnfavoriteTweet(requestParameters: PostUnfavoriteTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UnfavoriteTweetResponse> {
         const response = await this.postUnfavoriteTweetRaw(requestParameters, initOverrides);
         return await response.value();
     }

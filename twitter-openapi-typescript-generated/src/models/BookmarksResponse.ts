@@ -19,6 +19,12 @@ import {
     BookmarksResponseDataFromJSONTyped,
     BookmarksResponseDataToJSON,
 } from './BookmarksResponseData';
+import type { ErrorResponse } from './ErrorResponse';
+import {
+    ErrorResponseFromJSON,
+    ErrorResponseFromJSONTyped,
+    ErrorResponseToJSON,
+} from './ErrorResponse';
 
 /**
  * 
@@ -31,14 +37,19 @@ export interface BookmarksResponse {
      * @type {BookmarksResponseData}
      * @memberof BookmarksResponse
      */
-    data: BookmarksResponseData;
+    data?: BookmarksResponseData;
+    /**
+     * 
+     * @type {Array<ErrorResponse>}
+     * @memberof BookmarksResponse
+     */
+    errors?: Array<ErrorResponse>;
 }
 
 /**
  * Check if a given object implements the BookmarksResponse interface.
  */
 export function instanceOfBookmarksResponse(value: object): value is BookmarksResponse {
-    if (!('data' in value) || value['data'] === undefined) return false;
     return true;
 }
 
@@ -52,7 +63,8 @@ export function BookmarksResponseFromJSONTyped(json: any, ignoreDiscriminator: b
     }
     return {
         
-        'data': BookmarksResponseDataFromJSON(json['data']),
+        'data': json['data'] == null ? undefined : BookmarksResponseDataFromJSON(json['data']),
+        'errors': json['errors'] == null ? undefined : ((json['errors'] as Array<any>).map(ErrorResponseFromJSON)),
     };
 }
 
@@ -63,6 +75,7 @@ export function BookmarksResponseToJSON(value?: BookmarksResponse | null): any {
     return {
         
         'data': BookmarksResponseDataToJSON(value['data']),
+        'errors': value['errors'] == null ? undefined : ((value['errors'] as Array<any>).map(ErrorResponseToJSON)),
     };
 }
 

@@ -15,11 +15,11 @@
 
 import * as runtime from '../runtime';
 import type {
-  GetUsersByRestIds200Response,
+  UsersResponse,
 } from '../models/index';
 import {
-    GetUsersByRestIds200ResponseFromJSON,
-    GetUsersByRestIds200ResponseToJSON,
+    UsersResponseFromJSON,
+    UsersResponseToJSON,
 } from '../models/index';
 
 export interface GetUsersByRestIdsRequest {
@@ -36,7 +36,7 @@ export class UsersApi extends runtime.BaseAPI {
     /**
      * get users by rest ids
      */
-    async getUsersByRestIdsRaw(requestParameters: GetUsersByRestIdsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetUsersByRestIds200Response>> {
+    async getUsersByRestIdsRaw(requestParameters: GetUsersByRestIdsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UsersResponse>> {
         if (requestParameters['pathQueryId'] == null) {
             throw new runtime.RequiredError(
                 'pathQueryId',
@@ -76,6 +76,10 @@ export class UsersApi extends runtime.BaseAPI {
 
         if (this.configuration && this.configuration.apiKey) {
             headerParameters["x-twitter-client-language"] = await this.configuration.apiKey("x-twitter-client-language"); // ClientLanguage authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Priority"] = await this.configuration.apiKey("Priority"); // Priority authentication
         }
 
         if (this.configuration && this.configuration.apiKey) {
@@ -157,13 +161,13 @@ export class UsersApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => GetUsersByRestIds200ResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => UsersResponseFromJSON(jsonValue));
     }
 
     /**
      * get users by rest ids
      */
-    async getUsersByRestIds(requestParameters: GetUsersByRestIdsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetUsersByRestIds200Response> {
+    async getUsersByRestIds(requestParameters: GetUsersByRestIdsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UsersResponse> {
         const response = await this.getUsersByRestIdsRaw(requestParameters, initOverrides);
         return await response.value();
     }

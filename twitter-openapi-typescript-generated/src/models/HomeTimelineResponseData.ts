@@ -31,14 +31,13 @@ export interface HomeTimelineResponseData {
      * @type {HomeTimelineHome}
      * @memberof HomeTimelineResponseData
      */
-    home: HomeTimelineHome;
+    home?: HomeTimelineHome;
 }
 
 /**
  * Check if a given object implements the HomeTimelineResponseData interface.
  */
 export function instanceOfHomeTimelineResponseData(value: object): value is HomeTimelineResponseData {
-    if (!('home' in value) || value['home'] === undefined) return false;
     return true;
 }
 
@@ -52,7 +51,7 @@ export function HomeTimelineResponseDataFromJSONTyped(json: any, ignoreDiscrimin
     }
     return {
         
-        'home': HomeTimelineHomeFromJSON(json['home']),
+        'home': json['home'] == null ? undefined : HomeTimelineHomeFromJSON(json['home']),
     };
 }
 

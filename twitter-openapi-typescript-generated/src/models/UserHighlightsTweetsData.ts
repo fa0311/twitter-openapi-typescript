@@ -31,14 +31,13 @@ export interface UserHighlightsTweetsData {
      * @type {UserHighlightsTweetsUser}
      * @memberof UserHighlightsTweetsData
      */
-    user: UserHighlightsTweetsUser;
+    user?: UserHighlightsTweetsUser;
 }
 
 /**
  * Check if a given object implements the UserHighlightsTweetsData interface.
  */
 export function instanceOfUserHighlightsTweetsData(value: object): value is UserHighlightsTweetsData {
-    if (!('user' in value) || value['user'] === undefined) return false;
     return true;
 }
 
@@ -52,7 +51,7 @@ export function UserHighlightsTweetsDataFromJSONTyped(json: any, ignoreDiscrimin
     }
     return {
         
-        'user': UserHighlightsTweetsUserFromJSON(json['user']),
+        'user': json['user'] == null ? undefined : UserHighlightsTweetsUserFromJSON(json['user']),
     };
 }
 

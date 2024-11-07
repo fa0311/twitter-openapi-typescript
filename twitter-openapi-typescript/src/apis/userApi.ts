@@ -1,5 +1,5 @@
 import { DefaultFlag, RequestParam, TwitterApiUtilsResponse, UserApiUtilsData, initOverrides } from '@/models';
-import { buildHeader, errorCheck, getKwargs, nonNullable, userOrNullConverter } from '@/utils';
+import { buildHeader, errorCheck, getKwargs, userOrNullConverter } from '@/utils';
 import * as i from 'twitter-openapi-typescript-generated';
 
 type getUserByScreenNameParam = {
@@ -29,8 +29,7 @@ export class UserApiUtils {
     const apiFn: typeof param.apiFn = param.apiFn.bind(this.api);
     const args = getKwargs(this.flag[param.key], param.param);
     const response = await apiFn(args, this.initOverrides);
-    const checked = errorCheck(await response.value());
-    const result = param.convertFn(checked);
+    const result = param.convertFn(await response.value());
     const user = result.result && userOrNullConverter(result.result);
 
     return {
@@ -51,7 +50,7 @@ export class UserApiUtils {
     const response = this.request({
       key: 'UserByScreenName',
       apiFn: this.api.getUserByScreenNameRaw,
-      convertFn: (e) => nonNullable(e.data.user),
+      convertFn: (e) => errorCheck(e.data.user, e.errors),
       param: args,
     });
     return response;
@@ -64,7 +63,7 @@ export class UserApiUtils {
     const response = this.request({
       key: 'UserByRestId',
       apiFn: this.api.getUserByRestIdRaw,
-      convertFn: (e) => nonNullable(e.data.user),
+      convertFn: (e) => errorCheck(e.data.user, e.errors),
       param: args,
     });
     return response;

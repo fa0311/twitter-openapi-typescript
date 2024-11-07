@@ -13,12 +13,12 @@
  */
 
 import { mapValues } from '../runtime';
-import type { UserResponseData } from './UserResponseData';
+import type { UnfavoriteTweet } from './UnfavoriteTweet';
 import {
-    UserResponseDataFromJSON,
-    UserResponseDataFromJSONTyped,
-    UserResponseDataToJSON,
-} from './UserResponseData';
+    UnfavoriteTweetFromJSON,
+    UnfavoriteTweetFromJSONTyped,
+    UnfavoriteTweetToJSON,
+} from './UnfavoriteTweet';
 import type { ErrorResponse } from './ErrorResponse';
 import {
     ErrorResponseFromJSON,
@@ -29,53 +29,53 @@ import {
 /**
  * 
  * @export
- * @interface UserResponse
+ * @interface UnfavoriteTweetResponse
  */
-export interface UserResponse {
+export interface UnfavoriteTweetResponse {
     /**
      * 
-     * @type {UserResponseData}
-     * @memberof UserResponse
+     * @type {UnfavoriteTweet}
+     * @memberof UnfavoriteTweetResponse
      */
-    data: UserResponseData;
+    data: UnfavoriteTweet;
     /**
      * 
      * @type {Array<ErrorResponse>}
-     * @memberof UserResponse
+     * @memberof UnfavoriteTweetResponse
      */
     errors?: Array<ErrorResponse>;
 }
 
 /**
- * Check if a given object implements the UserResponse interface.
+ * Check if a given object implements the UnfavoriteTweetResponse interface.
  */
-export function instanceOfUserResponse(value: object): value is UserResponse {
+export function instanceOfUnfavoriteTweetResponse(value: object): value is UnfavoriteTweetResponse {
     if (!('data' in value) || value['data'] === undefined) return false;
     return true;
 }
 
-export function UserResponseFromJSON(json: any): UserResponse {
-    return UserResponseFromJSONTyped(json, false);
+export function UnfavoriteTweetResponseFromJSON(json: any): UnfavoriteTweetResponse {
+    return UnfavoriteTweetResponseFromJSONTyped(json, false);
 }
 
-export function UserResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): UserResponse {
+export function UnfavoriteTweetResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): UnfavoriteTweetResponse {
     if (json == null) {
         return json;
     }
     return {
         
-        'data': UserResponseDataFromJSON(json['data']),
+        'data': UnfavoriteTweetFromJSON(json['data']),
         'errors': json['errors'] == null ? undefined : ((json['errors'] as Array<any>).map(ErrorResponseFromJSON)),
     };
 }
 
-export function UserResponseToJSON(value?: UserResponse | null): any {
+export function UnfavoriteTweetResponseToJSON(value?: UnfavoriteTweetResponse | null): any {
     if (value == null) {
         return value;
     }
     return {
         
-        'data': UserResponseDataToJSON(value['data']),
+        'data': UnfavoriteTweetToJSON(value['data']),
         'errors': value['errors'] == null ? undefined : ((value['errors'] as Array<any>).map(ErrorResponseToJSON)),
     };
 }

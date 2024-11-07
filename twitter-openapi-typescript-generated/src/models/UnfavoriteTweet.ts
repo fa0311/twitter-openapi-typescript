@@ -24,14 +24,13 @@ export interface UnfavoriteTweet {
      * @type {string}
      * @memberof UnfavoriteTweet
      */
-    unfavoriteTweet: string;
+    unfavoriteTweet?: string;
 }
 
 /**
  * Check if a given object implements the UnfavoriteTweet interface.
  */
 export function instanceOfUnfavoriteTweet(value: object): value is UnfavoriteTweet {
-    if (!('unfavoriteTweet' in value) || value['unfavoriteTweet'] === undefined) return false;
     return true;
 }
 
@@ -45,7 +44,7 @@ export function UnfavoriteTweetFromJSONTyped(json: any, ignoreDiscriminator: boo
     }
     return {
         
-        'unfavoriteTweet': json['unfavorite_tweet'],
+        'unfavoriteTweet': json['unfavorite_tweet'] == null ? undefined : json['unfavorite_tweet'],
     };
 }
 

@@ -24,14 +24,13 @@ export interface FavoriteTweet {
      * @type {string}
      * @memberof FavoriteTweet
      */
-    favoriteTweet: string;
+    favoriteTweet?: string;
 }
 
 /**
  * Check if a given object implements the FavoriteTweet interface.
  */
 export function instanceOfFavoriteTweet(value: object): value is FavoriteTweet {
-    if (!('favoriteTweet' in value) || value['favoriteTweet'] === undefined) return false;
     return true;
 }
 
@@ -45,7 +44,7 @@ export function FavoriteTweetFromJSONTyped(json: any, ignoreDiscriminator: boole
     }
     return {
         
-        'favoriteTweet': json['favorite_tweet'],
+        'favoriteTweet': json['favorite_tweet'] == null ? undefined : json['favorite_tweet'],
     };
 }
 

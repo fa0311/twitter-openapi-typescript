@@ -31,14 +31,13 @@ export interface TweetFavoritersResponseData {
      * @type {TimelineV2}
      * @memberof TweetFavoritersResponseData
      */
-    favoritersTimeline: TimelineV2;
+    favoritersTimeline?: TimelineV2;
 }
 
 /**
  * Check if a given object implements the TweetFavoritersResponseData interface.
  */
 export function instanceOfTweetFavoritersResponseData(value: object): value is TweetFavoritersResponseData {
-    if (!('favoritersTimeline' in value) || value['favoritersTimeline'] === undefined) return false;
     return true;
 }
 
@@ -52,7 +51,7 @@ export function TweetFavoritersResponseDataFromJSONTyped(json: any, ignoreDiscri
     }
     return {
         
-        'favoritersTimeline': TimelineV2FromJSON(json['favoriters_timeline']),
+        'favoritersTimeline': json['favoriters_timeline'] == null ? undefined : TimelineV2FromJSON(json['favoriters_timeline']),
     };
 }
 

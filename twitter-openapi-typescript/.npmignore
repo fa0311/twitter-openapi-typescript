@@ -1,2 +1,7 @@
-logs/**
-.env
+/*
+
+!/dist/*
+!/README.md
+!/LICENSE
+!/LICENSE.AGPL
+!/package.json

@@ -31,14 +31,13 @@ export interface TweetRetweetersResponseData {
      * @type {TimelineV2}
      * @memberof TweetRetweetersResponseData
      */
-    retweetersTimeline: TimelineV2;
+    retweetersTimeline?: TimelineV2;
 }
 
 /**
  * Check if a given object implements the TweetRetweetersResponseData interface.
  */
 export function instanceOfTweetRetweetersResponseData(value: object): value is TweetRetweetersResponseData {
-    if (!('retweetersTimeline' in value) || value['retweetersTimeline'] === undefined) return false;
     return true;
 }
 
@@ -52,7 +51,7 @@ export function TweetRetweetersResponseDataFromJSONTyped(json: any, ignoreDiscri
     }
     return {
         
-        'retweetersTimeline': TimelineV2FromJSON(json['retweeters_timeline']),
+        'retweetersTimeline': json['retweeters_timeline'] == null ? undefined : TimelineV2FromJSON(json['retweeters_timeline']),
     };
 }
 

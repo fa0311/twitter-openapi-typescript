@@ -23,29 +23,29 @@ import {
 /**
  * 
  * @export
- * @interface OtherResponse
+ * @interface OtherObjectAll
  */
-export interface OtherResponse {
+export interface OtherObjectAll {
     /**
      * 
      * @type {Session}
-     * @memberof OtherResponse
+     * @memberof OtherObjectAll
      */
     session?: Session;
 }
 
 /**
- * Check if a given object implements the OtherResponse interface.
+ * Check if a given object implements the OtherObjectAll interface.
  */
-export function instanceOfOtherResponse(value: object): value is OtherResponse {
+export function instanceOfOtherObjectAll(value: object): value is OtherObjectAll {
     return true;
 }
 
-export function OtherResponseFromJSON(json: any): OtherResponse {
-    return OtherResponseFromJSONTyped(json, false);
+export function OtherObjectAllFromJSON(json: any): OtherObjectAll {
+    return OtherObjectAllFromJSONTyped(json, false);
 }
 
-export function OtherResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): OtherResponse {
+export function OtherObjectAllFromJSONTyped(json: any, ignoreDiscriminator: boolean): OtherObjectAll {
     if (json == null) {
         return json;
     }
@@ -55,7 +55,7 @@ export function OtherResponseFromJSONTyped(json: any, ignoreDiscriminator: boole
     };
 }
 
-export function OtherResponseToJSON(value?: OtherResponse | null): any {
+export function OtherObjectAllToJSON(value?: OtherObjectAll | null): any {
     if (value == null) {
         return value;
     }

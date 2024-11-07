@@ -19,6 +19,12 @@ import {
     DeleteTweetResponseDataFromJSONTyped,
     DeleteTweetResponseDataToJSON,
 } from './DeleteTweetResponseData';
+import type { ErrorResponse } from './ErrorResponse';
+import {
+    ErrorResponseFromJSON,
+    ErrorResponseFromJSONTyped,
+    ErrorResponseToJSON,
+} from './ErrorResponse';
 
 /**
  * 
@@ -32,6 +38,12 @@ export interface DeleteTweetResponse {
      * @memberof DeleteTweetResponse
      */
     data: DeleteTweetResponseData;
+    /**
+     * 
+     * @type {Array<ErrorResponse>}
+     * @memberof DeleteTweetResponse
+     */
+    errors?: Array<ErrorResponse>;
 }
 
 /**
@@ -53,6 +65,7 @@ export function DeleteTweetResponseFromJSONTyped(json: any, ignoreDiscriminator:
     return {
         
         'data': DeleteTweetResponseDataFromJSON(json['data']),
+        'errors': json['errors'] == null ? undefined : ((json['errors'] as Array<any>).map(ErrorResponseFromJSON)),
     };
 }
 
@@ -63,6 +76,7 @@ export function DeleteTweetResponseToJSON(value?: DeleteTweetResponse | null): a
     return {
         
         'data': DeleteTweetResponseDataToJSON(value['data']),
+        'errors': value['errors'] == null ? undefined : ((value['errors'] as Array<any>).map(ErrorResponseToJSON)),
     };
 }
 

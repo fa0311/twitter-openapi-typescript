@@ -19,6 +19,12 @@ import {
     UserHighlightsTweetsDataFromJSONTyped,
     UserHighlightsTweetsDataToJSON,
 } from './UserHighlightsTweetsData';
+import type { ErrorResponse } from './ErrorResponse';
+import {
+    ErrorResponseFromJSON,
+    ErrorResponseFromJSONTyped,
+    ErrorResponseToJSON,
+} from './ErrorResponse';
 
 /**
  * 
@@ -32,6 +38,12 @@ export interface UserHighlightsTweetsResponse {
      * @memberof UserHighlightsTweetsResponse
      */
     data: UserHighlightsTweetsData;
+    /**
+     * 
+     * @type {Array<ErrorResponse>}
+     * @memberof UserHighlightsTweetsResponse
+     */
+    errors?: Array<ErrorResponse>;
 }
 
 /**
@@ -53,6 +65,7 @@ export function UserHighlightsTweetsResponseFromJSONTyped(json: any, ignoreDiscr
     return {
         
         'data': UserHighlightsTweetsDataFromJSON(json['data']),
+        'errors': json['errors'] == null ? undefined : ((json['errors'] as Array<any>).map(ErrorResponseFromJSON)),
     };
 }
 
@@ -63,6 +76,7 @@ export function UserHighlightsTweetsResponseToJSON(value?: UserHighlightsTweetsR
     return {
         
         'data': UserHighlightsTweetsDataToJSON(value['data']),
+        'errors': value['errors'] == null ? undefined : ((value['errors'] as Array<any>).map(ErrorResponseToJSON)),
     };
 }
 

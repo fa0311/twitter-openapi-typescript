@@ -19,6 +19,12 @@ import {
     HomeTimelineResponseDataFromJSONTyped,
     HomeTimelineResponseDataToJSON,
 } from './HomeTimelineResponseData';
+import type { ErrorResponse } from './ErrorResponse';
+import {
+    ErrorResponseFromJSON,
+    ErrorResponseFromJSONTyped,
+    ErrorResponseToJSON,
+} from './ErrorResponse';
 
 /**
  * 
@@ -32,6 +38,12 @@ export interface TimelineResponse {
      * @memberof TimelineResponse
      */
     data: HomeTimelineResponseData;
+    /**
+     * 
+     * @type {Array<ErrorResponse>}
+     * @memberof TimelineResponse
+     */
+    errors?: Array<ErrorResponse>;
 }
 
 /**
@@ -53,6 +65,7 @@ export function TimelineResponseFromJSONTyped(json: any, ignoreDiscriminator: bo
     return {
         
         'data': HomeTimelineResponseDataFromJSON(json['data']),
+        'errors': json['errors'] == null ? undefined : ((json['errors'] as Array<any>).map(ErrorResponseFromJSON)),
     };
 }
 
@@ -63,6 +76,7 @@ export function TimelineResponseToJSON(value?: TimelineResponse | null): any {
     return {
         
         'data': HomeTimelineResponseDataToJSON(value['data']),
+        'errors': value['errors'] == null ? undefined : ((value['errors'] as Array<any>).map(ErrorResponseToJSON)),
     };
 }
 

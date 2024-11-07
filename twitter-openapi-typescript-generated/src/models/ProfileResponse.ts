@@ -19,6 +19,12 @@ import {
     ProfileResponseDataFromJSONTyped,
     ProfileResponseDataToJSON,
 } from './ProfileResponseData';
+import type { ErrorResponse } from './ErrorResponse';
+import {
+    ErrorResponseFromJSON,
+    ErrorResponseFromJSONTyped,
+    ErrorResponseToJSON,
+} from './ErrorResponse';
 
 /**
  * 
@@ -32,6 +38,12 @@ export interface ProfileResponse {
      * @memberof ProfileResponse
      */
     data: ProfileResponseData;
+    /**
+     * 
+     * @type {Array<ErrorResponse>}
+     * @memberof ProfileResponse
+     */
+    errors?: Array<ErrorResponse>;
 }
 
 /**
@@ -53,6 +65,7 @@ export function ProfileResponseFromJSONTyped(json: any, ignoreDiscriminator: boo
     return {
         
         'data': ProfileResponseDataFromJSON(json['data']),
+        'errors': json['errors'] == null ? undefined : ((json['errors'] as Array<any>).map(ErrorResponseFromJSON)),
     };
 }
 
@@ -63,6 +76,7 @@ export function ProfileResponseToJSON(value?: ProfileResponse | null): any {
     return {
         
         'data': ProfileResponseDataToJSON(value['data']),
+        'errors': value['errors'] == null ? undefined : ((value['errors'] as Array<any>).map(ErrorResponseToJSON)),
     };
 }
 

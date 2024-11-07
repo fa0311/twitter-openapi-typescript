@@ -31,14 +31,13 @@ export interface FollowResponseData {
      * @type {FollowResponseUser}
      * @memberof FollowResponseData
      */
-    user: FollowResponseUser;
+    user?: FollowResponseUser;
 }
 
 /**
  * Check if a given object implements the FollowResponseData interface.
  */
 export function instanceOfFollowResponseData(value: object): value is FollowResponseData {
-    if (!('user' in value) || value['user'] === undefined) return false;
     return true;
 }
 
@@ -52,7 +51,7 @@ export function FollowResponseDataFromJSONTyped(json: any, ignoreDiscriminator: 
     }
     return {
         
-        'user': FollowResponseUserFromJSON(json['user']),
+        'user': json['user'] == null ? undefined : FollowResponseUserFromJSON(json['user']),
     };
 }
 

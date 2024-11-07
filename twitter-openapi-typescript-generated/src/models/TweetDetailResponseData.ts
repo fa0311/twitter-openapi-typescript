@@ -31,14 +31,13 @@ export interface TweetDetailResponseData {
      * @type {Timeline}
      * @memberof TweetDetailResponseData
      */
-    threadedConversationWithInjectionsV2: Timeline;
+    threadedConversationWithInjectionsV2?: Timeline;
 }
 
 /**
  * Check if a given object implements the TweetDetailResponseData interface.
  */
 export function instanceOfTweetDetailResponseData(value: object): value is TweetDetailResponseData {
-    if (!('threadedConversationWithInjectionsV2' in value) || value['threadedConversationWithInjectionsV2'] === undefined) return false;
     return true;
 }
 
@@ -52,7 +51,7 @@ export function TweetDetailResponseDataFromJSONTyped(json: any, ignoreDiscrimina
     }
     return {
         
-        'threadedConversationWithInjectionsV2': TimelineFromJSON(json['threaded_conversation_with_injections_v2']),
+        'threadedConversationWithInjectionsV2': json['threaded_conversation_with_injections_v2'] == null ? undefined : TimelineFromJSON(json['threaded_conversation_with_injections_v2']),
     };
 }
 

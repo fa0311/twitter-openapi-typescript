@@ -24,8 +24,7 @@ export class UsersApiUtils {
     const apiFn: typeof param.apiFn = param.apiFn.bind(this.api);
     const args = getKwargs(this.flag[param.key], param.param);
     const response = await apiFn(args, this.initOverrides);
-    const checked = errorCheck(await response.value());
-    const result = param.convertFn(checked);
+    const result = param.convertFn(await response.value());
     const user = userResultConverter(result);
 
     return {
@@ -42,7 +41,7 @@ export class UsersApiUtils {
     const response = this.request({
       key: 'UsersByRestIds',
       apiFn: this.api.getUsersByRestIdsRaw,
-      convertFn: (e) => e.data.users,
+      convertFn: (e) => errorCheck(e.data.users, e.errors),
       param: args,
     });
     return response;

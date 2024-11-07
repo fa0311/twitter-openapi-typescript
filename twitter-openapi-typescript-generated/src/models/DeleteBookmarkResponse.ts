@@ -19,6 +19,12 @@ import {
     DeleteBookmarkResponseDataFromJSONTyped,
     DeleteBookmarkResponseDataToJSON,
 } from './DeleteBookmarkResponseData';
+import type { ErrorResponse } from './ErrorResponse';
+import {
+    ErrorResponseFromJSON,
+    ErrorResponseFromJSONTyped,
+    ErrorResponseToJSON,
+} from './ErrorResponse';
 
 /**
  * 
@@ -34,10 +40,10 @@ export interface DeleteBookmarkResponse {
     data: DeleteBookmarkResponseData;
     /**
      * 
-     * @type {Array<Error>}
+     * @type {Array<ErrorResponse>}
      * @memberof DeleteBookmarkResponse
      */
-    errors?: Array<Error>;
+    errors?: Array<ErrorResponse>;
 }
 
 /**
@@ -59,7 +65,7 @@ export function DeleteBookmarkResponseFromJSONTyped(json: any, ignoreDiscriminat
     return {
         
         'data': DeleteBookmarkResponseDataFromJSON(json['data']),
-        'errors': json['errors'] == null ? undefined : json['errors'],
+        'errors': json['errors'] == null ? undefined : ((json['errors'] as Array<any>).map(ErrorResponseFromJSON)),
     };
 }
 
@@ -70,7 +76,7 @@ export function DeleteBookmarkResponseToJSON(value?: DeleteBookmarkResponse | nu
     return {
         
         'data': DeleteBookmarkResponseDataToJSON(value['data']),
-        'errors': value['errors'],
+        'errors': value['errors'] == null ? undefined : ((value['errors'] as Array<any>).map(ErrorResponseToJSON)),
     };
 }
 

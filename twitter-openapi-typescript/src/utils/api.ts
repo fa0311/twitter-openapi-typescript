@@ -22,7 +22,7 @@ export const getKwargs = (flag: { [key: string]: any }, additional: { [key: stri
   return kwargs;
 };
 
-export const errorCheck = <T>(data: i.Errors | T): T => {
+export const errorCheck = <T>(data: i.Error | T): T => {
   const res: any = data;
   if (res.data != undefined) {
     return res;

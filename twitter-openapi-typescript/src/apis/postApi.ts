@@ -162,7 +162,7 @@ export class PostApiUtils {
 
   async postFavoriteTweet(
     param: PostFavoriteTweetParam,
-  ): Promise<TwitterApiUtilsResponse<i.FavoriteTweetResponseData>> {
+  ): Promise<TwitterApiUtilsResponse<i.FavoriteTweetResponse>> {
     const args = {
       tweetId: param.tweetId,
       ...param.extraParam,
@@ -185,7 +185,7 @@ export class PostApiUtils {
 
   async postUnfavoriteTweet(
     param: PostUnfavoriteTweetParam,
-  ): Promise<TwitterApiUtilsResponse<i.UnfavoriteTweetResponseData>> {
+  ): Promise<TwitterApiUtilsResponse<i.UnfavoriteTweetResponse>> {
     const args = {
       tweetId: param.tweetId,
       ...param.extraParam,

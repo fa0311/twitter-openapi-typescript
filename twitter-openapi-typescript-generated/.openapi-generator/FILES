@@ -85,6 +85,7 @@ src/models/DisplayTreatment.ts
 src/models/DisplayType.ts
 src/models/Entities.ts
 src/models/ErrorExtensions.ts
+src/models/ErrorResponse.ts
 src/models/ExtMediaAvailability.ts
 src/models/ExtendedEntities.ts
 src/models/FavoriteTweet.ts
@@ -120,7 +121,6 @@ src/models/MediaVideoInfo.ts
 src/models/MediaVideoInfoVariant.ts
 src/models/MediaVisibilityResults.ts
 src/models/MediaVisibilityResultsBlurredImageInterstitial.ts
-src/models/ModelError.ts
 src/models/ModuleEntry.ts
 src/models/ModuleItem.ts
 src/models/NoteTweet.ts

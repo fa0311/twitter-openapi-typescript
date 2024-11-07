@@ -19,6 +19,12 @@ import {
     DeleteRetweetResponseDataFromJSONTyped,
     DeleteRetweetResponseDataToJSON,
 } from './DeleteRetweetResponseData';
+import type { ErrorResponse } from './ErrorResponse';
+import {
+    ErrorResponseFromJSON,
+    ErrorResponseFromJSONTyped,
+    ErrorResponseToJSON,
+} from './ErrorResponse';
 
 /**
  * 
@@ -34,10 +40,10 @@ export interface DeleteRetweetResponse {
     data: DeleteRetweetResponseData;
     /**
      * 
-     * @type {Array<Error>}
+     * @type {Array<ErrorResponse>}
      * @memberof DeleteRetweetResponse
      */
-    errors?: Array<Error>;
+    errors?: Array<ErrorResponse>;
 }
 
 /**
@@ -59,7 +65,7 @@ export function DeleteRetweetResponseFromJSONTyped(json: any, ignoreDiscriminato
     return {
         
         'data': DeleteRetweetResponseDataFromJSON(json['data']),
-        'errors': json['errors'] == null ? undefined : json['errors'],
+        'errors': json['errors'] == null ? undefined : ((json['errors'] as Array<any>).map(ErrorResponseFromJSON)),
     };
 }
 
@@ -70,7 +76,7 @@ export function DeleteRetweetResponseToJSON(value?: DeleteRetweetResponse | null
     return {
         
         'data': DeleteRetweetResponseDataToJSON(value['data']),
-        'errors': value['errors'],
+        'errors': value['errors'] == null ? undefined : ((value['errors'] as Array<any>).map(ErrorResponseToJSON)),
     };
 }
 

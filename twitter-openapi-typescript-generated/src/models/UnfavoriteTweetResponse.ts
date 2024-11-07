@@ -19,6 +19,12 @@ import {
     UnfavoriteTweetFromJSONTyped,
     UnfavoriteTweetToJSON,
 } from './UnfavoriteTweet';
+import type { ErrorResponse } from './ErrorResponse';
+import {
+    ErrorResponseFromJSON,
+    ErrorResponseFromJSONTyped,
+    ErrorResponseToJSON,
+} from './ErrorResponse';
 
 /**
  * 
@@ -34,10 +40,10 @@ export interface UnfavoriteTweetResponse {
     data: UnfavoriteTweet;
     /**
      * 
-     * @type {Array<Error>}
+     * @type {Array<ErrorResponse>}
      * @memberof UnfavoriteTweetResponse
      */
-    errors?: Array<Error>;
+    errors?: Array<ErrorResponse>;
 }
 
 /**
@@ -59,7 +65,7 @@ export function UnfavoriteTweetResponseFromJSONTyped(json: any, ignoreDiscrimina
     return {
         
         'data': UnfavoriteTweetFromJSON(json['data']),
-        'errors': json['errors'] == null ? undefined : json['errors'],
+        'errors': json['errors'] == null ? undefined : ((json['errors'] as Array<any>).map(ErrorResponseFromJSON)),
     };
 }
 
@@ -70,7 +76,7 @@ export function UnfavoriteTweetResponseToJSON(value?: UnfavoriteTweetResponse | 
     return {
         
         'data': UnfavoriteTweetToJSON(value['data']),
-        'errors': value['errors'],
+        'errors': value['errors'] == null ? undefined : ((value['errors'] as Array<any>).map(ErrorResponseToJSON)),
     };
 }
 

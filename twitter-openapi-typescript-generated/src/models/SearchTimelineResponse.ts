@@ -19,6 +19,12 @@ import {
     SearchTimelineDataFromJSONTyped,
     SearchTimelineDataToJSON,
 } from './SearchTimelineData';
+import type { ErrorResponse } from './ErrorResponse';
+import {
+    ErrorResponseFromJSON,
+    ErrorResponseFromJSONTyped,
+    ErrorResponseToJSON,
+} from './ErrorResponse';
 
 /**
  * 
@@ -34,10 +40,10 @@ export interface SearchTimelineResponse {
     data: SearchTimelineData;
     /**
      * 
-     * @type {Array<Error>}
+     * @type {Array<ErrorResponse>}
      * @memberof SearchTimelineResponse
      */
-    errors?: Array<Error>;
+    errors?: Array<ErrorResponse>;
 }
 
 /**
@@ -59,7 +65,7 @@ export function SearchTimelineResponseFromJSONTyped(json: any, ignoreDiscriminat
     return {
         
         'data': SearchTimelineDataFromJSON(json['data']),
-        'errors': json['errors'] == null ? undefined : json['errors'],
+        'errors': json['errors'] == null ? undefined : ((json['errors'] as Array<any>).map(ErrorResponseFromJSON)),
     };
 }
 
@@ -70,7 +76,7 @@ export function SearchTimelineResponseToJSON(value?: SearchTimelineResponse | nu
     return {
         
         'data': SearchTimelineDataToJSON(value['data']),
-        'errors': value['errors'],
+        'errors': value['errors'] == null ? undefined : ((value['errors'] as Array<any>).map(ErrorResponseToJSON)),
     };
 }
 

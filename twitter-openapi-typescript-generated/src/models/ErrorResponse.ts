@@ -35,75 +35,75 @@ import {
 /**
  * 
  * @export
- * @interface ModelError
+ * @interface ErrorResponse
  */
-export interface ModelError {
+export interface ErrorResponse {
     /**
      * 
      * @type {number}
-     * @memberof ModelError
+     * @memberof ErrorResponse
      */
     code: number;
     /**
      * 
      * @type {ErrorExtensions}
-     * @memberof ModelError
+     * @memberof ErrorResponse
      */
     extensions: ErrorExtensions;
     /**
      * 
      * @type {string}
-     * @memberof ModelError
+     * @memberof ErrorResponse
      */
     kind: string;
     /**
      * 
      * @type {Array<Location>}
-     * @memberof ModelError
+     * @memberof ErrorResponse
      */
     locations: Array<Location>;
     /**
      * 
      * @type {string}
-     * @memberof ModelError
+     * @memberof ErrorResponse
      */
     message: string;
     /**
      * 
      * @type {string}
-     * @memberof ModelError
+     * @memberof ErrorResponse
      */
     name: string;
     /**
      * 
      * @type {Array<string>}
-     * @memberof ModelError
+     * @memberof ErrorResponse
      */
     path: Array<string>;
     /**
      * 
      * @type {number}
-     * @memberof ModelError
+     * @memberof ErrorResponse
      */
     retryAfter?: number;
     /**
      * 
      * @type {string}
-     * @memberof ModelError
+     * @memberof ErrorResponse
      */
     source: string;
     /**
      * 
      * @type {Tracing}
-     * @memberof ModelError
+     * @memberof ErrorResponse
      */
     tracing: Tracing;
 }
 
 /**
- * Check if a given object implements the ModelError interface.
+ * Check if a given object implements the ErrorResponse interface.
  */
-export function instanceOfModelError(value: object): value is ModelError {
+export function instanceOfErrorResponse(value: object): value is ErrorResponse {
     if (!('code' in value) || value['code'] === undefined) return false;
     if (!('extensions' in value) || value['extensions'] === undefined) return false;
     if (!('kind' in value) || value['kind'] === undefined) return false;
@@ -116,11 +116,11 @@ export function instanceOfModelError(value: object): value is ModelError {
     return true;
 }
 
-export function ModelErrorFromJSON(json: any): ModelError {
-    return ModelErrorFromJSONTyped(json, false);
+export function ErrorResponseFromJSON(json: any): ErrorResponse {
+    return ErrorResponseFromJSONTyped(json, false);
 }
 
-export function ModelErrorFromJSONTyped(json: any, ignoreDiscriminator: boolean): ModelError {
+export function ErrorResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): ErrorResponse {
     if (json == null) {
         return json;
     }
@@ -139,7 +139,7 @@ export function ModelErrorFromJSONTyped(json: any, ignoreDiscriminator: boolean)
     };
 }
 
-export function ModelErrorToJSON(value?: ModelError | null): any {
+export function ErrorResponseToJSON(value?: ErrorResponse | null): any {
     if (value == null) {
         return value;
     }

@@ -31,14 +31,13 @@ export interface CreateTweetResponseData {
      * @type {CreateTweetResponseResult}
      * @memberof CreateTweetResponseData
      */
-    createTweet: CreateTweetResponseResult;
+    createTweet?: CreateTweetResponseResult;
 }
 
 /**
  * Check if a given object implements the CreateTweetResponseData interface.
  */
 export function instanceOfCreateTweetResponseData(value: object): value is CreateTweetResponseData {
-    if (!('createTweet' in value) || value['createTweet'] === undefined) return false;
     return true;
 }
 
@@ -52,7 +51,7 @@ export function CreateTweetResponseDataFromJSONTyped(json: any, ignoreDiscrimina
     }
     return {
         
-        'createTweet': CreateTweetResponseResultFromJSON(json['create_tweet']),
+        'createTweet': json['create_tweet'] == null ? undefined : CreateTweetResponseResultFromJSON(json['create_tweet']),
     };
 }
 

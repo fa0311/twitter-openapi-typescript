@@ -15,14 +15,14 @@
 
 import * as runtime from '../runtime';
 import type {
-  GetProfileSpotlightsQuery200Response,
-  GetTweetResultByRestId200Response,
+  ProfileResponse,
+  TweetResultByRestIdResponse,
 } from '../models/index';
 import {
-    GetProfileSpotlightsQuery200ResponseFromJSON,
-    GetProfileSpotlightsQuery200ResponseToJSON,
-    GetTweetResultByRestId200ResponseFromJSON,
-    GetTweetResultByRestId200ResponseToJSON,
+    ProfileResponseFromJSON,
+    ProfileResponseToJSON,
+    TweetResultByRestIdResponseFromJSON,
+    TweetResultByRestIdResponseToJSON,
 } from '../models/index';
 
 export interface GetProfileSpotlightsQueryRequest {
@@ -46,7 +46,7 @@ export class DefaultApi extends runtime.BaseAPI {
     /**
      * get user by screen name
      */
-    async getProfileSpotlightsQueryRaw(requestParameters: GetProfileSpotlightsQueryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetProfileSpotlightsQuery200Response>> {
+    async getProfileSpotlightsQueryRaw(requestParameters: GetProfileSpotlightsQueryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ProfileResponse>> {
         if (requestParameters['pathQueryId'] == null) {
             throw new runtime.RequiredError(
                 'pathQueryId',
@@ -167,13 +167,13 @@ export class DefaultApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => GetProfileSpotlightsQuery200ResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => ProfileResponseFromJSON(jsonValue));
     }
 
     /**
      * get user by screen name
      */
-    async getProfileSpotlightsQuery(requestParameters: GetProfileSpotlightsQueryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetProfileSpotlightsQuery200Response> {
+    async getProfileSpotlightsQuery(requestParameters: GetProfileSpotlightsQueryRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ProfileResponse> {
         const response = await this.getProfileSpotlightsQueryRaw(requestParameters, initOverrides);
         return await response.value();
     }
@@ -181,7 +181,7 @@ export class DefaultApi extends runtime.BaseAPI {
     /**
      * get TweetResultByRestId
      */
-    async getTweetResultByRestIdRaw(requestParameters: GetTweetResultByRestIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<GetTweetResultByRestId200Response>> {
+    async getTweetResultByRestIdRaw(requestParameters: GetTweetResultByRestIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<TweetResultByRestIdResponse>> {
         if (requestParameters['pathQueryId'] == null) {
             throw new runtime.RequiredError(
                 'pathQueryId',
@@ -313,13 +313,13 @@ export class DefaultApi extends runtime.BaseAPI {
             query: queryParameters,
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => GetTweetResultByRestId200ResponseFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => TweetResultByRestIdResponseFromJSON(jsonValue));
     }
 
     /**
      * get TweetResultByRestId
      */
-    async getTweetResultByRestId(requestParameters: GetTweetResultByRestIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<GetTweetResultByRestId200Response> {
+    async getTweetResultByRestId(requestParameters: GetTweetResultByRestIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<TweetResultByRestIdResponse> {
         const response = await this.getTweetResultByRestIdRaw(requestParameters, initOverrides);
         return await response.value();
     }

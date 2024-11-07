@@ -31,14 +31,19 @@ export interface BookmarksResponse {
      * @type {BookmarksResponseData}
      * @memberof BookmarksResponse
      */
-    data: BookmarksResponseData;
+    data?: BookmarksResponseData;
+    /**
+     * 
+     * @type {Array<Error>}
+     * @memberof BookmarksResponse
+     */
+    errors?: Array<Error>;
 }
 
 /**
  * Check if a given object implements the BookmarksResponse interface.
  */
 export function instanceOfBookmarksResponse(value: object): value is BookmarksResponse {
-    if (!('data' in value) || value['data'] === undefined) return false;
     return true;
 }
 
@@ -52,7 +57,8 @@ export function BookmarksResponseFromJSONTyped(json: any, ignoreDiscriminator: b
     }
     return {
         
-        'data': BookmarksResponseDataFromJSON(json['data']),
+        'data': json['data'] == null ? undefined : BookmarksResponseDataFromJSON(json['data']),
+        'errors': json['errors'] == null ? undefined : json['errors'],
     };
 }
 
@@ -63,6 +69,7 @@ export function BookmarksResponseToJSON(value?: BookmarksResponse | null): any {
     return {
         
         'data': BookmarksResponseDataToJSON(value['data']),
+        'errors': value['errors'],
     };
 }
 

@@ -32,6 +32,12 @@ export interface DeleteBookmarkResponse {
      * @memberof DeleteBookmarkResponse
      */
     data: DeleteBookmarkResponseData;
+    /**
+     * 
+     * @type {Array<Error>}
+     * @memberof DeleteBookmarkResponse
+     */
+    errors?: Array<Error>;
 }
 
 /**
@@ -53,6 +59,7 @@ export function DeleteBookmarkResponseFromJSONTyped(json: any, ignoreDiscriminat
     return {
         
         'data': DeleteBookmarkResponseDataFromJSON(json['data']),
+        'errors': json['errors'] == null ? undefined : json['errors'],
     };
 }
 
@@ -63,6 +70,7 @@ export function DeleteBookmarkResponseToJSON(value?: DeleteBookmarkResponse | nu
     return {
         
         'data': DeleteBookmarkResponseDataToJSON(value['data']),
+        'errors': value['errors'],
     };
 }
 

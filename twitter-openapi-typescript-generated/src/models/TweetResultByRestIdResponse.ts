@@ -32,6 +32,12 @@ export interface TweetResultByRestIdResponse {
      * @memberof TweetResultByRestIdResponse
      */
     data: TweetResultByRestIdData;
+    /**
+     * 
+     * @type {Array<Error>}
+     * @memberof TweetResultByRestIdResponse
+     */
+    errors?: Array<Error>;
 }
 
 /**
@@ -53,6 +59,7 @@ export function TweetResultByRestIdResponseFromJSONTyped(json: any, ignoreDiscri
     return {
         
         'data': TweetResultByRestIdDataFromJSON(json['data']),
+        'errors': json['errors'] == null ? undefined : json['errors'],
     };
 }
 
@@ -63,6 +70,7 @@ export function TweetResultByRestIdResponseToJSON(value?: TweetResultByRestIdRes
     return {
         
         'data': TweetResultByRestIdDataToJSON(value['data']),
+        'errors': value['errors'],
     };
 }
 

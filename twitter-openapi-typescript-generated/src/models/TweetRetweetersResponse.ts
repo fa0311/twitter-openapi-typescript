@@ -32,6 +32,12 @@ export interface TweetRetweetersResponse {
      * @memberof TweetRetweetersResponse
      */
     data: TweetRetweetersResponseData;
+    /**
+     * 
+     * @type {Array<Error>}
+     * @memberof TweetRetweetersResponse
+     */
+    errors?: Array<Error>;
 }
 
 /**
@@ -53,6 +59,7 @@ export function TweetRetweetersResponseFromJSONTyped(json: any, ignoreDiscrimina
     return {
         
         'data': TweetRetweetersResponseDataFromJSON(json['data']),
+        'errors': json['errors'] == null ? undefined : json['errors'],
     };
 }
 
@@ -63,6 +70,7 @@ export function TweetRetweetersResponseToJSON(value?: TweetRetweetersResponse | 
     return {
         
         'data': TweetRetweetersResponseDataToJSON(value['data']),
+        'errors': value['errors'],
     };
 }
 

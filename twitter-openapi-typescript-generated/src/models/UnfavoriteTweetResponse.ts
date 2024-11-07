@@ -23,46 +23,54 @@ import {
 /**
  * 
  * @export
- * @interface UnfavoriteTweetResponseData
+ * @interface UnfavoriteTweetResponse
  */
-export interface UnfavoriteTweetResponseData {
+export interface UnfavoriteTweetResponse {
     /**
      * 
      * @type {UnfavoriteTweet}
-     * @memberof UnfavoriteTweetResponseData
+     * @memberof UnfavoriteTweetResponse
      */
     data: UnfavoriteTweet;
+    /**
+     * 
+     * @type {Array<Error>}
+     * @memberof UnfavoriteTweetResponse
+     */
+    errors?: Array<Error>;
 }
 
 /**
- * Check if a given object implements the UnfavoriteTweetResponseData interface.
+ * Check if a given object implements the UnfavoriteTweetResponse interface.
  */
-export function instanceOfUnfavoriteTweetResponseData(value: object): value is UnfavoriteTweetResponseData {
+export function instanceOfUnfavoriteTweetResponse(value: object): value is UnfavoriteTweetResponse {
     if (!('data' in value) || value['data'] === undefined) return false;
     return true;
 }
 
-export function UnfavoriteTweetResponseDataFromJSON(json: any): UnfavoriteTweetResponseData {
-    return UnfavoriteTweetResponseDataFromJSONTyped(json, false);
+export function UnfavoriteTweetResponseFromJSON(json: any): UnfavoriteTweetResponse {
+    return UnfavoriteTweetResponseFromJSONTyped(json, false);
 }
 
-export function UnfavoriteTweetResponseDataFromJSONTyped(json: any, ignoreDiscriminator: boolean): UnfavoriteTweetResponseData {
+export function UnfavoriteTweetResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): UnfavoriteTweetResponse {
     if (json == null) {
         return json;
     }
     return {
         
         'data': UnfavoriteTweetFromJSON(json['data']),
+        'errors': json['errors'] == null ? undefined : json['errors'],
     };
 }
 
-export function UnfavoriteTweetResponseDataToJSON(value?: UnfavoriteTweetResponseData | null): any {
+export function UnfavoriteTweetResponseToJSON(value?: UnfavoriteTweetResponse | null): any {
     if (value == null) {
         return value;
     }
     return {
         
         'data': UnfavoriteTweetToJSON(value['data']),
+        'errors': value['errors'],
     };
 }
 

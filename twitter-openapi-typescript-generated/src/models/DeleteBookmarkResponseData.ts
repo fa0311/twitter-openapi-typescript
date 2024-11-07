@@ -24,14 +24,13 @@ export interface DeleteBookmarkResponseData {
      * @type {string}
      * @memberof DeleteBookmarkResponseData
      */
-    tweetBookmarkDelete: string;
+    tweetBookmarkDelete?: string;
 }
 
 /**
  * Check if a given object implements the DeleteBookmarkResponseData interface.
  */
 export function instanceOfDeleteBookmarkResponseData(value: object): value is DeleteBookmarkResponseData {
-    if (!('tweetBookmarkDelete' in value) || value['tweetBookmarkDelete'] === undefined) return false;
     return true;
 }
 
@@ -45,7 +44,7 @@ export function DeleteBookmarkResponseDataFromJSONTyped(json: any, ignoreDiscrim
     }
     return {
         
-        'tweetBookmarkDelete': json['tweet_bookmark_delete'],
+        'tweetBookmarkDelete': json['tweet_bookmark_delete'] == null ? undefined : json['tweet_bookmark_delete'],
     };
 }
 

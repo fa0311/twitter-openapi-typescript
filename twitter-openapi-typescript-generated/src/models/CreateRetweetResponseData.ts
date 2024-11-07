@@ -31,14 +31,13 @@ export interface CreateRetweetResponseData {
      * @type {CreateRetweetResponseResult}
      * @memberof CreateRetweetResponseData
      */
-    createRetweet: CreateRetweetResponseResult;
+    createRetweet?: CreateRetweetResponseResult;
 }
 
 /**
  * Check if a given object implements the CreateRetweetResponseData interface.
  */
 export function instanceOfCreateRetweetResponseData(value: object): value is CreateRetweetResponseData {
-    if (!('createRetweet' in value) || value['createRetweet'] === undefined) return false;
     return true;
 }
 
@@ -52,7 +51,7 @@ export function CreateRetweetResponseDataFromJSONTyped(json: any, ignoreDiscrimi
     }
     return {
         
-        'createRetweet': CreateRetweetResponseResultFromJSON(json['create_retweet']),
+        'createRetweet': json['create_retweet'] == null ? undefined : CreateRetweetResponseResultFromJSON(json['create_retweet']),
     };
 }
 

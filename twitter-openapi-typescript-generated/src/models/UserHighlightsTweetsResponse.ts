@@ -32,6 +32,12 @@ export interface UserHighlightsTweetsResponse {
      * @memberof UserHighlightsTweetsResponse
      */
     data: UserHighlightsTweetsData;
+    /**
+     * 
+     * @type {Array<Error>}
+     * @memberof UserHighlightsTweetsResponse
+     */
+    errors?: Array<Error>;
 }
 
 /**
@@ -53,6 +59,7 @@ export function UserHighlightsTweetsResponseFromJSONTyped(json: any, ignoreDiscr
     return {
         
         'data': UserHighlightsTweetsDataFromJSON(json['data']),
+        'errors': json['errors'] == null ? undefined : json['errors'],
     };
 }
 
@@ -63,6 +70,7 @@ export function UserHighlightsTweetsResponseToJSON(value?: UserHighlightsTweetsR
     return {
         
         'data': UserHighlightsTweetsDataToJSON(value['data']),
+        'errors': value['errors'],
     };
 }
 

@@ -32,6 +32,12 @@ export interface CreateBookmarkResponse {
      * @memberof CreateBookmarkResponse
      */
     data: CreateBookmarkResponseData;
+    /**
+     * 
+     * @type {Array<Error>}
+     * @memberof CreateBookmarkResponse
+     */
+    errors?: Array<Error>;
 }
 
 /**
@@ -53,6 +59,7 @@ export function CreateBookmarkResponseFromJSONTyped(json: any, ignoreDiscriminat
     return {
         
         'data': CreateBookmarkResponseDataFromJSON(json['data']),
+        'errors': json['errors'] == null ? undefined : json['errors'],
     };
 }
 
@@ -63,6 +70,7 @@ export function CreateBookmarkResponseToJSON(value?: CreateBookmarkResponse | nu
     return {
         
         'data': CreateBookmarkResponseDataToJSON(value['data']),
+        'errors': value['errors'],
     };
 }
 

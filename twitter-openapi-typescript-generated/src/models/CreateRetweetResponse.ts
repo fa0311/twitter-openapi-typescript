@@ -32,6 +32,12 @@ export interface CreateRetweetResponse {
      * @memberof CreateRetweetResponse
      */
     data: CreateRetweetResponseData;
+    /**
+     * 
+     * @type {Array<Error>}
+     * @memberof CreateRetweetResponse
+     */
+    errors?: Array<Error>;
 }
 
 /**
@@ -53,6 +59,7 @@ export function CreateRetweetResponseFromJSONTyped(json: any, ignoreDiscriminato
     return {
         
         'data': CreateRetweetResponseDataFromJSON(json['data']),
+        'errors': json['errors'] == null ? undefined : json['errors'],
     };
 }
 
@@ -63,6 +70,7 @@ export function CreateRetweetResponseToJSON(value?: CreateRetweetResponse | null
     return {
         
         'data': CreateRetweetResponseDataToJSON(value['data']),
+        'errors': value['errors'],
     };
 }
 

@@ -32,6 +32,12 @@ export interface ProfileResponse {
      * @memberof ProfileResponse
      */
     data: ProfileResponseData;
+    /**
+     * 
+     * @type {Array<Error>}
+     * @memberof ProfileResponse
+     */
+    errors?: Array<Error>;
 }
 
 /**
@@ -53,6 +59,7 @@ export function ProfileResponseFromJSONTyped(json: any, ignoreDiscriminator: boo
     return {
         
         'data': ProfileResponseDataFromJSON(json['data']),
+        'errors': json['errors'] == null ? undefined : json['errors'],
     };
 }
 
@@ -63,6 +70,7 @@ export function ProfileResponseToJSON(value?: ProfileResponse | null): any {
     return {
         
         'data': ProfileResponseDataToJSON(value['data']),
+        'errors': value['errors'],
     };
 }
 

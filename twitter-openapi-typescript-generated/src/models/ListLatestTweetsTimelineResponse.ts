@@ -32,6 +32,12 @@ export interface ListLatestTweetsTimelineResponse {
      * @memberof ListLatestTweetsTimelineResponse
      */
     data: ListTweetsTimelineData;
+    /**
+     * 
+     * @type {Array<Error>}
+     * @memberof ListLatestTweetsTimelineResponse
+     */
+    errors?: Array<Error>;
 }
 
 /**
@@ -53,6 +59,7 @@ export function ListLatestTweetsTimelineResponseFromJSONTyped(json: any, ignoreD
     return {
         
         'data': ListTweetsTimelineDataFromJSON(json['data']),
+        'errors': json['errors'] == null ? undefined : json['errors'],
     };
 }
 
@@ -63,6 +70,7 @@ export function ListLatestTweetsTimelineResponseToJSON(value?: ListLatestTweetsT
     return {
         
         'data': ListTweetsTimelineDataToJSON(value['data']),
+        'errors': value['errors'],
     };
 }
 

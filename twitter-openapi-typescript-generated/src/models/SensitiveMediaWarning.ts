@@ -24,28 +24,25 @@ export interface SensitiveMediaWarning {
      * @type {boolean}
      * @memberof SensitiveMediaWarning
      */
-    adultContent: boolean;
+    adultContent?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof SensitiveMediaWarning
      */
-    graphicViolence: boolean;
+    graphicViolence?: boolean;
     /**
      * 
      * @type {boolean}
      * @memberof SensitiveMediaWarning
      */
-    other: boolean;
+    other?: boolean;
 }
 
 /**
  * Check if a given object implements the SensitiveMediaWarning interface.
  */
 export function instanceOfSensitiveMediaWarning(value: object): value is SensitiveMediaWarning {
-    if (!('adultContent' in value) || value['adultContent'] === undefined) return false;
-    if (!('graphicViolence' in value) || value['graphicViolence'] === undefined) return false;
-    if (!('other' in value) || value['other'] === undefined) return false;
     return true;
 }
 
@@ -59,9 +56,9 @@ export function SensitiveMediaWarningFromJSONTyped(json: any, ignoreDiscriminato
     }
     return {
         
-        'adultContent': json['adult_content'],
-        'graphicViolence': json['graphic_violence'],
-        'other': json['other'],
+        'adultContent': json['adult_content'] == null ? undefined : json['adult_content'],
+        'graphicViolence': json['graphic_violence'] == null ? undefined : json['graphic_violence'],
+        'other': json['other'] == null ? undefined : json['other'],
     };
 }
 

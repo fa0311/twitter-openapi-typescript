@@ -13,12 +13,12 @@
  */
 
 import { mapValues } from '../runtime';
-import type { CreateRetweetResponseResult } from './CreateRetweetResponseResult';
+import type { DeleteRetweetResponseResult } from './DeleteRetweetResponseResult';
 import {
-    CreateRetweetResponseResultFromJSON,
-    CreateRetweetResponseResultFromJSONTyped,
-    CreateRetweetResponseResultToJSON,
-} from './CreateRetweetResponseResult';
+    DeleteRetweetResponseResultFromJSON,
+    DeleteRetweetResponseResultFromJSONTyped,
+    DeleteRetweetResponseResultToJSON,
+} from './DeleteRetweetResponseResult';
 
 /**
  * 
@@ -28,10 +28,10 @@ import {
 export interface DeleteRetweetResponseData {
     /**
      * 
-     * @type {CreateRetweetResponseResult}
+     * @type {DeleteRetweetResponseResult}
      * @memberof DeleteRetweetResponseData
      */
-    createRetweet?: CreateRetweetResponseResult;
+    createRetweet?: DeleteRetweetResponseResult;
 }
 
 /**
@@ -51,7 +51,7 @@ export function DeleteRetweetResponseDataFromJSONTyped(json: any, ignoreDiscrimi
     }
     return {
         
-        'createRetweet': json['create_retweet'] == null ? undefined : CreateRetweetResponseResultFromJSON(json['create_retweet']),
+        'createRetweet': json['create_retweet'] == null ? undefined : DeleteRetweetResponseResultFromJSON(json['create_retweet']),
     };
 }
 
@@ -61,7 +61,7 @@ export function DeleteRetweetResponseDataToJSON(value?: DeleteRetweetResponseDat
     }
     return {
         
-        'create_retweet': CreateRetweetResponseResultToJSON(value['createRetweet']),
+        'create_retweet': DeleteRetweetResponseResultToJSON(value['createRetweet']),
     };
 }
 

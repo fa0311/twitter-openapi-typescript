@@ -23,46 +23,54 @@ import {
 /**
  * 
  * @export
- * @interface FavoriteTweetResponseData
+ * @interface FavoriteTweetResponse
  */
-export interface FavoriteTweetResponseData {
+export interface FavoriteTweetResponse {
     /**
      * 
      * @type {FavoriteTweet}
-     * @memberof FavoriteTweetResponseData
+     * @memberof FavoriteTweetResponse
      */
     data: FavoriteTweet;
+    /**
+     * 
+     * @type {Array<Error>}
+     * @memberof FavoriteTweetResponse
+     */
+    errors?: Array<Error>;
 }
 
 /**
- * Check if a given object implements the FavoriteTweetResponseData interface.
+ * Check if a given object implements the FavoriteTweetResponse interface.
  */
-export function instanceOfFavoriteTweetResponseData(value: object): value is FavoriteTweetResponseData {
+export function instanceOfFavoriteTweetResponse(value: object): value is FavoriteTweetResponse {
     if (!('data' in value) || value['data'] === undefined) return false;
     return true;
 }
 
-export function FavoriteTweetResponseDataFromJSON(json: any): FavoriteTweetResponseData {
-    return FavoriteTweetResponseDataFromJSONTyped(json, false);
+export function FavoriteTweetResponseFromJSON(json: any): FavoriteTweetResponse {
+    return FavoriteTweetResponseFromJSONTyped(json, false);
 }
 
-export function FavoriteTweetResponseDataFromJSONTyped(json: any, ignoreDiscriminator: boolean): FavoriteTweetResponseData {
+export function FavoriteTweetResponseFromJSONTyped(json: any, ignoreDiscriminator: boolean): FavoriteTweetResponse {
     if (json == null) {
         return json;
     }
     return {
         
         'data': FavoriteTweetFromJSON(json['data']),
+        'errors': json['errors'] == null ? undefined : json['errors'],
     };
 }
 
-export function FavoriteTweetResponseDataToJSON(value?: FavoriteTweetResponseData | null): any {
+export function FavoriteTweetResponseToJSON(value?: FavoriteTweetResponse | null): any {
     if (value == null) {
         return value;
     }
     return {
         
         'data': FavoriteTweetToJSON(value['data']),
+        'errors': value['errors'],
     };
 }
 

@@ -32,6 +32,12 @@ export interface FollowResponse {
      * @memberof FollowResponse
      */
     data: FollowResponseData;
+    /**
+     * 
+     * @type {Array<Error>}
+     * @memberof FollowResponse
+     */
+    errors?: Array<Error>;
 }
 
 /**
@@ -53,6 +59,7 @@ export function FollowResponseFromJSONTyped(json: any, ignoreDiscriminator: bool
     return {
         
         'data': FollowResponseDataFromJSON(json['data']),
+        'errors': json['errors'] == null ? undefined : json['errors'],
     };
 }
 
@@ -63,6 +70,7 @@ export function FollowResponseToJSON(value?: FollowResponse | null): any {
     return {
         
         'data': FollowResponseDataToJSON(value['data']),
+        'errors': value['errors'],
     };
 }
 

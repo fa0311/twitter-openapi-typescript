@@ -31,14 +31,13 @@ export interface ProfileResponseData {
      * @type {UserResultByScreenName}
      * @memberof ProfileResponseData
      */
-    userResultByScreenName: UserResultByScreenName;
+    userResultByScreenName?: UserResultByScreenName;
 }
 
 /**
  * Check if a given object implements the ProfileResponseData interface.
  */
 export function instanceOfProfileResponseData(value: object): value is ProfileResponseData {
-    if (!('userResultByScreenName' in value) || value['userResultByScreenName'] === undefined) return false;
     return true;
 }
 
@@ -52,7 +51,7 @@ export function ProfileResponseDataFromJSONTyped(json: any, ignoreDiscriminator:
     }
     return {
         
-        'userResultByScreenName': UserResultByScreenNameFromJSON(json['user_result_by_screen_name']),
+        'userResultByScreenName': json['user_result_by_screen_name'] == null ? undefined : UserResultByScreenNameFromJSON(json['user_result_by_screen_name']),
     };
 }
 

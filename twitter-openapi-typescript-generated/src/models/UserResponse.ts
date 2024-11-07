@@ -32,6 +32,12 @@ export interface UserResponse {
      * @memberof UserResponse
      */
     data: UserResponseData;
+    /**
+     * 
+     * @type {Array<Error>}
+     * @memberof UserResponse
+     */
+    errors?: Array<Error>;
 }
 
 /**
@@ -53,6 +59,7 @@ export function UserResponseFromJSONTyped(json: any, ignoreDiscriminator: boolea
     return {
         
         'data': UserResponseDataFromJSON(json['data']),
+        'errors': json['errors'] == null ? undefined : json['errors'],
     };
 }
 
@@ -63,6 +70,7 @@ export function UserResponseToJSON(value?: UserResponse | null): any {
     return {
         
         'data': UserResponseDataToJSON(value['data']),
+        'errors': value['errors'],
     };
 }
 

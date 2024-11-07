@@ -32,6 +32,12 @@ export interface TimelineResponse {
      * @memberof TimelineResponse
      */
     data: HomeTimelineResponseData;
+    /**
+     * 
+     * @type {Array<Error>}
+     * @memberof TimelineResponse
+     */
+    errors?: Array<Error>;
 }
 
 /**
@@ -53,6 +59,7 @@ export function TimelineResponseFromJSONTyped(json: any, ignoreDiscriminator: bo
     return {
         
         'data': HomeTimelineResponseDataFromJSON(json['data']),
+        'errors': json['errors'] == null ? undefined : json['errors'],
     };
 }
 
@@ -63,6 +70,7 @@ export function TimelineResponseToJSON(value?: TimelineResponse | null): any {
     return {
         
         'data': HomeTimelineResponseDataToJSON(value['data']),
+        'errors': value['errors'],
     };
 }
 

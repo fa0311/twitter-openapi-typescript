@@ -31,14 +31,13 @@ export interface SearchTimelineData {
      * @type {SearchByRawQuery}
      * @memberof SearchTimelineData
      */
-    searchByRawQuery: SearchByRawQuery;
+    searchByRawQuery?: SearchByRawQuery;
 }
 
 /**
  * Check if a given object implements the SearchTimelineData interface.
  */
 export function instanceOfSearchTimelineData(value: object): value is SearchTimelineData {
-    if (!('searchByRawQuery' in value) || value['searchByRawQuery'] === undefined) return false;
     return true;
 }
 
@@ -52,7 +51,7 @@ export function SearchTimelineDataFromJSONTyped(json: any, ignoreDiscriminator: 
     }
     return {
         
-        'searchByRawQuery': SearchByRawQueryFromJSON(json['search_by_raw_query']),
+        'searchByRawQuery': json['search_by_raw_query'] == null ? undefined : SearchByRawQueryFromJSON(json['search_by_raw_query']),
     };
 }
 

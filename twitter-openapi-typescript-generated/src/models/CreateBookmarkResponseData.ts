@@ -24,14 +24,13 @@ export interface CreateBookmarkResponseData {
      * @type {string}
      * @memberof CreateBookmarkResponseData
      */
-    tweetBookmarkPut: string;
+    tweetBookmarkPut?: string;
 }
 
 /**
  * Check if a given object implements the CreateBookmarkResponseData interface.
  */
 export function instanceOfCreateBookmarkResponseData(value: object): value is CreateBookmarkResponseData {
-    if (!('tweetBookmarkPut' in value) || value['tweetBookmarkPut'] === undefined) return false;
     return true;
 }
 
@@ -45,7 +44,7 @@ export function CreateBookmarkResponseDataFromJSONTyped(json: any, ignoreDiscrim
     }
     return {
         
-        'tweetBookmarkPut': json['tweet_bookmark_put'],
+        'tweetBookmarkPut': json['tweet_bookmark_put'] == null ? undefined : json['tweet_bookmark_put'],
     };
 }
 

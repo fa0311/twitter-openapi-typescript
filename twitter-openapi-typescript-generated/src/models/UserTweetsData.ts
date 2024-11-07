@@ -31,14 +31,13 @@ export interface UserTweetsData {
      * @type {UserTweetsUser}
      * @memberof UserTweetsData
      */
-    user: UserTweetsUser;
+    user?: UserTweetsUser;
 }
 
 /**
  * Check if a given object implements the UserTweetsData interface.
  */
 export function instanceOfUserTweetsData(value: object): value is UserTweetsData {
-    if (!('user' in value) || value['user'] === undefined) return false;
     return true;
 }
 
@@ -52,7 +51,7 @@ export function UserTweetsDataFromJSONTyped(json: any, ignoreDiscriminator: bool
     }
     return {
         
-        'user': UserTweetsUserFromJSON(json['user']),
+        'user': json['user'] == null ? undefined : UserTweetsUserFromJSON(json['user']),
     };
 }
 

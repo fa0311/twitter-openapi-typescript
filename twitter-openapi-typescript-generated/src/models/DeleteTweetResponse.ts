@@ -32,6 +32,12 @@ export interface DeleteTweetResponse {
      * @memberof DeleteTweetResponse
      */
     data: DeleteTweetResponseData;
+    /**
+     * 
+     * @type {Array<Error>}
+     * @memberof DeleteTweetResponse
+     */
+    errors?: Array<Error>;
 }
 
 /**
@@ -53,6 +59,7 @@ export function DeleteTweetResponseFromJSONTyped(json: any, ignoreDiscriminator:
     return {
         
         'data': DeleteTweetResponseDataFromJSON(json['data']),
+        'errors': json['errors'] == null ? undefined : json['errors'],
     };
 }
 
@@ -63,6 +70,7 @@ export function DeleteTweetResponseToJSON(value?: DeleteTweetResponse | null): a
     return {
         
         'data': DeleteTweetResponseDataToJSON(value['data']),
+        'errors': value['errors'],
     };
 }
 

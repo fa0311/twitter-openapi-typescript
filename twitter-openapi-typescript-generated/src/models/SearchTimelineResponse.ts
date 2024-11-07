@@ -32,6 +32,12 @@ export interface SearchTimelineResponse {
      * @memberof SearchTimelineResponse
      */
     data: SearchTimelineData;
+    /**
+     * 
+     * @type {Array<Error>}
+     * @memberof SearchTimelineResponse
+     */
+    errors?: Array<Error>;
 }
 
 /**
@@ -53,6 +59,7 @@ export function SearchTimelineResponseFromJSONTyped(json: any, ignoreDiscriminat
     return {
         
         'data': SearchTimelineDataFromJSON(json['data']),
+        'errors': json['errors'] == null ? undefined : json['errors'],
     };
 }
 
@@ -63,6 +70,7 @@ export function SearchTimelineResponseToJSON(value?: SearchTimelineResponse | nu
     return {
         
         'data': SearchTimelineDataToJSON(value['data']),
+        'errors': value['errors'],
     };
 }
 

@@ -12,7 +12,6 @@ import {
   errorCheck,
   getKwargs,
   instructionToEntry,
-  nonNullable,
   userEntriesConverter,
   userResultConverter,
 } from '@/utils';
@@ -70,8 +69,7 @@ export class UserListApiUtils {
     const apiFn: typeof param.apiFn = param.apiFn.bind(this.api);
     const args = getKwargs(this.flag[param.key], param.param);
     const response = await apiFn(args, this.initOverrides);
-    const checked = errorCheck(await response.value());
-    const instruction = param.convertFn(checked);
+    const instruction = param.convertFn(await response.value());
     const entry = instructionToEntry(instruction);
     const userList = userEntriesConverter(entry);
     const data = userResultConverter(userList);
@@ -101,7 +99,7 @@ export class UserListApiUtils {
     };
     const response = await this.request({
       apiFn: this.api.getFollowersRaw,
-      convertFn: (e) => e.data.user.result.timeline.timeline.instructions,
+      convertFn: (e) => errorCheck(e.data.user, e.errors).result.timeline.timeline.instructions,
       key: 'Followers',
       param: args,
     });
@@ -116,7 +114,7 @@ export class UserListApiUtils {
     };
     const response = await this.request({
       apiFn: this.api.getFollowingRaw,
-      convertFn: (e) => e.data.user.result.timeline.timeline.instructions,
+      convertFn: (e) => errorCheck(e.data.user, e.errors).result.timeline.timeline.instructions,
       key: 'Following',
       param: args,
     });
@@ -132,7 +130,7 @@ export class UserListApiUtils {
     };
     const response = await this.request({
       apiFn: this.api.getFollowersYouKnowRaw,
-      convertFn: (e) => e.data.user.result.timeline.timeline.instructions,
+      convertFn: (e) => errorCheck(e.data.user, e.errors).result.timeline.timeline.instructions,
       key: 'FollowersYouKnow',
       param: args,
     });
@@ -148,7 +146,7 @@ export class UserListApiUtils {
     };
     const response = await this.request({
       apiFn: this.api.getFavoritersRaw,
-      convertFn: (e) => nonNullable(e.data.favoritersTimeline.timeline).instructions,
+      convertFn: (e) => errorCheck(e.data.favoritersTimeline?.timeline, e.errors).instructions,
       key: 'Favoriters',
       param: args,
     });
@@ -164,7 +162,7 @@ export class UserListApiUtils {
     };
     const response = await this.request({
       apiFn: this.api.getRetweetersRaw,
-      convertFn: (e) => nonNullable(e.data.retweetersTimeline.timeline).instructions,
+      convertFn: (e) => errorCheck(e.data.retweetersTimeline?.timeline, e.errors).instructions,
       key: 'Retweeters',
       param: args,
     });

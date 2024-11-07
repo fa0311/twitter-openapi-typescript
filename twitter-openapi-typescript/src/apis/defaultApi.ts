@@ -27,8 +27,7 @@ export class DefaultApiUtils {
     const apiFn: typeof param.apiFn = param.apiFn.bind(this.api);
     const args = getKwargs(this.flag[param.key], param.param);
     const response = await apiFn(args, this.initOverrides);
-    const checked = errorCheck(await response.value());
-    const data = param.convertFn(checked);
+    const data = param.convertFn(await response.value());
     return {
       raw: { response: response.raw },
       header: buildHeader(response.raw.headers),
@@ -46,7 +45,7 @@ export class DefaultApiUtils {
     const response = await this.request({
       key: 'ProfileSpotlightsQuery',
       apiFn: this.api.getProfileSpotlightsQueryRaw,
-      convertFn: (value) => value.data.userResultByScreenName,
+      convertFn: (e) => errorCheck(e.data.userResultByScreenName, e.errors),
       param: args,
     });
 
@@ -63,7 +62,7 @@ export class DefaultApiUtils {
     const response = await this.request({
       key: 'TweetResultByRestId',
       apiFn: this.api.getTweetResultByRestIdRaw,
-      convertFn: (value) => buildTweetApiUtils({ result: value.data.tweetResult }),
+      convertFn: (e) => errorCheck(buildTweetApiUtils({ result: errorCheck(e.data.tweetResult, e.errors) }), e.errors),
       param: args,
     });
 

@@ -13,7 +13,6 @@ import {
   getKwargs,
   instructionConverter,
   instructionToEntry,
-  nonNullable,
   tweetEntriesConverter,
 } from '@/utils';
 import * as i from 'twitter-openapi-typescript-generated';
@@ -102,8 +101,7 @@ export class TweetApiUtils {
     const apiFn: typeof param.apiFn = param.apiFn.bind(this.api);
     const args = getKwargs(this.flag[param.key], param.param);
     const response = await apiFn(args, this.initOverrides);
-    const checked = errorCheck(await response.value());
-    const instruction = param.convertFn(checked);
+    const instruction = param.convertFn(await response.value());
     const entry = instructionToEntry(instruction);
     const data = [...tweetEntriesConverter(entry), ...instructionConverter(instruction)];
     return {
@@ -132,7 +130,7 @@ export class TweetApiUtils {
 
     const response = await this.request({
       apiFn: this.api.getTweetDetailRaw,
-      convertFn: (e) => e.data.threadedConversationWithInjectionsV2.instructions,
+      convertFn: (e) => errorCheck(e.data.threadedConversationWithInjectionsV2, e.errors).instructions,
       key: 'TweetDetail',
       param: args,
     });
@@ -149,7 +147,7 @@ export class TweetApiUtils {
 
     const response = await this.request({
       apiFn: this.api.getSearchTimelineRaw,
-      convertFn: (e) => e.data.searchByRawQuery.searchTimeline.timeline.instructions,
+      convertFn: (e) => errorCheck(e.data.searchByRawQuery, e.errors).searchTimeline.timeline.instructions,
       key: 'SearchTimeline',
       param: args,
     });
@@ -165,7 +163,7 @@ export class TweetApiUtils {
 
     const response = await this.request({
       apiFn: this.api.getHomeTimelineRaw,
-      convertFn: (e) => e.data.home.homeTimelineUrt.instructions,
+      convertFn: (e) => errorCheck(e.data.home, e.errors).homeTimelineUrt.instructions,
       key: 'HomeTimeline',
       param: args,
     });
@@ -181,7 +179,7 @@ export class TweetApiUtils {
 
     const response = await this.request({
       apiFn: this.api.getHomeLatestTimelineRaw,
-      convertFn: (e) => e.data.home.homeTimelineUrt.instructions,
+      convertFn: (e) => errorCheck(e.data.home, e.errors).homeTimelineUrt.instructions,
       key: 'HomeLatestTimeline',
       param: args,
     });
@@ -198,7 +196,7 @@ export class TweetApiUtils {
 
     const response = await this.request({
       apiFn: this.api.getListLatestTweetsTimelineRaw,
-      convertFn: (e) => e.data.list.tweetsTimeline.timeline?.instructions ?? [],
+      convertFn: (e) => errorCheck(e.data.list?.tweetsTimeline.timeline, e.errors).instructions ?? [],
       key: 'ListLatestTweetsTimeline',
       param: args,
     });
@@ -215,7 +213,7 @@ export class TweetApiUtils {
 
     const response = await this.request({
       apiFn: this.api.getUserTweetsRaw,
-      convertFn: (e) => nonNullable(e.data.user.result.timelineV2.timeline).instructions,
+      convertFn: (e) => errorCheck(e.data.user?.result.timelineV2.timeline, e.errors).instructions,
       key: 'UserTweets',
       param: args,
     });
@@ -232,7 +230,7 @@ export class TweetApiUtils {
 
     const response = await this.request({
       apiFn: this.api.getUserTweetsAndRepliesRaw,
-      convertFn: (e) => nonNullable(e.data.user.result.timelineV2.timeline).instructions,
+      convertFn: (e) => errorCheck(e.data.user?.result.timelineV2.timeline, e.errors).instructions,
       key: 'UserTweetsAndReplies',
       param: args,
     });
@@ -249,7 +247,7 @@ export class TweetApiUtils {
 
     const response = await this.request({
       apiFn: this.api.getUserMediaRaw,
-      convertFn: (e) => nonNullable(e.data.user.result.timelineV2.timeline).instructions,
+      convertFn: (e) => errorCheck(e.data.user?.result.timelineV2.timeline, e.errors).instructions,
       key: 'UserMedia',
       param: args,
     });
@@ -265,7 +263,7 @@ export class TweetApiUtils {
 
     const response = await this.request({
       apiFn: this.api.getLikesRaw,
-      convertFn: (e) => nonNullable(e.data.user.result.timelineV2.timeline).instructions,
+      convertFn: (e) => errorCheck(e.data.user?.result.timelineV2.timeline, e.errors).instructions,
       key: 'Likes',
       param: args,
     });
@@ -280,7 +278,7 @@ export class TweetApiUtils {
 
     const response = await this.request({
       apiFn: this.api.getBookmarksRaw,
-      convertFn: (e) => e.data.bookmarkTimelineV2.timeline.instructions,
+      convertFn: (e) => errorCheck(e.data?.bookmarkTimelineV2.timeline, e.errors).instructions,
       key: 'Bookmarks',
       param: args,
     });

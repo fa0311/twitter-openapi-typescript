@@ -1,13 +1,6 @@
 import { ApiUtilsHeader, CursorApiUtilsResponse, TweetApiUtilsData, UserApiUtilsData } from '@/models';
 import * as i from 'twitter-openapi-typescript-generated';
 
-export const nonNullable = <T>(x: T | undefined): T => {
-  if (x == undefined) {
-    throw Error('No data');
-  }
-  return x;
-};
-
 export const getKwargs = (flag: { [key: string]: any }, additional: { [key: string]: any }): any => {
   const kwargs: { [key: string]: any } = { pathQueryId: flag.queryId };
   if (flag.variables != undefined) {
@@ -22,14 +15,11 @@ export const getKwargs = (flag: { [key: string]: any }, additional: { [key: stri
   return kwargs;
 };
 
-export const errorCheck = <T>(data: i.Error | T): T => {
-  const res: any = data;
-  if (res.data != undefined) {
-    return res;
-  } else if (res.error != undefined) {
-    throw Error(res.errors[0].message);
+export const errorCheck = <T>(data: T | undefined, error: i.ErrorResponse[] | undefined): T => {
+  if (data == undefined) {
+    throw Error(error?.map((e) => e.message).join(', ') ?? 'No data');
   }
-  throw Error();
+  return data;
 };
 
 export const instructionToEntry = (item: i.InstructionUnion[]): i.TimelineAddEntry[] => {

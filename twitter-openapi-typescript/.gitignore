@@ -2,3 +2,4 @@ node_modules
 cookies.json
 dist
 logs
+coverage

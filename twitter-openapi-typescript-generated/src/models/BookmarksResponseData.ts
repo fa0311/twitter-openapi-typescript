@@ -31,13 +31,14 @@ export interface BookmarksResponseData {
      * @type {BookmarksTimeline}
      * @memberof BookmarksResponseData
      */
-    bookmarkTimelineV2?: BookmarksTimeline;
+    bookmarkTimelineV2: BookmarksTimeline;
 }
 
 /**
  * Check if a given object implements the BookmarksResponseData interface.
  */
 export function instanceOfBookmarksResponseData(value: object): value is BookmarksResponseData {
+    if (!('bookmarkTimelineV2' in value) || value['bookmarkTimelineV2'] === undefined) return false;
     return true;
 }
 
@@ -51,7 +52,7 @@ export function BookmarksResponseDataFromJSONTyped(json: any, ignoreDiscriminato
     }
     return {
         
-        'bookmarkTimelineV2': json['bookmark_timeline_v2'] == null ? undefined : BookmarksTimelineFromJSON(json['bookmark_timeline_v2']),
+        'bookmarkTimelineV2': BookmarksTimelineFromJSON(json['bookmark_timeline_v2']),
     };
 }
 

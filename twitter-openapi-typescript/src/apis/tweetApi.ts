@@ -196,7 +196,7 @@ export class TweetApiUtils {
 
     const response = await this.request({
       apiFn: this.api.getListLatestTweetsTimelineRaw,
-      convertFn: (e) => errorCheck(e.data.list?.tweetsTimeline.timeline, e.errors).instructions ?? [],
+      convertFn: (e) => errorCheck(e.data.list?.tweetsTimeline.timeline, e.errors).instructions,
       key: 'ListLatestTweetsTimeline',
       param: args,
     });

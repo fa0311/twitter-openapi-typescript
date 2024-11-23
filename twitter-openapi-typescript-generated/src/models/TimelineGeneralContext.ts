@@ -18,12 +18,14 @@ import {
     SocialContextLandingUrlFromJSON,
     SocialContextLandingUrlFromJSONTyped,
     SocialContextLandingUrlToJSON,
+    SocialContextLandingUrlToJSONTyped,
 } from './SocialContextLandingUrl';
 import type { SocialContextUnionType } from './SocialContextUnionType';
 import {
     SocialContextUnionTypeFromJSON,
     SocialContextUnionTypeFromJSONTyped,
     SocialContextUnionTypeToJSON,
+    SocialContextUnionTypeToJSONTyped,
 } from './SocialContextUnionType';
 
 /**
@@ -99,10 +101,15 @@ export function TimelineGeneralContextFromJSONTyped(json: any, ignoreDiscriminat
     };
 }
 
-export function TimelineGeneralContextToJSON(value?: TimelineGeneralContext | null): any {
+export function TimelineGeneralContextToJSON(json: any): TimelineGeneralContext {
+    return TimelineGeneralContextToJSONTyped(json, false);
+}
+
+export function TimelineGeneralContextToJSONTyped(value?: TimelineGeneralContext | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'contextType': value['contextType'],

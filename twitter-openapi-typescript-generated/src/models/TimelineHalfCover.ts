@@ -18,18 +18,21 @@ import {
     CallbackFromJSON,
     CallbackFromJSONTyped,
     CallbackToJSON,
+    CallbackToJSONTyped,
 } from './Callback';
 import type { Text } from './Text';
 import {
     TextFromJSON,
     TextFromJSONTyped,
     TextToJSON,
+    TextToJSONTyped,
 } from './Text';
 import type { CoverCta } from './CoverCta';
 import {
     CoverCtaFromJSON,
     CoverCtaFromJSONTyped,
     CoverCtaToJSON,
+    CoverCtaToJSONTyped,
 } from './CoverCta';
 
 /**
@@ -134,10 +137,15 @@ export function TimelineHalfCoverFromJSONTyped(json: any, ignoreDiscriminator: b
     };
 }
 
-export function TimelineHalfCoverToJSON(value?: TimelineHalfCover | null): any {
+export function TimelineHalfCoverToJSON(json: any): TimelineHalfCover {
+    return TimelineHalfCoverToJSONTyped(json, false);
+}
+
+export function TimelineHalfCoverToJSONTyped(value?: TimelineHalfCover | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'dismissible': value['dismissible'],

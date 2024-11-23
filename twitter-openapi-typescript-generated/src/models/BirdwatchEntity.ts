@@ -18,6 +18,7 @@ import {
     BirdwatchEntityRefFromJSON,
     BirdwatchEntityRefFromJSONTyped,
     BirdwatchEntityRefToJSON,
+    BirdwatchEntityRefToJSONTyped,
 } from './BirdwatchEntityRef';
 
 /**
@@ -72,10 +73,15 @@ export function BirdwatchEntityFromJSONTyped(json: any, ignoreDiscriminator: boo
     };
 }
 
-export function BirdwatchEntityToJSON(value?: BirdwatchEntity | null): any {
+export function BirdwatchEntityToJSON(json: any): BirdwatchEntity {
+    return BirdwatchEntityToJSONTyped(json, false);
+}
+
+export function BirdwatchEntityToJSONTyped(value?: BirdwatchEntity | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'fromIndex': value['fromIndex'],

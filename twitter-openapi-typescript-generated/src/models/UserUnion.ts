@@ -52,15 +52,19 @@ export function UserUnionFromJSONTyped(json: any, ignoreDiscriminator: boolean):
     }
 }
 
-export function UserUnionToJSON(value?: UserUnion | null): any {
+export function UserUnionToJSON(json: any): any {
+    return UserUnionToJSONTyped(json, false);
+}
+
+export function UserUnionToJSONTyped(value?: UserUnion | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
     switch (value['typename']) {
         case 'User':
-            return UserToJSON(value);
+            return Object.assign({}, UserToJSON(value), { typename: 'User' } as const);
         case 'UserUnavailable':
-            return UserUnavailableToJSON(value);
+            return Object.assign({}, UserUnavailableToJSON(value), { typename: 'UserUnavailable' } as const);
         default:
             throw new Error(`No variant of UserUnion exists with 'typename=${value['typename']}'`);
     }

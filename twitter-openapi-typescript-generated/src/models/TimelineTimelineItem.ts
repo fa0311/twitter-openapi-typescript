@@ -18,24 +18,28 @@ import {
     TypeNameFromJSON,
     TypeNameFromJSONTyped,
     TypeNameToJSON,
+    TypeNameToJSONTyped,
 } from './TypeName';
 import type { ItemContentUnion } from './ItemContentUnion';
 import {
     ItemContentUnionFromJSON,
     ItemContentUnionFromJSONTyped,
     ItemContentUnionToJSON,
+    ItemContentUnionToJSONTyped,
 } from './ItemContentUnion';
 import type { ClientEventInfo } from './ClientEventInfo';
 import {
     ClientEventInfoFromJSON,
     ClientEventInfoFromJSONTyped,
     ClientEventInfoToJSON,
+    ClientEventInfoToJSONTyped,
 } from './ClientEventInfo';
 import type { ContentEntryType } from './ContentEntryType';
 import {
     ContentEntryTypeFromJSON,
     ContentEntryTypeFromJSONTyped,
     ContentEntryTypeToJSON,
+    ContentEntryTypeToJSONTyped,
 } from './ContentEntryType';
 
 /**
@@ -106,10 +110,15 @@ export function TimelineTimelineItemFromJSONTyped(json: any, ignoreDiscriminator
     };
 }
 
-export function TimelineTimelineItemToJSON(value?: TimelineTimelineItem | null): any {
+export function TimelineTimelineItemToJSON(json: any): TimelineTimelineItem {
+    return TimelineTimelineItemToJSONTyped(json, false);
+}
+
+export function TimelineTimelineItemToJSONTyped(value?: TimelineTimelineItem | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         '__typename': TypeNameToJSON(value['typename']),

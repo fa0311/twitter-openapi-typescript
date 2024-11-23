@@ -90,10 +90,15 @@ export function UserResultByScreenNameLegacyFromJSONTyped(json: any, ignoreDiscr
     };
 }
 
-export function UserResultByScreenNameLegacyToJSON(value?: UserResultByScreenNameLegacy | null): any {
+export function UserResultByScreenNameLegacyToJSON(json: any): UserResultByScreenNameLegacy {
+    return UserResultByScreenNameLegacyToJSONTyped(json, false);
+}
+
+export function UserResultByScreenNameLegacyToJSONTyped(value?: UserResultByScreenNameLegacy | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'blocked_by': value['blockedBy'],

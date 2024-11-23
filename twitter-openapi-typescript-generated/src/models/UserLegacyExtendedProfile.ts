@@ -18,6 +18,7 @@ import {
     UserLegacyExtendedProfileBirthdateFromJSON,
     UserLegacyExtendedProfileBirthdateFromJSONTyped,
     UserLegacyExtendedProfileBirthdateToJSON,
+    UserLegacyExtendedProfileBirthdateToJSONTyped,
 } from './UserLegacyExtendedProfileBirthdate';
 
 /**
@@ -55,10 +56,15 @@ export function UserLegacyExtendedProfileFromJSONTyped(json: any, ignoreDiscrimi
     };
 }
 
-export function UserLegacyExtendedProfileToJSON(value?: UserLegacyExtendedProfile | null): any {
+export function UserLegacyExtendedProfileToJSON(json: any): UserLegacyExtendedProfile {
+    return UserLegacyExtendedProfileToJSONTyped(json, false);
+}
+
+export function UserLegacyExtendedProfileToJSONTyped(value?: UserLegacyExtendedProfile | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'birthdate': UserLegacyExtendedProfileBirthdateToJSON(value['birthdate']),

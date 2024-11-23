@@ -42,7 +42,7 @@ export interface UserLegacyExtendedProfileBirthdate {
      * @type {number}
      * @memberof UserLegacyExtendedProfileBirthdate
      */
-    year: number;
+    year?: number;
     /**
      * 
      * @type {string}
@@ -84,7 +84,6 @@ export function instanceOfUserLegacyExtendedProfileBirthdate(value: object): val
     if (!('day' in value) || value['day'] === undefined) return false;
     if (!('month' in value) || value['month'] === undefined) return false;
     if (!('visibility' in value) || value['visibility'] === undefined) return false;
-    if (!('year' in value) || value['year'] === undefined) return false;
     if (!('yearVisibility' in value) || value['yearVisibility'] === undefined) return false;
     return true;
 }
@@ -102,15 +101,20 @@ export function UserLegacyExtendedProfileBirthdateFromJSONTyped(json: any, ignor
         'day': json['day'],
         'month': json['month'],
         'visibility': json['visibility'],
-        'year': json['year'],
+        'year': json['year'] == null ? undefined : json['year'],
         'yearVisibility': json['year_visibility'],
     };
 }
 
-export function UserLegacyExtendedProfileBirthdateToJSON(value?: UserLegacyExtendedProfileBirthdate | null): any {
+export function UserLegacyExtendedProfileBirthdateToJSON(json: any): UserLegacyExtendedProfileBirthdate {
+    return UserLegacyExtendedProfileBirthdateToJSONTyped(json, false);
+}
+
+export function UserLegacyExtendedProfileBirthdateToJSONTyped(value?: UserLegacyExtendedProfileBirthdate | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'day': value['day'],

@@ -18,6 +18,7 @@ import {
     TweetCardLegacyFromJSON,
     TweetCardLegacyFromJSONTyped,
     TweetCardLegacyToJSON,
+    TweetCardLegacyToJSONTyped,
 } from './TweetCardLegacy';
 
 /**
@@ -62,10 +63,15 @@ export function TweetCardFromJSONTyped(json: any, ignoreDiscriminator: boolean):
     };
 }
 
-export function TweetCardToJSON(value?: TweetCard | null): any {
+export function TweetCardToJSON(json: any): TweetCard {
+    return TweetCardToJSONTyped(json, false);
+}
+
+export function TweetCardToJSONTyped(value?: TweetCard | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'legacy': TweetCardLegacyToJSON(value['legacy']),

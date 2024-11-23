@@ -36,6 +36,7 @@ export const TypeName = {
     Community: 'Community',
     CommunityDeleteActionUnavailable: 'CommunityDeleteActionUnavailable',
     CommunityJoinAction: 'CommunityJoinAction',
+    CommunityJoinActionUnavailable: 'CommunityJoinActionUnavailable',
     CommunityLeaveActionUnavailable: 'CommunityLeaveActionUnavailable',
     CommunityTweetPinActionUnavailable: 'CommunityTweetPinActionUnavailable',
     CommunityTweetUnpinActionUnavailable: 'CommunityTweetUnpinActionUnavailable',
@@ -67,5 +68,9 @@ export function TypeNameFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
 
 export function TypeNameToJSON(value?: TypeName | null): any {
     return value as any;
+}
+
+export function TypeNameToJSONTyped(value: any, ignoreDiscriminator: boolean): TypeName {
+    return value as TypeName;
 }
 

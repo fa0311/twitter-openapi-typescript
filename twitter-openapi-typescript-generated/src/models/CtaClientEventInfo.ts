@@ -59,10 +59,15 @@ export function CtaClientEventInfoFromJSONTyped(json: any, ignoreDiscriminator: 
     };
 }
 
-export function CtaClientEventInfoToJSON(value?: CtaClientEventInfo | null): any {
+export function CtaClientEventInfoToJSON(json: any): CtaClientEventInfo {
+    return CtaClientEventInfoToJSONTyped(json, false);
+}
+
+export function CtaClientEventInfoToJSONTyped(value?: CtaClientEventInfo | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'action': value['action'],

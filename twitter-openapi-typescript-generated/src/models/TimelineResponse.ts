@@ -18,12 +18,14 @@ import {
     HomeTimelineResponseDataFromJSON,
     HomeTimelineResponseDataFromJSONTyped,
     HomeTimelineResponseDataToJSON,
+    HomeTimelineResponseDataToJSONTyped,
 } from './HomeTimelineResponseData';
 import type { ErrorResponse } from './ErrorResponse';
 import {
     ErrorResponseFromJSON,
     ErrorResponseFromJSONTyped,
     ErrorResponseToJSON,
+    ErrorResponseToJSONTyped,
 } from './ErrorResponse';
 
 /**
@@ -69,10 +71,15 @@ export function TimelineResponseFromJSONTyped(json: any, ignoreDiscriminator: bo
     };
 }
 
-export function TimelineResponseToJSON(value?: TimelineResponse | null): any {
+export function TimelineResponseToJSON(json: any): TimelineResponse {
+    return TimelineResponseToJSONTyped(json, false);
+}
+
+export function TimelineResponseToJSONTyped(value?: TimelineResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'data': HomeTimelineResponseDataToJSON(value['data']),

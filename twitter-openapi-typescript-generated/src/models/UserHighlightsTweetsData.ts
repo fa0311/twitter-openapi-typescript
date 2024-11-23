@@ -18,6 +18,7 @@ import {
     UserHighlightsTweetsUserFromJSON,
     UserHighlightsTweetsUserFromJSONTyped,
     UserHighlightsTweetsUserToJSON,
+    UserHighlightsTweetsUserToJSONTyped,
 } from './UserHighlightsTweetsUser';
 
 /**
@@ -55,10 +56,15 @@ export function UserHighlightsTweetsDataFromJSONTyped(json: any, ignoreDiscrimin
     };
 }
 
-export function UserHighlightsTweetsDataToJSON(value?: UserHighlightsTweetsData | null): any {
+export function UserHighlightsTweetsDataToJSON(json: any): UserHighlightsTweetsData {
+    return UserHighlightsTweetsDataToJSONTyped(json, false);
+}
+
+export function UserHighlightsTweetsDataToJSONTyped(value?: UserHighlightsTweetsData | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'user': UserHighlightsTweetsUserToJSON(value['user']),

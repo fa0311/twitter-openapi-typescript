@@ -18,12 +18,14 @@ import {
     CreateBookmarkResponseDataFromJSON,
     CreateBookmarkResponseDataFromJSONTyped,
     CreateBookmarkResponseDataToJSON,
+    CreateBookmarkResponseDataToJSONTyped,
 } from './CreateBookmarkResponseData';
 import type { ErrorResponse } from './ErrorResponse';
 import {
     ErrorResponseFromJSON,
     ErrorResponseFromJSONTyped,
     ErrorResponseToJSON,
+    ErrorResponseToJSONTyped,
 } from './ErrorResponse';
 
 /**
@@ -69,10 +71,15 @@ export function CreateBookmarkResponseFromJSONTyped(json: any, ignoreDiscriminat
     };
 }
 
-export function CreateBookmarkResponseToJSON(value?: CreateBookmarkResponse | null): any {
+export function CreateBookmarkResponseToJSON(json: any): CreateBookmarkResponse {
+    return CreateBookmarkResponseToJSONTyped(json, false);
+}
+
+export function CreateBookmarkResponseToJSONTyped(value?: CreateBookmarkResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'data': CreateBookmarkResponseDataToJSON(value['data']),

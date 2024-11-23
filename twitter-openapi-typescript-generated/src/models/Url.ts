@@ -72,10 +72,15 @@ export function UrlFromJSONTyped(json: any, ignoreDiscriminator: boolean): Url {
     };
 }
 
-export function UrlToJSON(value?: Url | null): any {
+export function UrlToJSON(json: any): Url {
+    return UrlToJSONTyped(json, false);
+}
+
+export function UrlToJSONTyped(value?: Url | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'display_url': value['displayUrl'],

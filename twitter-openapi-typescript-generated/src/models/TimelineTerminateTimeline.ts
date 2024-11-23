@@ -18,6 +18,7 @@ import {
     InstructionTypeFromJSON,
     InstructionTypeFromJSONTyped,
     InstructionTypeToJSON,
+    InstructionTypeToJSONTyped,
 } from './InstructionType';
 
 /**
@@ -76,10 +77,15 @@ export function TimelineTerminateTimelineFromJSONTyped(json: any, ignoreDiscrimi
     };
 }
 
-export function TimelineTerminateTimelineToJSON(value?: TimelineTerminateTimeline | null): any {
+export function TimelineTerminateTimelineToJSON(json: any): TimelineTerminateTimeline {
+    return TimelineTerminateTimelineToJSONTyped(json, false);
+}
+
+export function TimelineTerminateTimelineToJSONTyped(value?: TimelineTerminateTimeline | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'direction': value['direction'],

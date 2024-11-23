@@ -49,10 +49,15 @@ export function CommunityUrlsPermalinkFromJSONTyped(json: any, ignoreDiscriminat
     };
 }
 
-export function CommunityUrlsPermalinkToJSON(value?: CommunityUrlsPermalink | null): any {
+export function CommunityUrlsPermalinkToJSON(json: any): CommunityUrlsPermalink {
+    return CommunityUrlsPermalinkToJSONTyped(json, false);
+}
+
+export function CommunityUrlsPermalinkToJSONTyped(value?: CommunityUrlsPermalink | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'url': value['url'],

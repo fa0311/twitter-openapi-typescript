@@ -18,30 +18,35 @@ import {
     TypeNameFromJSON,
     TypeNameFromJSONTyped,
     TypeNameToJSON,
+    TypeNameToJSONTyped,
 } from './TypeName';
 import type { Highlight } from './Highlight';
 import {
     HighlightFromJSON,
     HighlightFromJSONTyped,
     HighlightToJSON,
+    HighlightToJSONTyped,
 } from './Highlight';
 import type { ItemResult } from './ItemResult';
 import {
     ItemResultFromJSON,
     ItemResultFromJSONTyped,
     ItemResultToJSON,
+    ItemResultToJSONTyped,
 } from './ItemResult';
 import type { SocialContextUnion } from './SocialContextUnion';
 import {
     SocialContextUnionFromJSON,
     SocialContextUnionFromJSONTyped,
     SocialContextUnionToJSON,
+    SocialContextUnionToJSONTyped,
 } from './SocialContextUnion';
 import type { ContentItemType } from './ContentItemType';
 import {
     ContentItemTypeFromJSON,
     ContentItemTypeFromJSONTyped,
     ContentItemTypeToJSON,
+    ContentItemTypeToJSONTyped,
 } from './ContentItemType';
 
 /**
@@ -138,10 +143,15 @@ export function TimelineTweetFromJSONTyped(json: any, ignoreDiscriminator: boole
     };
 }
 
-export function TimelineTweetToJSON(value?: TimelineTweet | null): any {
+export function TimelineTweetToJSON(json: any): TimelineTweet {
+    return TimelineTweetToJSONTyped(json, false);
+}
+
+export function TimelineTweetToJSONTyped(value?: TimelineTweet | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         '__typename': TypeNameToJSON(value['typename']),

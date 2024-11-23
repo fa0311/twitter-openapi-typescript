@@ -70,19 +70,23 @@ export function TweetUnionFromJSONTyped(json: any, ignoreDiscriminator: boolean)
     }
 }
 
-export function TweetUnionToJSON(value?: TweetUnion | null): any {
+export function TweetUnionToJSON(json: any): any {
+    return TweetUnionToJSONTyped(json, false);
+}
+
+export function TweetUnionToJSONTyped(value?: TweetUnion | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
     switch (value['typename']) {
         case 'Tweet':
-            return TweetToJSON(value);
+            return Object.assign({}, TweetToJSON(value), { typename: 'Tweet' } as const);
         case 'TweetTombstone':
-            return TweetTombstoneToJSON(value);
+            return Object.assign({}, TweetTombstoneToJSON(value), { typename: 'TweetTombstone' } as const);
         case 'TweetUnavailable':
-            return TweetUnavailableToJSON(value);
+            return Object.assign({}, TweetUnavailableToJSON(value), { typename: 'TweetUnavailable' } as const);
         case 'TweetWithVisibilityResults':
-            return TweetWithVisibilityResultsToJSON(value);
+            return Object.assign({}, TweetWithVisibilityResultsToJSON(value), { typename: 'TweetWithVisibilityResults' } as const);
         default:
             throw new Error(`No variant of TweetUnion exists with 'typename=${value['typename']}'`);
     }

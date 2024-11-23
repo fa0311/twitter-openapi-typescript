@@ -49,3 +49,7 @@ export function DisplayTypeToJSON(value?: DisplayType | null): any {
     return value as any;
 }
 
+export function DisplayTypeToJSONTyped(value: any, ignoreDiscriminator: boolean): DisplayType {
+    return value as DisplayType;
+}
+

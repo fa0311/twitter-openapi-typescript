@@ -18,6 +18,7 @@ import {
     TimelineFromJSON,
     TimelineFromJSONTyped,
     TimelineToJSON,
+    TimelineToJSONTyped,
 } from './Timeline';
 
 /**
@@ -56,10 +57,15 @@ export function FollowTimelineFromJSONTyped(json: any, ignoreDiscriminator: bool
     };
 }
 
-export function FollowTimelineToJSON(value?: FollowTimeline | null): any {
+export function FollowTimelineToJSON(json: any): FollowTimeline {
+    return FollowTimelineToJSONTyped(json, false);
+}
+
+export function FollowTimelineToJSONTyped(value?: FollowTimeline | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'timeline': TimelineToJSON(value['timeline']),

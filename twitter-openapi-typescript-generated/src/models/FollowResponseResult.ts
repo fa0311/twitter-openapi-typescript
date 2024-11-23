@@ -18,12 +18,14 @@ import {
     TypeNameFromJSON,
     TypeNameFromJSONTyped,
     TypeNameToJSON,
+    TypeNameToJSONTyped,
 } from './TypeName';
 import type { FollowTimeline } from './FollowTimeline';
 import {
     FollowTimelineFromJSON,
     FollowTimelineFromJSONTyped,
     FollowTimelineToJSON,
+    FollowTimelineToJSONTyped,
 } from './FollowTimeline';
 
 /**
@@ -72,10 +74,15 @@ export function FollowResponseResultFromJSONTyped(json: any, ignoreDiscriminator
     };
 }
 
-export function FollowResponseResultToJSON(value?: FollowResponseResult | null): any {
+export function FollowResponseResultToJSON(json: any): FollowResponseResult {
+    return FollowResponseResultToJSONTyped(json, false);
+}
+
+export function FollowResponseResultToJSONTyped(value?: FollowResponseResult | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         '__typename': TypeNameToJSON(value['typename']),

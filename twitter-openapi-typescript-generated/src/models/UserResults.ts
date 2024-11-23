@@ -18,6 +18,7 @@ import {
     UserUnionFromJSON,
     UserUnionFromJSONTyped,
     UserUnionToJSON,
+    UserUnionToJSONTyped,
 } from './UserUnion';
 
 /**
@@ -55,10 +56,15 @@ export function UserResultsFromJSONTyped(json: any, ignoreDiscriminator: boolean
     };
 }
 
-export function UserResultsToJSON(value?: UserResults | null): any {
+export function UserResultsToJSON(json: any): UserResults {
+    return UserResultsToJSONTyped(json, false);
+}
+
+export function UserResultsToJSONTyped(value?: UserResults | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'result': UserUnionToJSON(value['result']),

@@ -363,10 +363,15 @@ export function UserLegacyFromJSONTyped(json: any, ignoreDiscriminator: boolean)
     };
 }
 
-export function UserLegacyToJSON(value?: UserLegacy | null): any {
+export function UserLegacyToJSON(json: any): UserLegacy {
+    return UserLegacyToJSONTyped(json, false);
+}
+
+export function UserLegacyToJSONTyped(value?: UserLegacy | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'blocked_by': value['blockedBy'],

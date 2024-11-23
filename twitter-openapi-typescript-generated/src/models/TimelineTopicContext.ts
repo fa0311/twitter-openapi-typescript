@@ -18,12 +18,14 @@ import {
     TopicContextFromJSON,
     TopicContextFromJSONTyped,
     TopicContextToJSON,
+    TopicContextToJSONTyped,
 } from './TopicContext';
 import type { SocialContextUnionType } from './SocialContextUnionType';
 import {
     SocialContextUnionTypeFromJSON,
     SocialContextUnionTypeFromJSONTyped,
     SocialContextUnionTypeToJSON,
+    SocialContextUnionTypeToJSONTyped,
 } from './SocialContextUnionType';
 
 /**
@@ -85,10 +87,15 @@ export function TimelineTopicContextFromJSONTyped(json: any, ignoreDiscriminator
     };
 }
 
-export function TimelineTopicContextToJSON(value?: TimelineTopicContext | null): any {
+export function TimelineTopicContextToJSON(json: any): TimelineTopicContext {
+    return TimelineTopicContextToJSONTyped(json, false);
+}
+
+export function TimelineTopicContextToJSONTyped(value?: TimelineTopicContext | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'functionalityType': value['functionalityType'],

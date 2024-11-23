@@ -18,6 +18,7 @@ import {
     TweetCardPlatformFromJSON,
     TweetCardPlatformFromJSONTyped,
     TweetCardPlatformToJSON,
+    TweetCardPlatformToJSONTyped,
 } from './TweetCardPlatform';
 
 /**
@@ -56,10 +57,15 @@ export function TweetCardPlatformDataFromJSONTyped(json: any, ignoreDiscriminato
     };
 }
 
-export function TweetCardPlatformDataToJSON(value?: TweetCardPlatformData | null): any {
+export function TweetCardPlatformDataToJSON(json: any): TweetCardPlatformData {
+    return TweetCardPlatformDataToJSONTyped(json, false);
+}
+
+export function TweetCardPlatformDataToJSONTyped(value?: TweetCardPlatformData | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'platform': TweetCardPlatformToJSON(value['platform']),

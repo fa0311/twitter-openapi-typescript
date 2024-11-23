@@ -57,10 +57,15 @@ export function UserHighlightsInfoFromJSONTyped(json: any, ignoreDiscriminator: 
     };
 }
 
-export function UserHighlightsInfoToJSON(value?: UserHighlightsInfo | null): any {
+export function UserHighlightsInfoToJSON(json: any): UserHighlightsInfo {
+    return UserHighlightsInfoToJSONTyped(json, false);
+}
+
+export function UserHighlightsInfoToJSONTyped(value?: UserHighlightsInfo | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'can_highlight_tweets': value['canHighlightTweets'],

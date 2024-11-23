@@ -83,10 +83,15 @@ export function TweetInterstitialTextEntityRefFromJSONTyped(json: any, ignoreDis
     };
 }
 
-export function TweetInterstitialTextEntityRefToJSON(value?: TweetInterstitialTextEntityRef | null): any {
+export function TweetInterstitialTextEntityRefToJSON(json: any): TweetInterstitialTextEntityRef {
+    return TweetInterstitialTextEntityRefToJSONTyped(json, false);
+}
+
+export function TweetInterstitialTextEntityRefToJSONTyped(value?: TweetInterstitialTextEntityRef | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'type': value['type'],

@@ -18,6 +18,7 @@ import {
     TweetInterstitialTextEntityFromJSON,
     TweetInterstitialTextEntityFromJSONTyped,
     TweetInterstitialTextEntityToJSON,
+    TweetInterstitialTextEntityToJSONTyped,
 } from './TweetInterstitialTextEntity';
 
 /**
@@ -72,10 +73,15 @@ export function TweetInterstitialTextFromJSONTyped(json: any, ignoreDiscriminato
     };
 }
 
-export function TweetInterstitialTextToJSON(value?: TweetInterstitialText | null): any {
+export function TweetInterstitialTextToJSON(json: any): TweetInterstitialText {
+    return TweetInterstitialTextToJSONTyped(json, false);
+}
+
+export function TweetInterstitialTextToJSONTyped(value?: TweetInterstitialText | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'entities': ((value['entities'] as Array<any>).map(TweetInterstitialTextEntityToJSON)),

@@ -18,12 +18,14 @@ import {
     TweetCardLegacyBindingValueDataImageFromJSON,
     TweetCardLegacyBindingValueDataImageFromJSONTyped,
     TweetCardLegacyBindingValueDataImageToJSON,
+    TweetCardLegacyBindingValueDataImageToJSONTyped,
 } from './TweetCardLegacyBindingValueDataImage';
 import type { UserValue } from './UserValue';
 import {
     UserValueFromJSON,
     UserValueFromJSONTyped,
     UserValueToJSON,
+    UserValueToJSONTyped,
 } from './UserValue';
 
 /**
@@ -104,10 +106,15 @@ export function TweetCardLegacyBindingValueDataFromJSONTyped(json: any, ignoreDi
     };
 }
 
-export function TweetCardLegacyBindingValueDataToJSON(value?: TweetCardLegacyBindingValueData | null): any {
+export function TweetCardLegacyBindingValueDataToJSON(json: any): TweetCardLegacyBindingValueData {
+    return TweetCardLegacyBindingValueDataToJSONTyped(json, false);
+}
+
+export function TweetCardLegacyBindingValueDataToJSONTyped(value?: TweetCardLegacyBindingValueData | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'boolean_value': value['booleanValue'],

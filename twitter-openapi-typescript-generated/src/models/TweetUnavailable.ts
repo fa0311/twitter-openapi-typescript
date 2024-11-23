@@ -18,6 +18,7 @@ import {
     TypeNameFromJSON,
     TypeNameFromJSONTyped,
     TypeNameToJSON,
+    TypeNameToJSONTyped,
 } from './TypeName';
 
 /**
@@ -64,10 +65,15 @@ export function TweetUnavailableFromJSONTyped(json: any, ignoreDiscriminator: bo
     };
 }
 
-export function TweetUnavailableToJSON(value?: TweetUnavailable | null): any {
+export function TweetUnavailableToJSON(json: any): TweetUnavailable {
+    return TweetUnavailableToJSONTyped(json, false);
+}
+
+export function TweetUnavailableToJSONTyped(value?: TweetUnavailable | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         '__typename': TypeNameToJSON(value['typename']),

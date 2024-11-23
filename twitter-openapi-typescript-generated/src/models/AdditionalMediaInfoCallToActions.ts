@@ -18,6 +18,7 @@ import {
     AdditionalMediaInfoCallToActionsUrlFromJSON,
     AdditionalMediaInfoCallToActionsUrlFromJSONTyped,
     AdditionalMediaInfoCallToActionsUrlToJSON,
+    AdditionalMediaInfoCallToActionsUrlToJSONTyped,
 } from './AdditionalMediaInfoCallToActionsUrl';
 
 /**
@@ -62,10 +63,15 @@ export function AdditionalMediaInfoCallToActionsFromJSONTyped(json: any, ignoreD
     };
 }
 
-export function AdditionalMediaInfoCallToActionsToJSON(value?: AdditionalMediaInfoCallToActions | null): any {
+export function AdditionalMediaInfoCallToActionsToJSON(json: any): AdditionalMediaInfoCallToActions {
+    return AdditionalMediaInfoCallToActionsToJSONTyped(json, false);
+}
+
+export function AdditionalMediaInfoCallToActionsToJSONTyped(value?: AdditionalMediaInfoCallToActions | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'visit_site': AdditionalMediaInfoCallToActionsUrlToJSON(value['visitSite']),

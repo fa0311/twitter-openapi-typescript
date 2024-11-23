@@ -64,10 +64,15 @@ export function MediaVideoInfoVariantFromJSONTyped(json: any, ignoreDiscriminato
     };
 }
 
-export function MediaVideoInfoVariantToJSON(value?: MediaVideoInfoVariant | null): any {
+export function MediaVideoInfoVariantToJSON(json: any): MediaVideoInfoVariant {
+    return MediaVideoInfoVariantToJSONTyped(json, false);
+}
+
+export function MediaVideoInfoVariantToJSONTyped(value?: MediaVideoInfoVariant | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'bitrate': value['bitrate'],

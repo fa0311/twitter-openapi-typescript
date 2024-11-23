@@ -18,6 +18,7 @@ import {
     ContentUnionFromJSON,
     ContentUnionFromJSONTyped,
     ContentUnionToJSON,
+    ContentUnionToJSONTyped,
 } from './ContentUnion';
 
 /**
@@ -72,10 +73,15 @@ export function TimelineAddEntryFromJSONTyped(json: any, ignoreDiscriminator: bo
     };
 }
 
-export function TimelineAddEntryToJSON(value?: TimelineAddEntry | null): any {
+export function TimelineAddEntryToJSON(json: any): TimelineAddEntry {
+    return TimelineAddEntryToJSONTyped(json, false);
+}
+
+export function TimelineAddEntryToJSONTyped(value?: TimelineAddEntry | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'content': ContentUnionToJSON(value['content']),

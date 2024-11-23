@@ -72,10 +72,15 @@ export function TweetCardLegacyBindingValueDataImageFromJSONTyped(json: any, ign
     };
 }
 
-export function TweetCardLegacyBindingValueDataImageToJSON(value?: TweetCardLegacyBindingValueDataImage | null): any {
+export function TweetCardLegacyBindingValueDataImageToJSON(json: any): TweetCardLegacyBindingValueDataImage {
+    return TweetCardLegacyBindingValueDataImageToJSONTyped(json, false);
+}
+
+export function TweetCardLegacyBindingValueDataImageToJSONTyped(value?: TweetCardLegacyBindingValueDataImage | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'alt': value['alt'],

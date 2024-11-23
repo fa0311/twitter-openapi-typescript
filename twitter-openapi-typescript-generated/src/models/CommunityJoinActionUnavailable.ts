@@ -24,54 +24,54 @@ import {
 /**
  * 
  * @export
- * @interface CommunityLeaveActionResult
+ * @interface CommunityJoinActionUnavailable
  */
-export interface CommunityLeaveActionResult {
+export interface CommunityJoinActionUnavailable {
     /**
      * 
      * @type {TypeName}
-     * @memberof CommunityLeaveActionResult
+     * @memberof CommunityJoinActionUnavailable
      */
     typename: TypeName;
     /**
      * 
      * @type {string}
-     * @memberof CommunityLeaveActionResult
+     * @memberof CommunityJoinActionUnavailable
      */
     message: string;
     /**
      * 
      * @type {string}
-     * @memberof CommunityLeaveActionResult
+     * @memberof CommunityJoinActionUnavailable
      */
-    reason: CommunityLeaveActionResultReasonEnum;
+    reason: CommunityJoinActionUnavailableReasonEnum;
 }
 
 
 /**
  * @export
  */
-export const CommunityLeaveActionResultReasonEnum = {
-    ViewerNotMember: 'ViewerNotMember'
+export const CommunityJoinActionUnavailableReasonEnum = {
+    ViewerRequestRequired: 'ViewerRequestRequired'
 } as const;
-export type CommunityLeaveActionResultReasonEnum = typeof CommunityLeaveActionResultReasonEnum[keyof typeof CommunityLeaveActionResultReasonEnum];
+export type CommunityJoinActionUnavailableReasonEnum = typeof CommunityJoinActionUnavailableReasonEnum[keyof typeof CommunityJoinActionUnavailableReasonEnum];
 
 
 /**
- * Check if a given object implements the CommunityLeaveActionResult interface.
+ * Check if a given object implements the CommunityJoinActionUnavailable interface.
  */
-export function instanceOfCommunityLeaveActionResult(value: object): value is CommunityLeaveActionResult {
+export function instanceOfCommunityJoinActionUnavailable(value: object): value is CommunityJoinActionUnavailable {
     if (!('typename' in value) || value['typename'] === undefined) return false;
     if (!('message' in value) || value['message'] === undefined) return false;
     if (!('reason' in value) || value['reason'] === undefined) return false;
     return true;
 }
 
-export function CommunityLeaveActionResultFromJSON(json: any): CommunityLeaveActionResult {
-    return CommunityLeaveActionResultFromJSONTyped(json, false);
+export function CommunityJoinActionUnavailableFromJSON(json: any): CommunityJoinActionUnavailable {
+    return CommunityJoinActionUnavailableFromJSONTyped(json, false);
 }
 
-export function CommunityLeaveActionResultFromJSONTyped(json: any, ignoreDiscriminator: boolean): CommunityLeaveActionResult {
+export function CommunityJoinActionUnavailableFromJSONTyped(json: any, ignoreDiscriminator: boolean): CommunityJoinActionUnavailable {
     if (json == null) {
         return json;
     }
@@ -83,11 +83,11 @@ export function CommunityLeaveActionResultFromJSONTyped(json: any, ignoreDiscrim
     };
 }
 
-export function CommunityLeaveActionResultToJSON(json: any): CommunityLeaveActionResult {
-    return CommunityLeaveActionResultToJSONTyped(json, false);
+export function CommunityJoinActionUnavailableToJSON(json: any): CommunityJoinActionUnavailable {
+    return CommunityJoinActionUnavailableToJSONTyped(json, false);
 }
 
-export function CommunityLeaveActionResultToJSONTyped(value?: CommunityLeaveActionResult | null, ignoreDiscriminator: boolean = false): any {
+export function CommunityJoinActionUnavailableToJSONTyped(value?: CommunityJoinActionUnavailable | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

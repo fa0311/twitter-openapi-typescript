@@ -18,12 +18,14 @@ import {
     TweetResultByRestIdDataFromJSON,
     TweetResultByRestIdDataFromJSONTyped,
     TweetResultByRestIdDataToJSON,
+    TweetResultByRestIdDataToJSONTyped,
 } from './TweetResultByRestIdData';
 import type { ErrorResponse } from './ErrorResponse';
 import {
     ErrorResponseFromJSON,
     ErrorResponseFromJSONTyped,
     ErrorResponseToJSON,
+    ErrorResponseToJSONTyped,
 } from './ErrorResponse';
 
 /**
@@ -69,10 +71,15 @@ export function TweetResultByRestIdResponseFromJSONTyped(json: any, ignoreDiscri
     };
 }
 
-export function TweetResultByRestIdResponseToJSON(value?: TweetResultByRestIdResponse | null): any {
+export function TweetResultByRestIdResponseToJSON(json: any): TweetResultByRestIdResponse {
+    return TweetResultByRestIdResponseToJSONTyped(json, false);
+}
+
+export function TweetResultByRestIdResponseToJSONTyped(value?: TweetResultByRestIdResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'data': TweetResultByRestIdDataToJSON(value['data']),

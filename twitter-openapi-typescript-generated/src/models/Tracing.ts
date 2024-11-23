@@ -49,10 +49,15 @@ export function TracingFromJSONTyped(json: any, ignoreDiscriminator: boolean): T
     };
 }
 
-export function TracingToJSON(value?: Tracing | null): any {
+export function TracingToJSON(json: any): Tracing {
+    return TracingToJSONTyped(json, false);
+}
+
+export function TracingToJSONTyped(value?: Tracing | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'trace_id': value['traceId'],

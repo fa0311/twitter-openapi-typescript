@@ -18,6 +18,7 @@ import {
     UrtEndpointOptionsFromJSON,
     UrtEndpointOptionsFromJSONTyped,
     UrtEndpointOptionsToJSON,
+    UrtEndpointOptionsToJSONTyped,
 } from './UrtEndpointOptions';
 
 /**
@@ -81,10 +82,15 @@ export function SocialContextLandingUrlFromJSONTyped(json: any, ignoreDiscrimina
     };
 }
 
-export function SocialContextLandingUrlToJSON(value?: SocialContextLandingUrl | null): any {
+export function SocialContextLandingUrlToJSON(json: any): SocialContextLandingUrl {
+    return SocialContextLandingUrlToJSONTyped(json, false);
+}
+
+export function SocialContextLandingUrlToJSONTyped(value?: SocialContextLandingUrl | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'url': value['url'],

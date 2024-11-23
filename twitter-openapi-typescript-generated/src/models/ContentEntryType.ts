@@ -48,3 +48,7 @@ export function ContentEntryTypeToJSON(value?: ContentEntryType | null): any {
     return value as any;
 }
 
+export function ContentEntryTypeToJSONTyped(value: any, ignoreDiscriminator: boolean): ContentEntryType {
+    return value as ContentEntryType;
+}
+

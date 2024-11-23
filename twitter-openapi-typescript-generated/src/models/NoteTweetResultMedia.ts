@@ -18,6 +18,7 @@ import {
     NoteTweetResultMediaInlineMediaFromJSON,
     NoteTweetResultMediaInlineMediaFromJSONTyped,
     NoteTweetResultMediaInlineMediaToJSON,
+    NoteTweetResultMediaInlineMediaToJSONTyped,
 } from './NoteTweetResultMediaInlineMedia';
 
 /**
@@ -56,10 +57,15 @@ export function NoteTweetResultMediaFromJSONTyped(json: any, ignoreDiscriminator
     };
 }
 
-export function NoteTweetResultMediaToJSON(value?: NoteTweetResultMedia | null): any {
+export function NoteTweetResultMediaToJSON(json: any): NoteTweetResultMedia {
+    return NoteTweetResultMediaToJSONTyped(json, false);
+}
+
+export function NoteTweetResultMediaToJSONTyped(value?: NoteTweetResultMedia | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'inline_media': ((value['inlineMedia'] as Array<any>).map(NoteTweetResultMediaInlineMediaToJSON)),

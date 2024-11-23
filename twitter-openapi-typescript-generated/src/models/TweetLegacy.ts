@@ -18,36 +18,42 @@ import {
     ExtendedEntitiesFromJSON,
     ExtendedEntitiesFromJSONTyped,
     ExtendedEntitiesToJSON,
+    ExtendedEntitiesToJSONTyped,
 } from './ExtendedEntities';
 import type { ItemResult } from './ItemResult';
 import {
     ItemResultFromJSON,
     ItemResultFromJSONTyped,
     ItemResultToJSON,
+    ItemResultToJSONTyped,
 } from './ItemResult';
 import type { TweetLegacyScopes } from './TweetLegacyScopes';
 import {
     TweetLegacyScopesFromJSON,
     TweetLegacyScopesFromJSONTyped,
     TweetLegacyScopesToJSON,
+    TweetLegacyScopesToJSONTyped,
 } from './TweetLegacyScopes';
 import type { SelfThread } from './SelfThread';
 import {
     SelfThreadFromJSON,
     SelfThreadFromJSONTyped,
     SelfThreadToJSON,
+    SelfThreadToJSONTyped,
 } from './SelfThread';
 import type { QuotedStatusPermalink } from './QuotedStatusPermalink';
 import {
     QuotedStatusPermalinkFromJSON,
     QuotedStatusPermalinkFromJSONTyped,
     QuotedStatusPermalinkToJSON,
+    QuotedStatusPermalinkToJSONTyped,
 } from './QuotedStatusPermalink';
 import type { Entities } from './Entities';
 import {
     EntitiesFromJSON,
     EntitiesFromJSONTyped,
     EntitiesToJSON,
+    EntitiesToJSONTyped,
 } from './Entities';
 
 /**
@@ -254,7 +260,8 @@ export const TweetLegacyLimitedActionsEnum = {
     DynamicProductAd: 'dynamic_product_ad',
     StaleTweet: 'stale_tweet',
     CommunityTweetNonMemberPublicCommunity: 'community_tweet_non_member_public_community',
-    CommunityTweetNonMemberClosedCommunity: 'community_tweet_non_member_closed_community'
+    CommunityTweetNonMemberClosedCommunity: 'community_tweet_non_member_closed_community',
+    BlockedViewer: 'blocked_viewer'
 } as const;
 export type TweetLegacyLimitedActionsEnum = typeof TweetLegacyLimitedActionsEnum[keyof typeof TweetLegacyLimitedActionsEnum];
 
@@ -327,10 +334,15 @@ export function TweetLegacyFromJSONTyped(json: any, ignoreDiscriminator: boolean
     };
 }
 
-export function TweetLegacyToJSON(value?: TweetLegacy | null): any {
+export function TweetLegacyToJSON(json: any): TweetLegacy {
+    return TweetLegacyToJSONTyped(json, false);
+}
+
+export function TweetLegacyToJSONTyped(value?: TweetLegacy | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'bookmark_count': value['bookmarkCount'],

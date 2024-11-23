@@ -89,10 +89,15 @@ export function BirdwatchEntityRefFromJSONTyped(json: any, ignoreDiscriminator: 
     };
 }
 
-export function BirdwatchEntityRefToJSON(value?: BirdwatchEntityRef | null): any {
+export function BirdwatchEntityRefToJSON(json: any): BirdwatchEntityRef {
+    return BirdwatchEntityRefToJSONTyped(json, false);
+}
+
+export function BirdwatchEntityRefToJSONTyped(value?: BirdwatchEntityRef | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'text': value['text'],

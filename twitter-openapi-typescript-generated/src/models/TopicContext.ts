@@ -90,10 +90,15 @@ export function TopicContextFromJSONTyped(json: any, ignoreDiscriminator: boolea
     };
 }
 
-export function TopicContextToJSON(value?: TopicContext | null): any {
+export function TopicContextToJSON(json: any): TopicContext {
+    return TopicContextToJSONTyped(json, false);
+}
+
+export function TopicContextToJSONTyped(value?: TopicContext | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'description': value['description'],

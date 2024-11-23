@@ -18,48 +18,56 @@ import {
     PrimaryCommunityTopicFromJSON,
     PrimaryCommunityTopicFromJSONTyped,
     PrimaryCommunityTopicToJSON,
+    PrimaryCommunityTopicToJSONTyped,
 } from './PrimaryCommunityTopic';
 import type { CommunityActions } from './CommunityActions';
 import {
     CommunityActionsFromJSON,
     CommunityActionsFromJSONTyped,
     CommunityActionsToJSON,
+    CommunityActionsToJSONTyped,
 } from './CommunityActions';
 import type { TypeName } from './TypeName';
 import {
     TypeNameFromJSON,
     TypeNameFromJSONTyped,
     TypeNameToJSON,
+    TypeNameToJSONTyped,
 } from './TypeName';
 import type { CommunityJoinRequestsResult } from './CommunityJoinRequestsResult';
 import {
     CommunityJoinRequestsResultFromJSON,
     CommunityJoinRequestsResultFromJSONTyped,
     CommunityJoinRequestsResultToJSON,
+    CommunityJoinRequestsResultToJSONTyped,
 } from './CommunityJoinRequestsResult';
 import type { CommunityInvitesResult } from './CommunityInvitesResult';
 import {
     CommunityInvitesResultFromJSON,
     CommunityInvitesResultFromJSONTyped,
     CommunityInvitesResultToJSON,
+    CommunityInvitesResultToJSONTyped,
 } from './CommunityInvitesResult';
 import type { CommunityRule } from './CommunityRule';
 import {
     CommunityRuleFromJSON,
     CommunityRuleFromJSONTyped,
     CommunityRuleToJSON,
+    CommunityRuleToJSONTyped,
 } from './CommunityRule';
 import type { CommunityUrls } from './CommunityUrls';
 import {
     CommunityUrlsFromJSON,
     CommunityUrlsFromJSONTyped,
     CommunityUrlsToJSON,
+    CommunityUrlsToJSONTyped,
 } from './CommunityUrls';
 import type { UserResults } from './UserResults';
 import {
     UserResultsFromJSON,
     UserResultsFromJSONTyped,
     UserResultsToJSON,
+    UserResultsToJSONTyped,
 } from './UserResults';
 
 /**
@@ -231,7 +239,8 @@ export interface CommunityData {
  * @export
  */
 export const CommunityDataInvitesPolicyEnum = {
-    MemberInvitesAllowed: 'MemberInvitesAllowed'
+    MemberInvitesAllowed: 'MemberInvitesAllowed',
+    ModeratorInvitesAllowed: 'ModeratorInvitesAllowed'
 } as const;
 export type CommunityDataInvitesPolicyEnum = typeof CommunityDataInvitesPolicyEnum[keyof typeof CommunityDataInvitesPolicyEnum];
 
@@ -239,7 +248,8 @@ export type CommunityDataInvitesPolicyEnum = typeof CommunityDataInvitesPolicyEn
  * @export
  */
 export const CommunityDataJoinPolicyEnum = {
-    Open: 'Open'
+    Open: 'Open',
+    RestrictedJoinRequestsRequireModeratorApproval: 'RestrictedJoinRequestsRequireModeratorApproval'
 } as const;
 export type CommunityDataJoinPolicyEnum = typeof CommunityDataJoinPolicyEnum[keyof typeof CommunityDataJoinPolicyEnum];
 
@@ -315,10 +325,15 @@ export function CommunityDataFromJSONTyped(json: any, ignoreDiscriminator: boole
     };
 }
 
-export function CommunityDataToJSON(value?: CommunityData | null): any {
+export function CommunityDataToJSON(json: any): CommunityData {
+    return CommunityDataToJSONTyped(json, false);
+}
+
+export function CommunityDataToJSONTyped(value?: CommunityData | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         '__typename': TypeNameToJSON(value['typename']),

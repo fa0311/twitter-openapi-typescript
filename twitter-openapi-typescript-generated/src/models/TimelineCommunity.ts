@@ -18,6 +18,7 @@ import {
     TypeNameFromJSON,
     TypeNameFromJSONTyped,
     TypeNameToJSON,
+    TypeNameToJSONTyped,
 } from './TypeName';
 
 /**
@@ -59,10 +60,15 @@ export function TimelineCommunityFromJSONTyped(json: any, ignoreDiscriminator: b
     };
 }
 
-export function TimelineCommunityToJSON(value?: TimelineCommunity | null): any {
+export function TimelineCommunityToJSON(json: any): TimelineCommunity {
+    return TimelineCommunityToJSONTyped(json, false);
+}
+
+export function TimelineCommunityToJSONTyped(value?: TimelineCommunity | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
             ...value,

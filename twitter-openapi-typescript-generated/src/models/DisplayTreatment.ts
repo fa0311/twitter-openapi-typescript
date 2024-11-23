@@ -56,10 +56,15 @@ export function DisplayTreatmentFromJSONTyped(json: any, ignoreDiscriminator: bo
     };
 }
 
-export function DisplayTreatmentToJSON(value?: DisplayTreatment | null): any {
+export function DisplayTreatmentToJSON(json: any): DisplayTreatment {
+    return DisplayTreatmentToJSONTyped(json, false);
+}
+
+export function DisplayTreatmentToJSONTyped(value?: DisplayTreatment | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'actionText': value['actionText'],

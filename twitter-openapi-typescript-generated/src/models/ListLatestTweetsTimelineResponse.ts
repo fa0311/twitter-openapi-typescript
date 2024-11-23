@@ -18,12 +18,14 @@ import {
     ListTweetsTimelineDataFromJSON,
     ListTweetsTimelineDataFromJSONTyped,
     ListTweetsTimelineDataToJSON,
+    ListTweetsTimelineDataToJSONTyped,
 } from './ListTweetsTimelineData';
 import type { ErrorResponse } from './ErrorResponse';
 import {
     ErrorResponseFromJSON,
     ErrorResponseFromJSONTyped,
     ErrorResponseToJSON,
+    ErrorResponseToJSONTyped,
 } from './ErrorResponse';
 
 /**
@@ -69,10 +71,15 @@ export function ListLatestTweetsTimelineResponseFromJSONTyped(json: any, ignoreD
     };
 }
 
-export function ListLatestTweetsTimelineResponseToJSON(value?: ListLatestTweetsTimelineResponse | null): any {
+export function ListLatestTweetsTimelineResponseToJSON(json: any): ListLatestTweetsTimelineResponse {
+    return ListLatestTweetsTimelineResponseToJSONTyped(json, false);
+}
+
+export function ListLatestTweetsTimelineResponseToJSONTyped(value?: ListLatestTweetsTimelineResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'data': ListTweetsTimelineDataToJSON(value['data']),

@@ -49,10 +49,15 @@ export function MediaStatsFromJSONTyped(json: any, ignoreDiscriminator: boolean)
     };
 }
 
-export function MediaStatsToJSON(value?: MediaStats | null): any {
+export function MediaStatsToJSON(json: any): MediaStats {
+    return MediaStatsToJSONTyped(json, false);
+}
+
+export function MediaStatsToJSONTyped(value?: MediaStats | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'viewCount': value['viewCount'],

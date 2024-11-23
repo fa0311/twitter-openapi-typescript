@@ -49,10 +49,15 @@ export function AdditionalMediaInfoCallToActionsUrlFromJSONTyped(json: any, igno
     };
 }
 
-export function AdditionalMediaInfoCallToActionsUrlToJSON(value?: AdditionalMediaInfoCallToActionsUrl | null): any {
+export function AdditionalMediaInfoCallToActionsUrlToJSON(json: any): AdditionalMediaInfoCallToActionsUrl {
+    return AdditionalMediaInfoCallToActionsUrlToJSONTyped(json, false);
+}
+
+export function AdditionalMediaInfoCallToActionsUrlToJSONTyped(value?: AdditionalMediaInfoCallToActionsUrl | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'url': value['url'],

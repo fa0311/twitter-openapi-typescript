@@ -64,10 +64,15 @@ export function CommunityRuleFromJSONTyped(json: any, ignoreDiscriminator: boole
     };
 }
 
-export function CommunityRuleToJSON(value?: CommunityRule | null): any {
+export function CommunityRuleToJSON(json: any): CommunityRule {
+    return CommunityRuleToJSONTyped(json, false);
+}
+
+export function CommunityRuleToJSONTyped(value?: CommunityRule | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'description': value['description'],

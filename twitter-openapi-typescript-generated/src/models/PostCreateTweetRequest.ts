@@ -18,12 +18,14 @@ import {
     PostCreateTweetRequestFeaturesFromJSON,
     PostCreateTweetRequestFeaturesFromJSONTyped,
     PostCreateTweetRequestFeaturesToJSON,
+    PostCreateTweetRequestFeaturesToJSONTyped,
 } from './PostCreateTweetRequestFeatures';
 import type { PostCreateTweetRequestVariables } from './PostCreateTweetRequestVariables';
 import {
     PostCreateTweetRequestVariablesFromJSON,
     PostCreateTweetRequestVariablesFromJSONTyped,
     PostCreateTweetRequestVariablesToJSON,
+    PostCreateTweetRequestVariablesToJSONTyped,
 } from './PostCreateTweetRequestVariables';
 
 /**
@@ -78,10 +80,15 @@ export function PostCreateTweetRequestFromJSONTyped(json: any, ignoreDiscriminat
     };
 }
 
-export function PostCreateTweetRequestToJSON(value?: PostCreateTweetRequest | null): any {
+export function PostCreateTweetRequestToJSON(json: any): PostCreateTweetRequest {
+    return PostCreateTweetRequestToJSONTyped(json, false);
+}
+
+export function PostCreateTweetRequestToJSONTyped(value?: PostCreateTweetRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'features': PostCreateTweetRequestFeaturesToJSON(value['features']),

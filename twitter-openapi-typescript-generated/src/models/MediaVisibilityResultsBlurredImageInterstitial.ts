@@ -18,6 +18,7 @@ import {
     TweetInterstitialTextFromJSON,
     TweetInterstitialTextFromJSONTyped,
     TweetInterstitialTextToJSON,
+    TweetInterstitialTextToJSONTyped,
 } from './TweetInterstitialText';
 
 /**
@@ -72,10 +73,15 @@ export function MediaVisibilityResultsBlurredImageInterstitialFromJSONTyped(json
     };
 }
 
-export function MediaVisibilityResultsBlurredImageInterstitialToJSON(value?: MediaVisibilityResultsBlurredImageInterstitial | null): any {
+export function MediaVisibilityResultsBlurredImageInterstitialToJSON(json: any): MediaVisibilityResultsBlurredImageInterstitial {
+    return MediaVisibilityResultsBlurredImageInterstitialToJSONTyped(json, false);
+}
+
+export function MediaVisibilityResultsBlurredImageInterstitialToJSONTyped(value?: MediaVisibilityResultsBlurredImageInterstitial | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'opacity': value['opacity'],

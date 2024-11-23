@@ -49,10 +49,15 @@ export function ArticleMetadataFromJSONTyped(json: any, ignoreDiscriminator: boo
     };
 }
 
-export function ArticleMetadataToJSON(value?: ArticleMetadata | null): any {
+export function ArticleMetadataToJSON(json: any): ArticleMetadata {
+    return ArticleMetadataToJSONTyped(json, false);
+}
+
+export function ArticleMetadataToJSONTyped(value?: ArticleMetadata | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'first_published_at_secs': value['firstPublishedAtSecs'],

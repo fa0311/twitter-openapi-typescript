@@ -18,12 +18,14 @@ import {
     InstructionTypeFromJSON,
     InstructionTypeFromJSONTyped,
     InstructionTypeToJSON,
+    InstructionTypeToJSONTyped,
 } from './InstructionType';
 import type { TimelineAddEntry } from './TimelineAddEntry';
 import {
     TimelineAddEntryFromJSON,
     TimelineAddEntryFromJSONTyped,
     TimelineAddEntryToJSON,
+    TimelineAddEntryToJSONTyped,
 } from './TimelineAddEntry';
 
 /**
@@ -80,10 +82,15 @@ export function TimelineReplaceEntryFromJSONTyped(json: any, ignoreDiscriminator
     };
 }
 
-export function TimelineReplaceEntryToJSON(value?: TimelineReplaceEntry | null): any {
+export function TimelineReplaceEntryToJSON(json: any): TimelineReplaceEntry {
+    return TimelineReplaceEntryToJSONTyped(json, false);
+}
+
+export function TimelineReplaceEntryToJSONTyped(value?: TimelineReplaceEntry | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'entry': TimelineAddEntryToJSON(value['entry']),

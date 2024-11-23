@@ -61,10 +61,15 @@ export function ConversationControlFromJSONTyped(json: any, ignoreDiscriminator:
     };
 }
 
-export function ConversationControlToJSON(value?: ConversationControl | null): any {
+export function ConversationControlToJSON(json: any): ConversationControl {
+    return ConversationControlToJSONTyped(json, false);
+}
+
+export function ConversationControlToJSONTyped(value?: ConversationControl | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'mode': value['mode'],

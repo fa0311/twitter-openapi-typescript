@@ -51,3 +51,7 @@ export function CursorTypeToJSON(value?: CursorType | null): any {
     return value as any;
 }
 
+export function CursorTypeToJSONTyped(value: any, ignoreDiscriminator: boolean): CursorType {
+    return value as CursorType;
+}
+

@@ -49,10 +49,15 @@ export function UserValueFromJSONTyped(json: any, ignoreDiscriminator: boolean):
     };
 }
 
-export function UserValueToJSON(value?: UserValue | null): any {
+export function UserValueToJSON(json: any): UserValue {
+    return UserValueToJSONTyped(json, false);
+}
+
+export function UserValueToJSONTyped(value?: UserValue | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'id_str': value['idStr'],

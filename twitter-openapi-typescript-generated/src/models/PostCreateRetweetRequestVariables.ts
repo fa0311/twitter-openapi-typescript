@@ -57,10 +57,15 @@ export function PostCreateRetweetRequestVariablesFromJSONTyped(json: any, ignore
     };
 }
 
-export function PostCreateRetweetRequestVariablesToJSON(value?: PostCreateRetweetRequestVariables | null): any {
+export function PostCreateRetweetRequestVariablesToJSON(json: any): PostCreateRetweetRequestVariables {
+    return PostCreateRetweetRequestVariablesToJSONTyped(json, false);
+}
+
+export function PostCreateRetweetRequestVariablesToJSONTyped(value?: PostCreateRetweetRequestVariables | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'dark_request': value['darkRequest'],

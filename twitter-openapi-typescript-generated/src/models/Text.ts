@@ -18,6 +18,7 @@ import {
     TextEntityFromJSON,
     TextEntityFromJSONTyped,
     TextEntityToJSON,
+    TextEntityToJSONTyped,
 } from './TextEntity';
 
 /**
@@ -64,10 +65,15 @@ export function TextFromJSONTyped(json: any, ignoreDiscriminator: boolean): Text
     };
 }
 
-export function TextToJSON(value?: Text | null): any {
+export function TextToJSON(json: any): Text {
+    return TextToJSONTyped(json, false);
+}
+
+export function TextToJSONTyped(value?: Text | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'entities': ((value['entities'] as Array<any>).map(TextEntityToJSON)),

@@ -18,6 +18,7 @@ import {
     PostCreateBookmarkRequestVariablesFromJSON,
     PostCreateBookmarkRequestVariablesFromJSONTyped,
     PostCreateBookmarkRequestVariablesToJSON,
+    PostCreateBookmarkRequestVariablesToJSONTyped,
 } from './PostCreateBookmarkRequestVariables';
 
 /**
@@ -64,10 +65,15 @@ export function PostCreateBookmarkRequestFromJSONTyped(json: any, ignoreDiscrimi
     };
 }
 
-export function PostCreateBookmarkRequestToJSON(value?: PostCreateBookmarkRequest | null): any {
+export function PostCreateBookmarkRequestToJSON(json: any): PostCreateBookmarkRequest {
+    return PostCreateBookmarkRequestToJSONTyped(json, false);
+}
+
+export function PostCreateBookmarkRequestToJSONTyped(value?: PostCreateBookmarkRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'queryId': value['queryId'],

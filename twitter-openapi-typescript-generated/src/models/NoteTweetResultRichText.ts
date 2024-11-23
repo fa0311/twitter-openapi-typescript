@@ -18,6 +18,7 @@ import {
     NoteTweetResultRichTextTagFromJSON,
     NoteTweetResultRichTextTagFromJSONTyped,
     NoteTweetResultRichTextTagToJSON,
+    NoteTweetResultRichTextTagToJSONTyped,
 } from './NoteTweetResultRichTextTag';
 
 /**
@@ -56,10 +57,15 @@ export function NoteTweetResultRichTextFromJSONTyped(json: any, ignoreDiscrimina
     };
 }
 
-export function NoteTweetResultRichTextToJSON(value?: NoteTweetResultRichText | null): any {
+export function NoteTweetResultRichTextToJSON(json: any): NoteTweetResultRichText {
+    return NoteTweetResultRichTextToJSONTyped(json, false);
+}
+
+export function NoteTweetResultRichTextToJSONTyped(value?: NoteTweetResultRichText | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'richtext_tags': ((value['richtextTags'] as Array<any>).map(NoteTweetResultRichTextTagToJSON)),

@@ -57,10 +57,15 @@ export function PrimaryCommunityTopicFromJSONTyped(json: any, ignoreDiscriminato
     };
 }
 
-export function PrimaryCommunityTopicToJSON(value?: PrimaryCommunityTopic | null): any {
+export function PrimaryCommunityTopicToJSON(json: any): PrimaryCommunityTopic {
+    return PrimaryCommunityTopicToJSONTyped(json, false);
+}
+
+export function PrimaryCommunityTopicToJSONTyped(value?: PrimaryCommunityTopic | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'topic_id': value['topicId'],

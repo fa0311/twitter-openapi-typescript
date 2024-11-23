@@ -18,24 +18,28 @@ import {
     BirdwatchPivotFooterFromJSON,
     BirdwatchPivotFooterFromJSONTyped,
     BirdwatchPivotFooterToJSON,
+    BirdwatchPivotFooterToJSONTyped,
 } from './BirdwatchPivotFooter';
 import type { BirdwatchPivotSubtitle } from './BirdwatchPivotSubtitle';
 import {
     BirdwatchPivotSubtitleFromJSON,
     BirdwatchPivotSubtitleFromJSONTyped,
     BirdwatchPivotSubtitleToJSON,
+    BirdwatchPivotSubtitleToJSONTyped,
 } from './BirdwatchPivotSubtitle';
 import type { BirdwatchPivotNote } from './BirdwatchPivotNote';
 import {
     BirdwatchPivotNoteFromJSON,
     BirdwatchPivotNoteFromJSONTyped,
     BirdwatchPivotNoteToJSON,
+    BirdwatchPivotNoteToJSONTyped,
 } from './BirdwatchPivotNote';
 import type { BirdwatchPivotCallToAction } from './BirdwatchPivotCallToAction';
 import {
     BirdwatchPivotCallToActionFromJSON,
     BirdwatchPivotCallToActionFromJSONTyped,
     BirdwatchPivotCallToActionToJSON,
+    BirdwatchPivotCallToActionToJSONTyped,
 } from './BirdwatchPivotCallToAction';
 
 /**
@@ -61,7 +65,7 @@ export interface BirdwatchPivot {
      * @type {BirdwatchPivotFooter}
      * @memberof BirdwatchPivot
      */
-    footer: BirdwatchPivotFooter;
+    footer?: BirdwatchPivotFooter;
     /**
      * 
      * @type {string}
@@ -73,19 +77,19 @@ export interface BirdwatchPivot {
      * @type {BirdwatchPivotNote}
      * @memberof BirdwatchPivot
      */
-    note: BirdwatchPivotNote;
+    note?: BirdwatchPivotNote;
     /**
      * 
      * @type {string}
      * @memberof BirdwatchPivot
      */
-    shorttitle: string;
+    shorttitle?: string;
     /**
      * 
      * @type {BirdwatchPivotSubtitle}
      * @memberof BirdwatchPivot
      */
-    subtitle: BirdwatchPivotSubtitle;
+    subtitle?: BirdwatchPivotSubtitle;
     /**
      * 
      * @type {string}
@@ -113,7 +117,8 @@ export type BirdwatchPivotIconTypeEnum = typeof BirdwatchPivotIconTypeEnum[keyof
  * @export
  */
 export const BirdwatchPivotVisualStyleEnum = {
-    Default: 'Default'
+    Default: 'Default',
+    Tentative: 'Tentative'
 } as const;
 export type BirdwatchPivotVisualStyleEnum = typeof BirdwatchPivotVisualStyleEnum[keyof typeof BirdwatchPivotVisualStyleEnum];
 
@@ -123,11 +128,7 @@ export type BirdwatchPivotVisualStyleEnum = typeof BirdwatchPivotVisualStyleEnum
  */
 export function instanceOfBirdwatchPivot(value: object): value is BirdwatchPivot {
     if (!('destinationUrl' in value) || value['destinationUrl'] === undefined) return false;
-    if (!('footer' in value) || value['footer'] === undefined) return false;
     if (!('iconType' in value) || value['iconType'] === undefined) return false;
-    if (!('note' in value) || value['note'] === undefined) return false;
-    if (!('shorttitle' in value) || value['shorttitle'] === undefined) return false;
-    if (!('subtitle' in value) || value['subtitle'] === undefined) return false;
     if (!('title' in value) || value['title'] === undefined) return false;
     return true;
 }
@@ -144,20 +145,25 @@ export function BirdwatchPivotFromJSONTyped(json: any, ignoreDiscriminator: bool
         
         'callToAction': json['callToAction'] == null ? undefined : BirdwatchPivotCallToActionFromJSON(json['callToAction']),
         'destinationUrl': json['destinationUrl'],
-        'footer': BirdwatchPivotFooterFromJSON(json['footer']),
+        'footer': json['footer'] == null ? undefined : BirdwatchPivotFooterFromJSON(json['footer']),
         'iconType': json['iconType'],
-        'note': BirdwatchPivotNoteFromJSON(json['note']),
-        'shorttitle': json['shorttitle'],
-        'subtitle': BirdwatchPivotSubtitleFromJSON(json['subtitle']),
+        'note': json['note'] == null ? undefined : BirdwatchPivotNoteFromJSON(json['note']),
+        'shorttitle': json['shorttitle'] == null ? undefined : json['shorttitle'],
+        'subtitle': json['subtitle'] == null ? undefined : BirdwatchPivotSubtitleFromJSON(json['subtitle']),
         'title': json['title'],
         'visualStyle': json['visualStyle'] == null ? undefined : json['visualStyle'],
     };
 }
 
-export function BirdwatchPivotToJSON(value?: BirdwatchPivot | null): any {
+export function BirdwatchPivotToJSON(json: any): BirdwatchPivot {
+    return BirdwatchPivotToJSONTyped(json, false);
+}
+
+export function BirdwatchPivotToJSONTyped(value?: BirdwatchPivot | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'callToAction': BirdwatchPivotCallToActionToJSON(value['callToAction']),

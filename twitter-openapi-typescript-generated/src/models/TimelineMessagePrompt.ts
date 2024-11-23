@@ -18,6 +18,7 @@ import {
     TypeNameFromJSON,
     TypeNameFromJSONTyped,
     TypeNameToJSON,
+    TypeNameToJSONTyped,
 } from './TypeName';
 
 /**
@@ -59,10 +60,15 @@ export function TimelineMessagePromptFromJSONTyped(json: any, ignoreDiscriminato
     };
 }
 
-export function TimelineMessagePromptToJSON(value?: TimelineMessagePrompt | null): any {
+export function TimelineMessagePromptToJSON(json: any): TimelineMessagePrompt {
+    return TimelineMessagePromptToJSONTyped(json, false);
+}
+
+export function TimelineMessagePromptToJSONTyped(value?: TimelineMessagePrompt | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
             ...value,

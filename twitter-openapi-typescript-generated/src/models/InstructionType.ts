@@ -53,3 +53,7 @@ export function InstructionTypeToJSON(value?: InstructionType | null): any {
     return value as any;
 }
 
+export function InstructionTypeToJSONTyped(value: any, ignoreDiscriminator: boolean): InstructionType {
+    return value as InstructionType;
+}
+

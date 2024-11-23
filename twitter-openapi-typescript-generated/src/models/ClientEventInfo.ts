@@ -62,10 +62,15 @@ export function ClientEventInfoFromJSONTyped(json: any, ignoreDiscriminator: boo
     };
 }
 
-export function ClientEventInfoToJSON(value?: ClientEventInfo | null): any {
+export function ClientEventInfoToJSON(json: any): ClientEventInfo {
+    return ClientEventInfoToJSONTyped(json, false);
+}
+
+export function ClientEventInfoToJSONTyped(value?: ClientEventInfo | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'component': value['component'],

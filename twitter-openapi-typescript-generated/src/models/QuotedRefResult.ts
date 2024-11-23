@@ -18,6 +18,7 @@ import {
     TweetUnionFromJSON,
     TweetUnionFromJSONTyped,
     TweetUnionToJSON,
+    TweetUnionToJSONTyped,
 } from './TweetUnion';
 
 /**
@@ -55,10 +56,15 @@ export function QuotedRefResultFromJSONTyped(json: any, ignoreDiscriminator: boo
     };
 }
 
-export function QuotedRefResultToJSON(value?: QuotedRefResult | null): any {
+export function QuotedRefResultToJSON(json: any): QuotedRefResult {
+    return QuotedRefResultToJSONTyped(json, false);
+}
+
+export function QuotedRefResultToJSONTyped(value?: QuotedRefResult | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'result': TweetUnionToJSON(value['result']),

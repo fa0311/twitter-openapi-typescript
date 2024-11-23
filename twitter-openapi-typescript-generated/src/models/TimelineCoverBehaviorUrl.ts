@@ -67,10 +67,15 @@ export function TimelineCoverBehaviorUrlFromJSONTyped(json: any, ignoreDiscrimin
     };
 }
 
-export function TimelineCoverBehaviorUrlToJSON(value?: TimelineCoverBehaviorUrl | null): any {
+export function TimelineCoverBehaviorUrlToJSON(json: any): TimelineCoverBehaviorUrl {
+    return TimelineCoverBehaviorUrlToJSONTyped(json, false);
+}
+
+export function TimelineCoverBehaviorUrlToJSONTyped(value?: TimelineCoverBehaviorUrl | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'url': value['url'],

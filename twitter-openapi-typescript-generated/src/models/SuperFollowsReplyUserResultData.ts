@@ -18,12 +18,14 @@ import {
     TypeNameFromJSON,
     TypeNameFromJSONTyped,
     TypeNameToJSON,
+    TypeNameToJSONTyped,
 } from './TypeName';
 import type { SuperFollowsReplyUserResultLegacy } from './SuperFollowsReplyUserResultLegacy';
 import {
     SuperFollowsReplyUserResultLegacyFromJSON,
     SuperFollowsReplyUserResultLegacyFromJSONTyped,
     SuperFollowsReplyUserResultLegacyToJSON,
+    SuperFollowsReplyUserResultLegacyToJSONTyped,
 } from './SuperFollowsReplyUserResultLegacy';
 
 /**
@@ -72,10 +74,15 @@ export function SuperFollowsReplyUserResultDataFromJSONTyped(json: any, ignoreDi
     };
 }
 
-export function SuperFollowsReplyUserResultDataToJSON(value?: SuperFollowsReplyUserResultData | null): any {
+export function SuperFollowsReplyUserResultDataToJSON(json: any): SuperFollowsReplyUserResultData {
+    return SuperFollowsReplyUserResultDataToJSONTyped(json, false);
+}
+
+export function SuperFollowsReplyUserResultDataToJSONTyped(value?: SuperFollowsReplyUserResultData | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         '__typename': TypeNameToJSON(value['typename']),

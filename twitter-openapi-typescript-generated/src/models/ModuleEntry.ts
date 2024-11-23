@@ -18,18 +18,21 @@ import {
     ItemContentUnionFromJSON,
     ItemContentUnionFromJSONTyped,
     ItemContentUnionToJSON,
+    ItemContentUnionToJSONTyped,
 } from './ItemContentUnion';
 import type { ClientEventInfo } from './ClientEventInfo';
 import {
     ClientEventInfoFromJSON,
     ClientEventInfoFromJSONTyped,
     ClientEventInfoToJSON,
+    ClientEventInfoToJSONTyped,
 } from './ClientEventInfo';
 import type { FeedbackInfo } from './FeedbackInfo';
 import {
     FeedbackInfoFromJSON,
     FeedbackInfoFromJSONTyped,
     FeedbackInfoToJSON,
+    FeedbackInfoToJSONTyped,
 } from './FeedbackInfo';
 
 /**
@@ -82,10 +85,15 @@ export function ModuleEntryFromJSONTyped(json: any, ignoreDiscriminator: boolean
     };
 }
 
-export function ModuleEntryToJSON(value?: ModuleEntry | null): any {
+export function ModuleEntryToJSON(json: any): ModuleEntry {
+    return ModuleEntryToJSONTyped(json, false);
+}
+
+export function ModuleEntryToJSONTyped(value?: ModuleEntry | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'clientEventInfo': ClientEventInfoToJSON(value['clientEventInfo']),

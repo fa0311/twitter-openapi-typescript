@@ -65,10 +65,15 @@ export function UserProfessionalCategoryFromJSONTyped(json: any, ignoreDiscrimin
     };
 }
 
-export function UserProfessionalCategoryToJSON(value?: UserProfessionalCategory | null): any {
+export function UserProfessionalCategoryToJSON(json: any): UserProfessionalCategory {
+    return UserProfessionalCategoryToJSONTyped(json, false);
+}
+
+export function UserProfessionalCategoryToJSONTyped(value?: UserProfessionalCategory | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'icon_name': value['iconName'],

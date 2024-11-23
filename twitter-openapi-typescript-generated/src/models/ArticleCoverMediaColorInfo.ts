@@ -18,6 +18,7 @@ import {
     ArticleCoverMediaColorInfoPaletteFromJSON,
     ArticleCoverMediaColorInfoPaletteFromJSONTyped,
     ArticleCoverMediaColorInfoPaletteToJSON,
+    ArticleCoverMediaColorInfoPaletteToJSONTyped,
 } from './ArticleCoverMediaColorInfoPalette';
 
 /**
@@ -56,10 +57,15 @@ export function ArticleCoverMediaColorInfoFromJSONTyped(json: any, ignoreDiscrim
     };
 }
 
-export function ArticleCoverMediaColorInfoToJSON(value?: ArticleCoverMediaColorInfo | null): any {
+export function ArticleCoverMediaColorInfoToJSON(json: any): ArticleCoverMediaColorInfo {
+    return ArticleCoverMediaColorInfoToJSONTyped(json, false);
+}
+
+export function ArticleCoverMediaColorInfoToJSONTyped(value?: ArticleCoverMediaColorInfo | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'palette': ((value['palette'] as Array<any>).map(ArticleCoverMediaColorInfoPaletteToJSON)),

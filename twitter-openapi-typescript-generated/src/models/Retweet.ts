@@ -18,6 +18,7 @@ import {
     RetweetLegacyFromJSON,
     RetweetLegacyFromJSONTyped,
     RetweetLegacyToJSON,
+    RetweetLegacyToJSONTyped,
 } from './RetweetLegacy';
 
 /**
@@ -64,10 +65,15 @@ export function RetweetFromJSONTyped(json: any, ignoreDiscriminator: boolean): R
     };
 }
 
-export function RetweetToJSON(value?: Retweet | null): any {
+export function RetweetToJSON(json: any): Retweet {
+    return RetweetToJSONTyped(json, false);
+}
+
+export function RetweetToJSONTyped(value?: Retweet | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'legacy': RetweetLegacyToJSON(value['legacy']),

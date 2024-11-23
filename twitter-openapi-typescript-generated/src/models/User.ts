@@ -18,42 +18,49 @@ import {
     UserHighlightsInfoFromJSON,
     UserHighlightsInfoFromJSONTyped,
     UserHighlightsInfoToJSON,
+    UserHighlightsInfoToJSONTyped,
 } from './UserHighlightsInfo';
 import type { TypeName } from './TypeName';
 import {
     TypeNameFromJSON,
     TypeNameFromJSONTyped,
     TypeNameToJSON,
+    TypeNameToJSONTyped,
 } from './TypeName';
 import type { UserVerificationInfo } from './UserVerificationInfo';
 import {
     UserVerificationInfoFromJSON,
     UserVerificationInfoFromJSONTyped,
     UserVerificationInfoToJSON,
+    UserVerificationInfoToJSONTyped,
 } from './UserVerificationInfo';
 import type { UserLegacy } from './UserLegacy';
 import {
     UserLegacyFromJSON,
     UserLegacyFromJSONTyped,
     UserLegacyToJSON,
+    UserLegacyToJSONTyped,
 } from './UserLegacy';
 import type { UserLegacyExtendedProfile } from './UserLegacyExtendedProfile';
 import {
     UserLegacyExtendedProfileFromJSON,
     UserLegacyExtendedProfileFromJSONTyped,
     UserLegacyExtendedProfileToJSON,
+    UserLegacyExtendedProfileToJSONTyped,
 } from './UserLegacyExtendedProfile';
 import type { UserTipJarSettings } from './UserTipJarSettings';
 import {
     UserTipJarSettingsFromJSON,
     UserTipJarSettingsFromJSONTyped,
     UserTipJarSettingsToJSON,
+    UserTipJarSettingsToJSONTyped,
 } from './UserTipJarSettings';
 import type { UserProfessional } from './UserProfessional';
 import {
     UserProfessionalFromJSON,
     UserProfessionalFromJSONTyped,
     UserProfessionalToJSON,
+    UserProfessionalToJSONTyped,
 } from './UserProfessional';
 
 /**
@@ -73,7 +80,7 @@ export interface User {
      * @type {{ [key: string]: any; }}
      * @memberof User
      */
-    affiliatesHighlightedLabel: { [key: string]: any; };
+    affiliatesHighlightedLabel?: { [key: string]: any; };
     /**
      * 
      * @type {{ [key: string]: any; }}
@@ -219,7 +226,6 @@ export type UserProfileImageShapeEnum = typeof UserProfileImageShapeEnum[keyof t
  */
 export function instanceOfUser(value: object): value is User {
     if (!('typename' in value) || value['typename'] === undefined) return false;
-    if (!('affiliatesHighlightedLabel' in value) || value['affiliatesHighlightedLabel'] === undefined) return false;
     if (!('id' in value) || value['id'] === undefined) return false;
     if (!('isBlueVerified' in value) || value['isBlueVerified'] === undefined) return false;
     if (!('legacy' in value) || value['legacy'] === undefined) return false;
@@ -239,7 +245,7 @@ export function UserFromJSONTyped(json: any, ignoreDiscriminator: boolean): User
     return {
         
         'typename': TypeNameFromJSON(json['__typename']),
-        'affiliatesHighlightedLabel': json['affiliates_highlighted_label'],
+        'affiliatesHighlightedLabel': json['affiliates_highlighted_label'] == null ? undefined : json['affiliates_highlighted_label'],
         'businessAccount': json['business_account'] == null ? undefined : json['business_account'],
         'creatorSubscriptionsCount': json['creator_subscriptions_count'] == null ? undefined : json['creator_subscriptions_count'],
         'hasGraduatedAccess': json['has_graduated_access'] == null ? undefined : json['has_graduated_access'],
@@ -264,10 +270,15 @@ export function UserFromJSONTyped(json: any, ignoreDiscriminator: boolean): User
     };
 }
 
-export function UserToJSON(value?: User | null): any {
+export function UserToJSON(json: any): User {
+    return UserToJSONTyped(json, false);
+}
+
+export function UserToJSONTyped(value?: User | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         '__typename': TypeNameToJSON(value['typename']),

@@ -18,18 +18,21 @@ import {
     InstructionTypeFromJSON,
     InstructionTypeFromJSONTyped,
     InstructionTypeToJSON,
+    InstructionTypeToJSONTyped,
 } from './InstructionType';
 import type { ClientEventInfo } from './ClientEventInfo';
 import {
     ClientEventInfoFromJSON,
     ClientEventInfoFromJSONTyped,
     ClientEventInfoToJSON,
+    ClientEventInfoToJSONTyped,
 } from './ClientEventInfo';
 import type { TimelineHalfCover } from './TimelineHalfCover';
 import {
     TimelineHalfCoverFromJSON,
     TimelineHalfCoverFromJSONTyped,
     TimelineHalfCoverToJSON,
+    TimelineHalfCoverToJSONTyped,
 } from './TimelineHalfCover';
 
 /**
@@ -86,10 +89,15 @@ export function TimelineShowCoverFromJSONTyped(json: any, ignoreDiscriminator: b
     };
 }
 
-export function TimelineShowCoverToJSON(value?: TimelineShowCover | null): any {
+export function TimelineShowCoverToJSON(json: any): TimelineShowCover {
+    return TimelineShowCoverToJSONTyped(json, false);
+}
+
+export function TimelineShowCoverToJSONTyped(value?: TimelineShowCover | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'clientEventInfo': ClientEventInfoToJSON(value['clientEventInfo']),

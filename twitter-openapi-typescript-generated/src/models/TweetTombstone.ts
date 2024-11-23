@@ -18,6 +18,7 @@ import {
     TypeNameFromJSON,
     TypeNameFromJSONTyped,
     TypeNameToJSON,
+    TypeNameToJSONTyped,
 } from './TypeName';
 
 /**
@@ -59,10 +60,15 @@ export function TweetTombstoneFromJSONTyped(json: any, ignoreDiscriminator: bool
     };
 }
 
-export function TweetTombstoneToJSON(value?: TweetTombstone | null): any {
+export function TweetTombstoneToJSON(json: any): TweetTombstone {
+    return TweetTombstoneToJSONTyped(json, false);
+}
+
+export function TweetTombstoneToJSONTyped(value?: TweetTombstone | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
             ...value,

@@ -18,24 +18,28 @@ import {
     TypeNameFromJSON,
     TypeNameFromJSONTyped,
     TypeNameToJSON,
+    TypeNameToJSONTyped,
 } from './TypeName';
 import type { CursorType } from './CursorType';
 import {
     CursorTypeFromJSON,
     CursorTypeFromJSONTyped,
     CursorTypeToJSON,
+    CursorTypeToJSONTyped,
 } from './CursorType';
 import type { DisplayTreatment } from './DisplayTreatment';
 import {
     DisplayTreatmentFromJSON,
     DisplayTreatmentFromJSONTyped,
     DisplayTreatmentToJSON,
+    DisplayTreatmentToJSONTyped,
 } from './DisplayTreatment';
 import type { ContentEntryType } from './ContentEntryType';
 import {
     ContentEntryTypeFromJSON,
     ContentEntryTypeFromJSONTyped,
     ContentEntryTypeToJSON,
+    ContentEntryTypeToJSONTyped,
 } from './ContentEntryType';
 
 /**
@@ -120,10 +124,15 @@ export function TimelineTimelineCursorFromJSONTyped(json: any, ignoreDiscriminat
     };
 }
 
-export function TimelineTimelineCursorToJSON(value?: TimelineTimelineCursor | null): any {
+export function TimelineTimelineCursorToJSON(json: any): TimelineTimelineCursor {
+    return TimelineTimelineCursorToJSONTyped(json, false);
+}
+
+export function TimelineTimelineCursorToJSONTyped(value?: TimelineTimelineCursor | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         '__typename': TypeNameToJSON(value['typename']),

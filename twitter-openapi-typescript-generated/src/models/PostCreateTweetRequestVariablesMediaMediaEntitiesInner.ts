@@ -57,10 +57,15 @@ export function PostCreateTweetRequestVariablesMediaMediaEntitiesInnerFromJSONTy
     };
 }
 
-export function PostCreateTweetRequestVariablesMediaMediaEntitiesInnerToJSON(value?: PostCreateTweetRequestVariablesMediaMediaEntitiesInner | null): any {
+export function PostCreateTweetRequestVariablesMediaMediaEntitiesInnerToJSON(json: any): PostCreateTweetRequestVariablesMediaMediaEntitiesInner {
+    return PostCreateTweetRequestVariablesMediaMediaEntitiesInnerToJSONTyped(json, false);
+}
+
+export function PostCreateTweetRequestVariablesMediaMediaEntitiesInnerToJSONTyped(value?: PostCreateTweetRequestVariablesMediaMediaEntitiesInner | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'media_id': value['mediaId'],

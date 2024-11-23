@@ -18,12 +18,14 @@ import {
     TypeNameFromJSON,
     TypeNameFromJSONTyped,
     TypeNameToJSON,
+    TypeNameToJSONTyped,
 } from './TypeName';
 import type { TimelineV2 } from './TimelineV2';
 import {
     TimelineV2FromJSON,
     TimelineV2FromJSONTyped,
     TimelineV2ToJSON,
+    TimelineV2ToJSONTyped,
 } from './TimelineV2';
 
 /**
@@ -72,10 +74,15 @@ export function UserTweetsResultFromJSONTyped(json: any, ignoreDiscriminator: bo
     };
 }
 
-export function UserTweetsResultToJSON(value?: UserTweetsResult | null): any {
+export function UserTweetsResultToJSON(json: any): UserTweetsResult {
+    return UserTweetsResultToJSONTyped(json, false);
+}
+
+export function UserTweetsResultToJSONTyped(value?: UserTweetsResult | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         '__typename': TypeNameToJSON(value['typename']),

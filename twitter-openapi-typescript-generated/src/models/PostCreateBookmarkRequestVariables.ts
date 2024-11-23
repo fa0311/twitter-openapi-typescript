@@ -49,10 +49,15 @@ export function PostCreateBookmarkRequestVariablesFromJSONTyped(json: any, ignor
     };
 }
 
-export function PostCreateBookmarkRequestVariablesToJSON(value?: PostCreateBookmarkRequestVariables | null): any {
+export function PostCreateBookmarkRequestVariablesToJSON(json: any): PostCreateBookmarkRequestVariables {
+    return PostCreateBookmarkRequestVariablesToJSONTyped(json, false);
+}
+
+export function PostCreateBookmarkRequestVariablesToJSONTyped(value?: PostCreateBookmarkRequestVariables | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'tweet_id': value['tweetId'],

@@ -18,6 +18,7 @@ import {
     UrtEndpointRequestParamsFromJSON,
     UrtEndpointRequestParamsFromJSONTyped,
     UrtEndpointRequestParamsToJSON,
+    UrtEndpointRequestParamsToJSONTyped,
 } from './UrtEndpointRequestParams';
 
 /**
@@ -64,10 +65,15 @@ export function UrtEndpointOptionsFromJSONTyped(json: any, ignoreDiscriminator: 
     };
 }
 
-export function UrtEndpointOptionsToJSON(value?: UrtEndpointOptions | null): any {
+export function UrtEndpointOptionsToJSON(json: any): UrtEndpointOptions {
+    return UrtEndpointOptionsToJSONTyped(json, false);
+}
+
+export function UrtEndpointOptionsToJSONTyped(value?: UrtEndpointOptions | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'requestParams': ((value['requestParams'] as Array<any>).map(UrtEndpointRequestParamsToJSON)),

@@ -18,6 +18,7 @@ import {
     MediaExtendedFromJSON,
     MediaExtendedFromJSONTyped,
     MediaExtendedToJSON,
+    MediaExtendedToJSONTyped,
 } from './MediaExtended';
 
 /**
@@ -56,10 +57,15 @@ export function ExtendedEntitiesFromJSONTyped(json: any, ignoreDiscriminator: bo
     };
 }
 
-export function ExtendedEntitiesToJSON(value?: ExtendedEntities | null): any {
+export function ExtendedEntitiesToJSON(json: any): ExtendedEntities {
+    return ExtendedEntitiesToJSONTyped(json, false);
+}
+
+export function ExtendedEntitiesToJSONTyped(value?: ExtendedEntities | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'media': ((value['media'] as Array<any>).map(MediaExtendedToJSON)),

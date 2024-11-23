@@ -18,6 +18,7 @@ import {
     TextHighlightFromJSON,
     TextHighlightFromJSONTyped,
     TextHighlightToJSON,
+    TextHighlightToJSONTyped,
 } from './TextHighlight';
 
 /**
@@ -56,10 +57,15 @@ export function HighlightFromJSONTyped(json: any, ignoreDiscriminator: boolean):
     };
 }
 
-export function HighlightToJSON(value?: Highlight | null): any {
+export function HighlightToJSON(json: any): Highlight {
+    return HighlightToJSONTyped(json, false);
+}
+
+export function HighlightToJSONTyped(value?: Highlight | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'textHighlights': ((value['textHighlights'] as Array<any>).map(TextHighlightToJSON)),

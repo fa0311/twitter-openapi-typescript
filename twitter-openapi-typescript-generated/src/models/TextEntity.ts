@@ -18,6 +18,7 @@ import {
     TextEntityRefFromJSON,
     TextEntityRefFromJSONTyped,
     TextEntityRefToJSON,
+    TextEntityRefToJSONTyped,
 } from './TextEntityRef';
 
 /**
@@ -72,10 +73,15 @@ export function TextEntityFromJSONTyped(json: any, ignoreDiscriminator: boolean)
     };
 }
 
-export function TextEntityToJSON(value?: TextEntity | null): any {
+export function TextEntityToJSON(json: any): TextEntity {
+    return TextEntityToJSONTyped(json, false);
+}
+
+export function TextEntityToJSONTyped(value?: TextEntity | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'fromIndex': value['fromIndex'],

@@ -65,10 +65,15 @@ export function TimestampFromJSONTyped(json: any, ignoreDiscriminator: boolean):
     };
 }
 
-export function TimestampToJSON(value?: Timestamp | null): any {
+export function TimestampToJSON(json: any): Timestamp {
+    return TimestampToJSONTyped(json, false);
+}
+
+export function TimestampToJSONTyped(value?: Timestamp | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'indices': value['indices'],

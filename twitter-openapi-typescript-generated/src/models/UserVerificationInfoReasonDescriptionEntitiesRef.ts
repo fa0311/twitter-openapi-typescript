@@ -67,10 +67,15 @@ export function UserVerificationInfoReasonDescriptionEntitiesRefFromJSONTyped(js
     };
 }
 
-export function UserVerificationInfoReasonDescriptionEntitiesRefToJSON(value?: UserVerificationInfoReasonDescriptionEntitiesRef | null): any {
+export function UserVerificationInfoReasonDescriptionEntitiesRefToJSON(json: any): UserVerificationInfoReasonDescriptionEntitiesRef {
+    return UserVerificationInfoReasonDescriptionEntitiesRefToJSONTyped(json, false);
+}
+
+export function UserVerificationInfoReasonDescriptionEntitiesRefToJSONTyped(value?: UserVerificationInfoReasonDescriptionEntitiesRef | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'url': value['url'],

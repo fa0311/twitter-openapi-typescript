@@ -48,10 +48,15 @@ export function UnfavoriteTweetFromJSONTyped(json: any, ignoreDiscriminator: boo
     };
 }
 
-export function UnfavoriteTweetToJSON(value?: UnfavoriteTweet | null): any {
+export function UnfavoriteTweetToJSON(json: any): UnfavoriteTweet {
+    return UnfavoriteTweetToJSONTyped(json, false);
+}
+
+export function UnfavoriteTweetToJSONTyped(value?: UnfavoriteTweet | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'unfavorite_tweet': value['unfavoriteTweet'],

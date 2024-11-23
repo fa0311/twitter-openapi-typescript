@@ -18,6 +18,7 @@ import {
     InstructionUnionFromJSON,
     InstructionUnionFromJSONTyped,
     InstructionUnionToJSON,
+    InstructionUnionToJSONTyped,
 } from './InstructionUnion';
 
 /**
@@ -70,10 +71,15 @@ export function TimelineFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
     };
 }
 
-export function TimelineToJSON(value?: Timeline | null): any {
+export function TimelineToJSON(json: any): Timeline {
+    return TimelineToJSONTyped(json, false);
+}
+
+export function TimelineToJSONTyped(value?: Timeline | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'instructions': ((value['instructions'] as Array<any>).map(InstructionUnionToJSON)),

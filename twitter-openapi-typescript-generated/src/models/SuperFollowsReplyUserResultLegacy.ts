@@ -49,10 +49,15 @@ export function SuperFollowsReplyUserResultLegacyFromJSONTyped(json: any, ignore
     };
 }
 
-export function SuperFollowsReplyUserResultLegacyToJSON(value?: SuperFollowsReplyUserResultLegacy | null): any {
+export function SuperFollowsReplyUserResultLegacyToJSON(json: any): SuperFollowsReplyUserResultLegacy {
+    return SuperFollowsReplyUserResultLegacyToJSONTyped(json, false);
+}
+
+export function SuperFollowsReplyUserResultLegacyToJSONTyped(value?: SuperFollowsReplyUserResultLegacy | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'screen_name': value['screenName'],

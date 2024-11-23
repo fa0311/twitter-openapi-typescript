@@ -18,6 +18,7 @@ import {
     UserResultByScreenNameResultFromJSON,
     UserResultByScreenNameResultFromJSONTyped,
     UserResultByScreenNameResultToJSON,
+    UserResultByScreenNameResultToJSONTyped,
 } from './UserResultByScreenNameResult';
 
 /**
@@ -64,10 +65,15 @@ export function UserResultByScreenNameFromJSONTyped(json: any, ignoreDiscriminat
     };
 }
 
-export function UserResultByScreenNameToJSON(value?: UserResultByScreenName | null): any {
+export function UserResultByScreenNameToJSON(json: any): UserResultByScreenName {
+    return UserResultByScreenNameToJSONTyped(json, false);
+}
+
+export function UserResultByScreenNameToJSONTyped(value?: UserResultByScreenName | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'id': value['id'],

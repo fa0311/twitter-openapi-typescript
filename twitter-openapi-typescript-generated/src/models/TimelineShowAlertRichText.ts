@@ -55,10 +55,15 @@ export function TimelineShowAlertRichTextFromJSONTyped(json: any, ignoreDiscrimi
     };
 }
 
-export function TimelineShowAlertRichTextToJSON(value?: TimelineShowAlertRichText | null): any {
+export function TimelineShowAlertRichTextToJSON(json: any): TimelineShowAlertRichText {
+    return TimelineShowAlertRichTextToJSONTyped(json, false);
+}
+
+export function TimelineShowAlertRichTextToJSONTyped(value?: TimelineShowAlertRichText | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'entities': value['entities'],

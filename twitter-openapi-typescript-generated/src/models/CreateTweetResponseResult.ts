@@ -18,6 +18,7 @@ import {
     CreateTweetFromJSON,
     CreateTweetFromJSONTyped,
     CreateTweetToJSON,
+    CreateTweetToJSONTyped,
 } from './CreateTweet';
 
 /**
@@ -56,10 +57,15 @@ export function CreateTweetResponseResultFromJSONTyped(json: any, ignoreDiscrimi
     };
 }
 
-export function CreateTweetResponseResultToJSON(value?: CreateTweetResponseResult | null): any {
+export function CreateTweetResponseResultToJSON(json: any): CreateTweetResponseResult {
+    return CreateTweetResponseResultToJSONTyped(json, false);
+}
+
+export function CreateTweetResponseResultToJSONTyped(value?: CreateTweetResponseResult | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'tweet_results': CreateTweetToJSON(value['tweetResults']),

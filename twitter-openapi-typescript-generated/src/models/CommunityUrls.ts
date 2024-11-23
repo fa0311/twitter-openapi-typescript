@@ -18,6 +18,7 @@ import {
     CommunityUrlsPermalinkFromJSON,
     CommunityUrlsPermalinkFromJSONTyped,
     CommunityUrlsPermalinkToJSON,
+    CommunityUrlsPermalinkToJSONTyped,
 } from './CommunityUrlsPermalink';
 
 /**
@@ -56,10 +57,15 @@ export function CommunityUrlsFromJSONTyped(json: any, ignoreDiscriminator: boole
     };
 }
 
-export function CommunityUrlsToJSON(value?: CommunityUrls | null): any {
+export function CommunityUrlsToJSON(json: any): CommunityUrls {
+    return CommunityUrlsToJSONTyped(json, false);
+}
+
+export function CommunityUrlsToJSONTyped(value?: CommunityUrls | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'permalink': CommunityUrlsPermalinkToJSON(value['permalink']),

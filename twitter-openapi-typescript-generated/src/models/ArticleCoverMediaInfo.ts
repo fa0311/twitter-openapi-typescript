@@ -18,12 +18,14 @@ import {
     TypeNameFromJSON,
     TypeNameFromJSONTyped,
     TypeNameToJSON,
+    TypeNameToJSONTyped,
 } from './TypeName';
 import type { ArticleCoverMediaColorInfo } from './ArticleCoverMediaColorInfo';
 import {
     ArticleCoverMediaColorInfoFromJSON,
     ArticleCoverMediaColorInfoFromJSONTyped,
     ArticleCoverMediaColorInfoToJSON,
+    ArticleCoverMediaColorInfoToJSONTyped,
 } from './ArticleCoverMediaColorInfo';
 
 /**
@@ -95,10 +97,15 @@ export function ArticleCoverMediaInfoFromJSONTyped(json: any, ignoreDiscriminato
     };
 }
 
-export function ArticleCoverMediaInfoToJSON(value?: ArticleCoverMediaInfo | null): any {
+export function ArticleCoverMediaInfoToJSON(json: any): ArticleCoverMediaInfo {
+    return ArticleCoverMediaInfoToJSONTyped(json, false);
+}
+
+export function ArticleCoverMediaInfoToJSONTyped(value?: ArticleCoverMediaInfo | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         '__typename': TypeNameToJSON(value['typename']),

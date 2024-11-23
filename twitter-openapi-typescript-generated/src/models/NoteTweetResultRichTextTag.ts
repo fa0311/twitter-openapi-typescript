@@ -76,10 +76,15 @@ export function NoteTweetResultRichTextTagFromJSONTyped(json: any, ignoreDiscrim
     };
 }
 
-export function NoteTweetResultRichTextTagToJSON(value?: NoteTweetResultRichTextTag | null): any {
+export function NoteTweetResultRichTextTagToJSON(json: any): NoteTweetResultRichTextTag {
+    return NoteTweetResultRichTextTagToJSONTyped(json, false);
+}
+
+export function NoteTweetResultRichTextTagToJSONTyped(value?: NoteTweetResultRichTextTag | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'from_index': value['fromIndex'],

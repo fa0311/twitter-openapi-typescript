@@ -18,6 +18,7 @@ import {
     BirdwatchEntityFromJSON,
     BirdwatchEntityFromJSONTyped,
     BirdwatchEntityToJSON,
+    BirdwatchEntityToJSONTyped,
 } from './BirdwatchEntity';
 
 /**
@@ -64,10 +65,15 @@ export function BirdwatchPivotFooterFromJSONTyped(json: any, ignoreDiscriminator
     };
 }
 
-export function BirdwatchPivotFooterToJSON(value?: BirdwatchPivotFooter | null): any {
+export function BirdwatchPivotFooterToJSON(json: any): BirdwatchPivotFooter {
+    return BirdwatchPivotFooterToJSONTyped(json, false);
+}
+
+export function BirdwatchPivotFooterToJSONTyped(value?: BirdwatchPivotFooter | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'entities': ((value['entities'] as Array<any>).map(BirdwatchEntityToJSON)),

@@ -65,10 +65,15 @@ export function BirdwatchPivotCallToActionFromJSONTyped(json: any, ignoreDiscrim
     };
 }
 
-export function BirdwatchPivotCallToActionToJSON(value?: BirdwatchPivotCallToAction | null): any {
+export function BirdwatchPivotCallToActionToJSON(json: any): BirdwatchPivotCallToAction {
+    return BirdwatchPivotCallToActionToJSONTyped(json, false);
+}
+
+export function BirdwatchPivotCallToActionToJSONTyped(value?: BirdwatchPivotCallToAction | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'destinationUrl': value['destinationUrl'],

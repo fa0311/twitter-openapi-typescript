@@ -18,6 +18,7 @@ import {
     PostCreateRetweetRequestVariablesFromJSON,
     PostCreateRetweetRequestVariablesFromJSONTyped,
     PostCreateRetweetRequestVariablesToJSON,
+    PostCreateRetweetRequestVariablesToJSONTyped,
 } from './PostCreateRetweetRequestVariables';
 
 /**
@@ -64,10 +65,15 @@ export function PostUnfavoriteTweetRequestFromJSONTyped(json: any, ignoreDiscrim
     };
 }
 
-export function PostUnfavoriteTweetRequestToJSON(value?: PostUnfavoriteTweetRequest | null): any {
+export function PostUnfavoriteTweetRequestToJSON(json: any): PostUnfavoriteTweetRequest {
+    return PostUnfavoriteTweetRequestToJSONTyped(json, false);
+}
+
+export function PostUnfavoriteTweetRequestToJSONTyped(value?: PostUnfavoriteTweetRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'queryId': value['queryId'],

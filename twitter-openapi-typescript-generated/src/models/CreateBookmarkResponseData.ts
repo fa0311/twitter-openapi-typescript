@@ -48,10 +48,15 @@ export function CreateBookmarkResponseDataFromJSONTyped(json: any, ignoreDiscrim
     };
 }
 
-export function CreateBookmarkResponseDataToJSON(value?: CreateBookmarkResponseData | null): any {
+export function CreateBookmarkResponseDataToJSON(json: any): CreateBookmarkResponseData {
+    return CreateBookmarkResponseDataToJSONTyped(json, false);
+}
+
+export function CreateBookmarkResponseDataToJSONTyped(value?: CreateBookmarkResponseData | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'tweet_bookmark_put': value['tweetBookmarkPut'],

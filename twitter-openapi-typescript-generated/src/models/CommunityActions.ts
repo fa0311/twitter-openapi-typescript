@@ -13,35 +13,40 @@
  */
 
 import { mapValues } from '../runtime';
-import type { CommunityJoinActionResult } from './CommunityJoinActionResult';
+import type { CommunityJoinActionResultUnion } from './CommunityJoinActionResultUnion';
 import {
-    CommunityJoinActionResultFromJSON,
-    CommunityJoinActionResultFromJSONTyped,
-    CommunityJoinActionResultToJSON,
-} from './CommunityJoinActionResult';
+    CommunityJoinActionResultUnionFromJSON,
+    CommunityJoinActionResultUnionFromJSONTyped,
+    CommunityJoinActionResultUnionToJSON,
+    CommunityJoinActionResultUnionToJSONTyped,
+} from './CommunityJoinActionResultUnion';
 import type { CommunityDeleteActionResult } from './CommunityDeleteActionResult';
 import {
     CommunityDeleteActionResultFromJSON,
     CommunityDeleteActionResultFromJSONTyped,
     CommunityDeleteActionResultToJSON,
+    CommunityDeleteActionResultToJSONTyped,
 } from './CommunityDeleteActionResult';
 import type { CommunityPinActionResult } from './CommunityPinActionResult';
 import {
     CommunityPinActionResultFromJSON,
     CommunityPinActionResultFromJSONTyped,
     CommunityPinActionResultToJSON,
+    CommunityPinActionResultToJSONTyped,
 } from './CommunityPinActionResult';
 import type { CommunityLeaveActionResult } from './CommunityLeaveActionResult';
 import {
     CommunityLeaveActionResultFromJSON,
     CommunityLeaveActionResultFromJSONTyped,
     CommunityLeaveActionResultToJSON,
+    CommunityLeaveActionResultToJSONTyped,
 } from './CommunityLeaveActionResult';
 import type { CommunityUnpinActionResult } from './CommunityUnpinActionResult';
 import {
     CommunityUnpinActionResultFromJSON,
     CommunityUnpinActionResultFromJSONTyped,
     CommunityUnpinActionResultToJSON,
+    CommunityUnpinActionResultToJSONTyped,
 } from './CommunityUnpinActionResult';
 
 /**
@@ -58,10 +63,10 @@ export interface CommunityActions {
     deleteActionResult?: CommunityDeleteActionResult;
     /**
      * 
-     * @type {CommunityJoinActionResult}
+     * @type {CommunityJoinActionResultUnion}
      * @memberof CommunityActions
      */
-    joinActionResult?: CommunityJoinActionResult;
+    joinActionResult?: CommunityJoinActionResultUnion;
     /**
      * 
      * @type {CommunityLeaveActionResult}
@@ -100,21 +105,26 @@ export function CommunityActionsFromJSONTyped(json: any, ignoreDiscriminator: bo
     return {
         
         'deleteActionResult': json['delete_action_result'] == null ? undefined : CommunityDeleteActionResultFromJSON(json['delete_action_result']),
-        'joinActionResult': json['join_action_result'] == null ? undefined : CommunityJoinActionResultFromJSON(json['join_action_result']),
+        'joinActionResult': json['join_action_result'] == null ? undefined : CommunityJoinActionResultUnionFromJSON(json['join_action_result']),
         'leaveActionResult': json['leave_action_result'] == null ? undefined : CommunityLeaveActionResultFromJSON(json['leave_action_result']),
         'pinActionResult': json['pin_action_result'] == null ? undefined : CommunityPinActionResultFromJSON(json['pin_action_result']),
         'unpinActionResult': json['unpin_action_result'] == null ? undefined : CommunityUnpinActionResultFromJSON(json['unpin_action_result']),
     };
 }
 
-export function CommunityActionsToJSON(value?: CommunityActions | null): any {
+export function CommunityActionsToJSON(json: any): CommunityActions {
+    return CommunityActionsToJSONTyped(json, false);
+}
+
+export function CommunityActionsToJSONTyped(value?: CommunityActions | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'delete_action_result': CommunityDeleteActionResultToJSON(value['deleteActionResult']),
-        'join_action_result': CommunityJoinActionResultToJSON(value['joinActionResult']),
+        'join_action_result': CommunityJoinActionResultUnionToJSON(value['joinActionResult']),
         'leave_action_result': CommunityLeaveActionResultToJSON(value['leaveActionResult']),
         'pin_action_result': CommunityPinActionResultToJSON(value['pinActionResult']),
         'unpin_action_result': CommunityUnpinActionResultToJSON(value['unpinActionResult']),

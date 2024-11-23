@@ -57,10 +57,15 @@ export function NoteTweetResultMediaInlineMediaFromJSONTyped(json: any, ignoreDi
     };
 }
 
-export function NoteTweetResultMediaInlineMediaToJSON(value?: NoteTweetResultMediaInlineMedia | null): any {
+export function NoteTweetResultMediaInlineMediaToJSON(json: any): NoteTweetResultMediaInlineMedia {
+    return NoteTweetResultMediaInlineMediaToJSONTyped(json, false);
+}
+
+export function NoteTweetResultMediaInlineMediaToJSONTyped(value?: NoteTweetResultMediaInlineMedia | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'index': value['index'],

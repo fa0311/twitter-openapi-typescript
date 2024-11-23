@@ -18,48 +18,56 @@ import {
     AdditionalMediaInfoFromJSON,
     AdditionalMediaInfoFromJSONTyped,
     AdditionalMediaInfoToJSON,
+    AdditionalMediaInfoToJSONTyped,
 } from './AdditionalMediaInfo';
 import type { AllowDownloadStatus } from './AllowDownloadStatus';
 import {
     AllowDownloadStatusFromJSON,
     AllowDownloadStatusFromJSONTyped,
     AllowDownloadStatusToJSON,
+    AllowDownloadStatusToJSONTyped,
 } from './AllowDownloadStatus';
 import type { MediaResults } from './MediaResults';
 import {
     MediaResultsFromJSON,
     MediaResultsFromJSONTyped,
     MediaResultsToJSON,
+    MediaResultsToJSONTyped,
 } from './MediaResults';
 import type { SensitiveMediaWarning } from './SensitiveMediaWarning';
 import {
     SensitiveMediaWarningFromJSON,
     SensitiveMediaWarningFromJSONTyped,
     SensitiveMediaWarningToJSON,
+    SensitiveMediaWarningToJSONTyped,
 } from './SensitiveMediaWarning';
 import type { ExtMediaAvailability } from './ExtMediaAvailability';
 import {
     ExtMediaAvailabilityFromJSON,
     ExtMediaAvailabilityFromJSONTyped,
     ExtMediaAvailabilityToJSON,
+    ExtMediaAvailabilityToJSONTyped,
 } from './ExtMediaAvailability';
 import type { MediaVideoInfo } from './MediaVideoInfo';
 import {
     MediaVideoInfoFromJSON,
     MediaVideoInfoFromJSONTyped,
     MediaVideoInfoToJSON,
+    MediaVideoInfoToJSONTyped,
 } from './MediaVideoInfo';
 import type { MediaSizes } from './MediaSizes';
 import {
     MediaSizesFromJSON,
     MediaSizesFromJSONTyped,
     MediaSizesToJSON,
+    MediaSizesToJSONTyped,
 } from './MediaSizes';
 import type { MediaOriginalInfo } from './MediaOriginalInfo';
 import {
     MediaOriginalInfoFromJSON,
     MediaOriginalInfoFromJSONTyped,
     MediaOriginalInfoToJSON,
+    MediaOriginalInfoToJSONTyped,
 } from './MediaOriginalInfo';
 
 /**
@@ -253,10 +261,15 @@ export function MediaFromJSONTyped(json: any, ignoreDiscriminator: boolean): Med
     };
 }
 
-export function MediaToJSON(value?: Media | null): any {
+export function MediaToJSON(json: any): Media {
+    return MediaToJSONTyped(json, false);
+}
+
+export function MediaToJSONTyped(value?: Media | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'additional_media_info': AdditionalMediaInfoToJSON(value['additionalMediaInfo']),

@@ -18,6 +18,7 @@ import {
     SuperFollowsReplyUserResultDataFromJSON,
     SuperFollowsReplyUserResultDataFromJSONTyped,
     SuperFollowsReplyUserResultDataToJSON,
+    SuperFollowsReplyUserResultDataToJSONTyped,
 } from './SuperFollowsReplyUserResultData';
 
 /**
@@ -56,10 +57,15 @@ export function SuperFollowsReplyUserResultFromJSONTyped(json: any, ignoreDiscri
     };
 }
 
-export function SuperFollowsReplyUserResultToJSON(value?: SuperFollowsReplyUserResult | null): any {
+export function SuperFollowsReplyUserResultToJSON(json: any): SuperFollowsReplyUserResult {
+    return SuperFollowsReplyUserResultToJSONTyped(json, false);
+}
+
+export function SuperFollowsReplyUserResultToJSONTyped(value?: SuperFollowsReplyUserResult | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'result': SuperFollowsReplyUserResultDataToJSON(value['result']),

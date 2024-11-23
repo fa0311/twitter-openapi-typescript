@@ -18,12 +18,14 @@ import {
     ErrorResponseFromJSON,
     ErrorResponseFromJSONTyped,
     ErrorResponseToJSON,
+    ErrorResponseToJSONTyped,
 } from './ErrorResponse';
 import type { TweetDetailResponseData } from './TweetDetailResponseData';
 import {
     TweetDetailResponseDataFromJSON,
     TweetDetailResponseDataFromJSONTyped,
     TweetDetailResponseDataToJSON,
+    TweetDetailResponseDataToJSONTyped,
 } from './TweetDetailResponseData';
 
 /**
@@ -69,10 +71,15 @@ export function TweetDetailResponseFromJSONTyped(json: any, ignoreDiscriminator:
     };
 }
 
-export function TweetDetailResponseToJSON(value?: TweetDetailResponse | null): any {
+export function TweetDetailResponseToJSON(json: any): TweetDetailResponse {
+    return TweetDetailResponseToJSONTyped(json, false);
+}
+
+export function TweetDetailResponseToJSONTyped(value?: TweetDetailResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'data': TweetDetailResponseDataToJSON(value['data']),

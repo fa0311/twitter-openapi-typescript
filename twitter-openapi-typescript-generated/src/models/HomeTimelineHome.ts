@@ -18,6 +18,7 @@ import {
     TimelineFromJSON,
     TimelineFromJSONTyped,
     TimelineToJSON,
+    TimelineToJSONTyped,
 } from './Timeline';
 
 /**
@@ -56,10 +57,15 @@ export function HomeTimelineHomeFromJSONTyped(json: any, ignoreDiscriminator: bo
     };
 }
 
-export function HomeTimelineHomeToJSON(value?: HomeTimelineHome | null): any {
+export function HomeTimelineHomeToJSON(json: any): HomeTimelineHome {
+    return HomeTimelineHomeToJSONTyped(json, false);
+}
+
+export function HomeTimelineHomeToJSONTyped(value?: HomeTimelineHome | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'home_timeline_urt': TimelineToJSON(value['homeTimelineUrt']),

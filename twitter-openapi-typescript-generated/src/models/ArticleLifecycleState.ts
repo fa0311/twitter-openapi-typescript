@@ -49,10 +49,15 @@ export function ArticleLifecycleStateFromJSONTyped(json: any, ignoreDiscriminato
     };
 }
 
-export function ArticleLifecycleStateToJSON(value?: ArticleLifecycleState | null): any {
+export function ArticleLifecycleStateToJSON(json: any): ArticleLifecycleState {
+    return ArticleLifecycleStateToJSONTyped(json, false);
+}
+
+export function ArticleLifecycleStateToJSONTyped(value?: ArticleLifecycleState | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'modified_at_secs': value['modifiedAtSecs'],

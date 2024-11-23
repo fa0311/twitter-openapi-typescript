@@ -18,18 +18,19 @@ import {
     TypeNameFromJSON,
     TypeNameFromJSONTyped,
     TypeNameToJSON,
+    TypeNameToJSONTyped,
 } from './TypeName';
 
 /**
  * 
  * @export
- * @interface CommunityJoinActionResult
+ * @interface CommunityJoinAction
  */
-export interface CommunityJoinActionResult {
+export interface CommunityJoinAction {
     /**
      * 
      * @type {TypeName}
-     * @memberof CommunityJoinActionResult
+     * @memberof CommunityJoinAction
      */
     typename: TypeName;
 }
@@ -37,18 +38,18 @@ export interface CommunityJoinActionResult {
 
 
 /**
- * Check if a given object implements the CommunityJoinActionResult interface.
+ * Check if a given object implements the CommunityJoinAction interface.
  */
-export function instanceOfCommunityJoinActionResult(value: object): value is CommunityJoinActionResult {
+export function instanceOfCommunityJoinAction(value: object): value is CommunityJoinAction {
     if (!('typename' in value) || value['typename'] === undefined) return false;
     return true;
 }
 
-export function CommunityJoinActionResultFromJSON(json: any): CommunityJoinActionResult {
-    return CommunityJoinActionResultFromJSONTyped(json, false);
+export function CommunityJoinActionFromJSON(json: any): CommunityJoinAction {
+    return CommunityJoinActionFromJSONTyped(json, false);
 }
 
-export function CommunityJoinActionResultFromJSONTyped(json: any, ignoreDiscriminator: boolean): CommunityJoinActionResult {
+export function CommunityJoinActionFromJSONTyped(json: any, ignoreDiscriminator: boolean): CommunityJoinAction {
     if (json == null) {
         return json;
     }
@@ -58,10 +59,15 @@ export function CommunityJoinActionResultFromJSONTyped(json: any, ignoreDiscrimi
     };
 }
 
-export function CommunityJoinActionResultToJSON(value?: CommunityJoinActionResult | null): any {
+export function CommunityJoinActionToJSON(json: any): CommunityJoinAction {
+    return CommunityJoinActionToJSONTyped(json, false);
+}
+
+export function CommunityJoinActionToJSONTyped(value?: CommunityJoinAction | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         '__typename': TypeNameToJSON(value['typename']),

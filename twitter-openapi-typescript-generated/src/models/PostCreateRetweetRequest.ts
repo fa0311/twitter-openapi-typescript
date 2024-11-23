@@ -18,6 +18,7 @@ import {
     PostCreateRetweetRequestVariablesFromJSON,
     PostCreateRetweetRequestVariablesFromJSONTyped,
     PostCreateRetweetRequestVariablesToJSON,
+    PostCreateRetweetRequestVariablesToJSONTyped,
 } from './PostCreateRetweetRequestVariables';
 
 /**
@@ -64,10 +65,15 @@ export function PostCreateRetweetRequestFromJSONTyped(json: any, ignoreDiscrimin
     };
 }
 
-export function PostCreateRetweetRequestToJSON(value?: PostCreateRetweetRequest | null): any {
+export function PostCreateRetweetRequestToJSON(json: any): PostCreateRetweetRequest {
+    return PostCreateRetweetRequestToJSONTyped(json, false);
+}
+
+export function PostCreateRetweetRequestToJSONTyped(value?: PostCreateRetweetRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'queryId': value['queryId'],

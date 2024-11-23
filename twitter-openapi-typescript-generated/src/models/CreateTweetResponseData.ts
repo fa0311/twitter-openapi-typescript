@@ -18,6 +18,7 @@ import {
     CreateTweetResponseResultFromJSON,
     CreateTweetResponseResultFromJSONTyped,
     CreateTweetResponseResultToJSON,
+    CreateTweetResponseResultToJSONTyped,
 } from './CreateTweetResponseResult';
 
 /**
@@ -55,10 +56,15 @@ export function CreateTweetResponseDataFromJSONTyped(json: any, ignoreDiscrimina
     };
 }
 
-export function CreateTweetResponseDataToJSON(value?: CreateTweetResponseData | null): any {
+export function CreateTweetResponseDataToJSON(json: any): CreateTweetResponseData {
+    return CreateTweetResponseDataToJSONTyped(json, false);
+}
+
+export function CreateTweetResponseDataToJSONTyped(value?: CreateTweetResponseData | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'create_tweet': CreateTweetResponseResultToJSON(value['createTweet']),

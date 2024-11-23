@@ -18,18 +18,21 @@ import {
     ArticleLifecycleStateFromJSON,
     ArticleLifecycleStateFromJSONTyped,
     ArticleLifecycleStateToJSON,
+    ArticleLifecycleStateToJSONTyped,
 } from './ArticleLifecycleState';
 import type { ArticleCoverMedia } from './ArticleCoverMedia';
 import {
     ArticleCoverMediaFromJSON,
     ArticleCoverMediaFromJSONTyped,
     ArticleCoverMediaToJSON,
+    ArticleCoverMediaToJSONTyped,
 } from './ArticleCoverMedia';
 import type { ArticleMetadata } from './ArticleMetadata';
 import {
     ArticleMetadataFromJSON,
     ArticleMetadataFromJSONTyped,
     ArticleMetadataToJSON,
+    ArticleMetadataToJSONTyped,
 } from './ArticleMetadata';
 
 /**
@@ -115,10 +118,15 @@ export function ArticleResultFromJSONTyped(json: any, ignoreDiscriminator: boole
     };
 }
 
-export function ArticleResultToJSON(value?: ArticleResult | null): any {
+export function ArticleResultToJSON(json: any): ArticleResult {
+    return ArticleResultToJSONTyped(json, false);
+}
+
+export function ArticleResultToJSONTyped(value?: ArticleResult | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'cover_media': ArticleCoverMediaToJSON(value['coverMedia']),

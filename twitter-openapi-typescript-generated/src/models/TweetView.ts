@@ -67,10 +67,15 @@ export function TweetViewFromJSONTyped(json: any, ignoreDiscriminator: boolean):
     };
 }
 
-export function TweetViewToJSON(value?: TweetView | null): any {
+export function TweetViewToJSON(json: any): TweetView {
+    return TweetViewToJSONTyped(json, false);
+}
+
+export function TweetViewToJSONTyped(value?: TweetView | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'count': value['count'],

@@ -18,6 +18,7 @@ import {
     PostCreateBookmarkRequestVariablesFromJSON,
     PostCreateBookmarkRequestVariablesFromJSONTyped,
     PostCreateBookmarkRequestVariablesToJSON,
+    PostCreateBookmarkRequestVariablesToJSONTyped,
 } from './PostCreateBookmarkRequestVariables';
 
 /**
@@ -64,10 +65,15 @@ export function PostFavoriteTweetRequestFromJSONTyped(json: any, ignoreDiscrimin
     };
 }
 
-export function PostFavoriteTweetRequestToJSON(value?: PostFavoriteTweetRequest | null): any {
+export function PostFavoriteTweetRequestToJSON(json: any): PostFavoriteTweetRequest {
+    return PostFavoriteTweetRequestToJSONTyped(json, false);
+}
+
+export function PostFavoriteTweetRequestToJSONTyped(value?: PostFavoriteTweetRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'queryId': value['queryId'],

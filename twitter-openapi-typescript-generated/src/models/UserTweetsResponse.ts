@@ -18,12 +18,14 @@ import {
     UserTweetsDataFromJSON,
     UserTweetsDataFromJSONTyped,
     UserTweetsDataToJSON,
+    UserTweetsDataToJSONTyped,
 } from './UserTweetsData';
 import type { ErrorResponse } from './ErrorResponse';
 import {
     ErrorResponseFromJSON,
     ErrorResponseFromJSONTyped,
     ErrorResponseToJSON,
+    ErrorResponseToJSONTyped,
 } from './ErrorResponse';
 
 /**
@@ -69,10 +71,15 @@ export function UserTweetsResponseFromJSONTyped(json: any, ignoreDiscriminator: 
     };
 }
 
-export function UserTweetsResponseToJSON(value?: UserTweetsResponse | null): any {
+export function UserTweetsResponseToJSON(json: any): UserTweetsResponse {
+    return UserTweetsResponseToJSONTyped(json, false);
+}
+
+export function UserTweetsResponseToJSONTyped(value?: UserTweetsResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'data': UserTweetsDataToJSON(value['data']),

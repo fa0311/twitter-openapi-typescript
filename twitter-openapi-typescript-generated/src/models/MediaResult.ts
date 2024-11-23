@@ -49,10 +49,15 @@ export function MediaResultFromJSONTyped(json: any, ignoreDiscriminator: boolean
     };
 }
 
-export function MediaResultToJSON(value?: MediaResult | null): any {
+export function MediaResultToJSON(json: any): MediaResult {
+    return MediaResultToJSONTyped(json, false);
+}
+
+export function MediaResultToJSONTyped(value?: MediaResult | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'media_key': value['mediaKey'],

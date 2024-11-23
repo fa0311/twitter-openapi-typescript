@@ -18,18 +18,21 @@ import {
     PostCreateTweetRequestVariablesReplyFromJSON,
     PostCreateTweetRequestVariablesReplyFromJSONTyped,
     PostCreateTweetRequestVariablesReplyToJSON,
+    PostCreateTweetRequestVariablesReplyToJSONTyped,
 } from './PostCreateTweetRequestVariablesReply';
 import type { PostCreateTweetRequestVariablesConversationControl } from './PostCreateTweetRequestVariablesConversationControl';
 import {
     PostCreateTweetRequestVariablesConversationControlFromJSON,
     PostCreateTweetRequestVariablesConversationControlFromJSONTyped,
     PostCreateTweetRequestVariablesConversationControlToJSON,
+    PostCreateTweetRequestVariablesConversationControlToJSONTyped,
 } from './PostCreateTweetRequestVariablesConversationControl';
 import type { PostCreateTweetRequestVariablesMedia } from './PostCreateTweetRequestVariablesMedia';
 import {
     PostCreateTweetRequestVariablesMediaFromJSON,
     PostCreateTweetRequestVariablesMediaFromJSONTyped,
     PostCreateTweetRequestVariablesMediaToJSON,
+    PostCreateTweetRequestVariablesMediaToJSONTyped,
 } from './PostCreateTweetRequestVariablesMedia';
 
 /**
@@ -120,10 +123,15 @@ export function PostCreateTweetRequestVariablesFromJSONTyped(json: any, ignoreDi
     };
 }
 
-export function PostCreateTweetRequestVariablesToJSON(value?: PostCreateTweetRequestVariables | null): any {
+export function PostCreateTweetRequestVariablesToJSON(json: any): PostCreateTweetRequestVariables {
+    return PostCreateTweetRequestVariablesToJSONTyped(json, false);
+}
+
+export function PostCreateTweetRequestVariablesToJSONTyped(value?: PostCreateTweetRequestVariables | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'attachment_url': value['attachmentUrl'],

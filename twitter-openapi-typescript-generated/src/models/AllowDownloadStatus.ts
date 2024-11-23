@@ -48,10 +48,15 @@ export function AllowDownloadStatusFromJSONTyped(json: any, ignoreDiscriminator:
     };
 }
 
-export function AllowDownloadStatusToJSON(value?: AllowDownloadStatus | null): any {
+export function AllowDownloadStatusToJSON(json: any): AllowDownloadStatus {
+    return AllowDownloadStatusToJSONTyped(json, false);
+}
+
+export function AllowDownloadStatusToJSONTyped(value?: AllowDownloadStatus | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'allow_download': value['allowDownload'],

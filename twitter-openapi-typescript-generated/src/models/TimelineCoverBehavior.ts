@@ -18,6 +18,7 @@ import {
     TimelineCoverBehaviorUrlFromJSON,
     TimelineCoverBehaviorUrlFromJSONTyped,
     TimelineCoverBehaviorUrlToJSON,
+    TimelineCoverBehaviorUrlToJSONTyped,
 } from './TimelineCoverBehaviorUrl';
 
 /**
@@ -74,10 +75,15 @@ export function TimelineCoverBehaviorFromJSONTyped(json: any, ignoreDiscriminato
     };
 }
 
-export function TimelineCoverBehaviorToJSON(value?: TimelineCoverBehavior | null): any {
+export function TimelineCoverBehaviorToJSON(json: any): TimelineCoverBehavior {
+    return TimelineCoverBehaviorToJSONTyped(json, false);
+}
+
+export function TimelineCoverBehaviorToJSONTyped(value?: TimelineCoverBehavior | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'type': value['type'],

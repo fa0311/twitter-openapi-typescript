@@ -18,6 +18,7 @@ import {
     FollowResponseUserFromJSON,
     FollowResponseUserFromJSONTyped,
     FollowResponseUserToJSON,
+    FollowResponseUserToJSONTyped,
 } from './FollowResponseUser';
 
 /**
@@ -55,10 +56,15 @@ export function FollowResponseDataFromJSONTyped(json: any, ignoreDiscriminator: 
     };
 }
 
-export function FollowResponseDataToJSON(value?: FollowResponseData | null): any {
+export function FollowResponseDataToJSON(json: any): FollowResponseData {
+    return FollowResponseDataToJSONTyped(json, false);
+}
+
+export function FollowResponseDataToJSONTyped(value?: FollowResponseData | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'user': FollowResponseUserToJSON(value['user']),

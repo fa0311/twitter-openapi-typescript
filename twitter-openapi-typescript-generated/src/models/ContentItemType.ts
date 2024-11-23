@@ -51,3 +51,7 @@ export function ContentItemTypeToJSON(value?: ContentItemType | null): any {
     return value as any;
 }
 
+export function ContentItemTypeToJSONTyped(value: any, ignoreDiscriminator: boolean): ContentItemType {
+    return value as ContentItemType;
+}
+

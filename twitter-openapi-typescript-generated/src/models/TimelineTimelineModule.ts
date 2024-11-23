@@ -18,30 +18,35 @@ import {
     ModuleItemFromJSON,
     ModuleItemFromJSONTyped,
     ModuleItemToJSON,
+    ModuleItemToJSONTyped,
 } from './ModuleItem';
 import type { TypeName } from './TypeName';
 import {
     TypeNameFromJSON,
     TypeNameFromJSONTyped,
     TypeNameToJSON,
+    TypeNameToJSONTyped,
 } from './TypeName';
 import type { DisplayType } from './DisplayType';
 import {
     DisplayTypeFromJSON,
     DisplayTypeFromJSONTyped,
     DisplayTypeToJSON,
+    DisplayTypeToJSONTyped,
 } from './DisplayType';
 import type { FeedbackInfo } from './FeedbackInfo';
 import {
     FeedbackInfoFromJSON,
     FeedbackInfoFromJSONTyped,
     FeedbackInfoToJSON,
+    FeedbackInfoToJSONTyped,
 } from './FeedbackInfo';
 import type { ContentEntryType } from './ContentEntryType';
 import {
     ContentEntryTypeFromJSON,
     ContentEntryTypeFromJSONTyped,
     ContentEntryTypeToJSON,
+    ContentEntryTypeToJSONTyped,
 } from './ContentEntryType';
 
 /**
@@ -141,10 +146,15 @@ export function TimelineTimelineModuleFromJSONTyped(json: any, ignoreDiscriminat
     };
 }
 
-export function TimelineTimelineModuleToJSON(value?: TimelineTimelineModule | null): any {
+export function TimelineTimelineModuleToJSON(json: any): TimelineTimelineModule {
+    return TimelineTimelineModuleToJSONTyped(json, false);
+}
+
+export function TimelineTimelineModuleToJSONTyped(value?: TimelineTimelineModule | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         '__typename': TypeNameToJSON(value['typename']),

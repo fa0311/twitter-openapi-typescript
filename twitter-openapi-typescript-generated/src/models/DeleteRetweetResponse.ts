@@ -18,12 +18,14 @@ import {
     DeleteRetweetResponseDataFromJSON,
     DeleteRetweetResponseDataFromJSONTyped,
     DeleteRetweetResponseDataToJSON,
+    DeleteRetweetResponseDataToJSONTyped,
 } from './DeleteRetweetResponseData';
 import type { ErrorResponse } from './ErrorResponse';
 import {
     ErrorResponseFromJSON,
     ErrorResponseFromJSONTyped,
     ErrorResponseToJSON,
+    ErrorResponseToJSONTyped,
 } from './ErrorResponse';
 
 /**
@@ -69,10 +71,15 @@ export function DeleteRetweetResponseFromJSONTyped(json: any, ignoreDiscriminato
     };
 }
 
-export function DeleteRetweetResponseToJSON(value?: DeleteRetweetResponse | null): any {
+export function DeleteRetweetResponseToJSON(json: any): DeleteRetweetResponse {
+    return DeleteRetweetResponseToJSONTyped(json, false);
+}
+
+export function DeleteRetweetResponseToJSONTyped(value?: DeleteRetweetResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'data': DeleteRetweetResponseDataToJSON(value['data']),

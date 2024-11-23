@@ -49,10 +49,15 @@ export function SelfThreadFromJSONTyped(json: any, ignoreDiscriminator: boolean)
     };
 }
 
-export function SelfThreadToJSON(value?: SelfThread | null): any {
+export function SelfThreadToJSON(json: any): SelfThread {
+    return SelfThreadToJSONTyped(json, false);
+}
+
+export function SelfThreadToJSONTyped(value?: SelfThread | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'id_str': value['idStr'],

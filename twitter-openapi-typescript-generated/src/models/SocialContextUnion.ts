@@ -52,15 +52,19 @@ export function SocialContextUnionFromJSONTyped(json: any, ignoreDiscriminator: 
     }
 }
 
-export function SocialContextUnionToJSON(value?: SocialContextUnion | null): any {
+export function SocialContextUnionToJSON(json: any): any {
+    return SocialContextUnionToJSONTyped(json, false);
+}
+
+export function SocialContextUnionToJSONTyped(value?: SocialContextUnion | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
     switch (value['type']) {
         case 'TimelineGeneralContext':
-            return TimelineGeneralContextToJSON(value);
+            return Object.assign({}, TimelineGeneralContextToJSON(value), { type: 'TimelineGeneralContext' } as const);
         case 'TimelineTopicContext':
-            return TimelineTopicContextToJSON(value);
+            return Object.assign({}, TimelineTopicContextToJSON(value), { type: 'TimelineTopicContext' } as const);
         default:
             throw new Error(`No variant of SocialContextUnion exists with 'type=${value['type']}'`);
     }

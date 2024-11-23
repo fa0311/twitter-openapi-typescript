@@ -73,10 +73,15 @@ export function MediaOriginalInfoFocusRectFromJSONTyped(json: any, ignoreDiscrim
     };
 }
 
-export function MediaOriginalInfoFocusRectToJSON(value?: MediaOriginalInfoFocusRect | null): any {
+export function MediaOriginalInfoFocusRectToJSON(json: any): MediaOriginalInfoFocusRect {
+    return MediaOriginalInfoFocusRectToJSONTyped(json, false);
+}
+
+export function MediaOriginalInfoFocusRectToJSONTyped(value?: MediaOriginalInfoFocusRect | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'h': value['h'],

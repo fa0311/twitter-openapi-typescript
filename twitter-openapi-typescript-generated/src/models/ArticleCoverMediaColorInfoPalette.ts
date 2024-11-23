@@ -18,6 +18,7 @@ import {
     ArticleCoverMediaColorInfoPaletteRGBFromJSON,
     ArticleCoverMediaColorInfoPaletteRGBFromJSONTyped,
     ArticleCoverMediaColorInfoPaletteRGBToJSON,
+    ArticleCoverMediaColorInfoPaletteRGBToJSONTyped,
 } from './ArticleCoverMediaColorInfoPaletteRGB';
 
 /**
@@ -64,10 +65,15 @@ export function ArticleCoverMediaColorInfoPaletteFromJSONTyped(json: any, ignore
     };
 }
 
-export function ArticleCoverMediaColorInfoPaletteToJSON(value?: ArticleCoverMediaColorInfoPalette | null): any {
+export function ArticleCoverMediaColorInfoPaletteToJSON(json: any): ArticleCoverMediaColorInfoPalette {
+    return ArticleCoverMediaColorInfoPaletteToJSONTyped(json, false);
+}
+
+export function ArticleCoverMediaColorInfoPaletteToJSONTyped(value?: ArticleCoverMediaColorInfoPalette | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'percentage': value['percentage'],

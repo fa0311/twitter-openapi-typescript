@@ -49,10 +49,15 @@ export function DeleteTweetResponseResultFromJSONTyped(json: any, ignoreDiscrimi
     };
 }
 
-export function DeleteTweetResponseResultToJSON(value?: DeleteTweetResponseResult | null): any {
+export function DeleteTweetResponseResultToJSON(json: any): DeleteTweetResponseResult {
+    return DeleteTweetResponseResultToJSONTyped(json, false);
+}
+
+export function DeleteTweetResponseResultToJSONTyped(value?: DeleteTweetResponseResult | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'tweet_results': value['tweetResults'],

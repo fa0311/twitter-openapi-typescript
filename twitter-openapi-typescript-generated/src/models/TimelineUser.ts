@@ -18,24 +18,28 @@ import {
     TypeNameFromJSON,
     TypeNameFromJSONTyped,
     TypeNameToJSON,
+    TypeNameToJSONTyped,
 } from './TypeName';
 import type { SocialContextUnion } from './SocialContextUnion';
 import {
     SocialContextUnionFromJSON,
     SocialContextUnionFromJSONTyped,
     SocialContextUnionToJSON,
+    SocialContextUnionToJSONTyped,
 } from './SocialContextUnion';
 import type { UserResults } from './UserResults';
 import {
     UserResultsFromJSON,
     UserResultsFromJSONTyped,
     UserResultsToJSON,
+    UserResultsToJSONTyped,
 } from './UserResults';
 import type { ContentItemType } from './ContentItemType';
 import {
     ContentItemTypeFromJSON,
     ContentItemTypeFromJSONTyped,
     ContentItemTypeToJSON,
+    ContentItemTypeToJSONTyped,
 } from './ContentItemType';
 
 /**
@@ -117,10 +121,15 @@ export function TimelineUserFromJSONTyped(json: any, ignoreDiscriminator: boolea
     };
 }
 
-export function TimelineUserToJSON(value?: TimelineUser | null): any {
+export function TimelineUserToJSON(json: any): TimelineUser {
+    return TimelineUserToJSONTyped(json, false);
+}
+
+export function TimelineUserToJSONTyped(value?: TimelineUser | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         '__typename': TypeNameToJSON(value['typename']),

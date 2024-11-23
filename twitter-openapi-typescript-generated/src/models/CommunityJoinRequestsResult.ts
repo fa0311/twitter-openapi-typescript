@@ -18,6 +18,7 @@ import {
     TypeNameFromJSON,
     TypeNameFromJSONTyped,
     TypeNameToJSON,
+    TypeNameToJSONTyped,
 } from './TypeName';
 
 /**
@@ -58,10 +59,15 @@ export function CommunityJoinRequestsResultFromJSONTyped(json: any, ignoreDiscri
     };
 }
 
-export function CommunityJoinRequestsResultToJSON(value?: CommunityJoinRequestsResult | null): any {
+export function CommunityJoinRequestsResultToJSON(json: any): CommunityJoinRequestsResult {
+    return CommunityJoinRequestsResultToJSONTyped(json, false);
+}
+
+export function CommunityJoinRequestsResultToJSONTyped(value?: CommunityJoinRequestsResult | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         '__typename': TypeNameToJSON(value['typename']),

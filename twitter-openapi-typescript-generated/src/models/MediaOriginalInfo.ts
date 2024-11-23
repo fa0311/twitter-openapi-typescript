@@ -18,6 +18,7 @@ import {
     MediaOriginalInfoFocusRectFromJSON,
     MediaOriginalInfoFocusRectFromJSONTyped,
     MediaOriginalInfoFocusRectToJSON,
+    MediaOriginalInfoFocusRectToJSONTyped,
 } from './MediaOriginalInfoFocusRect';
 
 /**
@@ -71,10 +72,15 @@ export function MediaOriginalInfoFromJSONTyped(json: any, ignoreDiscriminator: b
     };
 }
 
-export function MediaOriginalInfoToJSON(value?: MediaOriginalInfo | null): any {
+export function MediaOriginalInfoToJSON(json: any): MediaOriginalInfo {
+    return MediaOriginalInfoToJSONTyped(json, false);
+}
+
+export function MediaOriginalInfoToJSONTyped(value?: MediaOriginalInfo | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'focus_rects': value['focusRects'] == null ? undefined : ((value['focusRects'] as Array<any>).map(MediaOriginalInfoFocusRectToJSON)),

@@ -18,12 +18,14 @@ import {
     ProfileResponseDataFromJSON,
     ProfileResponseDataFromJSONTyped,
     ProfileResponseDataToJSON,
+    ProfileResponseDataToJSONTyped,
 } from './ProfileResponseData';
 import type { ErrorResponse } from './ErrorResponse';
 import {
     ErrorResponseFromJSON,
     ErrorResponseFromJSONTyped,
     ErrorResponseToJSON,
+    ErrorResponseToJSONTyped,
 } from './ErrorResponse';
 
 /**
@@ -69,10 +71,15 @@ export function ProfileResponseFromJSONTyped(json: any, ignoreDiscriminator: boo
     };
 }
 
-export function ProfileResponseToJSON(value?: ProfileResponse | null): any {
+export function ProfileResponseToJSON(json: any): ProfileResponse {
+    return ProfileResponseToJSONTyped(json, false);
+}
+
+export function ProfileResponseToJSONTyped(value?: ProfileResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'data': ProfileResponseDataToJSON(value['data']),

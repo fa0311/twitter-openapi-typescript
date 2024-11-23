@@ -49,10 +49,15 @@ export function OneFactorLoginEligibilityFromJSONTyped(json: any, ignoreDiscrimi
     };
 }
 
-export function OneFactorLoginEligibilityToJSON(value?: OneFactorLoginEligibility | null): any {
+export function OneFactorLoginEligibilityToJSON(json: any): OneFactorLoginEligibility {
+    return OneFactorLoginEligibilityToJSONTyped(json, false);
+}
+
+export function OneFactorLoginEligibilityToJSONTyped(value?: OneFactorLoginEligibility | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'fetchStatus': value['fetchStatus'],

@@ -18,6 +18,7 @@ import {
     DeleteTweetResponseResultFromJSON,
     DeleteTweetResponseResultFromJSONTyped,
     DeleteTweetResponseResultToJSON,
+    DeleteTweetResponseResultToJSONTyped,
 } from './DeleteTweetResponseResult';
 
 /**
@@ -55,10 +56,15 @@ export function DeleteTweetResponseDataFromJSONTyped(json: any, ignoreDiscrimina
     };
 }
 
-export function DeleteTweetResponseDataToJSON(value?: DeleteTweetResponseData | null): any {
+export function DeleteTweetResponseDataToJSON(json: any): DeleteTweetResponseData {
+    return DeleteTweetResponseDataToJSONTyped(json, false);
+}
+
+export function DeleteTweetResponseDataToJSONTyped(value?: DeleteTweetResponseData | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'delete_retweet': DeleteTweetResponseResultToJSON(value['deleteRetweet']),

@@ -49,10 +49,15 @@ export function UserFeaturesFromJSONTyped(json: any, ignoreDiscriminator: boolea
     };
 }
 
-export function UserFeaturesToJSON(value?: UserFeatures | null): any {
+export function UserFeaturesToJSON(json: any): UserFeatures {
+    return UserFeaturesToJSONTyped(json, false);
+}
+
+export function UserFeaturesToJSONTyped(value?: UserFeatures | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'mediatool_studio_library': value['mediatoolStudioLibrary'],

@@ -18,12 +18,14 @@ import {
     TypeNameFromJSON,
     TypeNameFromJSONTyped,
     TypeNameToJSON,
+    TypeNameToJSONTyped,
 } from './TypeName';
 import type { TweetUnion } from './TweetUnion';
 import {
     TweetUnionFromJSON,
     TweetUnionFromJSONTyped,
     TweetUnionToJSON,
+    TweetUnionToJSONTyped,
 } from './TweetUnion';
 
 /**
@@ -70,10 +72,15 @@ export function ItemResultFromJSONTyped(json: any, ignoreDiscriminator: boolean)
     };
 }
 
-export function ItemResultToJSON(value?: ItemResult | null): any {
+export function ItemResultToJSON(json: any): ItemResult {
+    return ItemResultToJSONTyped(json, false);
+}
+
+export function ItemResultToJSONTyped(value?: ItemResult | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         '__typename': TypeNameToJSON(value['typename']),

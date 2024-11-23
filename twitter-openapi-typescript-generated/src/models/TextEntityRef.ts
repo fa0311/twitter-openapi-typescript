@@ -83,10 +83,15 @@ export function TextEntityRefFromJSONTyped(json: any, ignoreDiscriminator: boole
     };
 }
 
-export function TextEntityRefToJSON(value?: TextEntityRef | null): any {
+export function TextEntityRefToJSON(json: any): TextEntityRef {
+    return TextEntityRefToJSONTyped(json, false);
+}
+
+export function TextEntityRefToJSONTyped(value?: TextEntityRef | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'type': value['type'],

@@ -18,6 +18,7 @@ import {
     TimelineV2FromJSON,
     TimelineV2FromJSONTyped,
     TimelineV2ToJSON,
+    TimelineV2ToJSONTyped,
 } from './TimelineV2';
 
 /**
@@ -55,10 +56,15 @@ export function TweetRetweetersResponseDataFromJSONTyped(json: any, ignoreDiscri
     };
 }
 
-export function TweetRetweetersResponseDataToJSON(value?: TweetRetweetersResponseData | null): any {
+export function TweetRetweetersResponseDataToJSON(json: any): TweetRetweetersResponseData {
+    return TweetRetweetersResponseDataToJSONTyped(json, false);
+}
+
+export function TweetRetweetersResponseDataToJSONTyped(value?: TweetRetweetersResponseData | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'retweeters_timeline': TimelineV2ToJSON(value['retweetersTimeline']),

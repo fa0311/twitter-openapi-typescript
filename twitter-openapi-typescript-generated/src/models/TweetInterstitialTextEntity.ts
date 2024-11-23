@@ -18,6 +18,7 @@ import {
     TweetInterstitialTextEntityRefFromJSON,
     TweetInterstitialTextEntityRefFromJSONTyped,
     TweetInterstitialTextEntityRefToJSON,
+    TweetInterstitialTextEntityRefToJSONTyped,
 } from './TweetInterstitialTextEntityRef';
 
 /**
@@ -72,10 +73,15 @@ export function TweetInterstitialTextEntityFromJSONTyped(json: any, ignoreDiscri
     };
 }
 
-export function TweetInterstitialTextEntityToJSON(value?: TweetInterstitialTextEntity | null): any {
+export function TweetInterstitialTextEntityToJSON(json: any): TweetInterstitialTextEntity {
+    return TweetInterstitialTextEntityToJSONTyped(json, false);
+}
+
+export function TweetInterstitialTextEntityToJSONTyped(value?: TweetInterstitialTextEntity | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'fromIndex': value['fromIndex'],

@@ -18,6 +18,7 @@ import {
     NoteTweetResultFromJSON,
     NoteTweetResultFromJSONTyped,
     NoteTweetResultToJSON,
+    NoteTweetResultToJSONTyped,
 } from './NoteTweetResult';
 
 /**
@@ -64,10 +65,15 @@ export function NoteTweetFromJSONTyped(json: any, ignoreDiscriminator: boolean):
     };
 }
 
-export function NoteTweetToJSON(value?: NoteTweet | null): any {
+export function NoteTweetToJSON(json: any): NoteTweet {
+    return NoteTweetToJSONTyped(json, false);
+}
+
+export function NoteTweetToJSONTyped(value?: NoteTweet | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'is_expandable': value['isExpandable'],

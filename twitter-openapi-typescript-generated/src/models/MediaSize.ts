@@ -76,10 +76,15 @@ export function MediaSizeFromJSONTyped(json: any, ignoreDiscriminator: boolean):
     };
 }
 
-export function MediaSizeToJSON(value?: MediaSize | null): any {
+export function MediaSizeToJSON(json: any): MediaSize {
+    return MediaSizeToJSONTyped(json, false);
+}
+
+export function MediaSizeToJSONTyped(value?: MediaSize | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'h': value['h'],

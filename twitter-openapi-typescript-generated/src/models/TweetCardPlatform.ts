@@ -18,12 +18,14 @@ import {
     TweetCardPlatformAudienceFromJSON,
     TweetCardPlatformAudienceFromJSONTyped,
     TweetCardPlatformAudienceToJSON,
+    TweetCardPlatformAudienceToJSONTyped,
 } from './TweetCardPlatformAudience';
 import type { TweetCardPlatformDevice } from './TweetCardPlatformDevice';
 import {
     TweetCardPlatformDeviceFromJSON,
     TweetCardPlatformDeviceFromJSONTyped,
     TweetCardPlatformDeviceToJSON,
+    TweetCardPlatformDeviceToJSONTyped,
 } from './TweetCardPlatformDevice';
 
 /**
@@ -70,10 +72,15 @@ export function TweetCardPlatformFromJSONTyped(json: any, ignoreDiscriminator: b
     };
 }
 
-export function TweetCardPlatformToJSON(value?: TweetCardPlatform | null): any {
+export function TweetCardPlatformToJSON(json: any): TweetCardPlatform {
+    return TweetCardPlatformToJSONTyped(json, false);
+}
+
+export function TweetCardPlatformToJSONTyped(value?: TweetCardPlatform | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'audience': TweetCardPlatformAudienceToJSON(value['audience']),

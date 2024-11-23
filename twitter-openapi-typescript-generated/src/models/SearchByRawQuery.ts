@@ -18,6 +18,7 @@ import {
     SearchTimelineFromJSON,
     SearchTimelineFromJSONTyped,
     SearchTimelineToJSON,
+    SearchTimelineToJSONTyped,
 } from './SearchTimeline';
 
 /**
@@ -56,10 +57,15 @@ export function SearchByRawQueryFromJSONTyped(json: any, ignoreDiscriminator: bo
     };
 }
 
-export function SearchByRawQueryToJSON(value?: SearchByRawQuery | null): any {
+export function SearchByRawQueryToJSON(json: any): SearchByRawQuery {
+    return SearchByRawQueryToJSONTyped(json, false);
+}
+
+export function SearchByRawQueryToJSONTyped(value?: SearchByRawQuery | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'search_timeline': SearchTimelineToJSON(value['searchTimeline']),

@@ -18,6 +18,7 @@ import {
     RetweetFromJSON,
     RetweetFromJSONTyped,
     RetweetToJSON,
+    RetweetToJSONTyped,
 } from './Retweet';
 
 /**
@@ -56,10 +57,15 @@ export function DeleteRetweetFromJSONTyped(json: any, ignoreDiscriminator: boole
     };
 }
 
-export function DeleteRetweetToJSON(value?: DeleteRetweet | null): any {
+export function DeleteRetweetToJSON(json: any): DeleteRetweet {
+    return DeleteRetweetToJSONTyped(json, false);
+}
+
+export function DeleteRetweetToJSONTyped(value?: DeleteRetweet | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'result': ((value['result'] as Array<any>).map(RetweetToJSON)),

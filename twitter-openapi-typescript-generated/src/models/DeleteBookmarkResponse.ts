@@ -18,12 +18,14 @@ import {
     DeleteBookmarkResponseDataFromJSON,
     DeleteBookmarkResponseDataFromJSONTyped,
     DeleteBookmarkResponseDataToJSON,
+    DeleteBookmarkResponseDataToJSONTyped,
 } from './DeleteBookmarkResponseData';
 import type { ErrorResponse } from './ErrorResponse';
 import {
     ErrorResponseFromJSON,
     ErrorResponseFromJSONTyped,
     ErrorResponseToJSON,
+    ErrorResponseToJSONTyped,
 } from './ErrorResponse';
 
 /**
@@ -69,10 +71,15 @@ export function DeleteBookmarkResponseFromJSONTyped(json: any, ignoreDiscriminat
     };
 }
 
-export function DeleteBookmarkResponseToJSON(value?: DeleteBookmarkResponse | null): any {
+export function DeleteBookmarkResponseToJSON(json: any): DeleteBookmarkResponse {
+    return DeleteBookmarkResponseToJSONTyped(json, false);
+}
+
+export function DeleteBookmarkResponseToJSONTyped(value?: DeleteBookmarkResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'data': DeleteBookmarkResponseDataToJSON(value['data']),

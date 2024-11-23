@@ -49,10 +49,15 @@ export function RetweetLegacyFromJSONTyped(json: any, ignoreDiscriminator: boole
     };
 }
 
-export function RetweetLegacyToJSON(value?: RetweetLegacy | null): any {
+export function RetweetLegacyToJSON(json: any): RetweetLegacy {
+    return RetweetLegacyToJSONTyped(json, false);
+}
+
+export function RetweetLegacyToJSONTyped(value?: RetweetLegacy | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'full_text': value['fullText'],

@@ -18,6 +18,7 @@ import {
     PostCreateRetweetRequestVariablesFromJSON,
     PostCreateRetweetRequestVariablesFromJSONTyped,
     PostCreateRetweetRequestVariablesToJSON,
+    PostCreateRetweetRequestVariablesToJSONTyped,
 } from './PostCreateRetweetRequestVariables';
 
 /**
@@ -64,10 +65,15 @@ export function PostDeleteTweetRequestFromJSONTyped(json: any, ignoreDiscriminat
     };
 }
 
-export function PostDeleteTweetRequestToJSON(value?: PostDeleteTweetRequest | null): any {
+export function PostDeleteTweetRequestToJSON(json: any): PostDeleteTweetRequest {
+    return PostDeleteTweetRequestToJSONTyped(json, false);
+}
+
+export function PostDeleteTweetRequestToJSONTyped(value?: PostDeleteTweetRequest | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'queryId': value['queryId'],

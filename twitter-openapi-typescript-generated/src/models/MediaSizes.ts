@@ -18,6 +18,7 @@ import {
     MediaSizeFromJSON,
     MediaSizeFromJSONTyped,
     MediaSizeToJSON,
+    MediaSizeToJSONTyped,
 } from './MediaSize';
 
 /**
@@ -80,10 +81,15 @@ export function MediaSizesFromJSONTyped(json: any, ignoreDiscriminator: boolean)
     };
 }
 
-export function MediaSizesToJSON(value?: MediaSizes | null): any {
+export function MediaSizesToJSON(json: any): MediaSizes {
+    return MediaSizesToJSONTyped(json, false);
+}
+
+export function MediaSizesToJSONTyped(value?: MediaSizes | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'large': MediaSizeToJSON(value['large']),

@@ -18,6 +18,7 @@ import {
     UserProfessionalCategoryFromJSON,
     UserProfessionalCategoryFromJSONTyped,
     UserProfessionalCategoryToJSON,
+    UserProfessionalCategoryToJSONTyped,
 } from './UserProfessionalCategory';
 
 /**
@@ -83,10 +84,15 @@ export function UserProfessionalFromJSONTyped(json: any, ignoreDiscriminator: bo
     };
 }
 
-export function UserProfessionalToJSON(value?: UserProfessional | null): any {
+export function UserProfessionalToJSON(json: any): UserProfessional {
+    return UserProfessionalToJSONTyped(json, false);
+}
+
+export function UserProfessionalToJSONTyped(value?: UserProfessional | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'category': ((value['category'] as Array<any>).map(UserProfessionalCategoryToJSON)),

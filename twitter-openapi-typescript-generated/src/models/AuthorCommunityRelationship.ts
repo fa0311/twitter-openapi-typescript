@@ -18,12 +18,14 @@ import {
     UserResultsFromJSON,
     UserResultsFromJSONTyped,
     UserResultsToJSON,
+    UserResultsToJSONTyped,
 } from './UserResults';
 import type { Community } from './Community';
 import {
     CommunityFromJSON,
     CommunityFromJSONTyped,
     CommunityToJSON,
+    CommunityToJSONTyped,
 } from './Community';
 
 /**
@@ -58,7 +60,8 @@ export interface AuthorCommunityRelationship {
  */
 export const AuthorCommunityRelationshipRoleEnum = {
     Member: 'Member',
-    Moderator: 'Moderator'
+    Moderator: 'Moderator',
+    Admin: 'Admin'
 } as const;
 export type AuthorCommunityRelationshipRoleEnum = typeof AuthorCommunityRelationshipRoleEnum[keyof typeof AuthorCommunityRelationshipRoleEnum];
 
@@ -87,10 +90,15 @@ export function AuthorCommunityRelationshipFromJSONTyped(json: any, ignoreDiscri
     };
 }
 
-export function AuthorCommunityRelationshipToJSON(value?: AuthorCommunityRelationship | null): any {
+export function AuthorCommunityRelationshipToJSON(json: any): AuthorCommunityRelationship {
+    return AuthorCommunityRelationshipToJSONTyped(json, false);
+}
+
+export function AuthorCommunityRelationshipToJSONTyped(value?: AuthorCommunityRelationship | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'community_results': CommunityToJSON(value['communityResults']),

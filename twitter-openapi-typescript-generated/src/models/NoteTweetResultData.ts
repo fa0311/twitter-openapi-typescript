@@ -18,18 +18,21 @@ import {
     NoteTweetResultMediaFromJSON,
     NoteTweetResultMediaFromJSONTyped,
     NoteTweetResultMediaToJSON,
+    NoteTweetResultMediaToJSONTyped,
 } from './NoteTweetResultMedia';
 import type { NoteTweetResultRichText } from './NoteTweetResultRichText';
 import {
     NoteTweetResultRichTextFromJSON,
     NoteTweetResultRichTextFromJSONTyped,
     NoteTweetResultRichTextToJSON,
+    NoteTweetResultRichTextToJSONTyped,
 } from './NoteTweetResultRichText';
 import type { Entities } from './Entities';
 import {
     EntitiesFromJSON,
     EntitiesFromJSONTyped,
     EntitiesToJSON,
+    EntitiesToJSONTyped,
 } from './Entities';
 
 /**
@@ -98,10 +101,15 @@ export function NoteTweetResultDataFromJSONTyped(json: any, ignoreDiscriminator:
     };
 }
 
-export function NoteTweetResultDataToJSON(value?: NoteTweetResultData | null): any {
+export function NoteTweetResultDataToJSON(json: any): NoteTweetResultData {
+    return NoteTweetResultDataToJSONTyped(json, false);
+}
+
+export function NoteTweetResultDataToJSONTyped(value?: NoteTweetResultData | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'entity_set': EntitiesToJSON(value['entitySet']),

@@ -18,18 +18,21 @@ import {
     TimelineCoverBehaviorFromJSON,
     TimelineCoverBehaviorFromJSONTyped,
     TimelineCoverBehaviorToJSON,
+    TimelineCoverBehaviorToJSONTyped,
 } from './TimelineCoverBehavior';
 import type { Callback } from './Callback';
 import {
     CallbackFromJSON,
     CallbackFromJSONTyped,
     CallbackToJSON,
+    CallbackToJSONTyped,
 } from './Callback';
 import type { CtaClientEventInfo } from './CtaClientEventInfo';
 import {
     CtaClientEventInfoFromJSON,
     CtaClientEventInfoFromJSONTyped,
     CtaClientEventInfoToJSON,
+    CtaClientEventInfoToJSONTyped,
 } from './CtaClientEventInfo';
 
 /**
@@ -108,10 +111,15 @@ export function CoverCtaFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
     };
 }
 
-export function CoverCtaToJSON(value?: CoverCta | null): any {
+export function CoverCtaToJSON(json: any): CoverCta {
+    return CoverCtaToJSONTyped(json, false);
+}
+
+export function CoverCtaToJSONTyped(value?: CoverCta | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'Text': value['text'],

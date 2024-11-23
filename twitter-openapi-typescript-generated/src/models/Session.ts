@@ -18,18 +18,21 @@ import {
     OneFactorLoginEligibilityFromJSON,
     OneFactorLoginEligibilityFromJSONTyped,
     OneFactorLoginEligibilityToJSON,
+    OneFactorLoginEligibilityToJSONTyped,
 } from './OneFactorLoginEligibility';
 import type { CommunitiesActions } from './CommunitiesActions';
 import {
     CommunitiesActionsFromJSON,
     CommunitiesActionsFromJSONTyped,
     CommunitiesActionsToJSON,
+    CommunitiesActionsToJSONTyped,
 } from './CommunitiesActions';
 import type { UserFeatures } from './UserFeatures';
 import {
     UserFeaturesFromJSON,
     UserFeaturesFromJSONTyped,
     UserFeaturesToJSON,
+    UserFeaturesToJSONTyped,
 } from './UserFeatures';
 
 /**
@@ -181,10 +184,15 @@ export function SessionFromJSONTyped(json: any, ignoreDiscriminator: boolean): S
     };
 }
 
-export function SessionToJSON(value?: Session | null): any {
+export function SessionToJSON(json: any): Session {
+    return SessionToJSONTyped(json, false);
+}
+
+export function SessionToJSONTyped(value?: Session | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'SsoInitTokens': value['ssoInitTokens'],

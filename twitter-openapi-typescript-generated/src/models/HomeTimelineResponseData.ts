@@ -18,6 +18,7 @@ import {
     HomeTimelineHomeFromJSON,
     HomeTimelineHomeFromJSONTyped,
     HomeTimelineHomeToJSON,
+    HomeTimelineHomeToJSONTyped,
 } from './HomeTimelineHome';
 
 /**
@@ -55,10 +56,15 @@ export function HomeTimelineResponseDataFromJSONTyped(json: any, ignoreDiscrimin
     };
 }
 
-export function HomeTimelineResponseDataToJSON(value?: HomeTimelineResponseData | null): any {
+export function HomeTimelineResponseDataToJSON(json: any): HomeTimelineResponseData {
+    return HomeTimelineResponseDataToJSONTyped(json, false);
+}
+
+export function HomeTimelineResponseDataToJSONTyped(value?: HomeTimelineResponseData | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'home': HomeTimelineHomeToJSON(value['home']),

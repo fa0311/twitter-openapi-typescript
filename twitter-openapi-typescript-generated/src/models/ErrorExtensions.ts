@@ -18,6 +18,7 @@ import {
     TracingFromJSON,
     TracingFromJSONTyped,
     TracingToJSON,
+    TracingToJSONTyped,
 } from './Tracing';
 
 /**
@@ -95,10 +96,15 @@ export function ErrorExtensionsFromJSONTyped(json: any, ignoreDiscriminator: boo
     };
 }
 
-export function ErrorExtensionsToJSON(value?: ErrorExtensions | null): any {
+export function ErrorExtensionsToJSON(json: any): ErrorExtensions {
+    return ErrorExtensionsToJSONTyped(json, false);
+}
+
+export function ErrorExtensionsToJSONTyped(value?: ErrorExtensions | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'code': value['code'],

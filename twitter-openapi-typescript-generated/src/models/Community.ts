@@ -18,6 +18,7 @@ import {
     CommunityDataFromJSON,
     CommunityDataFromJSONTyped,
     CommunityDataToJSON,
+    CommunityDataToJSONTyped,
 } from './CommunityData';
 
 /**
@@ -56,10 +57,15 @@ export function CommunityFromJSONTyped(json: any, ignoreDiscriminator: boolean):
     };
 }
 
-export function CommunityToJSON(value?: Community | null): any {
+export function CommunityToJSON(json: any): Community {
+    return CommunityToJSONTyped(json, false);
+}
+
+export function CommunityToJSONTyped(value?: Community | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'result': CommunityDataToJSON(value['result']),

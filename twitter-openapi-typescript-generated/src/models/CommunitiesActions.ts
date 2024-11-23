@@ -49,10 +49,15 @@ export function CommunitiesActionsFromJSONTyped(json: any, ignoreDiscriminator: 
     };
 }
 
-export function CommunitiesActionsToJSON(value?: CommunitiesActions | null): any {
+export function CommunitiesActionsToJSON(json: any): CommunitiesActions {
+    return CommunitiesActionsToJSONTyped(json, false);
+}
+
+export function CommunitiesActionsToJSONTyped(value?: CommunitiesActions | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'create': value['create'],

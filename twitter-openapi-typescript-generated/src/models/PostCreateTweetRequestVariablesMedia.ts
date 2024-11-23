@@ -18,6 +18,7 @@ import {
     PostCreateTweetRequestVariablesMediaMediaEntitiesInnerFromJSON,
     PostCreateTweetRequestVariablesMediaMediaEntitiesInnerFromJSONTyped,
     PostCreateTweetRequestVariablesMediaMediaEntitiesInnerToJSON,
+    PostCreateTweetRequestVariablesMediaMediaEntitiesInnerToJSONTyped,
 } from './PostCreateTweetRequestVariablesMediaMediaEntitiesInner';
 
 /**
@@ -63,10 +64,15 @@ export function PostCreateTweetRequestVariablesMediaFromJSONTyped(json: any, ign
     };
 }
 
-export function PostCreateTweetRequestVariablesMediaToJSON(value?: PostCreateTweetRequestVariablesMedia | null): any {
+export function PostCreateTweetRequestVariablesMediaToJSON(json: any): PostCreateTweetRequestVariablesMedia {
+    return PostCreateTweetRequestVariablesMediaToJSONTyped(json, false);
+}
+
+export function PostCreateTweetRequestVariablesMediaToJSONTyped(value?: PostCreateTweetRequestVariablesMedia | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'media_entities': value['mediaEntities'] == null ? undefined : ((value['mediaEntities'] as Array<any>).map(PostCreateTweetRequestVariablesMediaMediaEntitiesInnerToJSON)),

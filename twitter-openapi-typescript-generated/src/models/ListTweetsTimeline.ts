@@ -18,6 +18,7 @@ import {
     TimelineFromJSON,
     TimelineFromJSONTyped,
     TimelineToJSON,
+    TimelineToJSONTyped,
 } from './Timeline';
 
 /**
@@ -55,10 +56,15 @@ export function ListTweetsTimelineFromJSONTyped(json: any, ignoreDiscriminator: 
     };
 }
 
-export function ListTweetsTimelineToJSON(value?: ListTweetsTimeline | null): any {
+export function ListTweetsTimelineToJSON(json: any): ListTweetsTimeline {
+    return ListTweetsTimelineToJSONTyped(json, false);
+}
+
+export function ListTweetsTimelineToJSONTyped(value?: ListTweetsTimeline | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'timeline': TimelineToJSON(value['timeline']),

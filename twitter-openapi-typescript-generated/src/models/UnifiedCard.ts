@@ -59,10 +59,15 @@ export function UnifiedCardFromJSONTyped(json: any, ignoreDiscriminator: boolean
     };
 }
 
-export function UnifiedCardToJSON(value?: UnifiedCard | null): any {
+export function UnifiedCardToJSON(json: any): UnifiedCard {
+    return UnifiedCardToJSONTyped(json, false);
+}
+
+export function UnifiedCardToJSONTyped(value?: UnifiedCard | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'card_fetch_state': value['cardFetchState'],

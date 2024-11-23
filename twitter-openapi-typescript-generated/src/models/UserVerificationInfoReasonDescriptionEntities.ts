@@ -18,6 +18,7 @@ import {
     UserVerificationInfoReasonDescriptionEntitiesRefFromJSON,
     UserVerificationInfoReasonDescriptionEntitiesRefFromJSONTyped,
     UserVerificationInfoReasonDescriptionEntitiesRefToJSON,
+    UserVerificationInfoReasonDescriptionEntitiesRefToJSONTyped,
 } from './UserVerificationInfoReasonDescriptionEntitiesRef';
 
 /**
@@ -72,10 +73,15 @@ export function UserVerificationInfoReasonDescriptionEntitiesFromJSONTyped(json:
     };
 }
 
-export function UserVerificationInfoReasonDescriptionEntitiesToJSON(value?: UserVerificationInfoReasonDescriptionEntities | null): any {
+export function UserVerificationInfoReasonDescriptionEntitiesToJSON(json: any): UserVerificationInfoReasonDescriptionEntities {
+    return UserVerificationInfoReasonDescriptionEntitiesToJSONTyped(json, false);
+}
+
+export function UserVerificationInfoReasonDescriptionEntitiesToJSONTyped(value?: UserVerificationInfoReasonDescriptionEntities | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'from_index': value['fromIndex'],

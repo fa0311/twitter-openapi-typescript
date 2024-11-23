@@ -18,12 +18,14 @@ import {
     FollowResponseDataFromJSON,
     FollowResponseDataFromJSONTyped,
     FollowResponseDataToJSON,
+    FollowResponseDataToJSONTyped,
 } from './FollowResponseData';
 import type { ErrorResponse } from './ErrorResponse';
 import {
     ErrorResponseFromJSON,
     ErrorResponseFromJSONTyped,
     ErrorResponseToJSON,
+    ErrorResponseToJSONTyped,
 } from './ErrorResponse';
 
 /**
@@ -69,10 +71,15 @@ export function FollowResponseFromJSONTyped(json: any, ignoreDiscriminator: bool
     };
 }
 
-export function FollowResponseToJSON(value?: FollowResponse | null): any {
+export function FollowResponseToJSON(json: any): FollowResponse {
+    return FollowResponseToJSONTyped(json, false);
+}
+
+export function FollowResponseToJSONTyped(value?: FollowResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'data': FollowResponseDataToJSON(value['data']),

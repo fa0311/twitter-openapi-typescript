@@ -18,108 +18,126 @@ import {
     NoteTweetFromJSON,
     NoteTweetFromJSONTyped,
     NoteTweetToJSON,
+    NoteTweetToJSONTyped,
 } from './NoteTweet';
 import type { TypeName } from './TypeName';
 import {
     TypeNameFromJSON,
     TypeNameFromJSONTyped,
     TypeNameToJSON,
+    TypeNameToJSONTyped,
 } from './TypeName';
 import type { SuperFollowsReplyUserResult } from './SuperFollowsReplyUserResult';
 import {
     SuperFollowsReplyUserResultFromJSON,
     SuperFollowsReplyUserResultFromJSONTyped,
     SuperFollowsReplyUserResultToJSON,
+    SuperFollowsReplyUserResultToJSONTyped,
 } from './SuperFollowsReplyUserResult';
 import type { UserResultCore } from './UserResultCore';
 import {
     UserResultCoreFromJSON,
     UserResultCoreFromJSONTyped,
     UserResultCoreToJSON,
+    UserResultCoreToJSONTyped,
 } from './UserResultCore';
 import type { Article } from './Article';
 import {
     ArticleFromJSON,
     ArticleFromJSONTyped,
     ArticleToJSON,
+    ArticleToJSONTyped,
 } from './Article';
 import type { TweetEditControl } from './TweetEditControl';
 import {
     TweetEditControlFromJSON,
     TweetEditControlFromJSONTyped,
     TweetEditControlToJSON,
+    TweetEditControlToJSONTyped,
 } from './TweetEditControl';
 import type { CommunityRelationship } from './CommunityRelationship';
 import {
     CommunityRelationshipFromJSON,
     CommunityRelationshipFromJSONTyped,
     CommunityRelationshipToJSON,
+    CommunityRelationshipToJSONTyped,
 } from './CommunityRelationship';
 import type { TweetEditPrespective } from './TweetEditPrespective';
 import {
     TweetEditPrespectiveFromJSON,
     TweetEditPrespectiveFromJSONTyped,
     TweetEditPrespectiveToJSON,
+    TweetEditPrespectiveToJSONTyped,
 } from './TweetEditPrespective';
 import type { TweetPreviousCounts } from './TweetPreviousCounts';
 import {
     TweetPreviousCountsFromJSON,
     TweetPreviousCountsFromJSONTyped,
     TweetPreviousCountsToJSON,
+    TweetPreviousCountsToJSONTyped,
 } from './TweetPreviousCounts';
 import type { TweetView } from './TweetView';
 import {
     TweetViewFromJSON,
     TweetViewFromJSONTyped,
     TweetViewToJSON,
+    TweetViewToJSONTyped,
 } from './TweetView';
 import type { TweetCard } from './TweetCard';
 import {
     TweetCardFromJSON,
     TweetCardFromJSONTyped,
     TweetCardToJSON,
+    TweetCardToJSONTyped,
 } from './TweetCard';
 import type { AuthorCommunityRelationship } from './AuthorCommunityRelationship';
 import {
     AuthorCommunityRelationshipFromJSON,
     AuthorCommunityRelationshipFromJSONTyped,
     AuthorCommunityRelationshipToJSON,
+    AuthorCommunityRelationshipToJSONTyped,
 } from './AuthorCommunityRelationship';
 import type { UnifiedCard } from './UnifiedCard';
 import {
     UnifiedCardFromJSON,
     UnifiedCardFromJSONTyped,
     UnifiedCardToJSON,
+    UnifiedCardToJSONTyped,
 } from './UnifiedCard';
 import type { ItemResult } from './ItemResult';
 import {
     ItemResultFromJSON,
     ItemResultFromJSONTyped,
     ItemResultToJSON,
+    ItemResultToJSONTyped,
 } from './ItemResult';
 import type { QuotedRefResult } from './QuotedRefResult';
 import {
     QuotedRefResultFromJSON,
     QuotedRefResultFromJSONTyped,
     QuotedRefResultToJSON,
+    QuotedRefResultToJSONTyped,
 } from './QuotedRefResult';
 import type { BirdwatchPivot } from './BirdwatchPivot';
 import {
     BirdwatchPivotFromJSON,
     BirdwatchPivotFromJSONTyped,
     BirdwatchPivotToJSON,
+    BirdwatchPivotToJSONTyped,
 } from './BirdwatchPivot';
 import type { TweetLegacy } from './TweetLegacy';
 import {
     TweetLegacyFromJSON,
     TweetLegacyFromJSONTyped,
     TweetLegacyToJSON,
+    TweetLegacyToJSONTyped,
 } from './TweetLegacy';
 import type { Community } from './Community';
 import {
     CommunityFromJSON,
     CommunityFromJSONTyped,
     CommunityToJSON,
+    CommunityToJSONTyped,
 } from './Community';
 
 /**
@@ -321,10 +339,15 @@ export function TweetFromJSONTyped(json: any, ignoreDiscriminator: boolean): Twe
     };
 }
 
-export function TweetToJSON(value?: Tweet | null): any {
+export function TweetToJSON(json: any): Tweet {
+    return TweetToJSONTyped(json, false);
+}
+
+export function TweetToJSONTyped(value?: Tweet | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         '__typename': TypeNameToJSON(value['typename']),

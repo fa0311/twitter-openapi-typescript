@@ -61,17 +61,21 @@ export function ContentUnionFromJSONTyped(json: any, ignoreDiscriminator: boolea
     }
 }
 
-export function ContentUnionToJSON(value?: ContentUnion | null): any {
+export function ContentUnionToJSON(json: any): any {
+    return ContentUnionToJSONTyped(json, false);
+}
+
+export function ContentUnionToJSONTyped(value?: ContentUnion | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
     switch (value['entryType']) {
         case 'TimelineTimelineCursor':
-            return TimelineTimelineCursorToJSON(value);
+            return Object.assign({}, TimelineTimelineCursorToJSON(value), { entryType: 'TimelineTimelineCursor' } as const);
         case 'TimelineTimelineItem':
-            return TimelineTimelineItemToJSON(value);
+            return Object.assign({}, TimelineTimelineItemToJSON(value), { entryType: 'TimelineTimelineItem' } as const);
         case 'TimelineTimelineModule':
-            return TimelineTimelineModuleToJSON(value);
+            return Object.assign({}, TimelineTimelineModuleToJSON(value), { entryType: 'TimelineTimelineModule' } as const);
         default:
             throw new Error(`No variant of ContentUnion exists with 'entryType=${value['entryType']}'`);
     }

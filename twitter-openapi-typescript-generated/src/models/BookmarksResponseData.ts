@@ -18,6 +18,7 @@ import {
     BookmarksTimelineFromJSON,
     BookmarksTimelineFromJSONTyped,
     BookmarksTimelineToJSON,
+    BookmarksTimelineToJSONTyped,
 } from './BookmarksTimeline';
 
 /**
@@ -56,10 +57,15 @@ export function BookmarksResponseDataFromJSONTyped(json: any, ignoreDiscriminato
     };
 }
 
-export function BookmarksResponseDataToJSON(value?: BookmarksResponseData | null): any {
+export function BookmarksResponseDataToJSON(json: any): BookmarksResponseData {
+    return BookmarksResponseDataToJSONTyped(json, false);
+}
+
+export function BookmarksResponseDataToJSONTyped(value?: BookmarksResponseData | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'bookmark_timeline_v2': BookmarksTimelineToJSON(value['bookmarkTimelineV2']),

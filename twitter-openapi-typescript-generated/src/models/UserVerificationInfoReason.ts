@@ -18,6 +18,7 @@ import {
     UserVerificationInfoReasonDescriptionFromJSON,
     UserVerificationInfoReasonDescriptionFromJSONTyped,
     UserVerificationInfoReasonDescriptionToJSON,
+    UserVerificationInfoReasonDescriptionToJSONTyped,
 } from './UserVerificationInfoReasonDescription';
 
 /**
@@ -37,7 +38,7 @@ export interface UserVerificationInfoReason {
      * @type {number}
      * @memberof UserVerificationInfoReason
      */
-    overrideVerifiedYear: number;
+    overrideVerifiedYear?: number;
     /**
      * 
      * @type {string}
@@ -51,7 +52,6 @@ export interface UserVerificationInfoReason {
  */
 export function instanceOfUserVerificationInfoReason(value: object): value is UserVerificationInfoReason {
     if (!('description' in value) || value['description'] === undefined) return false;
-    if (!('overrideVerifiedYear' in value) || value['overrideVerifiedYear'] === undefined) return false;
     if (!('verifiedSinceMsec' in value) || value['verifiedSinceMsec'] === undefined) return false;
     return true;
 }
@@ -67,15 +67,20 @@ export function UserVerificationInfoReasonFromJSONTyped(json: any, ignoreDiscrim
     return {
         
         'description': UserVerificationInfoReasonDescriptionFromJSON(json['description']),
-        'overrideVerifiedYear': json['override_verified_year'],
+        'overrideVerifiedYear': json['override_verified_year'] == null ? undefined : json['override_verified_year'],
         'verifiedSinceMsec': json['verified_since_msec'],
     };
 }
 
-export function UserVerificationInfoReasonToJSON(value?: UserVerificationInfoReason | null): any {
+export function UserVerificationInfoReasonToJSON(json: any): UserVerificationInfoReason {
+    return UserVerificationInfoReasonToJSONTyped(json, false);
+}
+
+export function UserVerificationInfoReasonToJSONTyped(value?: UserVerificationInfoReason | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'description': UserVerificationInfoReasonDescriptionToJSON(value['description']),

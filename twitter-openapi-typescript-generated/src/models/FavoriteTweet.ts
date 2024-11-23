@@ -48,10 +48,15 @@ export function FavoriteTweetFromJSONTyped(json: any, ignoreDiscriminator: boole
     };
 }
 
-export function FavoriteTweetToJSON(value?: FavoriteTweet | null): any {
+export function FavoriteTweetToJSON(json: any): FavoriteTweet {
+    return FavoriteTweetToJSONTyped(json, false);
+}
+
+export function FavoriteTweetToJSONTyped(value?: FavoriteTweet | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'favorite_tweet': value['favoriteTweet'],

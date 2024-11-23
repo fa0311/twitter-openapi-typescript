@@ -57,10 +57,15 @@ export function TweetCardPlatformDeviceFromJSONTyped(json: any, ignoreDiscrimina
     };
 }
 
-export function TweetCardPlatformDeviceToJSON(value?: TweetCardPlatformDevice | null): any {
+export function TweetCardPlatformDeviceToJSON(json: any): TweetCardPlatformDevice {
+    return TweetCardPlatformDeviceToJSONTyped(json, false);
+}
+
+export function TweetCardPlatformDeviceToJSONTyped(value?: TweetCardPlatformDevice | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'name': value['name'],

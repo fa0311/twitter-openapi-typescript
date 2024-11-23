@@ -18,18 +18,21 @@ import {
     TimelineShowAlertRichTextFromJSON,
     TimelineShowAlertRichTextFromJSONTyped,
     TimelineShowAlertRichTextToJSON,
+    TimelineShowAlertRichTextToJSONTyped,
 } from './TimelineShowAlertRichText';
 import type { InstructionType } from './InstructionType';
 import {
     InstructionTypeFromJSON,
     InstructionTypeFromJSONTyped,
     InstructionTypeToJSON,
+    InstructionTypeToJSONTyped,
 } from './InstructionType';
 import type { UserResults } from './UserResults';
 import {
     UserResultsFromJSON,
     UserResultsFromJSONTyped,
     UserResultsToJSON,
+    UserResultsToJSONTyped,
 } from './UserResults';
 
 /**
@@ -144,10 +147,15 @@ export function TimelineShowAlertFromJSONTyped(json: any, ignoreDiscriminator: b
     };
 }
 
-export function TimelineShowAlertToJSON(value?: TimelineShowAlert | null): any {
+export function TimelineShowAlertToJSON(json: any): TimelineShowAlert {
+    return TimelineShowAlertToJSONTyped(json, false);
+}
+
+export function TimelineShowAlertToJSONTyped(value?: TimelineShowAlert | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'alertType': value['alertType'],

@@ -18,18 +18,21 @@ import {
     ErrorExtensionsFromJSON,
     ErrorExtensionsFromJSONTyped,
     ErrorExtensionsToJSON,
+    ErrorExtensionsToJSONTyped,
 } from './ErrorExtensions';
 import type { Tracing } from './Tracing';
 import {
     TracingFromJSON,
     TracingFromJSONTyped,
     TracingToJSON,
+    TracingToJSONTyped,
 } from './Tracing';
 import type { Location } from './Location';
 import {
     LocationFromJSON,
     LocationFromJSONTyped,
     LocationToJSON,
+    LocationToJSONTyped,
 } from './Location';
 
 /**
@@ -76,10 +79,10 @@ export interface ErrorResponse {
     name: string;
     /**
      * 
-     * @type {Array<string>}
+     * @type {Array<any>}
      * @memberof ErrorResponse
      */
-    path: Array<string>;
+    path: Array<any>;
     /**
      * 
      * @type {number}
@@ -139,10 +142,15 @@ export function ErrorResponseFromJSONTyped(json: any, ignoreDiscriminator: boole
     };
 }
 
-export function ErrorResponseToJSON(value?: ErrorResponse | null): any {
+export function ErrorResponseToJSON(json: any): ErrorResponse {
+    return ErrorResponseToJSONTyped(json, false);
+}
+
+export function ErrorResponseToJSONTyped(value?: ErrorResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'code': value['code'],

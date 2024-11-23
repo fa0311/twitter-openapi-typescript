@@ -18,6 +18,7 @@ import {
     UserResultsFromJSON,
     UserResultsFromJSONTyped,
     UserResultsToJSON,
+    UserResultsToJSONTyped,
 } from './UserResults';
 
 /**
@@ -55,10 +56,15 @@ export function UsersResponseDataFromJSONTyped(json: any, ignoreDiscriminator: b
     };
 }
 
-export function UsersResponseDataToJSON(value?: UsersResponseData | null): any {
+export function UsersResponseDataToJSON(json: any): UsersResponseData {
+    return UsersResponseDataToJSONTyped(json, false);
+}
+
+export function UsersResponseDataToJSONTyped(value?: UsersResponseData | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'users': value['users'] == null ? undefined : ((value['users'] as Array<any>).map(UserResultsToJSON)),

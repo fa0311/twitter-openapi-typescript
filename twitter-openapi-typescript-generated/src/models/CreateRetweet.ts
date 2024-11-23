@@ -18,6 +18,7 @@ import {
     RetweetFromJSON,
     RetweetFromJSONTyped,
     RetweetToJSON,
+    RetweetToJSONTyped,
 } from './Retweet';
 
 /**
@@ -56,10 +57,15 @@ export function CreateRetweetFromJSONTyped(json: any, ignoreDiscriminator: boole
     };
 }
 
-export function CreateRetweetToJSON(value?: CreateRetweet | null): any {
+export function CreateRetweetToJSON(json: any): CreateRetweet {
+    return CreateRetweetToJSONTyped(json, false);
+}
+
+export function CreateRetweetToJSONTyped(value?: CreateRetweet | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'result': RetweetToJSON(value['result']),

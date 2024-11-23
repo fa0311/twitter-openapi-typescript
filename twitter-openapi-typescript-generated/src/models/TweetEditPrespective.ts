@@ -55,10 +55,15 @@ export function TweetEditPrespectiveFromJSONTyped(json: any, ignoreDiscriminator
     };
 }
 
-export function TweetEditPrespectiveToJSON(value?: TweetEditPrespective | null): any {
+export function TweetEditPrespectiveToJSON(json: any): TweetEditPrespective {
+    return TweetEditPrespectiveToJSONTyped(json, false);
+}
+
+export function TweetEditPrespectiveToJSONTyped(value?: TweetEditPrespective | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'favorited': value['favorited'],

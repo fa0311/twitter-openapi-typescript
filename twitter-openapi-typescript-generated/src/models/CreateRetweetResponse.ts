@@ -18,12 +18,14 @@ import {
     CreateRetweetResponseDataFromJSON,
     CreateRetweetResponseDataFromJSONTyped,
     CreateRetweetResponseDataToJSON,
+    CreateRetweetResponseDataToJSONTyped,
 } from './CreateRetweetResponseData';
 import type { ErrorResponse } from './ErrorResponse';
 import {
     ErrorResponseFromJSON,
     ErrorResponseFromJSONTyped,
     ErrorResponseToJSON,
+    ErrorResponseToJSONTyped,
 } from './ErrorResponse';
 
 /**
@@ -69,10 +71,15 @@ export function CreateRetweetResponseFromJSONTyped(json: any, ignoreDiscriminato
     };
 }
 
-export function CreateRetweetResponseToJSON(value?: CreateRetweetResponse | null): any {
+export function CreateRetweetResponseToJSON(json: any): CreateRetweetResponse {
+    return CreateRetweetResponseToJSONTyped(json, false);
+}
+
+export function CreateRetweetResponseToJSONTyped(value?: CreateRetweetResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'data': CreateRetweetResponseDataToJSON(value['data']),

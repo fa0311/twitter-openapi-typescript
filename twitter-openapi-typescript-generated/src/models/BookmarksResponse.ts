@@ -18,12 +18,14 @@ import {
     BookmarksResponseDataFromJSON,
     BookmarksResponseDataFromJSONTyped,
     BookmarksResponseDataToJSON,
+    BookmarksResponseDataToJSONTyped,
 } from './BookmarksResponseData';
 import type { ErrorResponse } from './ErrorResponse';
 import {
     ErrorResponseFromJSON,
     ErrorResponseFromJSONTyped,
     ErrorResponseToJSON,
+    ErrorResponseToJSONTyped,
 } from './ErrorResponse';
 
 /**
@@ -68,10 +70,15 @@ export function BookmarksResponseFromJSONTyped(json: any, ignoreDiscriminator: b
     };
 }
 
-export function BookmarksResponseToJSON(value?: BookmarksResponse | null): any {
+export function BookmarksResponseToJSON(json: any): BookmarksResponse {
+    return BookmarksResponseToJSONTyped(json, false);
+}
+
+export function BookmarksResponseToJSONTyped(value?: BookmarksResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'data': BookmarksResponseDataToJSON(value['data']),

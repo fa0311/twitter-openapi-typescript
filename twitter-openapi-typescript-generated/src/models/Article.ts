@@ -18,6 +18,7 @@ import {
     ArticleResultsFromJSON,
     ArticleResultsFromJSONTyped,
     ArticleResultsToJSON,
+    ArticleResultsToJSONTyped,
 } from './ArticleResults';
 
 /**
@@ -56,10 +57,15 @@ export function ArticleFromJSONTyped(json: any, ignoreDiscriminator: boolean): A
     };
 }
 
-export function ArticleToJSON(value?: Article | null): any {
+export function ArticleToJSON(json: any): Article {
+    return ArticleToJSONTyped(json, false);
+}
+
+export function ArticleToJSONTyped(value?: Article | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'article_results': ArticleResultsToJSON(value['articleResults']),

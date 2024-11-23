@@ -18,6 +18,7 @@ import {
     UserVerificationInfoReasonFromJSON,
     UserVerificationInfoReasonFromJSONTyped,
     UserVerificationInfoReasonToJSON,
+    UserVerificationInfoReasonToJSONTyped,
 } from './UserVerificationInfoReason';
 
 /**
@@ -63,10 +64,15 @@ export function UserVerificationInfoFromJSONTyped(json: any, ignoreDiscriminator
     };
 }
 
-export function UserVerificationInfoToJSON(value?: UserVerificationInfo | null): any {
+export function UserVerificationInfoToJSON(json: any): UserVerificationInfo {
+    return UserVerificationInfoToJSONTyped(json, false);
+}
+
+export function UserVerificationInfoToJSONTyped(value?: UserVerificationInfo | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'is_identity_verified': value['isIdentityVerified'],

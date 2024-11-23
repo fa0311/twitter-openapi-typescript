@@ -18,6 +18,7 @@ import {
     MediaResultFromJSON,
     MediaResultFromJSONTyped,
     MediaResultToJSON,
+    MediaResultToJSONTyped,
 } from './MediaResult';
 
 /**
@@ -56,10 +57,15 @@ export function MediaResultsFromJSONTyped(json: any, ignoreDiscriminator: boolea
     };
 }
 
-export function MediaResultsToJSON(value?: MediaResults | null): any {
+export function MediaResultsToJSON(json: any): MediaResults {
+    return MediaResultsToJSONTyped(json, false);
+}
+
+export function MediaResultsToJSONTyped(value?: MediaResults | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'result': MediaResultToJSON(value['result']),

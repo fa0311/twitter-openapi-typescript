@@ -65,10 +65,15 @@ export function QuotedStatusPermalinkFromJSONTyped(json: any, ignoreDiscriminato
     };
 }
 
-export function QuotedStatusPermalinkToJSON(value?: QuotedStatusPermalink | null): any {
+export function QuotedStatusPermalinkToJSON(json: any): QuotedStatusPermalink {
+    return QuotedStatusPermalinkToJSONTyped(json, false);
+}
+
+export function QuotedStatusPermalinkToJSONTyped(value?: QuotedStatusPermalink | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'display': value['display'],

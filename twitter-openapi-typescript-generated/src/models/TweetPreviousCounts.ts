@@ -81,10 +81,15 @@ export function TweetPreviousCountsFromJSONTyped(json: any, ignoreDiscriminator:
     };
 }
 
-export function TweetPreviousCountsToJSON(value?: TweetPreviousCounts | null): any {
+export function TweetPreviousCountsToJSON(json: any): TweetPreviousCounts {
+    return TweetPreviousCountsToJSONTyped(json, false);
+}
+
+export function TweetPreviousCountsToJSONTyped(value?: TweetPreviousCounts | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'bookmark_count': value['bookmarkCount'],

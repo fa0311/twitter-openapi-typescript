@@ -59,10 +59,15 @@ export function TweetCardPlatformAudienceFromJSONTyped(json: any, ignoreDiscrimi
     };
 }
 
-export function TweetCardPlatformAudienceToJSON(value?: TweetCardPlatformAudience | null): any {
+export function TweetCardPlatformAudienceToJSON(json: any): TweetCardPlatformAudience {
+    return TweetCardPlatformAudienceToJSONTyped(json, false);
+}
+
+export function TweetCardPlatformAudienceToJSONTyped(value?: TweetCardPlatformAudience | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'name': value['name'],

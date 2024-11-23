@@ -1,7 +1,6 @@
 import { DefaultFlag, TwitterApiUtilsResponse, initOverrides } from '@/models';
 import { buildHeader } from '@/utils';
 import * as i from 'twitter-openapi-typescript-generated';
-import { PostCreateTweetRequestVariablesToJSON } from 'twitter-openapi-typescript-generated';
 
 type PostCreateTweetParam = {
   tweetText: string;
@@ -89,7 +88,6 @@ export class PostApiUtils {
         variables: { ...variables, ...args },
       },
     });
-    const a = PostCreateTweetRequestVariablesToJSON(variables);
 
     return {
       raw: { response: response.raw },

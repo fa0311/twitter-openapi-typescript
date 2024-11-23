@@ -65,10 +65,15 @@ export function ArticleCoverMediaColorInfoPaletteRGBFromJSONTyped(json: any, ign
     };
 }
 
-export function ArticleCoverMediaColorInfoPaletteRGBToJSON(value?: ArticleCoverMediaColorInfoPaletteRGB | null): any {
+export function ArticleCoverMediaColorInfoPaletteRGBToJSON(json: any): ArticleCoverMediaColorInfoPaletteRGB {
+    return ArticleCoverMediaColorInfoPaletteRGBToJSONTyped(json, false);
+}
+
+export function ArticleCoverMediaColorInfoPaletteRGBToJSONTyped(value?: ArticleCoverMediaColorInfoPaletteRGB | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'blue': value['blue'],

@@ -18,6 +18,7 @@ import {
     ItemResultFromJSON,
     ItemResultFromJSONTyped,
     ItemResultToJSON,
+    ItemResultToJSONTyped,
 } from './ItemResult';
 
 /**
@@ -55,10 +56,15 @@ export function TweetResultByRestIdDataFromJSONTyped(json: any, ignoreDiscrimina
     };
 }
 
-export function TweetResultByRestIdDataToJSON(value?: TweetResultByRestIdData | null): any {
+export function TweetResultByRestIdDataToJSON(json: any): TweetResultByRestIdData {
+    return TweetResultByRestIdDataToJSONTyped(json, false);
+}
+
+export function TweetResultByRestIdDataToJSONTyped(value?: TweetResultByRestIdData | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'tweetResult': ItemResultToJSON(value['tweetResult']),

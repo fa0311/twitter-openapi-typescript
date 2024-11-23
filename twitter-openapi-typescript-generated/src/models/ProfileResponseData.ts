@@ -18,6 +18,7 @@ import {
     UserResultByScreenNameFromJSON,
     UserResultByScreenNameFromJSONTyped,
     UserResultByScreenNameToJSON,
+    UserResultByScreenNameToJSONTyped,
 } from './UserResultByScreenName';
 
 /**
@@ -55,10 +56,15 @@ export function ProfileResponseDataFromJSONTyped(json: any, ignoreDiscriminator:
     };
 }
 
-export function ProfileResponseDataToJSON(value?: ProfileResponseData | null): any {
+export function ProfileResponseDataToJSON(json: any): ProfileResponseData {
+    return ProfileResponseDataToJSONTyped(json, false);
+}
+
+export function ProfileResponseDataToJSONTyped(value?: ProfileResponseData | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'user_result_by_screen_name': UserResultByScreenNameToJSON(value['userResultByScreenName']),

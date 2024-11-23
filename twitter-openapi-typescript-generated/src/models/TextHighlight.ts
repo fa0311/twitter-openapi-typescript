@@ -57,10 +57,15 @@ export function TextHighlightFromJSONTyped(json: any, ignoreDiscriminator: boole
     };
 }
 
-export function TextHighlightToJSON(value?: TextHighlight | null): any {
+export function TextHighlightToJSON(json: any): TextHighlight {
+    return TextHighlightToJSONTyped(json, false);
+}
+
+export function TextHighlightToJSONTyped(value?: TextHighlight | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'endIndex': value['endIndex'],

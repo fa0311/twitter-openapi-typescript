@@ -18,12 +18,14 @@ import {
     ModuleItemFromJSON,
     ModuleItemFromJSONTyped,
     ModuleItemToJSON,
+    ModuleItemToJSONTyped,
 } from './ModuleItem';
 import type { InstructionType } from './InstructionType';
 import {
     InstructionTypeFromJSON,
     InstructionTypeFromJSONTyped,
     InstructionTypeToJSON,
+    InstructionTypeToJSONTyped,
 } from './InstructionType';
 
 /**
@@ -87,10 +89,15 @@ export function TimelineAddToModuleFromJSONTyped(json: any, ignoreDiscriminator:
     };
 }
 
-export function TimelineAddToModuleToJSON(value?: TimelineAddToModule | null): any {
+export function TimelineAddToModuleToJSON(json: any): TimelineAddToModule {
+    return TimelineAddToModuleToJSONTyped(json, false);
+}
+
+export function TimelineAddToModuleToJSONTyped(value?: TimelineAddToModule | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'moduleEntryId': value['moduleEntryId'],

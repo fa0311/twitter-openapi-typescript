@@ -18,18 +18,21 @@ import {
     TypeNameFromJSON,
     TypeNameFromJSONTyped,
     TypeNameToJSON,
+    TypeNameToJSONTyped,
 } from './TypeName';
 import type { TweetInterstitialText } from './TweetInterstitialText';
 import {
     TweetInterstitialTextFromJSON,
     TweetInterstitialTextFromJSONTyped,
     TweetInterstitialTextToJSON,
+    TweetInterstitialTextToJSONTyped,
 } from './TweetInterstitialText';
 import type { TweetInterstitialRevealText } from './TweetInterstitialRevealText';
 import {
     TweetInterstitialRevealTextFromJSON,
     TweetInterstitialRevealTextFromJSONTyped,
     TweetInterstitialRevealTextToJSON,
+    TweetInterstitialRevealTextToJSONTyped,
 } from './TweetInterstitialRevealText';
 
 /**
@@ -102,10 +105,15 @@ export function TweetInterstitialFromJSONTyped(json: any, ignoreDiscriminator: b
     };
 }
 
-export function TweetInterstitialToJSON(value?: TweetInterstitial | null): any {
+export function TweetInterstitialToJSON(json: any): TweetInterstitial {
+    return TweetInterstitialToJSONTyped(json, false);
+}
+
+export function TweetInterstitialToJSONTyped(value?: TweetInterstitial | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         '__typename': TypeNameToJSON(value['typename']),

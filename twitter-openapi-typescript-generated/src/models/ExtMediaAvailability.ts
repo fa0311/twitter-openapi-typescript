@@ -66,10 +66,15 @@ export function ExtMediaAvailabilityFromJSONTyped(json: any, ignoreDiscriminator
     };
 }
 
-export function ExtMediaAvailabilityToJSON(value?: ExtMediaAvailability | null): any {
+export function ExtMediaAvailabilityToJSON(json: any): ExtMediaAvailability {
+    return ExtMediaAvailabilityToJSONTyped(json, false);
+}
+
+export function ExtMediaAvailabilityToJSONTyped(value?: ExtMediaAvailability | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'reason': value['reason'],

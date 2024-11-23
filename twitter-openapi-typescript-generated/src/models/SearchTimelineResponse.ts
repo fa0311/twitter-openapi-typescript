@@ -18,12 +18,14 @@ import {
     SearchTimelineDataFromJSON,
     SearchTimelineDataFromJSONTyped,
     SearchTimelineDataToJSON,
+    SearchTimelineDataToJSONTyped,
 } from './SearchTimelineData';
 import type { ErrorResponse } from './ErrorResponse';
 import {
     ErrorResponseFromJSON,
     ErrorResponseFromJSONTyped,
     ErrorResponseToJSON,
+    ErrorResponseToJSONTyped,
 } from './ErrorResponse';
 
 /**
@@ -69,10 +71,15 @@ export function SearchTimelineResponseFromJSONTyped(json: any, ignoreDiscriminat
     };
 }
 
-export function SearchTimelineResponseToJSON(value?: SearchTimelineResponse | null): any {
+export function SearchTimelineResponseToJSON(json: any): SearchTimelineResponse {
+    return SearchTimelineResponseToJSONTyped(json, false);
+}
+
+export function SearchTimelineResponseToJSONTyped(value?: SearchTimelineResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'data': SearchTimelineDataToJSON(value['data']),

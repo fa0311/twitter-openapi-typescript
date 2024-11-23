@@ -48,10 +48,15 @@ export function FeedbackInfoFromJSONTyped(json: any, ignoreDiscriminator: boolea
     };
 }
 
-export function FeedbackInfoToJSON(value?: FeedbackInfo | null): any {
+export function FeedbackInfoToJSON(json: any): FeedbackInfo {
+    return FeedbackInfoToJSONTyped(json, false);
+}
+
+export function FeedbackInfoToJSONTyped(value?: FeedbackInfo | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'feedbackKeys': value['feedbackKeys'],

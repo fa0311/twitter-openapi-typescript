@@ -18,6 +18,7 @@ import {
     MediaVisibilityResultsBlurredImageInterstitialFromJSON,
     MediaVisibilityResultsBlurredImageInterstitialFromJSONTyped,
     MediaVisibilityResultsBlurredImageInterstitialToJSON,
+    MediaVisibilityResultsBlurredImageInterstitialToJSONTyped,
 } from './MediaVisibilityResultsBlurredImageInterstitial';
 
 /**
@@ -56,10 +57,15 @@ export function MediaVisibilityResultsFromJSONTyped(json: any, ignoreDiscriminat
     };
 }
 
-export function MediaVisibilityResultsToJSON(value?: MediaVisibilityResults | null): any {
+export function MediaVisibilityResultsToJSON(json: any): MediaVisibilityResults {
+    return MediaVisibilityResultsToJSONTyped(json, false);
+}
+
+export function MediaVisibilityResultsToJSONTyped(value?: MediaVisibilityResults | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'blurred_image_interstitial': MediaVisibilityResultsBlurredImageInterstitialToJSON(value['blurredImageInterstitial']),

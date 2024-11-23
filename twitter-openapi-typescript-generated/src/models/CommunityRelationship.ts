@@ -18,6 +18,7 @@ import {
     CommunityActionsFromJSON,
     CommunityActionsFromJSONTyped,
     CommunityActionsToJSON,
+    CommunityActionsToJSONTyped,
 } from './CommunityActions';
 
 /**
@@ -80,10 +81,15 @@ export function CommunityRelationshipFromJSONTyped(json: any, ignoreDiscriminato
     };
 }
 
-export function CommunityRelationshipToJSON(value?: CommunityRelationship | null): any {
+export function CommunityRelationshipToJSON(json: any): CommunityRelationship {
+    return CommunityRelationshipToJSONTyped(json, false);
+}
+
+export function CommunityRelationshipToJSONTyped(value?: CommunityRelationship | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'actions': CommunityActionsToJSON(value['actions']),

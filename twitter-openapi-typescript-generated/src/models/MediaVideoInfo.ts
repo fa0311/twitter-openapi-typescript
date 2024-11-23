@@ -18,6 +18,7 @@ import {
     MediaVideoInfoVariantFromJSON,
     MediaVideoInfoVariantFromJSONTyped,
     MediaVideoInfoVariantToJSON,
+    MediaVideoInfoVariantToJSONTyped,
 } from './MediaVideoInfoVariant';
 
 /**
@@ -71,10 +72,15 @@ export function MediaVideoInfoFromJSONTyped(json: any, ignoreDiscriminator: bool
     };
 }
 
-export function MediaVideoInfoToJSON(value?: MediaVideoInfo | null): any {
+export function MediaVideoInfoToJSON(json: any): MediaVideoInfo {
+    return MediaVideoInfoToJSONTyped(json, false);
+}
+
+export function MediaVideoInfoToJSONTyped(value?: MediaVideoInfo | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'aspect_ratio': value['aspectRatio'],

@@ -49,10 +49,15 @@ export function CallbackFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
     };
 }
 
-export function CallbackToJSON(value?: Callback | null): any {
+export function CallbackToJSON(json: any): Callback {
+    return CallbackToJSONTyped(json, false);
+}
+
+export function CallbackToJSONTyped(value?: Callback | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'endpoint': value['endpoint'],

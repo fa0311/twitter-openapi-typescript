@@ -49,10 +49,15 @@ export function TweetLegacyScopesFromJSONTyped(json: any, ignoreDiscriminator: b
     };
 }
 
-export function TweetLegacyScopesToJSON(value?: TweetLegacyScopes | null): any {
+export function TweetLegacyScopesToJSON(json: any): TweetLegacyScopes {
+    return TweetLegacyScopesToJSONTyped(json, false);
+}
+
+export function TweetLegacyScopesToJSONTyped(value?: TweetLegacyScopes | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'followers': value['followers'],

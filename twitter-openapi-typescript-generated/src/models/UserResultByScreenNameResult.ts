@@ -18,12 +18,14 @@ import {
     TypeNameFromJSON,
     TypeNameFromJSONTyped,
     TypeNameToJSON,
+    TypeNameToJSONTyped,
 } from './TypeName';
 import type { UserResultByScreenNameLegacy } from './UserResultByScreenNameLegacy';
 import {
     UserResultByScreenNameLegacyFromJSON,
     UserResultByScreenNameLegacyFromJSONTyped,
     UserResultByScreenNameLegacyToJSON,
+    UserResultByScreenNameLegacyToJSONTyped,
 } from './UserResultByScreenNameLegacy';
 
 /**
@@ -96,10 +98,15 @@ export function UserResultByScreenNameResultFromJSONTyped(json: any, ignoreDiscr
     };
 }
 
-export function UserResultByScreenNameResultToJSON(value?: UserResultByScreenNameResult | null): any {
+export function UserResultByScreenNameResultToJSON(json: any): UserResultByScreenNameResult {
+    return UserResultByScreenNameResultToJSONTyped(json, false);
+}
+
+export function UserResultByScreenNameResultToJSONTyped(value?: UserResultByScreenNameResult | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         '__typename': TypeNameToJSON(value['typename']),

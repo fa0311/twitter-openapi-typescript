@@ -18,12 +18,14 @@ import {
     UserResultCoreFromJSON,
     UserResultCoreFromJSONTyped,
     UserResultCoreToJSON,
+    UserResultCoreToJSONTyped,
 } from './UserResultCore';
 import type { AdditionalMediaInfoCallToActions } from './AdditionalMediaInfoCallToActions';
 import {
     AdditionalMediaInfoCallToActionsFromJSON,
     AdditionalMediaInfoCallToActionsFromJSONTyped,
     AdditionalMediaInfoCallToActionsToJSON,
+    AdditionalMediaInfoCallToActionsToJSONTyped,
 } from './AdditionalMediaInfoCallToActions';
 
 /**
@@ -97,10 +99,15 @@ export function AdditionalMediaInfoFromJSONTyped(json: any, ignoreDiscriminator:
     };
 }
 
-export function AdditionalMediaInfoToJSON(value?: AdditionalMediaInfo | null): any {
+export function AdditionalMediaInfoToJSON(json: any): AdditionalMediaInfo {
+    return AdditionalMediaInfoToJSONTyped(json, false);
+}
+
+export function AdditionalMediaInfoToJSONTyped(value?: AdditionalMediaInfo | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'call_to_actions': AdditionalMediaInfoCallToActionsToJSON(value['callToActions']),

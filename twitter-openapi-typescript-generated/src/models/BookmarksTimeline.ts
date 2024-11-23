@@ -18,6 +18,7 @@ import {
     TimelineFromJSON,
     TimelineFromJSONTyped,
     TimelineToJSON,
+    TimelineToJSONTyped,
 } from './Timeline';
 
 /**
@@ -56,10 +57,15 @@ export function BookmarksTimelineFromJSONTyped(json: any, ignoreDiscriminator: b
     };
 }
 
-export function BookmarksTimelineToJSON(value?: BookmarksTimeline | null): any {
+export function BookmarksTimelineToJSON(json: any): BookmarksTimeline {
+    return BookmarksTimelineToJSONTyped(json, false);
+}
+
+export function BookmarksTimelineToJSONTyped(value?: BookmarksTimeline | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'timeline': TimelineToJSON(value['timeline']),

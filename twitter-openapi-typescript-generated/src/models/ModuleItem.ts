@@ -18,6 +18,7 @@ import {
     ModuleEntryFromJSON,
     ModuleEntryFromJSONTyped,
     ModuleEntryToJSON,
+    ModuleEntryToJSONTyped,
 } from './ModuleEntry';
 
 /**
@@ -64,10 +65,15 @@ export function ModuleItemFromJSONTyped(json: any, ignoreDiscriminator: boolean)
     };
 }
 
-export function ModuleItemToJSON(value?: ModuleItem | null): any {
+export function ModuleItemToJSON(json: any): ModuleItem {
+    return ModuleItemToJSONTyped(json, false);
+}
+
+export function ModuleItemToJSONTyped(value?: ModuleItem | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'entryId': value['entryId'],

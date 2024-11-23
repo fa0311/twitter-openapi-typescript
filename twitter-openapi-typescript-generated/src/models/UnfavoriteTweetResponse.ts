@@ -18,12 +18,14 @@ import {
     UnfavoriteTweetFromJSON,
     UnfavoriteTweetFromJSONTyped,
     UnfavoriteTweetToJSON,
+    UnfavoriteTweetToJSONTyped,
 } from './UnfavoriteTweet';
 import type { ErrorResponse } from './ErrorResponse';
 import {
     ErrorResponseFromJSON,
     ErrorResponseFromJSONTyped,
     ErrorResponseToJSON,
+    ErrorResponseToJSONTyped,
 } from './ErrorResponse';
 
 /**
@@ -69,10 +71,15 @@ export function UnfavoriteTweetResponseFromJSONTyped(json: any, ignoreDiscrimina
     };
 }
 
-export function UnfavoriteTweetResponseToJSON(value?: UnfavoriteTweetResponse | null): any {
+export function UnfavoriteTweetResponseToJSON(json: any): UnfavoriteTweetResponse {
+    return UnfavoriteTweetResponseToJSONTyped(json, false);
+}
+
+export function UnfavoriteTweetResponseToJSONTyped(value?: UnfavoriteTweetResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'data': UnfavoriteTweetToJSON(value['data']),

@@ -217,10 +217,15 @@ export function PostCreateTweetRequestFeaturesFromJSONTyped(json: any, ignoreDis
     };
 }
 
-export function PostCreateTweetRequestFeaturesToJSON(value?: PostCreateTweetRequestFeatures | null): any {
+export function PostCreateTweetRequestFeaturesToJSON(json: any): PostCreateTweetRequestFeatures {
+    return PostCreateTweetRequestFeaturesToJSONTyped(json, false);
+}
+
+export function PostCreateTweetRequestFeaturesToJSONTyped(value?: PostCreateTweetRequestFeatures | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'articles_preview_enabled': value['articlesPreviewEnabled'],

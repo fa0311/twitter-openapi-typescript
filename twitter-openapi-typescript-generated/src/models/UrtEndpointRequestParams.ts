@@ -57,10 +57,15 @@ export function UrtEndpointRequestParamsFromJSONTyped(json: any, ignoreDiscrimin
     };
 }
 
-export function UrtEndpointRequestParamsToJSON(value?: UrtEndpointRequestParams | null): any {
+export function UrtEndpointRequestParamsToJSON(json: any): UrtEndpointRequestParams {
+    return UrtEndpointRequestParamsToJSONTyped(json, false);
+}
+
+export function UrtEndpointRequestParamsToJSONTyped(value?: UrtEndpointRequestParams | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'key': value['key'],

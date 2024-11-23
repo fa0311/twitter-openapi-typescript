@@ -18,12 +18,14 @@ import {
     TweetFavoritersResponseDataFromJSON,
     TweetFavoritersResponseDataFromJSONTyped,
     TweetFavoritersResponseDataToJSON,
+    TweetFavoritersResponseDataToJSONTyped,
 } from './TweetFavoritersResponseData';
 import type { ErrorResponse } from './ErrorResponse';
 import {
     ErrorResponseFromJSON,
     ErrorResponseFromJSONTyped,
     ErrorResponseToJSON,
+    ErrorResponseToJSONTyped,
 } from './ErrorResponse';
 
 /**
@@ -69,10 +71,15 @@ export function TweetFavoritersResponseFromJSONTyped(json: any, ignoreDiscrimina
     };
 }
 
-export function TweetFavoritersResponseToJSON(value?: TweetFavoritersResponse | null): any {
+export function TweetFavoritersResponseToJSON(json: any): TweetFavoritersResponse {
+    return TweetFavoritersResponseToJSONTyped(json, false);
+}
+
+export function TweetFavoritersResponseToJSONTyped(value?: TweetFavoritersResponse | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'data': TweetFavoritersResponseDataToJSON(value['data']),

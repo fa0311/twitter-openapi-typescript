@@ -18,12 +18,14 @@ import {
     InstructionTypeFromJSON,
     InstructionTypeFromJSONTyped,
     InstructionTypeToJSON,
+    InstructionTypeToJSONTyped,
 } from './InstructionType';
 import type { TimelineAddEntry } from './TimelineAddEntry';
 import {
     TimelineAddEntryFromJSON,
     TimelineAddEntryFromJSONTyped,
     TimelineAddEntryToJSON,
+    TimelineAddEntryToJSONTyped,
 } from './TimelineAddEntry';
 
 /**
@@ -72,10 +74,15 @@ export function TimelineAddEntriesFromJSONTyped(json: any, ignoreDiscriminator: 
     };
 }
 
-export function TimelineAddEntriesToJSON(value?: TimelineAddEntries | null): any {
+export function TimelineAddEntriesToJSON(json: any): TimelineAddEntries {
+    return TimelineAddEntriesToJSONTyped(json, false);
+}
+
+export function TimelineAddEntriesToJSONTyped(value?: TimelineAddEntries | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'entries': ((value['entries'] as Array<any>).map(TimelineAddEntryToJSON)),

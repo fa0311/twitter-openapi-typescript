@@ -66,6 +66,12 @@ export interface UserTipJarSettings {
      * @type {string}
      * @memberof UserTipJarSettings
      */
+    payPalHandle?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof UserTipJarSettings
+     */
     venmoHandle?: string;
 }
 
@@ -93,14 +99,20 @@ export function UserTipJarSettingsFromJSONTyped(json: any, ignoreDiscriminator: 
         'gofundmeHandle': json['gofundme_handle'] == null ? undefined : json['gofundme_handle'],
         'isEnabled': json['is_enabled'] == null ? undefined : json['is_enabled'],
         'patreonHandle': json['patreon_handle'] == null ? undefined : json['patreon_handle'],
+        'payPalHandle': json['pay_pal_handle'] == null ? undefined : json['pay_pal_handle'],
         'venmoHandle': json['venmo_handle'] == null ? undefined : json['venmo_handle'],
     };
 }
 
-export function UserTipJarSettingsToJSON(value?: UserTipJarSettings | null): any {
+export function UserTipJarSettingsToJSON(json: any): UserTipJarSettings {
+    return UserTipJarSettingsToJSONTyped(json, false);
+}
+
+export function UserTipJarSettingsToJSONTyped(value?: UserTipJarSettings | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'bandcamp_handle': value['bandcampHandle'],
@@ -110,6 +122,7 @@ export function UserTipJarSettingsToJSON(value?: UserTipJarSettings | null): any
         'gofundme_handle': value['gofundmeHandle'],
         'is_enabled': value['isEnabled'],
         'patreon_handle': value['patreonHandle'],
+        'pay_pal_handle': value['payPalHandle'],
         'venmo_handle': value['venmoHandle'],
     };
 }

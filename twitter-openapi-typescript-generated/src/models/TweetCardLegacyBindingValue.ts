@@ -18,6 +18,7 @@ import {
     TweetCardLegacyBindingValueDataFromJSON,
     TweetCardLegacyBindingValueDataFromJSONTyped,
     TweetCardLegacyBindingValueDataToJSON,
+    TweetCardLegacyBindingValueDataToJSONTyped,
 } from './TweetCardLegacyBindingValueData';
 
 /**
@@ -64,10 +65,15 @@ export function TweetCardLegacyBindingValueFromJSONTyped(json: any, ignoreDiscri
     };
 }
 
-export function TweetCardLegacyBindingValueToJSON(value?: TweetCardLegacyBindingValue | null): any {
+export function TweetCardLegacyBindingValueToJSON(json: any): TweetCardLegacyBindingValue {
+    return TweetCardLegacyBindingValueToJSONTyped(json, false);
+}
+
+export function TweetCardLegacyBindingValueToJSONTyped(value?: TweetCardLegacyBindingValue | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'key': value['key'],

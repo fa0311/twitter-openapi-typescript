@@ -18,18 +18,21 @@ import {
     MediaFromJSON,
     MediaFromJSONTyped,
     MediaToJSON,
+    MediaToJSONTyped,
 } from './Media';
 import type { Timestamp } from './Timestamp';
 import {
     TimestampFromJSON,
     TimestampFromJSONTyped,
     TimestampToJSON,
+    TimestampToJSONTyped,
 } from './Timestamp';
 import type { Url } from './Url';
 import {
     UrlFromJSON,
     UrlFromJSONTyped,
     UrlToJSON,
+    UrlToJSONTyped,
 } from './Url';
 
 /**
@@ -106,10 +109,15 @@ export function EntitiesFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
     };
 }
 
-export function EntitiesToJSON(value?: Entities | null): any {
+export function EntitiesToJSON(json: any): Entities {
+    return EntitiesToJSONTyped(json, false);
+}
+
+export function EntitiesToJSONTyped(value?: Entities | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'hashtags': value['hashtags'],

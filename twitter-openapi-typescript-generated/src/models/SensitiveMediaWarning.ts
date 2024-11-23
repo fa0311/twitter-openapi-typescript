@@ -62,10 +62,15 @@ export function SensitiveMediaWarningFromJSONTyped(json: any, ignoreDiscriminato
     };
 }
 
-export function SensitiveMediaWarningToJSON(value?: SensitiveMediaWarning | null): any {
+export function SensitiveMediaWarningToJSON(json: any): SensitiveMediaWarning {
+    return SensitiveMediaWarningToJSONTyped(json, false);
+}
+
+export function SensitiveMediaWarningToJSONTyped(value?: SensitiveMediaWarning | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'adult_content': value['adultContent'],

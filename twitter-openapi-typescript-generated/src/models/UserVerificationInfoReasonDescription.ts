@@ -18,6 +18,7 @@ import {
     UserVerificationInfoReasonDescriptionEntitiesFromJSON,
     UserVerificationInfoReasonDescriptionEntitiesFromJSONTyped,
     UserVerificationInfoReasonDescriptionEntitiesToJSON,
+    UserVerificationInfoReasonDescriptionEntitiesToJSONTyped,
 } from './UserVerificationInfoReasonDescriptionEntities';
 
 /**
@@ -64,10 +65,15 @@ export function UserVerificationInfoReasonDescriptionFromJSONTyped(json: any, ig
     };
 }
 
-export function UserVerificationInfoReasonDescriptionToJSON(value?: UserVerificationInfoReasonDescription | null): any {
+export function UserVerificationInfoReasonDescriptionToJSON(json: any): UserVerificationInfoReasonDescription {
+    return UserVerificationInfoReasonDescriptionToJSONTyped(json, false);
+}
+
+export function UserVerificationInfoReasonDescriptionToJSONTyped(value?: UserVerificationInfoReasonDescription | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'entities': ((value['entities'] as Array<any>).map(UserVerificationInfoReasonDescriptionEntitiesToJSON)),

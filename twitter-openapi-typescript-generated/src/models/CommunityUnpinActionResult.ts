@@ -18,6 +18,7 @@ import {
     TypeNameFromJSON,
     TypeNameFromJSONTyped,
     TypeNameToJSON,
+    TypeNameToJSONTyped,
 } from './TypeName';
 
 /**
@@ -58,10 +59,15 @@ export function CommunityUnpinActionResultFromJSONTyped(json: any, ignoreDiscrim
     };
 }
 
-export function CommunityUnpinActionResultToJSON(value?: CommunityUnpinActionResult | null): any {
+export function CommunityUnpinActionResultToJSON(json: any): CommunityUnpinActionResult {
+    return CommunityUnpinActionResultToJSONTyped(json, false);
+}
+
+export function CommunityUnpinActionResultToJSONTyped(value?: CommunityUnpinActionResult | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         '__typename': TypeNameToJSON(value['typename']),

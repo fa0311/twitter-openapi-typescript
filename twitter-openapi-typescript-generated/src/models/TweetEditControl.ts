@@ -18,6 +18,7 @@ import {
     TweetEditControlInitialFromJSON,
     TweetEditControlInitialFromJSONTyped,
     TweetEditControlInitialToJSON,
+    TweetEditControlInitialToJSONTyped,
 } from './TweetEditControlInitial';
 
 /**
@@ -90,10 +91,15 @@ export function TweetEditControlFromJSONTyped(json: any, ignoreDiscriminator: bo
     };
 }
 
-export function TweetEditControlToJSON(value?: TweetEditControl | null): any {
+export function TweetEditControlToJSON(json: any): TweetEditControl {
+    return TweetEditControlToJSONTyped(json, false);
+}
+
+export function TweetEditControlToJSONTyped(value?: TweetEditControl | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'edit_control_initial': TweetEditControlInitialToJSON(value['editControlInitial']),

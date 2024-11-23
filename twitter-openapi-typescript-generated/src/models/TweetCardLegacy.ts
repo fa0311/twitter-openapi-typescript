@@ -18,18 +18,21 @@ import {
     TweetCardPlatformDataFromJSON,
     TweetCardPlatformDataFromJSONTyped,
     TweetCardPlatformDataToJSON,
+    TweetCardPlatformDataToJSONTyped,
 } from './TweetCardPlatformData';
 import type { TweetCardLegacyBindingValue } from './TweetCardLegacyBindingValue';
 import {
     TweetCardLegacyBindingValueFromJSON,
     TweetCardLegacyBindingValueFromJSONTyped,
     TweetCardLegacyBindingValueToJSON,
+    TweetCardLegacyBindingValueToJSONTyped,
 } from './TweetCardLegacyBindingValue';
 import type { UserResults } from './UserResults';
 import {
     UserResultsFromJSON,
     UserResultsFromJSONTyped,
     UserResultsToJSON,
+    UserResultsToJSONTyped,
 } from './UserResults';
 
 /**
@@ -98,10 +101,15 @@ export function TweetCardLegacyFromJSONTyped(json: any, ignoreDiscriminator: boo
     };
 }
 
-export function TweetCardLegacyToJSON(value?: TweetCardLegacy | null): any {
+export function TweetCardLegacyToJSON(json: any): TweetCardLegacy {
+    return TweetCardLegacyToJSONTyped(json, false);
+}
+
+export function TweetCardLegacyToJSONTyped(value?: TweetCardLegacy | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'binding_values': ((value['bindingValues'] as Array<any>).map(TweetCardLegacyBindingValueToJSON)),

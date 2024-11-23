@@ -18,6 +18,7 @@ import {
     InstructionTypeFromJSON,
     InstructionTypeFromJSONTyped,
     InstructionTypeToJSON,
+    InstructionTypeToJSONTyped,
 } from './InstructionType';
 
 /**
@@ -58,10 +59,15 @@ export function TimelineClearCacheFromJSONTyped(json: any, ignoreDiscriminator: 
     };
 }
 
-export function TimelineClearCacheToJSON(value?: TimelineClearCache | null): any {
+export function TimelineClearCacheToJSON(json: any): TimelineClearCache {
+    return TimelineClearCacheToJSONTyped(json, false);
+}
+
+export function TimelineClearCacheToJSONTyped(value?: TimelineClearCache | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'type': InstructionTypeToJSON(value['type']),

@@ -88,23 +88,27 @@ export function ItemContentUnionFromJSONTyped(json: any, ignoreDiscriminator: bo
     }
 }
 
-export function ItemContentUnionToJSON(value?: ItemContentUnion | null): any {
+export function ItemContentUnionToJSON(json: any): any {
+    return ItemContentUnionToJSONTyped(json, false);
+}
+
+export function ItemContentUnionToJSONTyped(value?: ItemContentUnion | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
     switch (value['typename']) {
         case 'TimelineCommunity':
-            return TimelineCommunityToJSON(value);
+            return Object.assign({}, TimelineCommunityToJSON(value), { typename: 'TimelineCommunity' } as const);
         case 'TimelineMessagePrompt':
-            return TimelineMessagePromptToJSON(value);
+            return Object.assign({}, TimelineMessagePromptToJSON(value), { typename: 'TimelineMessagePrompt' } as const);
         case 'TimelinePrompt':
-            return TimelinePromptToJSON(value);
+            return Object.assign({}, TimelinePromptToJSON(value), { typename: 'TimelinePrompt' } as const);
         case 'TimelineTimelineCursor':
-            return TimelineTimelineCursorToJSON(value);
+            return Object.assign({}, TimelineTimelineCursorToJSON(value), { typename: 'TimelineTimelineCursor' } as const);
         case 'TimelineTweet':
-            return TimelineTweetToJSON(value);
+            return Object.assign({}, TimelineTweetToJSON(value), { typename: 'TimelineTweet' } as const);
         case 'TimelineUser':
-            return TimelineUserToJSON(value);
+            return Object.assign({}, TimelineUserToJSON(value), { typename: 'TimelineUser' } as const);
         default:
             throw new Error(`No variant of ItemContentUnion exists with 'typename=${value['typename']}'`);
     }

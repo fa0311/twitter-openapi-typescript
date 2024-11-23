@@ -49,10 +49,15 @@ export function BirdwatchPivotNoteFromJSONTyped(json: any, ignoreDiscriminator: 
     };
 }
 
-export function BirdwatchPivotNoteToJSON(value?: BirdwatchPivotNote | null): any {
+export function BirdwatchPivotNoteToJSON(json: any): BirdwatchPivotNote {
+    return BirdwatchPivotNoteToJSONTyped(json, false);
+}
+
+export function BirdwatchPivotNoteToJSONTyped(value?: BirdwatchPivotNote | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'rest_id': value['restId'],

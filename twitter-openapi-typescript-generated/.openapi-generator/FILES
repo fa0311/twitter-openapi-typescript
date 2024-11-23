@@ -46,7 +46,9 @@ src/models/CommunityActions.ts
 src/models/CommunityData.ts
 src/models/CommunityDeleteActionResult.ts
 src/models/CommunityInvitesResult.ts
-src/models/CommunityJoinActionResult.ts
+src/models/CommunityJoinAction.ts
+src/models/CommunityJoinActionResultUnion.ts
+src/models/CommunityJoinActionUnavailable.ts
 src/models/CommunityJoinRequestsResult.ts
 src/models/CommunityLeaveActionResult.ts
 src/models/CommunityPinActionResult.ts

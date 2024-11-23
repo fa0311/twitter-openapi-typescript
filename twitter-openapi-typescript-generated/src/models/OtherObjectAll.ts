@@ -18,6 +18,7 @@ import {
     SessionFromJSON,
     SessionFromJSONTyped,
     SessionToJSON,
+    SessionToJSONTyped,
 } from './Session';
 
 /**
@@ -55,10 +56,15 @@ export function OtherObjectAllFromJSONTyped(json: any, ignoreDiscriminator: bool
     };
 }
 
-export function OtherObjectAllToJSON(value?: OtherObjectAll | null): any {
+export function OtherObjectAllToJSON(json: any): OtherObjectAll {
+    return OtherObjectAllToJSONTyped(json, false);
+}
+
+export function OtherObjectAllToJSONTyped(value?: OtherObjectAll | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'Session': SessionToJSON(value['session']),

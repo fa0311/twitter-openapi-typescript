@@ -18,6 +18,7 @@ import {
     NoteTweetResultDataFromJSON,
     NoteTweetResultDataFromJSONTyped,
     NoteTweetResultDataToJSON,
+    NoteTweetResultDataToJSONTyped,
 } from './NoteTweetResultData';
 
 /**
@@ -56,10 +57,15 @@ export function NoteTweetResultFromJSONTyped(json: any, ignoreDiscriminator: boo
     };
 }
 
-export function NoteTweetResultToJSON(value?: NoteTweetResult | null): any {
+export function NoteTweetResultToJSON(json: any): NoteTweetResult {
+    return NoteTweetResultToJSONTyped(json, false);
+}
+
+export function NoteTweetResultToJSONTyped(value?: NoteTweetResult | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'result': NoteTweetResultDataToJSON(value['result']),

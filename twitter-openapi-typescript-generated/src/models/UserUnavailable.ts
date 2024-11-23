@@ -18,6 +18,7 @@ import {
     TypeNameFromJSON,
     TypeNameFromJSONTyped,
     TypeNameToJSON,
+    TypeNameToJSONTyped,
 } from './TypeName';
 
 /**
@@ -73,10 +74,15 @@ export function UserUnavailableFromJSONTyped(json: any, ignoreDiscriminator: boo
     };
 }
 
-export function UserUnavailableToJSON(value?: UserUnavailable | null): any {
+export function UserUnavailableToJSON(json: any): UserUnavailable {
+    return UserUnavailableToJSONTyped(json, false);
+}
+
+export function UserUnavailableToJSONTyped(value?: UserUnavailable | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         '__typename': TypeNameToJSON(value['typename']),

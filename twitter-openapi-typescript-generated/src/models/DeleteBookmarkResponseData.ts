@@ -48,10 +48,15 @@ export function DeleteBookmarkResponseDataFromJSONTyped(json: any, ignoreDiscrim
     };
 }
 
-export function DeleteBookmarkResponseDataToJSON(value?: DeleteBookmarkResponseData | null): any {
+export function DeleteBookmarkResponseDataToJSON(json: any): DeleteBookmarkResponseData {
+    return DeleteBookmarkResponseDataToJSONTyped(json, false);
+}
+
+export function DeleteBookmarkResponseDataToJSONTyped(value?: DeleteBookmarkResponseData | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'tweet_bookmark_delete': value['tweetBookmarkDelete'],

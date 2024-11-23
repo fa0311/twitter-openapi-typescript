@@ -49,10 +49,15 @@ export function PostCreateTweetRequestVariablesConversationControlFromJSONTyped(
     };
 }
 
-export function PostCreateTweetRequestVariablesConversationControlToJSON(value?: PostCreateTweetRequestVariablesConversationControl | null): any {
+export function PostCreateTweetRequestVariablesConversationControlToJSON(json: any): PostCreateTweetRequestVariablesConversationControl {
+    return PostCreateTweetRequestVariablesConversationControlToJSONTyped(json, false);
+}
+
+export function PostCreateTweetRequestVariablesConversationControlToJSONTyped(value?: PostCreateTweetRequestVariablesConversationControl | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'mode': value['mode'],

@@ -18,6 +18,7 @@ import {
     SearchByRawQueryFromJSON,
     SearchByRawQueryFromJSONTyped,
     SearchByRawQueryToJSON,
+    SearchByRawQueryToJSONTyped,
 } from './SearchByRawQuery';
 
 /**
@@ -55,10 +56,15 @@ export function SearchTimelineDataFromJSONTyped(json: any, ignoreDiscriminator: 
     };
 }
 
-export function SearchTimelineDataToJSON(value?: SearchTimelineData | null): any {
+export function SearchTimelineDataToJSON(json: any): SearchTimelineData {
+    return SearchTimelineDataToJSONTyped(json, false);
+}
+
+export function SearchTimelineDataToJSONTyped(value?: SearchTimelineData | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'search_by_raw_query': SearchByRawQueryToJSON(value['searchByRawQuery']),

@@ -73,10 +73,15 @@ export function TweetEditControlInitialFromJSONTyped(json: any, ignoreDiscrimina
     };
 }
 
-export function TweetEditControlInitialToJSON(value?: TweetEditControlInitial | null): any {
+export function TweetEditControlInitialToJSON(json: any): TweetEditControlInitial {
+    return TweetEditControlInitialToJSONTyped(json, false);
+}
+
+export function TweetEditControlInitialToJSONTyped(value?: TweetEditControlInitial | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'edit_tweet_ids': value['editTweetIds'],

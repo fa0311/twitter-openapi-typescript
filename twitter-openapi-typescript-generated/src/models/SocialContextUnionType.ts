@@ -47,3 +47,7 @@ export function SocialContextUnionTypeToJSON(value?: SocialContextUnionType | nu
     return value as any;
 }
 
+export function SocialContextUnionTypeToJSONTyped(value: any, ignoreDiscriminator: boolean): SocialContextUnionType {
+    return value as SocialContextUnionType;
+}
+

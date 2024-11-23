@@ -18,6 +18,7 @@ import {
     ArticleCoverMediaInfoFromJSON,
     ArticleCoverMediaInfoFromJSONTyped,
     ArticleCoverMediaInfoToJSON,
+    ArticleCoverMediaInfoToJSONTyped,
 } from './ArticleCoverMediaInfo';
 
 /**
@@ -80,10 +81,15 @@ export function ArticleCoverMediaFromJSONTyped(json: any, ignoreDiscriminator: b
     };
 }
 
-export function ArticleCoverMediaToJSON(value?: ArticleCoverMedia | null): any {
+export function ArticleCoverMediaToJSON(json: any): ArticleCoverMedia {
+    return ArticleCoverMediaToJSONTyped(json, false);
+}
+
+export function ArticleCoverMediaToJSONTyped(value?: ArticleCoverMedia | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'id': value['id'],

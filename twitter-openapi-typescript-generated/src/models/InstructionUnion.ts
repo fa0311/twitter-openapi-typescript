@@ -106,27 +106,31 @@ export function InstructionUnionFromJSONTyped(json: any, ignoreDiscriminator: bo
     }
 }
 
-export function InstructionUnionToJSON(value?: InstructionUnion | null): any {
+export function InstructionUnionToJSON(json: any): any {
+    return InstructionUnionToJSONTyped(json, false);
+}
+
+export function InstructionUnionToJSONTyped(value?: InstructionUnion | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
     switch (value['type']) {
         case 'TimelineAddEntries':
-            return TimelineAddEntriesToJSON(value);
+            return Object.assign({}, TimelineAddEntriesToJSON(value), { type: 'TimelineAddEntries' } as const);
         case 'TimelineAddToModule':
-            return TimelineAddToModuleToJSON(value);
+            return Object.assign({}, TimelineAddToModuleToJSON(value), { type: 'TimelineAddToModule' } as const);
         case 'TimelineClearCache':
-            return TimelineClearCacheToJSON(value);
+            return Object.assign({}, TimelineClearCacheToJSON(value), { type: 'TimelineClearCache' } as const);
         case 'TimelinePinEntry':
-            return TimelinePinEntryToJSON(value);
+            return Object.assign({}, TimelinePinEntryToJSON(value), { type: 'TimelinePinEntry' } as const);
         case 'TimelineReplaceEntry':
-            return TimelineReplaceEntryToJSON(value);
+            return Object.assign({}, TimelineReplaceEntryToJSON(value), { type: 'TimelineReplaceEntry' } as const);
         case 'TimelineShowAlert':
-            return TimelineShowAlertToJSON(value);
+            return Object.assign({}, TimelineShowAlertToJSON(value), { type: 'TimelineShowAlert' } as const);
         case 'TimelineShowCover':
-            return TimelineShowCoverToJSON(value);
+            return Object.assign({}, TimelineShowCoverToJSON(value), { type: 'TimelineShowCover' } as const);
         case 'TimelineTerminateTimeline':
-            return TimelineTerminateTimelineToJSON(value);
+            return Object.assign({}, TimelineTerminateTimelineToJSON(value), { type: 'TimelineTerminateTimeline' } as const);
         default:
             throw new Error(`No variant of InstructionUnion exists with 'type=${value['type']}'`);
     }

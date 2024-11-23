@@ -57,10 +57,15 @@ export function PostCreateTweetRequestVariablesReplyFromJSONTyped(json: any, ign
     };
 }
 
-export function PostCreateTweetRequestVariablesReplyToJSON(value?: PostCreateTweetRequestVariablesReply | null): any {
+export function PostCreateTweetRequestVariablesReplyToJSON(json: any): PostCreateTweetRequestVariablesReply {
+    return PostCreateTweetRequestVariablesReplyToJSONTyped(json, false);
+}
+
+export function PostCreateTweetRequestVariablesReplyToJSONTyped(value?: PostCreateTweetRequestVariablesReply | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
+
     return {
         
         'exclude_reply_user_ids': value['excludeReplyUserIds'],

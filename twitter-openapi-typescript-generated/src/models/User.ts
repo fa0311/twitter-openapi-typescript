@@ -110,6 +110,12 @@ export interface User {
      * @type {boolean}
      * @memberof User
      */
+    hasHiddenSubscriptionsOnProfile?: boolean;
+    /**
+     * 
+     * @type {boolean}
+     * @memberof User
+     */
     hasNftAvatar?: boolean;
     /**
      * 
@@ -250,6 +256,7 @@ export function UserFromJSONTyped(json: any, ignoreDiscriminator: boolean): User
         'creatorSubscriptionsCount': json['creator_subscriptions_count'] == null ? undefined : json['creator_subscriptions_count'],
         'hasGraduatedAccess': json['has_graduated_access'] == null ? undefined : json['has_graduated_access'],
         'hasHiddenLikesOnProfile': json['has_hidden_likes_on_profile'] == null ? undefined : json['has_hidden_likes_on_profile'],
+        'hasHiddenSubscriptionsOnProfile': json['has_hidden_subscriptions_on_profile'] == null ? undefined : json['has_hidden_subscriptions_on_profile'],
         'hasNftAvatar': json['has_nft_avatar'] == null ? undefined : json['has_nft_avatar'],
         'highlightsInfo': json['highlights_info'] == null ? undefined : UserHighlightsInfoFromJSON(json['highlights_info']),
         'id': json['id'],
@@ -287,6 +294,7 @@ export function UserToJSONTyped(value?: User | null, ignoreDiscriminator: boolea
         'creator_subscriptions_count': value['creatorSubscriptionsCount'],
         'has_graduated_access': value['hasGraduatedAccess'],
         'has_hidden_likes_on_profile': value['hasHiddenLikesOnProfile'],
+        'has_hidden_subscriptions_on_profile': value['hasHiddenSubscriptionsOnProfile'],
         'has_nft_avatar': value['hasNftAvatar'],
         'highlights_info': UserHighlightsInfoToJSON(value['highlightsInfo']),
         'id': value['id'],

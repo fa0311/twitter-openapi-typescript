@@ -63,6 +63,12 @@ export interface TimelineTweet {
     typename: TypeName;
     /**
      * 
+     * @type {boolean}
+     * @memberof TimelineTweet
+     */
+    hasModeratedReplies?: boolean;
+    /**
+     * 
      * @type {Highlight}
      * @memberof TimelineTweet
      */
@@ -134,6 +140,7 @@ export function TimelineTweetFromJSONTyped(json: any, ignoreDiscriminator: boole
     return {
         
         'typename': TypeNameFromJSON(json['__typename']),
+        'hasModeratedReplies': json['hasModeratedReplies'] == null ? undefined : json['hasModeratedReplies'],
         'highlights': json['highlights'] == null ? undefined : HighlightFromJSON(json['highlights']),
         'itemType': ContentItemTypeFromJSON(json['itemType']),
         'promotedMetadata': json['promotedMetadata'] == null ? undefined : json['promotedMetadata'],
@@ -155,6 +162,7 @@ export function TimelineTweetToJSONTyped(value?: TimelineTweet | null, ignoreDis
     return {
         
         '__typename': TypeNameToJSON(value['typename']),
+        'hasModeratedReplies': value['hasModeratedReplies'],
         'highlights': HighlightToJSON(value['highlights']),
         'itemType': ContentItemTypeToJSON(value['itemType']),
         'promotedMetadata': value['promotedMetadata'],

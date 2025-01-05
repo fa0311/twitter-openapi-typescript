@@ -19,6 +19,13 @@ import {
     TweetFromJSONTyped,
     TweetToJSON,
 } from './Tweet';
+import type { TweetPreviewDisplay } from './TweetPreviewDisplay';
+import {
+    instanceOfTweetPreviewDisplay,
+    TweetPreviewDisplayFromJSON,
+    TweetPreviewDisplayFromJSONTyped,
+    TweetPreviewDisplayToJSON,
+} from './TweetPreviewDisplay';
 import type { TweetTombstone } from './TweetTombstone';
 import {
     instanceOfTweetTombstone,
@@ -46,7 +53,7 @@ import {
  * 
  * @export
  */
-export type TweetUnion = { typename: 'Tweet' } & Tweet | { typename: 'TweetTombstone' } & TweetTombstone | { typename: 'TweetUnavailable' } & TweetUnavailable | { typename: 'TweetWithVisibilityResults' } & TweetWithVisibilityResults;
+export type TweetUnion = { typename: 'Tweet' } & Tweet | { typename: 'TweetPreviewDisplay' } & TweetPreviewDisplay | { typename: 'TweetTombstone' } & TweetTombstone | { typename: 'TweetUnavailable' } & TweetUnavailable | { typename: 'TweetWithVisibilityResults' } & TweetWithVisibilityResults;
 
 export function TweetUnionFromJSON(json: any): TweetUnion {
     return TweetUnionFromJSONTyped(json, false);
@@ -59,6 +66,8 @@ export function TweetUnionFromJSONTyped(json: any, ignoreDiscriminator: boolean)
     switch (json['__typename']) {
         case 'Tweet':
             return Object.assign({}, TweetFromJSONTyped(json, true), { typename: 'Tweet' } as const);
+        case 'TweetPreviewDisplay':
+            return Object.assign({}, TweetPreviewDisplayFromJSONTyped(json, true), { typename: 'TweetPreviewDisplay' } as const);
         case 'TweetTombstone':
             return Object.assign({}, TweetTombstoneFromJSONTyped(json, true), { typename: 'TweetTombstone' } as const);
         case 'TweetUnavailable':
@@ -81,6 +90,8 @@ export function TweetUnionToJSONTyped(value?: TweetUnion | null, ignoreDiscrimin
     switch (value['typename']) {
         case 'Tweet':
             return Object.assign({}, TweetToJSON(value), { typename: 'Tweet' } as const);
+        case 'TweetPreviewDisplay':
+            return Object.assign({}, TweetPreviewDisplayToJSON(value), { typename: 'TweetPreviewDisplay' } as const);
         case 'TweetTombstone':
             return Object.assign({}, TweetTombstoneToJSON(value), { typename: 'TweetTombstone' } as const);
         case 'TweetUnavailable':

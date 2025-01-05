@@ -88,6 +88,7 @@ export interface GetUserHighlightsTweetsRequest {
     pathQueryId: string;
     variables: string;
     features: string;
+    fieldToggles: string;
 }
 
 export interface GetUserMediaRequest {
@@ -1136,6 +1137,13 @@ export class TweetApi extends runtime.BaseAPI {
             );
         }
 
+        if (requestParameters['fieldToggles'] == null) {
+            throw new runtime.RequiredError(
+                'fieldToggles',
+                'Required parameter "fieldToggles" was null or undefined when calling getUserHighlightsTweets().'
+            );
+        }
+
         const queryParameters: any = {};
 
         if (requestParameters['variables'] != null) {
@@ -1144,6 +1152,10 @@ export class TweetApi extends runtime.BaseAPI {
 
         if (requestParameters['features'] != null) {
             queryParameters['features'] = requestParameters['features'];
+        }
+
+        if (requestParameters['fieldToggles'] != null) {
+            queryParameters['fieldToggles'] = requestParameters['fieldToggles'];
         }
 
         const headerParameters: runtime.HTTPHeaders = {};

@@ -98,6 +98,8 @@ src/models/FollowResponseData.ts
 src/models/FollowResponseResult.ts
 src/models/FollowResponseUser.ts
 src/models/FollowTimeline.ts
+src/models/GrokShareAttachment.ts
+src/models/GrokShareAttachmentItem.ts
 src/models/Highlight.ts
 src/models/HomeTimelineHome.ts
 src/models/HomeTimelineResponseData.ts
@@ -105,6 +107,7 @@ src/models/InstructionType.ts
 src/models/InstructionUnion.ts
 src/models/ItemContentUnion.ts
 src/models/ItemResult.ts
+src/models/LimitedActionResultsData.ts
 src/models/ListLatestTweetsTimelineResponse.ts
 src/models/ListTweetsTimeline.ts
 src/models/ListTweetsTimelineData.ts
@@ -204,6 +207,7 @@ src/models/TimelineV2.ts
 src/models/Timestamp.ts
 src/models/TopicContext.ts
 src/models/Tracing.ts
+src/models/TrendResults.ts
 src/models/Tweet.ts
 src/models/TweetCard.ts
 src/models/TweetCardLegacy.ts
@@ -228,6 +232,12 @@ src/models/TweetInterstitialTextEntity.ts
 src/models/TweetInterstitialTextEntityRef.ts
 src/models/TweetLegacy.ts
 src/models/TweetLegacyScopes.ts
+src/models/TweetLimitedActionResults.ts
+src/models/TweetPreviewDisplay.ts
+src/models/TweetPreviewDisplayCta.ts
+src/models/TweetPreviewDisplayCtaUrl.ts
+src/models/TweetPreviewDisplayTweet.ts
+src/models/TweetPreviewDisplayTweetViewCount.ts
 src/models/TweetPreviousCounts.ts
 src/models/TweetResultByRestIdData.ts
 src/models/TweetResultByRestIdResponse.ts

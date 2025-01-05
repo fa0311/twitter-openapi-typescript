@@ -27,6 +27,13 @@ import {
     TypeNameToJSON,
     TypeNameToJSONTyped,
 } from './TypeName';
+import type { GrokShareAttachment } from './GrokShareAttachment';
+import {
+    GrokShareAttachmentFromJSON,
+    GrokShareAttachmentFromJSONTyped,
+    GrokShareAttachmentToJSON,
+    GrokShareAttachmentToJSONTyped,
+} from './GrokShareAttachment';
 import type { SuperFollowsReplyUserResult } from './SuperFollowsReplyUserResult';
 import {
     SuperFollowsReplyUserResultFromJSON,
@@ -34,6 +41,13 @@ import {
     SuperFollowsReplyUserResultToJSON,
     SuperFollowsReplyUserResultToJSONTyped,
 } from './SuperFollowsReplyUserResult';
+import type { TrendResults } from './TrendResults';
+import {
+    TrendResultsFromJSON,
+    TrendResultsFromJSONTyped,
+    TrendResultsToJSON,
+    TrendResultsToJSONTyped,
+} from './TrendResults';
 import type { UserResultCore } from './UserResultCore';
 import {
     UserResultCoreFromJSON,
@@ -208,6 +222,18 @@ export interface Tweet {
     editPrespective?: TweetEditPrespective;
     /**
      * 
+     * @type {Array<string>}
+     * @memberof Tweet
+     */
+    grokAnalysisFollowups?: Array<string>;
+    /**
+     * 
+     * @type {GrokShareAttachment}
+     * @memberof Tweet
+     */
+    grokShareAttachment?: GrokShareAttachment;
+    /**
+     * 
      * @type {boolean}
      * @memberof Tweet
      */
@@ -274,6 +300,12 @@ export interface Tweet {
     superFollowsReplyUserResult?: SuperFollowsReplyUserResult;
     /**
      * 
+     * @type {TrendResults}
+     * @memberof Tweet
+     */
+    trendResults?: TrendResults;
+    /**
+     * 
      * @type {UnifiedCard}
      * @memberof Tweet
      */
@@ -322,6 +354,8 @@ export function TweetFromJSONTyped(json: any, ignoreDiscriminator: boolean): Twe
         'core': json['core'] == null ? undefined : UserResultCoreFromJSON(json['core']),
         'editControl': json['edit_control'] == null ? undefined : TweetEditControlFromJSON(json['edit_control']),
         'editPrespective': json['edit_prespective'] == null ? undefined : TweetEditPrespectiveFromJSON(json['edit_prespective']),
+        'grokAnalysisFollowups': json['grok_analysis_followups'] == null ? undefined : json['grok_analysis_followups'],
+        'grokShareAttachment': json['grok_share_attachment'] == null ? undefined : GrokShareAttachmentFromJSON(json['grok_share_attachment']),
         'hasBirdwatchNotes': json['has_birdwatch_notes'] == null ? undefined : json['has_birdwatch_notes'],
         'isTranslatable': json['is_translatable'] == null ? undefined : json['is_translatable'],
         'legacy': json['legacy'] == null ? undefined : TweetLegacyFromJSON(json['legacy']),
@@ -333,6 +367,7 @@ export function TweetFromJSONTyped(json: any, ignoreDiscriminator: boolean): Twe
         'restId': json['rest_id'],
         'source': json['source'] == null ? undefined : json['source'],
         'superFollowsReplyUserResult': json['superFollowsReplyUserResult'] == null ? undefined : SuperFollowsReplyUserResultFromJSON(json['superFollowsReplyUserResult']),
+        'trendResults': json['trend_results'] == null ? undefined : TrendResultsFromJSON(json['trend_results']),
         'unifiedCard': json['unified_card'] == null ? undefined : UnifiedCardFromJSON(json['unified_card']),
         'unmentionData': json['unmention_data'] == null ? undefined : json['unmention_data'],
         'views': json['views'] == null ? undefined : TweetViewFromJSON(json['views']),
@@ -360,6 +395,8 @@ export function TweetToJSONTyped(value?: Tweet | null, ignoreDiscriminator: bool
         'core': UserResultCoreToJSON(value['core']),
         'edit_control': TweetEditControlToJSON(value['editControl']),
         'edit_prespective': TweetEditPrespectiveToJSON(value['editPrespective']),
+        'grok_analysis_followups': value['grokAnalysisFollowups'],
+        'grok_share_attachment': GrokShareAttachmentToJSON(value['grokShareAttachment']),
         'has_birdwatch_notes': value['hasBirdwatchNotes'],
         'is_translatable': value['isTranslatable'],
         'legacy': TweetLegacyToJSON(value['legacy']),
@@ -371,6 +408,7 @@ export function TweetToJSONTyped(value?: Tweet | null, ignoreDiscriminator: bool
         'rest_id': value['restId'],
         'source': value['source'],
         'superFollowsReplyUserResult': SuperFollowsReplyUserResultToJSON(value['superFollowsReplyUserResult']),
+        'trend_results': TrendResultsToJSON(value['trendResults']),
         'unified_card': UnifiedCardToJSON(value['unifiedCard']),
         'unmention_data': value['unmentionData'],
         'views': TweetViewToJSON(value['views']),

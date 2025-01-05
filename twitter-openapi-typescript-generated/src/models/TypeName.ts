@@ -30,6 +30,7 @@ export const TypeName = {
     TimelineMessagePrompt: 'TimelineMessagePrompt',
     TimelineCommunity: 'TimelineCommunity',
     TweetUnavailable: 'TweetUnavailable',
+    TweetPreviewDisplay: 'TweetPreviewDisplay',
     Tweet: 'Tweet',
     User: 'User',
     UserUnavailable: 'UserUnavailable',

@@ -222,6 +222,12 @@ export interface Tweet {
     editPrespective?: TweetEditPrespective;
     /**
      * 
+     * @type {boolean}
+     * @memberof Tweet
+     */
+    grokAnalysisButton?: boolean;
+    /**
+     * 
      * @type {Array<string>}
      * @memberof Tweet
      */
@@ -354,6 +360,7 @@ export function TweetFromJSONTyped(json: any, ignoreDiscriminator: boolean): Twe
         'core': json['core'] == null ? undefined : UserResultCoreFromJSON(json['core']),
         'editControl': json['edit_control'] == null ? undefined : TweetEditControlFromJSON(json['edit_control']),
         'editPrespective': json['edit_prespective'] == null ? undefined : TweetEditPrespectiveFromJSON(json['edit_prespective']),
+        'grokAnalysisButton': json['grok_analysis_button'] == null ? undefined : json['grok_analysis_button'],
         'grokAnalysisFollowups': json['grok_analysis_followups'] == null ? undefined : json['grok_analysis_followups'],
         'grokShareAttachment': json['grok_share_attachment'] == null ? undefined : GrokShareAttachmentFromJSON(json['grok_share_attachment']),
         'hasBirdwatchNotes': json['has_birdwatch_notes'] == null ? undefined : json['has_birdwatch_notes'],
@@ -395,6 +402,7 @@ export function TweetToJSONTyped(value?: Tweet | null, ignoreDiscriminator: bool
         'core': UserResultCoreToJSON(value['core']),
         'edit_control': TweetEditControlToJSON(value['editControl']),
         'edit_prespective': TweetEditPrespectiveToJSON(value['editPrespective']),
+        'grok_analysis_button': value['grokAnalysisButton'],
         'grok_analysis_followups': value['grokAnalysisFollowups'],
         'grok_share_attachment': GrokShareAttachmentToJSON(value['grokShareAttachment']),
         'has_birdwatch_notes': value['hasBirdwatchNotes'],

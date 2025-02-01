@@ -9,12 +9,12 @@ import {
   V11PostApiUtils,
   V20GetApiUtils,
 } from '@/apis';
-import { DefaultFlag, initOverrides } from '@/models';
+import type { DefaultFlag, initOverrides } from '@/models';
 import * as i from 'twitter-openapi-typescript-generated';
 import { UsersApiUtils } from './apis/usersApi';
 
 export class TwitterOpenApi {
-  static hash = '4b27150977e1bdd807de8969dc0ddd7918ac9923';
+  static hash = '8b2d05d1525404a29730f740a259026502be7cbd';
   static url = `https://raw.githubusercontent.com/fa0311/twitter-openapi/${this.hash}/src/config/placeholder.json`;
   static header = 'https://raw.githubusercontent.com/fa0311/latest-user-agent/refs/heads/main/header.json';
   static twitter = 'https://x.com/home';
@@ -40,7 +40,10 @@ export class TwitterOpenApi {
     this.additionalApiHeaders = headers;
   }
 
-  async getHeaders(): Promise<{ api: { [key: string]: string }; browser: { [key: string]: string } }> {
+  async getHeaders(): Promise<{
+    api: { [key: string]: string };
+    browser: { [key: string]: string };
+  }> {
     const raw = await TwitterOpenApi.fetchApi(TwitterOpenApi.header, {
       method: 'GET',
       ...this.initOverrides,
@@ -109,13 +112,19 @@ export class TwitterOpenApi {
     });
 
     if (response.headers.getSetCookie) {
-      cookies = { ...cookies, ...this.cookieNormalize(response.headers.getSetCookie()) };
+      cookies = {
+        ...cookies,
+        ...this.cookieNormalize(response.headers.getSetCookie()),
+      };
     } else {
-      cookies = { ...cookies, ...this.cookieNormalize(response.headers.get('set-cookie')?.split(', ') || []) };
+      cookies = {
+        ...cookies,
+        ...this.cookieNormalize(response.headers.get('set-cookie')?.split(', ') || []),
+      };
     }
     const html = await response.text();
 
-    const re = new RegExp('document.cookie="(.*?)";', 'g');
+    const re = /document.cookie="(.*?)";/g;
 
     const find = [...html.matchAll(re)].map((e) => e[1]);
     cookies = { ...cookies, ...this.cookieNormalize(find) };
@@ -125,7 +134,10 @@ export class TwitterOpenApi {
       .reduce((a, [key, value]) => ({ ...a, [key]: value }), {});
 
     if (!cookies['gt']) {
-      const activate_headers = { ...(await this.getHeaders()).api, cookie: this.cookieEncode(cookies) };
+      const activate_headers = {
+        ...(await this.getHeaders()).api,
+        cookie: this.cookieEncode(cookies),
+      };
       const { guest_token } = await TwitterOpenApi.fetchApi('https://api.x.com/1.1/guest/activate.json', {
         method: 'POST',
         headers: activate_headers,

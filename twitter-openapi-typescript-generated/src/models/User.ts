@@ -155,6 +155,12 @@ export interface User {
     legacyExtendedProfile?: UserLegacyExtendedProfile;
     /**
      * 
+     * @type {string}
+     * @memberof User
+     */
+    parodyCommentaryFanLabel?: UserParodyCommentaryFanLabelEnum;
+    /**
+     * 
      * @type {boolean}
      * @memberof User
      */
@@ -219,6 +225,15 @@ export interface User {
 /**
  * @export
  */
+export const UserParodyCommentaryFanLabelEnum = {
+    None: 'None',
+    Parody: 'Parody'
+} as const;
+export type UserParodyCommentaryFanLabelEnum = typeof UserParodyCommentaryFanLabelEnum[keyof typeof UserParodyCommentaryFanLabelEnum];
+
+/**
+ * @export
+ */
 export const UserProfileImageShapeEnum = {
     Circle: 'Circle',
     Square: 'Square',
@@ -264,6 +279,7 @@ export function UserFromJSONTyped(json: any, ignoreDiscriminator: boolean): User
         'isProfileTranslatable': json['is_profile_translatable'] == null ? undefined : json['is_profile_translatable'],
         'legacy': UserLegacyFromJSON(json['legacy']),
         'legacyExtendedProfile': json['legacy_extended_profile'] == null ? undefined : UserLegacyExtendedProfileFromJSON(json['legacy_extended_profile']),
+        'parodyCommentaryFanLabel': json['parody_commentary_fan_label'] == null ? undefined : json['parody_commentary_fan_label'],
         'premiumGiftingEligible': json['premium_gifting_eligible'] == null ? undefined : json['premium_gifting_eligible'],
         'professional': json['professional'] == null ? undefined : UserProfessionalFromJSON(json['professional']),
         'profileImageShape': json['profile_image_shape'],
@@ -302,6 +318,7 @@ export function UserToJSONTyped(value?: User | null, ignoreDiscriminator: boolea
         'is_profile_translatable': value['isProfileTranslatable'],
         'legacy': UserLegacyToJSON(value['legacy']),
         'legacy_extended_profile': UserLegacyExtendedProfileToJSON(value['legacyExtendedProfile']),
+        'parody_commentary_fan_label': value['parodyCommentaryFanLabel'],
         'premium_gifting_eligible': value['premiumGiftingEligible'],
         'professional': UserProfessionalToJSON(value['professional']),
         'profile_image_shape': value['profileImageShape'],

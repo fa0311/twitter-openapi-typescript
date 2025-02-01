@@ -13,12 +13,26 @@
  */
 
 import { mapValues } from '../runtime';
+import type { ClientEventInfo } from './ClientEventInfo';
+import {
+    ClientEventInfoFromJSON,
+    ClientEventInfoFromJSONTyped,
+    ClientEventInfoToJSON,
+    ClientEventInfoToJSONTyped,
+} from './ClientEventInfo';
+
 /**
  * 
  * @export
  * @interface FeedbackInfo
  */
 export interface FeedbackInfo {
+    /**
+     * 
+     * @type {ClientEventInfo}
+     * @memberof FeedbackInfo
+     */
+    clientEventInfo?: ClientEventInfo;
     /**
      * 
      * @type {Array<string>}
@@ -44,6 +58,7 @@ export function FeedbackInfoFromJSONTyped(json: any, ignoreDiscriminator: boolea
     }
     return {
         
+        'clientEventInfo': json['clientEventInfo'] == null ? undefined : ClientEventInfoFromJSON(json['clientEventInfo']),
         'feedbackKeys': json['feedbackKeys'] == null ? undefined : json['feedbackKeys'],
     };
 }
@@ -59,6 +74,7 @@ export function FeedbackInfoToJSONTyped(value?: FeedbackInfo | null, ignoreDiscr
 
     return {
         
+        'clientEventInfo': ClientEventInfoToJSON(value['clientEventInfo']),
         'feedbackKeys': value['feedbackKeys'],
     };
 }

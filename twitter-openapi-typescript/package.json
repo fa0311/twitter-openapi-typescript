@@ -21,7 +21,7 @@
   "main": "./dist/src/index.js",
   "typings": "./dist/src/index.d.ts",
   "dependencies": {
-    "twitter-openapi-typescript-generated": "^0.0.34"
+    "twitter-openapi-typescript-generated": "^0.0.35"
   },
   "devDependencies": {
     "@types/jest": "*",

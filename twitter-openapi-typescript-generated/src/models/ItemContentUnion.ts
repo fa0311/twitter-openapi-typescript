@@ -40,6 +40,13 @@ import {
     TimelineTimelineCursorFromJSONTyped,
     TimelineTimelineCursorToJSON,
 } from './TimelineTimelineCursor';
+import type { TimelineTombstone } from './TimelineTombstone';
+import {
+    instanceOfTimelineTombstone,
+    TimelineTombstoneFromJSON,
+    TimelineTombstoneFromJSONTyped,
+    TimelineTombstoneToJSON,
+} from './TimelineTombstone';
 import type { TimelineTweet } from './TimelineTweet';
 import {
     instanceOfTimelineTweet,
@@ -60,7 +67,7 @@ import {
  * 
  * @export
  */
-export type ItemContentUnion = { typename: 'TimelineCommunity' } & TimelineCommunity | { typename: 'TimelineMessagePrompt' } & TimelineMessagePrompt | { typename: 'TimelinePrompt' } & TimelinePrompt | { typename: 'TimelineTimelineCursor' } & TimelineTimelineCursor | { typename: 'TimelineTweet' } & TimelineTweet | { typename: 'TimelineUser' } & TimelineUser;
+export type ItemContentUnion = { typename: 'TimelineCommunity' } & TimelineCommunity | { typename: 'TimelineMessagePrompt' } & TimelineMessagePrompt | { typename: 'TimelinePrompt' } & TimelinePrompt | { typename: 'TimelineTimelineCursor' } & TimelineTimelineCursor | { typename: 'TimelineTombstone' } & TimelineTombstone | { typename: 'TimelineTweet' } & TimelineTweet | { typename: 'TimelineUser' } & TimelineUser;
 
 export function ItemContentUnionFromJSON(json: any): ItemContentUnion {
     return ItemContentUnionFromJSONTyped(json, false);
@@ -79,6 +86,8 @@ export function ItemContentUnionFromJSONTyped(json: any, ignoreDiscriminator: bo
             return Object.assign({}, TimelinePromptFromJSONTyped(json, true), { typename: 'TimelinePrompt' } as const);
         case 'TimelineTimelineCursor':
             return Object.assign({}, TimelineTimelineCursorFromJSONTyped(json, true), { typename: 'TimelineTimelineCursor' } as const);
+        case 'TimelineTombstone':
+            return Object.assign({}, TimelineTombstoneFromJSONTyped(json, true), { typename: 'TimelineTombstone' } as const);
         case 'TimelineTweet':
             return Object.assign({}, TimelineTweetFromJSONTyped(json, true), { typename: 'TimelineTweet' } as const);
         case 'TimelineUser':
@@ -105,6 +114,8 @@ export function ItemContentUnionToJSONTyped(value?: ItemContentUnion | null, ign
             return Object.assign({}, TimelinePromptToJSON(value), { typename: 'TimelinePrompt' } as const);
         case 'TimelineTimelineCursor':
             return Object.assign({}, TimelineTimelineCursorToJSON(value), { typename: 'TimelineTimelineCursor' } as const);
+        case 'TimelineTombstone':
+            return Object.assign({}, TimelineTombstoneToJSON(value), { typename: 'TimelineTombstone' } as const);
         case 'TimelineTweet':
             return Object.assign({}, TimelineTweetToJSON(value), { typename: 'TimelineTweet' } as const);
         case 'TimelineUser':

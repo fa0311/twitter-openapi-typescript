@@ -200,11 +200,16 @@ src/models/TimelineTerminateTimeline.ts
 src/models/TimelineTimelineCursor.ts
 src/models/TimelineTimelineItem.ts
 src/models/TimelineTimelineModule.ts
+src/models/TimelineTombstone.ts
 src/models/TimelineTopicContext.ts
 src/models/TimelineTweet.ts
 src/models/TimelineUser.ts
 src/models/TimelineV2.ts
 src/models/Timestamp.ts
+src/models/TombstoneEntity.ts
+src/models/TombstoneInfo.ts
+src/models/TombstoneRef.ts
+src/models/TombstoneRichText.ts
 src/models/TopicContext.ts
 src/models/Tracing.ts
 src/models/TrendResults.ts

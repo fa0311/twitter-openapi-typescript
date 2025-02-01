@@ -34,6 +34,13 @@ import {
     DisplayTypeToJSON,
     DisplayTypeToJSONTyped,
 } from './DisplayType';
+import type { ClientEventInfo } from './ClientEventInfo';
+import {
+    ClientEventInfoFromJSON,
+    ClientEventInfoFromJSONTyped,
+    ClientEventInfoToJSON,
+    ClientEventInfoToJSONTyped,
+} from './ClientEventInfo';
 import type { FeedbackInfo } from './FeedbackInfo';
 import {
     FeedbackInfoFromJSON,
@@ -63,10 +70,10 @@ export interface TimelineTimelineModule {
     typename: TypeName;
     /**
      * 
-     * @type {{ [key: string]: any; }}
+     * @type {ClientEventInfo}
      * @memberof TimelineTimelineModule
      */
-    clientEventInfo: { [key: string]: any; };
+    clientEventInfo: ClientEventInfo;
     /**
      * 
      * @type {DisplayType}
@@ -135,7 +142,7 @@ export function TimelineTimelineModuleFromJSONTyped(json: any, ignoreDiscriminat
     return {
         
         'typename': TypeNameFromJSON(json['__typename']),
-        'clientEventInfo': json['clientEventInfo'],
+        'clientEventInfo': ClientEventInfoFromJSON(json['clientEventInfo']),
         'displayType': DisplayTypeFromJSON(json['displayType']),
         'entryType': ContentEntryTypeFromJSON(json['entryType']),
         'feedbackInfo': json['feedbackInfo'] == null ? undefined : FeedbackInfoFromJSON(json['feedbackInfo']),
@@ -158,7 +165,7 @@ export function TimelineTimelineModuleToJSONTyped(value?: TimelineTimelineModule
     return {
         
         '__typename': TypeNameToJSON(value['typename']),
-        'clientEventInfo': value['clientEventInfo'],
+        'clientEventInfo': ClientEventInfoToJSON(value['clientEventInfo']),
         'displayType': DisplayTypeToJSON(value['displayType']),
         'entryType': ContentEntryTypeToJSON(value['entryType']),
         'feedbackInfo': FeedbackInfoToJSON(value['feedbackInfo']),

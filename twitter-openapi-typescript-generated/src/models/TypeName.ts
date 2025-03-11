@@ -30,6 +30,7 @@ export const TypeName = {
     TimelineMessagePrompt: 'TimelineMessagePrompt',
     TimelineCommunity: 'TimelineCommunity',
     TimelineTombstone: 'TimelineTombstone',
+    TimelineTrend: 'TimelineTrend',
     TweetUnavailable: 'TweetUnavailable',
     TweetPreviewDisplay: 'TweetPreviewDisplay',
     Tweet: 'Tweet',

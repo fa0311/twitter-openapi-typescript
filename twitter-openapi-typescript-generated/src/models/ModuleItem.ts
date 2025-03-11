@@ -29,6 +29,12 @@ import {
 export interface ModuleItem {
     /**
      * 
+     * @type {boolean}
+     * @memberof ModuleItem
+     */
+    dispensable?: boolean;
+    /**
+     * 
      * @type {string}
      * @memberof ModuleItem
      */
@@ -60,6 +66,7 @@ export function ModuleItemFromJSONTyped(json: any, ignoreDiscriminator: boolean)
     }
     return {
         
+        'dispensable': json['dispensable'] == null ? undefined : json['dispensable'],
         'entryId': json['entryId'],
         'item': ModuleEntryFromJSON(json['item']),
     };
@@ -76,6 +83,7 @@ export function ModuleItemToJSONTyped(value?: ModuleItem | null, ignoreDiscrimin
 
     return {
         
+        'dispensable': value['dispensable'],
         'entryId': value['entryId'],
         'item': ModuleEntryToJSON(value['item']),
     };

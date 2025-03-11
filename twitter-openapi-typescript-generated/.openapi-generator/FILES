@@ -178,6 +178,7 @@ src/models/Text.ts
 src/models/TextEntity.ts
 src/models/TextEntityRef.ts
 src/models/TextHighlight.ts
+src/models/ThumbnailImage.ts
 src/models/Timeline.ts
 src/models/TimelineAddEntries.ts
 src/models/TimelineAddEntry.ts
@@ -202,6 +203,7 @@ src/models/TimelineTimelineItem.ts
 src/models/TimelineTimelineModule.ts
 src/models/TimelineTombstone.ts
 src/models/TimelineTopicContext.ts
+src/models/TimelineTrend.ts
 src/models/TimelineTweet.ts
 src/models/TimelineUser.ts
 src/models/TimelineV2.ts
@@ -212,6 +214,8 @@ src/models/TombstoneRef.ts
 src/models/TombstoneRichText.ts
 src/models/TopicContext.ts
 src/models/Tracing.ts
+src/models/TrendImage.ts
+src/models/TrendMetadata.ts
 src/models/TrendResults.ts
 src/models/Tweet.ts
 src/models/TweetCard.ts

@@ -1,6 +1,6 @@
 {
   "name": "twitter-openapi-typescript",
-  "version": "0.0.47",
+  "version": "0.0.51",
   "description": "Implementation of Twitter internal API in TypeScript",
   "scripts": {
     "test": "jest",
@@ -21,7 +21,7 @@
   "main": "./dist/src/index.js",
   "typings": "./dist/src/index.d.ts",
   "dependencies": {
-    "twitter-openapi-typescript-generated": "^0.0.35"
+    "twitter-openapi-typescript-generated": "^0.0.37"
   },
   "devDependencies": {
     "@types/jest": "*",

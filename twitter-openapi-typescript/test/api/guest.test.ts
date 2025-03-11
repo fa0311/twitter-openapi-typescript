@@ -16,3 +16,11 @@ test('getGuestUserByScreenName', async () => {
   printUser(response.data);
   expect(response.raw.response.ok).toBe(true);
 });
+
+test('getUserTweets', async () => {
+  logger.log('getUserTweets');
+  const client = await getGuestClient();
+  const response = await client.getTweetApi().getUserTweets({ userId: '44196397' });
+  response.data.data.filter((e) => !e.promotedMetadata).forEach((e) => printTweet(e));
+  expect(response.raw.response.ok).toBe(true);
+});

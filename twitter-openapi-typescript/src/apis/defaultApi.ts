@@ -1,6 +1,6 @@
-import { DefaultFlag, RequestParam, TweetApiUtilsData, TwitterApiUtilsResponse, initOverrides } from '@/models';
-import { buildHeader, buildTweetApiUtils, errorCheck, getKwargs } from '@/utils';
-import * as i from 'twitter-openapi-typescript-generated';
+import { type DefaultFlag, type RequestParam, type TwitterApiUtilsResponse, type initOverrides } from '@/models';
+import { buildHeader, errorCheck, getKwargs } from '@/utils';
+import type * as i from 'twitter-openapi-typescript-generated';
 
 export type ProfileSpotlightsQueryParam = {
   screenName: string;
@@ -52,20 +52,20 @@ export class DefaultApiUtils {
     return response;
   }
 
-  async getTweetResultByRestId(
-    param: TweetResultByRestIdParam,
-  ): Promise<TwitterApiUtilsResponse<TweetApiUtilsData | undefined>> {
-    const args = {
-      tweetId: param.tweetId,
-      ...param.extraParam,
-    };
-    const response = await this.request({
-      key: 'TweetResultByRestId',
-      apiFn: this.api.getTweetResultByRestIdRaw,
-      convertFn: (e) => errorCheck(buildTweetApiUtils({ result: errorCheck(e.data.tweetResult, e.errors) }), e.errors),
-      param: args,
-    });
+  // async getTweetResultByRestId(
+  //   param: TweetResultByRestIdParam,
+  // ): Promise<TwitterApiUtilsResponse<TweetApiUtilsData | undefined>> {
+  //   const args = {
+  //     tweetId: param.tweetId,
+  //     ...param.extraParam,
+  //   };
+  //   const response = await this.request({
+  //     key: 'TweetResultByRestId',
+  //     apiFn: this.api.getTweetResultByRestIdRaw,
+  //     convertFn: (e) => errorCheck(buildTweetApiUtils({ result: errorCheck(e.data.tweetResult, e.errors) }), e.errors),
+  //     param: args,
+  //   });
 
-    return response;
-  }
+  //   return response;
+  // }
 }

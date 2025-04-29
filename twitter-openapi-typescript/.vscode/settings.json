@@ -1,8 +1,6 @@
 {
-  "jest.autoRun": {
-    "watch": false
-  },
-  "[json]": {
+  "jest.runMode": "on-demand",
+  "[json][html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[jsonc]": {
@@ -16,6 +14,6 @@
   },
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true,
-  },
+    "editor.formatOnSave": true
+  }
 }

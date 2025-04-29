@@ -13,6 +13,8 @@ import type { DefaultFlag, initOverrides } from '@/models';
 import * as i from 'twitter-openapi-typescript-generated';
 import { UsersApiUtils } from './apis/usersApi';
 
+import { generateTransactionId } from 'x-client-transaction-id-generater';
+
 export class TwitterOpenApi {
   static hash = '408d8e34cb30fffa287c29d5739aa37ce0d9193a';
   static url = `https://raw.githubusercontent.com/fa0311/twitter-openapi/${this.hash}/src/config/placeholder.json`;
@@ -23,11 +25,6 @@ export class TwitterOpenApi {
 
   static fetchApi: i.FetchAPI = fetch.bind(globalThis);
 
-  initOverrides: initOverrides = {};
-
-  setInitOverrides(initOverrides: initOverrides): void {
-    this.initOverrides = initOverrides;
-  }
   additionalBrowserHeaders: { [key: string]: string } = {};
 
   setAdditionalBrowserHeaders(headers: { [key: string]: string }): void {
@@ -46,7 +43,6 @@ export class TwitterOpenApi {
   }> {
     const raw = await TwitterOpenApi.fetchApi(TwitterOpenApi.header, {
       method: 'GET',
-      ...this.initOverrides,
     });
     const json = await raw.json();
     const ignore = ['host', 'connection'];
@@ -107,8 +103,7 @@ export class TwitterOpenApi {
     const response = await TwitterOpenApi.fetchApi(TwitterOpenApi.twitter, {
       method: 'GET',
       redirect: 'manual',
-      headers: { Cookie: this.cookieEncode(cookies) },
-      ...this.initOverrides,
+      headers: { Cookie: this.cookieEncode(cookies), ...(await this.getHeaders()).browser },
     });
 
     if (response.headers.getSetCookie) {
@@ -141,14 +136,9 @@ export class TwitterOpenApi {
       const { guest_token } = await TwitterOpenApi.fetchApi('https://api.x.com/1.1/guest/activate.json', {
         method: 'POST',
         headers: activate_headers,
-        ...this.initOverrides,
       }).then((response) => response.json());
       cookies['gt'] = guest_token;
     }
-
-    // const chars = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'];
-    // const csrfToken = [...Array(32)].reduce((a) => a + chars[Math.floor(Math.random() * chars.length)], '');
-    // cookies.push({ name: 'ct0', value: csrfToken });
 
     return this.getClientFromCookies(cookies);
   }
@@ -169,15 +159,29 @@ export class TwitterOpenApi {
       apiKey: (key) => api_key[key.toLowerCase()],
       accessToken: TwitterOpenApi.bearer,
     };
+
     return this.getClient(new i.Configuration(config));
   }
 
   async getClient(api: i.Configuration): Promise<TwitterOpenApiClient> {
     const flag = (await TwitterOpenApi.fetchApi(TwitterOpenApi.url, {
       method: 'GET',
-      ...this.initOverrides,
     }).then((res) => res.json())) as DefaultFlag;
-    return new TwitterOpenApiClient(api, flag, this.initOverrides);
+
+    const url = 'https://raw.githubusercontent.com/fa0311/x-client-transaction-pair-dict/refs/heads/main/pair.json';
+    const pair = await TwitterOpenApi.fetchApi(url, {
+      method: 'GET',
+    }).then((res) => res.json());
+
+    const initOverrides: initOverrides = async ({ context, init }) => {
+      const randomPair = pair[Math.floor(Math.random() * pair.length)];
+      const { animationKey, verification } = randomPair;
+      const tid = await generateTransactionId(context.method, `/i/api${context.path}`, verification, animationKey);
+      init.headers = { ...init.headers, 'x-client-transaction-id': tid };
+      return init;
+    };
+
+    return new TwitterOpenApiClient(api, flag, initOverrides);
   }
 }
 

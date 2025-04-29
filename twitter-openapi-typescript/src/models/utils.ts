@@ -1,5 +1,6 @@
 import * as i from 'twitter-openapi-typescript-generated';
-export type initOverrides = RequestInit;
+import { InitOverrideFunction } from 'twitter-openapi-typescript-generated';
+export type initOverrides = RequestInit | InitOverrideFunction;
 export type ApiFunction<T> = (requestParameters: any, initOverrides?: initOverrides) => Promise<i.ApiResponse<T>>;
 
 export type RequestParam<T1, T2> = {

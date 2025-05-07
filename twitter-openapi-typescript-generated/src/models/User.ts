@@ -227,7 +227,8 @@ export interface User {
  */
 export const UserParodyCommentaryFanLabelEnum = {
     None: 'None',
-    Parody: 'Parody'
+    Parody: 'Parody',
+    Commentary: 'Commentary'
 } as const;
 export type UserParodyCommentaryFanLabelEnum = typeof UserParodyCommentaryFanLabelEnum[keyof typeof UserParodyCommentaryFanLabelEnum];
 

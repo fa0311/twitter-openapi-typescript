@@ -26,6 +26,13 @@ import {
     TimelineMessagePromptFromJSONTyped,
     TimelineMessagePromptToJSON,
 } from './TimelineMessagePrompt';
+import type { TimelineNotification } from './TimelineNotification';
+import {
+    instanceOfTimelineNotification,
+    TimelineNotificationFromJSON,
+    TimelineNotificationFromJSONTyped,
+    TimelineNotificationToJSON,
+} from './TimelineNotification';
 import type { TimelinePrompt } from './TimelinePrompt';
 import {
     instanceOfTimelinePrompt,
@@ -74,7 +81,7 @@ import {
  * 
  * @export
  */
-export type ItemContentUnion = { typename: 'TimelineCommunity' } & TimelineCommunity | { typename: 'TimelineMessagePrompt' } & TimelineMessagePrompt | { typename: 'TimelinePrompt' } & TimelinePrompt | { typename: 'TimelineTimelineCursor' } & TimelineTimelineCursor | { typename: 'TimelineTombstone' } & TimelineTombstone | { typename: 'TimelineTrend' } & TimelineTrend | { typename: 'TimelineTweet' } & TimelineTweet | { typename: 'TimelineUser' } & TimelineUser;
+export type ItemContentUnion = { typename: 'TimelineCommunity' } & TimelineCommunity | { typename: 'TimelineMessagePrompt' } & TimelineMessagePrompt | { typename: 'TimelineNotification' } & TimelineNotification | { typename: 'TimelinePrompt' } & TimelinePrompt | { typename: 'TimelineTimelineCursor' } & TimelineTimelineCursor | { typename: 'TimelineTombstone' } & TimelineTombstone | { typename: 'TimelineTrend' } & TimelineTrend | { typename: 'TimelineTweet' } & TimelineTweet | { typename: 'TimelineUser' } & TimelineUser;
 
 export function ItemContentUnionFromJSON(json: any): ItemContentUnion {
     return ItemContentUnionFromJSONTyped(json, false);
@@ -89,6 +96,8 @@ export function ItemContentUnionFromJSONTyped(json: any, ignoreDiscriminator: bo
             return Object.assign({}, TimelineCommunityFromJSONTyped(json, true), { typename: 'TimelineCommunity' } as const);
         case 'TimelineMessagePrompt':
             return Object.assign({}, TimelineMessagePromptFromJSONTyped(json, true), { typename: 'TimelineMessagePrompt' } as const);
+        case 'TimelineNotification':
+            return Object.assign({}, TimelineNotificationFromJSONTyped(json, true), { typename: 'TimelineNotification' } as const);
         case 'TimelinePrompt':
             return Object.assign({}, TimelinePromptFromJSONTyped(json, true), { typename: 'TimelinePrompt' } as const);
         case 'TimelineTimelineCursor':
@@ -119,6 +128,8 @@ export function ItemContentUnionToJSONTyped(value?: ItemContentUnion | null, ign
             return Object.assign({}, TimelineCommunityToJSON(value), { typename: 'TimelineCommunity' } as const);
         case 'TimelineMessagePrompt':
             return Object.assign({}, TimelineMessagePromptToJSON(value), { typename: 'TimelineMessagePrompt' } as const);
+        case 'TimelineNotification':
+            return Object.assign({}, TimelineNotificationToJSON(value), { typename: 'TimelineNotification' } as const);
         case 'TimelinePrompt':
             return Object.assign({}, TimelinePromptToJSON(value), { typename: 'TimelinePrompt' } as const);
         case 'TimelineTimelineCursor':

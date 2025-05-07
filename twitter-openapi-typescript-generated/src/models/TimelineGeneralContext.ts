@@ -36,6 +36,12 @@ import {
 export interface TimelineGeneralContext {
     /**
      * 
+     * @type {Array<string>}
+     * @memberof TimelineGeneralContext
+     */
+    contextImageUrls?: Array<string>;
+    /**
+     * 
      * @type {string}
      * @memberof TimelineGeneralContext
      */
@@ -72,7 +78,8 @@ export const TimelineGeneralContextContextTypeEnum = {
     Sparkle: 'Sparkle',
     Conversation: 'Conversation',
     List: 'List',
-    Community: 'Community'
+    Community: 'Community',
+    Facepile: 'Facepile'
 } as const;
 export type TimelineGeneralContextContextTypeEnum = typeof TimelineGeneralContextContextTypeEnum[keyof typeof TimelineGeneralContextContextTypeEnum];
 
@@ -94,6 +101,7 @@ export function TimelineGeneralContextFromJSONTyped(json: any, ignoreDiscriminat
     }
     return {
         
+        'contextImageUrls': json['contextImageUrls'] == null ? undefined : json['contextImageUrls'],
         'contextType': json['contextType'] == null ? undefined : json['contextType'],
         'landingUrl': json['landingUrl'] == null ? undefined : SocialContextLandingUrlFromJSON(json['landingUrl']),
         'text': json['text'] == null ? undefined : json['text'],
@@ -112,6 +120,7 @@ export function TimelineGeneralContextToJSONTyped(value?: TimelineGeneralContext
 
     return {
         
+        'contextImageUrls': value['contextImageUrls'],
         'contextType': value['contextType'],
         'landingUrl': SocialContextLandingUrlToJSON(value['landingUrl']),
         'text': value['text'],

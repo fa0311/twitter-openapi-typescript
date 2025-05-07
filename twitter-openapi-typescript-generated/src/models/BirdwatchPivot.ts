@@ -101,6 +101,12 @@ export interface BirdwatchPivot {
      * @type {string}
      * @memberof BirdwatchPivot
      */
+    titleDetail?: string;
+    /**
+     * 
+     * @type {string}
+     * @memberof BirdwatchPivot
+     */
     visualStyle?: BirdwatchPivotVisualStyleEnum;
 }
 
@@ -151,6 +157,7 @@ export function BirdwatchPivotFromJSONTyped(json: any, ignoreDiscriminator: bool
         'shorttitle': json['shorttitle'] == null ? undefined : json['shorttitle'],
         'subtitle': json['subtitle'] == null ? undefined : BirdwatchPivotSubtitleFromJSON(json['subtitle']),
         'title': json['title'],
+        'titleDetail': json['titleDetail'] == null ? undefined : json['titleDetail'],
         'visualStyle': json['visualStyle'] == null ? undefined : json['visualStyle'],
     };
 }
@@ -174,6 +181,7 @@ export function BirdwatchPivotToJSONTyped(value?: BirdwatchPivot | null, ignoreD
         'shorttitle': value['shorttitle'],
         'subtitle': BirdwatchPivotSubtitleToJSON(value['subtitle']),
         'title': value['title'],
+        'titleDetail': value['titleDetail'],
         'visualStyle': value['visualStyle'],
     };
 }

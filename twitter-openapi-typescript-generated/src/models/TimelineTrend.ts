@@ -80,7 +80,7 @@ export interface TimelineTrend {
      * @type {Array<TrendImage>}
      * @memberof TimelineTrend
      */
-    images: Array<TrendImage>;
+    images?: Array<TrendImage>;
     /**
      * 
      * @type {boolean}
@@ -92,7 +92,7 @@ export interface TimelineTrend {
      * @type {ContentItemType}
      * @memberof TimelineTrend
      */
-    itemType: ContentItemType;
+    itemType?: ContentItemType;
     /**
      * 
      * @type {string}
@@ -110,7 +110,7 @@ export interface TimelineTrend {
      * @type {ThumbnailImage}
      * @memberof TimelineTrend
      */
-    thumbnailImage: ThumbnailImage;
+    thumbnailImage?: ThumbnailImage;
     /**
      * 
      * @type {TrendMetadata}
@@ -132,10 +132,7 @@ export interface TimelineTrend {
  */
 export function instanceOfTimelineTrend(value: object): value is TimelineTrend {
     if (!('typename' in value) || value['typename'] === undefined) return false;
-    if (!('images' in value) || value['images'] === undefined) return false;
-    if (!('itemType' in value) || value['itemType'] === undefined) return false;
     if (!('name' in value) || value['name'] === undefined) return false;
-    if (!('thumbnailImage' in value) || value['thumbnailImage'] === undefined) return false;
     if (!('trendMetadata' in value) || value['trendMetadata'] === undefined) return false;
     if (!('trendUrl' in value) || value['trendUrl'] === undefined) return false;
     return true;
@@ -152,12 +149,12 @@ export function TimelineTrendFromJSONTyped(json: any, ignoreDiscriminator: boole
     return {
         
         'typename': TypeNameFromJSON(json['__typename']),
-        'images': ((json['images'] as Array<any>).map(TrendImageFromJSON)),
+        'images': json['images'] == null ? undefined : ((json['images'] as Array<any>).map(TrendImageFromJSON)),
         'isAiTrend': json['is_ai_trend'] == null ? undefined : json['is_ai_trend'],
-        'itemType': ContentItemTypeFromJSON(json['itemType']),
+        'itemType': json['itemType'] == null ? undefined : ContentItemTypeFromJSON(json['itemType']),
         'name': json['name'],
         'socialContext': json['social_context'] == null ? undefined : SocialContextUnionFromJSON(json['social_context']),
-        'thumbnailImage': ThumbnailImageFromJSON(json['thumbnail_image']),
+        'thumbnailImage': json['thumbnail_image'] == null ? undefined : ThumbnailImageFromJSON(json['thumbnail_image']),
         'trendMetadata': TrendMetadataFromJSON(json['trend_metadata']),
         'trendUrl': SocialContextLandingUrlFromJSON(json['trend_url']),
     };
@@ -175,7 +172,7 @@ export function TimelineTrendToJSONTyped(value?: TimelineTrend | null, ignoreDis
     return {
         
         '__typename': TypeNameToJSON(value['typename']),
-        'images': ((value['images'] as Array<any>).map(TrendImageToJSON)),
+        'images': value['images'] == null ? undefined : ((value['images'] as Array<any>).map(TrendImageToJSON)),
         'is_ai_trend': value['isAiTrend'],
         'itemType': ContentItemTypeToJSON(value['itemType']),
         'name': value['name'],

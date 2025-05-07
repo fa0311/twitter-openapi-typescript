@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { ListTweetsTimeline } from './ListTweetsTimeline';
+import type { TimelineResult } from './TimelineResult';
 import {
-    ListTweetsTimelineFromJSON,
-    ListTweetsTimelineFromJSONTyped,
-    ListTweetsTimelineToJSON,
-    ListTweetsTimelineToJSONTyped,
-} from './ListTweetsTimeline';
+    TimelineResultFromJSON,
+    TimelineResultFromJSONTyped,
+    TimelineResultToJSON,
+    TimelineResultToJSONTyped,
+} from './TimelineResult';
 
 /**
  * 
@@ -29,10 +29,10 @@ import {
 export interface ListTweetsTimelineList {
     /**
      * 
-     * @type {ListTweetsTimeline}
+     * @type {TimelineResult}
      * @memberof ListTweetsTimelineList
      */
-    tweetsTimeline: ListTweetsTimeline;
+    tweetsTimeline: TimelineResult;
 }
 
 /**
@@ -53,7 +53,7 @@ export function ListTweetsTimelineListFromJSONTyped(json: any, ignoreDiscriminat
     }
     return {
         
-        'tweetsTimeline': ListTweetsTimelineFromJSON(json['tweets_timeline']),
+        'tweetsTimeline': TimelineResultFromJSON(json['tweets_timeline']),
     };
 }
 
@@ -68,7 +68,7 @@ export function ListTweetsTimelineListToJSONTyped(value?: ListTweetsTimelineList
 
     return {
         
-        'tweets_timeline': ListTweetsTimelineToJSON(value['tweetsTimeline']),
+        'tweets_timeline': TimelineResultToJSON(value['tweetsTimeline']),
     };
 }
 

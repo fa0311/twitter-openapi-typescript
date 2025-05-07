@@ -73,7 +73,7 @@ export interface TimelineTimelineModule {
      * @type {ClientEventInfo}
      * @memberof TimelineTimelineModule
      */
-    clientEventInfo: ClientEventInfo;
+    clientEventInfo?: ClientEventInfo;
     /**
      * 
      * @type {DisplayType}
@@ -125,7 +125,6 @@ export interface TimelineTimelineModule {
  */
 export function instanceOfTimelineTimelineModule(value: object): value is TimelineTimelineModule {
     if (!('typename' in value) || value['typename'] === undefined) return false;
-    if (!('clientEventInfo' in value) || value['clientEventInfo'] === undefined) return false;
     if (!('displayType' in value) || value['displayType'] === undefined) return false;
     if (!('entryType' in value) || value['entryType'] === undefined) return false;
     return true;
@@ -142,7 +141,7 @@ export function TimelineTimelineModuleFromJSONTyped(json: any, ignoreDiscriminat
     return {
         
         'typename': TypeNameFromJSON(json['__typename']),
-        'clientEventInfo': ClientEventInfoFromJSON(json['clientEventInfo']),
+        'clientEventInfo': json['clientEventInfo'] == null ? undefined : ClientEventInfoFromJSON(json['clientEventInfo']),
         'displayType': DisplayTypeFromJSON(json['displayType']),
         'entryType': ContentEntryTypeFromJSON(json['entryType']),
         'feedbackInfo': json['feedbackInfo'] == null ? undefined : FeedbackInfoFromJSON(json['feedbackInfo']),

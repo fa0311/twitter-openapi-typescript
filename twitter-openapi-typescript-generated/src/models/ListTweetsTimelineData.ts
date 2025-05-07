@@ -32,13 +32,14 @@ export interface ListTweetsTimelineData {
      * @type {ListTweetsTimelineList}
      * @memberof ListTweetsTimelineData
      */
-    list?: ListTweetsTimelineList;
+    list: ListTweetsTimelineList;
 }
 
 /**
  * Check if a given object implements the ListTweetsTimelineData interface.
  */
 export function instanceOfListTweetsTimelineData(value: object): value is ListTweetsTimelineData {
+    if (!('list' in value) || value['list'] === undefined) return false;
     return true;
 }
 
@@ -52,7 +53,7 @@ export function ListTweetsTimelineDataFromJSONTyped(json: any, ignoreDiscriminat
     }
     return {
         
-        'list': json['list'] == null ? undefined : ListTweetsTimelineListFromJSON(json['list']),
+        'list': ListTweetsTimelineListFromJSON(json['list']),
     };
 }
 

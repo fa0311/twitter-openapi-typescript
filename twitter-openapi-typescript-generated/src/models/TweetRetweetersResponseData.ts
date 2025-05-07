@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { TimelineV2 } from './TimelineV2';
+import type { TimelineResult } from './TimelineResult';
 import {
-    TimelineV2FromJSON,
-    TimelineV2FromJSONTyped,
-    TimelineV2ToJSON,
-    TimelineV2ToJSONTyped,
-} from './TimelineV2';
+    TimelineResultFromJSON,
+    TimelineResultFromJSONTyped,
+    TimelineResultToJSON,
+    TimelineResultToJSONTyped,
+} from './TimelineResult';
 
 /**
  * 
@@ -29,10 +29,10 @@ import {
 export interface TweetRetweetersResponseData {
     /**
      * 
-     * @type {TimelineV2}
+     * @type {TimelineResult}
      * @memberof TweetRetweetersResponseData
      */
-    retweetersTimeline?: TimelineV2;
+    retweetersTimeline?: TimelineResult;
 }
 
 /**
@@ -52,7 +52,7 @@ export function TweetRetweetersResponseDataFromJSONTyped(json: any, ignoreDiscri
     }
     return {
         
-        'retweetersTimeline': json['retweeters_timeline'] == null ? undefined : TimelineV2FromJSON(json['retweeters_timeline']),
+        'retweetersTimeline': json['retweeters_timeline'] == null ? undefined : TimelineResultFromJSON(json['retweeters_timeline']),
     };
 }
 
@@ -67,7 +67,7 @@ export function TweetRetweetersResponseDataToJSONTyped(value?: TweetRetweetersRe
 
     return {
         
-        'retweeters_timeline': TimelineV2ToJSON(value['retweetersTimeline']),
+        'retweeters_timeline': TimelineResultToJSON(value['retweetersTimeline']),
     };
 }
 

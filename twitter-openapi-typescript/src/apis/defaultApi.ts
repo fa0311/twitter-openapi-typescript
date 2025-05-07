@@ -1,5 +1,5 @@
-import type { DefaultFlag, RequestParam, TweetApiUtilsData, TwitterApiUtilsResponse, initOverrides } from '@/models';
-import { buildHeader, buildTweetApiUtils, errorCheck, getKwargs } from '@/utils';
+import type { DefaultFlag, RequestParam, TweetApiUtilsData, TwitterApiUtilsResponse } from '@/models';
+import { buildHeader, buildTweetApiUtils, errorCheck, getKwargs, InitOverridesType } from '@/utils';
 import type * as i from 'twitter-openapi-typescript-generated';
 
 export type ProfileSpotlightsQueryParam = {
@@ -15,9 +15,9 @@ export type TweetResultByRestIdParam = {
 export class DefaultApiUtils {
   api: i.DefaultApi;
   flag: DefaultFlag;
-  initOverrides: initOverrides;
+  initOverrides: InitOverridesType;
 
-  constructor(api: i.DefaultApi, flag: DefaultFlag, initOverrides: initOverrides) {
+  constructor(api: i.DefaultApi, flag: DefaultFlag, initOverrides: InitOverridesType) {
     this.api = api;
     this.flag = flag;
     this.initOverrides = initOverrides;
@@ -26,7 +26,7 @@ export class DefaultApiUtils {
   async request<T1, T2>(param: RequestParam<T1, T2>): Promise<TwitterApiUtilsResponse<T1>> {
     const apiFn: typeof param.apiFn = param.apiFn.bind(this.api);
     const args = getKwargs(this.flag[param.key], param.param);
-    const response = await apiFn(args, this.initOverrides);
+    const response = await apiFn(args, this.initOverrides(this.flag[param.key]));
     const data = param.convertFn(await response.value());
     return {
       raw: { response: response.raw },

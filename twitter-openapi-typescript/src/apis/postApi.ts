@@ -1,5 +1,5 @@
-import { DefaultFlag, TwitterApiUtilsResponse, initOverrides } from '@/models';
-import { buildHeader } from '@/utils';
+import { DefaultFlag, TwitterApiUtilsResponse } from '@/models';
+import { buildHeader, InitOverridesType } from '@/utils';
 import * as i from 'twitter-openapi-typescript-generated';
 
 type PostCreateTweetParam = {
@@ -40,9 +40,9 @@ type PostUnfavoriteTweetParam = {
 export class PostApiUtils {
   api: i.PostApi;
   flag: DefaultFlag;
-  initOverrides: initOverrides;
+  initOverrides: InitOverridesType;
 
-  constructor(api: i.PostApi, flag: DefaultFlag, initOverrides: initOverrides) {
+  constructor(api: i.PostApi, flag: DefaultFlag, initOverrides: InitOverridesType) {
     this.api = api;
     this.flag = flag;
     this.initOverrides = initOverrides;

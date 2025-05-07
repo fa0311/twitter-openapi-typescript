@@ -13,12 +13,26 @@
  */
 
 import { mapValues } from '../runtime';
+import type { GrokImageAnnotation } from './GrokImageAnnotation';
+import {
+    GrokImageAnnotationFromJSON,
+    GrokImageAnnotationFromJSONTyped,
+    GrokImageAnnotationToJSON,
+    GrokImageAnnotationToJSONTyped,
+} from './GrokImageAnnotation';
+
 /**
  * 
  * @export
  * @interface MediaResult
  */
 export interface MediaResult {
+    /**
+     * 
+     * @type {GrokImageAnnotation}
+     * @memberof MediaResult
+     */
+    grokImageAnnotation?: GrokImageAnnotation;
     /**
      * 
      * @type {string}
@@ -45,6 +59,7 @@ export function MediaResultFromJSONTyped(json: any, ignoreDiscriminator: boolean
     }
     return {
         
+        'grokImageAnnotation': json['grok_image_annotation'] == null ? undefined : GrokImageAnnotationFromJSON(json['grok_image_annotation']),
         'mediaKey': json['media_key'],
     };
 }
@@ -60,6 +75,7 @@ export function MediaResultToJSONTyped(value?: MediaResult | null, ignoreDiscrim
 
     return {
         
+        'grok_image_annotation': GrokImageAnnotationToJSON(value['grokImageAnnotation']),
         'media_key': value['mediaKey'],
     };
 }

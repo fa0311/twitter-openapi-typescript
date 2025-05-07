@@ -31,6 +31,8 @@ export const TypeName = {
     TimelineCommunity: 'TimelineCommunity',
     TimelineTombstone: 'TimelineTombstone',
     TimelineTrend: 'TimelineTrend',
+    TimelineNotification: 'TimelineNotification',
+    TimelineNotificationAggregateUserActions: 'TimelineNotificationAggregateUserActions',
     TweetUnavailable: 'TweetUnavailable',
     TweetPreviewDisplay: 'TweetPreviewDisplay',
     Tweet: 'Tweet',

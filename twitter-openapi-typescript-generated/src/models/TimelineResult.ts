@@ -24,49 +24,57 @@ import {
 /**
  * 
  * @export
- * @interface TimelineV2
+ * @interface TimelineResult
  */
-export interface TimelineV2 {
+export interface TimelineResult {
+    /**
+     * 
+     * @type {string}
+     * @memberof TimelineResult
+     */
+    id?: string;
     /**
      * 
      * @type {Timeline}
-     * @memberof TimelineV2
+     * @memberof TimelineResult
      */
     timeline?: Timeline;
 }
 
 /**
- * Check if a given object implements the TimelineV2 interface.
+ * Check if a given object implements the TimelineResult interface.
  */
-export function instanceOfTimelineV2(value: object): value is TimelineV2 {
+export function instanceOfTimelineResult(value: object): value is TimelineResult {
     return true;
 }
 
-export function TimelineV2FromJSON(json: any): TimelineV2 {
-    return TimelineV2FromJSONTyped(json, false);
+export function TimelineResultFromJSON(json: any): TimelineResult {
+    return TimelineResultFromJSONTyped(json, false);
 }
 
-export function TimelineV2FromJSONTyped(json: any, ignoreDiscriminator: boolean): TimelineV2 {
+export function TimelineResultFromJSONTyped(json: any, ignoreDiscriminator: boolean): TimelineResult {
     if (json == null) {
         return json;
     }
     return {
         
+        'id': json['id'] == null ? undefined : json['id'],
         'timeline': json['timeline'] == null ? undefined : TimelineFromJSON(json['timeline']),
     };
 }
 
-export function TimelineV2ToJSON(json: any): TimelineV2 {
-    return TimelineV2ToJSONTyped(json, false);
+export function TimelineResultToJSON(json: any): TimelineResult {
+    return TimelineResultToJSONTyped(json, false);
 }
 
-export function TimelineV2ToJSONTyped(value?: TimelineV2 | null, ignoreDiscriminator: boolean = false): any {
+export function TimelineResultToJSONTyped(value?: TimelineResult | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }
 
     return {
         
+        'id': value['id'],
         'timeline': TimelineToJSON(value['timeline']),
     };
 }

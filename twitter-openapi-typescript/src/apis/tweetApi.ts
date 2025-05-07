@@ -4,13 +4,13 @@ import {
   TimelineApiUtilsResponse,
   TweetApiUtilsData,
   TwitterApiUtilsResponse,
-  initOverrides,
 } from '@/models';
 import {
   buildHeader,
   entriesCursor,
   errorCheck,
   getKwargs,
+  InitOverridesType,
   instructionConverter,
   instructionToEntry,
   tweetEntriesConverter,
@@ -26,7 +26,7 @@ type GetTweetDetailParam = {
 
 type GetSearchTimelineParam = {
   rawQuery: string;
-  product?: string;
+  product?: 'Top' | 'Latest' | 'People' | 'Photos' | 'Videos' | (string & {});
   cursor?: string;
   count?: number;
   extraParam?: { [key: string]: any };
@@ -84,14 +84,27 @@ type GetBookmarksParam = {
   extraParam?: { [key: string]: any };
 };
 
+type GetCommunityTweetsTimelineParam = {
+  cursor?: string;
+  count?: number;
+  rankingMode?: 'Recency' | 'Relevance' | (string & {});
+  extraParam?: { [key: string]: any };
+};
+
+type GetCommunityMediaTimelineParam = {
+  cursor?: string;
+  count?: number;
+  extraParam?: { [key: string]: any };
+};
+
 type ResponseType = TwitterApiUtilsResponse<TimelineApiUtilsResponse<TweetApiUtilsData>>;
 
 export class TweetApiUtils {
   api: i.TweetApi;
   flag: DefaultFlag;
-  initOverrides: initOverrides;
+  initOverrides: InitOverridesType;
 
-  constructor(api: i.TweetApi, flag: DefaultFlag, initOverrides: initOverrides) {
+  constructor(api: i.TweetApi, flag: DefaultFlag, initOverrides: InitOverridesType) {
     this.api = api;
     this.flag = flag;
     this.initOverrides = initOverrides;
@@ -100,7 +113,7 @@ export class TweetApiUtils {
   async request<T>(param: RequestParam<i.InstructionUnion[], T>): Promise<ResponseType> {
     const apiFn: typeof param.apiFn = param.apiFn.bind(this.api);
     const args = getKwargs(this.flag[param.key], param.param);
-    const response = await apiFn(args, this.initOverrides);
+    const response = await apiFn(args, this.initOverrides(this.flag[param.key]));
     const instruction = param.convertFn(await response.value());
     const entry = instructionToEntry(instruction);
     const data = [...tweetEntriesConverter(entry), ...instructionConverter(instruction)];
@@ -213,7 +226,7 @@ export class TweetApiUtils {
 
     const response = await this.request({
       apiFn: this.api.getUserTweetsRaw,
-      convertFn: (e) => errorCheck(e.data.user?.result.timelineV2.timeline, e.errors).instructions,
+      convertFn: (e) => errorCheck(e.data.user?.result.timeline.timeline, e.errors).instructions,
       key: 'UserTweets',
       param: args,
     });
@@ -230,7 +243,7 @@ export class TweetApiUtils {
 
     const response = await this.request({
       apiFn: this.api.getUserTweetsAndRepliesRaw,
-      convertFn: (e) => errorCheck(e.data.user?.result.timelineV2.timeline, e.errors).instructions,
+      convertFn: (e) => errorCheck(e.data.user?.result.timeline.timeline, e.errors).instructions,
       key: 'UserTweetsAndReplies',
       param: args,
     });
@@ -247,7 +260,7 @@ export class TweetApiUtils {
 
     const response = await this.request({
       apiFn: this.api.getUserMediaRaw,
-      convertFn: (e) => errorCheck(e.data.user?.result.timelineV2.timeline, e.errors).instructions,
+      convertFn: (e) => errorCheck(e.data.user?.result.timeline.timeline, e.errors).instructions,
       key: 'UserMedia',
       param: args,
     });
@@ -263,7 +276,7 @@ export class TweetApiUtils {
 
     const response = await this.request({
       apiFn: this.api.getLikesRaw,
-      convertFn: (e) => errorCheck(e.data.user?.result.timelineV2.timeline, e.errors).instructions,
+      convertFn: (e) => errorCheck(e.data.user?.result.timeline.timeline, e.errors).instructions,
       key: 'Likes',
       param: args,
     });
@@ -280,6 +293,41 @@ export class TweetApiUtils {
       apiFn: this.api.getBookmarksRaw,
       convertFn: (e) => errorCheck(e.data?.bookmarkTimelineV2.timeline, e.errors).instructions,
       key: 'Bookmarks',
+      param: args,
+    });
+    return response;
+  }
+
+  async getCommunityTweetsTimeline(param: GetCommunityTweetsTimelineParam = {}): Promise<ResponseType> {
+    const args = {
+      ...(param.count == undefined ? {} : { count: param.count }),
+      ...(param.cursor == undefined ? {} : { cursor: param.cursor }),
+      ...(param.rankingMode == undefined ? {} : { rankingMode: param.rankingMode }),
+      ...param.extraParam,
+    };
+
+    const response = await this.request({
+      apiFn: this.api.getCommunityTweetsTimelineRaw,
+      convertFn: (e) =>
+        errorCheck(e.data?.communityResults.result.rankedCommunityTimeline.timeline, e.errors).instructions,
+      key: 'CommunityTweetsTimeline',
+      param: args,
+    });
+    return response;
+  }
+
+  async getCommunityMediaTimeline(param: GetCommunityMediaTimelineParam = {}): Promise<ResponseType> {
+    const args = {
+      ...(param.count == undefined ? {} : { count: param.count }),
+      ...(param.cursor == undefined ? {} : { cursor: param.cursor }),
+      ...param.extraParam,
+    };
+
+    const response = await this.request({
+      apiFn: this.api.getCommunityMediaTimelineRaw,
+      convertFn: (e) =>
+        errorCheck(e.data?.communityResults.result.communityMediaTimeline.timeline, e.errors).instructions,
+      key: 'CommunityMediaTimeline',
       param: args,
     });
     return response;

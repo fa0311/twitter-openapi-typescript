@@ -1,5 +1,5 @@
-import { DefaultFlag, TwitterApiUtilsResponse, initOverrides } from '@/models';
-import { buildHeader } from '@/utils';
+import { DefaultFlag, TwitterApiUtilsResponse } from '@/models';
+import { buildHeader, InitOverridesType } from '@/utils';
 import * as i from 'twitter-openapi-typescript-generated';
 
 type PostCreateFriendshipsParam = {
@@ -15,9 +15,9 @@ type PostDestroyFriendshipsParam = {
 export class V11PostApiUtils {
   api: i.V11PostApi;
   flag: DefaultFlag;
-  initOverrides: initOverrides;
+  initOverrides: InitOverridesType;
 
-  constructor(api: i.V11PostApi, flag: DefaultFlag, initOverrides: initOverrides) {
+  constructor(api: i.V11PostApi, flag: DefaultFlag, initOverrides: InitOverridesType) {
     this.api = api;
     this.flag = flag;
     this.initOverrides = initOverrides;

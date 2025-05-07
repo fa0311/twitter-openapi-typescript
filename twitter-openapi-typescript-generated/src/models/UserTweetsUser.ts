@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { UserTweetsResult } from './UserTweetsResult';
+import type { UserTweetsResultV1 } from './UserTweetsResultV1';
 import {
-    UserTweetsResultFromJSON,
-    UserTweetsResultFromJSONTyped,
-    UserTweetsResultToJSON,
-    UserTweetsResultToJSONTyped,
-} from './UserTweetsResult';
+    UserTweetsResultV1FromJSON,
+    UserTweetsResultV1FromJSONTyped,
+    UserTweetsResultV1ToJSON,
+    UserTweetsResultV1ToJSONTyped,
+} from './UserTweetsResultV1';
 
 /**
  * 
@@ -29,10 +29,10 @@ import {
 export interface UserTweetsUser {
     /**
      * 
-     * @type {UserTweetsResult}
+     * @type {UserTweetsResultV1}
      * @memberof UserTweetsUser
      */
-    result: UserTweetsResult;
+    result: UserTweetsResultV1;
 }
 
 /**
@@ -53,7 +53,7 @@ export function UserTweetsUserFromJSONTyped(json: any, ignoreDiscriminator: bool
     }
     return {
         
-        'result': UserTweetsResultFromJSON(json['result']),
+        'result': UserTweetsResultV1FromJSON(json['result']),
     };
 }
 
@@ -68,7 +68,7 @@ export function UserTweetsUserToJSONTyped(value?: UserTweetsUser | null, ignoreD
 
     return {
         
-        'result': UserTweetsResultToJSON(value['result']),
+        'result': UserTweetsResultV1ToJSON(value['result']),
     };
 }
 

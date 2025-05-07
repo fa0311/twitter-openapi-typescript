@@ -13,12 +13,26 @@
  */
 
 import { mapValues } from '../runtime';
+import type { AnalysisResults } from './AnalysisResults';
+import {
+    AnalysisResultsFromJSON,
+    AnalysisResultsFromJSONTyped,
+    AnalysisResultsToJSON,
+    AnalysisResultsToJSONTyped,
+} from './AnalysisResults';
+
 /**
  * 
  * @export
  * @interface GrokShareAttachmentItem
  */
 export interface GrokShareAttachmentItem {
+    /**
+     * 
+     * @type {AnalysisResults}
+     * @memberof GrokShareAttachmentItem
+     */
+    analysisPostIdResults?: AnalysisResults;
     /**
      * 
      * @type {Array<string>}
@@ -52,6 +66,7 @@ export function GrokShareAttachmentItemFromJSONTyped(json: any, ignoreDiscrimina
     }
     return {
         
+        'analysisPostIdResults': json['analysis_post_id_results'] == null ? undefined : AnalysisResultsFromJSON(json['analysis_post_id_results']),
         'mediaUrls': json['media_urls'],
         'message': json['message'],
     };
@@ -68,6 +83,7 @@ export function GrokShareAttachmentItemToJSONTyped(value?: GrokShareAttachmentIt
 
     return {
         
+        'analysis_post_id_results': AnalysisResultsToJSON(value['analysisPostIdResults']),
         'media_urls': value['mediaUrls'],
         'message': value['message'],
     };

@@ -9,14 +9,15 @@ import {
   V11PostApiUtils,
   V20GetApiUtils,
 } from '@/apis';
-import type { DefaultFlag, initOverrides } from '@/models';
+import type { DefaultFlag } from '@/models';
 import * as i from 'twitter-openapi-typescript-generated';
 import { UsersApiUtils } from './apis/usersApi';
 
 import { generateTransactionId } from 'x-client-transaction-id-generater';
+import { InitOverridesType } from './utils';
 
 export class TwitterOpenApi {
-  static hash = '408d8e34cb30fffa287c29d5739aa37ce0d9193a';
+  static hash = 'c28f41918c01fdd8e133d9a509765b4e1c5be5cc';
   static url = `https://raw.githubusercontent.com/fa0311/twitter-openapi/${this.hash}/src/config/placeholder.json`;
   static header = 'https://raw.githubusercontent.com/fa0311/latest-user-agent/refs/heads/main/header.json';
   static twitter = 'https://x.com/home';
@@ -173,12 +174,14 @@ export class TwitterOpenApi {
       method: 'GET',
     }).then((res) => res.json());
 
-    const initOverrides: initOverrides = async ({ context, init }) => {
-      const randomPair = pair[Math.floor(Math.random() * pair.length)];
-      const { animationKey, verification } = randomPair;
-      const tid = await generateTransactionId(context.method, `/i/api${context.path}`, verification, animationKey);
-      init.headers = { ...init.headers, 'x-client-transaction-id': tid };
-      return init;
+    const initOverrides: InitOverridesType = (flag) => {
+      return async ({ init }) => {
+        const randomPair = pair[Math.floor(Math.random() * pair.length)];
+        const { animationKey, verification } = randomPair;
+        const tid = await generateTransactionId(flag['@method'], flag['@path'], verification, animationKey);
+        init.headers = { ...init.headers, 'x-client-transaction-id': tid };
+        return init;
+      };
     };
 
     return new TwitterOpenApiClient(api, flag, initOverrides);
@@ -188,9 +191,9 @@ export class TwitterOpenApi {
 export class TwitterOpenApiClient {
   config: i.Configuration;
   flag: DefaultFlag;
-  initOverrides: initOverrides;
+  initOverrides: InitOverridesType;
 
-  constructor(config: i.Configuration, flag: DefaultFlag, initOverrides: initOverrides) {
+  constructor(config: i.Configuration, flag: DefaultFlag, initOverrides: InitOverridesType) {
     this.config = config;
     this.flag = flag;
     this.initOverrides = initOverrides;

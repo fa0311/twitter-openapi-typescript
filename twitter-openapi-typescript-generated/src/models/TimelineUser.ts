@@ -87,7 +87,8 @@ export interface TimelineUser {
 export const TimelineUserUserDisplayTypeEnum = {
     User: 'User',
     UserDetailed: 'UserDetailed',
-    SubscribableUser: 'SubscribableUser'
+    SubscribableUser: 'SubscribableUser',
+    UserConcise: 'UserConcise'
 } as const;
 export type TimelineUserUserDisplayTypeEnum = typeof TimelineUserUserDisplayTypeEnum[keyof typeof TimelineUserUserDisplayTypeEnum];
 

@@ -4,13 +4,13 @@ import {
   TimelineApiUtilsResponse,
   TwitterApiUtilsResponse,
   UserApiUtilsData,
-  initOverrides,
 } from '@/models';
 import {
   buildHeader,
   entriesCursor,
   errorCheck,
   getKwargs,
+  InitOverridesType,
   instructionToEntry,
   userEntriesConverter,
   userResultConverter,
@@ -57,9 +57,9 @@ type ResponseType = TwitterApiUtilsResponse<TimelineApiUtilsResponse<UserApiUtil
 export class UserListApiUtils {
   api: i.UserListApi;
   flag: DefaultFlag;
-  initOverrides: initOverrides;
+  initOverrides: InitOverridesType;
 
-  constructor(api: i.UserListApi, flag: DefaultFlag, initOverrides: initOverrides) {
+  constructor(api: i.UserListApi, flag: DefaultFlag, initOverrides: InitOverridesType) {
     this.api = api;
     this.flag = flag;
     this.initOverrides = initOverrides;
@@ -68,7 +68,7 @@ export class UserListApiUtils {
   async request<T>(param: RequestParam<i.InstructionUnion[], T>): Promise<ResponseType> {
     const apiFn: typeof param.apiFn = param.apiFn.bind(this.api);
     const args = getKwargs(this.flag[param.key], param.param);
-    const response = await apiFn(args, this.initOverrides);
+    const response = await apiFn(args, this.initOverrides(this.flag[param.key]));
     const instruction = param.convertFn(await response.value());
     const entry = instructionToEntry(instruction);
     const userList = userEntriesConverter(entry);

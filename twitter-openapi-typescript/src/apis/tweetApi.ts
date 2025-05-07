@@ -4,13 +4,13 @@ import {
   TimelineApiUtilsResponse,
   TweetApiUtilsData,
   TwitterApiUtilsResponse,
-  initOverrides,
 } from '@/models';
 import {
   buildHeader,
   entriesCursor,
   errorCheck,
   getKwargs,
+  InitOverridesType,
   instructionConverter,
   instructionToEntry,
   tweetEntriesConverter,
@@ -89,9 +89,9 @@ type ResponseType = TwitterApiUtilsResponse<TimelineApiUtilsResponse<TweetApiUti
 export class TweetApiUtils {
   api: i.TweetApi;
   flag: DefaultFlag;
-  initOverrides: initOverrides;
+  initOverrides: InitOverridesType;
 
-  constructor(api: i.TweetApi, flag: DefaultFlag, initOverrides: initOverrides) {
+  constructor(api: i.TweetApi, flag: DefaultFlag, initOverrides: InitOverridesType) {
     this.api = api;
     this.flag = flag;
     this.initOverrides = initOverrides;
@@ -100,7 +100,7 @@ export class TweetApiUtils {
   async request<T>(param: RequestParam<i.InstructionUnion[], T>): Promise<ResponseType> {
     const apiFn: typeof param.apiFn = param.apiFn.bind(this.api);
     const args = getKwargs(this.flag[param.key], param.param);
-    const response = await apiFn(args, this.initOverrides);
+    const response = await apiFn(args, this.initOverrides(this.flag[param.key]));
     const instruction = param.convertFn(await response.value());
     const entry = instructionToEntry(instruction);
     const data = [...tweetEntriesConverter(entry), ...instructionConverter(instruction)];
@@ -213,7 +213,7 @@ export class TweetApiUtils {
 
     const response = await this.request({
       apiFn: this.api.getUserTweetsRaw,
-      convertFn: (e) => errorCheck(e.data.user?.result.timelineV2.timeline, e.errors).instructions,
+      convertFn: (e) => errorCheck(e.data.user?.result.timeline.timeline, e.errors).instructions,
       key: 'UserTweets',
       param: args,
     });
@@ -230,7 +230,7 @@ export class TweetApiUtils {
 
     const response = await this.request({
       apiFn: this.api.getUserTweetsAndRepliesRaw,
-      convertFn: (e) => errorCheck(e.data.user?.result.timelineV2.timeline, e.errors).instructions,
+      convertFn: (e) => errorCheck(e.data.user?.result.timeline.timeline, e.errors).instructions,
       key: 'UserTweetsAndReplies',
       param: args,
     });
@@ -247,7 +247,7 @@ export class TweetApiUtils {
 
     const response = await this.request({
       apiFn: this.api.getUserMediaRaw,
-      convertFn: (e) => errorCheck(e.data.user?.result.timelineV2.timeline, e.errors).instructions,
+      convertFn: (e) => errorCheck(e.data.user?.result.timeline.timeline, e.errors).instructions,
       key: 'UserMedia',
       param: args,
     });
@@ -263,7 +263,7 @@ export class TweetApiUtils {
 
     const response = await this.request({
       apiFn: this.api.getLikesRaw,
-      convertFn: (e) => errorCheck(e.data.user?.result.timelineV2.timeline, e.errors).instructions,
+      convertFn: (e) => errorCheck(e.data.user?.result.timeline.timeline, e.errors).instructions,
       key: 'Likes',
       param: args,
     });

@@ -26,7 +26,7 @@ type GetTweetDetailParam = {
 
 type GetSearchTimelineParam = {
   rawQuery: string;
-  product?: string;
+  product?: 'Top' | 'Latest' | 'People' | 'Photos' | 'Videos' | (string & {});
   cursor?: string;
   count?: number;
   extraParam?: { [key: string]: any };
@@ -79,6 +79,19 @@ type GetLikesParam = {
 };
 
 type GetBookmarksParam = {
+  cursor?: string;
+  count?: number;
+  extraParam?: { [key: string]: any };
+};
+
+type GetCommunityTweetsTimelineParam = {
+  cursor?: string;
+  count?: number;
+  rankingMode?: 'Recency' | 'Relevance' | (string & {});
+  extraParam?: { [key: string]: any };
+};
+
+type GetCommunityMediaTimelineParam = {
   cursor?: string;
   count?: number;
   extraParam?: { [key: string]: any };
@@ -280,6 +293,41 @@ export class TweetApiUtils {
       apiFn: this.api.getBookmarksRaw,
       convertFn: (e) => errorCheck(e.data?.bookmarkTimelineV2.timeline, e.errors).instructions,
       key: 'Bookmarks',
+      param: args,
+    });
+    return response;
+  }
+
+  async getCommunityTweetsTimeline(param: GetCommunityTweetsTimelineParam = {}): Promise<ResponseType> {
+    const args = {
+      ...(param.count == undefined ? {} : { count: param.count }),
+      ...(param.cursor == undefined ? {} : { cursor: param.cursor }),
+      ...(param.rankingMode == undefined ? {} : { rankingMode: param.rankingMode }),
+      ...param.extraParam,
+    };
+
+    const response = await this.request({
+      apiFn: this.api.getCommunityTweetsTimelineRaw,
+      convertFn: (e) =>
+        errorCheck(e.data?.communityResults.result.rankedCommunityTimeline.timeline, e.errors).instructions,
+      key: 'CommunityTweetsTimeline',
+      param: args,
+    });
+    return response;
+  }
+
+  async getCommunityMediaTimeline(param: GetCommunityMediaTimelineParam = {}): Promise<ResponseType> {
+    const args = {
+      ...(param.count == undefined ? {} : { count: param.count }),
+      ...(param.cursor == undefined ? {} : { cursor: param.cursor }),
+      ...param.extraParam,
+    };
+
+    const response = await this.request({
+      apiFn: this.api.getCommunityMediaTimelineRaw,
+      convertFn: (e) =>
+        errorCheck(e.data?.communityResults.result.communityMediaTimeline.timeline, e.errors).instructions,
+      key: 'CommunityMediaTimeline',
       param: args,
     });
     return response;

@@ -1,8 +1,7 @@
 {
   "compilerOptions": {
     "declaration": true,
-    "target": "es5",
-    "downlevelIteration": true,
+    "target": "es2020",
     "module": "commonjs",
     "moduleResolution": "node",
     "outDir": "dist",
@@ -19,8 +18,8 @@
     "sourceMap": true,
     "strict": true
   },
-  "exclude": ["dist", "node_modules", "test"],
   "exports": {
     ".": "./dist/src/index.js"
-  }
+  },
+  "include": ["src"]
 }

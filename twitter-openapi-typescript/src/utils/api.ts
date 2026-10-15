@@ -1,5 +1,5 @@
-import { ApiUtilsHeader, CursorApiUtilsResponse, TweetApiUtilsData, UserApiUtilsData } from '@/models';
 import * as i from 'twitter-openapi-typescript-generated';
+import type { ApiUtilsHeader, CursorApiUtilsResponse, TweetApiUtilsData, UserApiUtilsData } from '@/models';
 
 export type InitOverridesType = (flag: { [key: string]: any }) => i.InitOverrideFunction;
 
@@ -73,8 +73,7 @@ export const tweetEntriesConverter = (item: i.TimelineAddEntry[]): TweetApiUtils
       }
     })
     .filter((e): e is NonNullable<typeof e> => e != undefined)
-    .map((e) => e.filter((e): e is NonNullable<typeof e> => e != undefined))
-    .flat();
+    .flatMap((e) => e.filter((e): e is NonNullable<typeof e> => e != undefined));
 };
 
 export const moduleConverter = (item: i.ModuleItem[]): TweetApiUtilsData[] => {

@@ -1,3 +1,5 @@
+import * as i from 'twitter-openapi-typescript-generated';
+import { generateTransactionId } from 'x-client-transaction-id-generater';
 import {
   DefaultApiUtils,
   InitialStateApiUtils,
@@ -10,11 +12,8 @@ import {
   V20GetApiUtils,
 } from '@/apis';
 import type { DefaultFlag } from '@/models';
-import * as i from 'twitter-openapi-typescript-generated';
 import { UsersApiUtils } from './apis/usersApi';
-
-import { generateTransactionId } from 'x-client-transaction-id-generater';
-import { InitOverridesType } from './utils';
+import type { InitOverridesType } from './utils';
 
 export class TwitterOpenApi {
   static hash = '590dae5c9f8575abc91d3774946bfe6f23960aba';
@@ -93,7 +92,7 @@ export class TwitterOpenApi {
   setCookies(context: i.RequestContext, cookies: { [key: string]: string }): i.RequestContext {
     if (context.init.headers) {
       const headers = context.init.headers as i.HTTPHeaders;
-      headers['cookie'] = this.cookieEncode(cookies);
+      headers.cookie = this.cookieEncode(cookies);
     }
     return context;
   }
@@ -129,7 +128,7 @@ export class TwitterOpenApi {
       .filter(([key, value]) => key != 'ct0')
       .reduce((a, [key, value]) => ({ ...a, [key]: value }), {});
 
-    if (!cookies['gt']) {
+    if (!cookies.gt) {
       const activate_headers = {
         ...(await this.getHeaders()).api,
         cookie: this.cookieEncode(cookies),
@@ -138,7 +137,7 @@ export class TwitterOpenApi {
         method: 'POST',
         headers: activate_headers,
       }).then((response) => response.json());
-      cookies['gt'] = guest_token;
+      cookies.gt = guest_token;
     }
 
     return this.getClientFromCookies(cookies);
@@ -146,12 +145,12 @@ export class TwitterOpenApi {
 
   async getClientFromCookies(cookies: { [key: string]: string }): Promise<TwitterOpenApiClient> {
     const api_key = (await this.getHeaders()).api;
-    if (cookies['ct0']) {
+    if (cookies.ct0) {
       api_key['x-twitter-auth-type'] = 'OAuth2Session';
-      api_key['x-csrf-token'] = cookies['ct0'];
+      api_key['x-csrf-token'] = cookies.ct0;
     }
-    if (cookies['gt']) {
-      api_key['x-guest-token'] = cookies['gt'];
+    if (cookies.gt) {
+      api_key['x-guest-token'] = cookies.gt;
     }
 
     const config: i.ConfigurationParameters = {

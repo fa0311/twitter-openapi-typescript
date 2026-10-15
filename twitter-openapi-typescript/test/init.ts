@@ -1,6 +1,6 @@
-import { TwitterOpenApi } from '@/api';
-import { promises as fs } from 'fs';
+import { promises as fs } from 'node:fs';
 import * as log4js from 'log4js';
+import { TwitterOpenApi } from '@/api';
 
 export const logger = log4js
   .configure({

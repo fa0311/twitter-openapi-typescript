@@ -7,6 +7,6 @@ test('getHomeTimelineRaw', async () => {
     variables: JSON.stringify(client.flag.HomeTimeline.variables),
     features: JSON.stringify(client.flag.HomeTimeline.features),
   });
-  const value = await response.value();
+  const _value = await response.value();
   expect(response.raw.ok).toBe(true);
 });

@@ -1,8 +1,45 @@
 {
-  "linter": {
-    "enabled": false
+  "$schema": "https://biomejs.dev/schemas/2.5.15/schema.json",
+  "files": {
+    "includes": ["**", "!**/dist", "!**/node_modules", "!**/logs"]
   },
   "formatter": {
-    "enabled": false
-  }
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineWidth": 120
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single",
+      "semicolons": "always",
+      "trailingCommas": "all",
+      "arrowParentheses": "always",
+      "bracketSpacing": true
+    }
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "preset": "recommended",
+      "style": {
+        "noNonNullAssertion": "off"
+      },
+      "suspicious": {
+        "noExplicitAny": "off",
+        "noDoubleEquals": "off"
+      }
+    }
+  },
+  "overrides": [
+    {
+      "includes": ["test/**"],
+      "linter": {
+        "rules": {
+          "suspicious": {
+            "useIterableCallbackReturn": "off"
+          }
+        }
+      }
+    }
+  ]
 }

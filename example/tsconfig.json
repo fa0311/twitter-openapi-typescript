@@ -1,21 +1,19 @@
 {
   "compilerOptions": {
-    "declaration": true,
-    "target": "es5",
-    "downlevelIteration": true,
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "outDir": "dist",
-    "lib": ["es2020", "dom"],
-    "typeRoots": ["node_modules/@types"],
+    "target": "es2022",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "lib": ["es2022", "dom"],
+    "types": ["node"],
+    "strict": true,
+    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "rootDir": "./",
+    "skipLibCheck": true,
+    "noEmit": true,
     "baseUrl": "./",
     "paths": {
       "@/*": ["./src/*"]
-    },
-    "declarationMap": true,
-    "sourceMap": true,
-    "strict": true
-  }
+    }
+  },
+  "include": ["src"]
 }

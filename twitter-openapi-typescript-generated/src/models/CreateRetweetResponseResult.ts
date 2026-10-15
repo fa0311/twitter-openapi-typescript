@@ -29,8 +29,6 @@ import {
 export interface CreateRetweetResponseResult {
     /**
      * 
-     * @type {CreateRetweet}
-     * @memberof CreateRetweetResponseResult
      */
     retweetResults: CreateRetweet;
 }
@@ -39,7 +37,7 @@ export interface CreateRetweetResponseResult {
  * Check if a given object implements the CreateRetweetResponseResult interface.
  */
 export function instanceOfCreateRetweetResponseResult(value: object): value is CreateRetweetResponseResult {
-    if (!('retweetResults' in value) || value['retweetResults'] === undefined) return false;
+    if ((!('retweetResults' in (value as Record<string, any>)) && !('retweet_results' in (value as Record<string, any>))) || ((value as Record<string, any>)['retweetResults'] === undefined && (value as Record<string, any>)['retweet_results'] === undefined)) return false;
     return true;
 }
 

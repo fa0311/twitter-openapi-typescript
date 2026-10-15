@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface PostCreateTweetRequestVariablesMediaMediaEntitiesInner {
     /**
      * 
-     * @type {string}
-     * @memberof PostCreateTweetRequestVariablesMediaMediaEntitiesInner
      */
     mediaId: string;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof PostCreateTweetRequestVariablesMediaMediaEntitiesInner
      */
     taggedUsers: Array<string>;
 }
@@ -37,8 +33,8 @@ export interface PostCreateTweetRequestVariablesMediaMediaEntitiesInner {
  * Check if a given object implements the PostCreateTweetRequestVariablesMediaMediaEntitiesInner interface.
  */
 export function instanceOfPostCreateTweetRequestVariablesMediaMediaEntitiesInner(value: object): value is PostCreateTweetRequestVariablesMediaMediaEntitiesInner {
-    if (!('mediaId' in value) || value['mediaId'] === undefined) return false;
-    if (!('taggedUsers' in value) || value['taggedUsers'] === undefined) return false;
+    if ((!('mediaId' in (value as Record<string, any>)) && !('media_id' in (value as Record<string, any>))) || ((value as Record<string, any>)['mediaId'] === undefined && (value as Record<string, any>)['media_id'] === undefined)) return false;
+    if ((!('taggedUsers' in (value as Record<string, any>)) && !('tagged_users' in (value as Record<string, any>))) || ((value as Record<string, any>)['taggedUsers'] === undefined && (value as Record<string, any>)['tagged_users'] === undefined)) return false;
     return true;
 }
 

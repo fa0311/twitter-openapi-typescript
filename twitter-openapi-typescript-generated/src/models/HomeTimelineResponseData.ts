@@ -29,8 +29,6 @@ import {
 export interface HomeTimelineResponseData {
     /**
      * 
-     * @type {HomeTimelineHome}
-     * @memberof HomeTimelineResponseData
      */
     home: HomeTimelineHome;
 }

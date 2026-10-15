@@ -29,8 +29,6 @@ import {
 export interface TweetFavoritersResponseData {
     /**
      * 
-     * @type {TimelineResult}
-     * @memberof TweetFavoritersResponseData
      */
     favoritersTimeline?: TimelineResult;
 }

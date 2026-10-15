@@ -29,14 +29,10 @@ import {
 export interface FeedbackInfo {
     /**
      * 
-     * @type {ClientEventInfo}
-     * @memberof FeedbackInfo
      */
     clientEventInfo?: ClientEventInfo;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof FeedbackInfo
      */
     feedbackKeys?: Array<string>;
 }

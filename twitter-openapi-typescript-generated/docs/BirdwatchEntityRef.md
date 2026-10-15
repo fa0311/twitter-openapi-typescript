@@ -6,6 +6,7 @@
 
 Name | Type
 ------------ | -------------
+`expandedUrl` | string
 `text` | string
 `type` | string
 `url` | string
@@ -18,6 +19,7 @@ import type { BirdwatchEntityRef } from 'twitter-openapi-typescript-generated'
 
 // TODO: Update the object below with actual values
 const example = {
+  "expandedUrl": null,
   "text": null,
   "type": null,
   "url": null,

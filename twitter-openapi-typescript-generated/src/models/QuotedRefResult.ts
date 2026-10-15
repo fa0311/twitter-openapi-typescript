@@ -29,8 +29,6 @@ import {
 export interface QuotedRefResult {
     /**
      * 
-     * @type {TweetUnion}
-     * @memberof QuotedRefResult
      */
     result?: TweetUnion;
 }

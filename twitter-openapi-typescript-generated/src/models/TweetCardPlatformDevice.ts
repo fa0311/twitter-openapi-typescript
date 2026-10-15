@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface TweetCardPlatformDevice {
     /**
      * 
-     * @type {string}
-     * @memberof TweetCardPlatformDevice
      */
     name: string;
     /**
      * 
-     * @type {string}
-     * @memberof TweetCardPlatformDevice
      */
     version: string;
 }

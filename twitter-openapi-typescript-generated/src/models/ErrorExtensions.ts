@@ -29,40 +29,28 @@ import {
 export interface ErrorExtensions {
     /**
      * 
-     * @type {number}
-     * @memberof ErrorExtensions
      */
     code: number;
     /**
      * 
-     * @type {string}
-     * @memberof ErrorExtensions
      */
     kind: string;
     /**
      * 
-     * @type {string}
-     * @memberof ErrorExtensions
      */
     name: string;
     /**
      * 
-     * @type {number}
-     * @memberof ErrorExtensions
      */
     retryAfter?: number;
     /**
      * 
-     * @type {string}
-     * @memberof ErrorExtensions
      */
     source: string;
     /**
      * 
-     * @type {Tracing}
-     * @memberof ErrorExtensions
      */
-    tracing: Tracing;
+    tracing?: Tracing;
 }
 
 /**
@@ -73,7 +61,6 @@ export function instanceOfErrorExtensions(value: object): value is ErrorExtensio
     if (!('kind' in value) || value['kind'] === undefined) return false;
     if (!('name' in value) || value['name'] === undefined) return false;
     if (!('source' in value) || value['source'] === undefined) return false;
-    if (!('tracing' in value) || value['tracing'] === undefined) return false;
     return true;
 }
 
@@ -92,7 +79,7 @@ export function ErrorExtensionsFromJSONTyped(json: any, ignoreDiscriminator: boo
         'name': json['name'],
         'retryAfter': json['retry_after'] == null ? undefined : json['retry_after'],
         'source': json['source'],
-        'tracing': TracingFromJSON(json['tracing']),
+        'tracing': json['tracing'] == null ? undefined : TracingFromJSON(json['tracing']),
     };
 }
 

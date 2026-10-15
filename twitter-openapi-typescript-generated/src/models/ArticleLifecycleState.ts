@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface ArticleLifecycleState {
     /**
      * 
-     * @type {number}
-     * @memberof ArticleLifecycleState
      */
     modifiedAtSecs: number;
 }
@@ -31,7 +29,7 @@ export interface ArticleLifecycleState {
  * Check if a given object implements the ArticleLifecycleState interface.
  */
 export function instanceOfArticleLifecycleState(value: object): value is ArticleLifecycleState {
-    if (!('modifiedAtSecs' in value) || value['modifiedAtSecs'] === undefined) return false;
+    if ((!('modifiedAtSecs' in (value as Record<string, any>)) && !('modified_at_secs' in (value as Record<string, any>))) || ((value as Record<string, any>)['modifiedAtSecs'] === undefined && (value as Record<string, any>)['modified_at_secs'] === undefined)) return false;
     return true;
 }
 

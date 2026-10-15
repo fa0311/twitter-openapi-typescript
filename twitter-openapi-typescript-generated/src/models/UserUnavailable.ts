@@ -29,20 +29,14 @@ import {
 export interface UserUnavailable {
     /**
      * 
-     * @type {TypeName}
-     * @memberof UserUnavailable
      */
     typename: TypeName;
     /**
      * 
-     * @type {string}
-     * @memberof UserUnavailable
      */
     message?: string;
     /**
      * 
-     * @type {string}
-     * @memberof UserUnavailable
      */
     reason: string;
 }
@@ -53,7 +47,7 @@ export interface UserUnavailable {
  * Check if a given object implements the UserUnavailable interface.
  */
 export function instanceOfUserUnavailable(value: object): value is UserUnavailable {
-    if (!('typename' in value) || value['typename'] === undefined) return false;
+    if ((!('typename' in (value as Record<string, any>)) && !('__typename' in (value as Record<string, any>))) || ((value as Record<string, any>)['typename'] === undefined && (value as Record<string, any>)['__typename'] === undefined)) return false;
     if (!('reason' in value) || value['reason'] === undefined) return false;
     return true;
 }

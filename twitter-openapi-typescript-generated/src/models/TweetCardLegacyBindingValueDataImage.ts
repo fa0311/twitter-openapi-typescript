@@ -21,26 +21,18 @@ import { mapValues } from '../runtime';
 export interface TweetCardLegacyBindingValueDataImage {
     /**
      * 
-     * @type {string}
-     * @memberof TweetCardLegacyBindingValueDataImage
      */
     alt?: string;
     /**
      * 
-     * @type {number}
-     * @memberof TweetCardLegacyBindingValueDataImage
      */
     height: number;
     /**
      * 
-     * @type {string}
-     * @memberof TweetCardLegacyBindingValueDataImage
      */
     url: string;
     /**
      * 
-     * @type {number}
-     * @memberof TweetCardLegacyBindingValueDataImage
      */
     width: number;
 }

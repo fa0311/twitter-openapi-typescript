@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface ExtMediaAvailability {
     /**
      * 
-     * @type {string}
-     * @memberof ExtMediaAvailability
      */
     reason?: string;
     /**
      * 
-     * @type {ExtMediaAvailabilityStatusEnum}
-     * @memberof ExtMediaAvailability
      */
     status?: ExtMediaAvailabilityStatusEnum;
 }
@@ -39,7 +35,7 @@ export interface ExtMediaAvailability {
  */
 export const ExtMediaAvailabilityStatusEnum = {
     Available: 'Available',
-    Unavailable: 'Unavailable'
+    Unavailable: 'Unavailable',
 } as const;
 export type ExtMediaAvailabilityStatusEnum = typeof ExtMediaAvailabilityStatusEnum[keyof typeof ExtMediaAvailabilityStatusEnum];
 

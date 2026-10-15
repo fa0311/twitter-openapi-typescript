@@ -21,17 +21,19 @@ import { mapValues } from '../runtime';
 export interface UserValue {
     /**
      * 
-     * @type {string}
-     * @memberof UserValue
      */
     idStr: string;
+    /**
+     * 
+     */
+    path?: Array<string>;
 }
 
 /**
  * Check if a given object implements the UserValue interface.
  */
 export function instanceOfUserValue(value: object): value is UserValue {
-    if (!('idStr' in value) || value['idStr'] === undefined) return false;
+    if ((!('idStr' in (value as Record<string, any>)) && !('id_str' in (value as Record<string, any>))) || ((value as Record<string, any>)['idStr'] === undefined && (value as Record<string, any>)['id_str'] === undefined)) return false;
     return true;
 }
 
@@ -46,6 +48,7 @@ export function UserValueFromJSONTyped(json: any, ignoreDiscriminator: boolean):
     return {
         
         'idStr': json['id_str'],
+        'path': json['path'] == null ? undefined : json['path'],
     };
 }
 
@@ -61,6 +64,7 @@ export function UserValueToJSONTyped(value?: UserValue | null, ignoreDiscriminat
     return {
         
         'id_str': value['idStr'],
+        'path': value['path'],
     };
 }
 

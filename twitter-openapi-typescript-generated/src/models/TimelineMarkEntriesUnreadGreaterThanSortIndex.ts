@@ -29,14 +29,10 @@ import {
 export interface TimelineMarkEntriesUnreadGreaterThanSortIndex {
     /**
      * 
-     * @type {string}
-     * @memberof TimelineMarkEntriesUnreadGreaterThanSortIndex
      */
     sortIndex?: string;
     /**
      * 
-     * @type {InstructionType}
-     * @memberof TimelineMarkEntriesUnreadGreaterThanSortIndex
      */
     type: InstructionType;
 }

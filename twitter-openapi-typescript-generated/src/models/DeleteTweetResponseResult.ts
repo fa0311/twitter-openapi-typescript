@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface DeleteTweetResponseResult {
     /**
      * 
-     * @type {object}
-     * @memberof DeleteTweetResponseResult
      */
     tweetResults: object;
 }
@@ -31,7 +29,7 @@ export interface DeleteTweetResponseResult {
  * Check if a given object implements the DeleteTweetResponseResult interface.
  */
 export function instanceOfDeleteTweetResponseResult(value: object): value is DeleteTweetResponseResult {
-    if (!('tweetResults' in value) || value['tweetResults'] === undefined) return false;
+    if ((!('tweetResults' in (value as Record<string, any>)) && !('tweet_results' in (value as Record<string, any>))) || ((value as Record<string, any>)['tweetResults'] === undefined && (value as Record<string, any>)['tweet_results'] === undefined)) return false;
     return true;
 }
 

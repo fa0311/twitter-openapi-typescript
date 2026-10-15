@@ -29,20 +29,14 @@ import {
 export interface NotificationTemplate {
     /**
      * 
-     * @type {TypeName}
-     * @memberof NotificationTemplate
      */
     typename?: TypeName;
     /**
      * 
-     * @type {Array<object>}
-     * @memberof NotificationTemplate
      */
     fromUsers?: Array<object>;
     /**
      * 
-     * @type {Array<object>}
-     * @memberof NotificationTemplate
      */
     targetObjects?: Array<object>;
 }

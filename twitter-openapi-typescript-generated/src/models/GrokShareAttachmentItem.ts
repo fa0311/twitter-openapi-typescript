@@ -29,26 +29,18 @@ import {
 export interface GrokShareAttachmentItem {
     /**
      * 
-     * @type {AnalysisResults}
-     * @memberof GrokShareAttachmentItem
      */
     analysisPostIdResults?: AnalysisResults;
     /**
      * 
-     * @type {Array<{ [key: string]: any; }>}
-     * @memberof GrokShareAttachmentItem
      */
     deepsearchHeaders?: Array<{ [key: string]: any; }>;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof GrokShareAttachmentItem
      */
     mediaUrls: Array<string>;
     /**
      * 
-     * @type {string}
-     * @memberof GrokShareAttachmentItem
      */
     message: string;
 }
@@ -57,7 +49,7 @@ export interface GrokShareAttachmentItem {
  * Check if a given object implements the GrokShareAttachmentItem interface.
  */
 export function instanceOfGrokShareAttachmentItem(value: object): value is GrokShareAttachmentItem {
-    if (!('mediaUrls' in value) || value['mediaUrls'] === undefined) return false;
+    if ((!('mediaUrls' in (value as Record<string, any>)) && !('media_urls' in (value as Record<string, any>))) || ((value as Record<string, any>)['mediaUrls'] === undefined && (value as Record<string, any>)['media_urls'] === undefined)) return false;
     if (!('message' in value) || value['message'] === undefined) return false;
     return true;
 }

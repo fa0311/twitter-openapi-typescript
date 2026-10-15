@@ -29,8 +29,6 @@ import {
 export interface NoteTweetResultRichText {
     /**
      * 
-     * @type {Array<NoteTweetResultRichTextTag>}
-     * @memberof NoteTweetResultRichText
      */
     richtextTags: Array<NoteTweetResultRichTextTag>;
 }
@@ -39,7 +37,7 @@ export interface NoteTweetResultRichText {
  * Check if a given object implements the NoteTweetResultRichText interface.
  */
 export function instanceOfNoteTweetResultRichText(value: object): value is NoteTweetResultRichText {
-    if (!('richtextTags' in value) || value['richtextTags'] === undefined) return false;
+    if ((!('richtextTags' in (value as Record<string, any>)) && !('richtext_tags' in (value as Record<string, any>))) || ((value as Record<string, any>)['richtextTags'] === undefined && (value as Record<string, any>)['richtext_tags'] === undefined)) return false;
     return true;
 }
 

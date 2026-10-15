@@ -29,38 +29,26 @@ import {
 export interface TweetEditControl {
     /**
      * 
-     * @type {TweetEditControlInitial}
-     * @memberof TweetEditControl
      */
     editControlInitial?: TweetEditControlInitial;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof TweetEditControl
      */
     editTweetIds?: Array<string>;
     /**
      * 
-     * @type {string}
-     * @memberof TweetEditControl
      */
     editableUntilMsecs?: string;
     /**
      * 
-     * @type {string}
-     * @memberof TweetEditControl
      */
     editsRemaining?: string;
     /**
      * 
-     * @type {string}
-     * @memberof TweetEditControl
      */
     initialTweetId?: string;
     /**
      * 
-     * @type {boolean}
-     * @memberof TweetEditControl
      */
     isEditEligible?: boolean;
 }

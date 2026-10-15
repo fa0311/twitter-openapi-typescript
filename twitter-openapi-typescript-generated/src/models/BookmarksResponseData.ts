@@ -29,8 +29,6 @@ import {
 export interface BookmarksResponseData {
     /**
      * 
-     * @type {BookmarksTimeline}
-     * @memberof BookmarksResponseData
      */
     bookmarkTimelineV2: BookmarksTimeline;
 }
@@ -39,7 +37,7 @@ export interface BookmarksResponseData {
  * Check if a given object implements the BookmarksResponseData interface.
  */
 export function instanceOfBookmarksResponseData(value: object): value is BookmarksResponseData {
-    if (!('bookmarkTimelineV2' in value) || value['bookmarkTimelineV2'] === undefined) return false;
+    if ((!('bookmarkTimelineV2' in (value as Record<string, any>)) && !('bookmark_timeline_v2' in (value as Record<string, any>))) || ((value as Record<string, any>)['bookmarkTimelineV2'] === undefined && (value as Record<string, any>)['bookmark_timeline_v2'] === undefined)) return false;
     return true;
 }
 

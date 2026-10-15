@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface TweetInterstitialTextEntityRef {
     /**
      * 
-     * @type {TweetInterstitialTextEntityRefTypeEnum}
-     * @memberof TweetInterstitialTextEntityRef
      */
     type: TweetInterstitialTextEntityRefTypeEnum;
     /**
      * 
-     * @type {string}
-     * @memberof TweetInterstitialTextEntityRef
      */
     url: string;
     /**
      * 
-     * @type {TweetInterstitialTextEntityRefUrlTypeEnum}
-     * @memberof TweetInterstitialTextEntityRef
      */
     urlType: TweetInterstitialTextEntityRefUrlTypeEnum;
 }
@@ -44,7 +38,7 @@ export interface TweetInterstitialTextEntityRef {
  * @export
  */
 export const TweetInterstitialTextEntityRefTypeEnum = {
-    TimelineUrl: 'TimelineUrl'
+    TimelineUrl: 'TimelineUrl',
 } as const;
 export type TweetInterstitialTextEntityRefTypeEnum = typeof TweetInterstitialTextEntityRefTypeEnum[keyof typeof TweetInterstitialTextEntityRefTypeEnum];
 
@@ -52,7 +46,7 @@ export type TweetInterstitialTextEntityRefTypeEnum = typeof TweetInterstitialTex
  * @export
  */
 export const TweetInterstitialTextEntityRefUrlTypeEnum = {
-    ExternalUrl: 'ExternalUrl'
+    ExternalUrl: 'ExternalUrl',
 } as const;
 export type TweetInterstitialTextEntityRefUrlTypeEnum = typeof TweetInterstitialTextEntityRefUrlTypeEnum[keyof typeof TweetInterstitialTextEntityRefUrlTypeEnum];
 
@@ -62,8 +56,12 @@ export type TweetInterstitialTextEntityRefUrlTypeEnum = typeof TweetInterstitial
  */
 export function instanceOfTweetInterstitialTextEntityRef(value: object): value is TweetInterstitialTextEntityRef {
     if (!('type' in value) || value['type'] === undefined) return false;
+    if (value['type'] !== 'TimelineUrl') return false;
+    
     if (!('url' in value) || value['url'] === undefined) return false;
     if (!('urlType' in value) || value['urlType'] === undefined) return false;
+    if (value['urlType'] !== 'ExternalUrl') return false;
+    
     return true;
 }
 

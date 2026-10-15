@@ -29,20 +29,14 @@ import {
 export interface MediaOriginalInfo {
     /**
      * 
-     * @type {Array<MediaOriginalInfoFocusRect>}
-     * @memberof MediaOriginalInfo
      */
     focusRects?: Array<MediaOriginalInfoFocusRect>;
     /**
      * 
-     * @type {number}
-     * @memberof MediaOriginalInfo
      */
     height: number;
     /**
      * 
-     * @type {number}
-     * @memberof MediaOriginalInfo
      */
     width: number;
 }

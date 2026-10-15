@@ -29,8 +29,6 @@ import {
 export interface OtherObjectAll {
     /**
      * 
-     * @type {Session}
-     * @memberof OtherObjectAll
      */
     session?: Session;
 }

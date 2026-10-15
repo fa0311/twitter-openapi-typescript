@@ -29,8 +29,6 @@ import {
 export interface ListTweetsTimelineList {
     /**
      * 
-     * @type {TimelineResult}
-     * @memberof ListTweetsTimelineList
      */
     tweetsTimeline: TimelineResult;
 }
@@ -39,7 +37,7 @@ export interface ListTweetsTimelineList {
  * Check if a given object implements the ListTweetsTimelineList interface.
  */
 export function instanceOfListTweetsTimelineList(value: object): value is ListTweetsTimelineList {
-    if (!('tweetsTimeline' in value) || value['tweetsTimeline'] === undefined) return false;
+    if ((!('tweetsTimeline' in (value as Record<string, any>)) && !('tweets_timeline' in (value as Record<string, any>))) || ((value as Record<string, any>)['tweetsTimeline'] === undefined && (value as Record<string, any>)['tweets_timeline'] === undefined)) return false;
     return true;
 }
 

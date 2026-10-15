@@ -29,8 +29,6 @@ import {
 export interface RankedCommunityResults {
     /**
      * 
-     * @type {RankedCommunityResult}
-     * @memberof RankedCommunityResults
      */
     result: RankedCommunityResult;
 }

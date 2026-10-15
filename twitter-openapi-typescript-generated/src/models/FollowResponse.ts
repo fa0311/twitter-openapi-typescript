@@ -36,14 +36,10 @@ import {
 export interface FollowResponse {
     /**
      * 
-     * @type {FollowResponseData}
-     * @memberof FollowResponse
      */
     data: FollowResponseData;
     /**
      * 
-     * @type {Array<ErrorResponse>}
-     * @memberof FollowResponse
      */
     errors?: Array<ErrorResponse>;
 }

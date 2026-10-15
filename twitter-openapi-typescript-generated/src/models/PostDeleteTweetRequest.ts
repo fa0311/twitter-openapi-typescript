@@ -29,14 +29,10 @@ import {
 export interface PostDeleteTweetRequest {
     /**
      * 
-     * @type {string}
-     * @memberof PostDeleteTweetRequest
      */
     queryId: string;
     /**
      * 
-     * @type {PostCreateRetweetRequestVariables}
-     * @memberof PostDeleteTweetRequest
      */
     variables: PostCreateRetweetRequestVariables;
 }

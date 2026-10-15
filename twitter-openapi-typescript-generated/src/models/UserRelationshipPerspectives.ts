@@ -21,28 +21,28 @@ import { mapValues } from '../runtime';
 export interface UserRelationshipPerspectives {
     /**
      * 
-     * @type {boolean}
-     * @memberof UserRelationshipPerspectives
      */
     blockedBy?: boolean;
     /**
      * 
-     * @type {boolean}
-     * @memberof UserRelationshipPerspectives
      */
     blocking?: boolean;
     /**
      * 
-     * @type {boolean}
-     * @memberof UserRelationshipPerspectives
      */
     followedBy?: boolean;
     /**
      * 
-     * @type {boolean}
-     * @memberof UserRelationshipPerspectives
      */
     following?: boolean;
+    /**
+     * 
+     */
+    liveFollowing?: boolean;
+    /**
+     * 
+     */
+    muting?: boolean;
 }
 
 /**
@@ -66,6 +66,8 @@ export function UserRelationshipPerspectivesFromJSONTyped(json: any, ignoreDiscr
         'blocking': json['blocking'] == null ? undefined : json['blocking'],
         'followedBy': json['followed_by'] == null ? undefined : json['followed_by'],
         'following': json['following'] == null ? undefined : json['following'],
+        'liveFollowing': json['live_following'] == null ? undefined : json['live_following'],
+        'muting': json['muting'] == null ? undefined : json['muting'],
     };
 }
 
@@ -84,6 +86,8 @@ export function UserRelationshipPerspectivesToJSONTyped(value?: UserRelationship
         'blocking': value['blocking'],
         'followed_by': value['followedBy'],
         'following': value['following'],
+        'live_following': value['liveFollowing'],
+        'muting': value['muting'],
     };
 }
 

@@ -29,8 +29,6 @@ import {
 export interface UserTweetsUser {
     /**
      * 
-     * @type {UserTweetsResultV1}
-     * @memberof UserTweetsUser
      */
     result: UserTweetsResultV1;
 }

@@ -30,38 +30,92 @@ import {
 } from '../models/TweetRetweetersResponse';
 
 export interface GetBlueVerifiedFollowersRequest {
+    /**
+     * 
+     */
     pathQueryId: string;
+    /**
+     * 
+     */
     variables: string;
+    /**
+     * 
+     */
     features: string;
 }
 
 export interface GetFavoritersRequest {
+    /**
+     * 
+     */
     pathQueryId: string;
+    /**
+     * 
+     */
     variables: string;
+    /**
+     * 
+     */
     features: string;
 }
 
 export interface GetFollowersRequest {
+    /**
+     * 
+     */
     pathQueryId: string;
+    /**
+     * 
+     */
     variables: string;
+    /**
+     * 
+     */
     features: string;
 }
 
 export interface GetFollowersYouKnowRequest {
+    /**
+     * 
+     */
     pathQueryId: string;
+    /**
+     * 
+     */
     variables: string;
+    /**
+     * 
+     */
     features: string;
 }
 
 export interface GetFollowingRequest {
+    /**
+     * 
+     */
     pathQueryId: string;
+    /**
+     * 
+     */
     variables: string;
+    /**
+     * 
+     */
     features: string;
 }
 
 export interface GetRetweetersRequest {
+    /**
+     * 
+     */
     pathQueryId: string;
+    /**
+     * 
+     */
     variables: string;
+    /**
+     * 
+     */
     features: string;
 }
 

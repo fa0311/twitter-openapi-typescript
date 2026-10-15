@@ -29,14 +29,10 @@ import {
 export interface UserResultByScreenName {
     /**
      * 
-     * @type {string}
-     * @memberof UserResultByScreenName
      */
     id: string;
     /**
      * 
-     * @type {UserResultByScreenNameResult}
-     * @memberof UserResultByScreenName
      */
     result: UserResultByScreenNameResult;
 }

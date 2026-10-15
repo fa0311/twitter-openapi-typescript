@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface OneFactorLoginEligibility {
     /**
      * 
-     * @type {string}
-     * @memberof OneFactorLoginEligibility
      */
     fetchStatus: string;
 }

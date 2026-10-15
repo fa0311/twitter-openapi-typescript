@@ -29,14 +29,10 @@ import {
 export interface Text {
     /**
      * 
-     * @type {Array<TextEntity>}
-     * @memberof Text
      */
     entities: Array<TextEntity>;
     /**
      * 
-     * @type {string}
-     * @memberof Text
      */
     text: string;
 }

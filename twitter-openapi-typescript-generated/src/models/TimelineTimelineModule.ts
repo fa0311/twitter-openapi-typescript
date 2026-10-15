@@ -64,56 +64,38 @@ import {
 export interface TimelineTimelineModule {
     /**
      * 
-     * @type {TypeName}
-     * @memberof TimelineTimelineModule
      */
     typename: TypeName;
     /**
      * 
-     * @type {ClientEventInfo}
-     * @memberof TimelineTimelineModule
      */
     clientEventInfo?: ClientEventInfo;
     /**
      * 
-     * @type {DisplayType}
-     * @memberof TimelineTimelineModule
      */
     displayType: DisplayType;
     /**
      * 
-     * @type {ContentEntryType}
-     * @memberof TimelineTimelineModule
      */
     entryType: ContentEntryType;
     /**
      * 
-     * @type {FeedbackInfo}
-     * @memberof TimelineTimelineModule
      */
     feedbackInfo?: FeedbackInfo;
     /**
      * 
-     * @type {{ [key: string]: any; }}
-     * @memberof TimelineTimelineModule
      */
     footer?: { [key: string]: any; };
     /**
      * 
-     * @type {{ [key: string]: any; }}
-     * @memberof TimelineTimelineModule
      */
     header?: { [key: string]: any; };
     /**
      * 
-     * @type {Array<ModuleItem>}
-     * @memberof TimelineTimelineModule
      */
     items?: Array<ModuleItem>;
     /**
      * 
-     * @type {{ [key: string]: any; }}
-     * @memberof TimelineTimelineModule
      */
     metadata?: { [key: string]: any; };
 }
@@ -124,7 +106,7 @@ export interface TimelineTimelineModule {
  * Check if a given object implements the TimelineTimelineModule interface.
  */
 export function instanceOfTimelineTimelineModule(value: object): value is TimelineTimelineModule {
-    if (!('typename' in value) || value['typename'] === undefined) return false;
+    if ((!('typename' in (value as Record<string, any>)) && !('__typename' in (value as Record<string, any>))) || ((value as Record<string, any>)['typename'] === undefined && (value as Record<string, any>)['__typename'] === undefined)) return false;
     if (!('displayType' in value) || value['displayType'] === undefined) return false;
     if (!('entryType' in value) || value['entryType'] === undefined) return false;
     return true;

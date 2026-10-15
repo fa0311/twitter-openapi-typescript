@@ -36,14 +36,10 @@ import {
 export interface CommunityMediaTimelineResponse {
     /**
      * 
-     * @type {MediaCommunityTweetData}
-     * @memberof CommunityMediaTimelineResponse
      */
     data: MediaCommunityTweetData;
     /**
      * 
-     * @type {Array<ErrorResponse>}
-     * @memberof CommunityMediaTimelineResponse
      */
     errors?: Array<ErrorResponse>;
 }

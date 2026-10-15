@@ -30,8 +30,6 @@ export interface TimelinePrompt {
     [key: string]: any | any;
     /**
      * 
-     * @type {TypeName}
-     * @memberof TimelinePrompt
      */
     typename?: TypeName;
 }

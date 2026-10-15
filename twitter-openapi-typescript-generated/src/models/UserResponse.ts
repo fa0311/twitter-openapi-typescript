@@ -36,14 +36,10 @@ import {
 export interface UserResponse {
     /**
      * 
-     * @type {UserResponseData}
-     * @memberof UserResponse
      */
     data: UserResponseData;
     /**
      * 
-     * @type {Array<ErrorResponse>}
-     * @memberof UserResponse
      */
     errors?: Array<ErrorResponse>;
 }

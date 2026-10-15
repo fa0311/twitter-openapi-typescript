@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface TweetEditPrespective {
     /**
      * 
-     * @type {boolean}
-     * @memberof TweetEditPrespective
      */
     favorited?: boolean;
     /**
      * 
-     * @type {boolean}
-     * @memberof TweetEditPrespective
      */
     retweeted?: boolean;
 }

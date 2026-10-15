@@ -29,8 +29,6 @@ import {
 export interface ProfileResponseData {
     /**
      * 
-     * @type {UserResultByScreenName}
-     * @memberof ProfileResponseData
      */
     userResultByScreenName?: UserResultByScreenName;
 }

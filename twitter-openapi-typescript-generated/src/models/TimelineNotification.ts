@@ -57,50 +57,34 @@ import {
 export interface TimelineNotification {
     /**
      * 
-     * @type {TypeName}
-     * @memberof TimelineNotification
      */
     typename: TypeName;
     /**
      * 
-     * @type {string}
-     * @memberof TimelineNotification
      */
     id: string;
     /**
      * 
-     * @type {ContentItemType}
-     * @memberof TimelineNotification
      */
     itemType: ContentItemType;
     /**
      * 
-     * @type {string}
-     * @memberof TimelineNotification
      */
     notificationIcon: string;
     /**
      * 
-     * @type {SocialContextLandingUrl}
-     * @memberof TimelineNotification
      */
     notificationUrl: SocialContextLandingUrl;
     /**
      * 
-     * @type {RichMessage}
-     * @memberof TimelineNotification
      */
     richMessage: RichMessage;
     /**
      * 
-     * @type {NotificationTemplate}
-     * @memberof TimelineNotification
      */
     template: NotificationTemplate;
     /**
      * 
-     * @type {string}
-     * @memberof TimelineNotification
      */
     timestampMs: string;
 }
@@ -111,14 +95,14 @@ export interface TimelineNotification {
  * Check if a given object implements the TimelineNotification interface.
  */
 export function instanceOfTimelineNotification(value: object): value is TimelineNotification {
-    if (!('typename' in value) || value['typename'] === undefined) return false;
+    if ((!('typename' in (value as Record<string, any>)) && !('__typename' in (value as Record<string, any>))) || ((value as Record<string, any>)['typename'] === undefined && (value as Record<string, any>)['__typename'] === undefined)) return false;
     if (!('id' in value) || value['id'] === undefined) return false;
     if (!('itemType' in value) || value['itemType'] === undefined) return false;
-    if (!('notificationIcon' in value) || value['notificationIcon'] === undefined) return false;
-    if (!('notificationUrl' in value) || value['notificationUrl'] === undefined) return false;
-    if (!('richMessage' in value) || value['richMessage'] === undefined) return false;
+    if ((!('notificationIcon' in (value as Record<string, any>)) && !('notification_icon' in (value as Record<string, any>))) || ((value as Record<string, any>)['notificationIcon'] === undefined && (value as Record<string, any>)['notification_icon'] === undefined)) return false;
+    if ((!('notificationUrl' in (value as Record<string, any>)) && !('notification_url' in (value as Record<string, any>))) || ((value as Record<string, any>)['notificationUrl'] === undefined && (value as Record<string, any>)['notification_url'] === undefined)) return false;
+    if ((!('richMessage' in (value as Record<string, any>)) && !('rich_message' in (value as Record<string, any>))) || ((value as Record<string, any>)['richMessage'] === undefined && (value as Record<string, any>)['rich_message'] === undefined)) return false;
     if (!('template' in value) || value['template'] === undefined) return false;
-    if (!('timestampMs' in value) || value['timestampMs'] === undefined) return false;
+    if ((!('timestampMs' in (value as Record<string, any>)) && !('timestamp_ms' in (value as Record<string, any>))) || ((value as Record<string, any>)['timestampMs'] === undefined && (value as Record<string, any>)['timestamp_ms'] === undefined)) return false;
     return true;
 }
 

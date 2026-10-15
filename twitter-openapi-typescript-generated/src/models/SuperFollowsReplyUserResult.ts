@@ -29,8 +29,6 @@ import {
 export interface SuperFollowsReplyUserResult {
     /**
      * 
-     * @type {SuperFollowsReplyUserResultData}
-     * @memberof SuperFollowsReplyUserResult
      */
     result: SuperFollowsReplyUserResultData;
 }

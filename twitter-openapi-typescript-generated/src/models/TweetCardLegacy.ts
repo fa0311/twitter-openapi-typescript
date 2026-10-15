@@ -43,32 +43,22 @@ import {
 export interface TweetCardLegacy {
     /**
      * 
-     * @type {Array<TweetCardLegacyBindingValue>}
-     * @memberof TweetCardLegacy
      */
     bindingValues: Array<TweetCardLegacyBindingValue>;
     /**
      * 
-     * @type {TweetCardPlatformData}
-     * @memberof TweetCardLegacy
      */
     cardPlatform?: TweetCardPlatformData;
     /**
      * 
-     * @type {string}
-     * @memberof TweetCardLegacy
      */
     name: string;
     /**
      * 
-     * @type {string}
-     * @memberof TweetCardLegacy
      */
     url: string;
     /**
      * 
-     * @type {Array<UserResults>}
-     * @memberof TweetCardLegacy
      */
     userRefsResults?: Array<UserResults>;
 }
@@ -77,7 +67,7 @@ export interface TweetCardLegacy {
  * Check if a given object implements the TweetCardLegacy interface.
  */
 export function instanceOfTweetCardLegacy(value: object): value is TweetCardLegacy {
-    if (!('bindingValues' in value) || value['bindingValues'] === undefined) return false;
+    if ((!('bindingValues' in (value as Record<string, any>)) && !('binding_values' in (value as Record<string, any>))) || ((value as Record<string, any>)['bindingValues'] === undefined && (value as Record<string, any>)['binding_values'] === undefined)) return false;
     if (!('name' in value) || value['name'] === undefined) return false;
     if (!('url' in value) || value['url'] === undefined) return false;
     return true;

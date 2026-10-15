@@ -43,44 +43,30 @@ import {
 export interface TimelineHalfCover {
     /**
      * 
-     * @type {boolean}
-     * @memberof TimelineHalfCover
      */
     dismissible: boolean;
     /**
      * 
-     * @type {TimelineHalfCoverHalfCoverDisplayTypeEnum}
-     * @memberof TimelineHalfCover
      */
     halfCoverDisplayType: TimelineHalfCoverHalfCoverDisplayTypeEnum;
     /**
      * 
-     * @type {Array<Callback>}
-     * @memberof TimelineHalfCover
      */
     impressionCallbacks: Array<Callback>;
     /**
      * 
-     * @type {CoverCta}
-     * @memberof TimelineHalfCover
      */
     primaryCoverCta: CoverCta;
     /**
      * 
-     * @type {Text}
-     * @memberof TimelineHalfCover
      */
     primaryText: Text;
     /**
      * 
-     * @type {Text}
-     * @memberof TimelineHalfCover
      */
     secondaryText: Text;
     /**
      * 
-     * @type {TimelineHalfCoverTypeEnum}
-     * @memberof TimelineHalfCover
      */
     type: TimelineHalfCoverTypeEnum;
 }
@@ -90,7 +76,7 @@ export interface TimelineHalfCover {
  * @export
  */
 export const TimelineHalfCoverHalfCoverDisplayTypeEnum = {
-    Cover: 'Cover'
+    Cover: 'Cover',
 } as const;
 export type TimelineHalfCoverHalfCoverDisplayTypeEnum = typeof TimelineHalfCoverHalfCoverDisplayTypeEnum[keyof typeof TimelineHalfCoverHalfCoverDisplayTypeEnum];
 
@@ -98,7 +84,7 @@ export type TimelineHalfCoverHalfCoverDisplayTypeEnum = typeof TimelineHalfCover
  * @export
  */
 export const TimelineHalfCoverTypeEnum = {
-    TimelineHalfCover: 'TimelineHalfCover'
+    TimelineHalfCover: 'TimelineHalfCover',
 } as const;
 export type TimelineHalfCoverTypeEnum = typeof TimelineHalfCoverTypeEnum[keyof typeof TimelineHalfCoverTypeEnum];
 
@@ -109,11 +95,15 @@ export type TimelineHalfCoverTypeEnum = typeof TimelineHalfCoverTypeEnum[keyof t
 export function instanceOfTimelineHalfCover(value: object): value is TimelineHalfCover {
     if (!('dismissible' in value) || value['dismissible'] === undefined) return false;
     if (!('halfCoverDisplayType' in value) || value['halfCoverDisplayType'] === undefined) return false;
+    if (value['halfCoverDisplayType'] !== 'Cover') return false;
+    
     if (!('impressionCallbacks' in value) || value['impressionCallbacks'] === undefined) return false;
     if (!('primaryCoverCta' in value) || value['primaryCoverCta'] === undefined) return false;
     if (!('primaryText' in value) || value['primaryText'] === undefined) return false;
     if (!('secondaryText' in value) || value['secondaryText'] === undefined) return false;
     if (!('type' in value) || value['type'] === undefined) return false;
+    if (value['type'] !== 'TimelineHalfCover') return false;
+    
     return true;
 }
 

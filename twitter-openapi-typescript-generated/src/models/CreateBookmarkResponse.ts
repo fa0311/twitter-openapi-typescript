@@ -36,14 +36,10 @@ import {
 export interface CreateBookmarkResponse {
     /**
      * 
-     * @type {CreateBookmarkResponseData}
-     * @memberof CreateBookmarkResponse
      */
     data: CreateBookmarkResponseData;
     /**
      * 
-     * @type {Array<ErrorResponse>}
-     * @memberof CreateBookmarkResponse
      */
     errors?: Array<ErrorResponse>;
 }

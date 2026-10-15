@@ -29,14 +29,10 @@ import {
 export interface UrtEndpointOptions {
     /**
      * 
-     * @type {Array<UrtEndpointRequestParams>}
-     * @memberof UrtEndpointOptions
      */
     requestParams: Array<UrtEndpointRequestParams>;
     /**
      * 
-     * @type {string}
-     * @memberof UrtEndpointOptions
      */
     title: string;
 }

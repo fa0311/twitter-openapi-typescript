@@ -43,32 +43,22 @@ import {
 export interface CoverCta {
     /**
      * 
-     * @type {string}
-     * @memberof CoverCta
      */
     text?: string;
     /**
      * 
-     * @type {CoverCtaButtonStyleEnum}
-     * @memberof CoverCta
      */
     buttonStyle?: CoverCtaButtonStyleEnum;
     /**
      * 
-     * @type {Array<Callback>}
-     * @memberof CoverCta
      */
     callbacks: Array<Callback>;
     /**
      * 
-     * @type {CtaClientEventInfo}
-     * @memberof CoverCta
      */
     clientEventInfo: CtaClientEventInfo;
     /**
      * 
-     * @type {TimelineCoverBehavior}
-     * @memberof CoverCta
      */
     ctaBehavior: TimelineCoverBehavior;
 }
@@ -78,7 +68,7 @@ export interface CoverCta {
  * @export
  */
 export const CoverCtaButtonStyleEnum = {
-    Primary: 'Primary'
+    Primary: 'Primary',
 } as const;
 export type CoverCtaButtonStyleEnum = typeof CoverCtaButtonStyleEnum[keyof typeof CoverCtaButtonStyleEnum];
 

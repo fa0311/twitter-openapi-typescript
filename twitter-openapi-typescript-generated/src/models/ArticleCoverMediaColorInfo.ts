@@ -29,8 +29,6 @@ import {
 export interface ArticleCoverMediaColorInfo {
     /**
      * 
-     * @type {Array<ArticleCoverMediaColorInfoPalette>}
-     * @memberof ArticleCoverMediaColorInfo
      */
     palette: Array<ArticleCoverMediaColorInfoPalette>;
 }

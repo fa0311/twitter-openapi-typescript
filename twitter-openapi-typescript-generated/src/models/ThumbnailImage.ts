@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface ThumbnailImage {
     /**
      * 
-     * @type {number}
-     * @memberof ThumbnailImage
      */
     originalImgHeight?: number;
     /**
      * 
-     * @type {string}
-     * @memberof ThumbnailImage
      */
     originalImgUrl?: string;
     /**
      * 
-     * @type {number}
-     * @memberof ThumbnailImage
      */
     originalImgWidth?: number;
 }

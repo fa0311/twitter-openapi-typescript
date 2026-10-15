@@ -29,20 +29,14 @@ import {
 export interface TextEntity {
     /**
      * 
-     * @type {number}
-     * @memberof TextEntity
      */
     fromIndex: number;
     /**
      * 
-     * @type {TextEntityRef}
-     * @memberof TextEntity
      */
     ref: TextEntityRef;
     /**
      * 
-     * @type {number}
-     * @memberof TextEntity
      */
     toIndex: number;
 }

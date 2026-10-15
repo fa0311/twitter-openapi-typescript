@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface UserVerification {
     /**
      * 
-     * @type {boolean}
-     * @memberof UserVerification
      */
     verified: boolean;
     /**
      * 
-     * @type {UserVerificationVerifiedTypeEnum}
-     * @memberof UserVerification
      */
     verifiedType?: UserVerificationVerifiedTypeEnum;
 }
@@ -39,7 +35,7 @@ export interface UserVerification {
  */
 export const UserVerificationVerifiedTypeEnum = {
     Business: 'Business',
-    Government: 'Government'
+    Government: 'Government',
 } as const;
 export type UserVerificationVerifiedTypeEnum = typeof UserVerificationVerifiedTypeEnum[keyof typeof UserVerificationVerifiedTypeEnum];
 

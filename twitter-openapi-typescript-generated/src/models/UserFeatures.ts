@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface UserFeatures {
     /**
      * 
-     * @type {boolean}
-     * @memberof UserFeatures
      */
     mediatoolStudioLibrary: boolean;
 }
@@ -31,7 +29,7 @@ export interface UserFeatures {
  * Check if a given object implements the UserFeatures interface.
  */
 export function instanceOfUserFeatures(value: object): value is UserFeatures {
-    if (!('mediatoolStudioLibrary' in value) || value['mediatoolStudioLibrary'] === undefined) return false;
+    if ((!('mediatoolStudioLibrary' in (value as Record<string, any>)) && !('mediatool_studio_library' in (value as Record<string, any>))) || ((value as Record<string, any>)['mediatoolStudioLibrary'] === undefined && (value as Record<string, any>)['mediatool_studio_library'] === undefined)) return false;
     return true;
 }
 

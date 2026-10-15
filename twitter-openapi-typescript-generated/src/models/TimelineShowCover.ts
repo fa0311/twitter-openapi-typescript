@@ -43,20 +43,14 @@ import {
 export interface TimelineShowCover {
     /**
      * 
-     * @type {ClientEventInfo}
-     * @memberof TimelineShowCover
      */
     clientEventInfo: ClientEventInfo;
     /**
      * 
-     * @type {TimelineHalfCover}
-     * @memberof TimelineShowCover
      */
     cover: TimelineHalfCover;
     /**
      * 
-     * @type {InstructionType}
-     * @memberof TimelineShowCover
      */
     type: InstructionType;
 }

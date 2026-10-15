@@ -29,8 +29,6 @@ import {
 export interface CommunityResult {
     /**
      * 
-     * @type {CommunityUnion}
-     * @memberof CommunityResult
      */
     result: CommunityUnion;
 }

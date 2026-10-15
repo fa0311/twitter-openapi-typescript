@@ -29,20 +29,14 @@ import {
 export interface BirdwatchEntity {
     /**
      * 
-     * @type {number}
-     * @memberof BirdwatchEntity
      */
     fromIndex: number;
     /**
      * 
-     * @type {BirdwatchEntityRef}
-     * @memberof BirdwatchEntity
      */
     ref: BirdwatchEntityRef;
     /**
      * 
-     * @type {number}
-     * @memberof BirdwatchEntity
      */
     toIndex: number;
 }

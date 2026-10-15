@@ -29,38 +29,26 @@ import {
 export interface GrokTranslatedPost {
     /**
      * 
-     * @type {{ [key: string]: any; }}
-     * @memberof GrokTranslatedPost
      */
     associatedData?: { [key: string]: any; };
     /**
      * 
-     * @type {string}
-     * @memberof GrokTranslatedPost
      */
     destinationLanguage?: string;
     /**
      * 
-     * @type {Entities}
-     * @memberof GrokTranslatedPost
      */
     entities?: Entities;
     /**
      * 
-     * @type {string}
-     * @memberof GrokTranslatedPost
      */
     previewTranslation?: string;
     /**
      * 
-     * @type {string}
-     * @memberof GrokTranslatedPost
      */
     sourceLanguage?: string;
     /**
      * 
-     * @type {string}
-     * @memberof GrokTranslatedPost
      */
     translation?: string;
 }

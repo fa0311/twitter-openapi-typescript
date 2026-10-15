@@ -21,26 +21,18 @@ import { mapValues } from '../runtime';
 export interface MediaOriginalInfoFocusRect {
     /**
      * 
-     * @type {number}
-     * @memberof MediaOriginalInfoFocusRect
      */
     h: number;
     /**
      * 
-     * @type {number}
-     * @memberof MediaOriginalInfoFocusRect
      */
     w: number;
     /**
      * 
-     * @type {number}
-     * @memberof MediaOriginalInfoFocusRect
      */
     x: number;
     /**
      * 
-     * @type {number}
-     * @memberof MediaOriginalInfoFocusRect
      */
     y: number;
 }

@@ -29,14 +29,10 @@ import {
 export interface TimelineCoverBehavior {
     /**
      * 
-     * @type {TimelineCoverBehaviorTypeEnum}
-     * @memberof TimelineCoverBehavior
      */
     type: TimelineCoverBehaviorTypeEnum;
     /**
      * 
-     * @type {TimelineCoverBehaviorUrl}
-     * @memberof TimelineCoverBehavior
      */
     url?: TimelineCoverBehaviorUrl;
 }
@@ -47,7 +43,7 @@ export interface TimelineCoverBehavior {
  */
 export const TimelineCoverBehaviorTypeEnum = {
     TimelineCoverBehaviorDismiss: 'TimelineCoverBehaviorDismiss',
-    TimelineCoverBehaviorNavigate: 'TimelineCoverBehaviorNavigate'
+    TimelineCoverBehaviorNavigate: 'TimelineCoverBehaviorNavigate',
 } as const;
 export type TimelineCoverBehaviorTypeEnum = typeof TimelineCoverBehaviorTypeEnum[keyof typeof TimelineCoverBehaviorTypeEnum];
 

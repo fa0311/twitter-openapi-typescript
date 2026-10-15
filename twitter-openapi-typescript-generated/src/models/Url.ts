@@ -21,26 +21,18 @@ import { mapValues } from '../runtime';
 export interface Url {
     /**
      * 
-     * @type {string}
-     * @memberof Url
      */
     displayUrl: string;
     /**
      * 
-     * @type {string}
-     * @memberof Url
      */
     expandedUrl?: string;
     /**
      * 
-     * @type {Array<number>}
-     * @memberof Url
      */
     indices: Array<number>;
     /**
      * 
-     * @type {string}
-     * @memberof Url
      */
     url: string;
 }
@@ -49,7 +41,7 @@ export interface Url {
  * Check if a given object implements the Url interface.
  */
 export function instanceOfUrl(value: object): value is Url {
-    if (!('displayUrl' in value) || value['displayUrl'] === undefined) return false;
+    if ((!('displayUrl' in (value as Record<string, any>)) && !('display_url' in (value as Record<string, any>))) || ((value as Record<string, any>)['displayUrl'] === undefined && (value as Record<string, any>)['display_url'] === undefined)) return false;
     if (!('indices' in value) || value['indices'] === undefined) return false;
     if (!('url' in value) || value['url'] === undefined) return false;
     return true;

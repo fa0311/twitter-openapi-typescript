@@ -29,8 +29,6 @@ import {
 export interface CommunityUnavailable {
     /**
      * 
-     * @type {TypeName}
-     * @memberof CommunityUnavailable
      */
     typename: TypeName;
 }
@@ -41,7 +39,7 @@ export interface CommunityUnavailable {
  * Check if a given object implements the CommunityUnavailable interface.
  */
 export function instanceOfCommunityUnavailable(value: object): value is CommunityUnavailable {
-    if (!('typename' in value) || value['typename'] === undefined) return false;
+    if ((!('typename' in (value as Record<string, any>)) && !('__typename' in (value as Record<string, any>))) || ((value as Record<string, any>)['typename'] === undefined && (value as Record<string, any>)['__typename'] === undefined)) return false;
     return true;
 }
 

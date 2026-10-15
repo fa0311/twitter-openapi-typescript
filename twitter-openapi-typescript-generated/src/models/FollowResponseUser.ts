@@ -29,8 +29,6 @@ import {
 export interface FollowResponseUser {
     /**
      * 
-     * @type {FollowResponseResult}
-     * @memberof FollowResponseUser
      */
     result: FollowResponseResult;
 }

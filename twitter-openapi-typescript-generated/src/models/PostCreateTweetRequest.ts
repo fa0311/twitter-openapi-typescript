@@ -36,20 +36,14 @@ import {
 export interface PostCreateTweetRequest {
     /**
      * 
-     * @type {PostCreateTweetRequestFeatures}
-     * @memberof PostCreateTweetRequest
      */
     features: PostCreateTweetRequestFeatures;
     /**
      * 
-     * @type {string}
-     * @memberof PostCreateTweetRequest
      */
     queryId: string;
     /**
      * 
-     * @type {PostCreateTweetRequestVariables}
-     * @memberof PostCreateTweetRequest
      */
     variables: PostCreateTweetRequestVariables;
 }

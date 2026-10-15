@@ -29,26 +29,18 @@ import {
 export interface MediaSizes {
     /**
      * 
-     * @type {MediaSize}
-     * @memberof MediaSizes
      */
     large: MediaSize;
     /**
      * 
-     * @type {MediaSize}
-     * @memberof MediaSizes
      */
     medium: MediaSize;
     /**
      * 
-     * @type {MediaSize}
-     * @memberof MediaSizes
      */
     small: MediaSize;
     /**
      * 
-     * @type {MediaSize}
-     * @memberof MediaSizes
      */
     thumb: MediaSize;
 }

@@ -36,38 +36,26 @@ import {
 export interface AdditionalMediaInfo {
     /**
      * 
-     * @type {AdditionalMediaInfoCallToActions}
-     * @memberof AdditionalMediaInfo
      */
     callToActions?: AdditionalMediaInfoCallToActions;
     /**
      * 
-     * @type {string}
-     * @memberof AdditionalMediaInfo
      */
     description?: string;
     /**
      * 
-     * @type {boolean}
-     * @memberof AdditionalMediaInfo
      */
     embeddable?: boolean;
     /**
      * 
-     * @type {boolean}
-     * @memberof AdditionalMediaInfo
      */
     monetizable: boolean;
     /**
      * 
-     * @type {UserResultCore}
-     * @memberof AdditionalMediaInfo
      */
     sourceUser?: UserResultCore;
     /**
      * 
-     * @type {string}
-     * @memberof AdditionalMediaInfo
      */
     title?: string;
 }

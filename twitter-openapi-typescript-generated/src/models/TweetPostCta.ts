@@ -29,20 +29,14 @@ import {
 export interface TweetPostCta {
     /**
      * 
-     * @type {Array<TweetPostCtaDisplayLocationsEnum>}
-     * @memberof TweetPostCta
      */
     displayLocations: Array<TweetPostCtaDisplayLocationsEnum>;
     /**
      * 
-     * @type {PostCta}
-     * @memberof TweetPostCta
      */
     postCta: PostCta;
     /**
      * 
-     * @type {string}
-     * @memberof TweetPostCta
      */
     scribeId?: string;
 }
@@ -54,7 +48,7 @@ export interface TweetPostCta {
 export const TweetPostCtaDisplayLocationsEnum = {
     TweetDetails: 'TweetDetails',
     ForYouTimeline: 'ForYouTimeline',
-    RepliesTimeline: 'RepliesTimeline'
+    RepliesTimeline: 'RepliesTimeline',
 } as const;
 export type TweetPostCtaDisplayLocationsEnum = typeof TweetPostCtaDisplayLocationsEnum[keyof typeof TweetPostCtaDisplayLocationsEnum];
 
@@ -63,8 +57,8 @@ export type TweetPostCtaDisplayLocationsEnum = typeof TweetPostCtaDisplayLocatio
  * Check if a given object implements the TweetPostCta interface.
  */
 export function instanceOfTweetPostCta(value: object): value is TweetPostCta {
-    if (!('displayLocations' in value) || value['displayLocations'] === undefined) return false;
-    if (!('postCta' in value) || value['postCta'] === undefined) return false;
+    if ((!('displayLocations' in (value as Record<string, any>)) && !('display_locations' in (value as Record<string, any>))) || ((value as Record<string, any>)['displayLocations'] === undefined && (value as Record<string, any>)['display_locations'] === undefined)) return false;
+    if ((!('postCta' in (value as Record<string, any>)) && !('post_cta' in (value as Record<string, any>))) || ((value as Record<string, any>)['postCta'] === undefined && (value as Record<string, any>)['post_cta'] === undefined)) return false;
     return true;
 }
 

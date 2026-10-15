@@ -49,7 +49,7 @@ export const TypeName = {
     CommunityJoinRequestsUnavailable: 'CommunityJoinRequestsUnavailable',
     CommunityUnavailable: 'CommunityUnavailable',
     ApiImage: 'ApiImage',
-    TimelineRichTextUser: 'TimelineRichTextUser'
+    TimelineRichTextUser: 'TimelineRichTextUser',
 } as const;
 export type TypeName = typeof TypeName[keyof typeof TypeName];
 

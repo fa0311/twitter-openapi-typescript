@@ -29,8 +29,6 @@ import {
 export interface GrokShareAttachment {
     /**
      * 
-     * @type {Array<GrokShareAttachmentItem>}
-     * @memberof GrokShareAttachment
      */
     items: Array<GrokShareAttachmentItem>;
 }

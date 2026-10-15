@@ -36,14 +36,10 @@ import {
 export interface UserTweetsResultV1 {
     /**
      * 
-     * @type {TypeName}
-     * @memberof UserTweetsResultV1
      */
     typename: TypeName;
     /**
      * 
-     * @type {TimelineResult}
-     * @memberof UserTweetsResultV1
      */
     timeline: TimelineResult;
 }
@@ -54,7 +50,7 @@ export interface UserTweetsResultV1 {
  * Check if a given object implements the UserTweetsResultV1 interface.
  */
 export function instanceOfUserTweetsResultV1(value: object): value is UserTweetsResultV1 {
-    if (!('typename' in value) || value['typename'] === undefined) return false;
+    if ((!('typename' in (value as Record<string, any>)) && !('__typename' in (value as Record<string, any>))) || ((value as Record<string, any>)['typename'] === undefined && (value as Record<string, any>)['__typename'] === undefined)) return false;
     if (!('timeline' in value) || value['timeline'] === undefined) return false;
     return true;
 }

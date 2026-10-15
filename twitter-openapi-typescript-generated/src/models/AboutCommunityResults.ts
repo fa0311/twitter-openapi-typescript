@@ -29,8 +29,6 @@ import {
 export interface AboutCommunityResults {
     /**
      * 
-     * @type {AboutCommunityResult}
-     * @memberof AboutCommunityResults
      */
     result: AboutCommunityResult;
 }

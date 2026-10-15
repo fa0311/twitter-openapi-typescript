@@ -29,8 +29,6 @@ import {
 export interface UserProfile {
     /**
      * 
-     * @type {SuperFollowUserProfile}
-     * @memberof UserProfile
      */
     superFollowsUserProfile: SuperFollowUserProfile;
 }
@@ -39,7 +37,7 @@ export interface UserProfile {
  * Check if a given object implements the UserProfile interface.
  */
 export function instanceOfUserProfile(value: object): value is UserProfile {
-    if (!('superFollowsUserProfile' in value) || value['superFollowsUserProfile'] === undefined) return false;
+    if ((!('superFollowsUserProfile' in (value as Record<string, any>)) && !('super_follows_user_profile' in (value as Record<string, any>))) || ((value as Record<string, any>)['superFollowsUserProfile'] === undefined && (value as Record<string, any>)['super_follows_user_profile'] === undefined)) return false;
     return true;
 }
 

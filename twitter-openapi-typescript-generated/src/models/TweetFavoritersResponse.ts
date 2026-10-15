@@ -36,14 +36,10 @@ import {
 export interface TweetFavoritersResponse {
     /**
      * 
-     * @type {TweetFavoritersResponseData}
-     * @memberof TweetFavoritersResponse
      */
     data: TweetFavoritersResponseData;
     /**
      * 
-     * @type {Array<ErrorResponse>}
-     * @memberof TweetFavoritersResponse
      */
     errors?: Array<ErrorResponse>;
 }

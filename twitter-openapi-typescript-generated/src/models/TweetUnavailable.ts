@@ -29,14 +29,10 @@ import {
 export interface TweetUnavailable {
     /**
      * 
-     * @type {TypeName}
-     * @memberof TweetUnavailable
      */
     typename?: TypeName;
     /**
      * 
-     * @type {string}
-     * @memberof TweetUnavailable
      */
     reason?: string;
 }

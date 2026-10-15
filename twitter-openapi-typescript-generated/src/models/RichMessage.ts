@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface RichMessage {
     /**
      * 
-     * @type {boolean}
-     * @memberof RichMessage
      */
     rtl?: boolean;
     /**
      * 
-     * @type {string}
-     * @memberof RichMessage
      */
     text?: string;
 }

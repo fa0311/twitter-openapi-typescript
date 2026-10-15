@@ -95,42 +95,90 @@ import {
 } from '../models/UnfavoriteTweetResponse';
 
 export interface PostCreateBookmarkOperationRequest {
+    /**
+     * 
+     */
     pathQueryId: string;
+    /**
+     * 
+     */
     postCreateBookmarkRequest: PostCreateBookmarkRequest;
 }
 
 export interface PostCreateRetweetOperationRequest {
+    /**
+     * 
+     */
     pathQueryId: string;
+    /**
+     * 
+     */
     postCreateRetweetRequest: PostCreateRetweetRequest;
 }
 
 export interface PostCreateTweetOperationRequest {
+    /**
+     * 
+     */
     pathQueryId: string;
+    /**
+     * 
+     */
     postCreateTweetRequest: PostCreateTweetRequest;
 }
 
 export interface PostDeleteBookmarkOperationRequest {
+    /**
+     * 
+     */
     pathQueryId: string;
+    /**
+     * 
+     */
     postDeleteBookmarkRequest: PostDeleteBookmarkRequest;
 }
 
 export interface PostDeleteRetweetOperationRequest {
+    /**
+     * 
+     */
     pathQueryId: string;
+    /**
+     * 
+     */
     postDeleteRetweetRequest: PostDeleteRetweetRequest;
 }
 
 export interface PostDeleteTweetOperationRequest {
+    /**
+     * 
+     */
     pathQueryId: string;
+    /**
+     * 
+     */
     postDeleteTweetRequest: PostDeleteTweetRequest;
 }
 
 export interface PostFavoriteTweetOperationRequest {
+    /**
+     * 
+     */
     pathQueryId: string;
+    /**
+     * 
+     */
     postFavoriteTweetRequest: PostFavoriteTweetRequest;
 }
 
 export interface PostUnfavoriteTweetOperationRequest {
+    /**
+     * 
+     */
     pathQueryId: string;
+    /**
+     * 
+     */
     postUnfavoriteTweetRequest: PostUnfavoriteTweetRequest;
 }
 

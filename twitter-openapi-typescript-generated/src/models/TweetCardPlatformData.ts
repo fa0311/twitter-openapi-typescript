@@ -29,8 +29,6 @@ import {
 export interface TweetCardPlatformData {
     /**
      * 
-     * @type {TweetCardPlatform}
-     * @memberof TweetCardPlatformData
      */
     platform: TweetCardPlatform;
 }

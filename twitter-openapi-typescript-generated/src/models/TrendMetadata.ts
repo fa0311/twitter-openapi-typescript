@@ -29,8 +29,6 @@ import {
 export interface TrendMetadata {
     /**
      * 
-     * @type {SocialContextLandingUrl}
-     * @memberof TrendMetadata
      */
     url?: SocialContextLandingUrl;
 }

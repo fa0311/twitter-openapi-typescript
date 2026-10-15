@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface PostDeleteRetweetRequestVariables {
     /**
      * 
-     * @type {boolean}
-     * @memberof PostDeleteRetweetRequestVariables
      */
     darkRequest: boolean;
     /**
      * 
-     * @type {string}
-     * @memberof PostDeleteRetweetRequestVariables
      */
     sourceTweetId: string;
 }
@@ -37,8 +33,8 @@ export interface PostDeleteRetweetRequestVariables {
  * Check if a given object implements the PostDeleteRetweetRequestVariables interface.
  */
 export function instanceOfPostDeleteRetweetRequestVariables(value: object): value is PostDeleteRetweetRequestVariables {
-    if (!('darkRequest' in value) || value['darkRequest'] === undefined) return false;
-    if (!('sourceTweetId' in value) || value['sourceTweetId'] === undefined) return false;
+    if ((!('darkRequest' in (value as Record<string, any>)) && !('dark_request' in (value as Record<string, any>))) || ((value as Record<string, any>)['darkRequest'] === undefined && (value as Record<string, any>)['dark_request'] === undefined)) return false;
+    if ((!('sourceTweetId' in (value as Record<string, any>)) && !('source_tweet_id' in (value as Record<string, any>))) || ((value as Record<string, any>)['sourceTweetId'] === undefined && (value as Record<string, any>)['source_tweet_id'] === undefined)) return false;
     return true;
 }
 

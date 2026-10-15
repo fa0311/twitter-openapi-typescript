@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface TextHighlight {
     /**
      * 
-     * @type {number}
-     * @memberof TextHighlight
      */
     endIndex: number;
     /**
      * 
-     * @type {number}
-     * @memberof TextHighlight
      */
     startIndex: number;
 }

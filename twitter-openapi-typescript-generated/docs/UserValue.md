@@ -7,6 +7,7 @@
 Name | Type
 ------------ | -------------
 `idStr` | string
+`path` | Array&lt;string&gt;
 
 ## Example
 
@@ -16,6 +17,7 @@ import type { UserValue } from 'twitter-openapi-typescript-generated'
 // TODO: Update the object below with actual values
 const example = {
   "idStr": null,
+  "path": null,
 } satisfies UserValue
 
 console.log(example)

@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface UserPrivacy {
     /**
      * 
-     * @type {boolean}
-     * @memberof UserPrivacy
      */
     _protected: boolean;
 }
@@ -31,7 +29,7 @@ export interface UserPrivacy {
  * Check if a given object implements the UserPrivacy interface.
  */
 export function instanceOfUserPrivacy(value: object): value is UserPrivacy {
-    if (!('_protected' in value) || value['_protected'] === undefined) return false;
+    if ((!('_protected' in (value as Record<string, any>)) && !('protected' in (value as Record<string, any>))) || ((value as Record<string, any>)['_protected'] === undefined && (value as Record<string, any>)['protected'] === undefined)) return false;
     return true;
 }
 

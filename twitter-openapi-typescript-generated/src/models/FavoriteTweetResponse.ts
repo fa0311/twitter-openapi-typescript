@@ -36,14 +36,10 @@ import {
 export interface FavoriteTweetResponse {
     /**
      * 
-     * @type {FavoriteTweet}
-     * @memberof FavoriteTweetResponse
      */
     data: FavoriteTweet;
     /**
      * 
-     * @type {Array<ErrorResponse>}
-     * @memberof FavoriteTweetResponse
      */
     errors?: Array<ErrorResponse>;
 }

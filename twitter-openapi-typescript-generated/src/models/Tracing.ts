@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface Tracing {
     /**
      * 
-     * @type {string}
-     * @memberof Tracing
      */
     traceId: string;
 }
@@ -31,7 +29,7 @@ export interface Tracing {
  * Check if a given object implements the Tracing interface.
  */
 export function instanceOfTracing(value: object): value is Tracing {
-    if (!('traceId' in value) || value['traceId'] === undefined) return false;
+    if ((!('traceId' in (value as Record<string, any>)) && !('trace_id' in (value as Record<string, any>))) || ((value as Record<string, any>)['traceId'] === undefined && (value as Record<string, any>)['trace_id'] === undefined)) return false;
     return true;
 }
 

@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface MediaVideoInfoVariant {
     /**
      * 
-     * @type {number}
-     * @memberof MediaVideoInfoVariant
      */
     bitrate?: number;
     /**
      * 
-     * @type {string}
-     * @memberof MediaVideoInfoVariant
      */
     contentType: string;
     /**
      * 
-     * @type {string}
-     * @memberof MediaVideoInfoVariant
      */
     url: string;
 }
@@ -43,7 +37,7 @@ export interface MediaVideoInfoVariant {
  * Check if a given object implements the MediaVideoInfoVariant interface.
  */
 export function instanceOfMediaVideoInfoVariant(value: object): value is MediaVideoInfoVariant {
-    if (!('contentType' in value) || value['contentType'] === undefined) return false;
+    if ((!('contentType' in (value as Record<string, any>)) && !('content_type' in (value as Record<string, any>))) || ((value as Record<string, any>)['contentType'] === undefined && (value as Record<string, any>)['content_type'] === undefined)) return false;
     if (!('url' in value) || value['url'] === undefined) return false;
     return true;
 }

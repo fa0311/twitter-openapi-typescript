@@ -29,32 +29,22 @@ import {
 export interface GrokTranslatedCommunityNote {
     /**
      * 
-     * @type {string}
-     * @memberof GrokTranslatedCommunityNote
      */
     destinationLanguage: string;
     /**
      * 
-     * @type {Array<GrokEntity>}
-     * @memberof GrokTranslatedCommunityNote
      */
     richTextEntities?: Array<GrokEntity>;
     /**
      * 
-     * @type {string}
-     * @memberof GrokTranslatedCommunityNote
      */
     sourceLanguage: string;
     /**
      * 
-     * @type {string}
-     * @memberof GrokTranslatedCommunityNote
      */
     translation: string;
     /**
      * 
-     * @type {boolean}
-     * @memberof GrokTranslatedCommunityNote
      */
     translationAvailable: boolean;
 }
@@ -63,10 +53,10 @@ export interface GrokTranslatedCommunityNote {
  * Check if a given object implements the GrokTranslatedCommunityNote interface.
  */
 export function instanceOfGrokTranslatedCommunityNote(value: object): value is GrokTranslatedCommunityNote {
-    if (!('destinationLanguage' in value) || value['destinationLanguage'] === undefined) return false;
-    if (!('sourceLanguage' in value) || value['sourceLanguage'] === undefined) return false;
+    if ((!('destinationLanguage' in (value as Record<string, any>)) && !('destination_language' in (value as Record<string, any>))) || ((value as Record<string, any>)['destinationLanguage'] === undefined && (value as Record<string, any>)['destination_language'] === undefined)) return false;
+    if ((!('sourceLanguage' in (value as Record<string, any>)) && !('source_language' in (value as Record<string, any>))) || ((value as Record<string, any>)['sourceLanguage'] === undefined && (value as Record<string, any>)['source_language'] === undefined)) return false;
     if (!('translation' in value) || value['translation'] === undefined) return false;
-    if (!('translationAvailable' in value) || value['translationAvailable'] === undefined) return false;
+    if ((!('translationAvailable' in (value as Record<string, any>)) && !('translation_available' in (value as Record<string, any>))) || ((value as Record<string, any>)['translationAvailable'] === undefined && (value as Record<string, any>)['translation_available'] === undefined)) return false;
     return true;
 }
 

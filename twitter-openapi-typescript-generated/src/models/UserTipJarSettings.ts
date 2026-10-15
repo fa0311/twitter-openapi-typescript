@@ -21,56 +21,38 @@ import { mapValues } from '../runtime';
 export interface UserTipJarSettings {
     /**
      * 
-     * @type {string}
-     * @memberof UserTipJarSettings
      */
     bandcampHandle?: string;
     /**
      * 
-     * @type {string}
-     * @memberof UserTipJarSettings
      */
     bitcoinHandle?: string;
     /**
      * 
-     * @type {string}
-     * @memberof UserTipJarSettings
      */
     cashAppHandle?: string;
     /**
      * 
-     * @type {string}
-     * @memberof UserTipJarSettings
      */
     ethereumHandle?: string;
     /**
      * 
-     * @type {string}
-     * @memberof UserTipJarSettings
      */
     gofundmeHandle?: string;
     /**
      * 
-     * @type {boolean}
-     * @memberof UserTipJarSettings
      */
     isEnabled?: boolean;
     /**
      * 
-     * @type {string}
-     * @memberof UserTipJarSettings
      */
     patreonHandle?: string;
     /**
      * 
-     * @type {string}
-     * @memberof UserTipJarSettings
      */
     payPalHandle?: string;
     /**
      * 
-     * @type {string}
-     * @memberof UserTipJarSettings
      */
     venmoHandle?: string;
 }

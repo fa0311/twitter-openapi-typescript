@@ -13,6 +13,14 @@
  */
 
 import { mapValues } from '../runtime';
+import type { ProfileBioEntities } from './ProfileBioEntities';
+import {
+    ProfileBioEntitiesFromJSON,
+    ProfileBioEntitiesFromJSONTyped,
+    ProfileBioEntitiesToJSON,
+    ProfileBioEntitiesToJSONTyped,
+} from './ProfileBioEntities';
+
 /**
  * 
  * @export
@@ -21,10 +29,16 @@ import { mapValues } from '../runtime';
 export interface ProfileBio {
     /**
      * 
-     * @type {string}
-     * @memberof ProfileBio
      */
     description: string;
+    /**
+     * 
+     */
+    entities?: ProfileBioEntities;
+    /**
+     * 
+     */
+    withheldInCountries?: Array<string>;
 }
 
 /**
@@ -46,6 +60,8 @@ export function ProfileBioFromJSONTyped(json: any, ignoreDiscriminator: boolean)
     return {
         
         'description': json['description'],
+        'entities': json['entities'] == null ? undefined : ProfileBioEntitiesFromJSON(json['entities']),
+        'withheldInCountries': json['withheld_in_countries'] == null ? undefined : json['withheld_in_countries'],
     };
 }
 
@@ -61,6 +77,8 @@ export function ProfileBioToJSONTyped(value?: ProfileBio | null, ignoreDiscrimin
     return {
         
         'description': value['description'],
+        'entities': ProfileBioEntitiesToJSON(value['entities']),
+        'withheld_in_countries': value['withheldInCountries'],
     };
 }
 

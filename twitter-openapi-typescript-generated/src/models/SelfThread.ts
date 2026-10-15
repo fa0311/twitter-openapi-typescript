@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface SelfThread {
     /**
      * 
-     * @type {string}
-     * @memberof SelfThread
      */
     idStr: string;
 }
@@ -31,7 +29,7 @@ export interface SelfThread {
  * Check if a given object implements the SelfThread interface.
  */
 export function instanceOfSelfThread(value: object): value is SelfThread {
-    if (!('idStr' in value) || value['idStr'] === undefined) return false;
+    if ((!('idStr' in (value as Record<string, any>)) && !('id_str' in (value as Record<string, any>))) || ((value as Record<string, any>)['idStr'] === undefined && (value as Record<string, any>)['id_str'] === undefined)) return false;
     return true;
 }
 

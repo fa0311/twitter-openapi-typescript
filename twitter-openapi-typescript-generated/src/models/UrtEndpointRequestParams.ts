@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface UrtEndpointRequestParams {
     /**
      * 
-     * @type {string}
-     * @memberof UrtEndpointRequestParams
      */
     key: string;
     /**
      * 
-     * @type {string}
-     * @memberof UrtEndpointRequestParams
      */
     value: string;
 }

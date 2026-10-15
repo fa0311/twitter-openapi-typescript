@@ -29,32 +29,22 @@ import {
 export interface PostCta {
     /**
      * 
-     * @type {string}
-     * @memberof PostCta
      */
     actionUrl: string;
     /**
      * 
-     * @type {string}
-     * @memberof PostCta
      */
     backgroundColor: string;
     /**
      * 
-     * @type {boolean}
-     * @memberof PostCta
      */
     showChevron: boolean;
     /**
      * 
-     * @type {string}
-     * @memberof PostCta
      */
     strokeColor: string;
     /**
      * 
-     * @type {PostCtaTitleText}
-     * @memberof PostCta
      */
     titleText: PostCtaTitleText;
 }
@@ -63,11 +53,11 @@ export interface PostCta {
  * Check if a given object implements the PostCta interface.
  */
 export function instanceOfPostCta(value: object): value is PostCta {
-    if (!('actionUrl' in value) || value['actionUrl'] === undefined) return false;
-    if (!('backgroundColor' in value) || value['backgroundColor'] === undefined) return false;
-    if (!('showChevron' in value) || value['showChevron'] === undefined) return false;
-    if (!('strokeColor' in value) || value['strokeColor'] === undefined) return false;
-    if (!('titleText' in value) || value['titleText'] === undefined) return false;
+    if ((!('actionUrl' in (value as Record<string, any>)) && !('action_url' in (value as Record<string, any>))) || ((value as Record<string, any>)['actionUrl'] === undefined && (value as Record<string, any>)['action_url'] === undefined)) return false;
+    if ((!('backgroundColor' in (value as Record<string, any>)) && !('background_color' in (value as Record<string, any>))) || ((value as Record<string, any>)['backgroundColor'] === undefined && (value as Record<string, any>)['background_color'] === undefined)) return false;
+    if ((!('showChevron' in (value as Record<string, any>)) && !('show_chevron' in (value as Record<string, any>))) || ((value as Record<string, any>)['showChevron'] === undefined && (value as Record<string, any>)['show_chevron'] === undefined)) return false;
+    if ((!('strokeColor' in (value as Record<string, any>)) && !('stroke_color' in (value as Record<string, any>))) || ((value as Record<string, any>)['strokeColor'] === undefined && (value as Record<string, any>)['stroke_color'] === undefined)) return false;
+    if ((!('titleText' in (value as Record<string, any>)) && !('title_text' in (value as Record<string, any>))) || ((value as Record<string, any>)['titleText'] === undefined && (value as Record<string, any>)['title_text'] === undefined)) return false;
     return true;
 }
 

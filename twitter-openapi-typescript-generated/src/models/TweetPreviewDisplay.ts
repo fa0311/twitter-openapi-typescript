@@ -50,26 +50,18 @@ import {
 export interface TweetPreviewDisplay {
     /**
      * 
-     * @type {TypeName}
-     * @memberof TweetPreviewDisplay
      */
     typename: TypeName;
     /**
      * 
-     * @type {TweetPreviewDisplayCta}
-     * @memberof TweetPreviewDisplay
      */
     cta: TweetPreviewDisplayCta;
     /**
      * 
-     * @type {TweetLimitedActionResults}
-     * @memberof TweetPreviewDisplay
      */
     limitedActionResults: TweetLimitedActionResults;
     /**
      * 
-     * @type {TweetPreviewDisplayTweet}
-     * @memberof TweetPreviewDisplay
      */
     tweet: TweetPreviewDisplayTweet;
 }
@@ -80,9 +72,9 @@ export interface TweetPreviewDisplay {
  * Check if a given object implements the TweetPreviewDisplay interface.
  */
 export function instanceOfTweetPreviewDisplay(value: object): value is TweetPreviewDisplay {
-    if (!('typename' in value) || value['typename'] === undefined) return false;
+    if ((!('typename' in (value as Record<string, any>)) && !('__typename' in (value as Record<string, any>))) || ((value as Record<string, any>)['typename'] === undefined && (value as Record<string, any>)['__typename'] === undefined)) return false;
     if (!('cta' in value) || value['cta'] === undefined) return false;
-    if (!('limitedActionResults' in value) || value['limitedActionResults'] === undefined) return false;
+    if ((!('limitedActionResults' in (value as Record<string, any>)) && !('limited_action_results' in (value as Record<string, any>))) || ((value as Record<string, any>)['limitedActionResults'] === undefined && (value as Record<string, any>)['limited_action_results'] === undefined)) return false;
     if (!('tweet' in value) || value['tweet'] === undefined) return false;
     return true;
 }

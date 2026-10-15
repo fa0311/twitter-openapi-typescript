@@ -19,7 +19,7 @@
  */
 export const SocialContextUnionType = {
     TimelineGeneralContext: 'TimelineGeneralContext',
-    TimelineTopicContext: 'TimelineTopicContext'
+    TimelineTopicContext: 'TimelineTopicContext',
 } as const;
 export type SocialContextUnionType = typeof SocialContextUnionType[keyof typeof SocialContextUnionType];
 

@@ -25,15 +25,36 @@ import {
 } from '../models/TweetResultByRestIdResponse';
 
 export interface GetProfileSpotlightsQueryRequest {
+    /**
+     * 
+     */
     pathQueryId: string;
+    /**
+     * 
+     */
     variables: string;
+    /**
+     * 
+     */
     features: string;
 }
 
 export interface GetTweetResultByRestIdRequest {
+    /**
+     * 
+     */
     pathQueryId: string;
+    /**
+     * 
+     */
     variables: string;
+    /**
+     * 
+     */
     features: string;
+    /**
+     * 
+     */
     fieldToggles: string;
 }
 

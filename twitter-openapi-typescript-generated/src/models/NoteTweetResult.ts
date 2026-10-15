@@ -29,8 +29,6 @@ import {
 export interface NoteTweetResult {
     /**
      * 
-     * @type {NoteTweetResultData}
-     * @memberof NoteTweetResult
      */
     result: NoteTweetResultData;
 }

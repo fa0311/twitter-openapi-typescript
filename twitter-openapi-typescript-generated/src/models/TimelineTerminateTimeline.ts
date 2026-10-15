@@ -29,14 +29,10 @@ import {
 export interface TimelineTerminateTimeline {
     /**
      * 
-     * @type {TimelineTerminateTimelineDirectionEnum}
-     * @memberof TimelineTerminateTimeline
      */
     direction: TimelineTerminateTimelineDirectionEnum;
     /**
      * 
-     * @type {InstructionType}
-     * @memberof TimelineTerminateTimeline
      */
     type: InstructionType;
 }
@@ -48,7 +44,7 @@ export interface TimelineTerminateTimeline {
 export const TimelineTerminateTimelineDirectionEnum = {
     Top: 'Top',
     Bottom: 'Bottom',
-    TopAndBottom: 'TopAndBottom'
+    TopAndBottom: 'TopAndBottom',
 } as const;
 export type TimelineTerminateTimelineDirectionEnum = typeof TimelineTerminateTimelineDirectionEnum[keyof typeof TimelineTerminateTimelineDirectionEnum];
 

@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface TweetPreviewDisplayTweetViewCount {
     /**
      * 
-     * @type {string}
-     * @memberof TweetPreviewDisplayTweetViewCount
      */
     count: string;
 }

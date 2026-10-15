@@ -29,20 +29,14 @@ import {
 export interface UserVerificationInfoReasonDescriptionEntities {
     /**
      * 
-     * @type {number}
-     * @memberof UserVerificationInfoReasonDescriptionEntities
      */
     fromIndex: number;
     /**
      * 
-     * @type {UserVerificationInfoReasonDescriptionEntitiesRef}
-     * @memberof UserVerificationInfoReasonDescriptionEntities
      */
     ref: UserVerificationInfoReasonDescriptionEntitiesRef;
     /**
      * 
-     * @type {number}
-     * @memberof UserVerificationInfoReasonDescriptionEntities
      */
     toIndex: number;
 }
@@ -51,9 +45,9 @@ export interface UserVerificationInfoReasonDescriptionEntities {
  * Check if a given object implements the UserVerificationInfoReasonDescriptionEntities interface.
  */
 export function instanceOfUserVerificationInfoReasonDescriptionEntities(value: object): value is UserVerificationInfoReasonDescriptionEntities {
-    if (!('fromIndex' in value) || value['fromIndex'] === undefined) return false;
+    if ((!('fromIndex' in (value as Record<string, any>)) && !('from_index' in (value as Record<string, any>))) || ((value as Record<string, any>)['fromIndex'] === undefined && (value as Record<string, any>)['from_index'] === undefined)) return false;
     if (!('ref' in value) || value['ref'] === undefined) return false;
-    if (!('toIndex' in value) || value['toIndex'] === undefined) return false;
+    if ((!('toIndex' in (value as Record<string, any>)) && !('to_index' in (value as Record<string, any>))) || ((value as Record<string, any>)['toIndex'] === undefined && (value as Record<string, any>)['to_index'] === undefined)) return false;
     return true;
 }
 

@@ -29,8 +29,6 @@ import {
 export interface PostCtaUserResults {
     /**
      * 
-     * @type {PostCtaUserResultsResult}
-     * @memberof PostCtaUserResults
      */
     result: PostCtaUserResultsResult;
 }

@@ -36,14 +36,10 @@ import {
 export interface CommunityTweetsTimelineResponse {
     /**
      * 
-     * @type {RankedCommunityTweetData}
-     * @memberof CommunityTweetsTimelineResponse
      */
     data: RankedCommunityTweetData;
     /**
      * 
-     * @type {Array<ErrorResponse>}
-     * @memberof CommunityTweetsTimelineResponse
      */
     errors?: Array<ErrorResponse>;
 }

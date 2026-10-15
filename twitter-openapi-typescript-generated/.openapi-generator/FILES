@@ -31,6 +31,7 @@ docs/BookmarksResponse.md
 docs/BookmarksResponseData.md
 docs/BookmarksTimeline.md
 docs/Callback.md
+docs/CashtagAttachment.md
 docs/ClientEventInfo.md
 docs/CommunitiesActions.md
 docs/Community.md
@@ -183,6 +184,8 @@ docs/PostFavoriteTweetRequest.md
 docs/PostUnfavoriteTweetRequest.md
 docs/PrimaryCommunityTopic.md
 docs/ProfileBio.md
+docs/ProfileBioEntities.md
+docs/ProfileBioEntitiesUrls.md
 docs/ProfileResponse.md
 docs/ProfileResponseData.md
 docs/QuotedRefResult.md
@@ -306,8 +309,10 @@ docs/Url.md
 docs/UrtEndpointOptions.md
 docs/UrtEndpointRequestParams.md
 docs/User.md
+docs/UserActionCounts.md
 docs/UserApi.md
 docs/UserAvatar.md
+docs/UserBanner.md
 docs/UserCore.md
 docs/UserDmPermissions.md
 docs/UserFeatures.md
@@ -323,10 +328,15 @@ docs/UserLegacyExtendedProfileBirthdate.md
 docs/UserListApi.md
 docs/UserLocation.md
 docs/UserMediaPermissions.md
+docs/UserNotificationsSettings.md
+docs/UserPinnedItems.md
 docs/UserPrivacy.md
 docs/UserProfessional.md
 docs/UserProfessionalCategory.md
 docs/UserProfile.md
+docs/UserProfileMetadata.md
+docs/UserProfileTranslation.md
+docs/UserRelationshipCounts.md
 docs/UserRelationshipPerspectives.md
 docs/UserResponse.md
 docs/UserResponseData.md
@@ -339,6 +349,7 @@ docs/UserResultPrivacy.md
 docs/UserResultRelationshipPerspectives.md
 docs/UserResults.md
 docs/UserTipJarSettings.md
+docs/UserTweetCounts.md
 docs/UserTweetsData.md
 docs/UserTweetsResponse.md
 docs/UserTweetsResultV1.md
@@ -353,6 +364,7 @@ docs/UserVerificationInfoReason.md
 docs/UserVerificationInfoReasonDescription.md
 docs/UserVerificationInfoReasonDescriptionEntities.md
 docs/UserVerificationInfoReasonDescriptionEntitiesRef.md
+docs/UserWebsite.md
 docs/UsersApi.md
 docs/UsersResponse.md
 docs/UsersResponseData.md
@@ -403,6 +415,7 @@ src/models/BookmarksResponse.ts
 src/models/BookmarksResponseData.ts
 src/models/BookmarksTimeline.ts
 src/models/Callback.ts
+src/models/CashtagAttachment.ts
 src/models/ClientEventInfo.ts
 src/models/CommunitiesActions.ts
 src/models/Community.ts
@@ -552,6 +565,8 @@ src/models/PostFavoriteTweetRequest.ts
 src/models/PostUnfavoriteTweetRequest.ts
 src/models/PrimaryCommunityTopic.ts
 src/models/ProfileBio.ts
+src/models/ProfileBioEntities.ts
+src/models/ProfileBioEntitiesUrls.ts
 src/models/ProfileResponse.ts
 src/models/ProfileResponseData.ts
 src/models/QuotedRefResult.ts
@@ -674,7 +689,9 @@ src/models/Url.ts
 src/models/UrtEndpointOptions.ts
 src/models/UrtEndpointRequestParams.ts
 src/models/User.ts
+src/models/UserActionCounts.ts
 src/models/UserAvatar.ts
+src/models/UserBanner.ts
 src/models/UserCore.ts
 src/models/UserDmPermissions.ts
 src/models/UserFeatures.ts
@@ -689,10 +706,15 @@ src/models/UserLegacyExtendedProfile.ts
 src/models/UserLegacyExtendedProfileBirthdate.ts
 src/models/UserLocation.ts
 src/models/UserMediaPermissions.ts
+src/models/UserNotificationsSettings.ts
+src/models/UserPinnedItems.ts
 src/models/UserPrivacy.ts
 src/models/UserProfessional.ts
 src/models/UserProfessionalCategory.ts
 src/models/UserProfile.ts
+src/models/UserProfileMetadata.ts
+src/models/UserProfileTranslation.ts
+src/models/UserRelationshipCounts.ts
 src/models/UserRelationshipPerspectives.ts
 src/models/UserResponse.ts
 src/models/UserResponseData.ts
@@ -705,6 +727,7 @@ src/models/UserResultPrivacy.ts
 src/models/UserResultRelationshipPerspectives.ts
 src/models/UserResults.ts
 src/models/UserTipJarSettings.ts
+src/models/UserTweetCounts.ts
 src/models/UserTweetsData.ts
 src/models/UserTweetsResponse.ts
 src/models/UserTweetsResultV1.ts
@@ -719,8 +742,10 @@ src/models/UserVerificationInfoReason.ts
 src/models/UserVerificationInfoReasonDescription.ts
 src/models/UserVerificationInfoReasonDescriptionEntities.ts
 src/models/UserVerificationInfoReasonDescriptionEntitiesRef.ts
+src/models/UserWebsite.ts
 src/models/UsersResponse.ts
 src/models/UsersResponseData.ts
 src/models/index.ts
 src/runtime.ts
+tsconfig.esm.json
 tsconfig.json

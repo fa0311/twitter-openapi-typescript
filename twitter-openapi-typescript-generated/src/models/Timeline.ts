@@ -29,20 +29,14 @@ import {
 export interface Timeline {
     /**
      * 
-     * @type {Array<InstructionUnion>}
-     * @memberof Timeline
      */
     instructions: Array<InstructionUnion>;
     /**
      * 
-     * @type {{ [key: string]: any; }}
-     * @memberof Timeline
      */
     metadata?: { [key: string]: any; };
     /**
      * 
-     * @type {{ [key: string]: any; }}
-     * @memberof Timeline
      */
     responseObjects?: { [key: string]: any; };
 }

@@ -20,8 +20,17 @@ import {
 } from '../models/UsersResponse';
 
 export interface GetUsersByRestIdsRequest {
+    /**
+     * 
+     */
     pathQueryId: string;
+    /**
+     * 
+     */
     variables: string;
+    /**
+     * 
+     */
     features: string;
 }
 

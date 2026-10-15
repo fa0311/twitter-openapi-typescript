@@ -29,8 +29,6 @@ import {
 export interface DeleteTweetResponseData {
     /**
      * 
-     * @type {DeleteTweetResponseResult}
-     * @memberof DeleteTweetResponseData
      */
     deleteRetweet?: DeleteTweetResponseResult;
 }

@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface AdditionalMediaInfoCallToActionsUrl {
     /**
      * 
-     * @type {string}
-     * @memberof AdditionalMediaInfoCallToActionsUrl
      */
     url: string;
 }

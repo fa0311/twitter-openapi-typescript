@@ -29,8 +29,6 @@ import {
 export interface HomeTimelineHome {
     /**
      * 
-     * @type {Timeline}
-     * @memberof HomeTimelineHome
      */
     homeTimelineUrt: Timeline;
 }
@@ -39,7 +37,7 @@ export interface HomeTimelineHome {
  * Check if a given object implements the HomeTimelineHome interface.
  */
 export function instanceOfHomeTimelineHome(value: object): value is HomeTimelineHome {
-    if (!('homeTimelineUrt' in value) || value['homeTimelineUrt'] === undefined) return false;
+    if ((!('homeTimelineUrt' in (value as Record<string, any>)) && !('home_timeline_urt' in (value as Record<string, any>))) || ((value as Record<string, any>)['homeTimelineUrt'] === undefined && (value as Record<string, any>)['home_timeline_urt'] === undefined)) return false;
     return true;
 }
 

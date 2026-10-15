@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface CommunitiesActions {
     /**
      * 
-     * @type {boolean}
-     * @memberof CommunitiesActions
      */
     create: boolean;
 }

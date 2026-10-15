@@ -29,8 +29,6 @@ import {
 export interface UserResults {
     /**
      * 
-     * @type {UserUnion}
-     * @memberof UserResults
      */
     result?: UserUnion;
 }

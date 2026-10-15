@@ -12,6 +12,7 @@
  * Do not edit the class manually.
  */
 
+import { parseDate, parseDateTime, serializeDate, serializeDateTime } from '../runtime';
 import type { TimelineCommunity } from './TimelineCommunity';
 import {
     instanceOfTimelineCommunity,
@@ -125,23 +126,23 @@ export function ItemContentUnionToJSONTyped(value?: ItemContentUnion | null, ign
     }
     switch (value['typename']) {
         case 'TimelineCommunity':
-            return Object.assign({}, TimelineCommunityToJSON(value), { typename: 'TimelineCommunity' } as const);
+            return Object.assign({}, TimelineCommunityToJSON(value), { '__typename': 'TimelineCommunity' } as const);
         case 'TimelineMessagePrompt':
-            return Object.assign({}, TimelineMessagePromptToJSON(value), { typename: 'TimelineMessagePrompt' } as const);
+            return Object.assign({}, TimelineMessagePromptToJSON(value), { '__typename': 'TimelineMessagePrompt' } as const);
         case 'TimelineNotification':
-            return Object.assign({}, TimelineNotificationToJSON(value), { typename: 'TimelineNotification' } as const);
+            return Object.assign({}, TimelineNotificationToJSON(value), { '__typename': 'TimelineNotification' } as const);
         case 'TimelinePrompt':
-            return Object.assign({}, TimelinePromptToJSON(value), { typename: 'TimelinePrompt' } as const);
+            return Object.assign({}, TimelinePromptToJSON(value), { '__typename': 'TimelinePrompt' } as const);
         case 'TimelineTimelineCursor':
-            return Object.assign({}, TimelineTimelineCursorToJSON(value), { typename: 'TimelineTimelineCursor' } as const);
+            return Object.assign({}, TimelineTimelineCursorToJSON(value), { '__typename': 'TimelineTimelineCursor' } as const);
         case 'TimelineTombstone':
-            return Object.assign({}, TimelineTombstoneToJSON(value), { typename: 'TimelineTombstone' } as const);
+            return Object.assign({}, TimelineTombstoneToJSON(value), { '__typename': 'TimelineTombstone' } as const);
         case 'TimelineTrend':
-            return Object.assign({}, TimelineTrendToJSON(value), { typename: 'TimelineTrend' } as const);
+            return Object.assign({}, TimelineTrendToJSON(value), { '__typename': 'TimelineTrend' } as const);
         case 'TimelineTweet':
-            return Object.assign({}, TimelineTweetToJSON(value), { typename: 'TimelineTweet' } as const);
+            return Object.assign({}, TimelineTweetToJSON(value), { '__typename': 'TimelineTweet' } as const);
         case 'TimelineUser':
-            return Object.assign({}, TimelineUserToJSON(value), { typename: 'TimelineUser' } as const);
+            return Object.assign({}, TimelineUserToJSON(value), { '__typename': 'TimelineUser' } as const);
         default:
             return value;
     }

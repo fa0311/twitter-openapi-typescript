@@ -29,14 +29,10 @@ import {
 export interface TimelineResult {
     /**
      * 
-     * @type {string}
-     * @memberof TimelineResult
      */
     id?: string;
     /**
      * 
-     * @type {Timeline}
-     * @memberof TimelineResult
      */
     timeline?: Timeline;
 }

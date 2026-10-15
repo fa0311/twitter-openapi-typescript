@@ -20,7 +20,6 @@ Name | Type
 `premiumContentApiReadEnabled` | boolean
 `profileLabelImprovementsPcfLabelInPostEnabled` | boolean
 `responsiveWebEditTweetApiEnabled` | boolean
-`responsiveWebGraphqlSkipUserProfileImageExtensionsEnabled` | boolean
 `responsiveWebGraphqlTimelineNavigationEnabled` | boolean
 `responsiveWebGrokAnalysisButtonFromBackend` | boolean
 `responsiveWebGrokAnalyzeButtonFetchTrendsEnabled` | boolean
@@ -32,11 +31,13 @@ Name | Type
 `responsiveWebGrokShareAttachmentEnabled` | boolean
 `responsiveWebGrokShowGrokTranslatedPost` | boolean
 `responsiveWebJetfuelFrame` | boolean
+`responsiveWebNestedQuotePreviewEnabled` | boolean
 `responsiveWebProfileRedirectEnabled` | boolean
 `responsiveWebTwitterArticleTweetConsumptionEnabled` | boolean
 `rwebCashtagsComposerAttachmentEnabled` | boolean
 `rwebCashtagsEnabled` | boolean
 `rwebConversationalRepliesDownvoteEnabled` | boolean
+`rwebSportsPostContextEnabled` | boolean
 `rwebTipjarConsumptionEnabled` | boolean
 `standardizedNudgesMisinfo` | boolean
 `tweetWithVisibilityResultsPreferGqlLimitedActionsPolicyEnabled` | boolean
@@ -60,11 +61,10 @@ const example = {
   "longformNotetweetsConsumptionEnabled": true,
   "longformNotetweetsInlineMediaEnabled": false,
   "longformNotetweetsRichTextReadEnabled": true,
-  "postCtasFetchEnabled": true,
+  "postCtasFetchEnabled": false,
   "premiumContentApiReadEnabled": false,
   "profileLabelImprovementsPcfLabelInPostEnabled": true,
   "responsiveWebEditTweetApiEnabled": true,
-  "responsiveWebGraphqlSkipUserProfileImageExtensionsEnabled": false,
   "responsiveWebGraphqlTimelineNavigationEnabled": true,
   "responsiveWebGrokAnalysisButtonFromBackend": true,
   "responsiveWebGrokAnalyzeButtonFetchTrendsEnabled": false,
@@ -76,11 +76,13 @@ const example = {
   "responsiveWebGrokShareAttachmentEnabled": true,
   "responsiveWebGrokShowGrokTranslatedPost": true,
   "responsiveWebJetfuelFrame": true,
-  "responsiveWebProfileRedirectEnabled": false,
+  "responsiveWebNestedQuotePreviewEnabled": true,
+  "responsiveWebProfileRedirectEnabled": true,
   "responsiveWebTwitterArticleTweetConsumptionEnabled": true,
   "rwebCashtagsComposerAttachmentEnabled": true,
   "rwebCashtagsEnabled": true,
   "rwebConversationalRepliesDownvoteEnabled": false,
+  "rwebSportsPostContextEnabled": true,
   "rwebTipjarConsumptionEnabled": false,
   "standardizedNudgesMisinfo": true,
   "tweetWithVisibilityResultsPreferGqlLimitedActionsPolicyEnabled": true,

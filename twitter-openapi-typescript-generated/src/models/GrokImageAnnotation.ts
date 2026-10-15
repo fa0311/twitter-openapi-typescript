@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface GrokImageAnnotation {
     /**
      * 
-     * @type {string}
-     * @memberof GrokImageAnnotation
      */
     prompt: string;
     /**
      * 
-     * @type {string}
-     * @memberof GrokImageAnnotation
      */
     upsampledPrompt: string;
 }
@@ -38,7 +34,7 @@ export interface GrokImageAnnotation {
  */
 export function instanceOfGrokImageAnnotation(value: object): value is GrokImageAnnotation {
     if (!('prompt' in value) || value['prompt'] === undefined) return false;
-    if (!('upsampledPrompt' in value) || value['upsampledPrompt'] === undefined) return false;
+    if ((!('upsampledPrompt' in (value as Record<string, any>)) && !('upsampled_prompt' in (value as Record<string, any>))) || ((value as Record<string, any>)['upsampledPrompt'] === undefined && (value as Record<string, any>)['upsampled_prompt'] === undefined)) return false;
     return true;
 }
 

@@ -20,15 +20,36 @@ import {
 } from '../models/UserResponse';
 
 export interface GetUserByRestIdRequest {
+    /**
+     * 
+     */
     pathQueryId: string;
+    /**
+     * 
+     */
     variables: string;
+    /**
+     * 
+     */
     features: string;
 }
 
 export interface GetUserByScreenNameRequest {
+    /**
+     * 
+     */
     pathQueryId: string;
+    /**
+     * 
+     */
     variables: string;
+    /**
+     * 
+     */
     features: string;
+    /**
+     * 
+     */
     fieldToggles: string;
 }
 

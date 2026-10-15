@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface MediaSize {
     /**
      * 
-     * @type {number}
-     * @memberof MediaSize
      */
     h: number;
     /**
      * 
-     * @type {MediaSizeResizeEnum}
-     * @memberof MediaSize
      */
     resize: MediaSizeResizeEnum;
     /**
      * 
-     * @type {number}
-     * @memberof MediaSize
      */
     w: number;
 }
@@ -45,7 +39,7 @@ export interface MediaSize {
  */
 export const MediaSizeResizeEnum = {
     Crop: 'crop',
-    Fit: 'fit'
+    Fit: 'fit',
 } as const;
 export type MediaSizeResizeEnum = typeof MediaSizeResizeEnum[keyof typeof MediaSizeResizeEnum];
 

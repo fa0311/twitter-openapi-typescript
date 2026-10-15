@@ -29,8 +29,6 @@ import {
 export interface NotificationsUserResults {
     /**
      * 
-     * @type {NotificationsResult}
-     * @memberof NotificationsUserResults
      */
     result: NotificationsResult;
 }

@@ -29,8 +29,6 @@ import {
 export interface MediaCommunityTweetData {
     /**
      * 
-     * @type {MediaCommunityResults}
-     * @memberof MediaCommunityTweetData
      */
     communityResults: MediaCommunityResults;
 }

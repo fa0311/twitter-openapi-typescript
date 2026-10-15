@@ -29,14 +29,10 @@ import {
 export interface PostDeleteBookmarkRequest {
     /**
      * 
-     * @type {string}
-     * @memberof PostDeleteBookmarkRequest
      */
     queryId: string;
     /**
      * 
-     * @type {PostCreateBookmarkRequestVariables}
-     * @memberof PostDeleteBookmarkRequest
      */
     variables: PostCreateBookmarkRequestVariables;
 }

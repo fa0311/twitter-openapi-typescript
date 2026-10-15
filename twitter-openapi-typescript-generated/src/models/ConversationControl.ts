@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface ConversationControl {
     /**
      * 
-     * @type {ConversationControlModeEnum}
-     * @memberof ConversationControl
      */
     mode: ConversationControlModeEnum;
 }
@@ -34,7 +32,7 @@ export interface ConversationControl {
 export const ConversationControlModeEnum = {
     Community: 'Community',
     Verified: 'Verified',
-    ByInvitation: 'ByInvitation'
+    ByInvitation: 'ByInvitation',
 } as const;
 export type ConversationControlModeEnum = typeof ConversationControlModeEnum[keyof typeof ConversationControlModeEnum];
 

@@ -29,26 +29,18 @@ import {
 export interface BirdwatchPivotNote {
     /**
      * 
-     * @type {GrokTranslatedCommunityNoteWithAvailability}
-     * @memberof BirdwatchPivotNote
      */
     grokTranslatedCommunityNoteWithAvailability?: GrokTranslatedCommunityNoteWithAvailability;
     /**
      * 
-     * @type {boolean}
-     * @memberof BirdwatchPivotNote
      */
     isCommunityNoteTranslatable?: boolean;
     /**
      * 
-     * @type {string}
-     * @memberof BirdwatchPivotNote
      */
     language?: string;
     /**
      * 
-     * @type {string}
-     * @memberof BirdwatchPivotNote
      */
     restId: string;
 }
@@ -57,7 +49,7 @@ export interface BirdwatchPivotNote {
  * Check if a given object implements the BirdwatchPivotNote interface.
  */
 export function instanceOfBirdwatchPivotNote(value: object): value is BirdwatchPivotNote {
-    if (!('restId' in value) || value['restId'] === undefined) return false;
+    if ((!('restId' in (value as Record<string, any>)) && !('rest_id' in (value as Record<string, any>))) || ((value as Record<string, any>)['restId'] === undefined && (value as Record<string, any>)['rest_id'] === undefined)) return false;
     return true;
 }
 

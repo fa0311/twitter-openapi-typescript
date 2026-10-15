@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface UserCore {
     /**
      * 
-     * @type {string}
-     * @memberof UserCore
      */
     createdAt: string;
     /**
      * 
-     * @type {string}
-     * @memberof UserCore
      */
     name: string;
     /**
      * 
-     * @type {string}
-     * @memberof UserCore
      */
     screenName: string;
 }
@@ -43,9 +37,9 @@ export interface UserCore {
  * Check if a given object implements the UserCore interface.
  */
 export function instanceOfUserCore(value: object): value is UserCore {
-    if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
+    if ((!('createdAt' in (value as Record<string, any>)) && !('created_at' in (value as Record<string, any>))) || ((value as Record<string, any>)['createdAt'] === undefined && (value as Record<string, any>)['created_at'] === undefined)) return false;
     if (!('name' in value) || value['name'] === undefined) return false;
-    if (!('screenName' in value) || value['screenName'] === undefined) return false;
+    if ((!('screenName' in (value as Record<string, any>)) && !('screen_name' in (value as Record<string, any>))) || ((value as Record<string, any>)['screenName'] === undefined && (value as Record<string, any>)['screen_name'] === undefined)) return false;
     return true;
 }
 

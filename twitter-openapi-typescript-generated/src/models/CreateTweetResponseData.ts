@@ -29,8 +29,6 @@ import {
 export interface CreateTweetResponseData {
     /**
      * 
-     * @type {CreateTweetResponseResult}
-     * @memberof CreateTweetResponseData
      */
     createTweet?: CreateTweetResponseResult;
 }

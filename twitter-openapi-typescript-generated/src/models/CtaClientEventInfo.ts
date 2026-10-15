@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface CtaClientEventInfo {
     /**
      * 
-     * @type {CtaClientEventInfoActionEnum}
-     * @memberof CtaClientEventInfo
      */
     action: CtaClientEventInfoActionEnum;
 }
@@ -32,7 +30,7 @@ export interface CtaClientEventInfo {
  * @export
  */
 export const CtaClientEventInfoActionEnum = {
-    PrimaryCta: 'primary_cta'
+    PrimaryCta: 'primary_cta',
 } as const;
 export type CtaClientEventInfoActionEnum = typeof CtaClientEventInfoActionEnum[keyof typeof CtaClientEventInfoActionEnum];
 
@@ -42,6 +40,8 @@ export type CtaClientEventInfoActionEnum = typeof CtaClientEventInfoActionEnum[k
  */
 export function instanceOfCtaClientEventInfo(value: object): value is CtaClientEventInfo {
     if (!('action' in value) || value['action'] === undefined) return false;
+    if (value['action'] !== 'primary_cta') return false;
+    
     return true;
 }
 

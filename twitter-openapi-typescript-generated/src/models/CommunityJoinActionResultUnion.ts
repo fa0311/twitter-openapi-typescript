@@ -12,6 +12,7 @@
  * Do not edit the class manually.
  */
 
+import { parseDate, parseDateTime, serializeDate, serializeDateTime } from '../runtime';
 import type { CommunityJoinAction } from './CommunityJoinAction';
 import {
     instanceOfCommunityJoinAction,
@@ -62,9 +63,9 @@ export function CommunityJoinActionResultUnionToJSONTyped(value?: CommunityJoinA
     }
     switch (value['typename']) {
         case 'CommunityJoinAction':
-            return Object.assign({}, CommunityJoinActionToJSON(value), { typename: 'CommunityJoinAction' } as const);
+            return Object.assign({}, CommunityJoinActionToJSON(value), { '__typename': 'CommunityJoinAction' } as const);
         case 'CommunityJoinActionUnavailable':
-            return Object.assign({}, CommunityJoinActionUnavailableToJSON(value), { typename: 'CommunityJoinActionUnavailable' } as const);
+            return Object.assign({}, CommunityJoinActionUnavailableToJSON(value), { '__typename': 'CommunityJoinActionUnavailable' } as const);
         default:
             return value;
     }

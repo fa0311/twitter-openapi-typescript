@@ -29,8 +29,6 @@ import {
 export interface CommunityUnpinActionResult {
     /**
      * 
-     * @type {TypeName}
-     * @memberof CommunityUnpinActionResult
      */
     typename: TypeName;
 }
@@ -41,7 +39,7 @@ export interface CommunityUnpinActionResult {
  * Check if a given object implements the CommunityUnpinActionResult interface.
  */
 export function instanceOfCommunityUnpinActionResult(value: object): value is CommunityUnpinActionResult {
-    if (!('typename' in value) || value['typename'] === undefined) return false;
+    if ((!('typename' in (value as Record<string, any>)) && !('__typename' in (value as Record<string, any>))) || ((value as Record<string, any>)['typename'] === undefined && (value as Record<string, any>)['__typename'] === undefined)) return false;
     return true;
 }
 

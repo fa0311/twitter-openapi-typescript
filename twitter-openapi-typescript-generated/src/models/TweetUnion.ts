@@ -12,6 +12,7 @@
  * Do not edit the class manually.
  */
 
+import { parseDate, parseDateTime, serializeDate, serializeDateTime } from '../runtime';
 import type { Tweet } from './Tweet';
 import {
     instanceOfTweet,
@@ -89,15 +90,15 @@ export function TweetUnionToJSONTyped(value?: TweetUnion | null, ignoreDiscrimin
     }
     switch (value['typename']) {
         case 'Tweet':
-            return Object.assign({}, TweetToJSON(value), { typename: 'Tweet' } as const);
+            return Object.assign({}, TweetToJSON(value), { '__typename': 'Tweet' } as const);
         case 'TweetPreviewDisplay':
-            return Object.assign({}, TweetPreviewDisplayToJSON(value), { typename: 'TweetPreviewDisplay' } as const);
+            return Object.assign({}, TweetPreviewDisplayToJSON(value), { '__typename': 'TweetPreviewDisplay' } as const);
         case 'TweetTombstone':
-            return Object.assign({}, TweetTombstoneToJSON(value), { typename: 'TweetTombstone' } as const);
+            return Object.assign({}, TweetTombstoneToJSON(value), { '__typename': 'TweetTombstone' } as const);
         case 'TweetUnavailable':
-            return Object.assign({}, TweetUnavailableToJSON(value), { typename: 'TweetUnavailable' } as const);
+            return Object.assign({}, TweetUnavailableToJSON(value), { '__typename': 'TweetUnavailable' } as const);
         case 'TweetWithVisibilityResults':
-            return Object.assign({}, TweetWithVisibilityResultsToJSON(value), { typename: 'TweetWithVisibilityResults' } as const);
+            return Object.assign({}, TweetWithVisibilityResultsToJSON(value), { '__typename': 'TweetWithVisibilityResults' } as const);
         default:
             return value;
     }

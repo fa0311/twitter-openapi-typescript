@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface PostCreateTweetRequestVariablesReply {
     /**
      * 
-     * @type {Array<object>}
-     * @memberof PostCreateTweetRequestVariablesReply
      */
     excludeReplyUserIds: Array<object>;
     /**
      * 
-     * @type {string}
-     * @memberof PostCreateTweetRequestVariablesReply
      */
     inReplyToTweetId: string;
 }
@@ -37,8 +33,8 @@ export interface PostCreateTweetRequestVariablesReply {
  * Check if a given object implements the PostCreateTweetRequestVariablesReply interface.
  */
 export function instanceOfPostCreateTweetRequestVariablesReply(value: object): value is PostCreateTweetRequestVariablesReply {
-    if (!('excludeReplyUserIds' in value) || value['excludeReplyUserIds'] === undefined) return false;
-    if (!('inReplyToTweetId' in value) || value['inReplyToTweetId'] === undefined) return false;
+    if ((!('excludeReplyUserIds' in (value as Record<string, any>)) && !('exclude_reply_user_ids' in (value as Record<string, any>))) || ((value as Record<string, any>)['excludeReplyUserIds'] === undefined && (value as Record<string, any>)['exclude_reply_user_ids'] === undefined)) return false;
+    if ((!('inReplyToTweetId' in (value as Record<string, any>)) && !('in_reply_to_tweet_id' in (value as Record<string, any>))) || ((value as Record<string, any>)['inReplyToTweetId'] === undefined && (value as Record<string, any>)['in_reply_to_tweet_id'] === undefined)) return false;
     return true;
 }
 

@@ -36,14 +36,10 @@ import {
 export interface SearchTimelineResponse {
     /**
      * 
-     * @type {SearchTimelineData}
-     * @memberof SearchTimelineResponse
      */
     data: SearchTimelineData;
     /**
      * 
-     * @type {Array<ErrorResponse>}
-     * @memberof SearchTimelineResponse
      */
     errors?: Array<ErrorResponse>;
 }

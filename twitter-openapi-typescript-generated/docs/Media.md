@@ -24,6 +24,7 @@ Name | Type
 `sizes` | [MediaSizes](MediaSizes.md)
 `sourceStatusIdStr` | string
 `sourceUserIdStr` | string
+`sourceUserResults` | [UserResults](UserResults.md)
 `type` | string
 `url` | string
 `videoInfo` | [MediaVideoInfo](MediaVideoInfo.md)
@@ -53,6 +54,7 @@ const example = {
   "sizes": null,
   "sourceStatusIdStr": null,
   "sourceUserIdStr": null,
+  "sourceUserResults": null,
   "type": null,
   "url": null,
   "videoInfo": null,

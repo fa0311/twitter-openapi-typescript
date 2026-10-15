@@ -29,20 +29,14 @@ import {
 export interface TombstoneRichText {
     /**
      * 
-     * @type {Array<TombstoneEntity>}
-     * @memberof TombstoneRichText
      */
     entities?: Array<TombstoneEntity>;
     /**
      * 
-     * @type {boolean}
-     * @memberof TombstoneRichText
      */
     rtl?: boolean;
     /**
      * 
-     * @type {string}
-     * @memberof TombstoneRichText
      */
     text?: string;
 }

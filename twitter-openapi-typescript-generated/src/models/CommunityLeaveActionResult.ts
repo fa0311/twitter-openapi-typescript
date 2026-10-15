@@ -29,20 +29,14 @@ import {
 export interface CommunityLeaveActionResult {
     /**
      * 
-     * @type {TypeName}
-     * @memberof CommunityLeaveActionResult
      */
     typename: TypeName;
     /**
      * 
-     * @type {string}
-     * @memberof CommunityLeaveActionResult
      */
     message: string;
     /**
      * 
-     * @type {CommunityLeaveActionResultReasonEnum}
-     * @memberof CommunityLeaveActionResult
      */
     reason: CommunityLeaveActionResultReasonEnum;
 }
@@ -52,7 +46,7 @@ export interface CommunityLeaveActionResult {
  * @export
  */
 export const CommunityLeaveActionResultReasonEnum = {
-    ViewerNotMember: 'ViewerNotMember'
+    ViewerNotMember: 'ViewerNotMember',
 } as const;
 export type CommunityLeaveActionResultReasonEnum = typeof CommunityLeaveActionResultReasonEnum[keyof typeof CommunityLeaveActionResultReasonEnum];
 
@@ -61,9 +55,11 @@ export type CommunityLeaveActionResultReasonEnum = typeof CommunityLeaveActionRe
  * Check if a given object implements the CommunityLeaveActionResult interface.
  */
 export function instanceOfCommunityLeaveActionResult(value: object): value is CommunityLeaveActionResult {
-    if (!('typename' in value) || value['typename'] === undefined) return false;
+    if ((!('typename' in (value as Record<string, any>)) && !('__typename' in (value as Record<string, any>))) || ((value as Record<string, any>)['typename'] === undefined && (value as Record<string, any>)['__typename'] === undefined)) return false;
     if (!('message' in value) || value['message'] === undefined) return false;
     if (!('reason' in value) || value['reason'] === undefined) return false;
+    if (value['reason'] !== 'ViewerNotMember') return false;
+    
     return true;
 }
 

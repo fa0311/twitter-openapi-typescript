@@ -29,8 +29,6 @@ import {
 export interface AboutCommunityTweetData {
     /**
      * 
-     * @type {AboutCommunityResults}
-     * @memberof AboutCommunityTweetData
      */
     communityResults: AboutCommunityResults;
 }

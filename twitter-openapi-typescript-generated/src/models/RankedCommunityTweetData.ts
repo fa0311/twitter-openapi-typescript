@@ -29,8 +29,6 @@ import {
 export interface RankedCommunityTweetData {
     /**
      * 
-     * @type {RankedCommunityResults}
-     * @memberof RankedCommunityTweetData
      */
     communityResults: RankedCommunityResults;
 }

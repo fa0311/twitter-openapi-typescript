@@ -62,6 +62,13 @@ import {
     MediaSizesToJSON,
     MediaSizesToJSONTyped,
 } from './MediaSizes';
+import type { UserResults } from './UserResults';
+import {
+    UserResultsFromJSON,
+    UserResultsFromJSONTyped,
+    UserResultsToJSON,
+    UserResultsToJSONTyped,
+} from './UserResults';
 import type { MediaOriginalInfo } from './MediaOriginalInfo';
 import {
     MediaOriginalInfoFromJSON,
@@ -78,128 +85,90 @@ import {
 export interface Media {
     /**
      * 
-     * @type {AdditionalMediaInfo}
-     * @memberof Media
      */
     additionalMediaInfo?: AdditionalMediaInfo;
     /**
      * 
-     * @type {AllowDownloadStatus}
-     * @memberof Media
      */
     allowDownloadStatus?: AllowDownloadStatus;
     /**
      * 
-     * @type {string}
-     * @memberof Media
      */
     displayUrl: string;
     /**
      * 
-     * @type {string}
-     * @memberof Media
      */
     expandedUrl: string;
     /**
      * 
-     * @type {string}
-     * @memberof Media
      */
     extAltText?: string;
     /**
      * 
-     * @type {ExtMediaAvailability}
-     * @memberof Media
      */
     extMediaAvailability: ExtMediaAvailability;
     /**
      * 
-     * @type {object}
-     * @memberof Media
      */
     features?: object;
     /**
      * 
-     * @type {string}
-     * @memberof Media
      */
     grokPostId?: string;
     /**
      * 
-     * @type {string}
-     * @memberof Media
      */
     idStr: string;
     /**
      * 
-     * @type {Array<number>}
-     * @memberof Media
      */
     indices: Array<number>;
     /**
      * 
-     * @type {string}
-     * @memberof Media
      */
     mediaKey: string;
     /**
      * 
-     * @type {MediaResults}
-     * @memberof Media
      */
     mediaResults?: MediaResults;
     /**
      * 
-     * @type {string}
-     * @memberof Media
      */
     mediaUrlHttps: string;
     /**
      * 
-     * @type {MediaOriginalInfo}
-     * @memberof Media
      */
     originalInfo: MediaOriginalInfo;
     /**
      * 
-     * @type {SensitiveMediaWarning}
-     * @memberof Media
      */
     sensitiveMediaWarning?: SensitiveMediaWarning;
     /**
      * 
-     * @type {MediaSizes}
-     * @memberof Media
      */
     sizes: MediaSizes;
     /**
      * 
-     * @type {string}
-     * @memberof Media
      */
     sourceStatusIdStr?: string;
     /**
      * 
-     * @type {string}
-     * @memberof Media
      */
     sourceUserIdStr?: string;
     /**
      * 
-     * @type {MediaTypeEnum}
-     * @memberof Media
+     */
+    sourceUserResults?: UserResults;
+    /**
+     * 
      */
     type: MediaTypeEnum;
     /**
      * 
-     * @type {string}
-     * @memberof Media
      */
     url: string;
     /**
      * 
-     * @type {MediaVideoInfo}
-     * @memberof Media
      */
     videoInfo?: MediaVideoInfo;
 }
@@ -211,7 +180,7 @@ export interface Media {
 export const MediaTypeEnum = {
     Photo: 'photo',
     Video: 'video',
-    AnimatedGif: 'animated_gif'
+    AnimatedGif: 'animated_gif',
 } as const;
 export type MediaTypeEnum = typeof MediaTypeEnum[keyof typeof MediaTypeEnum];
 
@@ -220,14 +189,14 @@ export type MediaTypeEnum = typeof MediaTypeEnum[keyof typeof MediaTypeEnum];
  * Check if a given object implements the Media interface.
  */
 export function instanceOfMedia(value: object): value is Media {
-    if (!('displayUrl' in value) || value['displayUrl'] === undefined) return false;
-    if (!('expandedUrl' in value) || value['expandedUrl'] === undefined) return false;
-    if (!('extMediaAvailability' in value) || value['extMediaAvailability'] === undefined) return false;
-    if (!('idStr' in value) || value['idStr'] === undefined) return false;
+    if ((!('displayUrl' in (value as Record<string, any>)) && !('display_url' in (value as Record<string, any>))) || ((value as Record<string, any>)['displayUrl'] === undefined && (value as Record<string, any>)['display_url'] === undefined)) return false;
+    if ((!('expandedUrl' in (value as Record<string, any>)) && !('expanded_url' in (value as Record<string, any>))) || ((value as Record<string, any>)['expandedUrl'] === undefined && (value as Record<string, any>)['expanded_url'] === undefined)) return false;
+    if ((!('extMediaAvailability' in (value as Record<string, any>)) && !('ext_media_availability' in (value as Record<string, any>))) || ((value as Record<string, any>)['extMediaAvailability'] === undefined && (value as Record<string, any>)['ext_media_availability'] === undefined)) return false;
+    if ((!('idStr' in (value as Record<string, any>)) && !('id_str' in (value as Record<string, any>))) || ((value as Record<string, any>)['idStr'] === undefined && (value as Record<string, any>)['id_str'] === undefined)) return false;
     if (!('indices' in value) || value['indices'] === undefined) return false;
-    if (!('mediaKey' in value) || value['mediaKey'] === undefined) return false;
-    if (!('mediaUrlHttps' in value) || value['mediaUrlHttps'] === undefined) return false;
-    if (!('originalInfo' in value) || value['originalInfo'] === undefined) return false;
+    if ((!('mediaKey' in (value as Record<string, any>)) && !('media_key' in (value as Record<string, any>))) || ((value as Record<string, any>)['mediaKey'] === undefined && (value as Record<string, any>)['media_key'] === undefined)) return false;
+    if ((!('mediaUrlHttps' in (value as Record<string, any>)) && !('media_url_https' in (value as Record<string, any>))) || ((value as Record<string, any>)['mediaUrlHttps'] === undefined && (value as Record<string, any>)['media_url_https'] === undefined)) return false;
+    if ((!('originalInfo' in (value as Record<string, any>)) && !('original_info' in (value as Record<string, any>))) || ((value as Record<string, any>)['originalInfo'] === undefined && (value as Record<string, any>)['original_info'] === undefined)) return false;
     if (!('sizes' in value) || value['sizes'] === undefined) return false;
     if (!('type' in value) || value['type'] === undefined) return false;
     if (!('url' in value) || value['url'] === undefined) return false;
@@ -262,6 +231,7 @@ export function MediaFromJSONTyped(json: any, ignoreDiscriminator: boolean): Med
         'sizes': MediaSizesFromJSON(json['sizes']),
         'sourceStatusIdStr': json['source_status_id_str'] == null ? undefined : json['source_status_id_str'],
         'sourceUserIdStr': json['source_user_id_str'] == null ? undefined : json['source_user_id_str'],
+        'sourceUserResults': json['source_user_results'] == null ? undefined : UserResultsFromJSON(json['source_user_results']),
         'type': json['type'],
         'url': json['url'],
         'videoInfo': json['video_info'] == null ? undefined : MediaVideoInfoFromJSON(json['video_info']),
@@ -297,6 +267,7 @@ export function MediaToJSONTyped(value?: Media | null, ignoreDiscriminator: bool
         'sizes': MediaSizesToJSON(value['sizes']),
         'source_status_id_str': value['sourceStatusIdStr'],
         'source_user_id_str': value['sourceUserIdStr'],
+        'source_user_results': UserResultsToJSON(value['sourceUserResults']),
         'type': value['type'],
         'url': value['url'],
         'video_info': MediaVideoInfoToJSON(value['videoInfo']),

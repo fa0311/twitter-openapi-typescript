@@ -29,8 +29,6 @@ import {
 export interface Article {
     /**
      * 
-     * @type {ArticleResults}
-     * @memberof Article
      */
     articleResults: ArticleResults;
 }
@@ -39,7 +37,7 @@ export interface Article {
  * Check if a given object implements the Article interface.
  */
 export function instanceOfArticle(value: object): value is Article {
-    if (!('articleResults' in value) || value['articleResults'] === undefined) return false;
+    if ((!('articleResults' in (value as Record<string, any>)) && !('article_results' in (value as Record<string, any>))) || ((value as Record<string, any>)['articleResults'] === undefined && (value as Record<string, any>)['article_results'] === undefined)) return false;
     return true;
 }
 

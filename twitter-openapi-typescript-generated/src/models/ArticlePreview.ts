@@ -29,26 +29,18 @@ import {
 export interface ArticlePreview {
     /**
      * 
-     * @type {number}
-     * @memberof ArticlePreview
      */
     articleId: number;
     /**
      * 
-     * @type {ArticleCoverMedia}
-     * @memberof ArticlePreview
      */
     coverMedia?: ArticleCoverMedia;
     /**
      * 
-     * @type {string}
-     * @memberof ArticlePreview
      */
     previewText: string;
     /**
      * 
-     * @type {string}
-     * @memberof ArticlePreview
      */
     title: string;
 }
@@ -57,8 +49,8 @@ export interface ArticlePreview {
  * Check if a given object implements the ArticlePreview interface.
  */
 export function instanceOfArticlePreview(value: object): value is ArticlePreview {
-    if (!('articleId' in value) || value['articleId'] === undefined) return false;
-    if (!('previewText' in value) || value['previewText'] === undefined) return false;
+    if ((!('articleId' in (value as Record<string, any>)) && !('article_id' in (value as Record<string, any>))) || ((value as Record<string, any>)['articleId'] === undefined && (value as Record<string, any>)['article_id'] === undefined)) return false;
+    if ((!('previewText' in (value as Record<string, any>)) && !('preview_text' in (value as Record<string, any>))) || ((value as Record<string, any>)['previewText'] === undefined && (value as Record<string, any>)['preview_text'] === undefined)) return false;
     if (!('title' in value) || value['title'] === undefined) return false;
     return true;
 }

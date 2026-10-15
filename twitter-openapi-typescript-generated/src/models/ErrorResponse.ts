@@ -50,62 +50,42 @@ import {
 export interface ErrorResponse {
     /**
      * 
-     * @type {number}
-     * @memberof ErrorResponse
      */
     code: number;
     /**
      * 
-     * @type {ErrorExtensions}
-     * @memberof ErrorResponse
      */
     extensions: ErrorExtensions;
     /**
      * 
-     * @type {string}
-     * @memberof ErrorResponse
      */
     kind: string;
     /**
      * 
-     * @type {Array<Location>}
-     * @memberof ErrorResponse
      */
     locations: Array<Location>;
     /**
      * 
-     * @type {string}
-     * @memberof ErrorResponse
      */
     message: string;
     /**
      * 
-     * @type {string}
-     * @memberof ErrorResponse
      */
     name: string;
     /**
      * 
-     * @type {Array<ErrorResponsePathInner>}
-     * @memberof ErrorResponse
      */
     path: Array<ErrorResponsePathInner>;
     /**
      * 
-     * @type {number}
-     * @memberof ErrorResponse
      */
     retryAfter?: number;
     /**
      * 
-     * @type {string}
-     * @memberof ErrorResponse
      */
     source: string;
     /**
      * 
-     * @type {Tracing}
-     * @memberof ErrorResponse
      */
     tracing: Tracing;
 }

@@ -71,56 +71,38 @@ import {
 export interface TimelineTrend {
     /**
      * 
-     * @type {TypeName}
-     * @memberof TimelineTrend
      */
     typename: TypeName;
     /**
      * 
-     * @type {Array<TrendImage>}
-     * @memberof TimelineTrend
      */
     images?: Array<TrendImage>;
     /**
      * 
-     * @type {boolean}
-     * @memberof TimelineTrend
      */
     isAiTrend?: boolean;
     /**
      * 
-     * @type {ContentItemType}
-     * @memberof TimelineTrend
      */
     itemType?: ContentItemType;
     /**
      * 
-     * @type {string}
-     * @memberof TimelineTrend
      */
     name: string;
     /**
      * 
-     * @type {SocialContextUnion}
-     * @memberof TimelineTrend
      */
     socialContext?: SocialContextUnion;
     /**
      * 
-     * @type {ThumbnailImage}
-     * @memberof TimelineTrend
      */
     thumbnailImage?: ThumbnailImage;
     /**
      * 
-     * @type {TrendMetadata}
-     * @memberof TimelineTrend
      */
     trendMetadata: TrendMetadata;
     /**
      * 
-     * @type {SocialContextLandingUrl}
-     * @memberof TimelineTrend
      */
     trendUrl: SocialContextLandingUrl;
 }
@@ -131,10 +113,10 @@ export interface TimelineTrend {
  * Check if a given object implements the TimelineTrend interface.
  */
 export function instanceOfTimelineTrend(value: object): value is TimelineTrend {
-    if (!('typename' in value) || value['typename'] === undefined) return false;
+    if ((!('typename' in (value as Record<string, any>)) && !('__typename' in (value as Record<string, any>))) || ((value as Record<string, any>)['typename'] === undefined && (value as Record<string, any>)['__typename'] === undefined)) return false;
     if (!('name' in value) || value['name'] === undefined) return false;
-    if (!('trendMetadata' in value) || value['trendMetadata'] === undefined) return false;
-    if (!('trendUrl' in value) || value['trendUrl'] === undefined) return false;
+    if ((!('trendMetadata' in (value as Record<string, any>)) && !('trend_metadata' in (value as Record<string, any>))) || ((value as Record<string, any>)['trendMetadata'] === undefined && (value as Record<string, any>)['trend_metadata'] === undefined)) return false;
+    if ((!('trendUrl' in (value as Record<string, any>)) && !('trend_url' in (value as Record<string, any>))) || ((value as Record<string, any>)['trendUrl'] === undefined && (value as Record<string, any>)['trend_url'] === undefined)) return false;
     return true;
 }
 

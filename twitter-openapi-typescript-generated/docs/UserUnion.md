@@ -7,12 +7,15 @@
 Name | Type
 ------------ | -------------
 `typename` | [TypeName](TypeName.md)
+`actionCounts` | [UserActionCounts](UserActionCounts.md)
 `affiliatesHighlightedLabel` | { [key: string]: any; }
 `avatar` | [UserAvatar](UserAvatar.md)
+`banner` | [UserBanner](UserBanner.md)
 `businessAccount` | { [key: string]: any; }
 `core` | [UserCore](UserCore.md)
 `creatorSubscriptionsCount` | number
 `dmPermissions` | [UserDmPermissions](UserDmPermissions.md)
+`followRequestSent` | boolean
 `hasGraduatedAccess` | boolean
 `hasHiddenLikesOnProfile` | boolean
 `hasHiddenSubscriptionsOnProfile` | boolean
@@ -21,18 +24,25 @@ Name | Type
 `id` | string
 `isBlueVerified` | boolean
 `isProfileTranslatable` | boolean
+`isVerifiedOrganization` | boolean
 `legacy` | [UserLegacy](UserLegacy.md)
 `legacyExtendedProfile` | [UserLegacyExtendedProfile](UserLegacyExtendedProfile.md)
 `location` | [UserLocation](UserLocation.md)
 `mediaPermissions` | [UserMediaPermissions](UserMediaPermissions.md)
+`notificationsSettings` | [UserNotificationsSettings](UserNotificationsSettings.md)
 `parodyCommentaryFanLabel` | string
+`pinnedItems` | [UserPinnedItems](UserPinnedItems.md)
+`possiblySensitive` | boolean
 `premiumGiftingEligible` | boolean
 `privacy` | [UserPrivacy](UserPrivacy.md)
 `professional` | [UserProfessional](UserProfessional.md)
 `profileBio` | [ProfileBio](ProfileBio.md)
 `profileDescriptionLanguage` | string
 `profileImageShape` | string
+`profileMetadata` | [UserProfileMetadata](UserProfileMetadata.md)
 `profileSortEnabled` | boolean
+`profileTranslation` | [UserProfileTranslation](UserProfileTranslation.md)
+`relationshipCounts` | [UserRelationshipCounts](UserRelationshipCounts.md)
 `relationshipPerspectives` | [UserRelationshipPerspectives](UserRelationshipPerspectives.md)
 `restId` | string
 `superFollowEligible` | boolean
@@ -40,10 +50,12 @@ Name | Type
 `superFollowing` | boolean
 `superFollowsUserProfile` | [UserProfile](UserProfile.md)
 `tipjarSettings` | [UserTipJarSettings](UserTipJarSettings.md)
+`tweetCounts` | [UserTweetCounts](UserTweetCounts.md)
 `userSeedTweetCount` | number
 `verification` | [UserVerification](UserVerification.md)
 `verificationInfo` | [UserVerificationInfo](UserVerificationInfo.md)
 `verifiedUserProfiles` | [UserProfile](UserProfile.md)
+`website` | [UserWebsite](UserWebsite.md)
 `message` | string
 `reason` | string
 
@@ -55,12 +67,15 @@ import type { UserUnion } from 'twitter-openapi-typescript-generated'
 // TODO: Update the object below with actual values
 const example = {
   "typename": null,
+  "actionCounts": null,
   "affiliatesHighlightedLabel": null,
   "avatar": null,
+  "banner": null,
   "businessAccount": null,
   "core": null,
   "creatorSubscriptionsCount": null,
   "dmPermissions": null,
+  "followRequestSent": null,
   "hasGraduatedAccess": null,
   "hasHiddenLikesOnProfile": null,
   "hasHiddenSubscriptionsOnProfile": null,
@@ -69,18 +84,25 @@ const example = {
   "id": null,
   "isBlueVerified": null,
   "isProfileTranslatable": null,
+  "isVerifiedOrganization": null,
   "legacy": null,
   "legacyExtendedProfile": null,
   "location": null,
   "mediaPermissions": null,
+  "notificationsSettings": null,
   "parodyCommentaryFanLabel": null,
+  "pinnedItems": null,
+  "possiblySensitive": null,
   "premiumGiftingEligible": null,
   "privacy": null,
   "professional": null,
   "profileBio": null,
   "profileDescriptionLanguage": null,
   "profileImageShape": null,
+  "profileMetadata": null,
   "profileSortEnabled": null,
+  "profileTranslation": null,
+  "relationshipCounts": null,
   "relationshipPerspectives": null,
   "restId": null,
   "superFollowEligible": null,
@@ -88,10 +110,12 @@ const example = {
   "superFollowing": null,
   "superFollowsUserProfile": null,
   "tipjarSettings": null,
+  "tweetCounts": null,
   "userSeedTweetCount": null,
   "verification": null,
   "verificationInfo": null,
   "verifiedUserProfiles": null,
+  "website": null,
   "message": null,
   "reason": null,
 } satisfies UserUnion

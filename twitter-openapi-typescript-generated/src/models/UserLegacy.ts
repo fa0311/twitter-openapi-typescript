@@ -21,272 +21,182 @@ import { mapValues } from '../runtime';
 export interface UserLegacy {
     /**
      * 
-     * @type {boolean}
-     * @memberof UserLegacy
      */
     blockedBy?: boolean;
     /**
      * 
-     * @type {boolean}
-     * @memberof UserLegacy
      */
     blocking?: boolean;
     /**
      * 
-     * @type {boolean}
-     * @memberof UserLegacy
      */
     canDm?: boolean;
     /**
      * 
-     * @type {boolean}
-     * @memberof UserLegacy
      */
     canMediaTag?: boolean;
     /**
      * 
-     * @type {string}
-     * @memberof UserLegacy
      */
     createdAt?: string;
     /**
      * 
-     * @type {boolean}
-     * @memberof UserLegacy
      */
     defaultProfile: boolean;
     /**
      * 
-     * @type {boolean}
-     * @memberof UserLegacy
      */
     defaultProfileImage: boolean;
     /**
      * 
-     * @type {string}
-     * @memberof UserLegacy
      */
     description: string;
     /**
      * 
-     * @type {{ [key: string]: any; }}
-     * @memberof UserLegacy
      */
     entities: { [key: string]: any; };
     /**
      * 
-     * @type {number}
-     * @memberof UserLegacy
      */
     fastFollowersCount: number;
     /**
      * 
-     * @type {number}
-     * @memberof UserLegacy
      */
     favouritesCount: number;
     /**
      * 
-     * @type {boolean}
-     * @memberof UserLegacy
      */
     followRequestSent?: boolean;
     /**
      * 
-     * @type {boolean}
-     * @memberof UserLegacy
      */
     followedBy?: boolean;
     /**
      * 
-     * @type {number}
-     * @memberof UserLegacy
      */
     followersCount: number;
     /**
      * 
-     * @type {boolean}
-     * @memberof UserLegacy
      */
     following?: boolean;
     /**
      * 
-     * @type {number}
-     * @memberof UserLegacy
      */
     friendsCount: number;
     /**
      * 
-     * @type {boolean}
-     * @memberof UserLegacy
      */
     hasCustomTimelines: boolean;
     /**
      * 
-     * @type {boolean}
-     * @memberof UserLegacy
      */
     isTranslator: boolean;
     /**
      * 
-     * @type {number}
-     * @memberof UserLegacy
      */
     listedCount: number;
     /**
      * 
-     * @type {string}
-     * @memberof UserLegacy
      */
     location?: string;
     /**
      * 
-     * @type {number}
-     * @memberof UserLegacy
      */
     mediaCount: number;
     /**
      * 
-     * @type {boolean}
-     * @memberof UserLegacy
      */
     muting?: boolean;
     /**
      * 
-     * @type {string}
-     * @memberof UserLegacy
      */
     name?: string;
     /**
      * 
-     * @type {number}
-     * @memberof UserLegacy
      */
     normalFollowersCount: number;
     /**
      * 
-     * @type {boolean}
-     * @memberof UserLegacy
      */
     notifications?: boolean;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof UserLegacy
      */
     pinnedTweetIdsStr?: Array<string>;
     /**
      * 
-     * @type {boolean}
-     * @memberof UserLegacy
      */
     possiblySensitive: boolean;
     /**
      * 
-     * @type {object}
-     * @memberof UserLegacy
      */
     profileBannerExtensions?: object;
     /**
      * 
-     * @type {string}
-     * @memberof UserLegacy
      */
     profileBannerUrl?: string;
     /**
      * 
-     * @type {object}
-     * @memberof UserLegacy
      */
     profileImageExtensions?: object;
     /**
      * 
-     * @type {string}
-     * @memberof UserLegacy
      */
     profileImageUrlHttps?: string;
     /**
      * 
-     * @type {string}
-     * @memberof UserLegacy
      */
     profileInterstitialType: string;
     /**
      * 
-     * @type {boolean}
-     * @memberof UserLegacy
      */
     _protected?: boolean;
     /**
      * 
-     * @type {string}
-     * @memberof UserLegacy
      */
     screenName?: string;
     /**
      * 
-     * @type {number}
-     * @memberof UserLegacy
      */
     statusesCount: number;
     /**
      * 
-     * @type {string}
-     * @memberof UserLegacy
      */
     timeZone: string;
     /**
      * 
-     * @type {string}
-     * @memberof UserLegacy
      */
     translatorType: string;
     /**
      * 
-     * @type {string}
-     * @memberof UserLegacy
      */
     url?: string;
     /**
      * 
-     * @type {number}
-     * @memberof UserLegacy
      */
     utcOffset: number;
     /**
      * 
-     * @type {boolean}
-     * @memberof UserLegacy
      */
     verified?: boolean;
     /**
      * 
-     * @type {UserLegacyVerifiedTypeEnum}
-     * @memberof UserLegacy
      */
     verifiedType?: UserLegacyVerifiedTypeEnum;
     /**
      * 
-     * @type {boolean}
-     * @memberof UserLegacy
      */
     wantRetweets?: boolean;
     /**
      * 
-     * @type {string}
-     * @memberof UserLegacy
      */
     withheldDescription: string;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof UserLegacy
      */
     withheldInCountries?: Array<string>;
     /**
      * 
-     * @type {string}
-     * @memberof UserLegacy
      */
     withheldScope: string;
 }
@@ -297,7 +207,7 @@ export interface UserLegacy {
  */
 export const UserLegacyVerifiedTypeEnum = {
     Business: 'Business',
-    Government: 'Government'
+    Government: 'Government',
 } as const;
 export type UserLegacyVerifiedTypeEnum = typeof UserLegacyVerifiedTypeEnum[keyof typeof UserLegacyVerifiedTypeEnum];
 
@@ -306,27 +216,27 @@ export type UserLegacyVerifiedTypeEnum = typeof UserLegacyVerifiedTypeEnum[keyof
  * Check if a given object implements the UserLegacy interface.
  */
 export function instanceOfUserLegacy(value: object): value is UserLegacy {
-    if (!('defaultProfile' in value) || value['defaultProfile'] === undefined) return false;
-    if (!('defaultProfileImage' in value) || value['defaultProfileImage'] === undefined) return false;
+    if ((!('defaultProfile' in (value as Record<string, any>)) && !('default_profile' in (value as Record<string, any>))) || ((value as Record<string, any>)['defaultProfile'] === undefined && (value as Record<string, any>)['default_profile'] === undefined)) return false;
+    if ((!('defaultProfileImage' in (value as Record<string, any>)) && !('default_profile_image' in (value as Record<string, any>))) || ((value as Record<string, any>)['defaultProfileImage'] === undefined && (value as Record<string, any>)['default_profile_image'] === undefined)) return false;
     if (!('description' in value) || value['description'] === undefined) return false;
     if (!('entities' in value) || value['entities'] === undefined) return false;
-    if (!('fastFollowersCount' in value) || value['fastFollowersCount'] === undefined) return false;
-    if (!('favouritesCount' in value) || value['favouritesCount'] === undefined) return false;
-    if (!('followersCount' in value) || value['followersCount'] === undefined) return false;
-    if (!('friendsCount' in value) || value['friendsCount'] === undefined) return false;
-    if (!('hasCustomTimelines' in value) || value['hasCustomTimelines'] === undefined) return false;
-    if (!('isTranslator' in value) || value['isTranslator'] === undefined) return false;
-    if (!('listedCount' in value) || value['listedCount'] === undefined) return false;
-    if (!('mediaCount' in value) || value['mediaCount'] === undefined) return false;
-    if (!('normalFollowersCount' in value) || value['normalFollowersCount'] === undefined) return false;
-    if (!('possiblySensitive' in value) || value['possiblySensitive'] === undefined) return false;
-    if (!('profileInterstitialType' in value) || value['profileInterstitialType'] === undefined) return false;
-    if (!('statusesCount' in value) || value['statusesCount'] === undefined) return false;
-    if (!('timeZone' in value) || value['timeZone'] === undefined) return false;
-    if (!('translatorType' in value) || value['translatorType'] === undefined) return false;
-    if (!('utcOffset' in value) || value['utcOffset'] === undefined) return false;
-    if (!('withheldDescription' in value) || value['withheldDescription'] === undefined) return false;
-    if (!('withheldScope' in value) || value['withheldScope'] === undefined) return false;
+    if ((!('fastFollowersCount' in (value as Record<string, any>)) && !('fast_followers_count' in (value as Record<string, any>))) || ((value as Record<string, any>)['fastFollowersCount'] === undefined && (value as Record<string, any>)['fast_followers_count'] === undefined)) return false;
+    if ((!('favouritesCount' in (value as Record<string, any>)) && !('favourites_count' in (value as Record<string, any>))) || ((value as Record<string, any>)['favouritesCount'] === undefined && (value as Record<string, any>)['favourites_count'] === undefined)) return false;
+    if ((!('followersCount' in (value as Record<string, any>)) && !('followers_count' in (value as Record<string, any>))) || ((value as Record<string, any>)['followersCount'] === undefined && (value as Record<string, any>)['followers_count'] === undefined)) return false;
+    if ((!('friendsCount' in (value as Record<string, any>)) && !('friends_count' in (value as Record<string, any>))) || ((value as Record<string, any>)['friendsCount'] === undefined && (value as Record<string, any>)['friends_count'] === undefined)) return false;
+    if ((!('hasCustomTimelines' in (value as Record<string, any>)) && !('has_custom_timelines' in (value as Record<string, any>))) || ((value as Record<string, any>)['hasCustomTimelines'] === undefined && (value as Record<string, any>)['has_custom_timelines'] === undefined)) return false;
+    if ((!('isTranslator' in (value as Record<string, any>)) && !('is_translator' in (value as Record<string, any>))) || ((value as Record<string, any>)['isTranslator'] === undefined && (value as Record<string, any>)['is_translator'] === undefined)) return false;
+    if ((!('listedCount' in (value as Record<string, any>)) && !('listed_count' in (value as Record<string, any>))) || ((value as Record<string, any>)['listedCount'] === undefined && (value as Record<string, any>)['listed_count'] === undefined)) return false;
+    if ((!('mediaCount' in (value as Record<string, any>)) && !('media_count' in (value as Record<string, any>))) || ((value as Record<string, any>)['mediaCount'] === undefined && (value as Record<string, any>)['media_count'] === undefined)) return false;
+    if ((!('normalFollowersCount' in (value as Record<string, any>)) && !('normal_followers_count' in (value as Record<string, any>))) || ((value as Record<string, any>)['normalFollowersCount'] === undefined && (value as Record<string, any>)['normal_followers_count'] === undefined)) return false;
+    if ((!('possiblySensitive' in (value as Record<string, any>)) && !('possibly_sensitive' in (value as Record<string, any>))) || ((value as Record<string, any>)['possiblySensitive'] === undefined && (value as Record<string, any>)['possibly_sensitive'] === undefined)) return false;
+    if ((!('profileInterstitialType' in (value as Record<string, any>)) && !('profile_interstitial_type' in (value as Record<string, any>))) || ((value as Record<string, any>)['profileInterstitialType'] === undefined && (value as Record<string, any>)['profile_interstitial_type'] === undefined)) return false;
+    if ((!('statusesCount' in (value as Record<string, any>)) && !('statuses_count' in (value as Record<string, any>))) || ((value as Record<string, any>)['statusesCount'] === undefined && (value as Record<string, any>)['statuses_count'] === undefined)) return false;
+    if ((!('timeZone' in (value as Record<string, any>)) && !('time_zone' in (value as Record<string, any>))) || ((value as Record<string, any>)['timeZone'] === undefined && (value as Record<string, any>)['time_zone'] === undefined)) return false;
+    if ((!('translatorType' in (value as Record<string, any>)) && !('translator_type' in (value as Record<string, any>))) || ((value as Record<string, any>)['translatorType'] === undefined && (value as Record<string, any>)['translator_type'] === undefined)) return false;
+    if ((!('utcOffset' in (value as Record<string, any>)) && !('utc_offset' in (value as Record<string, any>))) || ((value as Record<string, any>)['utcOffset'] === undefined && (value as Record<string, any>)['utc_offset'] === undefined)) return false;
+    if ((!('withheldDescription' in (value as Record<string, any>)) && !('withheld_description' in (value as Record<string, any>))) || ((value as Record<string, any>)['withheldDescription'] === undefined && (value as Record<string, any>)['withheld_description'] === undefined)) return false;
+    if ((!('withheldScope' in (value as Record<string, any>)) && !('withheld_scope' in (value as Record<string, any>))) || ((value as Record<string, any>)['withheldScope'] === undefined && (value as Record<string, any>)['withheld_scope'] === undefined)) return false;
     return true;
 }
 

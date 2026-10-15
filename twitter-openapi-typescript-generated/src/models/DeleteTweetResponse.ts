@@ -36,14 +36,10 @@ import {
 export interface DeleteTweetResponse {
     /**
      * 
-     * @type {DeleteTweetResponseData}
-     * @memberof DeleteTweetResponse
      */
     data: DeleteTweetResponseData;
     /**
      * 
-     * @type {Array<ErrorResponse>}
-     * @memberof DeleteTweetResponse
      */
     errors?: Array<ErrorResponse>;
 }

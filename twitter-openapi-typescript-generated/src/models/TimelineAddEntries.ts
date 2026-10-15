@@ -36,14 +36,10 @@ import {
 export interface TimelineAddEntries {
     /**
      * 
-     * @type {Array<TimelineAddEntry>}
-     * @memberof TimelineAddEntries
      */
     entries: Array<TimelineAddEntry>;
     /**
      * 
-     * @type {InstructionType}
-     * @memberof TimelineAddEntries
      */
     type: InstructionType;
 }

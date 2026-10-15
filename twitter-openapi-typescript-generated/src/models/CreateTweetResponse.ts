@@ -36,14 +36,10 @@ import {
 export interface CreateTweetResponse {
     /**
      * 
-     * @type {CreateTweetResponseData}
-     * @memberof CreateTweetResponse
      */
     data: CreateTweetResponseData;
     /**
      * 
-     * @type {Array<ErrorResponse>}
-     * @memberof CreateTweetResponse
      */
     errors?: Array<ErrorResponse>;
 }

@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface PostCreateRetweetRequestVariables {
     /**
      * 
-     * @type {boolean}
-     * @memberof PostCreateRetweetRequestVariables
      */
     darkRequest: boolean;
     /**
      * 
-     * @type {string}
-     * @memberof PostCreateRetweetRequestVariables
      */
     tweetId: string;
 }
@@ -37,8 +33,8 @@ export interface PostCreateRetweetRequestVariables {
  * Check if a given object implements the PostCreateRetweetRequestVariables interface.
  */
 export function instanceOfPostCreateRetweetRequestVariables(value: object): value is PostCreateRetweetRequestVariables {
-    if (!('darkRequest' in value) || value['darkRequest'] === undefined) return false;
-    if (!('tweetId' in value) || value['tweetId'] === undefined) return false;
+    if ((!('darkRequest' in (value as Record<string, any>)) && !('dark_request' in (value as Record<string, any>))) || ((value as Record<string, any>)['darkRequest'] === undefined && (value as Record<string, any>)['dark_request'] === undefined)) return false;
+    if ((!('tweetId' in (value as Record<string, any>)) && !('tweet_id' in (value as Record<string, any>))) || ((value as Record<string, any>)['tweetId'] === undefined && (value as Record<string, any>)['tweet_id'] === undefined)) return false;
     return true;
 }
 

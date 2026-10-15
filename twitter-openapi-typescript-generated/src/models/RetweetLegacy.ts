@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface RetweetLegacy {
     /**
      * 
-     * @type {string}
-     * @memberof RetweetLegacy
      */
     fullText: string;
 }
@@ -31,7 +29,7 @@ export interface RetweetLegacy {
  * Check if a given object implements the RetweetLegacy interface.
  */
 export function instanceOfRetweetLegacy(value: object): value is RetweetLegacy {
-    if (!('fullText' in value) || value['fullText'] === undefined) return false;
+    if ((!('fullText' in (value as Record<string, any>)) && !('full_text' in (value as Record<string, any>))) || ((value as Record<string, any>)['fullText'] === undefined && (value as Record<string, any>)['full_text'] === undefined)) return false;
     return true;
 }
 

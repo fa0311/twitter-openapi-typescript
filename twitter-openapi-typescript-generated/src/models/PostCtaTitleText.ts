@@ -29,14 +29,10 @@ import {
 export interface PostCtaTitleText {
     /**
      * 
-     * @type {Array<PostCtaTitleTextEntity>}
-     * @memberof PostCtaTitleText
      */
     entities: Array<PostCtaTitleTextEntity>;
     /**
      * 
-     * @type {string}
-     * @memberof PostCtaTitleText
      */
     text: string;
 }

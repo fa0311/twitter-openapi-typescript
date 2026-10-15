@@ -29,8 +29,6 @@ import {
 export interface NotificationsTimelineData {
     /**
      * 
-     * @type {NotificationsViewerV2}
-     * @memberof NotificationsTimelineData
      */
     viewerV2: NotificationsViewerV2;
 }
@@ -39,7 +37,7 @@ export interface NotificationsTimelineData {
  * Check if a given object implements the NotificationsTimelineData interface.
  */
 export function instanceOfNotificationsTimelineData(value: object): value is NotificationsTimelineData {
-    if (!('viewerV2' in value) || value['viewerV2'] === undefined) return false;
+    if ((!('viewerV2' in (value as Record<string, any>)) && !('viewer_v2' in (value as Record<string, any>))) || ((value as Record<string, any>)['viewerV2'] === undefined && (value as Record<string, any>)['viewer_v2'] === undefined)) return false;
     return true;
 }
 

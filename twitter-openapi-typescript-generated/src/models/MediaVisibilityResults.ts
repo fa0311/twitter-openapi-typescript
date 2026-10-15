@@ -29,8 +29,6 @@ import {
 export interface MediaVisibilityResults {
     /**
      * 
-     * @type {MediaVisibilityResultsBlurredImageInterstitial}
-     * @memberof MediaVisibilityResults
      */
     blurredImageInterstitial: MediaVisibilityResultsBlurredImageInterstitial;
 }
@@ -39,7 +37,7 @@ export interface MediaVisibilityResults {
  * Check if a given object implements the MediaVisibilityResults interface.
  */
 export function instanceOfMediaVisibilityResults(value: object): value is MediaVisibilityResults {
-    if (!('blurredImageInterstitial' in value) || value['blurredImageInterstitial'] === undefined) return false;
+    if ((!('blurredImageInterstitial' in (value as Record<string, any>)) && !('blurred_image_interstitial' in (value as Record<string, any>))) || ((value as Record<string, any>)['blurredImageInterstitial'] === undefined && (value as Record<string, any>)['blurred_image_interstitial'] === undefined)) return false;
     return true;
 }
 

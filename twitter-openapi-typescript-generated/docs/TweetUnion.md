@@ -11,6 +11,7 @@ Name | Type
 `authorCommunityRelationship` | [AuthorCommunityRelationship](AuthorCommunityRelationship.md)
 `birdwatchPivot` | [BirdwatchPivot](BirdwatchPivot.md)
 `card` | [TweetCard](TweetCard.md)
+`cashtagAttachments` | [Array&lt;CashtagAttachment&gt;](CashtagAttachment.md)
 `communityRelationship` | [CommunityRelationship](CommunityRelationship.md)
 `communityResults` | [CommunityResult](CommunityResult.md)
 `contentDisclosure` | [ContentDisclosure](ContentDisclosure.md)
@@ -25,6 +26,7 @@ Name | Type
 `hasBirdwatchNotes` | boolean
 `isTranslatable` | boolean
 `legacy` | [TweetLegacy](TweetLegacy.md)
+`nestedQuotedTweetResults` | [ItemResult](ItemResult.md)
 `noteTweet` | [NoteTweet](NoteTweet.md)
 `postCta` | [TweetPostCta](TweetPostCta.md)
 `postImageDescription` | string
@@ -60,6 +62,7 @@ const example = {
   "authorCommunityRelationship": null,
   "birdwatchPivot": null,
   "card": null,
+  "cashtagAttachments": null,
   "communityRelationship": null,
   "communityResults": null,
   "contentDisclosure": null,
@@ -74,6 +77,7 @@ const example = {
   "hasBirdwatchNotes": null,
   "isTranslatable": null,
   "legacy": null,
+  "nestedQuotedTweetResults": null,
   "noteTweet": null,
   "postCta": null,
   "postImageDescription": null,

@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface GrokAnnotation {
     /**
      * 
-     * @type {boolean}
-     * @memberof GrokAnnotation
      */
     isImageEditableByGrok?: boolean;
 }

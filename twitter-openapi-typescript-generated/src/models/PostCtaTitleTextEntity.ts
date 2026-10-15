@@ -29,20 +29,14 @@ import {
 export interface PostCtaTitleTextEntity {
     /**
      * 
-     * @type {number}
-     * @memberof PostCtaTitleTextEntity
      */
     fromIndex: number;
     /**
      * 
-     * @type {PostCtaTitleTextEntityRef}
-     * @memberof PostCtaTitleTextEntity
      */
     ref: PostCtaTitleTextEntityRef;
     /**
      * 
-     * @type {number}
-     * @memberof PostCtaTitleTextEntity
      */
     toIndex: number;
 }

@@ -36,32 +36,22 @@ import {
 export interface TimelineGeneralContext {
     /**
      * 
-     * @type {Array<string>}
-     * @memberof TimelineGeneralContext
      */
     contextImageUrls?: Array<string>;
     /**
      * 
-     * @type {TimelineGeneralContextContextTypeEnum}
-     * @memberof TimelineGeneralContext
      */
     contextType?: TimelineGeneralContextContextTypeEnum;
     /**
      * 
-     * @type {SocialContextLandingUrl}
-     * @memberof TimelineGeneralContext
      */
     landingUrl?: SocialContextLandingUrl;
     /**
      * 
-     * @type {string}
-     * @memberof TimelineGeneralContext
      */
     text?: string;
     /**
      * 
-     * @type {SocialContextUnionType}
-     * @memberof TimelineGeneralContext
      */
     type?: SocialContextUnionType;
 }
@@ -79,7 +69,7 @@ export const TimelineGeneralContextContextTypeEnum = {
     Conversation: 'Conversation',
     List: 'List',
     Community: 'Community',
-    Facepile: 'Facepile'
+    Facepile: 'Facepile',
 } as const;
 export type TimelineGeneralContextContextTypeEnum = typeof TimelineGeneralContextContextTypeEnum[keyof typeof TimelineGeneralContextContextTypeEnum];
 

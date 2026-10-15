@@ -50,44 +50,30 @@ import {
 export interface TimelineTimelineCursor {
     /**
      * 
-     * @type {TypeName}
-     * @memberof TimelineTimelineCursor
      */
     typename: TypeName;
     /**
      * 
-     * @type {CursorType}
-     * @memberof TimelineTimelineCursor
      */
     cursorType: CursorType;
     /**
      * 
-     * @type {DisplayTreatment}
-     * @memberof TimelineTimelineCursor
      */
     displayTreatment?: DisplayTreatment;
     /**
      * 
-     * @type {ContentEntryType}
-     * @memberof TimelineTimelineCursor
      */
     entryType?: ContentEntryType;
     /**
      * 
-     * @type {ContentEntryType}
-     * @memberof TimelineTimelineCursor
      */
     itemType?: ContentEntryType;
     /**
      * 
-     * @type {boolean}
-     * @memberof TimelineTimelineCursor
      */
     stopOnEmptyResponse?: boolean;
     /**
      * 
-     * @type {string}
-     * @memberof TimelineTimelineCursor
      */
     value: string;
 }
@@ -98,7 +84,7 @@ export interface TimelineTimelineCursor {
  * Check if a given object implements the TimelineTimelineCursor interface.
  */
 export function instanceOfTimelineTimelineCursor(value: object): value is TimelineTimelineCursor {
-    if (!('typename' in value) || value['typename'] === undefined) return false;
+    if ((!('typename' in (value as Record<string, any>)) && !('__typename' in (value as Record<string, any>))) || ((value as Record<string, any>)['typename'] === undefined && (value as Record<string, any>)['__typename'] === undefined)) return false;
     if (!('cursorType' in value) || value['cursorType'] === undefined) return false;
     if (!('value' in value) || value['value'] === undefined) return false;
     return true;

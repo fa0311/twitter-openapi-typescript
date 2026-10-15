@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface CreateBookmarkResponseData {
     /**
      * 
-     * @type {string}
-     * @memberof CreateBookmarkResponseData
      */
     tweetBookmarkPut?: string;
 }

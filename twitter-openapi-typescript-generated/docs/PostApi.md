@@ -322,7 +322,7 @@ async function example() {
 
   const body = {
     // string
-    pathQueryId: 5CdvsV_zjv4L64XFifAglw,
+    pathQueryId: wR5Z_lEibLvkew3tF9w-Sg,
     // PostCreateTweetRequest | body
     postCreateTweetRequest: ...,
   } satisfies PostCreateTweetOperationRequest;
@@ -344,7 +344,7 @@ example().catch(console.error);
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pathQueryId** | `string` |  | [Defaults to `&#39;5CdvsV_zjv4L64XFifAglw&#39;`] |
+| **pathQueryId** | `string` |  | [Defaults to `&#39;wR5Z_lEibLvkew3tF9w-Sg&#39;`] |
 | **postCreateTweetRequest** | [PostCreateTweetRequest](PostCreateTweetRequest.md) | body | |
 
 ### Return type
@@ -676,7 +676,7 @@ async function example() {
 
   const body = {
     // string
-    pathQueryId: VaenaVgh5q5ih7kvyVjgtg,
+    pathQueryId: nxpZCY2K-I6QoFHAHeojFQ,
     // PostDeleteTweetRequest | body
     postDeleteTweetRequest: ...,
   } satisfies PostDeleteTweetOperationRequest;
@@ -698,7 +698,7 @@ example().catch(console.error);
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pathQueryId** | `string` |  | [Defaults to `&#39;VaenaVgh5q5ih7kvyVjgtg&#39;`] |
+| **pathQueryId** | `string` |  | [Defaults to `&#39;nxpZCY2K-I6QoFHAHeojFQ&#39;`] |
 | **postDeleteTweetRequest** | [PostDeleteTweetRequest](PostDeleteTweetRequest.md) | body | |
 
 ### Return type

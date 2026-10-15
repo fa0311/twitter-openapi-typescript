@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface TimelineShowAlertRichText {
     /**
      * 
-     * @type {Array<{ [key: string]: any; }>}
-     * @memberof TimelineShowAlertRichText
      */
     entities?: Array<{ [key: string]: any; }>;
     /**
      * 
-     * @type {string}
-     * @memberof TimelineShowAlertRichText
      */
     text?: string;
 }

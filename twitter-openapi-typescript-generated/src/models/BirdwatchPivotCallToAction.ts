@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface BirdwatchPivotCallToAction {
     /**
      * 
-     * @type {string}
-     * @memberof BirdwatchPivotCallToAction
      */
     destinationUrl: string;
     /**
      * 
-     * @type {string}
-     * @memberof BirdwatchPivotCallToAction
      */
     prompt: string;
     /**
      * 
-     * @type {string}
-     * @memberof BirdwatchPivotCallToAction
      */
     title: string;
 }

@@ -36,14 +36,10 @@ import {
 export interface MediaCommunityResult {
     /**
      * 
-     * @type {TypeName}
-     * @memberof MediaCommunityResult
      */
     typename: TypeName;
     /**
      * 
-     * @type {TimelineResult}
-     * @memberof MediaCommunityResult
      */
     communityMediaTimeline: TimelineResult;
 }
@@ -54,8 +50,8 @@ export interface MediaCommunityResult {
  * Check if a given object implements the MediaCommunityResult interface.
  */
 export function instanceOfMediaCommunityResult(value: object): value is MediaCommunityResult {
-    if (!('typename' in value) || value['typename'] === undefined) return false;
-    if (!('communityMediaTimeline' in value) || value['communityMediaTimeline'] === undefined) return false;
+    if ((!('typename' in (value as Record<string, any>)) && !('__typename' in (value as Record<string, any>))) || ((value as Record<string, any>)['typename'] === undefined && (value as Record<string, any>)['__typename'] === undefined)) return false;
+    if ((!('communityMediaTimeline' in (value as Record<string, any>)) && !('community_media_timeline' in (value as Record<string, any>))) || ((value as Record<string, any>)['communityMediaTimeline'] === undefined && (value as Record<string, any>)['community_media_timeline'] === undefined)) return false;
     return true;
 }
 

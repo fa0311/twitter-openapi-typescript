@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface UserLocation {
     /**
      * 
-     * @type {string}
-     * @memberof UserLocation
      */
     location: string;
 }

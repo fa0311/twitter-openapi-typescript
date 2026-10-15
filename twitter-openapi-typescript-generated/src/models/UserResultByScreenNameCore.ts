@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface UserResultByScreenNameCore {
     /**
      * 
-     * @type {string}
-     * @memberof UserResultByScreenNameCore
      */
     name: string;
     /**
      * 
-     * @type {string}
-     * @memberof UserResultByScreenNameCore
      */
     screenName: string;
 }
@@ -38,7 +34,7 @@ export interface UserResultByScreenNameCore {
  */
 export function instanceOfUserResultByScreenNameCore(value: object): value is UserResultByScreenNameCore {
     if (!('name' in value) || value['name'] === undefined) return false;
-    if (!('screenName' in value) || value['screenName'] === undefined) return false;
+    if ((!('screenName' in (value as Record<string, any>)) && !('screen_name' in (value as Record<string, any>))) || ((value as Record<string, any>)['screenName'] === undefined && (value as Record<string, any>)['screen_name'] === undefined)) return false;
     return true;
 }
 

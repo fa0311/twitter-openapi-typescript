@@ -29,14 +29,10 @@ import {
 export interface PostCreateRetweetRequest {
     /**
      * 
-     * @type {string}
-     * @memberof PostCreateRetweetRequest
      */
     queryId: string;
     /**
      * 
-     * @type {PostCreateRetweetRequestVariables}
-     * @memberof PostCreateRetweetRequest
      */
     variables: PostCreateRetweetRequestVariables;
 }

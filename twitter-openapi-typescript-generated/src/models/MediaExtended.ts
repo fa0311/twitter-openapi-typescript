@@ -69,6 +69,13 @@ import {
     MediaSizesToJSON,
     MediaSizesToJSONTyped,
 } from './MediaSizes';
+import type { UserResults } from './UserResults';
+import {
+    UserResultsFromJSON,
+    UserResultsFromJSONTyped,
+    UserResultsToJSON,
+    UserResultsToJSONTyped,
+} from './UserResults';
 import type { MediaOriginalInfo } from './MediaOriginalInfo';
 import {
     MediaOriginalInfoFromJSON,
@@ -85,134 +92,94 @@ import {
 export interface MediaExtended {
     /**
      * 
-     * @type {AdditionalMediaInfo}
-     * @memberof MediaExtended
      */
     additionalMediaInfo?: AdditionalMediaInfo;
     /**
      * 
-     * @type {AllowDownloadStatus}
-     * @memberof MediaExtended
      */
     allowDownloadStatus?: AllowDownloadStatus;
     /**
      * 
-     * @type {string}
-     * @memberof MediaExtended
      */
     displayUrl: string;
     /**
      * 
-     * @type {string}
-     * @memberof MediaExtended
      */
     expandedUrl: string;
     /**
      * 
-     * @type {string}
-     * @memberof MediaExtended
      */
     extAltText?: string;
     /**
      * 
-     * @type {ExtMediaAvailability}
-     * @memberof MediaExtended
      */
     extMediaAvailability?: ExtMediaAvailability;
     /**
      * 
-     * @type {object}
-     * @memberof MediaExtended
      */
     features?: object;
     /**
      * 
-     * @type {string}
-     * @memberof MediaExtended
      */
     grokPostId?: string;
     /**
      * 
-     * @type {string}
-     * @memberof MediaExtended
      */
     idStr: string;
     /**
      * 
-     * @type {Array<number>}
-     * @memberof MediaExtended
      */
     indices: Array<number>;
     /**
      * 
-     * @type {MediaStats}
-     * @memberof MediaExtended
      */
     mediaStats?: MediaStats;
     /**
      * 
-     * @type {string}
-     * @memberof MediaExtended
      */
     mediaKey: string;
     /**
      * 
-     * @type {MediaResults}
-     * @memberof MediaExtended
      */
     mediaResults?: MediaResults;
     /**
      * 
-     * @type {string}
-     * @memberof MediaExtended
      */
     mediaUrlHttps: string;
     /**
      * 
-     * @type {MediaOriginalInfo}
-     * @memberof MediaExtended
      */
     originalInfo: MediaOriginalInfo;
     /**
      * 
-     * @type {SensitiveMediaWarning}
-     * @memberof MediaExtended
      */
     sensitiveMediaWarning?: SensitiveMediaWarning;
     /**
      * 
-     * @type {MediaSizes}
-     * @memberof MediaExtended
      */
     sizes: MediaSizes;
     /**
      * 
-     * @type {string}
-     * @memberof MediaExtended
      */
     sourceStatusIdStr?: string;
     /**
      * 
-     * @type {string}
-     * @memberof MediaExtended
      */
     sourceUserIdStr?: string;
     /**
      * 
-     * @type {MediaExtendedTypeEnum}
-     * @memberof MediaExtended
+     */
+    sourceUserResults?: UserResults;
+    /**
+     * 
      */
     type: MediaExtendedTypeEnum;
     /**
      * 
-     * @type {string}
-     * @memberof MediaExtended
      */
     url: string;
     /**
      * 
-     * @type {MediaVideoInfo}
-     * @memberof MediaExtended
      */
     videoInfo?: MediaVideoInfo;
 }
@@ -224,7 +191,7 @@ export interface MediaExtended {
 export const MediaExtendedTypeEnum = {
     Photo: 'photo',
     Video: 'video',
-    AnimatedGif: 'animated_gif'
+    AnimatedGif: 'animated_gif',
 } as const;
 export type MediaExtendedTypeEnum = typeof MediaExtendedTypeEnum[keyof typeof MediaExtendedTypeEnum];
 
@@ -233,13 +200,13 @@ export type MediaExtendedTypeEnum = typeof MediaExtendedTypeEnum[keyof typeof Me
  * Check if a given object implements the MediaExtended interface.
  */
 export function instanceOfMediaExtended(value: object): value is MediaExtended {
-    if (!('displayUrl' in value) || value['displayUrl'] === undefined) return false;
-    if (!('expandedUrl' in value) || value['expandedUrl'] === undefined) return false;
-    if (!('idStr' in value) || value['idStr'] === undefined) return false;
+    if ((!('displayUrl' in (value as Record<string, any>)) && !('display_url' in (value as Record<string, any>))) || ((value as Record<string, any>)['displayUrl'] === undefined && (value as Record<string, any>)['display_url'] === undefined)) return false;
+    if ((!('expandedUrl' in (value as Record<string, any>)) && !('expanded_url' in (value as Record<string, any>))) || ((value as Record<string, any>)['expandedUrl'] === undefined && (value as Record<string, any>)['expanded_url'] === undefined)) return false;
+    if ((!('idStr' in (value as Record<string, any>)) && !('id_str' in (value as Record<string, any>))) || ((value as Record<string, any>)['idStr'] === undefined && (value as Record<string, any>)['id_str'] === undefined)) return false;
     if (!('indices' in value) || value['indices'] === undefined) return false;
-    if (!('mediaKey' in value) || value['mediaKey'] === undefined) return false;
-    if (!('mediaUrlHttps' in value) || value['mediaUrlHttps'] === undefined) return false;
-    if (!('originalInfo' in value) || value['originalInfo'] === undefined) return false;
+    if ((!('mediaKey' in (value as Record<string, any>)) && !('media_key' in (value as Record<string, any>))) || ((value as Record<string, any>)['mediaKey'] === undefined && (value as Record<string, any>)['media_key'] === undefined)) return false;
+    if ((!('mediaUrlHttps' in (value as Record<string, any>)) && !('media_url_https' in (value as Record<string, any>))) || ((value as Record<string, any>)['mediaUrlHttps'] === undefined && (value as Record<string, any>)['media_url_https'] === undefined)) return false;
+    if ((!('originalInfo' in (value as Record<string, any>)) && !('original_info' in (value as Record<string, any>))) || ((value as Record<string, any>)['originalInfo'] === undefined && (value as Record<string, any>)['original_info'] === undefined)) return false;
     if (!('sizes' in value) || value['sizes'] === undefined) return false;
     if (!('type' in value) || value['type'] === undefined) return false;
     if (!('url' in value) || value['url'] === undefined) return false;
@@ -275,6 +242,7 @@ export function MediaExtendedFromJSONTyped(json: any, ignoreDiscriminator: boole
         'sizes': MediaSizesFromJSON(json['sizes']),
         'sourceStatusIdStr': json['source_status_id_str'] == null ? undefined : json['source_status_id_str'],
         'sourceUserIdStr': json['source_user_id_str'] == null ? undefined : json['source_user_id_str'],
+        'sourceUserResults': json['source_user_results'] == null ? undefined : UserResultsFromJSON(json['source_user_results']),
         'type': json['type'],
         'url': json['url'],
         'videoInfo': json['video_info'] == null ? undefined : MediaVideoInfoFromJSON(json['video_info']),
@@ -311,6 +279,7 @@ export function MediaExtendedToJSONTyped(value?: MediaExtended | null, ignoreDis
         'sizes': MediaSizesToJSON(value['sizes']),
         'source_status_id_str': value['sourceStatusIdStr'],
         'source_user_id_str': value['sourceUserIdStr'],
+        'source_user_results': UserResultsToJSON(value['sourceUserResults']),
         'type': value['type'],
         'url': value['url'],
         'video_info': MediaVideoInfoToJSON(value['videoInfo']),

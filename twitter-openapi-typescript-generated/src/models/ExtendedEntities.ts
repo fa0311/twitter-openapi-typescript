@@ -29,8 +29,6 @@ import {
 export interface ExtendedEntities {
     /**
      * 
-     * @type {Array<MediaExtended>}
-     * @memberof ExtendedEntities
      */
     media: Array<MediaExtended>;
 }

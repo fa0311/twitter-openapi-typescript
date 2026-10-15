@@ -29,8 +29,6 @@ import {
 export interface TweetRetweetersResponseData {
     /**
      * 
-     * @type {TimelineResult}
-     * @memberof TweetRetweetersResponseData
      */
     retweetersTimeline?: TimelineResult;
 }

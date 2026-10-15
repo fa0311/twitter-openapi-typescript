@@ -29,14 +29,10 @@ import {
 export interface BirdwatchPivotFooter {
     /**
      * 
-     * @type {Array<BirdwatchEntity>}
-     * @memberof BirdwatchPivotFooter
      */
     entities: Array<BirdwatchEntity>;
     /**
      * 
-     * @type {string}
-     * @memberof BirdwatchPivotFooter
      */
     text: string;
 }

@@ -64,6 +64,27 @@ test('getUserMedia', async () => {
   response.data.data.filter((e) => !e.promotedMetadata).forEach((e) => printTweet(e));
   expect(response.raw.response.ok).toBe(true);
 });
+test('getUserOriginalsTimeline', async () => {
+  logger.log('getUserOriginalsTimeline');
+  const client = await getClient();
+  const response = await client.getTweetApi().getUserOriginalsTimeline({ userId: '44196397' });
+  response.data.data.filter((e) => !e.promotedMetadata).forEach((e) => printTweet(e));
+  expect(response.raw.response.ok).toBe(true);
+});
+test('getUserRepliesTimeline', async () => {
+  logger.log('getUserRepliesTimeline');
+  const client = await getClient();
+  const response = await client.getTweetApi().getUserRepliesTimeline({ userId: '44196397' });
+  response.data.data.filter((e) => !e.promotedMetadata).forEach((e) => printTweet(e));
+  expect(response.raw.response.ok).toBe(true);
+});
+test('getUserVideoTimeline', async () => {
+  logger.log('getUserVideoTimeline');
+  const client = await getClient();
+  const response = await client.getTweetApi().getUserVideoTimeline({ userId: '44196397' });
+  response.data.data.filter((e) => !e.promotedMetadata).forEach((e) => printTweet(e));
+  expect(response.raw.response.ok).toBe(true);
+});
 
 test('getLikes', async () => {
   logger.log('getLikes');

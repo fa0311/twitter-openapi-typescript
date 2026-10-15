@@ -235,6 +235,57 @@ export class TweetApiUtils {
     return response;
   }
 
+  async getUserOriginalsTimeline(param: GetUserTweetsParam): Promise<ResponseType> {
+    const args = {
+      userId: param.userId,
+      ...(param.count == undefined ? {} : { count: param.count }),
+      ...(param.cursor == undefined ? {} : { cursor: param.cursor }),
+      ...param.extraParam,
+    };
+
+    const response = await this.request({
+      apiFn: this.api.getUserOriginalsTimelineRaw,
+      convertFn: (e) => errorCheck(e.data.user?.result.timeline.timeline, e.errors).instructions,
+      key: 'UserOriginalsTimeline',
+      param: args,
+    });
+    return response;
+  }
+
+  async getUserRepliesTimeline(param: GetUserTweetsParam): Promise<ResponseType> {
+    const args = {
+      userId: param.userId,
+      ...(param.count == undefined ? {} : { count: param.count }),
+      ...(param.cursor == undefined ? {} : { cursor: param.cursor }),
+      ...param.extraParam,
+    };
+
+    const response = await this.request({
+      apiFn: this.api.getUserRepliesTimelineRaw,
+      convertFn: (e) => errorCheck(e.data.user?.result.timeline.timeline, e.errors).instructions,
+      key: 'UserRepliesTimeline',
+      param: args,
+    });
+    return response;
+  }
+
+  async getUserVideoTimeline(param: GetUserTweetsParam): Promise<ResponseType> {
+    const args = {
+      userId: param.userId,
+      ...(param.count == undefined ? {} : { count: param.count }),
+      ...(param.cursor == undefined ? {} : { cursor: param.cursor }),
+      ...param.extraParam,
+    };
+
+    const response = await this.request({
+      apiFn: this.api.getUserVideoTimelineRaw,
+      convertFn: (e) => errorCheck(e.data.user?.result.timeline.timeline, e.errors).instructions,
+      key: 'UserVideoTimeline',
+      param: args,
+    });
+    return response;
+  }
+
   async getUserTweetsAndReplies(param: GetUserTweetsAndRepliesParam): Promise<ResponseType> {
     const args = {
       userId: param.userId,

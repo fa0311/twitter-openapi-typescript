@@ -105,7 +105,7 @@ export const moduleConverter = (item: i.ModuleItem[]): TweetApiUtilsData[] => {
 
 type buildTweetApiUtilsArgs = {
   result: i.ItemResult;
-  promotedMetadata?: any;
+  promotedMetadata?: i.PromotedMetadata;
   reply?: i.TimelineTweet[];
 };
 export const buildTweetApiUtils = (args: buildTweetApiUtilsArgs): TweetApiUtilsData | undefined => {

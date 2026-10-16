@@ -1,6 +1,8 @@
 import * as i from 'twitter-openapi-typescript-generated';
 import { generateTransactionId } from 'x-client-transaction-id-generater';
 import {
+  BirdwatchApiUtils,
+  CommunityApiUtils,
   DefaultApiUtils,
   InitialStateApiUtils,
   PostApiUtils,
@@ -196,6 +198,14 @@ export class TwitterOpenApiClient {
     this.config = config;
     this.flag = flag;
     this.initOverrides = initOverrides;
+  }
+
+  getBirdwatchApi(): BirdwatchApiUtils {
+    return new BirdwatchApiUtils(new i.BirdwatchApi(this.config), this.flag, this.initOverrides);
+  }
+
+  getCommunityApi(): CommunityApiUtils {
+    return new CommunityApiUtils(new i.CommunityApi(this.config), this.flag, this.initOverrides);
   }
 
   getDefaultApi(): DefaultApiUtils {

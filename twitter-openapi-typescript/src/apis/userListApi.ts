@@ -91,6 +91,26 @@ type GetListByRestIdParam = {
   extraParam?: { [key: string]: any };
 };
 
+type GetListSearchTimelineParam = {
+  rawQuery: string;
+  cursor?: string;
+  count?: number;
+  extraParam?: { [key: string]: any };
+};
+
+type GetCombinedListsParam = {
+  userId: string;
+  cursor?: string;
+  count?: number;
+  extraParam?: { [key: string]: any };
+};
+
+type GetListsManagementPageTimelineParam = {
+  cursor?: string;
+  count?: number;
+  extraParam?: { [key: string]: any };
+};
+
 type ResponseType = TwitterApiUtilsResponse<TimelineApiUtilsResponse<UserApiUtilsData>>;
 type ListResponseType = TwitterApiUtilsResponse<TimelineApiUtilsResponse<i.TwitterList>>;
 
@@ -310,6 +330,61 @@ export class UserListApiUtils {
       initOverrides: this.initOverrides,
       convertFn: (e) => errorCheck(e.data, e.errors).list,
       param: args,
+    });
+  }
+
+  async getListSearchTimeline(param: GetListSearchTimelineParam): Promise<ListResponseType> {
+    const args = {
+      rawQuery: param.rawQuery,
+      ...(param.cursor == undefined ? {} : { cursor: param.cursor }),
+      ...(param.count == undefined ? {} : { count: param.count }),
+      ...param.extraParam,
+    };
+    return timelineRequest({
+      api: this.api,
+      apiFn: this.api.getListSearchTimelineRaw,
+      flag: this.flag.ListSearchTimeline,
+      initOverrides: this.initOverrides,
+      convertFn: (e) => errorCheck(e.data.searchByRawQuery.listSearchTimeline.timeline, e.errors).instructions,
+      param: args,
+      itemsFn: listEntriesConverter,
+    });
+  }
+
+  // Lists a user owns or follows.
+  async getCombinedLists(param: GetCombinedListsParam): Promise<ListResponseType> {
+    const args = {
+      userId: param.userId,
+      ...(param.cursor == undefined ? {} : { cursor: param.cursor }),
+      ...(param.count == undefined ? {} : { count: param.count }),
+      ...param.extraParam,
+    };
+    return timelineRequest({
+      api: this.api,
+      apiFn: this.api.getCombinedListsRaw,
+      flag: this.flag.CombinedLists,
+      initOverrides: this.initOverrides,
+      convertFn: (e) => errorCheck(e.data.user?.result.timeline.timeline, e.errors).instructions,
+      param: args,
+      itemsFn: listEntriesConverter,
+    });
+  }
+
+  // The account's lists management page.
+  async getListsManagementPageTimeline(param: GetListsManagementPageTimelineParam = {}): Promise<ListResponseType> {
+    const args = {
+      ...(param.cursor == undefined ? {} : { cursor: param.cursor }),
+      ...(param.count == undefined ? {} : { count: param.count }),
+      ...param.extraParam,
+    };
+    return timelineRequest({
+      api: this.api,
+      apiFn: this.api.getListsManagementPageTimelineRaw,
+      flag: this.flag.ListsManagementPageTimeline,
+      initOverrides: this.initOverrides,
+      convertFn: (e) => errorCheck(e.data.viewer.listManagementTimeline.timeline, e.errors).instructions,
+      param: args,
+      itemsFn: listEntriesConverter,
     });
   }
 }

@@ -96,3 +96,27 @@ test('getListByRestId', async () => {
   logger.log(`${response.data.name}: ${response.data.memberCount} members`);
   expect(response.raw.response.ok).toBe(true);
 });
+
+test('getListSearchTimeline', async () => {
+  logger.log('getListSearchTimeline');
+  const client = await getClient();
+  const response = await client.getUserListApi().getListSearchTimeline({ rawQuery: 'test' });
+  response.data.data.forEach((e) => logger.log(e.name));
+  expect(response.raw.response.ok).toBe(true);
+});
+
+test('getCombinedLists', async () => {
+  logger.log('getCombinedLists');
+  const client = await getClient();
+  const response = await client.getUserListApi().getCombinedLists({ userId: '44196397' });
+  response.data.data.forEach((e) => logger.log(e.name));
+  expect(response.raw.response.ok).toBe(true);
+});
+
+test('getListsManagementPageTimeline', async () => {
+  logger.log('getListsManagementPageTimeline');
+  const client = await getClient();
+  const response = await client.getUserListApi().getListsManagementPageTimeline();
+  response.data.data.forEach((e) => logger.log(e.name));
+  expect(response.raw.response.ok).toBe(true);
+});

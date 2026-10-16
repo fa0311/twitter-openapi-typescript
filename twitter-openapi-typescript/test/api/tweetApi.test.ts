@@ -190,3 +190,19 @@ test('getConnectTabTimeline', async () => {
   response.data.data.forEach((e) => printUser(e));
   expect(response.raw.response.ok).toBe(true);
 });
+
+test('getBookmarkSearchTimeline', async () => {
+  logger.log('getBookmarkSearchTimeline');
+  const client = await getClient();
+  const response = await client.getTweetApi().getBookmarkSearchTimeline({ rawQuery: 'test' });
+  response.data.data.forEach((e) => printTweet(e));
+  expect(response.raw.response.ok).toBe(true);
+});
+
+test('getExploreSidebar', async () => {
+  logger.log('getExploreSidebar');
+  const client = await getClient();
+  const response = await client.getTweetApi().getExploreSidebar();
+  response.data.data.forEach((e) => logger.log(e.name));
+  expect(response.raw.response.ok).toBe(true);
+});

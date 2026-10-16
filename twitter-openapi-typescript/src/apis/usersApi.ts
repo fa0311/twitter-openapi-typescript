@@ -1,8 +1,13 @@
 import type * as i from 'twitter-openapi-typescript-generated';
 import type { DefaultFlag, RequestParam, TwitterApiUtilsResponse, UserApiUtilsData } from '@/models';
-import { buildHeader, errorCheck, getKwargs, type InitOverridesType, userResultConverter } from '@/utils';
+import { buildHeader, dataRequest, errorCheck, getKwargs, type InitOverridesType, userResultConverter } from '@/utils';
 
 type getUsersByRestIdsParam = {
+  userIds: string[];
+  extraParam?: { [key: string]: any };
+};
+
+type getUsersVerifiedAvatarsParam = {
   userIds: string[];
   extraParam?: { [key: string]: any };
 };
@@ -45,5 +50,23 @@ export class UsersApiUtils {
       param: args,
     });
     return response;
+  }
+
+  // Partial users (avatar shape, verification) for the given ids.
+  async getUsersVerifiedAvatars(
+    param: getUsersVerifiedAvatarsParam,
+  ): Promise<TwitterApiUtilsResponse<i.VerifiedAvatarUser[]>> {
+    const args = {
+      userIds: param.userIds,
+      ...param.extraParam,
+    };
+    return dataRequest({
+      api: this.api,
+      apiFn: this.api.getUsersVerifiedAvatarsRaw,
+      flag: this.flag.UsersVerifiedAvatars,
+      initOverrides: this.initOverrides,
+      convertFn: (e) => e.data.usersResults.map((x) => x.result),
+      param: args,
+    });
   }
 }

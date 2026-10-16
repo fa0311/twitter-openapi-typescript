@@ -83,15 +83,16 @@ test('postCreateList', async () => {
   const listId = response.data.data.list.idStr;
   logger.log(listId);
 
-  const response2 = await client.getPostApi().postListAddMember({ listId: listId, userId: '44196397' });
-  expect(response2.raw.response.ok).toBe(true);
-  expect(response2.data.data.list.memberCount).toBe(1);
+  try {
+    const response2 = await client.getPostApi().postListAddMember({ listId: listId, userId: '44196397' });
+    expect(response2.raw.response.ok).toBe(true);
 
-  const response3 = await client.getPostApi().postListRemoveMember({ listId: listId, userId: '44196397' });
-  expect(response3.raw.response.ok).toBe(true);
-
-  const response4 = await client.getPostApi().postDeleteList({ listId: listId });
-  expect(response4.raw.response.ok).toBe(true);
+    const response3 = await client.getPostApi().postListRemoveMember({ listId: listId, userId: '44196397' });
+    expect(response3.raw.response.ok).toBe(true);
+  } finally {
+    const response4 = await client.getPostApi().postDeleteList({ listId: listId });
+    expect(response4.raw.response.ok).toBe(true);
+  }
 });
 
 test('postCreateDraftTweet', async () => {

@@ -160,6 +160,17 @@ type GetConnectTabTimelineParam = {
   extraParam?: { [key: string]: any };
 };
 
+type GetBookmarkSearchTimelineParam = {
+  rawQuery: string;
+  cursor?: string;
+  count?: number;
+  extraParam?: { [key: string]: any };
+};
+
+type GetExploreSidebarParam = {
+  extraParam?: { [key: string]: any };
+};
+
 type ResponseType = TwitterApiUtilsResponse<TimelineApiUtilsResponse<TweetApiUtilsData>>;
 type UserResponseType = TwitterApiUtilsResponse<TimelineApiUtilsResponse<UserApiUtilsData>>;
 type TrendResponseType = TwitterApiUtilsResponse<TimelineApiUtilsResponse<i.TimelineTrend>>;
@@ -597,6 +608,39 @@ export class TweetApiUtils {
       convertFn: (e) => errorCheck(e.data.connectTabTimeline.timeline, e.errors).instructions,
       param: args,
       itemsFn: (entry) => userResultConverter(userEntriesConverter(entry)),
+    });
+  }
+
+  // Search the account's bookmarks.
+  async getBookmarkSearchTimeline(param: GetBookmarkSearchTimelineParam): Promise<ResponseType> {
+    const args = {
+      rawQuery: param.rawQuery,
+      ...(param.cursor == undefined ? {} : { cursor: param.cursor }),
+      ...(param.count == undefined ? {} : { count: param.count }),
+      ...param.extraParam,
+    };
+    const response = await this.request({
+      apiFn: this.api.getBookmarkSearchTimelineRaw,
+      convertFn: (e) => errorCheck(e.data.searchByRawQuery.bookmarksSearchTimeline.timeline, e.errors).instructions,
+      key: 'BookmarkSearchTimeline',
+      param: args,
+    });
+    return response;
+  }
+
+  // Trends of the explore sidebar.
+  async getExploreSidebar(param: GetExploreSidebarParam = {}): Promise<TrendResponseType> {
+    const args = {
+      ...param.extraParam,
+    };
+    return timelineRequest({
+      api: this.api,
+      apiFn: this.api.getExploreSidebarRaw,
+      flag: this.flag.ExploreSidebar,
+      initOverrides: this.initOverrides,
+      convertFn: (e) => errorCheck(e.data.exploreSidebar.timeline, e.errors).instructions,
+      param: args,
+      itemsFn: trendEntriesConverter,
     });
   }
 }

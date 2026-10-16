@@ -1,5 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
+export * from './BirdwatchApi';
+export * from './CommunityApi';
 export * from './DefaultApi';
 export * from './OtherApi';
 export * from './PostApi';

@@ -23,6 +23,7 @@ export const TypeName = {
     TimelineFrame: 'TimelineFrame',
     TimelineTwitterList: 'TimelineTwitterList',
     TimelineLabel: 'TimelineLabel',
+    TimelineEventSummary: 'TimelineEventSummary',
     TimelineTimelineItem: 'TimelineTimelineItem',
     TimelineUser: 'TimelineUser',
     TimelineTimelineCursor: 'TimelineTimelineCursor',
@@ -55,6 +56,8 @@ export const TypeName = {
     ApiImage: 'ApiImage',
     ApiMedia: 'ApiMedia',
     CommunityUserDefaultModerationState: 'CommunityUserDefaultModerationState',
+    CommunityHashtagSlice: 'CommunityHashtagSlice',
+    CommunityListMembersAction: 'CommunityListMembersAction',
     CtaLimitedActionPrompt: 'CtaLimitedActionPrompt',
     TimelineRichTextUser: 'TimelineRichTextUser',
 } as const;

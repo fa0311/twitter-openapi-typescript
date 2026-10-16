@@ -1,4 +1,4 @@
-# twitter-openapi-typescript-generated@0.1.1
+# twitter-openapi-typescript-generated@0.1.2
 
 A TypeScript SDK client for the x.com API.
 
@@ -16,9 +16,9 @@ Next, try it out.
 ```ts
 import {
   Configuration,
-  DefaultApi,
+  BirdwatchApi,
 } from 'twitter-openapi-typescript-generated';
-import type { GetProfileSpotlightsQueryRequest } from 'twitter-openapi-typescript-generated';
+import type { GetBirdwatchFetchAliasSelfSelectStatusRequest } from 'twitter-openapi-typescript-generated';
 
 async function example() {
   console.log("🚀 Testing twitter-openapi-typescript-generated SDK...");
@@ -70,19 +70,17 @@ async function example() {
     // To configure API key authorization: AcceptEncoding
     apiKey: "YOUR API KEY",
   });
-  const api = new DefaultApi(config);
+  const api = new BirdwatchApi(config);
 
   const body = {
     // string
-    pathQueryId: mzoqrVGwk-YTSGME1dRfXQ,
+    pathQueryId: LUEdtkcpBlGktUtms4BvwA,
     // string
-    variables: {"screen_name": "elonmusk"},
-    // string
-    features: {},
-  } satisfies GetProfileSpotlightsQueryRequest;
+    variables: {},
+  } satisfies GetBirdwatchFetchAliasSelfSelectStatusRequest;
 
   try {
-    const data = await api.getProfileSpotlightsQuery(body);
+    const data = await api.getBirdwatchFetchAliasSelfSelectStatus(body);
     console.log(data);
   } catch (error) {
     console.error(error);
@@ -102,6 +100,22 @@ All URIs are relative to *https://x.com/i/api*
 
 | Class | Method | HTTP request | Description
 | ----- | ------ | ------------ | -------------
+*BirdwatchApi* | [**getBirdwatchFetchAliasSelfSelectStatus**](docs/BirdwatchApi.md#getbirdwatchfetchaliasselfselectstatus) | **GET** /graphql/{pathQueryId}/BirdwatchFetchAliasSelfSelectStatus | 
+*BirdwatchApi* | [**getBirdwatchFetchAuthenticatedUserProfile**](docs/BirdwatchApi.md#getbirdwatchfetchauthenticateduserprofile) | **GET** /graphql/{pathQueryId}/BirdwatchFetchAuthenticatedUserProfile | 
+*BirdwatchApi* | [**getBirdwatchFetchBirdwatchProfile**](docs/BirdwatchApi.md#getbirdwatchfetchbirdwatchprofile) | **GET** /graphql/{pathQueryId}/BirdwatchFetchBirdwatchProfile | 
+*BirdwatchApi* | [**getBirdwatchFetchGlobalTimeline**](docs/BirdwatchApi.md#getbirdwatchfetchglobaltimeline) | **GET** /graphql/{pathQueryId}/BirdwatchFetchGlobalTimeline | 
+*BirdwatchApi* | [**getBirdwatchFetchPublicData**](docs/BirdwatchApi.md#getbirdwatchfetchpublicdata) | **GET** /graphql/{pathQueryId}/BirdwatchFetchPublicData | 
+*CommunityApi* | [**getCommunitiesFetchOneQuery**](docs/CommunityApi.md#getcommunitiesfetchonequery) | **GET** /graphql/{pathQueryId}/CommunitiesFetchOneQuery | 
+*CommunityApi* | [**getCommunitiesSearchQuery**](docs/CommunityApi.md#getcommunitiessearchquery) | **GET** /graphql/{pathQueryId}/CommunitiesSearchQuery | 
+*CommunityApi* | [**getCommunityQuery**](docs/CommunityApi.md#getcommunityquery) | **GET** /graphql/{pathQueryId}/CommunityQuery | 
+*CommunityApi* | [**getGlobalCommunitiesLatestPostSearchTimeline**](docs/CommunityApi.md#getglobalcommunitieslatestpostsearchtimeline) | **GET** /graphql/{pathQueryId}/GlobalCommunitiesLatestPostSearchTimeline | 
+*CommunityApi* | [**getGlobalCommunitiesPostSearchTimeline**](docs/CommunityApi.md#getglobalcommunitiespostsearchtimeline) | **GET** /graphql/{pathQueryId}/GlobalCommunitiesPostSearchTimeline | 
+*CommunityApi* | [**getTopicCarouselQuery**](docs/CommunityApi.md#gettopiccarouselquery) | **GET** /graphql/{pathQueryId}/TopicCarouselQuery | 
+*DefaultApi* | [**getAuthenticatePeriscope**](docs/DefaultApi.md#getauthenticateperiscope) | **GET** /graphql/{pathQueryId}/AuthenticatePeriscope | 
+*DefaultApi* | [**getCreatorStudioTabBarItemQuery**](docs/DefaultApi.md#getcreatorstudiotabbaritemquery) | **GET** /graphql/{pathQueryId}/CreatorStudioTabBarItemQuery | 
+*DefaultApi* | [**getDataSaverMode**](docs/DefaultApi.md#getdatasavermode) | **GET** /graphql/{pathQueryId}/DataSaverMode | 
+*DefaultApi* | [**getGrokHome**](docs/DefaultApi.md#getgrokhome) | **GET** /graphql/{pathQueryId}/GrokHome | 
+*DefaultApi* | [**getPinnedTimelines**](docs/DefaultApi.md#getpinnedtimelines) | **GET** /graphql/{pathQueryId}/PinnedTimelines | 
 *DefaultApi* | [**getProfileSpotlightsQuery**](docs/DefaultApi.md#getprofilespotlightsquery) | **GET** /graphql/{pathQueryId}/ProfileSpotlightsQuery | 
 *DefaultApi* | [**getTweetResultByRestId**](docs/DefaultApi.md#gettweetresultbyrestid) | **GET** /graphql/{pathQueryId}/TweetResultByRestId | 
 *OtherApi* | [**other**](docs/OtherApi.md#other) | **GET** /other | 
@@ -119,6 +133,7 @@ All URIs are relative to *https://x.com/i/api*
 *PostApi* | [**postListAddMember**](docs/PostApi.md#postlistaddmemberoperation) | **POST** /graphql/{pathQueryId}/ListAddMember | 
 *PostApi* | [**postListRemoveMember**](docs/PostApi.md#postlistremovememberoperation) | **POST** /graphql/{pathQueryId}/ListRemoveMember | 
 *PostApi* | [**postUnfavoriteTweet**](docs/PostApi.md#postunfavoritetweetoperation) | **POST** /graphql/{pathQueryId}/UnfavoriteTweet | 
+*TweetApi* | [**getBookmarkSearchTimeline**](docs/TweetApi.md#getbookmarksearchtimeline) | **GET** /graphql/{pathQueryId}/BookmarkSearchTimeline | 
 *TweetApi* | [**getBookmarks**](docs/TweetApi.md#getbookmarks) | **GET** /graphql/{pathQueryId}/Bookmarks | 
 *TweetApi* | [**getCommunityAboutTimeline**](docs/TweetApi.md#getcommunityabouttimeline) | **GET** /graphql/{pathQueryId}/CommunityAboutTimeline | 
 *TweetApi* | [**getCommunityDiscoveryTimeline**](docs/TweetApi.md#getcommunitydiscoverytimeline) | **GET** /graphql/{pathQueryId}/CommunityDiscoveryTimeline | 
@@ -126,6 +141,7 @@ All URIs are relative to *https://x.com/i/api*
 *TweetApi* | [**getCommunityTweetsTimeline**](docs/TweetApi.md#getcommunitytweetstimeline) | **GET** /graphql/{pathQueryId}/CommunityTweetsTimeline | 
 *TweetApi* | [**getConnectTabTimeline**](docs/TweetApi.md#getconnecttabtimeline) | **GET** /graphql/{pathQueryId}/ConnectTabTimeline | 
 *TweetApi* | [**getExplorePage**](docs/TweetApi.md#getexplorepage) | **GET** /graphql/{pathQueryId}/ExplorePage | 
+*TweetApi* | [**getExploreSidebar**](docs/TweetApi.md#getexploresidebar) | **GET** /graphql/{pathQueryId}/ExploreSidebar | 
 *TweetApi* | [**getGenericTimelineById**](docs/TweetApi.md#getgenerictimelinebyid) | **GET** /graphql/{pathQueryId}/GenericTimelineById | 
 *TweetApi* | [**getHomeLatestTimeline**](docs/TweetApi.md#gethomelatesttimeline) | **GET** /graphql/{pathQueryId}/HomeLatestTimeline | 
 *TweetApi* | [**getHomeTimeline**](docs/TweetApi.md#gethometimeline) | **GET** /graphql/{pathQueryId}/HomeTimeline | 
@@ -149,6 +165,7 @@ All URIs are relative to *https://x.com/i/api*
 *UserApi* | [**getUserByScreenName**](docs/UserApi.md#getuserbyscreenname) | **GET** /graphql/{pathQueryId}/UserByScreenName | 
 *UserApi* | [**getViewerBadgeCounts**](docs/UserApi.md#getviewerbadgecounts) | **GET** /graphql/{pathQueryId}/ViewerBadgeCounts | 
 *UserListApi* | [**getBlueVerifiedFollowers**](docs/UserListApi.md#getblueverifiedfollowers) | **GET** /graphql/{pathQueryId}/BlueVerifiedFollowers | 
+*UserListApi* | [**getCombinedLists**](docs/UserListApi.md#getcombinedlists) | **GET** /graphql/{pathQueryId}/CombinedLists | 
 *UserListApi* | [**getFavoriters**](docs/UserListApi.md#getfavoriters) | **GET** /graphql/{pathQueryId}/Favoriters | 
 *UserListApi* | [**getFollowers**](docs/UserListApi.md#getfollowers) | **GET** /graphql/{pathQueryId}/Followers | 
 *UserListApi* | [**getFollowersYouKnow**](docs/UserListApi.md#getfollowersyouknow) | **GET** /graphql/{pathQueryId}/FollowersYouKnow | 
@@ -158,9 +175,12 @@ All URIs are relative to *https://x.com/i/api*
 *UserListApi* | [**getListEditRecommendedUsers**](docs/UserListApi.md#getlisteditrecommendedusers) | **GET** /graphql/{pathQueryId}/ListEditRecommendedUsers | 
 *UserListApi* | [**getListMembers**](docs/UserListApi.md#getlistmembers) | **GET** /graphql/{pathQueryId}/ListMembers | 
 *UserListApi* | [**getListOwnerships**](docs/UserListApi.md#getlistownerships) | **GET** /graphql/{pathQueryId}/ListOwnerships | 
+*UserListApi* | [**getListSearchTimeline**](docs/UserListApi.md#getlistsearchtimeline) | **GET** /graphql/{pathQueryId}/ListSearchTimeline | 
 *UserListApi* | [**getListSubscribers**](docs/UserListApi.md#getlistsubscribers) | **GET** /graphql/{pathQueryId}/ListSubscribers | 
+*UserListApi* | [**getListsManagementPageTimeline**](docs/UserListApi.md#getlistsmanagementpagetimeline) | **GET** /graphql/{pathQueryId}/ListsManagementPageTimeline | 
 *UserListApi* | [**getRetweeters**](docs/UserListApi.md#getretweeters) | **GET** /graphql/{pathQueryId}/Retweeters | 
 *UsersApi* | [**getUsersByRestIds**](docs/UsersApi.md#getusersbyrestids) | **GET** /graphql/{pathQueryId}/UsersByRestIds | 
+*UsersApi* | [**getUsersVerifiedAvatars**](docs/UsersApi.md#getusersverifiedavatars) | **GET** /graphql/{pathQueryId}/UsersVerifiedAvatars | 
 *V11GetApi* | [**getFriendsFollowingList**](docs/V11GetApi.md#getfriendsfollowinglist) | **GET** /1.1/friends/following/list.json | 
 *V11GetApi* | [**getSearchTypeahead**](docs/V11GetApi.md#getsearchtypeahead) | **GET** /1.1/search/typeahead.json | 
 *V11PostApi* | [**postCreateFriendships**](docs/V11PostApi.md#postcreatefriendships) | **POST** /1.1/friendships/create.json | 
@@ -190,15 +210,38 @@ All URIs are relative to *https://x.com/i/api*
 - [ArticlePreview](docs/ArticlePreview.md)
 - [ArticleResult](docs/ArticleResult.md)
 - [ArticleResults](docs/ArticleResults.md)
+- [AuthenticatePeriscopeResponse](docs/AuthenticatePeriscopeResponse.md)
+- [AuthenticatePeriscopeResponseData](docs/AuthenticatePeriscopeResponseData.md)
 - [AuthorCommunityRelationship](docs/AuthorCommunityRelationship.md)
 - [BadgeCounts](docs/BadgeCounts.md)
+- [BirdwatchAliasSelfSelectStatus](docs/BirdwatchAliasSelfSelectStatus.md)
 - [BirdwatchEntity](docs/BirdwatchEntity.md)
 - [BirdwatchEntityRef](docs/BirdwatchEntityRef.md)
+- [BirdwatchFetchAliasSelfSelectStatusResponse](docs/BirdwatchFetchAliasSelfSelectStatusResponse.md)
+- [BirdwatchFetchAliasSelfSelectStatusResponseData](docs/BirdwatchFetchAliasSelfSelectStatusResponseData.md)
+- [BirdwatchFetchAuthenticatedUserProfileResponse](docs/BirdwatchFetchAuthenticatedUserProfileResponse.md)
+- [BirdwatchFetchAuthenticatedUserProfileResponseData](docs/BirdwatchFetchAuthenticatedUserProfileResponseData.md)
+- [BirdwatchFetchBirdwatchProfileResponse](docs/BirdwatchFetchBirdwatchProfileResponse.md)
+- [BirdwatchFetchBirdwatchProfileResponseData](docs/BirdwatchFetchBirdwatchProfileResponseData.md)
+- [BirdwatchFetchGlobalTimelineResponse](docs/BirdwatchFetchGlobalTimelineResponse.md)
+- [BirdwatchFetchGlobalTimelineResponseData](docs/BirdwatchFetchGlobalTimelineResponseData.md)
+- [BirdwatchFetchPublicDataResponse](docs/BirdwatchFetchPublicDataResponse.md)
+- [BirdwatchFetchPublicDataResponseData](docs/BirdwatchFetchPublicDataResponseData.md)
+- [BirdwatchHomePage](docs/BirdwatchHomePage.md)
+- [BirdwatchHomePageBody](docs/BirdwatchHomePageBody.md)
+- [BirdwatchHomeTimeline](docs/BirdwatchHomeTimeline.md)
 - [BirdwatchPivot](docs/BirdwatchPivot.md)
 - [BirdwatchPivotCallToAction](docs/BirdwatchPivotCallToAction.md)
 - [BirdwatchPivotFooter](docs/BirdwatchPivotFooter.md)
 - [BirdwatchPivotNote](docs/BirdwatchPivotNote.md)
 - [BirdwatchPivotSubtitle](docs/BirdwatchPivotSubtitle.md)
+- [BirdwatchProfile](docs/BirdwatchProfile.md)
+- [BirdwatchPublicDataFile](docs/BirdwatchPublicDataFile.md)
+- [BirdwatchPublicDataFileBundle](docs/BirdwatchPublicDataFileBundle.md)
+- [BirdwatchViewer](docs/BirdwatchViewer.md)
+- [BookmarkSearch](docs/BookmarkSearch.md)
+- [BookmarkSearchTimelineResponse](docs/BookmarkSearchTimelineResponse.md)
+- [BookmarkSearchTimelineResponseData](docs/BookmarkSearchTimelineResponseData.md)
 - [BookmarksResponse](docs/BookmarksResponse.md)
 - [BookmarksResponseData](docs/BookmarksResponseData.md)
 - [BookmarksTimeline](docs/BookmarksTimeline.md)
@@ -209,6 +252,11 @@ All URIs are relative to *https://x.com/i/api*
 - [ClientEventInfo](docs/ClientEventInfo.md)
 - [ClientEventInfoDetails](docs/ClientEventInfoDetails.md)
 - [CommunitiesActions](docs/CommunitiesActions.md)
+- [CommunitiesFetchOneQueryResponse](docs/CommunitiesFetchOneQueryResponse.md)
+- [CommunitiesFetchOneQueryResponseData](docs/CommunitiesFetchOneQueryResponseData.md)
+- [CommunitiesSearchQueryResponse](docs/CommunitiesSearchQueryResponse.md)
+- [CommunitiesSearchQueryResponseData](docs/CommunitiesSearchQueryResponseData.md)
+- [CommunitiesSearchSlice](docs/CommunitiesSearchSlice.md)
 - [Community](docs/Community.md)
 - [CommunityAboutTimelineResponse](docs/CommunityAboutTimelineResponse.md)
 - [CommunityActions](docs/CommunityActions.md)
@@ -218,18 +266,49 @@ All URIs are relative to *https://x.com/i/api*
 - [CommunityDiscoveryTimelineResponse](docs/CommunityDiscoveryTimelineResponse.md)
 - [CommunityDiscoveryTimelineResponseData](docs/CommunityDiscoveryTimelineResponseData.md)
 - [CommunityDiscoveryTimelineViewer](docs/CommunityDiscoveryTimelineViewer.md)
+- [CommunityFacepileUser](docs/CommunityFacepileUser.md)
+- [CommunityFacepileUserResults](docs/CommunityFacepileUserResults.md)
+- [CommunityHashtag](docs/CommunityHashtag.md)
+- [CommunityHashtagSlice](docs/CommunityHashtagSlice.md)
+- [CommunityIdUserResults](docs/CommunityIdUserResults.md)
 - [CommunityInvitesResult](docs/CommunityInvitesResult.md)
 - [CommunityJoinAction](docs/CommunityJoinAction.md)
 - [CommunityJoinActionResultUnion](docs/CommunityJoinActionResultUnion.md)
 - [CommunityJoinActionUnavailable](docs/CommunityJoinActionUnavailable.md)
 - [CommunityJoinRequestsResult](docs/CommunityJoinRequestsResult.md)
 - [CommunityLeaveActionResult](docs/CommunityLeaveActionResult.md)
+- [CommunityListMembersActionResult](docs/CommunityListMembersActionResult.md)
 - [CommunityMediaTimelineResponse](docs/CommunityMediaTimelineResponse.md)
 - [CommunityModerationState](docs/CommunityModerationState.md)
+- [CommunityPageActions](docs/CommunityPageActions.md)
+- [CommunityPageCommunity](docs/CommunityPageCommunity.md)
+- [CommunityPageDeleteActionResult](docs/CommunityPageDeleteActionResult.md)
+- [CommunityPageInvitesResult](docs/CommunityPageInvitesResult.md)
+- [CommunityPageJoinActionResult](docs/CommunityPageJoinActionResult.md)
+- [CommunityPageLeaveActionResult](docs/CommunityPageLeaveActionResult.md)
+- [CommunityPagePinActionResult](docs/CommunityPagePinActionResult.md)
+- [CommunityPageResults](docs/CommunityPageResults.md)
 - [CommunityPinActionResult](docs/CommunityPinActionResult.md)
+- [CommunityPrimaryTopicName](docs/CommunityPrimaryTopicName.md)
+- [CommunityQueryResponse](docs/CommunityQueryResponse.md)
+- [CommunityQueryResponseData](docs/CommunityQueryResponseData.md)
 - [CommunityRelationship](docs/CommunityRelationship.md)
+- [CommunityRelayRule](docs/CommunityRelayRule.md)
 - [CommunityResult](docs/CommunityResult.md)
 - [CommunityRule](docs/CommunityRule.md)
+- [CommunitySearchCommunity](docs/CommunitySearchCommunity.md)
+- [CommunitySearchResults](docs/CommunitySearchResults.md)
+- [CommunitySettingsActions](docs/CommunitySettingsActions.md)
+- [CommunitySettingsCommunity](docs/CommunitySettingsCommunity.md)
+- [CommunitySettingsCreator](docs/CommunitySettingsCreator.md)
+- [CommunitySettingsCreatorCore](docs/CommunitySettingsCreatorCore.md)
+- [CommunitySettingsCreatorResults](docs/CommunitySettingsCreatorResults.md)
+- [CommunitySettingsCreatorVerification](docs/CommunitySettingsCreatorVerification.md)
+- [CommunitySettingsInvitesResult](docs/CommunitySettingsInvitesResult.md)
+- [CommunitySettingsResults](docs/CommunitySettingsResults.md)
+- [CommunitySubtopic](docs/CommunitySubtopic.md)
+- [CommunityTopic](docs/CommunityTopic.md)
+- [CommunityTopicResults](docs/CommunityTopicResults.md)
 - [CommunityTweetsTimelineResponse](docs/CommunityTweetsTimelineResponse.md)
 - [CommunityUnavailable](docs/CommunityUnavailable.md)
 - [CommunityUnion](docs/CommunityUnion.md)
@@ -265,10 +344,14 @@ All URIs are relative to *https://x.com/i/api*
 - [CreateTweetResponse](docs/CreateTweetResponse.md)
 - [CreateTweetResponseData](docs/CreateTweetResponseData.md)
 - [CreateTweetResponseResult](docs/CreateTweetResponseResult.md)
+- [CreatorStudioTabBarItemQueryResponse](docs/CreatorStudioTabBarItemQueryResponse.md)
+- [CreatorStudioTabBarItemQueryResponseData](docs/CreatorStudioTabBarItemQueryResponseData.md)
 - [CtaClientEventInfo](docs/CtaClientEventInfo.md)
 - [CtaLimitedActionPrompt](docs/CtaLimitedActionPrompt.md)
 - [CtaLimitedActionPromptText](docs/CtaLimitedActionPromptText.md)
 - [CursorType](docs/CursorType.md)
+- [DataSaverModeResponse](docs/DataSaverModeResponse.md)
+- [DataSaverModeResponseData](docs/DataSaverModeResponseData.md)
 - [DeepsearchHeader](docs/DeepsearchHeader.md)
 - [DeepsearchStep](docs/DeepsearchStep.md)
 - [DeepsearchWebResult](docs/DeepsearchWebResult.md)
@@ -297,10 +380,18 @@ All URIs are relative to *https://x.com/i/api*
 - [ErrorExtensions](docs/ErrorExtensions.md)
 - [ErrorResponse](docs/ErrorResponse.md)
 - [ErrorResponsePathInner](docs/ErrorResponsePathInner.md)
+- [EventSummaryAdMetadataContainer](docs/EventSummaryAdMetadataContainer.md)
+- [EventSummaryEvent](docs/EventSummaryEvent.md)
+- [EventSummaryMedia](docs/EventSummaryMedia.md)
+- [EventSummaryMediaEntity](docs/EventSummaryMediaEntity.md)
+- [EventSummaryMediaKey](docs/EventSummaryMediaKey.md)
+- [EventSummaryPromotedMetadata](docs/EventSummaryPromotedMetadata.md)
 - [ExplorePage](docs/ExplorePage.md)
 - [ExplorePageBody](docs/ExplorePageBody.md)
 - [ExplorePageResponse](docs/ExplorePageResponse.md)
 - [ExplorePageResponseData](docs/ExplorePageResponseData.md)
+- [ExploreSidebarResponse](docs/ExploreSidebarResponse.md)
+- [ExploreSidebarResponseData](docs/ExploreSidebarResponseData.md)
 - [ExploreTimeline](docs/ExploreTimeline.md)
 - [ExploreTimelineScribeConfig](docs/ExploreTimelineScribeConfig.md)
 - [ExtMediaAvailability](docs/ExtMediaAvailability.md)
@@ -322,10 +413,23 @@ All URIs are relative to *https://x.com/i/api*
 - [FollowTimeline](docs/FollowTimeline.md)
 - [GenericTimelineByIdResponse](docs/GenericTimelineByIdResponse.md)
 - [GenericTimelineByIdResponseData](docs/GenericTimelineByIdResponseData.md)
+- [GlobalCommunitiesLatestPostSearch](docs/GlobalCommunitiesLatestPostSearch.md)
+- [GlobalCommunitiesLatestPostSearchTimelineResponse](docs/GlobalCommunitiesLatestPostSearchTimelineResponse.md)
+- [GlobalCommunitiesLatestPostSearchTimelineResponseData](docs/GlobalCommunitiesLatestPostSearchTimelineResponseData.md)
+- [GlobalCommunitiesPostSearch](docs/GlobalCommunitiesPostSearch.md)
+- [GlobalCommunitiesPostSearchTimelineResponse](docs/GlobalCommunitiesPostSearchTimelineResponse.md)
+- [GlobalCommunitiesPostSearchTimelineResponseData](docs/GlobalCommunitiesPostSearchTimelineResponseData.md)
 - [GrokAnnotation](docs/GrokAnnotation.md)
 - [GrokEntity](docs/GrokEntity.md)
 - [GrokEntityRef](docs/GrokEntityRef.md)
+- [GrokHome](docs/GrokHome.md)
+- [GrokHomeLayout](docs/GrokHomeLayout.md)
+- [GrokHomeLayoutSection](docs/GrokHomeLayoutSection.md)
+- [GrokHomePrompt](docs/GrokHomePrompt.md)
+- [GrokHomeResponse](docs/GrokHomeResponse.md)
+- [GrokHomeResponseData](docs/GrokHomeResponseData.md)
 - [GrokImageAnnotation](docs/GrokImageAnnotation.md)
+- [GrokModelOption](docs/GrokModelOption.md)
 - [GrokShareAttachment](docs/GrokShareAttachment.md)
 - [GrokShareAttachmentItem](docs/GrokShareAttachmentItem.md)
 - [GrokTranslatedBio](docs/GrokTranslatedBio.md)
@@ -361,11 +465,17 @@ All URIs are relative to *https://x.com/i/api*
 - [ListRecommendedUsersResponseData](docs/ListRecommendedUsersResponseData.md)
 - [ListResponse](docs/ListResponse.md)
 - [ListResponseData](docs/ListResponseData.md)
+- [ListSearch](docs/ListSearch.md)
+- [ListSearchTimelineResponse](docs/ListSearchTimelineResponse.md)
+- [ListSearchTimelineResponseData](docs/ListSearchTimelineResponseData.md)
 - [ListSubscribersList](docs/ListSubscribersList.md)
 - [ListSubscribersResponse](docs/ListSubscribersResponse.md)
 - [ListSubscribersResponseData](docs/ListSubscribersResponseData.md)
 - [ListTweetsTimelineData](docs/ListTweetsTimelineData.md)
 - [ListTweetsTimelineList](docs/ListTweetsTimelineList.md)
+- [ListsManagementPageTimelineResponse](docs/ListsManagementPageTimelineResponse.md)
+- [ListsManagementPageTimelineResponseData](docs/ListsManagementPageTimelineResponseData.md)
+- [ListsManagementViewer](docs/ListsManagementViewer.md)
 - [Location](docs/Location.md)
 - [Media](docs/Media.md)
 - [MediaColorInfo](docs/MediaColorInfo.md)
@@ -399,6 +509,7 @@ All URIs are relative to *https://x.com/i/api*
 - [NoteTweetResultMediaInlineMedia](docs/NoteTweetResultMediaInlineMedia.md)
 - [NoteTweetResultRichText](docs/NoteTweetResultRichText.md)
 - [NoteTweetResultRichTextTag](docs/NoteTweetResultRichTextTag.md)
+- [NotificationDetails](docs/NotificationDetails.md)
 - [NotificationTemplate](docs/NotificationTemplate.md)
 - [NotificationsResult](docs/NotificationsResult.md)
 - [NotificationsTimelineData](docs/NotificationsTimelineData.md)
@@ -407,6 +518,9 @@ All URIs are relative to *https://x.com/i/api*
 - [NotificationsViewerV2](docs/NotificationsViewerV2.md)
 - [OneFactorLoginEligibility](docs/OneFactorLoginEligibility.md)
 - [OtherObjectAll](docs/OtherObjectAll.md)
+- [PinnedTimelines](docs/PinnedTimelines.md)
+- [PinnedTimelinesResponse](docs/PinnedTimelinesResponse.md)
+- [PinnedTimelinesResponseData](docs/PinnedTimelinesResponseData.md)
 - [PostCreateBookmarkRequest](docs/PostCreateBookmarkRequest.md)
 - [PostCreateBookmarkRequestVariables](docs/PostCreateBookmarkRequestVariables.md)
 - [PostCreateDraftTweetRequest](docs/PostCreateDraftTweetRequest.md)
@@ -451,6 +565,7 @@ All URIs are relative to *https://x.com/i/api*
 - [ProfileResponse](docs/ProfileResponse.md)
 - [ProfileResponseData](docs/ProfileResponseData.md)
 - [PromotedMetadata](docs/PromotedMetadata.md)
+- [PromotedTrend](docs/PromotedTrend.md)
 - [QuotedRefResult](docs/QuotedRefResult.md)
 - [QuotedStatusPermalink](docs/QuotedStatusPermalink.md)
 - [RankedCommunityResult](docs/RankedCommunityResult.md)
@@ -460,6 +575,8 @@ All URIs are relative to *https://x.com/i/api*
 - [Retweet](docs/Retweet.md)
 - [RetweetLegacy](docs/RetweetLegacy.md)
 - [RichMessage](docs/RichMessage.md)
+- [RichMessageEntity](docs/RichMessageEntity.md)
+- [RichMessageEntityRef](docs/RichMessageEntityRef.md)
 - [ScheduledTweetsViewer](docs/ScheduledTweetsViewer.md)
 - [ScribeConfig](docs/ScribeConfig.md)
 - [SearchByRawQuery](docs/SearchByRawQuery.md)
@@ -469,6 +586,7 @@ All URIs are relative to *https://x.com/i/api*
 - [SelfThread](docs/SelfThread.md)
 - [SensitiveMediaWarning](docs/SensitiveMediaWarning.md)
 - [Session](docs/Session.md)
+- [SliceInfo](docs/SliceInfo.md)
 - [Smarttag](docs/Smarttag.md)
 - [SmarttagTag](docs/SmarttagTag.md)
 - [SmarttagTagInfo](docs/SmarttagTagInfo.md)
@@ -495,6 +613,7 @@ All URIs are relative to *https://x.com/i/api*
 - [TimelineCommunity](docs/TimelineCommunity.md)
 - [TimelineCoverBehavior](docs/TimelineCoverBehavior.md)
 - [TimelineCoverBehaviorUrl](docs/TimelineCoverBehaviorUrl.md)
+- [TimelineEventSummary](docs/TimelineEventSummary.md)
 - [TimelineFrame](docs/TimelineFrame.md)
 - [TimelineGeneralContext](docs/TimelineGeneralContext.md)
 - [TimelineHalfCover](docs/TimelineHalfCover.md)
@@ -538,10 +657,13 @@ All URIs are relative to *https://x.com/i/api*
 - [TombstoneInfo](docs/TombstoneInfo.md)
 - [TombstoneRef](docs/TombstoneRef.md)
 - [TombstoneRichText](docs/TombstoneRichText.md)
+- [TopicCarouselQueryResponse](docs/TopicCarouselQueryResponse.md)
+- [TopicCarouselQueryResponseData](docs/TopicCarouselQueryResponseData.md)
 - [TopicContext](docs/TopicContext.md)
 - [Tracing](docs/Tracing.md)
 - [TrendImage](docs/TrendImage.md)
 - [TrendMetadata](docs/TrendMetadata.md)
+- [TrendPromotedMetadata](docs/TrendPromotedMetadata.md)
 - [TrendResults](docs/TrendResults.md)
 - [Tweet](docs/Tweet.md)
 - [TweetCard](docs/TweetCard.md)
@@ -659,6 +781,10 @@ All URIs are relative to *https://x.com/i/api*
 - [UserWebsite](docs/UserWebsite.md)
 - [UsersResponse](docs/UsersResponse.md)
 - [UsersResponseData](docs/UsersResponseData.md)
+- [UsersVerifiedAvatarsResponse](docs/UsersVerifiedAvatarsResponse.md)
+- [UsersVerifiedAvatarsResponseData](docs/UsersVerifiedAvatarsResponseData.md)
+- [VerifiedAvatarUser](docs/VerifiedAvatarUser.md)
+- [VerifiedAvatarUserResults](docs/VerifiedAvatarUserResults.md)
 - [ViewerBadgeCountsResponse](docs/ViewerBadgeCountsResponse.md)
 - [ViewerBadgeCountsResponseData](docs/ViewerBadgeCountsResponseData.md)
 - [ViewerBadgeCountsResult](docs/ViewerBadgeCountsResult.md)
@@ -836,7 +962,7 @@ and is automatically generated by the
 [OpenAPI Generator](https://openapi-generator.tech) project:
 
 - API version: `0.0.1`
-- Package version: `0.1.1`
+- Package version: `0.1.2`
 - Generator version: `7.26.0`
 - Build package: `org.openapitools.codegen.languages.TypeScriptFetchClientCodegen`
 

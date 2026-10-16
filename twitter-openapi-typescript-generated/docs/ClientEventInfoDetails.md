@@ -7,6 +7,7 @@
 Name | Type
 ------------ | -------------
 `conversationDetails` | [ConversationDetails](ConversationDetails.md)
+`notificationDetails` | [NotificationDetails](NotificationDetails.md)
 `timelinesDetails` | [TimelinesDetails](TimelinesDetails.md)
 
 ## Example
@@ -17,6 +18,7 @@ import type { ClientEventInfoDetails } from 'twitter-openapi-typescript-generate
 // TODO: Update the object below with actual values
 const example = {
   "conversationDetails": null,
+  "notificationDetails": null,
   "timelinesDetails": null,
 } satisfies ClientEventInfoDetails
 

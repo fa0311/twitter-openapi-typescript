@@ -4,9 +4,607 @@ All URIs are relative to *https://x.com/i/api*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
+| [**getAuthenticatePeriscope**](DefaultApi.md#getauthenticateperiscope) | **GET** /graphql/{pathQueryId}/AuthenticatePeriscope |  |
+| [**getCreatorStudioTabBarItemQuery**](DefaultApi.md#getcreatorstudiotabbaritemquery) | **GET** /graphql/{pathQueryId}/CreatorStudioTabBarItemQuery |  |
+| [**getDataSaverMode**](DefaultApi.md#getdatasavermode) | **GET** /graphql/{pathQueryId}/DataSaverMode |  |
+| [**getGrokHome**](DefaultApi.md#getgrokhome) | **GET** /graphql/{pathQueryId}/GrokHome |  |
+| [**getPinnedTimelines**](DefaultApi.md#getpinnedtimelines) | **GET** /graphql/{pathQueryId}/PinnedTimelines |  |
 | [**getProfileSpotlightsQuery**](DefaultApi.md#getprofilespotlightsquery) | **GET** /graphql/{pathQueryId}/ProfileSpotlightsQuery |  |
 | [**getTweetResultByRestId**](DefaultApi.md#gettweetresultbyrestid) | **GET** /graphql/{pathQueryId}/TweetResultByRestId |  |
 
+
+
+## getAuthenticatePeriscope
+
+> AuthenticatePeriscopeResponse getAuthenticatePeriscope(pathQueryId, variables)
+
+
+
+a Periscope (live video) token for the account
+
+### Example
+
+```ts
+import {
+  Configuration,
+  DefaultApi,
+} from 'twitter-openapi-typescript-generated';
+import type { GetAuthenticatePeriscopeRequest } from 'twitter-openapi-typescript-generated';
+
+async function example() {
+  console.log("🚀 Testing twitter-openapi-typescript-generated SDK...");
+  const config = new Configuration({ 
+    // To configure API key authorization: Accept
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: ClientLanguage
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: Priority
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: Referer
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: SecFetchDest
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: SecChUaPlatform
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: SecFetchMode
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: CsrfToken
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: ClientUuid
+    apiKey: "YOUR API KEY",
+    // Configure HTTP bearer authorization: BearerAuth
+    accessToken: "YOUR BEARER TOKEN",
+    // To configure API key authorization: GuestToken
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: SecChUa
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: CookieGt0
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: ClientTransactionId
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: ActiveUser
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: CookieCt0
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: UserAgent
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: AcceptLanguage
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: SecFetchSite
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: AuthType
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: CookieAuthToken
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: SecChUaMobile
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: AcceptEncoding
+    apiKey: "YOUR API KEY",
+  });
+  const api = new DefaultApi(config);
+
+  const body = {
+    // string
+    pathQueryId: r7VUmxbfqNkx7uwjgONSNw,
+    // string
+    variables: {},
+  } satisfies GetAuthenticatePeriscopeRequest;
+
+  try {
+    const data = await api.getAuthenticatePeriscope(body);
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Run the test
+example().catch(console.error);
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **pathQueryId** | `string` |  | [Defaults to `&#39;r7VUmxbfqNkx7uwjgONSNw&#39;`] |
+| **variables** | `string` |  | [Defaults to `&#39;{}&#39;`] |
+
+### Return type
+
+[**AuthenticatePeriscopeResponse**](AuthenticatePeriscopeResponse.md)
+
+### Authorization
+
+[Accept](../README.md#Accept), [ClientLanguage](../README.md#ClientLanguage), [Priority](../README.md#Priority), [Referer](../README.md#Referer), [SecFetchDest](../README.md#SecFetchDest), [SecChUaPlatform](../README.md#SecChUaPlatform), [SecFetchMode](../README.md#SecFetchMode), [CsrfToken](../README.md#CsrfToken), [ClientUuid](../README.md#ClientUuid), [BearerAuth](../README.md#BearerAuth), [GuestToken](../README.md#GuestToken), [SecChUa](../README.md#SecChUa), [CookieGt0](../README.md#CookieGt0), [ClientTransactionId](../README.md#ClientTransactionId), [ActiveUser](../README.md#ActiveUser), [CookieCt0](../README.md#CookieCt0), [UserAgent](../README.md#UserAgent), [AcceptLanguage](../README.md#AcceptLanguage), [SecFetchSite](../README.md#SecFetchSite), [AuthType](../README.md#AuthType), [CookieAuthToken](../README.md#CookieAuthToken), [SecChUaMobile](../README.md#SecChUaMobile), [AcceptEncoding](../README.md#AcceptEncoding)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successful operation |  * x-connection-hash -  <br>  * x-rate-limit-limit -  <br>  * x-rate-limit-remaining -  <br>  * x-rate-limit-reset -  <br>  * x-response-time -  <br>  * x-tfe-preserve-body -  <br>  * x-transaction-id -  <br>  * x-twitter-response-tags -  <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+
+
+## getCreatorStudioTabBarItemQuery
+
+> CreatorStudioTabBarItemQueryResponse getCreatorStudioTabBarItemQuery(pathQueryId, variables)
+
+
+
+audience rewards tasks shown in Creator Studio
+
+### Example
+
+```ts
+import {
+  Configuration,
+  DefaultApi,
+} from 'twitter-openapi-typescript-generated';
+import type { GetCreatorStudioTabBarItemQueryRequest } from 'twitter-openapi-typescript-generated';
+
+async function example() {
+  console.log("🚀 Testing twitter-openapi-typescript-generated SDK...");
+  const config = new Configuration({ 
+    // To configure API key authorization: Accept
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: ClientLanguage
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: Priority
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: Referer
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: SecFetchDest
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: SecChUaPlatform
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: SecFetchMode
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: CsrfToken
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: ClientUuid
+    apiKey: "YOUR API KEY",
+    // Configure HTTP bearer authorization: BearerAuth
+    accessToken: "YOUR BEARER TOKEN",
+    // To configure API key authorization: GuestToken
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: SecChUa
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: CookieGt0
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: ClientTransactionId
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: ActiveUser
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: CookieCt0
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: UserAgent
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: AcceptLanguage
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: SecFetchSite
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: AuthType
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: CookieAuthToken
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: SecChUaMobile
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: AcceptEncoding
+    apiKey: "YOUR API KEY",
+  });
+  const api = new DefaultApi(config);
+
+  const body = {
+    // string
+    pathQueryId: 1KZj_GRTxmPaSrk8jIb1Yw,
+    // string
+    variables: {},
+  } satisfies GetCreatorStudioTabBarItemQueryRequest;
+
+  try {
+    const data = await api.getCreatorStudioTabBarItemQuery(body);
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Run the test
+example().catch(console.error);
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **pathQueryId** | `string` |  | [Defaults to `&#39;1KZj_GRTxmPaSrk8jIb1Yw&#39;`] |
+| **variables** | `string` |  | [Defaults to `&#39;{}&#39;`] |
+
+### Return type
+
+[**CreatorStudioTabBarItemQueryResponse**](CreatorStudioTabBarItemQueryResponse.md)
+
+### Authorization
+
+[Accept](../README.md#Accept), [ClientLanguage](../README.md#ClientLanguage), [Priority](../README.md#Priority), [Referer](../README.md#Referer), [SecFetchDest](../README.md#SecFetchDest), [SecChUaPlatform](../README.md#SecChUaPlatform), [SecFetchMode](../README.md#SecFetchMode), [CsrfToken](../README.md#CsrfToken), [ClientUuid](../README.md#ClientUuid), [BearerAuth](../README.md#BearerAuth), [GuestToken](../README.md#GuestToken), [SecChUa](../README.md#SecChUa), [CookieGt0](../README.md#CookieGt0), [ClientTransactionId](../README.md#ClientTransactionId), [ActiveUser](../README.md#ActiveUser), [CookieCt0](../README.md#CookieCt0), [UserAgent](../README.md#UserAgent), [AcceptLanguage](../README.md#AcceptLanguage), [SecFetchSite](../README.md#SecFetchSite), [AuthType](../README.md#AuthType), [CookieAuthToken](../README.md#CookieAuthToken), [SecChUaMobile](../README.md#SecChUaMobile), [AcceptEncoding](../README.md#AcceptEncoding)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successful operation |  * x-connection-hash -  <br>  * x-rate-limit-limit -  <br>  * x-rate-limit-remaining -  <br>  * x-rate-limit-reset -  <br>  * x-response-time -  <br>  * x-tfe-preserve-body -  <br>  * x-transaction-id -  <br>  * x-twitter-response-tags -  <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+
+
+## getDataSaverMode
+
+> DataSaverModeResponse getDataSaverMode(pathQueryId, variables)
+
+
+
+data saver setting of the account
+
+### Example
+
+```ts
+import {
+  Configuration,
+  DefaultApi,
+} from 'twitter-openapi-typescript-generated';
+import type { GetDataSaverModeRequest } from 'twitter-openapi-typescript-generated';
+
+async function example() {
+  console.log("🚀 Testing twitter-openapi-typescript-generated SDK...");
+  const config = new Configuration({ 
+    // To configure API key authorization: Accept
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: ClientLanguage
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: Priority
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: Referer
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: SecFetchDest
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: SecChUaPlatform
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: SecFetchMode
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: CsrfToken
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: ClientUuid
+    apiKey: "YOUR API KEY",
+    // Configure HTTP bearer authorization: BearerAuth
+    accessToken: "YOUR BEARER TOKEN",
+    // To configure API key authorization: GuestToken
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: SecChUa
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: CookieGt0
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: ClientTransactionId
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: ActiveUser
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: CookieCt0
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: UserAgent
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: AcceptLanguage
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: SecFetchSite
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: AuthType
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: CookieAuthToken
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: SecChUaMobile
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: AcceptEncoding
+    apiKey: "YOUR API KEY",
+  });
+  const api = new DefaultApi(config);
+
+  const body = {
+    // string
+    pathQueryId: xF6sXnKJfS2AOylzxRjf6A,
+    // string
+    variables: {"device_id": "Windows/Chrome"},
+  } satisfies GetDataSaverModeRequest;
+
+  try {
+    const data = await api.getDataSaverMode(body);
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Run the test
+example().catch(console.error);
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **pathQueryId** | `string` |  | [Defaults to `&#39;xF6sXnKJfS2AOylzxRjf6A&#39;`] |
+| **variables** | `string` |  | [Defaults to `&#39;{\&quot;device_id\&quot;: \&quot;Windows/Chrome\&quot;}&#39;`] |
+
+### Return type
+
+[**DataSaverModeResponse**](DataSaverModeResponse.md)
+
+### Authorization
+
+[Accept](../README.md#Accept), [ClientLanguage](../README.md#ClientLanguage), [Priority](../README.md#Priority), [Referer](../README.md#Referer), [SecFetchDest](../README.md#SecFetchDest), [SecChUaPlatform](../README.md#SecChUaPlatform), [SecFetchMode](../README.md#SecFetchMode), [CsrfToken](../README.md#CsrfToken), [ClientUuid](../README.md#ClientUuid), [BearerAuth](../README.md#BearerAuth), [GuestToken](../README.md#GuestToken), [SecChUa](../README.md#SecChUa), [CookieGt0](../README.md#CookieGt0), [ClientTransactionId](../README.md#ClientTransactionId), [ActiveUser](../README.md#ActiveUser), [CookieCt0](../README.md#CookieCt0), [UserAgent](../README.md#UserAgent), [AcceptLanguage](../README.md#AcceptLanguage), [SecFetchSite](../README.md#SecFetchSite), [AuthType](../README.md#AuthType), [CookieAuthToken](../README.md#CookieAuthToken), [SecChUaMobile](../README.md#SecChUaMobile), [AcceptEncoding](../README.md#AcceptEncoding)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successful operation |  * x-connection-hash -  <br>  * x-rate-limit-limit -  <br>  * x-rate-limit-remaining -  <br>  * x-rate-limit-reset -  <br>  * x-response-time -  <br>  * x-tfe-preserve-body -  <br>  * x-transaction-id -  <br>  * x-twitter-response-tags -  <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+
+
+## getGrokHome
+
+> GrokHomeResponse getGrokHome(pathQueryId, variables)
+
+
+
+Grok home: model options, prompts and eligibility
+
+### Example
+
+```ts
+import {
+  Configuration,
+  DefaultApi,
+} from 'twitter-openapi-typescript-generated';
+import type { GetGrokHomeRequest } from 'twitter-openapi-typescript-generated';
+
+async function example() {
+  console.log("🚀 Testing twitter-openapi-typescript-generated SDK...");
+  const config = new Configuration({ 
+    // To configure API key authorization: Accept
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: ClientLanguage
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: Priority
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: Referer
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: SecFetchDest
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: SecChUaPlatform
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: SecFetchMode
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: CsrfToken
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: ClientUuid
+    apiKey: "YOUR API KEY",
+    // Configure HTTP bearer authorization: BearerAuth
+    accessToken: "YOUR BEARER TOKEN",
+    // To configure API key authorization: GuestToken
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: SecChUa
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: CookieGt0
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: ClientTransactionId
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: ActiveUser
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: CookieCt0
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: UserAgent
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: AcceptLanguage
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: SecFetchSite
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: AuthType
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: CookieAuthToken
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: SecChUaMobile
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: AcceptEncoding
+    apiKey: "YOUR API KEY",
+  });
+  const api = new DefaultApi(config);
+
+  const body = {
+    // string
+    pathQueryId: QAPGIKJVaPXYD-gO9kxc9w,
+    // string
+    variables: {},
+  } satisfies GetGrokHomeRequest;
+
+  try {
+    const data = await api.getGrokHome(body);
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Run the test
+example().catch(console.error);
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **pathQueryId** | `string` |  | [Defaults to `&#39;QAPGIKJVaPXYD-gO9kxc9w&#39;`] |
+| **variables** | `string` |  | [Defaults to `&#39;{}&#39;`] |
+
+### Return type
+
+[**GrokHomeResponse**](GrokHomeResponse.md)
+
+### Authorization
+
+[Accept](../README.md#Accept), [ClientLanguage](../README.md#ClientLanguage), [Priority](../README.md#Priority), [Referer](../README.md#Referer), [SecFetchDest](../README.md#SecFetchDest), [SecChUaPlatform](../README.md#SecChUaPlatform), [SecFetchMode](../README.md#SecFetchMode), [CsrfToken](../README.md#CsrfToken), [ClientUuid](../README.md#ClientUuid), [BearerAuth](../README.md#BearerAuth), [GuestToken](../README.md#GuestToken), [SecChUa](../README.md#SecChUa), [CookieGt0](../README.md#CookieGt0), [ClientTransactionId](../README.md#ClientTransactionId), [ActiveUser](../README.md#ActiveUser), [CookieCt0](../README.md#CookieCt0), [UserAgent](../README.md#UserAgent), [AcceptLanguage](../README.md#AcceptLanguage), [SecFetchSite](../README.md#SecFetchSite), [AuthType](../README.md#AuthType), [CookieAuthToken](../README.md#CookieAuthToken), [SecChUaMobile](../README.md#SecChUaMobile), [AcceptEncoding](../README.md#AcceptEncoding)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successful operation |  * x-connection-hash -  <br>  * x-rate-limit-limit -  <br>  * x-rate-limit-remaining -  <br>  * x-rate-limit-reset -  <br>  * x-response-time -  <br>  * x-tfe-preserve-body -  <br>  * x-transaction-id -  <br>  * x-twitter-response-tags -  <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+
+
+## getPinnedTimelines
+
+> PinnedTimelinesResponse getPinnedTimelines(pathQueryId, features, variables)
+
+
+
+the account\&#39;s pinned timelines
+
+### Example
+
+```ts
+import {
+  Configuration,
+  DefaultApi,
+} from 'twitter-openapi-typescript-generated';
+import type { GetPinnedTimelinesRequest } from 'twitter-openapi-typescript-generated';
+
+async function example() {
+  console.log("🚀 Testing twitter-openapi-typescript-generated SDK...");
+  const config = new Configuration({ 
+    // To configure API key authorization: Accept
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: ClientLanguage
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: Priority
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: Referer
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: SecFetchDest
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: SecChUaPlatform
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: SecFetchMode
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: CsrfToken
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: ClientUuid
+    apiKey: "YOUR API KEY",
+    // Configure HTTP bearer authorization: BearerAuth
+    accessToken: "YOUR BEARER TOKEN",
+    // To configure API key authorization: GuestToken
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: SecChUa
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: CookieGt0
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: ClientTransactionId
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: ActiveUser
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: CookieCt0
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: UserAgent
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: AcceptLanguage
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: SecFetchSite
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: AuthType
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: CookieAuthToken
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: SecChUaMobile
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: AcceptEncoding
+    apiKey: "YOUR API KEY",
+  });
+  const api = new DefaultApi(config);
+
+  const body = {
+    // string
+    pathQueryId: 8J1r9u3VjUveEdTY4WUTwQ,
+    // string
+    features: {"profile_label_improvements_pcf_label_in_post_enabled": true, "responsive_web_profile_redirect_enabled": true, "rweb_tipjar_consumption_enabled": false, "verified_phone_label_enabled": false, "responsive_web_graphql_timeline_navigation_enabled": true},
+    // string
+    variables: {},
+  } satisfies GetPinnedTimelinesRequest;
+
+  try {
+    const data = await api.getPinnedTimelines(body);
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Run the test
+example().catch(console.error);
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **pathQueryId** | `string` |  | [Defaults to `&#39;8J1r9u3VjUveEdTY4WUTwQ&#39;`] |
+| **features** | `string` |  | [Defaults to `&#39;{\&quot;profile_label_improvements_pcf_label_in_post_enabled\&quot;: true, \&quot;responsive_web_profile_redirect_enabled\&quot;: true, \&quot;rweb_tipjar_consumption_enabled\&quot;: false, \&quot;verified_phone_label_enabled\&quot;: false, \&quot;responsive_web_graphql_timeline_navigation_enabled\&quot;: true}&#39;`] |
+| **variables** | `string` |  | [Defaults to `&#39;{}&#39;`] |
+
+### Return type
+
+[**PinnedTimelinesResponse**](PinnedTimelinesResponse.md)
+
+### Authorization
+
+[Accept](../README.md#Accept), [ClientLanguage](../README.md#ClientLanguage), [Priority](../README.md#Priority), [Referer](../README.md#Referer), [SecFetchDest](../README.md#SecFetchDest), [SecChUaPlatform](../README.md#SecChUaPlatform), [SecFetchMode](../README.md#SecFetchMode), [CsrfToken](../README.md#CsrfToken), [ClientUuid](../README.md#ClientUuid), [BearerAuth](../README.md#BearerAuth), [GuestToken](../README.md#GuestToken), [SecChUa](../README.md#SecChUa), [CookieGt0](../README.md#CookieGt0), [ClientTransactionId](../README.md#ClientTransactionId), [ActiveUser](../README.md#ActiveUser), [CookieCt0](../README.md#CookieCt0), [UserAgent](../README.md#UserAgent), [AcceptLanguage](../README.md#AcceptLanguage), [SecFetchSite](../README.md#SecFetchSite), [AuthType](../README.md#AuthType), [CookieAuthToken](../README.md#CookieAuthToken), [SecChUaMobile](../README.md#SecChUaMobile), [AcceptEncoding](../README.md#AcceptEncoding)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successful operation |  * x-connection-hash -  <br>  * x-rate-limit-limit -  <br>  * x-rate-limit-remaining -  <br>  * x-rate-limit-reset -  <br>  * x-response-time -  <br>  * x-tfe-preserve-body -  <br>  * x-transaction-id -  <br>  * x-twitter-response-tags -  <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 
 ## getProfileSpotlightsQuery
@@ -82,7 +680,7 @@ async function example() {
     // string
     pathQueryId: mzoqrVGwk-YTSGME1dRfXQ,
     // string
-    variables: {"screen_name": "elonmusk"},
+    variables: {"screen_name": "ptcpz3"},
     // string
     features: {},
   } satisfies GetProfileSpotlightsQueryRequest;
@@ -105,7 +703,7 @@ example().catch(console.error);
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **pathQueryId** | `string` |  | [Defaults to `&#39;mzoqrVGwk-YTSGME1dRfXQ&#39;`] |
-| **variables** | `string` |  | [Defaults to `&#39;{\&quot;screen_name\&quot;: \&quot;elonmusk\&quot;}&#39;`] |
+| **variables** | `string` |  | [Defaults to `&#39;{\&quot;screen_name\&quot;: \&quot;ptcpz3\&quot;}&#39;`] |
 | **features** | `string` |  | [Defaults to `&#39;{}&#39;`] |
 
 ### Return type

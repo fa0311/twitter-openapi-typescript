@@ -7,11 +7,13 @@
 Name | Type
 ------------ | -------------
 `typename` | [TypeName](TypeName.md)
+`description` | string
 `groupedTrends` | [Array&lt;GroupedTrend&gt;](GroupedTrend.md)
 `images` | [Array&lt;TrendImage&gt;](TrendImage.md)
 `isAiTrend` | boolean
 `itemType` | [ContentItemType](ContentItemType.md)
 `name` | string
+`promotedMetadata` | [TrendPromotedMetadata](TrendPromotedMetadata.md)
 `rank` | string
 `socialContext` | [SocialContextUnion](SocialContextUnion.md)
 `thumbnailImage` | [ThumbnailImage](ThumbnailImage.md)
@@ -26,11 +28,13 @@ import type { TimelineTrend } from 'twitter-openapi-typescript-generated'
 // TODO: Update the object below with actual values
 const example = {
   "typename": null,
+  "description": null,
   "groupedTrends": null,
   "images": null,
   "isAiTrend": null,
   "itemType": null,
   "name": null,
+  "promotedMetadata": null,
   "rank": null,
   "socialContext": null,
   "thumbnailImage": null,

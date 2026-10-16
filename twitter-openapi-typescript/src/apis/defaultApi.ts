@@ -12,6 +12,15 @@ export type TweetResultByRestIdParam = {
   extraParam?: { [key: string]: any };
 };
 
+export type ExtraParam = {
+  extraParam?: { [key: string]: any };
+};
+
+export type DataSaverModeParam = {
+  deviceId?: string;
+  extraParam?: { [key: string]: any };
+};
+
 export class DefaultApiUtils {
   api: i.DefaultApi;
   flag: DefaultFlag;
@@ -67,5 +76,72 @@ export class DefaultApiUtils {
     });
 
     return response;
+  }
+
+  // A Periscope (live video) token for the account.
+  async getAuthenticatePeriscope(param: ExtraParam = {}): Promise<TwitterApiUtilsResponse<string>> {
+    const args = {
+      ...param.extraParam,
+    };
+    return this.request({
+      key: 'AuthenticatePeriscope',
+      apiFn: this.api.getAuthenticatePeriscopeRaw,
+      convertFn: (e) => e.data.authenticatePeriscope,
+      param: args,
+    });
+  }
+
+  async getCreatorStudioTabBarItemQuery(
+    param: ExtraParam = {},
+  ): Promise<TwitterApiUtilsResponse<i.CreatorStudioTabBarItemQueryResponseData>> {
+    const args = {
+      ...param.extraParam,
+    };
+    return this.request({
+      key: 'CreatorStudioTabBarItemQuery',
+      apiFn: this.api.getCreatorStudioTabBarItemQueryRaw,
+      convertFn: (e) => e.data,
+      param: args,
+    });
+  }
+
+  async getDataSaverMode(
+    param: DataSaverModeParam = {},
+  ): Promise<TwitterApiUtilsResponse<i.DataSaverModeResponseData>> {
+    const args = {
+      ...(param.deviceId == undefined ? {} : { device_id: param.deviceId }),
+      ...param.extraParam,
+    };
+    return this.request({
+      key: 'DataSaverMode',
+      apiFn: this.api.getDataSaverModeRaw,
+      convertFn: (e) => e.data,
+      param: args,
+    });
+  }
+
+  // Grok model options, prompts and eligibility.
+  async getGrokHome(param: ExtraParam = {}): Promise<TwitterApiUtilsResponse<i.GrokHome>> {
+    const args = {
+      ...param.extraParam,
+    };
+    return this.request({
+      key: 'GrokHome',
+      apiFn: this.api.getGrokHomeRaw,
+      convertFn: (e) => e.data.grokHome,
+      param: args,
+    });
+  }
+
+  async getPinnedTimelines(param: ExtraParam = {}): Promise<TwitterApiUtilsResponse<i.PinnedTimelines>> {
+    const args = {
+      ...param.extraParam,
+    };
+    return this.request({
+      key: 'PinnedTimelines',
+      apiFn: this.api.getPinnedTimelinesRaw,
+      convertFn: (e) => e.data.pinnedTimelines,
+      param: args,
+    });
   }
 }

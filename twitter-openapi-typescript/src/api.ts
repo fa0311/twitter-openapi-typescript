@@ -1,6 +1,8 @@
 import * as i from 'twitter-openapi-typescript-generated';
 import { generateTransactionId } from 'x-client-transaction-id-generater';
 import {
+  BirdwatchApiUtils,
+  CommunityApiUtils,
   DefaultApiUtils,
   InitialStateApiUtils,
   PostApiUtils,
@@ -16,7 +18,7 @@ import { UsersApiUtils } from './apis/usersApi';
 import type { InitOverridesType } from './utils';
 
 export class TwitterOpenApi {
-  static hash = 'ec7d907e12cfaca5b93dde55522dcc6045457570';
+  static hash = '127fa210d7f9b0252276c86a1860a7db816d9d69';
   static url = `https://raw.githubusercontent.com/fa0311/twitter-openapi/${this.hash}/src/config/placeholder.json`;
   static header = 'https://raw.githubusercontent.com/fa0311/latest-user-agent/refs/heads/main/header.json';
   static twitter = 'https://x.com/home';
@@ -196,6 +198,14 @@ export class TwitterOpenApiClient {
     this.config = config;
     this.flag = flag;
     this.initOverrides = initOverrides;
+  }
+
+  getBirdwatchApi(): BirdwatchApiUtils {
+    return new BirdwatchApiUtils(new i.BirdwatchApi(this.config), this.flag, this.initOverrides);
+  }
+
+  getCommunityApi(): CommunityApiUtils {
+    return new CommunityApiUtils(new i.CommunityApi(this.config), this.flag, this.initOverrides);
   }
 
   getDefaultApi(): DefaultApiUtils {

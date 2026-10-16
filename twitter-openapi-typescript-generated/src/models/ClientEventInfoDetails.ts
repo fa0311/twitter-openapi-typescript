@@ -20,6 +20,13 @@ import {
     TimelinesDetailsToJSON,
     TimelinesDetailsToJSONTyped,
 } from './TimelinesDetails';
+import type { NotificationDetails } from './NotificationDetails';
+import {
+    NotificationDetailsFromJSON,
+    NotificationDetailsFromJSONTyped,
+    NotificationDetailsToJSON,
+    NotificationDetailsToJSONTyped,
+} from './NotificationDetails';
 import type { ConversationDetails } from './ConversationDetails';
 import {
     ConversationDetailsFromJSON,
@@ -41,14 +48,17 @@ export interface ClientEventInfoDetails {
     /**
      * 
      */
-    timelinesDetails: TimelinesDetails;
+    notificationDetails?: NotificationDetails;
+    /**
+     * 
+     */
+    timelinesDetails?: TimelinesDetails;
 }
 
 /**
  * Check if a given object implements the ClientEventInfoDetails interface.
  */
 export function instanceOfClientEventInfoDetails(value: object): value is ClientEventInfoDetails {
-    if (!('timelinesDetails' in value) || value['timelinesDetails'] === undefined) return false;
     return true;
 }
 
@@ -63,7 +73,8 @@ export function ClientEventInfoDetailsFromJSONTyped(json: any, ignoreDiscriminat
     return {
         
         'conversationDetails': json['conversationDetails'] == null ? undefined : ConversationDetailsFromJSON(json['conversationDetails']),
-        'timelinesDetails': TimelinesDetailsFromJSON(json['timelinesDetails']),
+        'notificationDetails': json['notificationDetails'] == null ? undefined : NotificationDetailsFromJSON(json['notificationDetails']),
+        'timelinesDetails': json['timelinesDetails'] == null ? undefined : TimelinesDetailsFromJSON(json['timelinesDetails']),
     };
 }
 
@@ -79,6 +90,7 @@ export function ClientEventInfoDetailsToJSONTyped(value?: ClientEventInfoDetails
     return {
         
         'conversationDetails': ConversationDetailsToJSON(value['conversationDetails']),
+        'notificationDetails': NotificationDetailsToJSON(value['notificationDetails']),
         'timelinesDetails': TimelinesDetailsToJSON(value['timelinesDetails']),
     };
 }

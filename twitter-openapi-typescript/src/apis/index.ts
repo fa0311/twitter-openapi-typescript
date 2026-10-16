@@ -1,3 +1,5 @@
+export { BirdwatchApiUtils } from './birdwatchApi';
+export { CommunityApiUtils } from './communityApi';
 export { DefaultApiUtils } from './defaultApi';
 export { InitialStateApiUtils } from './initialStateApi';
 export { PostApiUtils } from './postApi';

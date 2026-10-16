@@ -6,6 +6,7 @@
 
 Name | Type
 ------------ | -------------
+`entities` | [Array&lt;RichMessageEntity&gt;](RichMessageEntity.md)
 `rtl` | boolean
 `text` | string
 
@@ -16,6 +17,7 @@ import type { RichMessage } from 'twitter-openapi-typescript-generated'
 
 // TODO: Update the object below with actual values
 const example = {
+  "entities": null,
   "rtl": null,
   "text": null,
 } satisfies RichMessage

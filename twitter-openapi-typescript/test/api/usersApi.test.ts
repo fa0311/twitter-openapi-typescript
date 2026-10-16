@@ -11,3 +11,11 @@ test.skip('getUsersByRestIds', async () => {
   });
   expect(response.raw.response.ok).toBe(true);
 });
+
+test('getUsersVerifiedAvatars', async () => {
+  logger.log('getUsersVerifiedAvatars');
+  const client = await getClient();
+  const response = await client.getUsersApi().getUsersVerifiedAvatars({ userIds: ['44196397'] });
+  response.data.forEach((e) => logger.log(`${e.restId}: blue=${e.isBlueVerified} shape=${e.profileImageShape}`));
+  expect(response.raw.response.ok).toBe(true);
+});

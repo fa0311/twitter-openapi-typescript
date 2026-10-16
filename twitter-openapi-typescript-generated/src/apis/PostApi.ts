@@ -19,6 +19,11 @@ import {
     CreateBookmarkResponseToJSON,
 } from '../models/CreateBookmarkResponse';
 import {
+    type CreateDraftTweetResponse,
+    CreateDraftTweetResponseFromJSON,
+    CreateDraftTweetResponseToJSON,
+} from '../models/CreateDraftTweetResponse';
+import {
     type CreateRetweetResponse,
     CreateRetweetResponseFromJSON,
     CreateRetweetResponseToJSON,
@@ -33,6 +38,16 @@ import {
     DeleteBookmarkResponseFromJSON,
     DeleteBookmarkResponseToJSON,
 } from '../models/DeleteBookmarkResponse';
+import {
+    type DeleteDraftTweetsResponse,
+    DeleteDraftTweetsResponseFromJSON,
+    DeleteDraftTweetsResponseToJSON,
+} from '../models/DeleteDraftTweetsResponse';
+import {
+    type DeleteListResponse,
+    DeleteListResponseFromJSON,
+    DeleteListResponseToJSON,
+} from '../models/DeleteListResponse';
 import {
     type DeleteRetweetResponse,
     DeleteRetweetResponseFromJSON,
@@ -49,10 +64,25 @@ import {
     FavoriteTweetResponseToJSON,
 } from '../models/FavoriteTweetResponse';
 import {
+    type ListResponse,
+    ListResponseFromJSON,
+    ListResponseToJSON,
+} from '../models/ListResponse';
+import {
     type PostCreateBookmarkRequest,
     PostCreateBookmarkRequestFromJSON,
     PostCreateBookmarkRequestToJSON,
 } from '../models/PostCreateBookmarkRequest';
+import {
+    type PostCreateDraftTweetRequest,
+    PostCreateDraftTweetRequestFromJSON,
+    PostCreateDraftTweetRequestToJSON,
+} from '../models/PostCreateDraftTweetRequest';
+import {
+    type PostCreateListRequest,
+    PostCreateListRequestFromJSON,
+    PostCreateListRequestToJSON,
+} from '../models/PostCreateListRequest';
 import {
     type PostCreateRetweetRequest,
     PostCreateRetweetRequestFromJSON,
@@ -69,6 +99,16 @@ import {
     PostDeleteBookmarkRequestToJSON,
 } from '../models/PostDeleteBookmarkRequest';
 import {
+    type PostDeleteDraftTweetsRequest,
+    PostDeleteDraftTweetsRequestFromJSON,
+    PostDeleteDraftTweetsRequestToJSON,
+} from '../models/PostDeleteDraftTweetsRequest';
+import {
+    type PostDeleteListRequest,
+    PostDeleteListRequestFromJSON,
+    PostDeleteListRequestToJSON,
+} from '../models/PostDeleteListRequest';
+import {
     type PostDeleteRetweetRequest,
     PostDeleteRetweetRequestFromJSON,
     PostDeleteRetweetRequestToJSON,
@@ -83,6 +123,16 @@ import {
     PostFavoriteTweetRequestFromJSON,
     PostFavoriteTweetRequestToJSON,
 } from '../models/PostFavoriteTweetRequest';
+import {
+    type PostListAddMemberRequest,
+    PostListAddMemberRequestFromJSON,
+    PostListAddMemberRequestToJSON,
+} from '../models/PostListAddMemberRequest';
+import {
+    type PostListRemoveMemberRequest,
+    PostListRemoveMemberRequestFromJSON,
+    PostListRemoveMemberRequestToJSON,
+} from '../models/PostListRemoveMemberRequest';
 import {
     type PostUnfavoriteTweetRequest,
     PostUnfavoriteTweetRequestFromJSON,
@@ -103,6 +153,28 @@ export interface PostCreateBookmarkOperationRequest {
      * 
      */
     postCreateBookmarkRequest: PostCreateBookmarkRequest;
+}
+
+export interface PostCreateDraftTweetOperationRequest {
+    /**
+     * 
+     */
+    pathQueryId: string;
+    /**
+     * 
+     */
+    postCreateDraftTweetRequest: PostCreateDraftTweetRequest;
+}
+
+export interface PostCreateListOperationRequest {
+    /**
+     * 
+     */
+    pathQueryId: string;
+    /**
+     * 
+     */
+    postCreateListRequest: PostCreateListRequest;
 }
 
 export interface PostCreateRetweetOperationRequest {
@@ -138,6 +210,28 @@ export interface PostDeleteBookmarkOperationRequest {
     postDeleteBookmarkRequest: PostDeleteBookmarkRequest;
 }
 
+export interface PostDeleteDraftTweetsOperationRequest {
+    /**
+     * 
+     */
+    pathQueryId: string;
+    /**
+     * 
+     */
+    postDeleteDraftTweetsRequest: PostDeleteDraftTweetsRequest;
+}
+
+export interface PostDeleteListOperationRequest {
+    /**
+     * 
+     */
+    pathQueryId: string;
+    /**
+     * 
+     */
+    postDeleteListRequest: PostDeleteListRequest;
+}
+
 export interface PostDeleteRetweetOperationRequest {
     /**
      * 
@@ -169,6 +263,28 @@ export interface PostFavoriteTweetOperationRequest {
      * 
      */
     postFavoriteTweetRequest: PostFavoriteTweetRequest;
+}
+
+export interface PostListAddMemberOperationRequest {
+    /**
+     * 
+     */
+    pathQueryId: string;
+    /**
+     * 
+     */
+    postListAddMemberRequest: PostListAddMemberRequest;
+}
+
+export interface PostListRemoveMemberOperationRequest {
+    /**
+     * 
+     */
+    pathQueryId: string;
+    /**
+     * 
+     */
+    postListRemoveMemberRequest: PostListRemoveMemberRequest;
 }
 
 export interface PostUnfavoriteTweetOperationRequest {
@@ -323,6 +439,284 @@ export class PostApi extends runtime.BaseAPI {
      */
     async postCreateBookmark(requestParameters: PostCreateBookmarkOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreateBookmarkResponse> {
         const response = await this.postCreateBookmarkRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Creates request options for postCreateDraftTweet without sending the request
+     */
+    async postCreateDraftTweetRequestOpts(requestParameters: PostCreateDraftTweetOperationRequest): Promise<runtime.RequestOpts> {
+        if (requestParameters['pathQueryId'] == null) {
+            throw new runtime.RequiredError(
+                'pathQueryId',
+                'Required parameter "pathQueryId" was null or undefined when calling postCreateDraftTweet().'
+            );
+        }
+
+        if (requestParameters['postCreateDraftTweetRequest'] == null) {
+            throw new runtime.RequiredError(
+                'postCreateDraftTweetRequest',
+                'Required parameter "postCreateDraftTweetRequest" was null or undefined when calling postCreateDraftTweet().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Accept"] = await this.configuration.apiKey("Accept"); // Accept authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-client-language"] = await this.configuration.apiKey("x-twitter-client-language"); // ClientLanguage authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Priority"] = await this.configuration.apiKey("Priority"); // Priority authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Referer"] = await this.configuration.apiKey("Referer"); // Referer authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Fetch-Dest"] = await this.configuration.apiKey("Sec-Fetch-Dest"); // SecFetchDest authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Ch-Ua-Platform"] = await this.configuration.apiKey("Sec-Ch-Ua-Platform"); // SecChUaPlatform authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Fetch-Mode"] = await this.configuration.apiKey("Sec-Fetch-Mode"); // SecFetchMode authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-csrf-token"] = await this.configuration.apiKey("x-csrf-token"); // CsrfToken authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-client-uuid"] = await this.configuration.apiKey("x-client-uuid"); // ClientUuid authentication
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BearerAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-guest-token"] = await this.configuration.apiKey("x-guest-token"); // GuestToken authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Ch-Ua"] = await this.configuration.apiKey("Sec-Ch-Ua"); // SecChUa authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-client-transaction-id"] = await this.configuration.apiKey("x-client-transaction-id"); // ClientTransactionId authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-active-user"] = await this.configuration.apiKey("x-twitter-active-user"); // ActiveUser authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["user-agent"] = await this.configuration.apiKey("user-agent"); // UserAgent authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Accept-Language"] = await this.configuration.apiKey("Accept-Language"); // AcceptLanguage authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Fetch-Site"] = await this.configuration.apiKey("Sec-Fetch-Site"); // SecFetchSite authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-auth-type"] = await this.configuration.apiKey("x-twitter-auth-type"); // AuthType authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Ch-Ua-Mobile"] = await this.configuration.apiKey("Sec-Ch-Ua-Mobile"); // SecChUaMobile authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Accept-Encoding"] = await this.configuration.apiKey("Accept-Encoding"); // AcceptEncoding authentication
+        }
+
+
+        let urlPath = `/graphql/{pathQueryId}/CreateDraftTweet`;
+        urlPath = urlPath.replace('{pathQueryId}', encodeURIComponent(String(requestParameters['pathQueryId'])));
+
+        return {
+            path: urlPath,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: PostCreateDraftTweetRequestToJSON(requestParameters['postCreateDraftTweetRequest']),
+        };
+    }
+
+    /**
+     * save a draft
+     */
+    async postCreateDraftTweetRaw(requestParameters: PostCreateDraftTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<CreateDraftTweetResponse>> {
+        const requestOptions = await this.postCreateDraftTweetRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => CreateDraftTweetResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * save a draft
+     */
+    async postCreateDraftTweet(requestParameters: PostCreateDraftTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<CreateDraftTweetResponse> {
+        const response = await this.postCreateDraftTweetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Creates request options for postCreateList without sending the request
+     */
+    async postCreateListRequestOpts(requestParameters: PostCreateListOperationRequest): Promise<runtime.RequestOpts> {
+        if (requestParameters['pathQueryId'] == null) {
+            throw new runtime.RequiredError(
+                'pathQueryId',
+                'Required parameter "pathQueryId" was null or undefined when calling postCreateList().'
+            );
+        }
+
+        if (requestParameters['postCreateListRequest'] == null) {
+            throw new runtime.RequiredError(
+                'postCreateListRequest',
+                'Required parameter "postCreateListRequest" was null or undefined when calling postCreateList().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Accept"] = await this.configuration.apiKey("Accept"); // Accept authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-client-language"] = await this.configuration.apiKey("x-twitter-client-language"); // ClientLanguage authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Priority"] = await this.configuration.apiKey("Priority"); // Priority authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Referer"] = await this.configuration.apiKey("Referer"); // Referer authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Fetch-Dest"] = await this.configuration.apiKey("Sec-Fetch-Dest"); // SecFetchDest authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Ch-Ua-Platform"] = await this.configuration.apiKey("Sec-Ch-Ua-Platform"); // SecChUaPlatform authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Fetch-Mode"] = await this.configuration.apiKey("Sec-Fetch-Mode"); // SecFetchMode authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-csrf-token"] = await this.configuration.apiKey("x-csrf-token"); // CsrfToken authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-client-uuid"] = await this.configuration.apiKey("x-client-uuid"); // ClientUuid authentication
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BearerAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-guest-token"] = await this.configuration.apiKey("x-guest-token"); // GuestToken authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Ch-Ua"] = await this.configuration.apiKey("Sec-Ch-Ua"); // SecChUa authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-client-transaction-id"] = await this.configuration.apiKey("x-client-transaction-id"); // ClientTransactionId authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-active-user"] = await this.configuration.apiKey("x-twitter-active-user"); // ActiveUser authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["user-agent"] = await this.configuration.apiKey("user-agent"); // UserAgent authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Accept-Language"] = await this.configuration.apiKey("Accept-Language"); // AcceptLanguage authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Fetch-Site"] = await this.configuration.apiKey("Sec-Fetch-Site"); // SecFetchSite authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-auth-type"] = await this.configuration.apiKey("x-twitter-auth-type"); // AuthType authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Ch-Ua-Mobile"] = await this.configuration.apiKey("Sec-Ch-Ua-Mobile"); // SecChUaMobile authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Accept-Encoding"] = await this.configuration.apiKey("Accept-Encoding"); // AcceptEncoding authentication
+        }
+
+
+        let urlPath = `/graphql/{pathQueryId}/CreateList`;
+        urlPath = urlPath.replace('{pathQueryId}', encodeURIComponent(String(requestParameters['pathQueryId'])));
+
+        return {
+            path: urlPath,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: PostCreateListRequestToJSON(requestParameters['postCreateListRequest']),
+        };
+    }
+
+    /**
+     * create list
+     */
+    async postCreateListRaw(requestParameters: PostCreateListOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ListResponse>> {
+        const requestOptions = await this.postCreateListRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * create list
+     */
+    async postCreateList(requestParameters: PostCreateListOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ListResponse> {
+        const response = await this.postCreateListRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
@@ -744,6 +1138,284 @@ export class PostApi extends runtime.BaseAPI {
     }
 
     /**
+     * Creates request options for postDeleteDraftTweets without sending the request
+     */
+    async postDeleteDraftTweetsRequestOpts(requestParameters: PostDeleteDraftTweetsOperationRequest): Promise<runtime.RequestOpts> {
+        if (requestParameters['pathQueryId'] == null) {
+            throw new runtime.RequiredError(
+                'pathQueryId',
+                'Required parameter "pathQueryId" was null or undefined when calling postDeleteDraftTweets().'
+            );
+        }
+
+        if (requestParameters['postDeleteDraftTweetsRequest'] == null) {
+            throw new runtime.RequiredError(
+                'postDeleteDraftTweetsRequest',
+                'Required parameter "postDeleteDraftTweetsRequest" was null or undefined when calling postDeleteDraftTweets().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Accept"] = await this.configuration.apiKey("Accept"); // Accept authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-client-language"] = await this.configuration.apiKey("x-twitter-client-language"); // ClientLanguage authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Priority"] = await this.configuration.apiKey("Priority"); // Priority authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Referer"] = await this.configuration.apiKey("Referer"); // Referer authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Fetch-Dest"] = await this.configuration.apiKey("Sec-Fetch-Dest"); // SecFetchDest authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Ch-Ua-Platform"] = await this.configuration.apiKey("Sec-Ch-Ua-Platform"); // SecChUaPlatform authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Fetch-Mode"] = await this.configuration.apiKey("Sec-Fetch-Mode"); // SecFetchMode authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-csrf-token"] = await this.configuration.apiKey("x-csrf-token"); // CsrfToken authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-client-uuid"] = await this.configuration.apiKey("x-client-uuid"); // ClientUuid authentication
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BearerAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-guest-token"] = await this.configuration.apiKey("x-guest-token"); // GuestToken authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Ch-Ua"] = await this.configuration.apiKey("Sec-Ch-Ua"); // SecChUa authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-client-transaction-id"] = await this.configuration.apiKey("x-client-transaction-id"); // ClientTransactionId authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-active-user"] = await this.configuration.apiKey("x-twitter-active-user"); // ActiveUser authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["user-agent"] = await this.configuration.apiKey("user-agent"); // UserAgent authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Accept-Language"] = await this.configuration.apiKey("Accept-Language"); // AcceptLanguage authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Fetch-Site"] = await this.configuration.apiKey("Sec-Fetch-Site"); // SecFetchSite authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-auth-type"] = await this.configuration.apiKey("x-twitter-auth-type"); // AuthType authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Ch-Ua-Mobile"] = await this.configuration.apiKey("Sec-Ch-Ua-Mobile"); // SecChUaMobile authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Accept-Encoding"] = await this.configuration.apiKey("Accept-Encoding"); // AcceptEncoding authentication
+        }
+
+
+        let urlPath = `/graphql/{pathQueryId}/DeleteDraftTweets`;
+        urlPath = urlPath.replace('{pathQueryId}', encodeURIComponent(String(requestParameters['pathQueryId'])));
+
+        return {
+            path: urlPath,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: PostDeleteDraftTweetsRequestToJSON(requestParameters['postDeleteDraftTweetsRequest']),
+        };
+    }
+
+    /**
+     * delete drafts
+     */
+    async postDeleteDraftTweetsRaw(requestParameters: PostDeleteDraftTweetsOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeleteDraftTweetsResponse>> {
+        const requestOptions = await this.postDeleteDraftTweetsRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => DeleteDraftTweetsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * delete drafts
+     */
+    async postDeleteDraftTweets(requestParameters: PostDeleteDraftTweetsOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeleteDraftTweetsResponse> {
+        const response = await this.postDeleteDraftTweetsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Creates request options for postDeleteList without sending the request
+     */
+    async postDeleteListRequestOpts(requestParameters: PostDeleteListOperationRequest): Promise<runtime.RequestOpts> {
+        if (requestParameters['pathQueryId'] == null) {
+            throw new runtime.RequiredError(
+                'pathQueryId',
+                'Required parameter "pathQueryId" was null or undefined when calling postDeleteList().'
+            );
+        }
+
+        if (requestParameters['postDeleteListRequest'] == null) {
+            throw new runtime.RequiredError(
+                'postDeleteListRequest',
+                'Required parameter "postDeleteListRequest" was null or undefined when calling postDeleteList().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Accept"] = await this.configuration.apiKey("Accept"); // Accept authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-client-language"] = await this.configuration.apiKey("x-twitter-client-language"); // ClientLanguage authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Priority"] = await this.configuration.apiKey("Priority"); // Priority authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Referer"] = await this.configuration.apiKey("Referer"); // Referer authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Fetch-Dest"] = await this.configuration.apiKey("Sec-Fetch-Dest"); // SecFetchDest authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Ch-Ua-Platform"] = await this.configuration.apiKey("Sec-Ch-Ua-Platform"); // SecChUaPlatform authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Fetch-Mode"] = await this.configuration.apiKey("Sec-Fetch-Mode"); // SecFetchMode authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-csrf-token"] = await this.configuration.apiKey("x-csrf-token"); // CsrfToken authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-client-uuid"] = await this.configuration.apiKey("x-client-uuid"); // ClientUuid authentication
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BearerAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-guest-token"] = await this.configuration.apiKey("x-guest-token"); // GuestToken authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Ch-Ua"] = await this.configuration.apiKey("Sec-Ch-Ua"); // SecChUa authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-client-transaction-id"] = await this.configuration.apiKey("x-client-transaction-id"); // ClientTransactionId authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-active-user"] = await this.configuration.apiKey("x-twitter-active-user"); // ActiveUser authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["user-agent"] = await this.configuration.apiKey("user-agent"); // UserAgent authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Accept-Language"] = await this.configuration.apiKey("Accept-Language"); // AcceptLanguage authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Fetch-Site"] = await this.configuration.apiKey("Sec-Fetch-Site"); // SecFetchSite authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-auth-type"] = await this.configuration.apiKey("x-twitter-auth-type"); // AuthType authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Ch-Ua-Mobile"] = await this.configuration.apiKey("Sec-Ch-Ua-Mobile"); // SecChUaMobile authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Accept-Encoding"] = await this.configuration.apiKey("Accept-Encoding"); // AcceptEncoding authentication
+        }
+
+
+        let urlPath = `/graphql/{pathQueryId}/DeleteList`;
+        urlPath = urlPath.replace('{pathQueryId}', encodeURIComponent(String(requestParameters['pathQueryId'])));
+
+        return {
+            path: urlPath,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: PostDeleteListRequestToJSON(requestParameters['postDeleteListRequest']),
+        };
+    }
+
+    /**
+     * delete list
+     */
+    async postDeleteListRaw(requestParameters: PostDeleteListOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<DeleteListResponse>> {
+        const requestOptions = await this.postDeleteListRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => DeleteListResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * delete list
+     */
+    async postDeleteList(requestParameters: PostDeleteListOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<DeleteListResponse> {
+        const response = await this.postDeleteListRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
      * Creates request options for postDeleteRetweet without sending the request
      */
     async postDeleteRetweetRequestOpts(requestParameters: PostDeleteRetweetOperationRequest): Promise<runtime.RequestOpts> {
@@ -1157,6 +1829,284 @@ export class PostApi extends runtime.BaseAPI {
      */
     async postFavoriteTweet(requestParameters: PostFavoriteTweetOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FavoriteTweetResponse> {
         const response = await this.postFavoriteTweetRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Creates request options for postListAddMember without sending the request
+     */
+    async postListAddMemberRequestOpts(requestParameters: PostListAddMemberOperationRequest): Promise<runtime.RequestOpts> {
+        if (requestParameters['pathQueryId'] == null) {
+            throw new runtime.RequiredError(
+                'pathQueryId',
+                'Required parameter "pathQueryId" was null or undefined when calling postListAddMember().'
+            );
+        }
+
+        if (requestParameters['postListAddMemberRequest'] == null) {
+            throw new runtime.RequiredError(
+                'postListAddMemberRequest',
+                'Required parameter "postListAddMemberRequest" was null or undefined when calling postListAddMember().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Accept"] = await this.configuration.apiKey("Accept"); // Accept authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-client-language"] = await this.configuration.apiKey("x-twitter-client-language"); // ClientLanguage authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Priority"] = await this.configuration.apiKey("Priority"); // Priority authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Referer"] = await this.configuration.apiKey("Referer"); // Referer authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Fetch-Dest"] = await this.configuration.apiKey("Sec-Fetch-Dest"); // SecFetchDest authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Ch-Ua-Platform"] = await this.configuration.apiKey("Sec-Ch-Ua-Platform"); // SecChUaPlatform authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Fetch-Mode"] = await this.configuration.apiKey("Sec-Fetch-Mode"); // SecFetchMode authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-csrf-token"] = await this.configuration.apiKey("x-csrf-token"); // CsrfToken authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-client-uuid"] = await this.configuration.apiKey("x-client-uuid"); // ClientUuid authentication
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BearerAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-guest-token"] = await this.configuration.apiKey("x-guest-token"); // GuestToken authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Ch-Ua"] = await this.configuration.apiKey("Sec-Ch-Ua"); // SecChUa authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-client-transaction-id"] = await this.configuration.apiKey("x-client-transaction-id"); // ClientTransactionId authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-active-user"] = await this.configuration.apiKey("x-twitter-active-user"); // ActiveUser authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["user-agent"] = await this.configuration.apiKey("user-agent"); // UserAgent authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Accept-Language"] = await this.configuration.apiKey("Accept-Language"); // AcceptLanguage authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Fetch-Site"] = await this.configuration.apiKey("Sec-Fetch-Site"); // SecFetchSite authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-auth-type"] = await this.configuration.apiKey("x-twitter-auth-type"); // AuthType authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Ch-Ua-Mobile"] = await this.configuration.apiKey("Sec-Ch-Ua-Mobile"); // SecChUaMobile authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Accept-Encoding"] = await this.configuration.apiKey("Accept-Encoding"); // AcceptEncoding authentication
+        }
+
+
+        let urlPath = `/graphql/{pathQueryId}/ListAddMember`;
+        urlPath = urlPath.replace('{pathQueryId}', encodeURIComponent(String(requestParameters['pathQueryId'])));
+
+        return {
+            path: urlPath,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: PostListAddMemberRequestToJSON(requestParameters['postListAddMemberRequest']),
+        };
+    }
+
+    /**
+     * add a member to a list
+     */
+    async postListAddMemberRaw(requestParameters: PostListAddMemberOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ListResponse>> {
+        const requestOptions = await this.postListAddMemberRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * add a member to a list
+     */
+    async postListAddMember(requestParameters: PostListAddMemberOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ListResponse> {
+        const response = await this.postListAddMemberRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Creates request options for postListRemoveMember without sending the request
+     */
+    async postListRemoveMemberRequestOpts(requestParameters: PostListRemoveMemberOperationRequest): Promise<runtime.RequestOpts> {
+        if (requestParameters['pathQueryId'] == null) {
+            throw new runtime.RequiredError(
+                'pathQueryId',
+                'Required parameter "pathQueryId" was null or undefined when calling postListRemoveMember().'
+            );
+        }
+
+        if (requestParameters['postListRemoveMemberRequest'] == null) {
+            throw new runtime.RequiredError(
+                'postListRemoveMemberRequest',
+                'Required parameter "postListRemoveMemberRequest" was null or undefined when calling postListRemoveMember().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        headerParameters['Content-Type'] = 'application/json';
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Accept"] = await this.configuration.apiKey("Accept"); // Accept authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-client-language"] = await this.configuration.apiKey("x-twitter-client-language"); // ClientLanguage authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Priority"] = await this.configuration.apiKey("Priority"); // Priority authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Referer"] = await this.configuration.apiKey("Referer"); // Referer authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Fetch-Dest"] = await this.configuration.apiKey("Sec-Fetch-Dest"); // SecFetchDest authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Ch-Ua-Platform"] = await this.configuration.apiKey("Sec-Ch-Ua-Platform"); // SecChUaPlatform authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Fetch-Mode"] = await this.configuration.apiKey("Sec-Fetch-Mode"); // SecFetchMode authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-csrf-token"] = await this.configuration.apiKey("x-csrf-token"); // CsrfToken authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-client-uuid"] = await this.configuration.apiKey("x-client-uuid"); // ClientUuid authentication
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BearerAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-guest-token"] = await this.configuration.apiKey("x-guest-token"); // GuestToken authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Ch-Ua"] = await this.configuration.apiKey("Sec-Ch-Ua"); // SecChUa authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-client-transaction-id"] = await this.configuration.apiKey("x-client-transaction-id"); // ClientTransactionId authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-active-user"] = await this.configuration.apiKey("x-twitter-active-user"); // ActiveUser authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["user-agent"] = await this.configuration.apiKey("user-agent"); // UserAgent authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Accept-Language"] = await this.configuration.apiKey("Accept-Language"); // AcceptLanguage authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Fetch-Site"] = await this.configuration.apiKey("Sec-Fetch-Site"); // SecFetchSite authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-auth-type"] = await this.configuration.apiKey("x-twitter-auth-type"); // AuthType authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Ch-Ua-Mobile"] = await this.configuration.apiKey("Sec-Ch-Ua-Mobile"); // SecChUaMobile authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Accept-Encoding"] = await this.configuration.apiKey("Accept-Encoding"); // AcceptEncoding authentication
+        }
+
+
+        let urlPath = `/graphql/{pathQueryId}/ListRemoveMember`;
+        urlPath = urlPath.replace('{pathQueryId}', encodeURIComponent(String(requestParameters['pathQueryId'])));
+
+        return {
+            path: urlPath,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+            body: PostListRemoveMemberRequestToJSON(requestParameters['postListRemoveMemberRequest']),
+        };
+    }
+
+    /**
+     * remove a member from a list
+     */
+    async postListRemoveMemberRaw(requestParameters: PostListRemoveMemberOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ListResponse>> {
+        const requestOptions = await this.postListRemoveMemberRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ListResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * remove a member from a list
+     */
+    async postListRemoveMember(requestParameters: PostListRemoveMemberOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ListResponse> {
+        const response = await this.postListRemoveMemberRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

@@ -43,6 +43,13 @@ export const getClient = async () => {
   const client = await api.getClientFromCookies(json);
   return client;
 };
+// The authenticated account's id: likes are only visible for the account itself since 2024.
+export const getUserId = async () => {
+  const cookies = JSON.parse(await fs.readFile('cookies.json', 'utf-8')) as Cookie[];
+  const twid = cookies.find((e) => e.name === 'twid')?.value ?? '';
+  return decodeURIComponent(twid).replace(/^u=/, '');
+};
+
 export const getGuestClient = async () => {
   const api = new TwitterOpenApi();
   const client = await api.getGuestClient();

@@ -106,17 +106,27 @@ All URIs are relative to *https://x.com/i/api*
 *DefaultApi* | [**getTweetResultByRestId**](docs/DefaultApi.md#gettweetresultbyrestid) | **GET** /graphql/{pathQueryId}/TweetResultByRestId | 
 *OtherApi* | [**other**](docs/OtherApi.md#other) | **GET** /other | 
 *PostApi* | [**postCreateBookmark**](docs/PostApi.md#postcreatebookmarkoperation) | **POST** /graphql/{pathQueryId}/CreateBookmark | 
+*PostApi* | [**postCreateDraftTweet**](docs/PostApi.md#postcreatedrafttweetoperation) | **POST** /graphql/{pathQueryId}/CreateDraftTweet | 
+*PostApi* | [**postCreateList**](docs/PostApi.md#postcreatelistoperation) | **POST** /graphql/{pathQueryId}/CreateList | 
 *PostApi* | [**postCreateRetweet**](docs/PostApi.md#postcreateretweetoperation) | **POST** /graphql/{pathQueryId}/CreateRetweet | 
 *PostApi* | [**postCreateTweet**](docs/PostApi.md#postcreatetweetoperation) | **POST** /graphql/{pathQueryId}/CreateTweet | 
 *PostApi* | [**postDeleteBookmark**](docs/PostApi.md#postdeletebookmarkoperation) | **POST** /graphql/{pathQueryId}/DeleteBookmark | 
+*PostApi* | [**postDeleteDraftTweets**](docs/PostApi.md#postdeletedrafttweetsoperation) | **POST** /graphql/{pathQueryId}/DeleteDraftTweets | 
+*PostApi* | [**postDeleteList**](docs/PostApi.md#postdeletelistoperation) | **POST** /graphql/{pathQueryId}/DeleteList | 
 *PostApi* | [**postDeleteRetweet**](docs/PostApi.md#postdeleteretweetoperation) | **POST** /graphql/{pathQueryId}/DeleteRetweet | 
 *PostApi* | [**postDeleteTweet**](docs/PostApi.md#postdeletetweetoperation) | **POST** /graphql/{pathQueryId}/DeleteTweet | 
 *PostApi* | [**postFavoriteTweet**](docs/PostApi.md#postfavoritetweetoperation) | **POST** /graphql/{pathQueryId}/FavoriteTweet | 
+*PostApi* | [**postListAddMember**](docs/PostApi.md#postlistaddmemberoperation) | **POST** /graphql/{pathQueryId}/ListAddMember | 
+*PostApi* | [**postListRemoveMember**](docs/PostApi.md#postlistremovememberoperation) | **POST** /graphql/{pathQueryId}/ListRemoveMember | 
 *PostApi* | [**postUnfavoriteTweet**](docs/PostApi.md#postunfavoritetweetoperation) | **POST** /graphql/{pathQueryId}/UnfavoriteTweet | 
 *TweetApi* | [**getBookmarks**](docs/TweetApi.md#getbookmarks) | **GET** /graphql/{pathQueryId}/Bookmarks | 
 *TweetApi* | [**getCommunityAboutTimeline**](docs/TweetApi.md#getcommunityabouttimeline) | **GET** /graphql/{pathQueryId}/CommunityAboutTimeline | 
+*TweetApi* | [**getCommunityDiscoveryTimeline**](docs/TweetApi.md#getcommunitydiscoverytimeline) | **GET** /graphql/{pathQueryId}/CommunityDiscoveryTimeline | 
 *TweetApi* | [**getCommunityMediaTimeline**](docs/TweetApi.md#getcommunitymediatimeline) | **GET** /graphql/{pathQueryId}/CommunityMediaTimeline | 
 *TweetApi* | [**getCommunityTweetsTimeline**](docs/TweetApi.md#getcommunitytweetstimeline) | **GET** /graphql/{pathQueryId}/CommunityTweetsTimeline | 
+*TweetApi* | [**getConnectTabTimeline**](docs/TweetApi.md#getconnecttabtimeline) | **GET** /graphql/{pathQueryId}/ConnectTabTimeline | 
+*TweetApi* | [**getExplorePage**](docs/TweetApi.md#getexplorepage) | **GET** /graphql/{pathQueryId}/ExplorePage | 
+*TweetApi* | [**getGenericTimelineById**](docs/TweetApi.md#getgenerictimelinebyid) | **GET** /graphql/{pathQueryId}/GenericTimelineById | 
 *TweetApi* | [**getHomeLatestTimeline**](docs/TweetApi.md#gethomelatesttimeline) | **GET** /graphql/{pathQueryId}/HomeLatestTimeline | 
 *TweetApi* | [**getHomeTimeline**](docs/TweetApi.md#gethometimeline) | **GET** /graphql/{pathQueryId}/HomeTimeline | 
 *TweetApi* | [**getLikes**](docs/TweetApi.md#getlikes) | **GET** /graphql/{pathQueryId}/Likes | 
@@ -128,16 +138,27 @@ All URIs are relative to *https://x.com/i/api*
 *TweetApi* | [**getUserMedia**](docs/TweetApi.md#getusermedia) | **GET** /graphql/{pathQueryId}/UserMedia | 
 *TweetApi* | [**getUserOriginalsTimeline**](docs/TweetApi.md#getuseroriginalstimeline) | **GET** /graphql/{pathQueryId}/UserOriginalsTimeline | 
 *TweetApi* | [**getUserRepliesTimeline**](docs/TweetApi.md#getuserrepliestimeline) | **GET** /graphql/{pathQueryId}/UserRepliesTimeline | 
+*TweetApi* | [**getUserRepostsTimeline**](docs/TweetApi.md#getuserrepoststimeline) | **GET** /graphql/{pathQueryId}/UserRepostsTimeline | 
+*TweetApi* | [**getUserSuperFollowTweets**](docs/TweetApi.md#getusersuperfollowtweets) | **GET** /graphql/{pathQueryId}/UserSuperFollowTweets | 
 *TweetApi* | [**getUserTweets**](docs/TweetApi.md#getusertweets) | **GET** /graphql/{pathQueryId}/UserTweets | 
 *TweetApi* | [**getUserTweetsAndReplies**](docs/TweetApi.md#getusertweetsandreplies) | **GET** /graphql/{pathQueryId}/UserTweetsAndReplies | 
 *TweetApi* | [**getUserVideoTimeline**](docs/TweetApi.md#getuservideotimeline) | **GET** /graphql/{pathQueryId}/UserVideoTimeline | 
+*UserApi* | [**getFetchDraftTweets**](docs/UserApi.md#getfetchdrafttweets) | **GET** /graphql/{pathQueryId}/FetchDraftTweets | 
+*UserApi* | [**getFetchScheduledTweets**](docs/UserApi.md#getfetchscheduledtweets) | **GET** /graphql/{pathQueryId}/FetchScheduledTweets | 
 *UserApi* | [**getUserByRestId**](docs/UserApi.md#getuserbyrestid) | **GET** /graphql/{pathQueryId}/UserByRestId | 
 *UserApi* | [**getUserByScreenName**](docs/UserApi.md#getuserbyscreenname) | **GET** /graphql/{pathQueryId}/UserByScreenName | 
+*UserApi* | [**getViewerBadgeCounts**](docs/UserApi.md#getviewerbadgecounts) | **GET** /graphql/{pathQueryId}/ViewerBadgeCounts | 
 *UserListApi* | [**getBlueVerifiedFollowers**](docs/UserListApi.md#getblueverifiedfollowers) | **GET** /graphql/{pathQueryId}/BlueVerifiedFollowers | 
 *UserListApi* | [**getFavoriters**](docs/UserListApi.md#getfavoriters) | **GET** /graphql/{pathQueryId}/Favoriters | 
 *UserListApi* | [**getFollowers**](docs/UserListApi.md#getfollowers) | **GET** /graphql/{pathQueryId}/Followers | 
 *UserListApi* | [**getFollowersYouKnow**](docs/UserListApi.md#getfollowersyouknow) | **GET** /graphql/{pathQueryId}/FollowersYouKnow | 
 *UserListApi* | [**getFollowing**](docs/UserListApi.md#getfollowing) | **GET** /graphql/{pathQueryId}/Following | 
+*UserListApi* | [**getListByRestId**](docs/UserListApi.md#getlistbyrestid) | **GET** /graphql/{pathQueryId}/ListByRestId | 
+*UserListApi* | [**getListCreationRecommendedUsers**](docs/UserListApi.md#getlistcreationrecommendedusers) | **GET** /graphql/{pathQueryId}/ListCreationRecommendedUsers | 
+*UserListApi* | [**getListEditRecommendedUsers**](docs/UserListApi.md#getlisteditrecommendedusers) | **GET** /graphql/{pathQueryId}/ListEditRecommendedUsers | 
+*UserListApi* | [**getListMembers**](docs/UserListApi.md#getlistmembers) | **GET** /graphql/{pathQueryId}/ListMembers | 
+*UserListApi* | [**getListOwnerships**](docs/UserListApi.md#getlistownerships) | **GET** /graphql/{pathQueryId}/ListOwnerships | 
+*UserListApi* | [**getListSubscribers**](docs/UserListApi.md#getlistsubscribers) | **GET** /graphql/{pathQueryId}/ListSubscribers | 
 *UserListApi* | [**getRetweeters**](docs/UserListApi.md#getretweeters) | **GET** /graphql/{pathQueryId}/Retweeters | 
 *UsersApi* | [**getUsersByRestIds**](docs/UsersApi.md#getusersbyrestids) | **GET** /graphql/{pathQueryId}/UsersByRestIds | 
 *V11GetApi* | [**getFriendsFollowingList**](docs/V11GetApi.md#getfriendsfollowinglist) | **GET** /1.1/friends/following/list.json | 
@@ -169,6 +190,7 @@ All URIs are relative to *https://x.com/i/api*
 - [ArticleResult](docs/ArticleResult.md)
 - [ArticleResults](docs/ArticleResults.md)
 - [AuthorCommunityRelationship](docs/AuthorCommunityRelationship.md)
+- [BadgeCounts](docs/BadgeCounts.md)
 - [BirdwatchEntity](docs/BirdwatchEntity.md)
 - [BirdwatchEntityRef](docs/BirdwatchEntityRef.md)
 - [BirdwatchPivot](docs/BirdwatchPivot.md)
@@ -187,6 +209,9 @@ All URIs are relative to *https://x.com/i/api*
 - [CommunityAboutTimelineResponse](docs/CommunityAboutTimelineResponse.md)
 - [CommunityActions](docs/CommunityActions.md)
 - [CommunityDeleteActionResult](docs/CommunityDeleteActionResult.md)
+- [CommunityDiscoveryTimelineResponse](docs/CommunityDiscoveryTimelineResponse.md)
+- [CommunityDiscoveryTimelineResponseData](docs/CommunityDiscoveryTimelineResponseData.md)
+- [CommunityDiscoveryTimelineViewer](docs/CommunityDiscoveryTimelineViewer.md)
 - [CommunityInvitesResult](docs/CommunityInvitesResult.md)
 - [CommunityJoinAction](docs/CommunityJoinAction.md)
 - [CommunityJoinActionResultUnion](docs/CommunityJoinActionResultUnion.md)
@@ -204,6 +229,8 @@ All URIs are relative to *https://x.com/i/api*
 - [CommunityUnpinActionResult](docs/CommunityUnpinActionResult.md)
 - [CommunityUrls](docs/CommunityUrls.md)
 - [CommunityUrlsPermalink](docs/CommunityUrlsPermalink.md)
+- [ConnectTabTimelineResponse](docs/ConnectTabTimelineResponse.md)
+- [ConnectTabTimelineResponseData](docs/ConnectTabTimelineResponseData.md)
 - [ContentDisclosure](docs/ContentDisclosure.md)
 - [ContentDisclosureAdvertisingDisclosure](docs/ContentDisclosureAdvertisingDisclosure.md)
 - [ContentDisclosureAiGeneratedDisclosure](docs/ContentDisclosureAiGeneratedDisclosure.md)
@@ -214,6 +241,9 @@ All URIs are relative to *https://x.com/i/api*
 - [CoverCta](docs/CoverCta.md)
 - [CreateBookmarkResponse](docs/CreateBookmarkResponse.md)
 - [CreateBookmarkResponseData](docs/CreateBookmarkResponseData.md)
+- [CreateDraftTweetResponse](docs/CreateDraftTweetResponse.md)
+- [CreateDraftTweetResponseData](docs/CreateDraftTweetResponseData.md)
+- [CreateDraftTweetResponseTweet](docs/CreateDraftTweetResponseTweet.md)
 - [CreateRetweet](docs/CreateRetweet.md)
 - [CreateRetweetResponse](docs/CreateRetweetResponse.md)
 - [CreateRetweetResponseData](docs/CreateRetweetResponseData.md)
@@ -226,6 +256,10 @@ All URIs are relative to *https://x.com/i/api*
 - [CursorType](docs/CursorType.md)
 - [DeleteBookmarkResponse](docs/DeleteBookmarkResponse.md)
 - [DeleteBookmarkResponseData](docs/DeleteBookmarkResponseData.md)
+- [DeleteDraftTweetsResponse](docs/DeleteDraftTweetsResponse.md)
+- [DeleteDraftTweetsResponseData](docs/DeleteDraftTweetsResponseData.md)
+- [DeleteListResponse](docs/DeleteListResponse.md)
+- [DeleteListResponseData](docs/DeleteListResponseData.md)
 - [DeleteRetweet](docs/DeleteRetweet.md)
 - [DeleteRetweetResponse](docs/DeleteRetweetResponse.md)
 - [DeleteRetweetResponseData](docs/DeleteRetweetResponseData.md)
@@ -235,26 +269,46 @@ All URIs are relative to *https://x.com/i/api*
 - [DeleteTweetResponseResult](docs/DeleteTweetResponseResult.md)
 - [DisplayTreatment](docs/DisplayTreatment.md)
 - [DisplayType](docs/DisplayType.md)
+- [DraftList](docs/DraftList.md)
+- [DraftTweet](docs/DraftTweet.md)
+- [DraftTweetCreateRequest](docs/DraftTweetCreateRequest.md)
+- [DraftTweetUser](docs/DraftTweetUser.md)
+- [DraftTweetUserResults](docs/DraftTweetUserResults.md)
+- [DraftTweetsViewer](docs/DraftTweetsViewer.md)
 - [Entities](docs/Entities.md)
 - [ErrorExtensions](docs/ErrorExtensions.md)
 - [ErrorResponse](docs/ErrorResponse.md)
 - [ErrorResponsePathInner](docs/ErrorResponsePathInner.md)
+- [ExplorePage](docs/ExplorePage.md)
+- [ExplorePageBody](docs/ExplorePageBody.md)
+- [ExplorePageResponse](docs/ExplorePageResponse.md)
+- [ExplorePageResponseData](docs/ExplorePageResponseData.md)
+- [ExploreTimeline](docs/ExploreTimeline.md)
+- [ExploreTimelineScribeConfig](docs/ExploreTimelineScribeConfig.md)
 - [ExtMediaAvailability](docs/ExtMediaAvailability.md)
 - [ExtendedEntities](docs/ExtendedEntities.md)
 - [FavoriteTweet](docs/FavoriteTweet.md)
 - [FavoriteTweetResponse](docs/FavoriteTweetResponse.md)
 - [FeedbackInfo](docs/FeedbackInfo.md)
+- [FetchDraftTweetsResponse](docs/FetchDraftTweetsResponse.md)
+- [FetchDraftTweetsResponseData](docs/FetchDraftTweetsResponseData.md)
+- [FetchScheduledTweetsResponse](docs/FetchScheduledTweetsResponse.md)
+- [FetchScheduledTweetsResponseData](docs/FetchScheduledTweetsResponseData.md)
 - [FollowResponse](docs/FollowResponse.md)
 - [FollowResponseData](docs/FollowResponseData.md)
 - [FollowResponseResult](docs/FollowResponseResult.md)
 - [FollowResponseUser](docs/FollowResponseUser.md)
 - [FollowTimeline](docs/FollowTimeline.md)
+- [GenericTimelineByIdResponse](docs/GenericTimelineByIdResponse.md)
+- [GenericTimelineByIdResponseData](docs/GenericTimelineByIdResponseData.md)
 - [GrokAnnotation](docs/GrokAnnotation.md)
 - [GrokEntity](docs/GrokEntity.md)
 - [GrokEntityRef](docs/GrokEntityRef.md)
 - [GrokImageAnnotation](docs/GrokImageAnnotation.md)
 - [GrokShareAttachment](docs/GrokShareAttachment.md)
 - [GrokShareAttachmentItem](docs/GrokShareAttachmentItem.md)
+- [GrokTranslatedBio](docs/GrokTranslatedBio.md)
+- [GrokTranslatedBioWithAvailability](docs/GrokTranslatedBioWithAvailability.md)
 - [GrokTranslatedCommunityNote](docs/GrokTranslatedCommunityNote.md)
 - [GrokTranslatedCommunityNoteWithAvailability](docs/GrokTranslatedCommunityNoteWithAvailability.md)
 - [GrokTranslatedPost](docs/GrokTranslatedPost.md)
@@ -267,7 +321,21 @@ All URIs are relative to *https://x.com/i/api*
 - [ItemContentUnion](docs/ItemContentUnion.md)
 - [ItemResult](docs/ItemResult.md)
 - [LimitedActionResultsData](docs/LimitedActionResultsData.md)
+- [ListBannerMedia](docs/ListBannerMedia.md)
+- [ListBannerMediaInfo](docs/ListBannerMediaInfo.md)
+- [ListBannerMediaSalientRect](docs/ListBannerMediaSalientRect.md)
 - [ListLatestTweetsTimelineResponse](docs/ListLatestTweetsTimelineResponse.md)
+- [ListMembersList](docs/ListMembersList.md)
+- [ListMembersResponse](docs/ListMembersResponse.md)
+- [ListMembersResponseData](docs/ListMembersResponseData.md)
+- [ListRecommendedUsersList](docs/ListRecommendedUsersList.md)
+- [ListRecommendedUsersResponse](docs/ListRecommendedUsersResponse.md)
+- [ListRecommendedUsersResponseData](docs/ListRecommendedUsersResponseData.md)
+- [ListResponse](docs/ListResponse.md)
+- [ListResponseData](docs/ListResponseData.md)
+- [ListSubscribersList](docs/ListSubscribersList.md)
+- [ListSubscribersResponse](docs/ListSubscribersResponse.md)
+- [ListSubscribersResponseData](docs/ListSubscribersResponseData.md)
 - [ListTweetsTimelineData](docs/ListTweetsTimelineData.md)
 - [ListTweetsTimelineList](docs/ListTweetsTimelineList.md)
 - [Location](docs/Location.md)
@@ -306,6 +374,12 @@ All URIs are relative to *https://x.com/i/api*
 - [OtherObjectAll](docs/OtherObjectAll.md)
 - [PostCreateBookmarkRequest](docs/PostCreateBookmarkRequest.md)
 - [PostCreateBookmarkRequestVariables](docs/PostCreateBookmarkRequestVariables.md)
+- [PostCreateDraftTweetRequest](docs/PostCreateDraftTweetRequest.md)
+- [PostCreateDraftTweetRequestVariables](docs/PostCreateDraftTweetRequestVariables.md)
+- [PostCreateDraftTweetRequestVariablesPostTweetRequest](docs/PostCreateDraftTweetRequestVariablesPostTweetRequest.md)
+- [PostCreateListRequest](docs/PostCreateListRequest.md)
+- [PostCreateListRequestFeatures](docs/PostCreateListRequestFeatures.md)
+- [PostCreateListRequestVariables](docs/PostCreateListRequestVariables.md)
 - [PostCreateRetweetRequest](docs/PostCreateRetweetRequest.md)
 - [PostCreateRetweetRequestVariables](docs/PostCreateRetweetRequestVariables.md)
 - [PostCreateTweetRequest](docs/PostCreateTweetRequest.md)
@@ -323,10 +397,17 @@ All URIs are relative to *https://x.com/i/api*
 - [PostCtaUserResultsAvatar](docs/PostCtaUserResultsAvatar.md)
 - [PostCtaUserResultsResult](docs/PostCtaUserResultsResult.md)
 - [PostDeleteBookmarkRequest](docs/PostDeleteBookmarkRequest.md)
+- [PostDeleteDraftTweetsRequest](docs/PostDeleteDraftTweetsRequest.md)
+- [PostDeleteDraftTweetsRequestVariables](docs/PostDeleteDraftTweetsRequestVariables.md)
+- [PostDeleteListRequest](docs/PostDeleteListRequest.md)
+- [PostDeleteListRequestVariables](docs/PostDeleteListRequestVariables.md)
 - [PostDeleteRetweetRequest](docs/PostDeleteRetweetRequest.md)
 - [PostDeleteRetweetRequestVariables](docs/PostDeleteRetweetRequestVariables.md)
 - [PostDeleteTweetRequest](docs/PostDeleteTweetRequest.md)
 - [PostFavoriteTweetRequest](docs/PostFavoriteTweetRequest.md)
+- [PostListAddMemberRequest](docs/PostListAddMemberRequest.md)
+- [PostListAddMemberRequestVariables](docs/PostListAddMemberRequestVariables.md)
+- [PostListRemoveMemberRequest](docs/PostListRemoveMemberRequest.md)
 - [PostUnfavoriteTweetRequest](docs/PostUnfavoriteTweetRequest.md)
 - [PrimaryCommunityTopic](docs/PrimaryCommunityTopic.md)
 - [ProfileBio](docs/ProfileBio.md)
@@ -342,6 +423,7 @@ All URIs are relative to *https://x.com/i/api*
 - [Retweet](docs/Retweet.md)
 - [RetweetLegacy](docs/RetweetLegacy.md)
 - [RichMessage](docs/RichMessage.md)
+- [ScheduledTweetsViewer](docs/ScheduledTweetsViewer.md)
 - [SearchByRawQuery](docs/SearchByRawQuery.md)
 - [SearchTimeline](docs/SearchTimeline.md)
 - [SearchTimelineData](docs/SearchTimelineData.md)
@@ -373,8 +455,10 @@ All URIs are relative to *https://x.com/i/api*
 - [TimelineCommunity](docs/TimelineCommunity.md)
 - [TimelineCoverBehavior](docs/TimelineCoverBehavior.md)
 - [TimelineCoverBehaviorUrl](docs/TimelineCoverBehaviorUrl.md)
+- [TimelineFrame](docs/TimelineFrame.md)
 - [TimelineGeneralContext](docs/TimelineGeneralContext.md)
 - [TimelineHalfCover](docs/TimelineHalfCover.md)
+- [TimelineLabel](docs/TimelineLabel.md)
 - [TimelineMarkEntriesUnreadGreaterThanSortIndex](docs/TimelineMarkEntriesUnreadGreaterThanSortIndex.md)
 - [TimelineMessagePrompt](docs/TimelineMessagePrompt.md)
 - [TimelineNotification](docs/TimelineNotification.md)
@@ -394,6 +478,7 @@ All URIs are relative to *https://x.com/i/api*
 - [TimelineTopicContext](docs/TimelineTopicContext.md)
 - [TimelineTrend](docs/TimelineTrend.md)
 - [TimelineTweet](docs/TimelineTweet.md)
+- [TimelineTwitterList](docs/TimelineTwitterList.md)
 - [TimelineUser](docs/TimelineUser.md)
 - [Timestamp](docs/Timestamp.md)
 - [TombstoneEntity](docs/TombstoneEntity.md)
@@ -446,6 +531,7 @@ All URIs are relative to *https://x.com/i/api*
 - [TweetUnion](docs/TweetUnion.md)
 - [TweetView](docs/TweetView.md)
 - [TweetWithVisibilityResults](docs/TweetWithVisibilityResults.md)
+- [TwitterList](docs/TwitterList.md)
 - [TypeName](docs/TypeName.md)
 - [UnfavoriteTweet](docs/UnfavoriteTweet.md)
 - [UnfavoriteTweetResponse](docs/UnfavoriteTweetResponse.md)
@@ -510,6 +596,11 @@ All URIs are relative to *https://x.com/i/api*
 - [UserWebsite](docs/UserWebsite.md)
 - [UsersResponse](docs/UsersResponse.md)
 - [UsersResponseData](docs/UsersResponseData.md)
+- [ViewerBadgeCountsResponse](docs/ViewerBadgeCountsResponse.md)
+- [ViewerBadgeCountsResponseData](docs/ViewerBadgeCountsResponseData.md)
+- [ViewerBadgeCountsResult](docs/ViewerBadgeCountsResult.md)
+- [ViewerBadgeCountsUserResults](docs/ViewerBadgeCountsUserResults.md)
+- [ViewerBadgeCountsViewer](docs/ViewerBadgeCountsViewer.md)
 
 ### Authorization
 

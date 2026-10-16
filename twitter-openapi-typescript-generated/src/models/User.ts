@@ -181,6 +181,13 @@ import {
     UserLegacyToJSON,
     UserLegacyToJSONTyped,
 } from './UserLegacy';
+import type { GrokTranslatedBioWithAvailability } from './GrokTranslatedBioWithAvailability';
+import {
+    GrokTranslatedBioWithAvailabilityFromJSON,
+    GrokTranslatedBioWithAvailabilityFromJSONTyped,
+    GrokTranslatedBioWithAvailabilityToJSON,
+    GrokTranslatedBioWithAvailabilityToJSONTyped,
+} from './GrokTranslatedBioWithAvailability';
 import type { UserProfessional } from './UserProfessional';
 import {
     UserProfessionalFromJSON,
@@ -242,6 +249,10 @@ export interface User {
      * 
      */
     followRequestSent?: boolean;
+    /**
+     * 
+     */
+    grokTranslatedBioWithAvailability?: GrokTranslatedBioWithAvailability;
     /**
      * 
      */
@@ -459,6 +470,7 @@ export function UserFromJSONTyped(json: any, ignoreDiscriminator: boolean): User
         'creatorSubscriptionsCount': json['creator_subscriptions_count'] == null ? undefined : json['creator_subscriptions_count'],
         'dmPermissions': json['dm_permissions'] == null ? undefined : UserDmPermissionsFromJSON(json['dm_permissions']),
         'followRequestSent': json['follow_request_sent'] == null ? undefined : json['follow_request_sent'],
+        'grokTranslatedBioWithAvailability': json['grok_translated_bio_with_availability'] == null ? undefined : GrokTranslatedBioWithAvailabilityFromJSON(json['grok_translated_bio_with_availability']),
         'hasGraduatedAccess': json['has_graduated_access'] == null ? undefined : json['has_graduated_access'],
         'hasHiddenLikesOnProfile': json['has_hidden_likes_on_profile'] == null ? undefined : json['has_hidden_likes_on_profile'],
         'hasHiddenSubscriptionsOnProfile': json['has_hidden_subscriptions_on_profile'] == null ? undefined : json['has_hidden_subscriptions_on_profile'],
@@ -523,6 +535,7 @@ export function UserToJSONTyped(value?: User | null, ignoreDiscriminator: boolea
         'creator_subscriptions_count': value['creatorSubscriptionsCount'],
         'dm_permissions': UserDmPermissionsToJSON(value['dmPermissions']),
         'follow_request_sent': value['followRequestSent'],
+        'grok_translated_bio_with_availability': GrokTranslatedBioWithAvailabilityToJSON(value['grokTranslatedBioWithAvailability']),
         'has_graduated_access': value['hasGraduatedAccess'],
         'has_hidden_likes_on_profile': value['hasHiddenLikesOnProfile'],
         'has_hidden_subscriptions_on_profile': value['hasHiddenSubscriptionsOnProfile'],

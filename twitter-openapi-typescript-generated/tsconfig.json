@@ -7,9 +7,7 @@
     "rootDir": "src",
     "typeRoots": [
       "node_modules/@types"
-    ],
-    "declarationMap": true,
-    "sourceMap": true
+    ]
   },
   "exclude": [
     "dist",

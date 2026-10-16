@@ -30,6 +30,10 @@ export interface TrendMetadata {
     /**
      * 
      */
+    domainContext?: string;
+    /**
+     * 
+     */
     url?: SocialContextLandingUrl;
 }
 
@@ -50,6 +54,7 @@ export function TrendMetadataFromJSONTyped(json: any, ignoreDiscriminator: boole
     }
     return {
         
+        'domainContext': json['domain_context'] == null ? undefined : json['domain_context'],
         'url': json['url'] == null ? undefined : SocialContextLandingUrlFromJSON(json['url']),
     };
 }
@@ -65,6 +70,7 @@ export function TrendMetadataToJSONTyped(value?: TrendMetadata | null, ignoreDis
 
     return {
         
+        'domain_context': value['domainContext'],
         'url': SocialContextLandingUrlToJSON(value['url']),
     };
 }

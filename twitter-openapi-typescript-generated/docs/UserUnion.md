@@ -16,6 +16,7 @@ Name | Type
 `creatorSubscriptionsCount` | number
 `dmPermissions` | [UserDmPermissions](UserDmPermissions.md)
 `followRequestSent` | boolean
+`grokTranslatedBioWithAvailability` | [GrokTranslatedBioWithAvailability](GrokTranslatedBioWithAvailability.md)
 `hasGraduatedAccess` | boolean
 `hasHiddenLikesOnProfile` | boolean
 `hasHiddenSubscriptionsOnProfile` | boolean
@@ -76,6 +77,7 @@ const example = {
   "creatorSubscriptionsCount": null,
   "dmPermissions": null,
   "followRequestSent": null,
+  "grokTranslatedBioWithAvailability": null,
   "hasGraduatedAccess": null,
   "hasHiddenLikesOnProfile": null,
   "hasHiddenSubscriptionsOnProfile": null,

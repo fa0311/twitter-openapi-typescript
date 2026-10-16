@@ -19,6 +19,10 @@
  */
 export const TypeName = {
     TimelineTweet: 'TimelineTweet',
+    SegmentedTimelines: 'SegmentedTimelines',
+    TimelineFrame: 'TimelineFrame',
+    TimelineTwitterList: 'TimelineTwitterList',
+    TimelineLabel: 'TimelineLabel',
     TimelineTimelineItem: 'TimelineTimelineItem',
     TimelineUser: 'TimelineUser',
     TimelineTimelineCursor: 'TimelineTimelineCursor',

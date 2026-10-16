@@ -87,7 +87,7 @@ export interface ErrorResponse {
     /**
      * 
      */
-    tracing: Tracing;
+    tracing?: Tracing;
 }
 
 /**
@@ -102,7 +102,6 @@ export function instanceOfErrorResponse(value: object): value is ErrorResponse {
     if (!('name' in value) || value['name'] === undefined) return false;
     if (!('path' in value) || value['path'] === undefined) return false;
     if (!('source' in value) || value['source'] === undefined) return false;
-    if (!('tracing' in value) || value['tracing'] === undefined) return false;
     return true;
 }
 
@@ -125,7 +124,7 @@ export function ErrorResponseFromJSONTyped(json: any, ignoreDiscriminator: boole
         'path': ((json['path'] as Array<any>).map(ErrorResponsePathInnerFromJSON)),
         'retryAfter': json['retry_after'] == null ? undefined : json['retry_after'],
         'source': json['source'],
-        'tracing': TracingFromJSON(json['tracing']),
+        'tracing': json['tracing'] == null ? undefined : TracingFromJSON(json['tracing']),
     };
 }
 

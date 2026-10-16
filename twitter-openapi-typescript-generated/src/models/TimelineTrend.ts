@@ -92,6 +92,10 @@ export interface TimelineTrend {
     /**
      * 
      */
+    rank?: string;
+    /**
+     * 
+     */
     socialContext?: SocialContextUnion;
     /**
      * 
@@ -135,6 +139,7 @@ export function TimelineTrendFromJSONTyped(json: any, ignoreDiscriminator: boole
         'isAiTrend': json['is_ai_trend'] == null ? undefined : json['is_ai_trend'],
         'itemType': json['itemType'] == null ? undefined : ContentItemTypeFromJSON(json['itemType']),
         'name': json['name'],
+        'rank': json['rank'] == null ? undefined : json['rank'],
         'socialContext': json['social_context'] == null ? undefined : SocialContextUnionFromJSON(json['social_context']),
         'thumbnailImage': json['thumbnail_image'] == null ? undefined : ThumbnailImageFromJSON(json['thumbnail_image']),
         'trendMetadata': TrendMetadataFromJSON(json['trend_metadata']),
@@ -158,6 +163,7 @@ export function TimelineTrendToJSONTyped(value?: TimelineTrend | null, ignoreDis
         'is_ai_trend': value['isAiTrend'],
         'itemType': ContentItemTypeToJSON(value['itemType']),
         'name': value['name'],
+        'rank': value['rank'],
         'social_context': SocialContextUnionToJSON(value['socialContext']),
         'thumbnail_image': ThumbnailImageToJSON(value['thumbnailImage']),
         'trend_metadata': TrendMetadataToJSON(value['trendMetadata']),

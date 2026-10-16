@@ -1,4 +1,4 @@
-import { getClient, logger } from '@test/init';
+import { getClient, getUserId, logger } from '@test/init';
 import { printTweet } from '@test/util';
 
 test('getTweetDetail', async () => {
@@ -89,7 +89,7 @@ test('getUserVideoTimeline', async () => {
 test('getLikes', async () => {
   logger.log('getLikes');
   const client = await getClient();
-  const response = await client.getTweetApi().getLikes({ userId: '1787148517779406848' }); //@ptcpz3
+  const response = await client.getTweetApi().getLikes({ userId: await getUserId() });
   response.data.data.filter((e) => !e.promotedMetadata).forEach((e) => printTweet(e));
   expect(response.raw.response.ok).toBe(true);
 });

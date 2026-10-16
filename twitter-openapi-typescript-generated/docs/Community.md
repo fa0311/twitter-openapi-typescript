@@ -11,8 +11,8 @@ Name | Type
 `adminResults` | [UserResults](UserResults.md)
 `createdAt` | number
 `creatorResults` | [UserResults](UserResults.md)
-`customBannerMedia` | { [key: string]: any; }
-`defaultBannerMedia` | { [key: string]: any; }
+`customBannerMedia` | [CommunityBannerMedia](CommunityBannerMedia.md)
+`defaultBannerMedia` | [CommunityBannerMedia](CommunityBannerMedia.md)
 `description` | string
 `idStr` | string
 `invitesPolicy` | string
@@ -31,7 +31,7 @@ Name | Type
 `searchTags` | Array&lt;string&gt;
 `showOnlyUsersToDisplay` | Array&lt;string&gt;
 `urls` | [CommunityUrls](CommunityUrls.md)
-`viewerRelationship` | { [key: string]: any; }
+`viewerRelationship` | [CommunityViewerRelationship](CommunityViewerRelationship.md)
 
 ## Example
 

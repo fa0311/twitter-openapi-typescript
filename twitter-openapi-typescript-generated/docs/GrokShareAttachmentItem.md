@@ -7,7 +7,7 @@
 Name | Type
 ------------ | -------------
 `analysisPostIdResults` | [AnalysisResults](AnalysisResults.md)
-`deepsearchHeaders` | Array&lt;{ [key: string]: any; }&gt;
+`deepsearchHeaders` | [Array&lt;DeepsearchHeader&gt;](DeepsearchHeader.md)
 `mediaUrls` | Array&lt;string&gt;
 `message` | string
 

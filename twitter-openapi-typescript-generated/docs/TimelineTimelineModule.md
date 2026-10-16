@@ -11,10 +11,10 @@ Name | Type
 `displayType` | [DisplayType](DisplayType.md)
 `entryType` | [ContentEntryType](ContentEntryType.md)
 `feedbackInfo` | [FeedbackInfo](FeedbackInfo.md)
-`footer` | { [key: string]: any; }
-`header` | { [key: string]: any; }
+`footer` | [ModuleFooter](ModuleFooter.md)
+`header` | [ModuleHeader](ModuleHeader.md)
 `items` | [Array&lt;ModuleItem&gt;](ModuleItem.md)
-`metadata` | { [key: string]: any; }
+`metadata` | [ModuleMetadata](ModuleMetadata.md)
 
 ## Example
 

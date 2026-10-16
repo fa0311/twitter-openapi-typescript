@@ -100,6 +100,7 @@ export interface BirdwatchPivot {
  */
 export const BirdwatchPivotFooterIconTypeEnum = {
     BirdwatchEyeOff: 'BirdwatchEyeOff',
+    BirdwatchLevelLow: 'BirdwatchLevelLow',
 } as const;
 export type BirdwatchPivotFooterIconTypeEnum = typeof BirdwatchPivotFooterIconTypeEnum[keyof typeof BirdwatchPivotFooterIconTypeEnum];
 

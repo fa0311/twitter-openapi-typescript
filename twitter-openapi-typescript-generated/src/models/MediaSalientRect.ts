@@ -16,9 +16,9 @@ import { mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface ListBannerMediaSalientRect
+ * @interface MediaSalientRect
  */
-export interface ListBannerMediaSalientRect {
+export interface MediaSalientRect {
     /**
      * 
      */
@@ -38,9 +38,9 @@ export interface ListBannerMediaSalientRect {
 }
 
 /**
- * Check if a given object implements the ListBannerMediaSalientRect interface.
+ * Check if a given object implements the MediaSalientRect interface.
  */
-export function instanceOfListBannerMediaSalientRect(value: object): value is ListBannerMediaSalientRect {
+export function instanceOfMediaSalientRect(value: object): value is MediaSalientRect {
     if (!('height' in value) || value['height'] === undefined) return false;
     if (!('left' in value) || value['left'] === undefined) return false;
     if (!('top' in value) || value['top'] === undefined) return false;
@@ -48,11 +48,11 @@ export function instanceOfListBannerMediaSalientRect(value: object): value is Li
     return true;
 }
 
-export function ListBannerMediaSalientRectFromJSON(json: any): ListBannerMediaSalientRect {
-    return ListBannerMediaSalientRectFromJSONTyped(json, false);
+export function MediaSalientRectFromJSON(json: any): MediaSalientRect {
+    return MediaSalientRectFromJSONTyped(json, false);
 }
 
-export function ListBannerMediaSalientRectFromJSONTyped(json: any, ignoreDiscriminator: boolean): ListBannerMediaSalientRect {
+export function MediaSalientRectFromJSONTyped(json: any, ignoreDiscriminator: boolean): MediaSalientRect {
     if (json == null) {
         return json;
     }
@@ -65,11 +65,11 @@ export function ListBannerMediaSalientRectFromJSONTyped(json: any, ignoreDiscrim
     };
 }
 
-export function ListBannerMediaSalientRectToJSON(json: any): ListBannerMediaSalientRect {
-    return ListBannerMediaSalientRectToJSONTyped(json, false);
+export function MediaSalientRectToJSON(json: any): MediaSalientRect {
+    return MediaSalientRectToJSONTyped(json, false);
 }
 
-export function ListBannerMediaSalientRectToJSONTyped(value?: ListBannerMediaSalientRect | null, ignoreDiscriminator: boolean = false): any {
+export function MediaSalientRectToJSONTyped(value?: MediaSalientRect | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

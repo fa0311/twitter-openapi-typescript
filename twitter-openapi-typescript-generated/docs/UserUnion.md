@@ -8,10 +8,10 @@ Name | Type
 ------------ | -------------
 `typename` | [TypeName](TypeName.md)
 `actionCounts` | [UserActionCounts](UserActionCounts.md)
-`affiliatesHighlightedLabel` | { [key: string]: any; }
+`affiliatesHighlightedLabel` | [AffiliatesHighlightedLabel](AffiliatesHighlightedLabel.md)
 `avatar` | [UserAvatar](UserAvatar.md)
 `banner` | [UserBanner](UserBanner.md)
-`businessAccount` | { [key: string]: any; }
+`businessAccount` | object
 `core` | [UserCore](UserCore.md)
 `creatorSubscriptionsCount` | number
 `dmPermissions` | [UserDmPermissions](UserDmPermissions.md)

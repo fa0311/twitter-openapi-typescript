@@ -25,6 +25,7 @@ Name | Type
 `grokTranslatedPostWithAvailability` | [GrokTranslatedPostWithAvailability](GrokTranslatedPostWithAvailability.md)
 `hasBirdwatchNotes` | boolean
 `isTranslatable` | boolean
+`jetfuelAttachment` | [JetfuelAttachment](JetfuelAttachment.md)
 `legacy` | [TweetLegacy](TweetLegacy.md)
 `nestedQuotedTweetResults` | [ItemResult](ItemResult.md)
 `noteTweet` | [NoteTweet](NoteTweet.md)
@@ -40,9 +41,9 @@ Name | Type
 `superFollowsReplyUserResult` | [SuperFollowsReplyUserResult](SuperFollowsReplyUserResult.md)
 `trendResults` | [TrendResults](TrendResults.md)
 `unifiedCard` | [UnifiedCard](UnifiedCard.md)
-`unmentionData` | { [key: string]: any; }
+`unmentionData` | object
 `views` | [TweetView](TweetView.md)
-`limitedActionResults` | { [key: string]: any; }
+`limitedActionResults` | [LimitedActionResults](LimitedActionResults.md)
 `mediaVisibilityResults` | [MediaVisibilityResults](MediaVisibilityResults.md)
 `tweet` | [TweetPreviewDisplayTweet](TweetPreviewDisplayTweet.md)
 `tweetInterstitial` | [TweetInterstitial](TweetInterstitial.md)
@@ -76,6 +77,7 @@ const example = {
   "grokTranslatedPostWithAvailability": null,
   "hasBirdwatchNotes": null,
   "isTranslatable": null,
+  "jetfuelAttachment": null,
   "legacy": null,
   "nestedQuotedTweetResults": null,
   "noteTweet": null,

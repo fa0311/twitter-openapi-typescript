@@ -7,7 +7,7 @@
 Name | Type
 ------------ | -------------
 `typename` | [TypeName](TypeName.md)
-`colorInfo` | [ArticleCoverMediaColorInfo](ArticleCoverMediaColorInfo.md)
+`colorInfo` | [MediaColorInfo](MediaColorInfo.md)
 `originalImgHeight` | number
 `originalImgUrl` | string
 `originalImgWidth` | number

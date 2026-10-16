@@ -6,7 +6,7 @@
 
 Name | Type
 ------------ | -------------
-`entities` | Array&lt;{ [key: string]: any; }&gt;
+`entities` | Array&lt;object&gt;
 `text` | string
 
 ## Example

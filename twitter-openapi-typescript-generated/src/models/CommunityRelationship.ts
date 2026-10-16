@@ -20,6 +20,13 @@ import {
     CommunityActionsToJSON,
     CommunityActionsToJSONTyped,
 } from './CommunityActions';
+import type { CommunityModerationState } from './CommunityModerationState';
+import {
+    CommunityModerationStateFromJSON,
+    CommunityModerationStateFromJSONTyped,
+    CommunityModerationStateToJSON,
+    CommunityModerationStateToJSONTyped,
+} from './CommunityModerationState';
 
 /**
  * 
@@ -38,7 +45,7 @@ export interface CommunityRelationship {
     /**
      * 
      */
-    moderationState: { [key: string]: any; };
+    moderationState: CommunityModerationState;
     /**
      * 
      */
@@ -68,7 +75,7 @@ export function CommunityRelationshipFromJSONTyped(json: any, ignoreDiscriminato
         
         'actions': CommunityActionsFromJSON(json['actions']),
         'id': json['id'],
-        'moderationState': json['moderation_state'],
+        'moderationState': CommunityModerationStateFromJSON(json['moderation_state']),
         'restId': json['rest_id'],
     };
 }
@@ -86,7 +93,7 @@ export function CommunityRelationshipToJSONTyped(value?: CommunityRelationship |
         
         'actions': CommunityActionsToJSON(value['actions']),
         'id': value['id'],
-        'moderation_state': value['moderationState'],
+        'moderation_state': CommunityModerationStateToJSON(value['moderationState']),
         'rest_id': value['restId'],
     };
 }

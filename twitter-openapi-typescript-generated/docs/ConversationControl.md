@@ -6,7 +6,8 @@
 
 Name | Type
 ------------ | -------------
-`mode` | string
+`conversationOwnerResults` | [ConversationOwnerResults](ConversationOwnerResults.md)
+`policy` | string
 
 ## Example
 
@@ -15,7 +16,8 @@ import type { ConversationControl } from 'twitter-openapi-typescript-generated'
 
 // TODO: Update the object below with actual values
 const example = {
-  "mode": null,
+  "conversationOwnerResults": null,
+  "policy": null,
 } satisfies ConversationControl
 
 console.log(example)

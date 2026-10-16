@@ -1,24 +1,26 @@
 
-# ArticleCoverMediaColorInfoPalette
+# UserLabelTextEntity
 
 
 ## Properties
 
 Name | Type
 ------------ | -------------
-`percentage` | number
-`rgb` | [ArticleCoverMediaColorInfoPaletteRGB](ArticleCoverMediaColorInfoPaletteRGB.md)
+`fromIndex` | number
+`ref` | [UserLabelTextEntityRef](UserLabelTextEntityRef.md)
+`toIndex` | number
 
 ## Example
 
 ```typescript
-import type { ArticleCoverMediaColorInfoPalette } from 'twitter-openapi-typescript-generated'
+import type { UserLabelTextEntity } from 'twitter-openapi-typescript-generated'
 
 // TODO: Update the object below with actual values
 const example = {
-  "percentage": null,
-  "rgb": null,
-} satisfies ArticleCoverMediaColorInfoPalette
+  "fromIndex": null,
+  "ref": null,
+  "toIndex": null,
+} satisfies UserLabelTextEntity
 
 console.log(example)
 
@@ -27,7 +29,7 @@ const exampleJSON: string = JSON.stringify(example)
 console.log(exampleJSON)
 
 // Parse the JSON string back to an object
-const exampleParsed = JSON.parse(exampleJSON) as ArticleCoverMediaColorInfoPalette
+const exampleParsed = JSON.parse(exampleJSON) as UserLabelTextEntity
 console.log(exampleParsed)
 ```
 

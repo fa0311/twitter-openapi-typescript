@@ -1,22 +1,22 @@
 
-# ArticleCoverMediaColorInfo
+# TimelineResponseObjects
 
 
 ## Properties
 
 Name | Type
 ------------ | -------------
-`palette` | [Array&lt;ArticleCoverMediaColorInfoPalette&gt;](ArticleCoverMediaColorInfoPalette.md)
+`feedbackActions` | [Array&lt;FeedbackActionEntry&gt;](FeedbackActionEntry.md)
 
 ## Example
 
 ```typescript
-import type { ArticleCoverMediaColorInfo } from 'twitter-openapi-typescript-generated'
+import type { TimelineResponseObjects } from 'twitter-openapi-typescript-generated'
 
 // TODO: Update the object below with actual values
 const example = {
-  "palette": null,
-} satisfies ArticleCoverMediaColorInfo
+  "feedbackActions": null,
+} satisfies TimelineResponseObjects
 
 console.log(example)
 
@@ -25,7 +25,7 @@ const exampleJSON: string = JSON.stringify(example)
 console.log(exampleJSON)
 
 // Parse the JSON string back to an object
-const exampleParsed = JSON.parse(exampleJSON) as ArticleCoverMediaColorInfo
+const exampleParsed = JSON.parse(exampleJSON) as TimelineResponseObjects
 console.log(exampleParsed)
 ```
 

@@ -7,6 +7,7 @@
 Name | Type
 ------------ | -------------
 `category` | [Array&lt;UserProfessionalCategory&gt;](UserProfessionalCategory.md)
+`id` | string
 `professionalType` | string
 `restId` | string
 
@@ -18,6 +19,7 @@ import type { UserProfessional } from 'twitter-openapi-typescript-generated'
 // TODO: Update the object below with actual values
 const example = {
   "category": null,
+  "id": null,
   "professionalType": null,
   "restId": null,
 } satisfies UserProfessional

@@ -17,7 +17,7 @@ export type TweetApiUtilsData = {
   replies: TweetApiUtilsData[];
   quoted?: TweetApiUtilsData;
   retweeted?: TweetApiUtilsData;
-  promotedMetadata?: Record<string, unknown>;
+  promotedMetadata?: i.PromotedMetadata;
 };
 
 export type UserApiUtilsData = {

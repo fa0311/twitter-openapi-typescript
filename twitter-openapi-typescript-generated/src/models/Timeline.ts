@@ -20,6 +20,20 @@ import {
     InstructionUnionToJSON,
     InstructionUnionToJSONTyped,
 } from './InstructionUnion';
+import type { TimelineMetadata } from './TimelineMetadata';
+import {
+    TimelineMetadataFromJSON,
+    TimelineMetadataFromJSONTyped,
+    TimelineMetadataToJSON,
+    TimelineMetadataToJSONTyped,
+} from './TimelineMetadata';
+import type { TimelineResponseObjects } from './TimelineResponseObjects';
+import {
+    TimelineResponseObjectsFromJSON,
+    TimelineResponseObjectsFromJSONTyped,
+    TimelineResponseObjectsToJSON,
+    TimelineResponseObjectsToJSONTyped,
+} from './TimelineResponseObjects';
 
 /**
  * 
@@ -34,11 +48,11 @@ export interface Timeline {
     /**
      * 
      */
-    metadata?: { [key: string]: any; };
+    metadata?: TimelineMetadata;
     /**
      * 
      */
-    responseObjects?: { [key: string]: any; };
+    responseObjects?: TimelineResponseObjects;
 }
 
 /**
@@ -60,8 +74,8 @@ export function TimelineFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
     return {
         
         'instructions': ((json['instructions'] as Array<any>).map(InstructionUnionFromJSON)),
-        'metadata': json['metadata'] == null ? undefined : json['metadata'],
-        'responseObjects': json['responseObjects'] == null ? undefined : json['responseObjects'],
+        'metadata': json['metadata'] == null ? undefined : TimelineMetadataFromJSON(json['metadata']),
+        'responseObjects': json['responseObjects'] == null ? undefined : TimelineResponseObjectsFromJSON(json['responseObjects']),
     };
 }
 
@@ -77,8 +91,8 @@ export function TimelineToJSONTyped(value?: Timeline | null, ignoreDiscriminator
     return {
         
         'instructions': ((value['instructions'] as Array<any>).map(InstructionUnionToJSON)),
-        'metadata': value['metadata'],
-        'responseObjects': value['responseObjects'],
+        'metadata': TimelineMetadataToJSON(value['metadata']),
+        'responseObjects': TimelineResponseObjectsToJSON(value['responseObjects']),
     };
 }
 

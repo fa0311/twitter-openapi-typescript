@@ -111,6 +111,13 @@ import {
     BirdwatchPivotToJSON,
     BirdwatchPivotToJSONTyped,
 } from './BirdwatchPivot';
+import type { JetfuelAttachment } from './JetfuelAttachment';
+import {
+    JetfuelAttachmentFromJSON,
+    JetfuelAttachmentFromJSONTyped,
+    JetfuelAttachmentToJSON,
+    JetfuelAttachmentToJSONTyped,
+} from './JetfuelAttachment';
 import type { ContentDisclosure } from './ContentDisclosure';
 import {
     ContentDisclosureFromJSON,
@@ -274,6 +281,10 @@ export interface Tweet {
     /**
      * 
      */
+    jetfuelAttachment?: JetfuelAttachment;
+    /**
+     * 
+     */
     legacy?: TweetLegacy;
     /**
      * 
@@ -334,7 +345,7 @@ export interface Tweet {
     /**
      * 
      */
-    unmentionData?: { [key: string]: any; };
+    unmentionData?: object;
     /**
      * 
      */
@@ -380,6 +391,7 @@ export function TweetFromJSONTyped(json: any, ignoreDiscriminator: boolean): Twe
         'grokTranslatedPostWithAvailability': json['grok_translated_post_with_availability'] == null ? undefined : GrokTranslatedPostWithAvailabilityFromJSON(json['grok_translated_post_with_availability']),
         'hasBirdwatchNotes': json['has_birdwatch_notes'] == null ? undefined : json['has_birdwatch_notes'],
         'isTranslatable': json['is_translatable'] == null ? undefined : json['is_translatable'],
+        'jetfuelAttachment': json['jetfuel_attachment'] == null ? undefined : JetfuelAttachmentFromJSON(json['jetfuel_attachment']),
         'legacy': json['legacy'] == null ? undefined : TweetLegacyFromJSON(json['legacy']),
         'nestedQuotedTweetResults': json['nested_quoted_tweet_results'] == null ? undefined : ItemResultFromJSON(json['nested_quoted_tweet_results']),
         'noteTweet': json['note_tweet'] == null ? undefined : NoteTweetFromJSON(json['note_tweet']),
@@ -430,6 +442,7 @@ export function TweetToJSONTyped(value?: Tweet | null, ignoreDiscriminator: bool
         'grok_translated_post_with_availability': GrokTranslatedPostWithAvailabilityToJSON(value['grokTranslatedPostWithAvailability']),
         'has_birdwatch_notes': value['hasBirdwatchNotes'],
         'is_translatable': value['isTranslatable'],
+        'jetfuel_attachment': JetfuelAttachmentToJSON(value['jetfuelAttachment']),
         'legacy': TweetLegacyToJSON(value['legacy']),
         'nested_quoted_tweet_results': ItemResultToJSON(value['nestedQuotedTweetResults']),
         'note_tweet': NoteTweetToJSON(value['noteTweet']),

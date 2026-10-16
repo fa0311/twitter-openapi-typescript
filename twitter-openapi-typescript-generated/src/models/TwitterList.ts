@@ -20,6 +20,13 @@ import {
     ListBannerMediaToJSON,
     ListBannerMediaToJSONTyped,
 } from './ListBannerMedia';
+import type { ListBannerMediaResults } from './ListBannerMediaResults';
+import {
+    ListBannerMediaResultsFromJSON,
+    ListBannerMediaResultsFromJSONTyped,
+    ListBannerMediaResultsToJSON,
+    ListBannerMediaResultsToJSONTyped,
+} from './ListBannerMediaResults';
 import type { UserResults } from './UserResults';
 import {
     UserResultsFromJSON,
@@ -41,11 +48,19 @@ export interface TwitterList {
     /**
      * 
      */
+    customBannerMedia?: ListBannerMedia;
+    /**
+     * 
+     */
+    customBannerMediaResults?: ListBannerMediaResults;
+    /**
+     * 
+     */
     defaultBannerMedia: ListBannerMedia;
     /**
      * 
      */
-    defaultBannerMediaResults: { [key: string]: any; };
+    defaultBannerMediaResults: ListBannerMediaResults;
     /**
      * 
      */
@@ -153,8 +168,10 @@ export function TwitterListFromJSONTyped(json: any, ignoreDiscriminator: boolean
     return {
         
         'createdAt': json['created_at'],
+        'customBannerMedia': json['custom_banner_media'] == null ? undefined : ListBannerMediaFromJSON(json['custom_banner_media']),
+        'customBannerMediaResults': json['custom_banner_media_results'] == null ? undefined : ListBannerMediaResultsFromJSON(json['custom_banner_media_results']),
         'defaultBannerMedia': ListBannerMediaFromJSON(json['default_banner_media']),
-        'defaultBannerMediaResults': json['default_banner_media_results'],
+        'defaultBannerMediaResults': ListBannerMediaResultsFromJSON(json['default_banner_media_results']),
         'description': json['description'],
         'facepileUrls': json['facepile_urls'],
         'followersContext': json['followers_context'] == null ? undefined : json['followers_context'],
@@ -185,8 +202,10 @@ export function TwitterListToJSONTyped(value?: TwitterList | null, ignoreDiscrim
     return {
         
         'created_at': value['createdAt'],
+        'custom_banner_media': ListBannerMediaToJSON(value['customBannerMedia']),
+        'custom_banner_media_results': ListBannerMediaResultsToJSON(value['customBannerMediaResults']),
         'default_banner_media': ListBannerMediaToJSON(value['defaultBannerMedia']),
-        'default_banner_media_results': value['defaultBannerMediaResults'],
+        'default_banner_media_results': ListBannerMediaResultsToJSON(value['defaultBannerMediaResults']),
         'description': value['description'],
         'facepile_urls': value['facepileUrls'],
         'followers_context': value['followersContext'],

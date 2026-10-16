@@ -41,6 +41,13 @@ import {
     SelfThreadToJSON,
     SelfThreadToJSONTyped,
 } from './SelfThread';
+import type { ConversationControl } from './ConversationControl';
+import {
+    ConversationControlFromJSON,
+    ConversationControlFromJSONTyped,
+    ConversationControlToJSON,
+    ConversationControlToJSONTyped,
+} from './ConversationControl';
 import type { QuotedStatusPermalink } from './QuotedStatusPermalink';
 import {
     QuotedStatusPermalinkFromJSON,
@@ -73,7 +80,7 @@ export interface TweetLegacy {
     /**
      * 
      */
-    conversationControl?: { [key: string]: any; };
+    conversationControl?: ConversationControl;
     /**
      * 
      */
@@ -239,7 +246,7 @@ export function TweetLegacyFromJSONTyped(json: any, ignoreDiscriminator: boolean
         
         'bookmarkCount': json['bookmark_count'],
         'bookmarked': json['bookmarked'],
-        'conversationControl': json['conversation_control'] == null ? undefined : json['conversation_control'],
+        'conversationControl': json['conversation_control'] == null ? undefined : ConversationControlFromJSON(json['conversation_control']),
         'conversationIdStr': json['conversation_id_str'],
         'createdAt': json['created_at'],
         'displayTextRange': json['display_text_range'],
@@ -284,7 +291,7 @@ export function TweetLegacyToJSONTyped(value?: TweetLegacy | null, ignoreDiscrim
         
         'bookmark_count': value['bookmarkCount'],
         'bookmarked': value['bookmarked'],
-        'conversation_control': value['conversationControl'],
+        'conversation_control': ConversationControlToJSON(value['conversationControl']),
         'conversation_id_str': value['conversationIdStr'],
         'created_at': value['createdAt'],
         'display_text_range': value['displayTextRange'],

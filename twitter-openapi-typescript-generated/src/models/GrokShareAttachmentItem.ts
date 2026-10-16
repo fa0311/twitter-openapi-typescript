@@ -20,6 +20,13 @@ import {
     AnalysisResultsToJSON,
     AnalysisResultsToJSONTyped,
 } from './AnalysisResults';
+import type { DeepsearchHeader } from './DeepsearchHeader';
+import {
+    DeepsearchHeaderFromJSON,
+    DeepsearchHeaderFromJSONTyped,
+    DeepsearchHeaderToJSON,
+    DeepsearchHeaderToJSONTyped,
+} from './DeepsearchHeader';
 
 /**
  * 
@@ -34,7 +41,7 @@ export interface GrokShareAttachmentItem {
     /**
      * 
      */
-    deepsearchHeaders?: Array<{ [key: string]: any; }>;
+    deepsearchHeaders?: Array<DeepsearchHeader>;
     /**
      * 
      */
@@ -65,7 +72,7 @@ export function GrokShareAttachmentItemFromJSONTyped(json: any, ignoreDiscrimina
     return {
         
         'analysisPostIdResults': json['analysis_post_id_results'] == null ? undefined : AnalysisResultsFromJSON(json['analysis_post_id_results']),
-        'deepsearchHeaders': json['deepsearch_headers'] == null ? undefined : json['deepsearch_headers'],
+        'deepsearchHeaders': json['deepsearch_headers'] == null ? undefined : ((json['deepsearch_headers'] as Array<any>).map(DeepsearchHeaderFromJSON)),
         'mediaUrls': json['media_urls'],
         'message': json['message'],
     };
@@ -83,7 +90,7 @@ export function GrokShareAttachmentItemToJSONTyped(value?: GrokShareAttachmentIt
     return {
         
         'analysis_post_id_results': AnalysisResultsToJSON(value['analysisPostIdResults']),
-        'deepsearch_headers': value['deepsearchHeaders'],
+        'deepsearch_headers': value['deepsearchHeaders'] == null ? undefined : ((value['deepsearchHeaders'] as Array<any>).map(DeepsearchHeaderToJSON)),
         'media_urls': value['mediaUrls'],
         'message': value['message'],
     };

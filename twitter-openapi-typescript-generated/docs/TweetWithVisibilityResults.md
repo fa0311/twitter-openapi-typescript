@@ -7,7 +7,7 @@
 Name | Type
 ------------ | -------------
 `typename` | [TypeName](TypeName.md)
-`limitedActionResults` | { [key: string]: any; }
+`limitedActionResults` | [LimitedActionResults](LimitedActionResults.md)
 `mediaVisibilityResults` | [MediaVisibilityResults](MediaVisibilityResults.md)
 `tweet` | [Tweet](Tweet.md)
 `tweetInterstitial` | [TweetInterstitial](TweetInterstitial.md)

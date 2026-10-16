@@ -13,6 +13,20 @@
  */
 
 import { mapValues } from '../runtime';
+import type { TimelineShowAlertIconDisplayInfo } from './TimelineShowAlertIconDisplayInfo';
+import {
+    TimelineShowAlertIconDisplayInfoFromJSON,
+    TimelineShowAlertIconDisplayInfoFromJSONTyped,
+    TimelineShowAlertIconDisplayInfoToJSON,
+    TimelineShowAlertIconDisplayInfoToJSONTyped,
+} from './TimelineShowAlertIconDisplayInfo';
+import type { TimelineShowAlertColorConfig } from './TimelineShowAlertColorConfig';
+import {
+    TimelineShowAlertColorConfigFromJSON,
+    TimelineShowAlertColorConfigFromJSONTyped,
+    TimelineShowAlertColorConfigToJSON,
+    TimelineShowAlertColorConfigToJSONTyped,
+} from './TimelineShowAlertColorConfig';
 import type { TimelineShowAlertRichText } from './TimelineShowAlertRichText';
 import {
     TimelineShowAlertRichTextFromJSON,
@@ -51,27 +65,27 @@ export interface TimelineShowAlert {
     /**
      * 
      */
-    alertType?: TimelineShowAlertAlertTypeEnum;
+    alertType: TimelineShowAlertAlertTypeEnum;
     /**
      * 
      */
-    clientEventInfo?: ClientEventInfo;
+    clientEventInfo: ClientEventInfo;
     /**
      * 
      */
-    colorConfig?: { [key: string]: any; };
+    colorConfig: TimelineShowAlertColorConfig;
     /**
      * 
      */
-    displayDurationMs?: number;
+    displayDurationMs: number;
     /**
      * 
      */
-    displayLocation?: TimelineShowAlertDisplayLocationEnum;
+    displayLocation: TimelineShowAlertDisplayLocationEnum;
     /**
      * 
      */
-    iconDisplayInfo?: { [key: string]: any; };
+    iconDisplayInfo: TimelineShowAlertIconDisplayInfo;
     /**
      * 
      */
@@ -79,7 +93,7 @@ export interface TimelineShowAlert {
     /**
      * 
      */
-    triggerDelayMs?: number;
+    triggerDelayMs: number;
     /**
      * 
      */
@@ -87,7 +101,7 @@ export interface TimelineShowAlert {
     /**
      * 
      */
-    usersResults: Array<UserResults> | null;
+    usersResults?: Array<UserResults>;
 }
 
 
@@ -112,9 +126,19 @@ export type TimelineShowAlertDisplayLocationEnum = typeof TimelineShowAlertDispl
  * Check if a given object implements the TimelineShowAlert interface.
  */
 export function instanceOfTimelineShowAlert(value: object): value is TimelineShowAlert {
+    if (!('alertType' in value) || value['alertType'] === undefined) return false;
+    if (value['alertType'] !== 'NewTweets') return false;
+    
+    if (!('clientEventInfo' in value) || value['clientEventInfo'] === undefined) return false;
+    if (!('colorConfig' in value) || value['colorConfig'] === undefined) return false;
+    if (!('displayDurationMs' in value) || value['displayDurationMs'] === undefined) return false;
+    if (!('displayLocation' in value) || value['displayLocation'] === undefined) return false;
+    if (value['displayLocation'] !== 'Top') return false;
+    
+    if (!('iconDisplayInfo' in value) || value['iconDisplayInfo'] === undefined) return false;
     if (!('richText' in value) || value['richText'] === undefined) return false;
+    if (!('triggerDelayMs' in value) || value['triggerDelayMs'] === undefined) return false;
     if (!('type' in value) || value['type'] === undefined) return false;
-    if (!('usersResults' in value) || value['usersResults'] === undefined) return false;
     return true;
 }
 
@@ -128,16 +152,16 @@ export function TimelineShowAlertFromJSONTyped(json: any, ignoreDiscriminator: b
     }
     return {
         
-        'alertType': json['alertType'] == null ? undefined : json['alertType'],
-        'clientEventInfo': json['clientEventInfo'] == null ? undefined : ClientEventInfoFromJSON(json['clientEventInfo']),
-        'colorConfig': json['colorConfig'] == null ? undefined : json['colorConfig'],
-        'displayDurationMs': json['displayDurationMs'] == null ? undefined : json['displayDurationMs'],
-        'displayLocation': json['displayLocation'] == null ? undefined : json['displayLocation'],
-        'iconDisplayInfo': json['iconDisplayInfo'] == null ? undefined : json['iconDisplayInfo'],
+        'alertType': json['alertType'],
+        'clientEventInfo': ClientEventInfoFromJSON(json['clientEventInfo']),
+        'colorConfig': TimelineShowAlertColorConfigFromJSON(json['colorConfig']),
+        'displayDurationMs': json['displayDurationMs'],
+        'displayLocation': json['displayLocation'],
+        'iconDisplayInfo': TimelineShowAlertIconDisplayInfoFromJSON(json['iconDisplayInfo']),
         'richText': TimelineShowAlertRichTextFromJSON(json['richText']),
-        'triggerDelayMs': json['triggerDelayMs'] == null ? undefined : json['triggerDelayMs'],
+        'triggerDelayMs': json['triggerDelayMs'],
         'type': InstructionTypeFromJSON(json['type']),
-        'usersResults': (json['usersResults'] == null ? null : (json['usersResults'] as Array<any>).map(UserResultsFromJSON)),
+        'usersResults': json['usersResults'] == null ? undefined : ((json['usersResults'] as Array<any>).map(UserResultsFromJSON)),
     };
 }
 
@@ -154,14 +178,14 @@ export function TimelineShowAlertToJSONTyped(value?: TimelineShowAlert | null, i
         
         'alertType': value['alertType'],
         'clientEventInfo': ClientEventInfoToJSON(value['clientEventInfo']),
-        'colorConfig': value['colorConfig'],
+        'colorConfig': TimelineShowAlertColorConfigToJSON(value['colorConfig']),
         'displayDurationMs': value['displayDurationMs'],
         'displayLocation': value['displayLocation'],
-        'iconDisplayInfo': value['iconDisplayInfo'],
+        'iconDisplayInfo': TimelineShowAlertIconDisplayInfoToJSON(value['iconDisplayInfo']),
         'richText': TimelineShowAlertRichTextToJSON(value['richText']),
         'triggerDelayMs': value['triggerDelayMs'],
         'type': InstructionTypeToJSON(value['type']),
-        'usersResults': (value['usersResults'] == null ? null : (value['usersResults'] as Array<any>).map(UserResultsToJSON)),
+        'usersResults': value['usersResults'] == null ? undefined : ((value['usersResults'] as Array<any>).map(UserResultsToJSON)),
     };
 }
 

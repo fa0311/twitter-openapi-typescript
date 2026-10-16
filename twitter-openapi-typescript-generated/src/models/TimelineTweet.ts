@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { PromotedMetadata } from './PromotedMetadata';
+import {
+    PromotedMetadataFromJSON,
+    PromotedMetadataFromJSONTyped,
+    PromotedMetadataToJSON,
+    PromotedMetadataToJSONTyped,
+} from './PromotedMetadata';
 import type { TypeName } from './TypeName';
 import {
     TypeNameFromJSON,
@@ -74,7 +81,7 @@ export interface TimelineTweet {
     /**
      * 
      */
-    promotedMetadata?: { [key: string]: any; };
+    promotedMetadata?: PromotedMetadata;
     /**
      * 
      */
@@ -127,7 +134,7 @@ export function TimelineTweetFromJSONTyped(json: any, ignoreDiscriminator: boole
         'hasModeratedReplies': json['hasModeratedReplies'] == null ? undefined : json['hasModeratedReplies'],
         'highlights': json['highlights'] == null ? undefined : HighlightFromJSON(json['highlights']),
         'itemType': ContentItemTypeFromJSON(json['itemType']),
-        'promotedMetadata': json['promotedMetadata'] == null ? undefined : json['promotedMetadata'],
+        'promotedMetadata': json['promotedMetadata'] == null ? undefined : PromotedMetadataFromJSON(json['promotedMetadata']),
         'socialContext': json['socialContext'] == null ? undefined : SocialContextUnionFromJSON(json['socialContext']),
         'tweetDisplayType': json['tweetDisplayType'],
         'tweetResults': ItemResultFromJSON(json['tweet_results']),
@@ -149,7 +156,7 @@ export function TimelineTweetToJSONTyped(value?: TimelineTweet | null, ignoreDis
         'hasModeratedReplies': value['hasModeratedReplies'],
         'highlights': HighlightToJSON(value['highlights']),
         'itemType': ContentItemTypeToJSON(value['itemType']),
-        'promotedMetadata': value['promotedMetadata'],
+        'promotedMetadata': PromotedMetadataToJSON(value['promotedMetadata']),
         'socialContext': SocialContextUnionToJSON(value['socialContext']),
         'tweetDisplayType': value['tweetDisplayType'],
         'tweet_results': ItemResultToJSON(value['tweetResults']),

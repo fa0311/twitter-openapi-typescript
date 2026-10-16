@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { ListBannerMediaSalientRect } from './ListBannerMediaSalientRect';
+import type { MediaSalientRect } from './MediaSalientRect';
 import {
-    ListBannerMediaSalientRectFromJSON,
-    ListBannerMediaSalientRectFromJSONTyped,
-    ListBannerMediaSalientRectToJSON,
-    ListBannerMediaSalientRectToJSONTyped,
-} from './ListBannerMediaSalientRect';
+    MediaSalientRectFromJSON,
+    MediaSalientRectFromJSONTyped,
+    MediaSalientRectToJSON,
+    MediaSalientRectToJSONTyped,
+} from './MediaSalientRect';
 
 /**
  * 
@@ -42,7 +42,7 @@ export interface ListBannerMediaInfo {
     /**
      * 
      */
-    salientRect: ListBannerMediaSalientRect;
+    salientRect: MediaSalientRect;
 }
 
 /**
@@ -69,7 +69,7 @@ export function ListBannerMediaInfoFromJSONTyped(json: any, ignoreDiscriminator:
         'originalImgHeight': json['original_img_height'],
         'originalImgUrl': json['original_img_url'],
         'originalImgWidth': json['original_img_width'],
-        'salientRect': ListBannerMediaSalientRectFromJSON(json['salient_rect']),
+        'salientRect': MediaSalientRectFromJSON(json['salient_rect']),
     };
 }
 
@@ -87,7 +87,7 @@ export function ListBannerMediaInfoToJSONTyped(value?: ListBannerMediaInfo | nul
         'original_img_height': value['originalImgHeight'],
         'original_img_url': value['originalImgUrl'],
         'original_img_width': value['originalImgWidth'],
-        'salient_rect': ListBannerMediaSalientRectToJSON(value['salientRect']),
+        'salient_rect': MediaSalientRectToJSON(value['salientRect']),
     };
 }
 

@@ -1,28 +1,24 @@
 
-# ListBannerMediaSalientRect
+# UserLabelUrl
 
 
 ## Properties
 
 Name | Type
 ------------ | -------------
-`height` | number
-`left` | number
-`top` | number
-`width` | number
+`url` | string
+`urlType` | string
 
 ## Example
 
 ```typescript
-import type { ListBannerMediaSalientRect } from 'twitter-openapi-typescript-generated'
+import type { UserLabelUrl } from 'twitter-openapi-typescript-generated'
 
 // TODO: Update the object below with actual values
 const example = {
-  "height": null,
-  "left": null,
-  "top": null,
-  "width": null,
-} satisfies ListBannerMediaSalientRect
+  "url": null,
+  "urlType": null,
+} satisfies UserLabelUrl
 
 console.log(example)
 
@@ -31,7 +27,7 @@ const exampleJSON: string = JSON.stringify(example)
 console.log(exampleJSON)
 
 // Parse the JSON string back to an object
-const exampleParsed = JSON.parse(exampleJSON) as ListBannerMediaSalientRect
+const exampleParsed = JSON.parse(exampleJSON) as UserLabelUrl
 console.log(exampleParsed)
 ```
 

@@ -13,13 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
-import type { ClientEventInfo } from './ClientEventInfo';
+import type { FeedbackClientEventInfo } from './FeedbackClientEventInfo';
 import {
-    ClientEventInfoFromJSON,
-    ClientEventInfoFromJSONTyped,
-    ClientEventInfoToJSON,
-    ClientEventInfoToJSONTyped,
-} from './ClientEventInfo';
+    FeedbackClientEventInfoFromJSON,
+    FeedbackClientEventInfoFromJSONTyped,
+    FeedbackClientEventInfoToJSON,
+    FeedbackClientEventInfoToJSONTyped,
+} from './FeedbackClientEventInfo';
 
 /**
  * 
@@ -30,17 +30,22 @@ export interface FeedbackInfo {
     /**
      * 
      */
-    clientEventInfo?: ClientEventInfo;
+    clientEventInfo?: FeedbackClientEventInfo;
     /**
      * 
      */
-    feedbackKeys?: Array<string>;
+    feedbackKeys: Array<string>;
+    /**
+     * 
+     */
+    feedbackMetadata?: string;
 }
 
 /**
  * Check if a given object implements the FeedbackInfo interface.
  */
 export function instanceOfFeedbackInfo(value: object): value is FeedbackInfo {
+    if (!('feedbackKeys' in value) || value['feedbackKeys'] === undefined) return false;
     return true;
 }
 
@@ -54,8 +59,9 @@ export function FeedbackInfoFromJSONTyped(json: any, ignoreDiscriminator: boolea
     }
     return {
         
-        'clientEventInfo': json['clientEventInfo'] == null ? undefined : ClientEventInfoFromJSON(json['clientEventInfo']),
-        'feedbackKeys': json['feedbackKeys'] == null ? undefined : json['feedbackKeys'],
+        'clientEventInfo': json['clientEventInfo'] == null ? undefined : FeedbackClientEventInfoFromJSON(json['clientEventInfo']),
+        'feedbackKeys': json['feedbackKeys'],
+        'feedbackMetadata': json['feedbackMetadata'] == null ? undefined : json['feedbackMetadata'],
     };
 }
 
@@ -70,8 +76,9 @@ export function FeedbackInfoToJSONTyped(value?: FeedbackInfo | null, ignoreDiscr
 
     return {
         
-        'clientEventInfo': ClientEventInfoToJSON(value['clientEventInfo']),
+        'clientEventInfo': FeedbackClientEventInfoToJSON(value['clientEventInfo']),
         'feedbackKeys': value['feedbackKeys'],
+        'feedbackMetadata': value['feedbackMetadata'],
     };
 }
 

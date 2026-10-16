@@ -7,7 +7,7 @@
 Name | Type
 ------------ | -------------
 `component` | string
-`details` | { [key: string]: any; }
+`details` | [ClientEventInfoDetails](ClientEventInfoDetails.md)
 `element` | string
 
 ## Example

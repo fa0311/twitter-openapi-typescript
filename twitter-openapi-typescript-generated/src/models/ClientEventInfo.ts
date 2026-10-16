@@ -13,6 +13,14 @@
  */
 
 import { mapValues } from '../runtime';
+import type { ClientEventInfoDetails } from './ClientEventInfoDetails';
+import {
+    ClientEventInfoDetailsFromJSON,
+    ClientEventInfoDetailsFromJSONTyped,
+    ClientEventInfoDetailsToJSON,
+    ClientEventInfoDetailsToJSONTyped,
+} from './ClientEventInfoDetails';
+
 /**
  * 
  * @export
@@ -26,7 +34,7 @@ export interface ClientEventInfo {
     /**
      * 
      */
-    details?: { [key: string]: any; };
+    details?: ClientEventInfoDetails;
     /**
      * 
      */
@@ -51,7 +59,7 @@ export function ClientEventInfoFromJSONTyped(json: any, ignoreDiscriminator: boo
     return {
         
         'component': json['component'] == null ? undefined : json['component'],
-        'details': json['details'] == null ? undefined : json['details'],
+        'details': json['details'] == null ? undefined : ClientEventInfoDetailsFromJSON(json['details']),
         'element': json['element'] == null ? undefined : json['element'],
     };
 }
@@ -68,7 +76,7 @@ export function ClientEventInfoToJSONTyped(value?: ClientEventInfo | null, ignor
     return {
         
         'component': value['component'],
-        'details': value['details'],
+        'details': ClientEventInfoDetailsToJSON(value['details']),
         'element': value['element'],
     };
 }

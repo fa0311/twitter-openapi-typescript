@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { MediaColorInfo } from './MediaColorInfo';
+import {
+    MediaColorInfoFromJSON,
+    MediaColorInfoFromJSONTyped,
+    MediaColorInfoToJSON,
+    MediaColorInfoToJSONTyped,
+} from './MediaColorInfo';
 import type { TweetCardLegacyBindingValueDataImage } from './TweetCardLegacyBindingValueDataImage';
 import {
     TweetCardLegacyBindingValueDataImageFromJSON,
@@ -41,7 +48,7 @@ export interface TweetCardLegacyBindingValueData {
     /**
      * 
      */
-    imageColorValue?: { [key: string]: any; };
+    imageColorValue?: MediaColorInfo;
     /**
      * 
      */
@@ -83,7 +90,7 @@ export function TweetCardLegacyBindingValueDataFromJSONTyped(json: any, ignoreDi
     return {
         
         'booleanValue': json['boolean_value'] == null ? undefined : json['boolean_value'],
-        'imageColorValue': json['image_color_value'] == null ? undefined : json['image_color_value'],
+        'imageColorValue': json['image_color_value'] == null ? undefined : MediaColorInfoFromJSON(json['image_color_value']),
         'imageValue': json['image_value'] == null ? undefined : TweetCardLegacyBindingValueDataImageFromJSON(json['image_value']),
         'scribeKey': json['scribe_key'] == null ? undefined : json['scribe_key'],
         'stringValue': json['string_value'] == null ? undefined : json['string_value'],
@@ -104,7 +111,7 @@ export function TweetCardLegacyBindingValueDataToJSONTyped(value?: TweetCardLega
     return {
         
         'boolean_value': value['booleanValue'],
-        'image_color_value': value['imageColorValue'],
+        'image_color_value': MediaColorInfoToJSON(value['imageColorValue']),
         'image_value': TweetCardLegacyBindingValueDataImageToJSON(value['imageValue']),
         'scribe_key': value['scribeKey'],
         'string_value': value['stringValue'],

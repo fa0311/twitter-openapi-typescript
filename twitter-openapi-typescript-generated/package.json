@@ -1,6 +1,6 @@
 {
   "name": "twitter-openapi-typescript-generated",
-  "version": "0.0.41",
+  "version": "0.1.0",
   "description": "OpenAPI client for twitter-openapi-typescript-generated",
   "author": "OpenAPI-Generator",
   "repository": {

@@ -118,14 +118,17 @@ export class PostApiUtils {
 
     variables.disallowedReplyOptions = null as any;
 
-    const response = await this.api.postCreateTweetRaw({
-      pathQueryId: this.flag[queryId].queryId,
-      postCreateTweetRequest: {
-        queryId: this.flag[queryId].queryId,
-        features: features,
-        variables: { ...variables, ...args },
+    const response = await this.api.postCreateTweetRaw(
+      {
+        pathQueryId: this.flag[queryId].queryId,
+        postCreateTweetRequest: {
+          queryId: this.flag[queryId].queryId,
+          features: features,
+          variables: { ...variables, ...args },
+        },
       },
-    });
+      this.initOverrides(this.flag[queryId]),
+    );
 
     return {
       raw: { response: response.raw },
@@ -141,13 +144,16 @@ export class PostApiUtils {
     };
     const queryId = 'DeleteTweet';
     const variables = i.PostCreateRetweetRequestVariablesFromJSON(this.flag[queryId].variables);
-    const response = await this.api.postDeleteTweetRaw({
-      pathQueryId: this.flag[queryId].queryId,
-      postDeleteTweetRequest: {
-        queryId: this.flag[queryId].queryId,
-        variables: { ...variables, ...args },
+    const response = await this.api.postDeleteTweetRaw(
+      {
+        pathQueryId: this.flag[queryId].queryId,
+        postDeleteTweetRequest: {
+          queryId: this.flag[queryId].queryId,
+          variables: { ...variables, ...args },
+        },
       },
-    });
+      this.initOverrides(this.flag[queryId]),
+    );
     return {
       raw: { response: response.raw },
       header: buildHeader(response.raw.headers),
@@ -162,13 +168,16 @@ export class PostApiUtils {
     };
     const queryId = 'CreateRetweet';
     const variables = i.PostCreateRetweetRequestVariablesFromJSON(this.flag[queryId].variables);
-    const response = await this.api.postCreateRetweetRaw({
-      pathQueryId: this.flag[queryId].queryId,
-      postCreateRetweetRequest: {
-        queryId: this.flag[queryId].queryId,
-        variables: { ...variables, ...args },
+    const response = await this.api.postCreateRetweetRaw(
+      {
+        pathQueryId: this.flag[queryId].queryId,
+        postCreateRetweetRequest: {
+          queryId: this.flag[queryId].queryId,
+          variables: { ...variables, ...args },
+        },
       },
-    });
+      this.initOverrides(this.flag[queryId]),
+    );
     return {
       raw: { response: response.raw },
       header: buildHeader(response.raw.headers),
@@ -182,13 +191,16 @@ export class PostApiUtils {
     };
     const queryId = 'DeleteRetweet';
     const variables = i.PostDeleteRetweetRequestVariablesFromJSON(this.flag[queryId].variables);
-    const response = await this.api.postDeleteRetweetRaw({
-      pathQueryId: this.flag[queryId].queryId,
-      postDeleteRetweetRequest: {
-        queryId: this.flag[queryId].queryId,
-        variables: { ...variables, ...args },
+    const response = await this.api.postDeleteRetweetRaw(
+      {
+        pathQueryId: this.flag[queryId].queryId,
+        postDeleteRetweetRequest: {
+          queryId: this.flag[queryId].queryId,
+          variables: { ...variables, ...args },
+        },
       },
-    });
+      this.initOverrides(this.flag[queryId]),
+    );
     return {
       raw: { response: response.raw },
       header: buildHeader(response.raw.headers),
@@ -203,13 +215,16 @@ export class PostApiUtils {
     };
     const queryId = 'FavoriteTweet';
     const variables = i.PostCreateRetweetRequestVariablesFromJSON(this.flag[queryId].variables);
-    const response = await this.api.postFavoriteTweetRaw({
-      pathQueryId: this.flag[queryId].queryId,
-      postFavoriteTweetRequest: {
-        queryId: this.flag[queryId].queryId,
-        variables: { ...variables, ...args },
+    const response = await this.api.postFavoriteTweetRaw(
+      {
+        pathQueryId: this.flag[queryId].queryId,
+        postFavoriteTweetRequest: {
+          queryId: this.flag[queryId].queryId,
+          variables: { ...variables, ...args },
+        },
       },
-    });
+      this.initOverrides(this.flag[queryId]),
+    );
     return {
       raw: { response: response.raw },
       header: buildHeader(response.raw.headers),
@@ -226,13 +241,16 @@ export class PostApiUtils {
     };
     const queryId = 'UnfavoriteTweet';
     const variables = i.PostCreateRetweetRequestVariablesFromJSON(this.flag[queryId].variables);
-    const response = await this.api.postUnfavoriteTweetRaw({
-      pathQueryId: this.flag[queryId].queryId,
-      postUnfavoriteTweetRequest: {
-        queryId: this.flag[queryId].queryId,
-        variables: { ...variables, ...args },
+    const response = await this.api.postUnfavoriteTweetRaw(
+      {
+        pathQueryId: this.flag[queryId].queryId,
+        postUnfavoriteTweetRequest: {
+          queryId: this.flag[queryId].queryId,
+          variables: { ...variables, ...args },
+        },
       },
-    });
+      this.initOverrides(this.flag[queryId]),
+    );
     return {
       raw: { response: response.raw },
       header: buildHeader(response.raw.headers),

@@ -13,12 +13,24 @@
  */
 
 import { mapValues } from '../runtime';
+import type { RichMessageEntity } from './RichMessageEntity';
+import {
+    RichMessageEntityFromJSON,
+    RichMessageEntityFromJSONTyped,
+    RichMessageEntityToJSON,
+    RichMessageEntityToJSONTyped,
+} from './RichMessageEntity';
+
 /**
  * 
  * @export
  * @interface RichMessage
  */
 export interface RichMessage {
+    /**
+     * 
+     */
+    entities?: Array<RichMessageEntity>;
     /**
      * 
      */
@@ -46,6 +58,7 @@ export function RichMessageFromJSONTyped(json: any, ignoreDiscriminator: boolean
     }
     return {
         
+        'entities': json['entities'] == null ? undefined : ((json['entities'] as Array<any>).map(RichMessageEntityFromJSON)),
         'rtl': json['rtl'] == null ? undefined : json['rtl'],
         'text': json['text'] == null ? undefined : json['text'],
     };
@@ -62,6 +75,7 @@ export function RichMessageToJSONTyped(value?: RichMessage | null, ignoreDiscrim
 
     return {
         
+        'entities': value['entities'] == null ? undefined : ((value['entities'] as Array<any>).map(RichMessageEntityToJSON)),
         'rtl': value['rtl'],
         'text': value['text'],
     };

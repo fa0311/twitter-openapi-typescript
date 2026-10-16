@@ -46,7 +46,7 @@ export interface FeedbackAction {
     /**
      * 
      */
-    feedbackType: FeedbackActionFeedbackTypeEnum;
+    feedbackType: string;
     /**
      * 
      */
@@ -74,18 +74,6 @@ export const FeedbackActionConfirmationDisplayTypeEnum = {
     Inline: 'Inline',
 } as const;
 export type FeedbackActionConfirmationDisplayTypeEnum = typeof FeedbackActionConfirmationDisplayTypeEnum[keyof typeof FeedbackActionConfirmationDisplayTypeEnum];
-
-/**
- * @export
- */
-export const FeedbackActionFeedbackTypeEnum = {
-    DontLike: 'DontLike',
-    GiveFeedback: 'GiveFeedback',
-    NotCredible: 'NotCredible',
-    NotRelevant: 'NotRelevant',
-    SeeFewer: 'SeeFewer',
-} as const;
-export type FeedbackActionFeedbackTypeEnum = typeof FeedbackActionFeedbackTypeEnum[keyof typeof FeedbackActionFeedbackTypeEnum];
 
 /**
  * @export

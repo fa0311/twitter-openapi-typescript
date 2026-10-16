@@ -30,7 +30,7 @@ export interface ModuleFooter {
     /**
      * 
      */
-    displayType: ModuleFooterDisplayTypeEnum;
+    displayType: string;
     /**
      * 
      */
@@ -41,23 +41,11 @@ export interface ModuleFooter {
     text: string;
 }
 
-
-/**
- * @export
- */
-export const ModuleFooterDisplayTypeEnum = {
-    Classic: 'Classic',
-} as const;
-export type ModuleFooterDisplayTypeEnum = typeof ModuleFooterDisplayTypeEnum[keyof typeof ModuleFooterDisplayTypeEnum];
-
-
 /**
  * Check if a given object implements the ModuleFooter interface.
  */
 export function instanceOfModuleFooter(value: object): value is ModuleFooter {
     if (!('displayType' in value) || value['displayType'] === undefined) return false;
-    if (value['displayType'] !== 'Classic') return false;
-    
     if (!('landingUrl' in value) || value['landingUrl'] === undefined) return false;
     if (!('text' in value) || value['text'] === undefined) return false;
     return true;

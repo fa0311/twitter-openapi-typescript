@@ -20,6 +20,13 @@ import {
     TimelineCommunityFromJSONTyped,
     TimelineCommunityToJSON,
 } from './TimelineCommunity';
+import type { TimelineEventSummary } from './TimelineEventSummary';
+import {
+    instanceOfTimelineEventSummary,
+    TimelineEventSummaryFromJSON,
+    TimelineEventSummaryFromJSONTyped,
+    TimelineEventSummaryToJSON,
+} from './TimelineEventSummary';
 import type { TimelineFrame } from './TimelineFrame';
 import {
     instanceOfTimelineFrame,
@@ -103,7 +110,7 @@ import {
  * 
  * @export
  */
-export type ItemContentUnion = { typename: 'TimelineCommunity' } & TimelineCommunity | { typename: 'TimelineFrame' } & TimelineFrame | { typename: 'TimelineLabel' } & TimelineLabel | { typename: 'TimelineMessagePrompt' } & TimelineMessagePrompt | { typename: 'TimelineNotification' } & TimelineNotification | { typename: 'TimelinePrompt' } & TimelinePrompt | { typename: 'TimelineTimelineCursor' } & TimelineTimelineCursor | { typename: 'TimelineTombstone' } & TimelineTombstone | { typename: 'TimelineTrend' } & TimelineTrend | { typename: 'TimelineTweet' } & TimelineTweet | { typename: 'TimelineTwitterList' } & TimelineTwitterList | { typename: 'TimelineUser' } & TimelineUser;
+export type ItemContentUnion = { typename: 'TimelineCommunity' } & TimelineCommunity | { typename: 'TimelineEventSummary' } & TimelineEventSummary | { typename: 'TimelineFrame' } & TimelineFrame | { typename: 'TimelineLabel' } & TimelineLabel | { typename: 'TimelineMessagePrompt' } & TimelineMessagePrompt | { typename: 'TimelineNotification' } & TimelineNotification | { typename: 'TimelinePrompt' } & TimelinePrompt | { typename: 'TimelineTimelineCursor' } & TimelineTimelineCursor | { typename: 'TimelineTombstone' } & TimelineTombstone | { typename: 'TimelineTrend' } & TimelineTrend | { typename: 'TimelineTweet' } & TimelineTweet | { typename: 'TimelineTwitterList' } & TimelineTwitterList | { typename: 'TimelineUser' } & TimelineUser;
 
 export function ItemContentUnionFromJSON(json: any): ItemContentUnion {
     return ItemContentUnionFromJSONTyped(json, false);
@@ -116,6 +123,8 @@ export function ItemContentUnionFromJSONTyped(json: any, ignoreDiscriminator: bo
     switch (json['__typename']) {
         case 'TimelineCommunity':
             return Object.assign({}, TimelineCommunityFromJSONTyped(json, true), { typename: 'TimelineCommunity' } as const);
+        case 'TimelineEventSummary':
+            return Object.assign({}, TimelineEventSummaryFromJSONTyped(json, true), { typename: 'TimelineEventSummary' } as const);
         case 'TimelineFrame':
             return Object.assign({}, TimelineFrameFromJSONTyped(json, true), { typename: 'TimelineFrame' } as const);
         case 'TimelineLabel':
@@ -154,6 +163,8 @@ export function ItemContentUnionToJSONTyped(value?: ItemContentUnion | null, ign
     switch (value['typename']) {
         case 'TimelineCommunity':
             return Object.assign({}, TimelineCommunityToJSON(value), { '__typename': 'TimelineCommunity' } as const);
+        case 'TimelineEventSummary':
+            return Object.assign({}, TimelineEventSummaryToJSON(value), { '__typename': 'TimelineEventSummary' } as const);
         case 'TimelineFrame':
             return Object.assign({}, TimelineFrameToJSON(value), { '__typename': 'TimelineFrame' } as const);
         case 'TimelineLabel':

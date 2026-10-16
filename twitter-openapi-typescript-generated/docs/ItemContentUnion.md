@@ -10,7 +10,7 @@ Name | Type
 `hasModeratedReplies` | boolean
 `highlights` | [Highlight](Highlight.md)
 `itemType` | [ContentItemType](ContentItemType.md)
-`promotedMetadata` | [PromotedMetadata](PromotedMetadata.md)
+`promotedMetadata` | [EventSummaryPromotedMetadata](EventSummaryPromotedMetadata.md)
 `socialContext` | [SocialContextUnion](SocialContextUnion.md)
 `tweetDisplayType` | string
 `tweetResults` | [ItemResult](ItemResult.md)
@@ -26,10 +26,12 @@ Name | Type
 `communityResults` | [CommunityResult](CommunityResult.md)
 `tombstoneDisplayType` | string
 `tombstoneInfo` | [TombstoneInfo](TombstoneInfo.md)
+`description` | string
 `groupedTrends` | [Array&lt;GroupedTrend&gt;](GroupedTrend.md)
 `images` | [Array&lt;TrendImage&gt;](TrendImage.md)
 `isAiTrend` | boolean
 `name` | string
+`promotedMetadata` | [TrendPromotedMetadata](TrendPromotedMetadata.md)
 `rank` | string
 `socialContext` | [SocialContextUnion](SocialContextUnion.md)
 `thumbnailImage` | [ThumbnailImage](ThumbnailImage.md)
@@ -47,6 +49,11 @@ Name | Type
 `list` | [TwitterList](TwitterList.md)
 `text` | string
 `url` | [SocialContextLandingUrl](SocialContextLandingUrl.md)
+`event` | [EventSummaryEvent](EventSummaryEvent.md)
+`eventSummaryDisplayType` | string
+`eventSummaryUrl` | [SocialContextLandingUrl](SocialContextLandingUrl.md)
+`media` | [EventSummaryMedia](EventSummaryMedia.md)
+`title` | string
 
 ## Example
 
@@ -75,10 +82,12 @@ const example = {
   "communityResults": null,
   "tombstoneDisplayType": null,
   "tombstoneInfo": null,
+  "description": null,
   "groupedTrends": null,
   "images": null,
   "isAiTrend": null,
   "name": null,
+  "promotedMetadata": null,
   "rank": null,
   "socialContext": null,
   "thumbnailImage": null,
@@ -96,6 +105,11 @@ const example = {
   "list": null,
   "text": null,
   "url": null,
+  "event": null,
+  "eventSummaryDisplayType": null,
+  "eventSummaryUrl": null,
+  "media": null,
+  "title": null,
 } satisfies ItemContentUnion
 
 console.log(example)

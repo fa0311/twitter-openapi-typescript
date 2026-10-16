@@ -11,6 +11,7 @@ Name | Type
 `renderLegacyWebsiteCard` | boolean
 `renderSalesCtaWebsiteCard` | boolean
 `showOverlayOnFirstCard` | boolean
+`unifiedCardOverride` | string
 
 ## Example
 
@@ -24,6 +25,7 @@ const example = {
   "renderLegacyWebsiteCard": null,
   "renderSalesCtaWebsiteCard": null,
   "showOverlayOnFirstCard": null,
+  "unifiedCardOverride": null,
 } satisfies AdMetadataContainer
 
 console.log(example)

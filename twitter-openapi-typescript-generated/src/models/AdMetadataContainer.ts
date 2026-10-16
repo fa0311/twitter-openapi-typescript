@@ -47,6 +47,10 @@ export interface AdMetadataContainer {
      * 
      */
     showOverlayOnFirstCard?: boolean;
+    /**
+     * 
+     */
+    unifiedCardOverride?: string;
 }
 
 /**
@@ -74,6 +78,7 @@ export function AdMetadataContainerFromJSONTyped(json: any, ignoreDiscriminator:
         'renderLegacyWebsiteCard': json['renderLegacyWebsiteCard'],
         'renderSalesCtaWebsiteCard': json['renderSalesCtaWebsiteCard'],
         'showOverlayOnFirstCard': json['showOverlayOnFirstCard'] == null ? undefined : json['showOverlayOnFirstCard'],
+        'unifiedCardOverride': json['unifiedCardOverride'] == null ? undefined : json['unifiedCardOverride'],
     };
 }
 
@@ -93,6 +98,7 @@ export function AdMetadataContainerToJSONTyped(value?: AdMetadataContainer | nul
         'renderLegacyWebsiteCard': value['renderLegacyWebsiteCard'],
         'renderSalesCtaWebsiteCard': value['renderSalesCtaWebsiteCard'],
         'showOverlayOnFirstCard': value['showOverlayOnFirstCard'],
+        'unifiedCardOverride': value['unifiedCardOverride'],
     };
 }
 

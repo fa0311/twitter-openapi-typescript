@@ -30,6 +30,7 @@ export const ContentItemType = {
     TimelineFrame: 'TimelineFrame',
     TimelineTwitterList: 'TimelineTwitterList',
     TimelineLabel: 'TimelineLabel',
+    TimelineEventSummary: 'TimelineEventSummary',
 } as const;
 export type ContentItemType = typeof ContentItemType[keyof typeof ContentItemType];
 

@@ -4,6 +4,7 @@ All URIs are relative to *https://x.com/i/api*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
+| [**getBookmarkSearchTimeline**](TweetApi.md#getbookmarksearchtimeline) | **GET** /graphql/{pathQueryId}/BookmarkSearchTimeline |  |
 | [**getBookmarks**](TweetApi.md#getbookmarks) | **GET** /graphql/{pathQueryId}/Bookmarks |  |
 | [**getCommunityAboutTimeline**](TweetApi.md#getcommunityabouttimeline) | **GET** /graphql/{pathQueryId}/CommunityAboutTimeline |  |
 | [**getCommunityDiscoveryTimeline**](TweetApi.md#getcommunitydiscoverytimeline) | **GET** /graphql/{pathQueryId}/CommunityDiscoveryTimeline |  |
@@ -11,6 +12,7 @@ All URIs are relative to *https://x.com/i/api*
 | [**getCommunityTweetsTimeline**](TweetApi.md#getcommunitytweetstimeline) | **GET** /graphql/{pathQueryId}/CommunityTweetsTimeline |  |
 | [**getConnectTabTimeline**](TweetApi.md#getconnecttabtimeline) | **GET** /graphql/{pathQueryId}/ConnectTabTimeline |  |
 | [**getExplorePage**](TweetApi.md#getexplorepage) | **GET** /graphql/{pathQueryId}/ExplorePage |  |
+| [**getExploreSidebar**](TweetApi.md#getexploresidebar) | **GET** /graphql/{pathQueryId}/ExploreSidebar |  |
 | [**getGenericTimelineById**](TweetApi.md#getgenerictimelinebyid) | **GET** /graphql/{pathQueryId}/GenericTimelineById |  |
 | [**getHomeLatestTimeline**](TweetApi.md#gethomelatesttimeline) | **GET** /graphql/{pathQueryId}/HomeLatestTimeline |  |
 | [**getHomeTimeline**](TweetApi.md#gethometimeline) | **GET** /graphql/{pathQueryId}/HomeTimeline |  |
@@ -29,6 +31,127 @@ All URIs are relative to *https://x.com/i/api*
 | [**getUserTweetsAndReplies**](TweetApi.md#getusertweetsandreplies) | **GET** /graphql/{pathQueryId}/UserTweetsAndReplies |  |
 | [**getUserVideoTimeline**](TweetApi.md#getuservideotimeline) | **GET** /graphql/{pathQueryId}/UserVideoTimeline |  |
 
+
+
+## getBookmarkSearchTimeline
+
+> BookmarkSearchTimelineResponse getBookmarkSearchTimeline(pathQueryId, features, variables)
+
+
+
+search the account\&#39;s bookmarks
+
+### Example
+
+```ts
+import {
+  Configuration,
+  TweetApi,
+} from 'twitter-openapi-typescript-generated';
+import type { GetBookmarkSearchTimelineRequest } from 'twitter-openapi-typescript-generated';
+
+async function example() {
+  console.log("🚀 Testing twitter-openapi-typescript-generated SDK...");
+  const config = new Configuration({ 
+    // To configure API key authorization: Accept
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: ClientLanguage
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: Priority
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: Referer
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: SecFetchDest
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: SecChUaPlatform
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: SecFetchMode
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: CsrfToken
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: ClientUuid
+    apiKey: "YOUR API KEY",
+    // Configure HTTP bearer authorization: BearerAuth
+    accessToken: "YOUR BEARER TOKEN",
+    // To configure API key authorization: GuestToken
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: SecChUa
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: CookieGt0
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: ClientTransactionId
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: ActiveUser
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: CookieCt0
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: UserAgent
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: AcceptLanguage
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: SecFetchSite
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: AuthType
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: CookieAuthToken
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: SecChUaMobile
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: AcceptEncoding
+    apiKey: "YOUR API KEY",
+  });
+  const api = new TweetApi(config);
+
+  const body = {
+    // string
+    pathQueryId: VxJMx0-NXe-GO_4jC1lNhw,
+    // string
+    features: {"rweb_video_screen_enabled": false, "rweb_cashtags_enabled": true, "profile_label_improvements_pcf_label_in_post_enabled": true, "responsive_web_profile_redirect_enabled": true, "rweb_tipjar_consumption_enabled": false, "verified_phone_label_enabled": false, "creator_subscriptions_tweet_preview_api_enabled": true, "responsive_web_graphql_timeline_navigation_enabled": true, "premium_content_api_read_enabled": false, "communities_web_enable_tweet_community_results_fetch": true, "c9s_tweet_anatomy_moderator_badge_enabled": true, "responsive_web_grok_analyze_button_fetch_trends_enabled": false, "responsive_web_grok_analyze_post_followups_enabled": true, "rweb_cashtags_composer_attachment_enabled": true, "responsive_web_jetfuel_frame": true, "rweb_sports_post_context_enabled": true, "responsive_web_grok_share_attachment_enabled": true, "responsive_web_grok_annotations_enabled": true, "articles_preview_enabled": true, "responsive_web_edit_tweet_api_enabled": true, "rweb_conversational_replies_downvote_enabled": false, "graphql_is_translatable_rweb_tweet_is_translatable_enabled": true, "view_counts_everywhere_api_enabled": true, "longform_notetweets_consumption_enabled": true, "responsive_web_twitter_article_tweet_consumption_enabled": true, "content_disclosure_indicator_enabled": true, "content_disclosure_ai_generated_indicator_enabled": true, "responsive_web_grok_show_grok_translated_post": true, "responsive_web_grok_analysis_button_from_backend": true, "post_ctas_fetch_enabled": false, "freedom_of_speech_not_reach_fetch_enabled": true, "standardized_nudges_misinfo": true, "tweet_with_visibility_results_prefer_gql_limited_actions_policy_enabled": true, "longform_notetweets_rich_text_read_enabled": true, "longform_notetweets_inline_media_enabled": false, "responsive_web_nested_quote_preview_enabled": true, "responsive_web_grok_image_annotation_enabled": true, "responsive_web_grok_imagine_annotation_enabled": true, "responsive_web_grok_community_note_auto_translation_is_enabled": true, "responsive_web_enhance_cards_enabled": false},
+    // string
+    variables: {"rawQuery": "test", "count": 20},
+  } satisfies GetBookmarkSearchTimelineRequest;
+
+  try {
+    const data = await api.getBookmarkSearchTimeline(body);
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Run the test
+example().catch(console.error);
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **pathQueryId** | `string` |  | [Defaults to `&#39;VxJMx0-NXe-GO_4jC1lNhw&#39;`] |
+| **features** | `string` |  | [Defaults to `&#39;{\&quot;rweb_video_screen_enabled\&quot;: false, \&quot;rweb_cashtags_enabled\&quot;: true, \&quot;profile_label_improvements_pcf_label_in_post_enabled\&quot;: true, \&quot;responsive_web_profile_redirect_enabled\&quot;: true, \&quot;rweb_tipjar_consumption_enabled\&quot;: false, \&quot;verified_phone_label_enabled\&quot;: false, \&quot;creator_subscriptions_tweet_preview_api_enabled\&quot;: true, \&quot;responsive_web_graphql_timeline_navigation_enabled\&quot;: true, \&quot;premium_content_api_read_enabled\&quot;: false, \&quot;communities_web_enable_tweet_community_results_fetch\&quot;: true, \&quot;c9s_tweet_anatomy_moderator_badge_enabled\&quot;: true, \&quot;responsive_web_grok_analyze_button_fetch_trends_enabled\&quot;: false, \&quot;responsive_web_grok_analyze_post_followups_enabled\&quot;: true, \&quot;rweb_cashtags_composer_attachment_enabled\&quot;: true, \&quot;responsive_web_jetfuel_frame\&quot;: true, \&quot;rweb_sports_post_context_enabled\&quot;: true, \&quot;responsive_web_grok_share_attachment_enabled\&quot;: true, \&quot;responsive_web_grok_annotations_enabled\&quot;: true, \&quot;articles_preview_enabled\&quot;: true, \&quot;responsive_web_edit_tweet_api_enabled\&quot;: true, \&quot;rweb_conversational_replies_downvote_enabled\&quot;: false, \&quot;graphql_is_translatable_rweb_tweet_is_translatable_enabled\&quot;: true, \&quot;view_counts_everywhere_api_enabled\&quot;: true, \&quot;longform_notetweets_consumption_enabled\&quot;: true, \&quot;responsive_web_twitter_article_tweet_consumption_enabled\&quot;: true, \&quot;content_disclosure_indicator_enabled\&quot;: true, \&quot;content_disclosure_ai_generated_indicator_enabled\&quot;: true, \&quot;responsive_web_grok_show_grok_translated_post\&quot;: true, \&quot;responsive_web_grok_analysis_button_from_backend\&quot;: true, \&quot;post_ctas_fetch_enabled\&quot;: false, \&quot;freedom_of_speech_not_reach_fetch_enabled\&quot;: true, \&quot;standardized_nudges_misinfo\&quot;: true, \&quot;tweet_with_visibility_results_prefer_gql_limited_actions_policy_enabled\&quot;: true, \&quot;longform_notetweets_rich_text_read_enabled\&quot;: true, \&quot;longform_notetweets_inline_media_enabled\&quot;: false, \&quot;responsive_web_nested_quote_preview_enabled\&quot;: true, \&quot;responsive_web_grok_image_annotation_enabled\&quot;: true, \&quot;responsive_web_grok_imagine_annotation_enabled\&quot;: true, \&quot;responsive_web_grok_community_note_auto_translation_is_enabled\&quot;: true, \&quot;responsive_web_enhance_cards_enabled\&quot;: false}&#39;`] |
+| **variables** | `string` |  | [Defaults to `&#39;{\&quot;rawQuery\&quot;: \&quot;test\&quot;, \&quot;count\&quot;: 20}&#39;`] |
+
+### Return type
+
+[**BookmarkSearchTimelineResponse**](BookmarkSearchTimelineResponse.md)
+
+### Authorization
+
+[Accept](../README.md#Accept), [ClientLanguage](../README.md#ClientLanguage), [Priority](../README.md#Priority), [Referer](../README.md#Referer), [SecFetchDest](../README.md#SecFetchDest), [SecChUaPlatform](../README.md#SecChUaPlatform), [SecFetchMode](../README.md#SecFetchMode), [CsrfToken](../README.md#CsrfToken), [ClientUuid](../README.md#ClientUuid), [BearerAuth](../README.md#BearerAuth), [GuestToken](../README.md#GuestToken), [SecChUa](../README.md#SecChUa), [CookieGt0](../README.md#CookieGt0), [ClientTransactionId](../README.md#ClientTransactionId), [ActiveUser](../README.md#ActiveUser), [CookieCt0](../README.md#CookieCt0), [UserAgent](../README.md#UserAgent), [AcceptLanguage](../README.md#AcceptLanguage), [SecFetchSite](../README.md#SecFetchSite), [AuthType](../README.md#AuthType), [CookieAuthToken](../README.md#CookieAuthToken), [SecChUaMobile](../README.md#SecChUaMobile), [AcceptEncoding](../README.md#AcceptEncoding)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successful operation |  * x-connection-hash -  <br>  * x-rate-limit-limit -  <br>  * x-rate-limit-remaining -  <br>  * x-rate-limit-reset -  <br>  * x-response-time -  <br>  * x-tfe-preserve-body -  <br>  * x-transaction-id -  <br>  * x-twitter-response-tags -  <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 
 ## getBookmarks
@@ -878,6 +1001,127 @@ example().catch(console.error);
 [[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
 
 
+## getExploreSidebar
+
+> ExploreSidebarResponse getExploreSidebar(pathQueryId, features, variables)
+
+
+
+the explore sidebar (trends)
+
+### Example
+
+```ts
+import {
+  Configuration,
+  TweetApi,
+} from 'twitter-openapi-typescript-generated';
+import type { GetExploreSidebarRequest } from 'twitter-openapi-typescript-generated';
+
+async function example() {
+  console.log("🚀 Testing twitter-openapi-typescript-generated SDK...");
+  const config = new Configuration({ 
+    // To configure API key authorization: Accept
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: ClientLanguage
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: Priority
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: Referer
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: SecFetchDest
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: SecChUaPlatform
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: SecFetchMode
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: CsrfToken
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: ClientUuid
+    apiKey: "YOUR API KEY",
+    // Configure HTTP bearer authorization: BearerAuth
+    accessToken: "YOUR BEARER TOKEN",
+    // To configure API key authorization: GuestToken
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: SecChUa
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: CookieGt0
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: ClientTransactionId
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: ActiveUser
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: CookieCt0
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: UserAgent
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: AcceptLanguage
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: SecFetchSite
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: AuthType
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: CookieAuthToken
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: SecChUaMobile
+    apiKey: "YOUR API KEY",
+    // To configure API key authorization: AcceptEncoding
+    apiKey: "YOUR API KEY",
+  });
+  const api = new TweetApi(config);
+
+  const body = {
+    // string
+    pathQueryId: bY118dk8ns_5JzfzIMeiBw,
+    // string
+    features: {"rweb_video_screen_enabled": false, "rweb_cashtags_enabled": true, "profile_label_improvements_pcf_label_in_post_enabled": true, "responsive_web_profile_redirect_enabled": true, "rweb_tipjar_consumption_enabled": false, "verified_phone_label_enabled": false, "creator_subscriptions_tweet_preview_api_enabled": true, "responsive_web_graphql_timeline_navigation_enabled": true, "premium_content_api_read_enabled": false, "communities_web_enable_tweet_community_results_fetch": true, "c9s_tweet_anatomy_moderator_badge_enabled": true, "responsive_web_grok_analyze_button_fetch_trends_enabled": false, "responsive_web_grok_analyze_post_followups_enabled": true, "rweb_cashtags_composer_attachment_enabled": true, "responsive_web_jetfuel_frame": true, "rweb_sports_post_context_enabled": true, "responsive_web_grok_share_attachment_enabled": true, "responsive_web_grok_annotations_enabled": true, "articles_preview_enabled": true, "responsive_web_edit_tweet_api_enabled": true, "rweb_conversational_replies_downvote_enabled": false, "graphql_is_translatable_rweb_tweet_is_translatable_enabled": true, "view_counts_everywhere_api_enabled": true, "longform_notetweets_consumption_enabled": true, "responsive_web_twitter_article_tweet_consumption_enabled": true, "content_disclosure_indicator_enabled": true, "content_disclosure_ai_generated_indicator_enabled": true, "responsive_web_grok_show_grok_translated_post": true, "responsive_web_grok_analysis_button_from_backend": true, "post_ctas_fetch_enabled": false, "freedom_of_speech_not_reach_fetch_enabled": true, "standardized_nudges_misinfo": true, "tweet_with_visibility_results_prefer_gql_limited_actions_policy_enabled": true, "longform_notetweets_rich_text_read_enabled": true, "longform_notetweets_inline_media_enabled": false, "responsive_web_nested_quote_preview_enabled": true, "responsive_web_grok_image_annotation_enabled": true, "responsive_web_grok_imagine_annotation_enabled": true, "responsive_web_grok_community_note_auto_translation_is_enabled": true, "responsive_web_enhance_cards_enabled": false},
+    // string
+    variables: {},
+  } satisfies GetExploreSidebarRequest;
+
+  try {
+    const data = await api.getExploreSidebar(body);
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// Run the test
+example().catch(console.error);
+```
+
+### Parameters
+
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **pathQueryId** | `string` |  | [Defaults to `&#39;bY118dk8ns_5JzfzIMeiBw&#39;`] |
+| **features** | `string` |  | [Defaults to `&#39;{\&quot;rweb_video_screen_enabled\&quot;: false, \&quot;rweb_cashtags_enabled\&quot;: true, \&quot;profile_label_improvements_pcf_label_in_post_enabled\&quot;: true, \&quot;responsive_web_profile_redirect_enabled\&quot;: true, \&quot;rweb_tipjar_consumption_enabled\&quot;: false, \&quot;verified_phone_label_enabled\&quot;: false, \&quot;creator_subscriptions_tweet_preview_api_enabled\&quot;: true, \&quot;responsive_web_graphql_timeline_navigation_enabled\&quot;: true, \&quot;premium_content_api_read_enabled\&quot;: false, \&quot;communities_web_enable_tweet_community_results_fetch\&quot;: true, \&quot;c9s_tweet_anatomy_moderator_badge_enabled\&quot;: true, \&quot;responsive_web_grok_analyze_button_fetch_trends_enabled\&quot;: false, \&quot;responsive_web_grok_analyze_post_followups_enabled\&quot;: true, \&quot;rweb_cashtags_composer_attachment_enabled\&quot;: true, \&quot;responsive_web_jetfuel_frame\&quot;: true, \&quot;rweb_sports_post_context_enabled\&quot;: true, \&quot;responsive_web_grok_share_attachment_enabled\&quot;: true, \&quot;responsive_web_grok_annotations_enabled\&quot;: true, \&quot;articles_preview_enabled\&quot;: true, \&quot;responsive_web_edit_tweet_api_enabled\&quot;: true, \&quot;rweb_conversational_replies_downvote_enabled\&quot;: false, \&quot;graphql_is_translatable_rweb_tweet_is_translatable_enabled\&quot;: true, \&quot;view_counts_everywhere_api_enabled\&quot;: true, \&quot;longform_notetweets_consumption_enabled\&quot;: true, \&quot;responsive_web_twitter_article_tweet_consumption_enabled\&quot;: true, \&quot;content_disclosure_indicator_enabled\&quot;: true, \&quot;content_disclosure_ai_generated_indicator_enabled\&quot;: true, \&quot;responsive_web_grok_show_grok_translated_post\&quot;: true, \&quot;responsive_web_grok_analysis_button_from_backend\&quot;: true, \&quot;post_ctas_fetch_enabled\&quot;: false, \&quot;freedom_of_speech_not_reach_fetch_enabled\&quot;: true, \&quot;standardized_nudges_misinfo\&quot;: true, \&quot;tweet_with_visibility_results_prefer_gql_limited_actions_policy_enabled\&quot;: true, \&quot;longform_notetweets_rich_text_read_enabled\&quot;: true, \&quot;longform_notetweets_inline_media_enabled\&quot;: false, \&quot;responsive_web_nested_quote_preview_enabled\&quot;: true, \&quot;responsive_web_grok_image_annotation_enabled\&quot;: true, \&quot;responsive_web_grok_imagine_annotation_enabled\&quot;: true, \&quot;responsive_web_grok_community_note_auto_translation_is_enabled\&quot;: true, \&quot;responsive_web_enhance_cards_enabled\&quot;: false}&#39;`] |
+| **variables** | `string` |  | [Defaults to `&#39;{}&#39;`] |
+
+### Return type
+
+[**ExploreSidebarResponse**](ExploreSidebarResponse.md)
+
+### Authorization
+
+[Accept](../README.md#Accept), [ClientLanguage](../README.md#ClientLanguage), [Priority](../README.md#Priority), [Referer](../README.md#Referer), [SecFetchDest](../README.md#SecFetchDest), [SecChUaPlatform](../README.md#SecChUaPlatform), [SecFetchMode](../README.md#SecFetchMode), [CsrfToken](../README.md#CsrfToken), [ClientUuid](../README.md#ClientUuid), [BearerAuth](../README.md#BearerAuth), [GuestToken](../README.md#GuestToken), [SecChUa](../README.md#SecChUa), [CookieGt0](../README.md#CookieGt0), [ClientTransactionId](../README.md#ClientTransactionId), [ActiveUser](../README.md#ActiveUser), [CookieCt0](../README.md#CookieCt0), [UserAgent](../README.md#UserAgent), [AcceptLanguage](../README.md#AcceptLanguage), [SecFetchSite](../README.md#SecFetchSite), [AuthType](../README.md#AuthType), [CookieAuthToken](../README.md#CookieAuthToken), [SecChUaMobile](../README.md#SecChUaMobile), [AcceptEncoding](../README.md#AcceptEncoding)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | Successful operation |  * x-connection-hash -  <br>  * x-rate-limit-limit -  <br>  * x-rate-limit-remaining -  <br>  * x-rate-limit-reset -  <br>  * x-response-time -  <br>  * x-tfe-preserve-body -  <br>  * x-transaction-id -  <br>  * x-twitter-response-tags -  <br>  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#api-endpoints) [[Back to Model list]](../README.md#models) [[Back to README]](../README.md)
+
+
 ## getGenericTimelineById
 
 > GenericTimelineByIdResponse getGenericTimelineById(pathQueryId, variables, features)
@@ -951,7 +1195,7 @@ async function example() {
     // string
     pathQueryId: cW93hZ3nlNYbYcUROF5r5A,
     // string
-    variables: {"timelineId": "VGltZWxpbmU6CwA6AAAAEzE3ODgyMjQyMDA2MzkxNjAzMjAA", "count": 20, "withQuickPromoteEligibilityTweetFields": true},
+    variables: {"timelineId": "VGltZWxpbmU6DAC2CwABAAAACHRyZW5kaW5nAAA=", "count": 20, "withQuickPromoteEligibilityTweetFields": true},
     // string
     features: {"rweb_video_screen_enabled": false, "rweb_cashtags_enabled": true, "profile_label_improvements_pcf_label_in_post_enabled": true, "responsive_web_profile_redirect_enabled": true, "rweb_tipjar_consumption_enabled": false, "verified_phone_label_enabled": false, "creator_subscriptions_tweet_preview_api_enabled": true, "responsive_web_graphql_timeline_navigation_enabled": true, "premium_content_api_read_enabled": false, "communities_web_enable_tweet_community_results_fetch": true, "c9s_tweet_anatomy_moderator_badge_enabled": true, "responsive_web_grok_analyze_button_fetch_trends_enabled": false, "responsive_web_grok_analyze_post_followups_enabled": true, "rweb_cashtags_composer_attachment_enabled": true, "responsive_web_jetfuel_frame": true, "rweb_sports_post_context_enabled": true, "responsive_web_grok_share_attachment_enabled": true, "responsive_web_grok_annotations_enabled": true, "articles_preview_enabled": true, "responsive_web_edit_tweet_api_enabled": true, "rweb_conversational_replies_downvote_enabled": false, "graphql_is_translatable_rweb_tweet_is_translatable_enabled": true, "view_counts_everywhere_api_enabled": true, "longform_notetweets_consumption_enabled": true, "responsive_web_twitter_article_tweet_consumption_enabled": true, "content_disclosure_indicator_enabled": true, "content_disclosure_ai_generated_indicator_enabled": true, "responsive_web_grok_show_grok_translated_post": true, "responsive_web_grok_analysis_button_from_backend": true, "post_ctas_fetch_enabled": false, "freedom_of_speech_not_reach_fetch_enabled": true, "standardized_nudges_misinfo": true, "tweet_with_visibility_results_prefer_gql_limited_actions_policy_enabled": true, "longform_notetweets_rich_text_read_enabled": true, "longform_notetweets_inline_media_enabled": false, "responsive_web_nested_quote_preview_enabled": true, "responsive_web_grok_image_annotation_enabled": true, "responsive_web_grok_imagine_annotation_enabled": true, "responsive_web_grok_community_note_auto_translation_is_enabled": true, "responsive_web_enhance_cards_enabled": false},
   } satisfies GetGenericTimelineByIdRequest;
@@ -974,7 +1218,7 @@ example().catch(console.error);
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **pathQueryId** | `string` |  | [Defaults to `&#39;cW93hZ3nlNYbYcUROF5r5A&#39;`] |
-| **variables** | `string` |  | [Defaults to `&#39;{\&quot;timelineId\&quot;: \&quot;VGltZWxpbmU6CwA6AAAAEzE3ODgyMjQyMDA2MzkxNjAzMjAA\&quot;, \&quot;count\&quot;: 20, \&quot;withQuickPromoteEligibilityTweetFields\&quot;: true}&#39;`] |
+| **variables** | `string` |  | [Defaults to `&#39;{\&quot;timelineId\&quot;: \&quot;VGltZWxpbmU6DAC2CwABAAAACHRyZW5kaW5nAAA&#x3D;\&quot;, \&quot;count\&quot;: 20, \&quot;withQuickPromoteEligibilityTweetFields\&quot;: true}&#39;`] |
 | **features** | `string` |  | [Defaults to `&#39;{\&quot;rweb_video_screen_enabled\&quot;: false, \&quot;rweb_cashtags_enabled\&quot;: true, \&quot;profile_label_improvements_pcf_label_in_post_enabled\&quot;: true, \&quot;responsive_web_profile_redirect_enabled\&quot;: true, \&quot;rweb_tipjar_consumption_enabled\&quot;: false, \&quot;verified_phone_label_enabled\&quot;: false, \&quot;creator_subscriptions_tweet_preview_api_enabled\&quot;: true, \&quot;responsive_web_graphql_timeline_navigation_enabled\&quot;: true, \&quot;premium_content_api_read_enabled\&quot;: false, \&quot;communities_web_enable_tweet_community_results_fetch\&quot;: true, \&quot;c9s_tweet_anatomy_moderator_badge_enabled\&quot;: true, \&quot;responsive_web_grok_analyze_button_fetch_trends_enabled\&quot;: false, \&quot;responsive_web_grok_analyze_post_followups_enabled\&quot;: true, \&quot;rweb_cashtags_composer_attachment_enabled\&quot;: true, \&quot;responsive_web_jetfuel_frame\&quot;: true, \&quot;rweb_sports_post_context_enabled\&quot;: true, \&quot;responsive_web_grok_share_attachment_enabled\&quot;: true, \&quot;responsive_web_grok_annotations_enabled\&quot;: true, \&quot;articles_preview_enabled\&quot;: true, \&quot;responsive_web_edit_tweet_api_enabled\&quot;: true, \&quot;rweb_conversational_replies_downvote_enabled\&quot;: false, \&quot;graphql_is_translatable_rweb_tweet_is_translatable_enabled\&quot;: true, \&quot;view_counts_everywhere_api_enabled\&quot;: true, \&quot;longform_notetweets_consumption_enabled\&quot;: true, \&quot;responsive_web_twitter_article_tweet_consumption_enabled\&quot;: true, \&quot;content_disclosure_indicator_enabled\&quot;: true, \&quot;content_disclosure_ai_generated_indicator_enabled\&quot;: true, \&quot;responsive_web_grok_show_grok_translated_post\&quot;: true, \&quot;responsive_web_grok_analysis_button_from_backend\&quot;: true, \&quot;post_ctas_fetch_enabled\&quot;: false, \&quot;freedom_of_speech_not_reach_fetch_enabled\&quot;: true, \&quot;standardized_nudges_misinfo\&quot;: true, \&quot;tweet_with_visibility_results_prefer_gql_limited_actions_policy_enabled\&quot;: true, \&quot;longform_notetweets_rich_text_read_enabled\&quot;: true, \&quot;longform_notetweets_inline_media_enabled\&quot;: false, \&quot;responsive_web_nested_quote_preview_enabled\&quot;: true, \&quot;responsive_web_grok_image_annotation_enabled\&quot;: true, \&quot;responsive_web_grok_imagine_annotation_enabled\&quot;: true, \&quot;responsive_web_grok_community_note_auto_translation_is_enabled\&quot;: true, \&quot;responsive_web_enhance_cards_enabled\&quot;: false}&#39;`] |
 
 ### Return type
@@ -1320,7 +1564,7 @@ async function example() {
     // string
     pathQueryId: mu4us66Q6RRNOywVQhGtRg,
     // string
-    variables: {"userId": "44196397", "count": 20, "includePromotedContent": false, "withClientEventToken": false, "withBirdwatchNotes": false, "withVoice": true},
+    variables: {"userId": "1787148517779406848", "count": 20, "includePromotedContent": false, "withClientEventToken": false, "withBirdwatchNotes": false, "withVoice": true},
     // string
     features: {"rweb_video_screen_enabled": false, "rweb_cashtags_enabled": true, "profile_label_improvements_pcf_label_in_post_enabled": true, "responsive_web_profile_redirect_enabled": true, "rweb_tipjar_consumption_enabled": false, "verified_phone_label_enabled": false, "creator_subscriptions_tweet_preview_api_enabled": true, "responsive_web_graphql_timeline_navigation_enabled": true, "premium_content_api_read_enabled": false, "communities_web_enable_tweet_community_results_fetch": true, "c9s_tweet_anatomy_moderator_badge_enabled": true, "responsive_web_grok_analyze_button_fetch_trends_enabled": false, "responsive_web_grok_analyze_post_followups_enabled": true, "rweb_cashtags_composer_attachment_enabled": true, "responsive_web_jetfuel_frame": true, "rweb_sports_post_context_enabled": true, "responsive_web_grok_share_attachment_enabled": true, "responsive_web_grok_annotations_enabled": true, "articles_preview_enabled": true, "responsive_web_edit_tweet_api_enabled": true, "rweb_conversational_replies_downvote_enabled": false, "graphql_is_translatable_rweb_tweet_is_translatable_enabled": true, "view_counts_everywhere_api_enabled": true, "longform_notetweets_consumption_enabled": true, "responsive_web_twitter_article_tweet_consumption_enabled": true, "content_disclosure_indicator_enabled": true, "content_disclosure_ai_generated_indicator_enabled": true, "responsive_web_grok_show_grok_translated_post": true, "responsive_web_grok_analysis_button_from_backend": true, "post_ctas_fetch_enabled": false, "freedom_of_speech_not_reach_fetch_enabled": true, "standardized_nudges_misinfo": true, "tweet_with_visibility_results_prefer_gql_limited_actions_policy_enabled": true, "longform_notetweets_rich_text_read_enabled": true, "longform_notetweets_inline_media_enabled": false, "responsive_web_nested_quote_preview_enabled": true, "responsive_web_grok_image_annotation_enabled": true, "responsive_web_grok_imagine_annotation_enabled": true, "responsive_web_grok_community_note_auto_translation_is_enabled": true, "responsive_web_enhance_cards_enabled": false},
     // string
@@ -1345,7 +1589,7 @@ example().catch(console.error);
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **pathQueryId** | `string` |  | [Defaults to `&#39;mu4us66Q6RRNOywVQhGtRg&#39;`] |
-| **variables** | `string` |  | [Defaults to `&#39;{\&quot;userId\&quot;: \&quot;44196397\&quot;, \&quot;count\&quot;: 20, \&quot;includePromotedContent\&quot;: false, \&quot;withClientEventToken\&quot;: false, \&quot;withBirdwatchNotes\&quot;: false, \&quot;withVoice\&quot;: true}&#39;`] |
+| **variables** | `string` |  | [Defaults to `&#39;{\&quot;userId\&quot;: \&quot;1787148517779406848\&quot;, \&quot;count\&quot;: 20, \&quot;includePromotedContent\&quot;: false, \&quot;withClientEventToken\&quot;: false, \&quot;withBirdwatchNotes\&quot;: false, \&quot;withVoice\&quot;: true}&#39;`] |
 | **features** | `string` |  | [Defaults to `&#39;{\&quot;rweb_video_screen_enabled\&quot;: false, \&quot;rweb_cashtags_enabled\&quot;: true, \&quot;profile_label_improvements_pcf_label_in_post_enabled\&quot;: true, \&quot;responsive_web_profile_redirect_enabled\&quot;: true, \&quot;rweb_tipjar_consumption_enabled\&quot;: false, \&quot;verified_phone_label_enabled\&quot;: false, \&quot;creator_subscriptions_tweet_preview_api_enabled\&quot;: true, \&quot;responsive_web_graphql_timeline_navigation_enabled\&quot;: true, \&quot;premium_content_api_read_enabled\&quot;: false, \&quot;communities_web_enable_tweet_community_results_fetch\&quot;: true, \&quot;c9s_tweet_anatomy_moderator_badge_enabled\&quot;: true, \&quot;responsive_web_grok_analyze_button_fetch_trends_enabled\&quot;: false, \&quot;responsive_web_grok_analyze_post_followups_enabled\&quot;: true, \&quot;rweb_cashtags_composer_attachment_enabled\&quot;: true, \&quot;responsive_web_jetfuel_frame\&quot;: true, \&quot;rweb_sports_post_context_enabled\&quot;: true, \&quot;responsive_web_grok_share_attachment_enabled\&quot;: true, \&quot;responsive_web_grok_annotations_enabled\&quot;: true, \&quot;articles_preview_enabled\&quot;: true, \&quot;responsive_web_edit_tweet_api_enabled\&quot;: true, \&quot;rweb_conversational_replies_downvote_enabled\&quot;: false, \&quot;graphql_is_translatable_rweb_tweet_is_translatable_enabled\&quot;: true, \&quot;view_counts_everywhere_api_enabled\&quot;: true, \&quot;longform_notetweets_consumption_enabled\&quot;: true, \&quot;responsive_web_twitter_article_tweet_consumption_enabled\&quot;: true, \&quot;content_disclosure_indicator_enabled\&quot;: true, \&quot;content_disclosure_ai_generated_indicator_enabled\&quot;: true, \&quot;responsive_web_grok_show_grok_translated_post\&quot;: true, \&quot;responsive_web_grok_analysis_button_from_backend\&quot;: true, \&quot;post_ctas_fetch_enabled\&quot;: false, \&quot;freedom_of_speech_not_reach_fetch_enabled\&quot;: true, \&quot;standardized_nudges_misinfo\&quot;: true, \&quot;tweet_with_visibility_results_prefer_gql_limited_actions_policy_enabled\&quot;: true, \&quot;longform_notetweets_rich_text_read_enabled\&quot;: true, \&quot;longform_notetweets_inline_media_enabled\&quot;: false, \&quot;responsive_web_nested_quote_preview_enabled\&quot;: true, \&quot;responsive_web_grok_image_annotation_enabled\&quot;: true, \&quot;responsive_web_grok_imagine_annotation_enabled\&quot;: true, \&quot;responsive_web_grok_community_note_auto_translation_is_enabled\&quot;: true, \&quot;responsive_web_enhance_cards_enabled\&quot;: false}&#39;`] |
 | **fieldToggles** | `string` |  | [Defaults to `&#39;{\&quot;withPayments\&quot;: false, \&quot;withArticlePlainText\&quot;: false}&#39;`] |
 

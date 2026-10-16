@@ -60,8 +60,14 @@ jobs:
           else
             echo "publish=true" >> "$GITHUB_OUTPUT"
           fi
+      - name: Wait for the generated package to reach the registry
+        if: steps.version.outputs.publish == 'true'
+        run: |
+          dep="$(jq -r '"twitter-openapi-typescript-generated@" + .dependencies["twitter-openapi-typescript-generated"]' package.json)"
+          for _ in $(seq 20); do npm view "$dep" version > /dev/null 2>&1 && exit 0; sleep 30; done
+          exit 1
       - if: steps.version.outputs.publish == 'true'
-        run: npm install # not ci: the generated package it depends on was published a moment ago
+        run: npm install # not ci: the lockfile still pins the previous generated version
       - if: steps.version.outputs.publish == 'true'
         run: npm run build
       - if: steps.version.outputs.publish == 'true'

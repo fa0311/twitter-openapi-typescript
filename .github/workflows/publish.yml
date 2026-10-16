@@ -1,0 +1,68 @@
+name: publish
+
+# Publishes a package to npm when the version in its package.json is not on npm
+# yet (npm trusted publishing, no token). The generated package goes first
+# because the wrapper depends on it.
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: npm-publish
+  cancel-in-progress: false
+
+jobs:
+  generated:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: twitter-openapi-typescript-generated
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      - id: version
+        run: |
+          spec="$(jq -r '"\(.name)@\(.version)"' package.json)"
+          if npm view "$spec" version > /dev/null 2>&1; then
+            echo "$spec is already on npm"
+          else
+            echo "publish=true" >> "$GITHUB_OUTPUT"
+          fi
+      - if: steps.version.outputs.publish == 'true'
+        run: npm ci
+      - if: steps.version.outputs.publish == 'true'
+        run: npm publish --access public --provenance
+
+  wrapper:
+    needs: generated
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: twitter-openapi-typescript
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+      - id: version
+        run: |
+          spec="$(jq -r '"\(.name)@\(.version)"' package.json)"
+          if npm view "$spec" version > /dev/null 2>&1; then
+            echo "$spec is already on npm"
+          else
+            echo "publish=true" >> "$GITHUB_OUTPUT"
+          fi
+      - if: steps.version.outputs.publish == 'true'
+        run: npm install # not ci: the generated package it depends on was published a moment ago
+      - if: steps.version.outputs.publish == 'true'
+        run: npm run build
+      - if: steps.version.outputs.publish == 'true'
+        run: npm publish --access public --provenance

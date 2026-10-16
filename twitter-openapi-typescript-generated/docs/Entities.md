@@ -6,13 +6,13 @@
 
 Name | Type
 ------------ | -------------
-`hashtags` | Array&lt;{ [key: string]: any; }&gt;
+`hashtags` | [Array&lt;Hashtag&gt;](Hashtag.md)
 `media` | [Array&lt;Media&gt;](Media.md)
 `smarttags` | [Array&lt;Smarttag&gt;](Smarttag.md)
-`symbols` | Array&lt;{ [key: string]: any; }&gt;
+`symbols` | [Array&lt;Symbol&gt;](Symbol.md)
 `timestamps` | [Array&lt;Timestamp&gt;](Timestamp.md)
 `urls` | [Array&lt;Url&gt;](Url.md)
-`userMentions` | Array&lt;{ [key: string]: any; }&gt;
+`userMentions` | [Array&lt;UserMention&gt;](UserMention.md)
 
 ## Example
 

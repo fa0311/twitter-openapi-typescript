@@ -34,6 +34,13 @@ import {
     ClientEventInfoToJSON,
     ClientEventInfoToJSONTyped,
 } from './ClientEventInfo';
+import type { FeedbackInfo } from './FeedbackInfo';
+import {
+    FeedbackInfoFromJSON,
+    FeedbackInfoFromJSONTyped,
+    FeedbackInfoToJSON,
+    FeedbackInfoToJSONTyped,
+} from './FeedbackInfo';
 import type { ContentEntryType } from './ContentEntryType';
 import {
     ContentEntryTypeFromJSON,
@@ -63,7 +70,7 @@ export interface TimelineTimelineItem {
     /**
      * 
      */
-    feedbackInfo?: { [key: string]: any; };
+    feedbackInfo?: FeedbackInfo;
     /**
      * 
      */
@@ -95,7 +102,7 @@ export function TimelineTimelineItemFromJSONTyped(json: any, ignoreDiscriminator
         'typename': TypeNameFromJSON(json['__typename']),
         'clientEventInfo': json['clientEventInfo'] == null ? undefined : ClientEventInfoFromJSON(json['clientEventInfo']),
         'entryType': ContentEntryTypeFromJSON(json['entryType']),
-        'feedbackInfo': json['feedbackInfo'] == null ? undefined : json['feedbackInfo'],
+        'feedbackInfo': json['feedbackInfo'] == null ? undefined : FeedbackInfoFromJSON(json['feedbackInfo']),
         'itemContent': ItemContentUnionFromJSON(json['itemContent']),
     };
 }
@@ -114,7 +121,7 @@ export function TimelineTimelineItemToJSONTyped(value?: TimelineTimelineItem | n
         '__typename': TypeNameToJSON(value['typename']),
         'clientEventInfo': ClientEventInfoToJSON(value['clientEventInfo']),
         'entryType': ContentEntryTypeToJSON(value['entryType']),
-        'feedbackInfo': value['feedbackInfo'],
+        'feedbackInfo': FeedbackInfoToJSON(value['feedbackInfo']),
         'itemContent': ItemContentUnionToJSON(value['itemContent']),
     };
 }

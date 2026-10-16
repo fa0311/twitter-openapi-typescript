@@ -6,7 +6,7 @@
 
 Name | Type
 ------------ | -------------
-`info` | { [key: string]: any; }
+`info` | [SmarttagTagInfo](SmarttagTagInfo.md)
 
 ## Example
 

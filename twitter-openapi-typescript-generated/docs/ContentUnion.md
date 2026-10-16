@@ -12,10 +12,10 @@ Name | Type
 `feedbackInfo` | [FeedbackInfo](FeedbackInfo.md)
 `itemContent` | [ItemContentUnion](ItemContentUnion.md)
 `displayType` | [DisplayType](DisplayType.md)
-`footer` | { [key: string]: any; }
-`header` | { [key: string]: any; }
+`footer` | [ModuleFooter](ModuleFooter.md)
+`header` | [ModuleHeader](ModuleHeader.md)
 `items` | [Array&lt;ModuleItem&gt;](ModuleItem.md)
-`metadata` | { [key: string]: any; }
+`metadata` | [ModuleMetadata](ModuleMetadata.md)
 `cursorType` | [CursorType](CursorType.md)
 `displayTreatment` | [DisplayTreatment](DisplayTreatment.md)
 `itemType` | [ContentEntryType](ContentEntryType.md)

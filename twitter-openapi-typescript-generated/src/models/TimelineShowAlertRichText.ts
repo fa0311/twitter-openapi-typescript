@@ -22,17 +22,19 @@ export interface TimelineShowAlertRichText {
     /**
      * 
      */
-    entities?: Array<{ [key: string]: any; }>;
+    entities: Array<object>;
     /**
      * 
      */
-    text?: string;
+    text: string;
 }
 
 /**
  * Check if a given object implements the TimelineShowAlertRichText interface.
  */
 export function instanceOfTimelineShowAlertRichText(value: object): value is TimelineShowAlertRichText {
+    if (!('entities' in value) || value['entities'] === undefined) return false;
+    if (!('text' in value) || value['text'] === undefined) return false;
     return true;
 }
 
@@ -46,8 +48,8 @@ export function TimelineShowAlertRichTextFromJSONTyped(json: any, ignoreDiscrimi
     }
     return {
         
-        'entities': json['entities'] == null ? undefined : json['entities'],
-        'text': json['text'] == null ? undefined : json['text'],
+        'entities': json['entities'],
+        'text': json['text'],
     };
 }
 

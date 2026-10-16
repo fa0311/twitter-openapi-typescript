@@ -7,8 +7,8 @@
 Name | Type
 ------------ | -------------
 `instructions` | [Array&lt;InstructionUnion&gt;](InstructionUnion.md)
-`metadata` | { [key: string]: any; }
-`responseObjects` | { [key: string]: any; }
+`metadata` | [TimelineMetadata](TimelineMetadata.md)
+`responseObjects` | [TimelineResponseObjects](TimelineResponseObjects.md)
 
 ## Example
 

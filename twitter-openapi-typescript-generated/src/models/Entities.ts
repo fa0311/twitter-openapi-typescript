@@ -13,6 +13,20 @@
  */
 
 import { mapValues } from '../runtime';
+import type { Hashtag } from './Hashtag';
+import {
+    HashtagFromJSON,
+    HashtagFromJSONTyped,
+    HashtagToJSON,
+    HashtagToJSONTyped,
+} from './Hashtag';
+import type { Symbol } from './Symbol';
+import {
+    SymbolFromJSON,
+    SymbolFromJSONTyped,
+    SymbolToJSON,
+    SymbolToJSONTyped,
+} from './Symbol';
 import type { Media } from './Media';
 import {
     MediaFromJSON,
@@ -41,6 +55,13 @@ import {
     UrlToJSON,
     UrlToJSONTyped,
 } from './Url';
+import type { UserMention } from './UserMention';
+import {
+    UserMentionFromJSON,
+    UserMentionFromJSONTyped,
+    UserMentionToJSON,
+    UserMentionToJSONTyped,
+} from './UserMention';
 
 /**
  * 
@@ -51,7 +72,7 @@ export interface Entities {
     /**
      * 
      */
-    hashtags?: Array<{ [key: string]: any; }>;
+    hashtags?: Array<Hashtag>;
     /**
      * 
      */
@@ -63,7 +84,7 @@ export interface Entities {
     /**
      * 
      */
-    symbols?: Array<{ [key: string]: any; }>;
+    symbols?: Array<Symbol>;
     /**
      * 
      */
@@ -75,7 +96,7 @@ export interface Entities {
     /**
      * 
      */
-    userMentions?: Array<{ [key: string]: any; }>;
+    userMentions?: Array<UserMention>;
 }
 
 /**
@@ -95,13 +116,13 @@ export function EntitiesFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
     }
     return {
         
-        'hashtags': json['hashtags'] == null ? undefined : json['hashtags'],
+        'hashtags': json['hashtags'] == null ? undefined : ((json['hashtags'] as Array<any>).map(HashtagFromJSON)),
         'media': json['media'] == null ? undefined : ((json['media'] as Array<any>).map(MediaFromJSON)),
         'smarttags': json['smarttags'] == null ? undefined : ((json['smarttags'] as Array<any>).map(SmarttagFromJSON)),
-        'symbols': json['symbols'] == null ? undefined : json['symbols'],
+        'symbols': json['symbols'] == null ? undefined : ((json['symbols'] as Array<any>).map(SymbolFromJSON)),
         'timestamps': json['timestamps'] == null ? undefined : ((json['timestamps'] as Array<any>).map(TimestampFromJSON)),
         'urls': json['urls'] == null ? undefined : ((json['urls'] as Array<any>).map(UrlFromJSON)),
-        'userMentions': json['user_mentions'] == null ? undefined : json['user_mentions'],
+        'userMentions': json['user_mentions'] == null ? undefined : ((json['user_mentions'] as Array<any>).map(UserMentionFromJSON)),
     };
 }
 
@@ -116,13 +137,13 @@ export function EntitiesToJSONTyped(value?: Entities | null, ignoreDiscriminator
 
     return {
         
-        'hashtags': value['hashtags'],
+        'hashtags': value['hashtags'] == null ? undefined : ((value['hashtags'] as Array<any>).map(HashtagToJSON)),
         'media': value['media'] == null ? undefined : ((value['media'] as Array<any>).map(MediaToJSON)),
         'smarttags': value['smarttags'] == null ? undefined : ((value['smarttags'] as Array<any>).map(SmarttagToJSON)),
-        'symbols': value['symbols'],
+        'symbols': value['symbols'] == null ? undefined : ((value['symbols'] as Array<any>).map(SymbolToJSON)),
         'timestamps': value['timestamps'] == null ? undefined : ((value['timestamps'] as Array<any>).map(TimestampToJSON)),
         'urls': value['urls'] == null ? undefined : ((value['urls'] as Array<any>).map(UrlToJSON)),
-        'user_mentions': value['userMentions'],
+        'user_mentions': value['userMentions'] == null ? undefined : ((value['userMentions'] as Array<any>).map(UserMentionToJSON)),
     };
 }
 

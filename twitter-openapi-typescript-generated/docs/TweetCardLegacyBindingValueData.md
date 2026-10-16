@@ -7,7 +7,7 @@
 Name | Type
 ------------ | -------------
 `booleanValue` | boolean
-`imageColorValue` | { [key: string]: any; }
+`imageColorValue` | [MediaColorInfo](MediaColorInfo.md)
 `imageValue` | [TweetCardLegacyBindingValueDataImage](TweetCardLegacyBindingValueDataImage.md)
 `scribeKey` | string
 `stringValue` | string

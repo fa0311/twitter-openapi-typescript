@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { MediaColorInfo } from './MediaColorInfo';
+import {
+    MediaColorInfoFromJSON,
+    MediaColorInfoFromJSONTyped,
+    MediaColorInfoToJSON,
+    MediaColorInfoToJSONTyped,
+} from './MediaColorInfo';
 import type { TypeName } from './TypeName';
 import {
     TypeNameFromJSON,
@@ -20,13 +27,6 @@ import {
     TypeNameToJSON,
     TypeNameToJSONTyped,
 } from './TypeName';
-import type { ArticleCoverMediaColorInfo } from './ArticleCoverMediaColorInfo';
-import {
-    ArticleCoverMediaColorInfoFromJSON,
-    ArticleCoverMediaColorInfoFromJSONTyped,
-    ArticleCoverMediaColorInfoToJSON,
-    ArticleCoverMediaColorInfoToJSONTyped,
-} from './ArticleCoverMediaColorInfo';
 
 /**
  * 
@@ -41,7 +41,7 @@ export interface ArticleCoverMediaInfo {
     /**
      * 
      */
-    colorInfo: ArticleCoverMediaColorInfo;
+    colorInfo: MediaColorInfo;
     /**
      * 
      */
@@ -80,7 +80,7 @@ export function ArticleCoverMediaInfoFromJSONTyped(json: any, ignoreDiscriminato
     return {
         
         'typename': json['__typename'] == null ? undefined : TypeNameFromJSON(json['__typename']),
-        'colorInfo': ArticleCoverMediaColorInfoFromJSON(json['color_info']),
+        'colorInfo': MediaColorInfoFromJSON(json['color_info']),
         'originalImgHeight': json['original_img_height'],
         'originalImgUrl': json['original_img_url'],
         'originalImgWidth': json['original_img_width'],
@@ -99,7 +99,7 @@ export function ArticleCoverMediaInfoToJSONTyped(value?: ArticleCoverMediaInfo |
     return {
         
         '__typename': TypeNameToJSON(value['typename']),
-        'color_info': ArticleCoverMediaColorInfoToJSON(value['colorInfo']),
+        'color_info': MediaColorInfoToJSON(value['colorInfo']),
         'original_img_height': value['originalImgHeight'],
         'original_img_url': value['originalImgUrl'],
         'original_img_width': value['originalImgWidth'],

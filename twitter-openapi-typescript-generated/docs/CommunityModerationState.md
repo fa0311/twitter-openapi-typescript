@@ -1,26 +1,22 @@
 
-# ArticleCoverMediaColorInfoPaletteRGB
+# CommunityModerationState
 
 
 ## Properties
 
 Name | Type
 ------------ | -------------
-`blue` | number
-`green` | number
-`red` | number
+`typename` | [TypeName](TypeName.md)
 
 ## Example
 
 ```typescript
-import type { ArticleCoverMediaColorInfoPaletteRGB } from 'twitter-openapi-typescript-generated'
+import type { CommunityModerationState } from 'twitter-openapi-typescript-generated'
 
 // TODO: Update the object below with actual values
 const example = {
-  "blue": null,
-  "green": null,
-  "red": null,
-} satisfies ArticleCoverMediaColorInfoPaletteRGB
+  "typename": null,
+} satisfies CommunityModerationState
 
 console.log(example)
 
@@ -29,7 +25,7 @@ const exampleJSON: string = JSON.stringify(example)
 console.log(exampleJSON)
 
 // Parse the JSON string back to an object
-const exampleParsed = JSON.parse(exampleJSON) as ArticleCoverMediaColorInfoPaletteRGB
+const exampleParsed = JSON.parse(exampleJSON) as CommunityModerationState
 console.log(exampleParsed)
 ```
 

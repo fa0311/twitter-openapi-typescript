@@ -13,6 +13,14 @@
  */
 
 import { mapValues } from '../runtime';
+import type { ConversationOwnerResults } from './ConversationOwnerResults';
+import {
+    ConversationOwnerResultsFromJSON,
+    ConversationOwnerResultsFromJSONTyped,
+    ConversationOwnerResultsToJSON,
+    ConversationOwnerResultsToJSONTyped,
+} from './ConversationOwnerResults';
+
 /**
  * 
  * @export
@@ -22,26 +30,19 @@ export interface ConversationControl {
     /**
      * 
      */
-    mode: ConversationControlModeEnum;
+    conversationOwnerResults: ConversationOwnerResults;
+    /**
+     * 
+     */
+    policy: string;
 }
-
-
-/**
- * @export
- */
-export const ConversationControlModeEnum = {
-    Community: 'Community',
-    Verified: 'Verified',
-    ByInvitation: 'ByInvitation',
-} as const;
-export type ConversationControlModeEnum = typeof ConversationControlModeEnum[keyof typeof ConversationControlModeEnum];
-
 
 /**
  * Check if a given object implements the ConversationControl interface.
  */
 export function instanceOfConversationControl(value: object): value is ConversationControl {
-    if (!('mode' in value) || value['mode'] === undefined) return false;
+    if ((!('conversationOwnerResults' in (value as Record<string, any>)) && !('conversation_owner_results' in (value as Record<string, any>))) || ((value as Record<string, any>)['conversationOwnerResults'] === undefined && (value as Record<string, any>)['conversation_owner_results'] === undefined)) return false;
+    if (!('policy' in value) || value['policy'] === undefined) return false;
     return true;
 }
 
@@ -55,7 +56,8 @@ export function ConversationControlFromJSONTyped(json: any, ignoreDiscriminator:
     }
     return {
         
-        'mode': json['mode'],
+        'conversationOwnerResults': ConversationOwnerResultsFromJSON(json['conversation_owner_results']),
+        'policy': json['policy'],
     };
 }
 
@@ -70,7 +72,8 @@ export function ConversationControlToJSONTyped(value?: ConversationControl | nul
 
     return {
         
-        'mode': value['mode'],
+        'conversation_owner_results': ConversationOwnerResultsToJSON(value['conversationOwnerResults']),
+        'policy': value['policy'],
     };
 }
 

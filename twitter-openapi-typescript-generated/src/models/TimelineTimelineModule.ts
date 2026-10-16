@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { ModuleFooter } from './ModuleFooter';
+import {
+    ModuleFooterFromJSON,
+    ModuleFooterFromJSONTyped,
+    ModuleFooterToJSON,
+    ModuleFooterToJSONTyped,
+} from './ModuleFooter';
 import type { ModuleItem } from './ModuleItem';
 import {
     ModuleItemFromJSON,
@@ -34,6 +41,13 @@ import {
     DisplayTypeToJSON,
     DisplayTypeToJSONTyped,
 } from './DisplayType';
+import type { ModuleHeader } from './ModuleHeader';
+import {
+    ModuleHeaderFromJSON,
+    ModuleHeaderFromJSONTyped,
+    ModuleHeaderToJSON,
+    ModuleHeaderToJSONTyped,
+} from './ModuleHeader';
 import type { ClientEventInfo } from './ClientEventInfo';
 import {
     ClientEventInfoFromJSON,
@@ -41,6 +55,13 @@ import {
     ClientEventInfoToJSON,
     ClientEventInfoToJSONTyped,
 } from './ClientEventInfo';
+import type { ModuleMetadata } from './ModuleMetadata';
+import {
+    ModuleMetadataFromJSON,
+    ModuleMetadataFromJSONTyped,
+    ModuleMetadataToJSON,
+    ModuleMetadataToJSONTyped,
+} from './ModuleMetadata';
 import type { FeedbackInfo } from './FeedbackInfo';
 import {
     FeedbackInfoFromJSON,
@@ -85,11 +106,11 @@ export interface TimelineTimelineModule {
     /**
      * 
      */
-    footer?: { [key: string]: any; };
+    footer?: ModuleFooter;
     /**
      * 
      */
-    header?: { [key: string]: any; };
+    header?: ModuleHeader;
     /**
      * 
      */
@@ -97,7 +118,7 @@ export interface TimelineTimelineModule {
     /**
      * 
      */
-    metadata?: { [key: string]: any; };
+    metadata?: ModuleMetadata;
 }
 
 
@@ -127,10 +148,10 @@ export function TimelineTimelineModuleFromJSONTyped(json: any, ignoreDiscriminat
         'displayType': DisplayTypeFromJSON(json['displayType']),
         'entryType': ContentEntryTypeFromJSON(json['entryType']),
         'feedbackInfo': json['feedbackInfo'] == null ? undefined : FeedbackInfoFromJSON(json['feedbackInfo']),
-        'footer': json['footer'] == null ? undefined : json['footer'],
-        'header': json['header'] == null ? undefined : json['header'],
+        'footer': json['footer'] == null ? undefined : ModuleFooterFromJSON(json['footer']),
+        'header': json['header'] == null ? undefined : ModuleHeaderFromJSON(json['header']),
         'items': json['items'] == null ? undefined : ((json['items'] as Array<any>).map(ModuleItemFromJSON)),
-        'metadata': json['metadata'] == null ? undefined : json['metadata'],
+        'metadata': json['metadata'] == null ? undefined : ModuleMetadataFromJSON(json['metadata']),
     };
 }
 
@@ -150,10 +171,10 @@ export function TimelineTimelineModuleToJSONTyped(value?: TimelineTimelineModule
         'displayType': DisplayTypeToJSON(value['displayType']),
         'entryType': ContentEntryTypeToJSON(value['entryType']),
         'feedbackInfo': FeedbackInfoToJSON(value['feedbackInfo']),
-        'footer': value['footer'],
-        'header': value['header'],
+        'footer': ModuleFooterToJSON(value['footer']),
+        'header': ModuleHeaderToJSON(value['header']),
         'items': value['items'] == null ? undefined : ((value['items'] as Array<any>).map(ModuleItemToJSON)),
-        'metadata': value['metadata'],
+        'metadata': ModuleMetadataToJSON(value['metadata']),
     };
 }
 

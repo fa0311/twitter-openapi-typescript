@@ -16,9 +16,9 @@ import { mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface ArticleCoverMediaColorInfoPaletteRGB
+ * @interface MediaColorInfoPaletteRGB
  */
-export interface ArticleCoverMediaColorInfoPaletteRGB {
+export interface MediaColorInfoPaletteRGB {
     /**
      * 
      */
@@ -34,20 +34,20 @@ export interface ArticleCoverMediaColorInfoPaletteRGB {
 }
 
 /**
- * Check if a given object implements the ArticleCoverMediaColorInfoPaletteRGB interface.
+ * Check if a given object implements the MediaColorInfoPaletteRGB interface.
  */
-export function instanceOfArticleCoverMediaColorInfoPaletteRGB(value: object): value is ArticleCoverMediaColorInfoPaletteRGB {
+export function instanceOfMediaColorInfoPaletteRGB(value: object): value is MediaColorInfoPaletteRGB {
     if (!('blue' in value) || value['blue'] === undefined) return false;
     if (!('green' in value) || value['green'] === undefined) return false;
     if (!('red' in value) || value['red'] === undefined) return false;
     return true;
 }
 
-export function ArticleCoverMediaColorInfoPaletteRGBFromJSON(json: any): ArticleCoverMediaColorInfoPaletteRGB {
-    return ArticleCoverMediaColorInfoPaletteRGBFromJSONTyped(json, false);
+export function MediaColorInfoPaletteRGBFromJSON(json: any): MediaColorInfoPaletteRGB {
+    return MediaColorInfoPaletteRGBFromJSONTyped(json, false);
 }
 
-export function ArticleCoverMediaColorInfoPaletteRGBFromJSONTyped(json: any, ignoreDiscriminator: boolean): ArticleCoverMediaColorInfoPaletteRGB {
+export function MediaColorInfoPaletteRGBFromJSONTyped(json: any, ignoreDiscriminator: boolean): MediaColorInfoPaletteRGB {
     if (json == null) {
         return json;
     }
@@ -59,11 +59,11 @@ export function ArticleCoverMediaColorInfoPaletteRGBFromJSONTyped(json: any, ign
     };
 }
 
-export function ArticleCoverMediaColorInfoPaletteRGBToJSON(json: any): ArticleCoverMediaColorInfoPaletteRGB {
-    return ArticleCoverMediaColorInfoPaletteRGBToJSONTyped(json, false);
+export function MediaColorInfoPaletteRGBToJSON(json: any): MediaColorInfoPaletteRGB {
+    return MediaColorInfoPaletteRGBToJSONTyped(json, false);
 }
 
-export function ArticleCoverMediaColorInfoPaletteRGBToJSONTyped(value?: ArticleCoverMediaColorInfoPaletteRGB | null, ignoreDiscriminator: boolean = false): any {
+export function MediaColorInfoPaletteRGBToJSONTyped(value?: MediaColorInfoPaletteRGB | null, ignoreDiscriminator: boolean = false): any {
     if (value == null) {
         return value;
     }

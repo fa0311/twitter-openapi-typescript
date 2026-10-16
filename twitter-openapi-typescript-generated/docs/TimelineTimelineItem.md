@@ -9,7 +9,7 @@ Name | Type
 `typename` | [TypeName](TypeName.md)
 `clientEventInfo` | [ClientEventInfo](ClientEventInfo.md)
 `entryType` | [ContentEntryType](ContentEntryType.md)
-`feedbackInfo` | { [key: string]: any; }
+`feedbackInfo` | [FeedbackInfo](FeedbackInfo.md)
 `itemContent` | [ItemContentUnion](ItemContentUnion.md)
 
 ## Example

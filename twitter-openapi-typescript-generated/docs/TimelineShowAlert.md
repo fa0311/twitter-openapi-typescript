@@ -8,10 +8,10 @@ Name | Type
 ------------ | -------------
 `alertType` | string
 `clientEventInfo` | [ClientEventInfo](ClientEventInfo.md)
-`colorConfig` | { [key: string]: any; }
+`colorConfig` | [TimelineShowAlertColorConfig](TimelineShowAlertColorConfig.md)
 `displayDurationMs` | number
 `displayLocation` | string
-`iconDisplayInfo` | { [key: string]: any; }
+`iconDisplayInfo` | [TimelineShowAlertIconDisplayInfo](TimelineShowAlertIconDisplayInfo.md)
 `richText` | [TimelineShowAlertRichText](TimelineShowAlertRichText.md)
 `triggerDelayMs` | number
 `type` | [InstructionType](InstructionType.md)

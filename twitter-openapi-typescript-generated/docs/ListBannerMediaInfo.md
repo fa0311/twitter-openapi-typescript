@@ -9,7 +9,7 @@ Name | Type
 `originalImgHeight` | number
 `originalImgUrl` | string
 `originalImgWidth` | number
-`salientRect` | [ListBannerMediaSalientRect](ListBannerMediaSalientRect.md)
+`salientRect` | [MediaSalientRect](MediaSalientRect.md)
 
 ## Example
 

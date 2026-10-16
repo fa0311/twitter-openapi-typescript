@@ -13,6 +13,14 @@
  */
 
 import { mapValues } from '../runtime';
+import type { ProfileBioEntities } from './ProfileBioEntities';
+import {
+    ProfileBioEntitiesFromJSON,
+    ProfileBioEntitiesFromJSONTyped,
+    ProfileBioEntitiesToJSON,
+    ProfileBioEntitiesToJSONTyped,
+} from './ProfileBioEntities';
+
 /**
  * 
  * @export
@@ -54,7 +62,7 @@ export interface UserLegacy {
     /**
      * 
      */
-    entities: { [key: string]: any; };
+    entities: ProfileBioEntities;
     /**
      * 
      */
@@ -258,7 +266,7 @@ export function UserLegacyFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         'defaultProfile': json['default_profile'],
         'defaultProfileImage': json['default_profile_image'],
         'description': json['description'],
-        'entities': json['entities'],
+        'entities': ProfileBioEntitiesFromJSON(json['entities']),
         'fastFollowersCount': json['fast_followers_count'],
         'favouritesCount': json['favourites_count'],
         'followRequestSent': json['follow_request_sent'] == null ? undefined : json['follow_request_sent'],
@@ -317,7 +325,7 @@ export function UserLegacyToJSONTyped(value?: UserLegacy | null, ignoreDiscrimin
         'default_profile': value['defaultProfile'],
         'default_profile_image': value['defaultProfileImage'],
         'description': value['description'],
-        'entities': value['entities'],
+        'entities': ProfileBioEntitiesToJSON(value['entities']),
         'fast_followers_count': value['fastFollowersCount'],
         'favourites_count': value['favouritesCount'],
         'follow_request_sent': value['followRequestSent'],

@@ -14,7 +14,7 @@ Name | Type
 `defaultProfile` | boolean
 `defaultProfileImage` | boolean
 `description` | string
-`entities` | { [key: string]: any; }
+`entities` | [ProfileBioEntities](ProfileBioEntities.md)
 `fastFollowersCount` | number
 `favouritesCount` | number
 `followRequestSent` | boolean

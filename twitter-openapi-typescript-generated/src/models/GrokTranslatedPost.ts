@@ -30,7 +30,7 @@ export interface GrokTranslatedPost {
     /**
      * 
      */
-    associatedData?: { [key: string]: any; };
+    associatedData?: object;
     /**
      * 
      */

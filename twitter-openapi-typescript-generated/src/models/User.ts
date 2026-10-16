@@ -34,6 +34,13 @@ import {
     UserProfileToJSON,
     UserProfileToJSONTyped,
 } from './UserProfile';
+import type { AffiliatesHighlightedLabel } from './AffiliatesHighlightedLabel';
+import {
+    AffiliatesHighlightedLabelFromJSON,
+    AffiliatesHighlightedLabelFromJSONTyped,
+    AffiliatesHighlightedLabelToJSON,
+    AffiliatesHighlightedLabelToJSONTyped,
+} from './AffiliatesHighlightedLabel';
 import type { UserTipJarSettings } from './UserTipJarSettings';
 import {
     UserTipJarSettingsFromJSON,
@@ -220,7 +227,7 @@ export interface User {
     /**
      * 
      */
-    affiliatesHighlightedLabel?: { [key: string]: any; };
+    affiliatesHighlightedLabel?: AffiliatesHighlightedLabel;
     /**
      * 
      */
@@ -232,7 +239,7 @@ export interface User {
     /**
      * 
      */
-    businessAccount?: { [key: string]: any; };
+    businessAccount?: object;
     /**
      * 
      */
@@ -462,7 +469,7 @@ export function UserFromJSONTyped(json: any, ignoreDiscriminator: boolean): User
         
         'typename': TypeNameFromJSON(json['__typename']),
         'actionCounts': json['action_counts'] == null ? undefined : UserActionCountsFromJSON(json['action_counts']),
-        'affiliatesHighlightedLabel': json['affiliates_highlighted_label'] == null ? undefined : json['affiliates_highlighted_label'],
+        'affiliatesHighlightedLabel': json['affiliates_highlighted_label'] == null ? undefined : AffiliatesHighlightedLabelFromJSON(json['affiliates_highlighted_label']),
         'avatar': json['avatar'] == null ? undefined : UserAvatarFromJSON(json['avatar']),
         'banner': json['banner'] == null ? undefined : UserBannerFromJSON(json['banner']),
         'businessAccount': json['business_account'] == null ? undefined : json['business_account'],
@@ -527,7 +534,7 @@ export function UserToJSONTyped(value?: User | null, ignoreDiscriminator: boolea
         
         '__typename': TypeNameToJSON(value['typename']),
         'action_counts': UserActionCountsToJSON(value['actionCounts']),
-        'affiliates_highlighted_label': value['affiliatesHighlightedLabel'],
+        'affiliates_highlighted_label': AffiliatesHighlightedLabelToJSON(value['affiliatesHighlightedLabel']),
         'avatar': UserAvatarToJSON(value['avatar']),
         'banner': UserBannerToJSON(value['banner']),
         'business_account': value['businessAccount'],

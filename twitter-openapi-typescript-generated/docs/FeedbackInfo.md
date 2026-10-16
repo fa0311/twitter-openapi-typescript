@@ -6,8 +6,9 @@
 
 Name | Type
 ------------ | -------------
-`clientEventInfo` | [ClientEventInfo](ClientEventInfo.md)
+`clientEventInfo` | [FeedbackClientEventInfo](FeedbackClientEventInfo.md)
 `feedbackKeys` | Array&lt;string&gt;
+`feedbackMetadata` | string
 
 ## Example
 
@@ -18,6 +19,7 @@ import type { FeedbackInfo } from 'twitter-openapi-typescript-generated'
 const example = {
   "clientEventInfo": null,
   "feedbackKeys": null,
+  "feedbackMetadata": null,
 } satisfies FeedbackInfo
 
 console.log(example)

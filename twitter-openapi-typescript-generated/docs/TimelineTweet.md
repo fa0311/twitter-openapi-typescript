@@ -10,7 +10,7 @@ Name | Type
 `hasModeratedReplies` | boolean
 `highlights` | [Highlight](Highlight.md)
 `itemType` | [ContentItemType](ContentItemType.md)
-`promotedMetadata` | { [key: string]: any; }
+`promotedMetadata` | [PromotedMetadata](PromotedMetadata.md)
 `socialContext` | [SocialContextUnion](SocialContextUnion.md)
 `tweetDisplayType` | string
 `tweetResults` | [ItemResult](ItemResult.md)

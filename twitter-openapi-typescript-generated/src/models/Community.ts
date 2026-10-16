@@ -41,6 +41,13 @@ import {
     CommunityJoinRequestsResultToJSON,
     CommunityJoinRequestsResultToJSONTyped,
 } from './CommunityJoinRequestsResult';
+import type { CommunityBannerMedia } from './CommunityBannerMedia';
+import {
+    CommunityBannerMediaFromJSON,
+    CommunityBannerMediaFromJSONTyped,
+    CommunityBannerMediaToJSON,
+    CommunityBannerMediaToJSONTyped,
+} from './CommunityBannerMedia';
 import type { CommunityInvitesResult } from './CommunityInvitesResult';
 import {
     CommunityInvitesResultFromJSON,
@@ -48,6 +55,13 @@ import {
     CommunityInvitesResultToJSON,
     CommunityInvitesResultToJSONTyped,
 } from './CommunityInvitesResult';
+import type { CommunityViewerRelationship } from './CommunityViewerRelationship';
+import {
+    CommunityViewerRelationshipFromJSON,
+    CommunityViewerRelationshipFromJSONTyped,
+    CommunityViewerRelationshipToJSON,
+    CommunityViewerRelationshipToJSONTyped,
+} from './CommunityViewerRelationship';
 import type { CommunityRule } from './CommunityRule';
 import {
     CommunityRuleFromJSON,
@@ -99,11 +113,11 @@ export interface Community {
     /**
      * 
      */
-    customBannerMedia?: { [key: string]: any; };
+    customBannerMedia?: CommunityBannerMedia;
     /**
      * 
      */
-    defaultBannerMedia?: { [key: string]: any; };
+    defaultBannerMedia?: CommunityBannerMedia;
     /**
      * 
      */
@@ -179,7 +193,7 @@ export interface Community {
     /**
      * 
      */
-    viewerRelationship?: { [key: string]: any; };
+    viewerRelationship?: CommunityViewerRelationship;
 }
 
 
@@ -233,8 +247,8 @@ export function CommunityFromJSONTyped(json: any, ignoreDiscriminator: boolean):
         'adminResults': json['admin_results'] == null ? undefined : UserResultsFromJSON(json['admin_results']),
         'createdAt': json['created_at'] == null ? undefined : json['created_at'],
         'creatorResults': json['creator_results'] == null ? undefined : UserResultsFromJSON(json['creator_results']),
-        'customBannerMedia': json['custom_banner_media'] == null ? undefined : json['custom_banner_media'],
-        'defaultBannerMedia': json['default_banner_media'] == null ? undefined : json['default_banner_media'],
+        'customBannerMedia': json['custom_banner_media'] == null ? undefined : CommunityBannerMediaFromJSON(json['custom_banner_media']),
+        'defaultBannerMedia': json['default_banner_media'] == null ? undefined : CommunityBannerMediaFromJSON(json['default_banner_media']),
         'description': json['description'] == null ? undefined : json['description'],
         'idStr': json['id_str'] == null ? undefined : json['id_str'],
         'invitesPolicy': json['invites_policy'] == null ? undefined : json['invites_policy'],
@@ -253,7 +267,7 @@ export function CommunityFromJSONTyped(json: any, ignoreDiscriminator: boolean):
         'searchTags': json['search_tags'] == null ? undefined : json['search_tags'],
         'showOnlyUsersToDisplay': json['show_only_users_to_display'] == null ? undefined : json['show_only_users_to_display'],
         'urls': json['urls'] == null ? undefined : CommunityUrlsFromJSON(json['urls']),
-        'viewerRelationship': json['viewer_relationship'] == null ? undefined : json['viewer_relationship'],
+        'viewerRelationship': json['viewer_relationship'] == null ? undefined : CommunityViewerRelationshipFromJSON(json['viewer_relationship']),
     };
 }
 
@@ -273,8 +287,8 @@ export function CommunityToJSONTyped(value?: Community | null, ignoreDiscriminat
         'admin_results': UserResultsToJSON(value['adminResults']),
         'created_at': value['createdAt'],
         'creator_results': UserResultsToJSON(value['creatorResults']),
-        'custom_banner_media': value['customBannerMedia'],
-        'default_banner_media': value['defaultBannerMedia'],
+        'custom_banner_media': CommunityBannerMediaToJSON(value['customBannerMedia']),
+        'default_banner_media': CommunityBannerMediaToJSON(value['defaultBannerMedia']),
         'description': value['description'],
         'id_str': value['idStr'],
         'invites_policy': value['invitesPolicy'],
@@ -293,7 +307,7 @@ export function CommunityToJSONTyped(value?: Community | null, ignoreDiscriminat
         'search_tags': value['searchTags'],
         'show_only_users_to_display': value['showOnlyUsersToDisplay'],
         'urls': CommunityUrlsToJSON(value['urls']),
-        'viewer_relationship': value['viewerRelationship'],
+        'viewer_relationship': CommunityViewerRelationshipToJSON(value['viewerRelationship']),
     };
 }
 

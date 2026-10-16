@@ -8,7 +8,7 @@ Name | Type
 ------------ | -------------
 `bookmarkCount` | number
 `bookmarked` | boolean
-`conversationControl` | { [key: string]: any; }
+`conversationControl` | [ConversationControl](ConversationControl.md)
 `conversationIdStr` | string
 `createdAt` | string
 `displayTextRange` | Array&lt;number&gt;

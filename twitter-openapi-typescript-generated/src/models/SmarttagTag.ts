@@ -13,6 +13,14 @@
  */
 
 import { mapValues } from '../runtime';
+import type { SmarttagTagInfo } from './SmarttagTagInfo';
+import {
+    SmarttagTagInfoFromJSON,
+    SmarttagTagInfoFromJSONTyped,
+    SmarttagTagInfoToJSON,
+    SmarttagTagInfoToJSONTyped,
+} from './SmarttagTagInfo';
+
 /**
  * 
  * @export
@@ -22,7 +30,7 @@ export interface SmarttagTag {
     /**
      * 
      */
-    info: { [key: string]: any; };
+    info: SmarttagTagInfo;
 }
 
 /**
@@ -43,7 +51,7 @@ export function SmarttagTagFromJSONTyped(json: any, ignoreDiscriminator: boolean
     }
     return {
         
-        'info': json['info'],
+        'info': SmarttagTagInfoFromJSON(json['info']),
     };
 }
 
@@ -58,7 +66,7 @@ export function SmarttagTagToJSONTyped(value?: SmarttagTag | null, ignoreDiscrim
 
     return {
         
-        'info': value['info'],
+        'info': SmarttagTagInfoToJSON(value['info']),
     };
 }
 

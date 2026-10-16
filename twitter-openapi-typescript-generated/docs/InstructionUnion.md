@@ -15,10 +15,10 @@ Name | Type
 `entryIdToReplace` | string
 `alertType` | string
 `clientEventInfo` | [ClientEventInfo](ClientEventInfo.md)
-`colorConfig` | { [key: string]: any; }
+`colorConfig` | [TimelineShowAlertColorConfig](TimelineShowAlertColorConfig.md)
 `displayDurationMs` | number
 `displayLocation` | string
-`iconDisplayInfo` | { [key: string]: any; }
+`iconDisplayInfo` | [TimelineShowAlertIconDisplayInfo](TimelineShowAlertIconDisplayInfo.md)
 `richText` | [TimelineShowAlertRichText](TimelineShowAlertRichText.md)
 `triggerDelayMs` | number
 `usersResults` | [Array&lt;UserResults&gt;](UserResults.md)

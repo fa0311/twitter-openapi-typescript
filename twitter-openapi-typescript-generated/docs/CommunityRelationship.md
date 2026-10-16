@@ -8,7 +8,7 @@ Name | Type
 ------------ | -------------
 `actions` | [CommunityActions](CommunityActions.md)
 `id` | string
-`moderationState` | { [key: string]: any; }
+`moderationState` | [CommunityModerationState](CommunityModerationState.md)
 `restId` | string
 
 ## Example

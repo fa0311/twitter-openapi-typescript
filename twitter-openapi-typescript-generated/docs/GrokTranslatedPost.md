@@ -6,7 +6,7 @@
 
 Name | Type
 ------------ | -------------
-`associatedData` | { [key: string]: any; }
+`associatedData` | object
 `destinationLanguage` | string
 `entities` | [Entities](Entities.md)
 `previewTranslation` | string

@@ -22,31 +22,8 @@ export interface LimitedActionResultsData {
     /**
      * 
      */
-    action: LimitedActionResultsDataActionEnum;
+    action: string;
 }
-
-
-/**
- * @export
- */
-export const LimitedActionResultsDataActionEnum = {
-    Reply: 'Reply',
-    Retweet: 'Retweet',
-    QuoteTweet: 'QuoteTweet',
-    Like: 'Like',
-    React: 'React',
-    AddToBookmarks: 'AddToBookmarks',
-    AddToMoment: 'AddToMoment',
-    PinToProfile: 'PinToProfile',
-    ViewHiddenReplies: 'ViewHiddenReplies',
-    VoteOnPoll: 'VoteOnPoll',
-    ShowRetweetActionMenu: 'ShowRetweetActionMenu',
-    ReplyDownVote: 'ReplyDownVote',
-    SendViaDm: 'SendViaDm',
-    ViewPostEngagements: 'ViewPostEngagements',
-} as const;
-export type LimitedActionResultsDataActionEnum = typeof LimitedActionResultsDataActionEnum[keyof typeof LimitedActionResultsDataActionEnum];
-
 
 /**
  * Check if a given object implements the LimitedActionResultsData interface.

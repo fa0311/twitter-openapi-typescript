@@ -7,6 +7,8 @@
 Name | Type
 ------------ | -------------
 `typename` | [TypeName](TypeName.md)
+`communityResults` | [CommunityResult](CommunityResult.md)
+`itemType` | [ContentItemType](ContentItemType.md)
 
 ## Example
 
@@ -16,6 +18,8 @@ import type { TimelineCommunity } from 'twitter-openapi-typescript-generated'
 // TODO: Update the object below with actual values
 const example = {
   "typename": null,
+  "communityResults": null,
+  "itemType": null,
 } satisfies TimelineCommunity
 
 console.log(example)

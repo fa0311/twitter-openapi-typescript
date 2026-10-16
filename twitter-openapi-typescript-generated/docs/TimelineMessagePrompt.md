@@ -7,6 +7,8 @@
 Name | Type
 ------------ | -------------
 `typename` | [TypeName](TypeName.md)
+`content` | [TimelineMessagePromptContent](TimelineMessagePromptContent.md)
+`itemType` | [ContentItemType](ContentItemType.md)
 
 ## Example
 
@@ -16,6 +18,8 @@ import type { TimelineMessagePrompt } from 'twitter-openapi-typescript-generated
 // TODO: Update the object below with actual values
 const example = {
   "typename": null,
+  "content": null,
+  "itemType": null,
 } satisfies TimelineMessagePrompt
 
 console.log(example)

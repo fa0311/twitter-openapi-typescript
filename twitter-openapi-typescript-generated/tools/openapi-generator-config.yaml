@@ -1,7 +1,7 @@
 inputSpec: twitter-openapi/dist/compatible/openapi-3.0.yaml
 outputDir: .
 npmName: twitter-openapi-typescript-generated
-npmVersion: 0.1.0
+npmVersion: 0.1.1
 
 # withoutRuntimeChecks: false
 legacyDiscriminatorBehavior: false

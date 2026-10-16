@@ -20,6 +20,20 @@ import {
     TypeNameToJSON,
     TypeNameToJSONTyped,
 } from './TypeName';
+import type { TimelineMessagePromptContent } from './TimelineMessagePromptContent';
+import {
+    TimelineMessagePromptContentFromJSON,
+    TimelineMessagePromptContentFromJSONTyped,
+    TimelineMessagePromptContentToJSON,
+    TimelineMessagePromptContentToJSONTyped,
+} from './TimelineMessagePromptContent';
+import type { ContentItemType } from './ContentItemType';
+import {
+    ContentItemTypeFromJSON,
+    ContentItemTypeFromJSONTyped,
+    ContentItemTypeToJSON,
+    ContentItemTypeToJSONTyped,
+} from './ContentItemType';
 
 /**
  * 
@@ -27,11 +41,18 @@ import {
  * @interface TimelineMessagePrompt
  */
 export interface TimelineMessagePrompt {
-    [key: string]: any | any;
     /**
      * 
      */
-    typename?: TypeName;
+    typename: TypeName;
+    /**
+     * 
+     */
+    content: TimelineMessagePromptContent;
+    /**
+     * 
+     */
+    itemType: ContentItemType;
 }
 
 
@@ -40,6 +61,9 @@ export interface TimelineMessagePrompt {
  * Check if a given object implements the TimelineMessagePrompt interface.
  */
 export function instanceOfTimelineMessagePrompt(value: object): value is TimelineMessagePrompt {
+    if ((!('typename' in (value as Record<string, any>)) && !('__typename' in (value as Record<string, any>))) || ((value as Record<string, any>)['typename'] === undefined && (value as Record<string, any>)['__typename'] === undefined)) return false;
+    if (!('content' in value) || value['content'] === undefined) return false;
+    if (!('itemType' in value) || value['itemType'] === undefined) return false;
     return true;
 }
 
@@ -53,8 +77,9 @@ export function TimelineMessagePromptFromJSONTyped(json: any, ignoreDiscriminato
     }
     return {
         
-            ...json,
-        'typename': json['__typename'] == null ? undefined : TypeNameFromJSON(json['__typename']),
+        'typename': TypeNameFromJSON(json['__typename']),
+        'content': TimelineMessagePromptContentFromJSON(json['content']),
+        'itemType': ContentItemTypeFromJSON(json['itemType']),
     };
 }
 
@@ -69,8 +94,9 @@ export function TimelineMessagePromptToJSONTyped(value?: TimelineMessagePrompt |
 
     return {
         
-            ...value,
         '__typename': TypeNameToJSON(value['typename']),
+        'content': TimelineMessagePromptContentToJSON(value['content']),
+        'itemType': ContentItemTypeToJSON(value['itemType']),
     };
 }
 

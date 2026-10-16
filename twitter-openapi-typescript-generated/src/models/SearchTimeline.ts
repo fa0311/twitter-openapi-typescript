@@ -30,14 +30,13 @@ export interface SearchTimeline {
     /**
      * 
      */
-    timeline: Timeline;
+    timeline?: Timeline;
 }
 
 /**
  * Check if a given object implements the SearchTimeline interface.
  */
 export function instanceOfSearchTimeline(value: object): value is SearchTimeline {
-    if (!('timeline' in value) || value['timeline'] === undefined) return false;
     return true;
 }
 
@@ -51,7 +50,7 @@ export function SearchTimelineFromJSONTyped(json: any, ignoreDiscriminator: bool
     }
     return {
         
-        'timeline': TimelineFromJSON(json['timeline']),
+        'timeline': json['timeline'] == null ? undefined : TimelineFromJSON(json['timeline']),
     };
 }
 

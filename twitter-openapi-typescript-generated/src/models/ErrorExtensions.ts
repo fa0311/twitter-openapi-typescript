@@ -30,7 +30,7 @@ export interface ErrorExtensions {
     /**
      * 
      */
-    code: number;
+    code?: number;
     /**
      * 
      */
@@ -57,7 +57,6 @@ export interface ErrorExtensions {
  * Check if a given object implements the ErrorExtensions interface.
  */
 export function instanceOfErrorExtensions(value: object): value is ErrorExtensions {
-    if (!('code' in value) || value['code'] === undefined) return false;
     if (!('kind' in value) || value['kind'] === undefined) return false;
     if (!('name' in value) || value['name'] === undefined) return false;
     if (!('source' in value) || value['source'] === undefined) return false;
@@ -74,7 +73,7 @@ export function ErrorExtensionsFromJSONTyped(json: any, ignoreDiscriminator: boo
     }
     return {
         
-        'code': json['code'],
+        'code': json['code'] == null ? undefined : json['code'],
         'kind': json['kind'],
         'name': json['name'],
         'retryAfter': json['retry_after'] == null ? undefined : json['retry_after'],

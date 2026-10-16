@@ -1,4 +1,5 @@
-import {
+import type * as i from 'twitter-openapi-typescript-generated';
+import type {
   DefaultFlag,
   RequestParam,
   TimelineApiUtilsResponse,
@@ -10,12 +11,11 @@ import {
   entriesCursor,
   errorCheck,
   getKwargs,
-  InitOverridesType,
+  type InitOverridesType,
   instructionToEntry,
   userEntriesConverter,
   userResultConverter,
 } from '@/utils';
-import * as i from 'twitter-openapi-typescript-generated';
 
 type GetFollowersParam = {
   userId: string;

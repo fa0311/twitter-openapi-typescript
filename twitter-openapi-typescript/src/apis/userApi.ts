@@ -1,6 +1,6 @@
-import { DefaultFlag, RequestParam, TwitterApiUtilsResponse, UserApiUtilsData } from '@/models';
-import { buildHeader, errorCheck, getKwargs, InitOverridesType, userOrNullConverter } from '@/utils';
-import * as i from 'twitter-openapi-typescript-generated';
+import type * as i from 'twitter-openapi-typescript-generated';
+import type { DefaultFlag, RequestParam, TwitterApiUtilsResponse, UserApiUtilsData } from '@/models';
+import { buildHeader, errorCheck, getKwargs, type InitOverridesType, userOrNullConverter } from '@/utils';
 
 type getUserByScreenNameParam = {
   screenName: string;

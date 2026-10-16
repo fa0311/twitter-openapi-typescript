@@ -3,8 +3,10 @@
   "version": "0.0.56",
   "description": "Implementation of Twitter internal API in TypeScript",
   "scripts": {
-    "test": "jest",
-    "build": "tsc -p tsconfig.build.json && npx tscpaths -p tsconfig.build.json -s . -o ./dist"
+    "test": "vitest run",
+    "build": "tsc -p tsconfig.build.json && tsc-alias -p tsconfig.build.json",
+    "lint": "biome check .",
+    "format": "biome format --write ."
   },
   "keywords": [
     "twitter",
@@ -25,18 +27,11 @@
     "x-client-transaction-id-generater": "^0.0.7"
   },
   "devDependencies": {
-    "@types/jest": "*",
-    "@types/node": "*",
-    "@typescript-eslint/eslint-plugin": "*",
-    "@typescript-eslint/parser": "*",
-    "eslint": "^8.50.0",
-    "eslint-config-standard-with-typescript": "*",
-    "eslint-plugin-import": "*",
-    "eslint-plugin-n": "*",
-    "eslint-plugin-promise": "*",
-    "jest": "^29.7.0",
-    "log4js": "^6.9.0",
-    "ts-jest": "*",
-    "typescript": "^5.6.0"
+    "@biomejs/biome": "^2.5.15",
+    "@types/node": "^26.0.0",
+    "log4js": "^6.9.1",
+    "tsc-alias": "^1.8.16",
+    "typescript": "^5.9.3",
+    "vitest": "^5.0.4"
   }
 }

@@ -14,7 +14,7 @@ test('getUserByScreenNameNotFound', async () => {
   const client = await getClient();
   const response = client.getUserApi().getUserByScreenName({ screenName: 'Wendoleecs' });
   response.catch((e) => logger.log(e.message));
-  expect(response).rejects.toThrow(Error);
+  await expect(response).rejects.toThrow(Error);
 });
 
 test('getUserByScreenNameFreezed', async () => {

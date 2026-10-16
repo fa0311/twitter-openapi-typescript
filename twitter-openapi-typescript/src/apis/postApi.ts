@@ -1,6 +1,6 @@
-import { DefaultFlag, TwitterApiUtilsResponse } from '@/models';
-import { buildHeader, InitOverridesType } from '@/utils';
 import * as i from 'twitter-openapi-typescript-generated';
+import type { DefaultFlag, TwitterApiUtilsResponse } from '@/models';
+import { buildHeader, type InitOverridesType } from '@/utils';
 
 type PostCreateTweetParam = {
   tweetText: string;
@@ -55,8 +55,8 @@ export class PostApiUtils {
     };
 
     const queryId = 'CreateTweet';
-    const features = i.PostCreateTweetRequestFeaturesFromJSON(this.flag[queryId]['features']);
-    const variables = i.PostCreateTweetRequestVariablesFromJSON(this.flag[queryId]['variables']);
+    const features = i.PostCreateTweetRequestFeaturesFromJSON(this.flag[queryId].features);
+    const variables = i.PostCreateTweetRequestVariablesFromJSON(this.flag[queryId].variables);
     if (param.mediaIds) {
       variables.media.mediaEntities = param.mediaIds!.map((mediaId, index) => ({
         mediaId: mediaId,
@@ -81,9 +81,9 @@ export class PostApiUtils {
     variables.disallowedReplyOptions = null as any;
 
     const response = await this.api.postCreateTweetRaw({
-      pathQueryId: this.flag[queryId]['queryId'],
+      pathQueryId: this.flag[queryId].queryId,
       postCreateTweetRequest: {
-        queryId: this.flag[queryId]['queryId'],
+        queryId: this.flag[queryId].queryId,
         features: features,
         variables: { ...variables, ...args },
       },
@@ -102,11 +102,11 @@ export class PostApiUtils {
       ...param.extraParam,
     };
     const queryId = 'DeleteTweet';
-    const variables = i.PostCreateRetweetRequestVariablesFromJSON(this.flag[queryId]['variables']);
+    const variables = i.PostCreateRetweetRequestVariablesFromJSON(this.flag[queryId].variables);
     const response = await this.api.postDeleteTweetRaw({
-      pathQueryId: this.flag[queryId]['queryId'],
+      pathQueryId: this.flag[queryId].queryId,
       postDeleteTweetRequest: {
-        queryId: this.flag[queryId]['queryId'],
+        queryId: this.flag[queryId].queryId,
         variables: { ...variables, ...args },
       },
     });
@@ -123,11 +123,11 @@ export class PostApiUtils {
       ...param.extraParam,
     };
     const queryId = 'CreateRetweet';
-    const variables = i.PostCreateRetweetRequestVariablesFromJSON(this.flag[queryId]['variables']);
+    const variables = i.PostCreateRetweetRequestVariablesFromJSON(this.flag[queryId].variables);
     const response = await this.api.postCreateRetweetRaw({
-      pathQueryId: this.flag[queryId]['queryId'],
+      pathQueryId: this.flag[queryId].queryId,
       postCreateRetweetRequest: {
-        queryId: this.flag[queryId]['queryId'],
+        queryId: this.flag[queryId].queryId,
         variables: { ...variables, ...args },
       },
     });
@@ -143,11 +143,11 @@ export class PostApiUtils {
       ...param.extraParam,
     };
     const queryId = 'DeleteRetweet';
-    const variables = i.PostDeleteRetweetRequestVariablesFromJSON(this.flag[queryId]['variables']);
+    const variables = i.PostDeleteRetweetRequestVariablesFromJSON(this.flag[queryId].variables);
     const response = await this.api.postDeleteRetweetRaw({
-      pathQueryId: this.flag[queryId]['queryId'],
+      pathQueryId: this.flag[queryId].queryId,
       postDeleteRetweetRequest: {
-        queryId: this.flag[queryId]['queryId'],
+        queryId: this.flag[queryId].queryId,
         variables: { ...variables, ...args },
       },
     });
@@ -164,11 +164,11 @@ export class PostApiUtils {
       ...param.extraParam,
     };
     const queryId = 'FavoriteTweet';
-    const variables = i.PostCreateRetweetRequestVariablesFromJSON(this.flag[queryId]['variables']);
+    const variables = i.PostCreateRetweetRequestVariablesFromJSON(this.flag[queryId].variables);
     const response = await this.api.postFavoriteTweetRaw({
-      pathQueryId: this.flag[queryId]['queryId'],
+      pathQueryId: this.flag[queryId].queryId,
       postFavoriteTweetRequest: {
-        queryId: this.flag[queryId]['queryId'],
+        queryId: this.flag[queryId].queryId,
         variables: { ...variables, ...args },
       },
     });
@@ -187,11 +187,11 @@ export class PostApiUtils {
       ...param.extraParam,
     };
     const queryId = 'UnfavoriteTweet';
-    const variables = i.PostCreateRetweetRequestVariablesFromJSON(this.flag[queryId]['variables']);
+    const variables = i.PostCreateRetweetRequestVariablesFromJSON(this.flag[queryId].variables);
     const response = await this.api.postUnfavoriteTweetRaw({
-      pathQueryId: this.flag[queryId]['queryId'],
+      pathQueryId: this.flag[queryId].queryId,
       postUnfavoriteTweetRequest: {
-        queryId: this.flag[queryId]['queryId'],
+        queryId: this.flag[queryId].queryId,
         variables: { ...variables, ...args },
       },
     });

@@ -1,6 +1,6 @@
-import { DefaultFlag } from '@/models';
-import { InitOverridesType } from '@/utils';
-import * as i from 'twitter-openapi-typescript-generated';
+import type * as i from 'twitter-openapi-typescript-generated';
+import type { DefaultFlag } from '@/models';
+import type { InitOverridesType } from '@/utils';
 
 export class V11GetApiUtils {
   api: i.V11GetApi;

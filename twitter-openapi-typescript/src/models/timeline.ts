@@ -1,4 +1,4 @@
-import * as i from 'twitter-openapi-typescript-generated';
+import type * as i from 'twitter-openapi-typescript-generated';
 
 export type CursorApiUtilsResponse = {
   bottom?: i.TimelineTimelineCursor;

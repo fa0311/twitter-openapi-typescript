@@ -1,30 +1,23 @@
 {
-    "name": "example",
-    "license": "MIT",
-    "version": "1.0.0",
-    "author": "",
-    "description": "",
-    "scripts": {
-        "start": "npx ts-node -r tsconfig-paths/register src/main.ts"
-    },
-    "dependencies": {
-        "https-proxy-agent": "^7.0.5",
-        "twitter-api-v2": "^1.18.0",
-        "twitter-openapi-typescript": "^0.0.40"
-    },
-    "devDependencies": {
-        "@types/node": "*",
-        "@types/node-fetch": "*",
-        "@typescript-eslint/eslint-plugin": "*",
-        "@typescript-eslint/parser": "*",
-        "dotenv": "^16.3.0",
-        "eslint": "^8.50.0",
-        "eslint-config-standard-with-typescript": "*",
-        "eslint-plugin-import": "*",
-        "eslint-plugin-n": "*",
-        "eslint-plugin-promise": "*",
-        "log4js": "^6.9.0",
-        "node-fetch": "^2.6.6",
-        "typescript": "^5.2.0"
-    }
+  "name": "example",
+  "license": "MIT",
+  "version": "1.0.0",
+  "author": "",
+  "description": "",
+  "scripts": {
+    "check": "tsc --noEmit",
+    "start:proxy": "tsx src/proxy.ts",
+    "start:tweetMedia": "tsx src/tweetMedia.ts"
+  },
+  "dependencies": {
+    "dotenv": "^17.3.0",
+    "twitter-api-v2": "^1.29.0",
+    "twitter-openapi-typescript": "^0.0.56",
+    "undici": "^7.24.0"
+  },
+  "devDependencies": {
+    "@types/node": "^26.0.0",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  }
 }

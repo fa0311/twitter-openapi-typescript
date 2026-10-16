@@ -1,6 +1,6 @@
-import { DefaultFlag, RequestParam, TwitterApiUtilsResponse, UserApiUtilsData } from '@/models';
-import { buildHeader, errorCheck, getKwargs, InitOverridesType, userResultConverter } from '@/utils';
-import * as i from 'twitter-openapi-typescript-generated';
+import type * as i from 'twitter-openapi-typescript-generated';
+import type { DefaultFlag, RequestParam, TwitterApiUtilsResponse, UserApiUtilsData } from '@/models';
+import { buildHeader, errorCheck, getKwargs, type InitOverridesType, userResultConverter } from '@/utils';
 
 type getUsersByRestIdsParam = {
   userIds: string[];

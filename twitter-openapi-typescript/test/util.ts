@@ -1,7 +1,6 @@
-import * as i from 'twitter-openapi-typescript-generated';
-
-import { TweetApiUtilsData, UserApiUtilsData } from '@/models';
 import { logger } from '@test/init';
+import type * as i from 'twitter-openapi-typescript-generated';
+import type { TweetApiUtilsData, UserApiUtilsData } from '@/models';
 
 export const printTweet = (tweet: TweetApiUtilsData) => {
   logger.log(`${tweet.user.legacy.screenName}: ${tweet.tweet.legacy?.fullText}`.replace(/\n/g, ' '));

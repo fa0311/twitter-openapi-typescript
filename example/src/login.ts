@@ -12,12 +12,13 @@ export const login = async () => {
 
   const api = new TwitterOpenApi();
   const client = await api.getClientFromCookies(cookie);
+  const headers = (await api.getHeaders()).api;
 
   const plugin: ITwitterApiClientPlugin = {
     onBeforeRequest: async (params) => {
       params.computedParams.headers = {
         ...params.computedParams.headers,
-        ...TwitterOpenApi.api_key,
+        ...headers,
         'x-csrf-token': cookie.ct0,
         'x-twitter-auth-type': 'OAuth2Session',
         authorization: `Bearer ${TwitterOpenApi.bearer}`,
@@ -25,7 +26,7 @@ export const login = async () => {
       };
       params.requestOptions.headers = {
         ...params.requestOptions.headers,
-        ...TwitterOpenApi.api_key,
+        ...headers,
         'x-csrf-token': cookie.ct0,
         'x-twitter-auth-type': 'OAuth2Session',
         authorization: `Bearer ${TwitterOpenApi.bearer}`,

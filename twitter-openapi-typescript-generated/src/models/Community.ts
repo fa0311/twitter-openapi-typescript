@@ -137,6 +137,10 @@ export interface Community {
     /**
      * 
      */
+    isNsfw?: boolean;
+    /**
+     * 
+     */
     isPinned?: boolean;
     /**
      * 
@@ -253,6 +257,7 @@ export function CommunityFromJSONTyped(json: any, ignoreDiscriminator: boolean):
         'idStr': json['id_str'] == null ? undefined : json['id_str'],
         'invitesPolicy': json['invites_policy'] == null ? undefined : json['invites_policy'],
         'invitesResult': json['invites_result'] == null ? undefined : CommunityInvitesResultFromJSON(json['invites_result']),
+        'isNsfw': json['is_nsfw'] == null ? undefined : json['is_nsfw'],
         'isPinned': json['is_pinned'] == null ? undefined : json['is_pinned'],
         'joinPolicy': json['join_policy'] == null ? undefined : json['join_policy'],
         'joinRequestsResult': json['join_requests_result'] == null ? undefined : CommunityJoinRequestsResultFromJSON(json['join_requests_result']),
@@ -293,6 +298,7 @@ export function CommunityToJSONTyped(value?: Community | null, ignoreDiscriminat
         'id_str': value['idStr'],
         'invites_policy': value['invitesPolicy'],
         'invites_result': CommunityInvitesResultToJSON(value['invitesResult']),
+        'is_nsfw': value['isNsfw'],
         'is_pinned': value['isPinned'],
         'join_policy': value['joinPolicy'],
         'join_requests_result': CommunityJoinRequestsResultToJSON(value['joinRequestsResult']),

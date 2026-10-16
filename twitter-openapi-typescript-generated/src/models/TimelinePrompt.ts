@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { TimelinePromptContent } from './TimelinePromptContent';
+import {
+    TimelinePromptContentFromJSON,
+    TimelinePromptContentFromJSONTyped,
+    TimelinePromptContentToJSON,
+    TimelinePromptContentToJSONTyped,
+} from './TimelinePromptContent';
 import type { TypeName } from './TypeName';
 import {
     TypeNameFromJSON,
@@ -20,6 +27,20 @@ import {
     TypeNameToJSON,
     TypeNameToJSONTyped,
 } from './TypeName';
+import type { ClientEventInfo } from './ClientEventInfo';
+import {
+    ClientEventInfoFromJSON,
+    ClientEventInfoFromJSONTyped,
+    ClientEventInfoToJSON,
+    ClientEventInfoToJSONTyped,
+} from './ClientEventInfo';
+import type { ContentItemType } from './ContentItemType';
+import {
+    ContentItemTypeFromJSON,
+    ContentItemTypeFromJSONTyped,
+    ContentItemTypeToJSON,
+    ContentItemTypeToJSONTyped,
+} from './ContentItemType';
 
 /**
  * 
@@ -27,11 +48,22 @@ import {
  * @interface TimelinePrompt
  */
 export interface TimelinePrompt {
-    [key: string]: any | any;
     /**
      * 
      */
-    typename?: TypeName;
+    typename: TypeName;
+    /**
+     * 
+     */
+    clientEventInfo: ClientEventInfo;
+    /**
+     * 
+     */
+    content: TimelinePromptContent;
+    /**
+     * 
+     */
+    itemType: ContentItemType;
 }
 
 
@@ -40,6 +72,10 @@ export interface TimelinePrompt {
  * Check if a given object implements the TimelinePrompt interface.
  */
 export function instanceOfTimelinePrompt(value: object): value is TimelinePrompt {
+    if ((!('typename' in (value as Record<string, any>)) && !('__typename' in (value as Record<string, any>))) || ((value as Record<string, any>)['typename'] === undefined && (value as Record<string, any>)['__typename'] === undefined)) return false;
+    if (!('clientEventInfo' in value) || value['clientEventInfo'] === undefined) return false;
+    if (!('content' in value) || value['content'] === undefined) return false;
+    if (!('itemType' in value) || value['itemType'] === undefined) return false;
     return true;
 }
 
@@ -53,8 +89,10 @@ export function TimelinePromptFromJSONTyped(json: any, ignoreDiscriminator: bool
     }
     return {
         
-            ...json,
-        'typename': json['__typename'] == null ? undefined : TypeNameFromJSON(json['__typename']),
+        'typename': TypeNameFromJSON(json['__typename']),
+        'clientEventInfo': ClientEventInfoFromJSON(json['clientEventInfo']),
+        'content': TimelinePromptContentFromJSON(json['content']),
+        'itemType': ContentItemTypeFromJSON(json['itemType']),
     };
 }
 
@@ -69,8 +107,10 @@ export function TimelinePromptToJSONTyped(value?: TimelinePrompt | null, ignoreD
 
     return {
         
-            ...value,
         '__typename': TypeNameToJSON(value['typename']),
+        'clientEventInfo': ClientEventInfoToJSON(value['clientEventInfo']),
+        'content': TimelinePromptContentToJSON(value['content']),
+        'itemType': ContentItemTypeToJSON(value['itemType']),
     };
 }
 

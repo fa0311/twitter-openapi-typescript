@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { GroupedTrend } from './GroupedTrend';
+import {
+    GroupedTrendFromJSON,
+    GroupedTrendFromJSONTyped,
+    GroupedTrendToJSON,
+    GroupedTrendToJSONTyped,
+} from './GroupedTrend';
 import type { TypeName } from './TypeName';
 import {
     TypeNameFromJSON,
@@ -76,6 +83,10 @@ export interface TimelineTrend {
     /**
      * 
      */
+    groupedTrends?: Array<GroupedTrend>;
+    /**
+     * 
+     */
     images?: Array<TrendImage>;
     /**
      * 
@@ -135,6 +146,7 @@ export function TimelineTrendFromJSONTyped(json: any, ignoreDiscriminator: boole
     return {
         
         'typename': TypeNameFromJSON(json['__typename']),
+        'groupedTrends': json['grouped_trends'] == null ? undefined : ((json['grouped_trends'] as Array<any>).map(GroupedTrendFromJSON)),
         'images': json['images'] == null ? undefined : ((json['images'] as Array<any>).map(TrendImageFromJSON)),
         'isAiTrend': json['is_ai_trend'] == null ? undefined : json['is_ai_trend'],
         'itemType': json['itemType'] == null ? undefined : ContentItemTypeFromJSON(json['itemType']),
@@ -159,6 +171,7 @@ export function TimelineTrendToJSONTyped(value?: TimelineTrend | null, ignoreDis
     return {
         
         '__typename': TypeNameToJSON(value['typename']),
+        'grouped_trends': value['groupedTrends'] == null ? undefined : ((value['groupedTrends'] as Array<any>).map(GroupedTrendToJSON)),
         'images': value['images'] == null ? undefined : ((value['images'] as Array<any>).map(TrendImageToJSON)),
         'is_ai_trend': value['isAiTrend'],
         'itemType': ContentItemTypeToJSON(value['itemType']),

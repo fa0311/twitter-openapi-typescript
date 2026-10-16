@@ -7,6 +7,9 @@
 Name | Type
 ------------ | -------------
 `typename` | [TypeName](TypeName.md)
+`clientEventInfo` | [ClientEventInfo](ClientEventInfo.md)
+`content` | [TimelinePromptContent](TimelinePromptContent.md)
+`itemType` | [ContentItemType](ContentItemType.md)
 
 ## Example
 
@@ -16,6 +19,9 @@ import type { TimelinePrompt } from 'twitter-openapi-typescript-generated'
 // TODO: Update the object below with actual values
 const example = {
   "typename": null,
+  "clientEventInfo": null,
+  "content": null,
+  "itemType": null,
 } satisfies TimelinePrompt
 
 console.log(example)

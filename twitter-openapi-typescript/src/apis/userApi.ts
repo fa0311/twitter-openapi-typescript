@@ -1,6 +1,6 @@
 import type * as i from 'twitter-openapi-typescript-generated';
 import type { DefaultFlag, RequestParam, TwitterApiUtilsResponse, UserApiUtilsData } from '@/models';
-import { buildHeader, errorCheck, getKwargs, type InitOverridesType, userOrNullConverter } from '@/utils';
+import { buildHeader, dataRequest, errorCheck, getKwargs, type InitOverridesType, userOrNullConverter } from '@/utils';
 
 type getUserByScreenNameParam = {
   screenName: string;
@@ -9,6 +9,20 @@ type getUserByScreenNameParam = {
 
 type getUserByRestIdParam = {
   userId: string;
+  extraParam?: { [key: string]: any };
+};
+
+type getViewerBadgeCountsParam = {
+  extraParam?: { [key: string]: any };
+};
+
+type getFetchDraftTweetsParam = {
+  ascending?: boolean;
+  extraParam?: { [key: string]: any };
+};
+
+type getFetchScheduledTweetsParam = {
+  ascending?: boolean;
   extraParam?: { [key: string]: any };
 };
 
@@ -67,5 +81,53 @@ export class UserApiUtils {
       param: args,
     });
     return response;
+  }
+
+  // Unread counts (notifications, DMs, XChat) of the authenticated account.
+  async getViewerBadgeCounts(param: getViewerBadgeCountsParam = {}): Promise<TwitterApiUtilsResponse<i.BadgeCounts>> {
+    const args = {
+      ...param.extraParam,
+    };
+    return dataRequest({
+      api: this.api,
+      apiFn: this.api.getViewerBadgeCountsRaw,
+      flag: this.flag.ViewerBadgeCounts,
+      initOverrides: this.initOverrides,
+      convertFn: (e) => errorCheck(e.data, e.errors).viewerV2.userResults.result.badgeCounts,
+      param: args,
+    });
+  }
+
+  async getFetchDraftTweets(param: getFetchDraftTweetsParam = {}): Promise<TwitterApiUtilsResponse<i.DraftTweet[]>> {
+    const args = {
+      ...(param.ascending == undefined ? {} : { ascending: param.ascending }),
+      ...param.extraParam,
+    };
+    return dataRequest({
+      api: this.api,
+      apiFn: this.api.getFetchDraftTweetsRaw,
+      flag: this.flag.FetchDraftTweets,
+      initOverrides: this.initOverrides,
+      convertFn: (e) => errorCheck(e.data, e.errors).viewer.draftList.responseData,
+      param: args,
+    });
+  }
+
+  // Items are untyped: no scheduled post has been recorded yet.
+  async getFetchScheduledTweets(
+    param: getFetchScheduledTweetsParam = {},
+  ): Promise<TwitterApiUtilsResponse<{ [key: string]: any }[]>> {
+    const args = {
+      ...(param.ascending == undefined ? {} : { ascending: param.ascending }),
+      ...param.extraParam,
+    };
+    return dataRequest({
+      api: this.api,
+      apiFn: this.api.getFetchScheduledTweetsRaw,
+      flag: this.flag.FetchScheduledTweets,
+      initOverrides: this.initOverrides,
+      convertFn: (e) => errorCheck(e.data, e.errors).viewer.scheduledTweetList,
+      param: args,
+    });
   }
 }

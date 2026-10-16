@@ -1,7 +1,63 @@
 import * as i from 'twitter-openapi-typescript-generated';
-import type { ApiUtilsHeader, CursorApiUtilsResponse, TweetApiUtilsData, UserApiUtilsData } from '@/models';
+import type {
+  ApiFunction,
+  ApiUtilsHeader,
+  CommunityApiUtilsData,
+  CursorApiUtilsResponse,
+  TimelineApiUtilsResponse,
+  TweetApiUtilsData,
+  TwitterApiUtilsResponse,
+  UserApiUtilsData,
+} from '@/models';
 
 export type InitOverridesType = (flag: { [key: string]: any }) => i.InitOverrideFunction;
+
+type TimelineRequestParam<T1, T2> = {
+  api: object;
+  apiFn: ApiFunction<T2>;
+  flag: { [key: string]: any };
+  initOverrides: InitOverridesType;
+  convertFn: (arg0: T2) => i.InstructionUnion[];
+  param: { [key: string]: any };
+  itemsFn: (entry: i.TimelineAddEntry[], instruction: i.InstructionUnion[]) => T1[];
+};
+
+export const timelineRequest = async <T1, T2>(
+  args: TimelineRequestParam<T1, T2>,
+): Promise<TwitterApiUtilsResponse<TimelineApiUtilsResponse<T1>>> => {
+  const apiFn: typeof args.apiFn = args.apiFn.bind(args.api);
+  const response = await apiFn(getKwargs(args.flag, args.param), args.initOverrides(args.flag));
+  const instruction = args.convertFn(await response.value());
+  const entry = instructionToEntry(instruction);
+  return {
+    raw: { response: response.raw },
+    header: buildHeader(response.raw.headers),
+    data: {
+      raw: { instruction, entry },
+      cursor: entriesCursor(entry),
+      data: args.itemsFn(entry, instruction),
+    },
+  };
+};
+
+type DataRequestParam<T1, T2> = {
+  api: object;
+  apiFn: ApiFunction<T2>;
+  flag: { [key: string]: any };
+  initOverrides: InitOverridesType;
+  convertFn: (arg0: T2) => T1;
+  param: { [key: string]: any };
+};
+
+export const dataRequest = async <T1, T2>(args: DataRequestParam<T1, T2>): Promise<TwitterApiUtilsResponse<T1>> => {
+  const apiFn: typeof args.apiFn = args.apiFn.bind(args.api);
+  const response = await apiFn(getKwargs(args.flag, args.param), args.initOverrides(args.flag));
+  return {
+    raw: { response: response.raw },
+    header: buildHeader(response.raw.headers),
+    data: args.convertFn(await response.value()),
+  };
+};
 
 export const getKwargs = (flag: { [key: string]: any }, additional: { [key: string]: any }): any => {
   const kwargs: { [key: string]: any } = { pathQueryId: flag.queryId };
@@ -152,15 +208,50 @@ export const userOrNullConverter = (userResults: i.UserUnion): i.User | undefine
   }
 };
 
+// Every item of the entries, module items included (TimelineTweet, TimelineUser, TimelineTrend, ...).
+export const itemContents = (item: i.TimelineAddEntry[]): i.ItemContentUnion[] => {
+  return item.flatMap((e) => {
+    if (e.content.entryType == i.ContentEntryType.TimelineTimelineItem) {
+      return [(e.content as i.TimelineTimelineItem).itemContent];
+    } else if (e.content.entryType == i.ContentEntryType.TimelineTimelineModule) {
+      return ((e.content as i.TimelineTimelineModule).items ?? []).map((e) => e.item.itemContent);
+    }
+    return [];
+  });
+};
+
 export const userEntriesConverter = (item: i.TimelineAddEntry[]): i.UserResults[] => {
-  return item
+  return itemContents(item)
+    .filter((e) => e.itemType == i.ContentItemType.TimelineUser)
+    .map((e) => (e as i.TimelineUser).userResults);
+};
+
+export const trendEntriesConverter = (item: i.TimelineAddEntry[]): i.TimelineTrend[] => {
+  return itemContents(item)
+    .filter((e) => e.itemType == i.ContentItemType.TimelineTrend)
+    .map((e) => e as i.TimelineTrend);
+};
+
+export const notificationEntriesConverter = (item: i.TimelineAddEntry[]): i.TimelineNotification[] => {
+  return itemContents(item)
+    .filter((e) => e.itemType == i.ContentItemType.TimelineNotification)
+    .map((e) => e as i.TimelineNotification);
+};
+
+export const listEntriesConverter = (item: i.TimelineAddEntry[]): i.TwitterList[] => {
+  return itemContents(item)
+    .filter((e) => e.itemType == i.ContentItemType.TimelineTwitterList)
+    .map((e) => (e as i.TimelineTwitterList).list);
+};
+
+export const communityEntriesConverter = (item: i.TimelineAddEntry[]): CommunityApiUtilsData[] => {
+  return itemContents(item)
+    .filter((e) => e.itemType == i.ContentItemType.TimelineCommunity)
+    .map((e) => e as i.TimelineCommunity)
     .map((e) => {
-      if (e.content.typename == i.TypeName.TimelineTimelineItem) {
-        const item = (e.content as i.TimelineTimelineItem).itemContent;
-        if (item.itemType == i.ContentItemType.TimelineUser) {
-          return (item as i.TimelineUser).userResults;
-        }
-      }
+      const community = e.communityResults.result;
+      if (community.typename != i.TypeName.Community) return undefined;
+      return { raw: e, community: community as i.Community };
     })
     .filter((e): e is NonNullable<typeof e> => e != undefined);
 };

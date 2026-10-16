@@ -13,6 +13,13 @@
  */
 
 import { mapValues } from '../runtime';
+import type { CommunityResult } from './CommunityResult';
+import {
+    CommunityResultFromJSON,
+    CommunityResultFromJSONTyped,
+    CommunityResultToJSON,
+    CommunityResultToJSONTyped,
+} from './CommunityResult';
 import type { TypeName } from './TypeName';
 import {
     TypeNameFromJSON,
@@ -20,6 +27,13 @@ import {
     TypeNameToJSON,
     TypeNameToJSONTyped,
 } from './TypeName';
+import type { ContentItemType } from './ContentItemType';
+import {
+    ContentItemTypeFromJSON,
+    ContentItemTypeFromJSONTyped,
+    ContentItemTypeToJSON,
+    ContentItemTypeToJSONTyped,
+} from './ContentItemType';
 
 /**
  * 
@@ -27,11 +41,18 @@ import {
  * @interface TimelineCommunity
  */
 export interface TimelineCommunity {
-    [key: string]: any | any;
     /**
      * 
      */
-    typename?: TypeName;
+    typename: TypeName;
+    /**
+     * 
+     */
+    communityResults: CommunityResult;
+    /**
+     * 
+     */
+    itemType: ContentItemType;
 }
 
 
@@ -40,6 +61,9 @@ export interface TimelineCommunity {
  * Check if a given object implements the TimelineCommunity interface.
  */
 export function instanceOfTimelineCommunity(value: object): value is TimelineCommunity {
+    if ((!('typename' in (value as Record<string, any>)) && !('__typename' in (value as Record<string, any>))) || ((value as Record<string, any>)['typename'] === undefined && (value as Record<string, any>)['__typename'] === undefined)) return false;
+    if ((!('communityResults' in (value as Record<string, any>)) && !('community_results' in (value as Record<string, any>))) || ((value as Record<string, any>)['communityResults'] === undefined && (value as Record<string, any>)['community_results'] === undefined)) return false;
+    if (!('itemType' in value) || value['itemType'] === undefined) return false;
     return true;
 }
 
@@ -53,8 +77,9 @@ export function TimelineCommunityFromJSONTyped(json: any, ignoreDiscriminator: b
     }
     return {
         
-            ...json,
-        'typename': json['__typename'] == null ? undefined : TypeNameFromJSON(json['__typename']),
+        'typename': TypeNameFromJSON(json['__typename']),
+        'communityResults': CommunityResultFromJSON(json['community_results']),
+        'itemType': ContentItemTypeFromJSON(json['itemType']),
     };
 }
 
@@ -69,8 +94,9 @@ export function TimelineCommunityToJSONTyped(value?: TimelineCommunity | null, i
 
     return {
         
-            ...value,
         '__typename': TypeNameToJSON(value['typename']),
+        'community_results': CommunityResultToJSON(value['communityResults']),
+        'itemType': ContentItemTypeToJSON(value['itemType']),
     };
 }
 

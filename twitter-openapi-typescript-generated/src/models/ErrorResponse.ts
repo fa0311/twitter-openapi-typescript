@@ -51,7 +51,7 @@ export interface ErrorResponse {
     /**
      * 
      */
-    code: number;
+    code?: number;
     /**
      * 
      */
@@ -94,7 +94,6 @@ export interface ErrorResponse {
  * Check if a given object implements the ErrorResponse interface.
  */
 export function instanceOfErrorResponse(value: object): value is ErrorResponse {
-    if (!('code' in value) || value['code'] === undefined) return false;
     if (!('extensions' in value) || value['extensions'] === undefined) return false;
     if (!('kind' in value) || value['kind'] === undefined) return false;
     if (!('locations' in value) || value['locations'] === undefined) return false;
@@ -115,7 +114,7 @@ export function ErrorResponseFromJSONTyped(json: any, ignoreDiscriminator: boole
     }
     return {
         
-        'code': json['code'],
+        'code': json['code'] == null ? undefined : json['code'],
         'extensions': ErrorExtensionsFromJSON(json['extensions']),
         'kind': json['kind'],
         'locations': ((json['locations'] as Array<any>).map(LocationFromJSON)),

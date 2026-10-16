@@ -7,6 +7,7 @@
 Name | Type
 ------------ | -------------
 `typename` | [TypeName](TypeName.md)
+`groupedTrends` | [Array&lt;GroupedTrend&gt;](GroupedTrend.md)
 `images` | [Array&lt;TrendImage&gt;](TrendImage.md)
 `isAiTrend` | boolean
 `itemType` | [ContentItemType](ContentItemType.md)
@@ -25,6 +26,7 @@ import type { TimelineTrend } from 'twitter-openapi-typescript-generated'
 // TODO: Update the object below with actual values
 const example = {
   "typename": null,
+  "groupedTrends": null,
   "images": null,
   "isAiTrend": null,
   "itemType": null,

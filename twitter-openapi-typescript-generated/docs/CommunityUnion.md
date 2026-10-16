@@ -17,6 +17,7 @@ Name | Type
 `idStr` | string
 `invitesPolicy` | string
 `invitesResult` | [CommunityInvitesResult](CommunityInvitesResult.md)
+`isNsfw` | boolean
 `isPinned` | boolean
 `joinPolicy` | string
 `joinRequestsResult` | [CommunityJoinRequestsResult](CommunityJoinRequestsResult.md)
@@ -51,6 +52,7 @@ const example = {
   "idStr": null,
   "invitesPolicy": null,
   "invitesResult": null,
+  "isNsfw": null,
   "isPinned": null,
   "joinPolicy": null,
   "joinRequestsResult": null,

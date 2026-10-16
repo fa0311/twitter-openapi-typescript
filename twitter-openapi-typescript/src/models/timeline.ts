@@ -25,6 +25,11 @@ export type UserApiUtilsData = {
   user: i.User | undefined;
 };
 
+export type CommunityApiUtilsData = {
+  raw: i.TimelineCommunity;
+  community: i.Community;
+};
+
 export type TimelineApiUtilsResponse<T> = {
   raw: ApiUtilsRaw;
   cursor: CursorApiUtilsResponse;

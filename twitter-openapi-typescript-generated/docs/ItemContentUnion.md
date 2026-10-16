@@ -21,8 +21,12 @@ Name | Type
 `value` | string
 `userDisplayType` | string
 `userResults` | [UserResults](UserResults.md)
+`clientEventInfo` | [ClientEventInfo](ClientEventInfo.md)
+`content` | [TimelineMessagePromptContent](TimelineMessagePromptContent.md)
+`communityResults` | [CommunityResult](CommunityResult.md)
 `tombstoneDisplayType` | string
 `tombstoneInfo` | [TombstoneInfo](TombstoneInfo.md)
+`groupedTrends` | [Array&lt;GroupedTrend&gt;](GroupedTrend.md)
 `images` | [Array&lt;TrendImage&gt;](TrendImage.md)
 `isAiTrend` | boolean
 `name` | string
@@ -66,8 +70,12 @@ const example = {
   "value": null,
   "userDisplayType": null,
   "userResults": null,
+  "clientEventInfo": null,
+  "content": null,
+  "communityResults": null,
   "tombstoneDisplayType": null,
   "tombstoneInfo": null,
+  "groupedTrends": null,
   "images": null,
   "isAiTrend": null,
   "name": null,

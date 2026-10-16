@@ -20,7 +20,9 @@ export const printUser = (user: UserApiUtilsData) => {
 
 export const printLegacyUser = (user: i.User) => {
   logger.log(user.core!.screenName);
-    logger.log(`followedBy: ${user.relationshipPerspectives?.followedBy} following: ${user.relationshipPerspectives?.following}`);
+  logger.log(
+    `followedBy: ${user.relationshipPerspectives?.followedBy} following: ${user.relationshipPerspectives?.following}`,
+  );
   const text = `following: ${user.relationshipCounts?.following} followers: ${user.relationshipCounts?.followers}`;
   logger.log(text);
   logger.log('┄'.repeat(50));

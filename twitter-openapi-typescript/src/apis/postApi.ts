@@ -37,6 +37,44 @@ type PostUnfavoriteTweetParam = {
   extraParam?: { [key: string]: any };
 };
 
+type PostCreateBookmarkParam = {
+  tweetId: string;
+  extraParam?: { [key: string]: any };
+};
+
+type PostDeleteBookmarkParam = {
+  tweetId: string;
+  extraParam?: { [key: string]: any };
+};
+
+type PostCreateListParam = {
+  name: string;
+  description?: string;
+  isPrivate?: boolean;
+  extraParam?: { [key: string]: any };
+};
+
+type PostDeleteListParam = {
+  listId: string;
+  extraParam?: { [key: string]: any };
+};
+
+type PostListMemberParam = {
+  listId: string;
+  userId: string;
+  extraParam?: { [key: string]: any };
+};
+
+type PostCreateDraftTweetParam = {
+  status: string;
+  extraParam?: { [key: string]: any };
+};
+
+type PostDeleteDraftTweetsParam = {
+  draftTweetIds: string[];
+  extraParam?: { [key: string]: any };
+};
+
 export class PostApiUtils {
   api: i.PostApi;
   flag: DefaultFlag;
@@ -195,6 +233,209 @@ export class PostApiUtils {
         variables: { ...variables, ...args },
       },
     });
+    return {
+      raw: { response: response.raw },
+      header: buildHeader(response.raw.headers),
+      data: await response.value(),
+    };
+  }
+
+  async postCreateBookmark(param: PostCreateBookmarkParam): Promise<TwitterApiUtilsResponse<i.CreateBookmarkResponse>> {
+    const args = {
+      tweetId: param.tweetId,
+      ...param.extraParam,
+    };
+    const queryId = 'CreateBookmark';
+    const variables = i.PostCreateBookmarkRequestVariablesFromJSON(this.flag[queryId].variables);
+    const response = await this.api.postCreateBookmarkRaw(
+      {
+        pathQueryId: this.flag[queryId].queryId,
+        postCreateBookmarkRequest: {
+          queryId: this.flag[queryId].queryId,
+          variables: { ...variables, ...args },
+        },
+      },
+      this.initOverrides(this.flag[queryId]),
+    );
+    return {
+      raw: { response: response.raw },
+      header: buildHeader(response.raw.headers),
+      data: await response.value(),
+    };
+  }
+
+  async postDeleteBookmark(param: PostDeleteBookmarkParam): Promise<TwitterApiUtilsResponse<i.DeleteBookmarkResponse>> {
+    const args = {
+      tweetId: param.tweetId,
+      ...param.extraParam,
+    };
+    const queryId = 'DeleteBookmark';
+    const variables = i.PostCreateBookmarkRequestVariablesFromJSON(this.flag[queryId].variables);
+    const response = await this.api.postDeleteBookmarkRaw(
+      {
+        pathQueryId: this.flag[queryId].queryId,
+        postDeleteBookmarkRequest: {
+          queryId: this.flag[queryId].queryId,
+          variables: { ...variables, ...args },
+        },
+      },
+      this.initOverrides(this.flag[queryId]),
+    );
+    return {
+      raw: { response: response.raw },
+      header: buildHeader(response.raw.headers),
+      data: await response.value(),
+    };
+  }
+
+  async postCreateList(param: PostCreateListParam): Promise<TwitterApiUtilsResponse<i.ListResponse>> {
+    const args = {
+      name: param.name,
+      description: param.description ?? '',
+      isPrivate: param.isPrivate ?? false,
+      ...param.extraParam,
+    };
+    const queryId = 'CreateList';
+    const features = i.PostCreateListRequestFeaturesFromJSON(this.flag[queryId].features);
+    const variables = i.PostCreateListRequestVariablesFromJSON(this.flag[queryId].variables);
+    const response = await this.api.postCreateListRaw(
+      {
+        pathQueryId: this.flag[queryId].queryId,
+        postCreateListRequest: {
+          queryId: this.flag[queryId].queryId,
+          features: features,
+          variables: { ...variables, ...args },
+        },
+      },
+      this.initOverrides(this.flag[queryId]),
+    );
+    return {
+      raw: { response: response.raw },
+      header: buildHeader(response.raw.headers),
+      data: await response.value(),
+    };
+  }
+
+  async postDeleteList(param: PostDeleteListParam): Promise<TwitterApiUtilsResponse<i.DeleteListResponse>> {
+    const args = {
+      listId: param.listId,
+      ...param.extraParam,
+    };
+    const queryId = 'DeleteList';
+    const variables = i.PostDeleteListRequestVariablesFromJSON(this.flag[queryId].variables);
+    const response = await this.api.postDeleteListRaw(
+      {
+        pathQueryId: this.flag[queryId].queryId,
+        postDeleteListRequest: {
+          queryId: this.flag[queryId].queryId,
+          variables: { ...variables, ...args },
+        },
+      },
+      this.initOverrides(this.flag[queryId]),
+    );
+    return {
+      raw: { response: response.raw },
+      header: buildHeader(response.raw.headers),
+      data: await response.value(),
+    };
+  }
+
+  async postListAddMember(param: PostListMemberParam): Promise<TwitterApiUtilsResponse<i.ListResponse>> {
+    const args = {
+      listId: param.listId,
+      userId: param.userId,
+      ...param.extraParam,
+    };
+    const queryId = 'ListAddMember';
+    const features = i.PostCreateListRequestFeaturesFromJSON(this.flag[queryId].features);
+    const variables = i.PostListAddMemberRequestVariablesFromJSON(this.flag[queryId].variables);
+    const response = await this.api.postListAddMemberRaw(
+      {
+        pathQueryId: this.flag[queryId].queryId,
+        postListAddMemberRequest: {
+          queryId: this.flag[queryId].queryId,
+          features: features,
+          variables: { ...variables, ...args },
+        },
+      },
+      this.initOverrides(this.flag[queryId]),
+    );
+    return {
+      raw: { response: response.raw },
+      header: buildHeader(response.raw.headers),
+      data: await response.value(),
+    };
+  }
+
+  async postListRemoveMember(param: PostListMemberParam): Promise<TwitterApiUtilsResponse<i.ListResponse>> {
+    const args = {
+      listId: param.listId,
+      userId: param.userId,
+      ...param.extraParam,
+    };
+    const queryId = 'ListRemoveMember';
+    const features = i.PostCreateListRequestFeaturesFromJSON(this.flag[queryId].features);
+    const variables = i.PostListAddMemberRequestVariablesFromJSON(this.flag[queryId].variables);
+    const response = await this.api.postListRemoveMemberRaw(
+      {
+        pathQueryId: this.flag[queryId].queryId,
+        postListRemoveMemberRequest: {
+          queryId: this.flag[queryId].queryId,
+          features: features,
+          variables: { ...variables, ...args },
+        },
+      },
+      this.initOverrides(this.flag[queryId]),
+    );
+    return {
+      raw: { response: response.raw },
+      header: buildHeader(response.raw.headers),
+      data: await response.value(),
+    };
+  }
+
+  async postCreateDraftTweet(
+    param: PostCreateDraftTweetParam,
+  ): Promise<TwitterApiUtilsResponse<i.CreateDraftTweetResponse>> {
+    const queryId = 'CreateDraftTweet';
+    const variables = i.PostCreateDraftTweetRequestVariablesFromJSON(this.flag[queryId].variables);
+    variables.postTweetRequest = { ...variables.postTweetRequest, status: param.status, ...param.extraParam };
+    const response = await this.api.postCreateDraftTweetRaw(
+      {
+        pathQueryId: this.flag[queryId].queryId,
+        postCreateDraftTweetRequest: {
+          queryId: this.flag[queryId].queryId,
+          variables: variables,
+        },
+      },
+      this.initOverrides(this.flag[queryId]),
+    );
+    return {
+      raw: { response: response.raw },
+      header: buildHeader(response.raw.headers),
+      data: await response.value(),
+    };
+  }
+
+  async postDeleteDraftTweets(
+    param: PostDeleteDraftTweetsParam,
+  ): Promise<TwitterApiUtilsResponse<i.DeleteDraftTweetsResponse>> {
+    const args = {
+      draftTweetIds: param.draftTweetIds,
+      ...param.extraParam,
+    };
+    const queryId = 'DeleteDraftTweets';
+    const variables = i.PostDeleteDraftTweetsRequestVariablesFromJSON(this.flag[queryId].variables);
+    const response = await this.api.postDeleteDraftTweetsRaw(
+      {
+        pathQueryId: this.flag[queryId].queryId,
+        postDeleteDraftTweetsRequest: {
+          queryId: this.flag[queryId].queryId,
+          variables: { ...variables, ...args },
+        },
+      },
+      this.initOverrides(this.flag[queryId]),
+    );
     return {
       raw: { response: response.raw },
       header: buildHeader(response.raw.headers),

@@ -1,5 +1,5 @@
 import { getClient, getUserId, logger } from '@test/init';
-import { printTweet } from '@test/util';
+import { printTweet, printUser } from '@test/util';
 
 test('getTweetDetail', async () => {
   logger.log('getTweetDetail');
@@ -115,5 +115,78 @@ test('getCommunityMedia', async () => {
   const client = await getClient();
   const response = await client.getTweetApi().getCommunityMediaTimeline({ communityId: '1489422448332197888' });
   response.data.data.filter((e) => !e.promotedMetadata).forEach((e) => printTweet(e));
+  expect(response.raw.response.ok).toBe(true);
+});
+
+test('getUserHighlightsTweets', async () => {
+  logger.log('getUserHighlightsTweets');
+  const client = await getClient();
+  const response = await client.getTweetApi().getUserHighlightsTweets({ userId: '44196397' });
+  response.data.data.filter((e) => !e.promotedMetadata).forEach((e) => printTweet(e));
+  expect(response.raw.response.ok).toBe(true);
+});
+
+test('getUserRepostsTimeline', async () => {
+  logger.log('getUserRepostsTimeline');
+  const client = await getClient();
+  const response = await client.getTweetApi().getUserRepostsTimeline({ userId: '44196397' });
+  response.data.data.filter((e) => !e.promotedMetadata).forEach((e) => printTweet(e));
+  expect(response.raw.response.ok).toBe(true);
+});
+
+test('getUserSuperFollowTweets', async () => {
+  logger.log('getUserSuperFollowTweets');
+  const client = await getClient();
+  const response = await client.getTweetApi().getUserSuperFollowTweets({ userId: '44196397' });
+  response.data.data.filter((e) => !e.promotedMetadata).forEach((e) => printTweet(e));
+  expect(response.raw.response.ok).toBe(true);
+});
+
+test('getExplorePage', async () => {
+  logger.log('getExplorePage');
+  const client = await getClient();
+  const response = await client.getTweetApi().getExplorePage();
+  response.data.data.forEach((e) => logger.log(e.name));
+  expect(response.raw.response.ok).toBe(true);
+});
+
+test('getGenericTimelineById', async () => {
+  logger.log('getGenericTimelineById');
+  const client = await getClient();
+  const timelineId = client.flag.GenericTimelineById.variables.timelineId;
+  const response = await client.getTweetApi().getGenericTimelineById({ timelineId: timelineId });
+  response.data.data.forEach((e) => logger.log(e.name));
+  expect(response.raw.response.ok).toBe(true);
+});
+
+test('getNotificationsTimeline', async () => {
+  logger.log('getNotificationsTimeline');
+  const client = await getClient();
+  const response = await client.getTweetApi().getNotificationsTimeline();
+  response.data.data.forEach((e) => logger.log(e.richMessage.text));
+  expect(response.raw.response.ok).toBe(true);
+});
+
+test('getCommunityDiscoveryTimeline', async () => {
+  logger.log('getCommunityDiscoveryTimeline');
+  const client = await getClient();
+  const response = await client.getTweetApi().getCommunityDiscoveryTimeline();
+  response.data.data.forEach((e) => logger.log(e.community.name));
+  expect(response.raw.response.ok).toBe(true);
+});
+
+test('getCommunityAboutTimeline', async () => {
+  logger.log('getCommunityAboutTimeline');
+  const client = await getClient();
+  const response = await client.getTweetApi().getCommunityAboutTimeline({ communityId: '1489422448332197888' });
+  response.data.data.forEach((e) => printUser(e));
+  expect(response.raw.response.ok).toBe(true);
+});
+
+test('getConnectTabTimeline', async () => {
+  logger.log('getConnectTabTimeline');
+  const client = await getClient();
+  const response = await client.getTweetApi().getConnectTabTimeline();
+  response.data.data.forEach((e) => printUser(e));
   expect(response.raw.response.ok).toBe(true);
 });

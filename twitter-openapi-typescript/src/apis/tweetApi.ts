@@ -1,20 +1,24 @@
 import type * as i from 'twitter-openapi-typescript-generated';
 import type {
+  CommunityApiUtilsData,
   DefaultFlag,
   RequestParam,
   TimelineApiUtilsResponse,
   TweetApiUtilsData,
   TwitterApiUtilsResponse,
+  UserApiUtilsData,
 } from '@/models';
 import {
-  buildHeader,
-  entriesCursor,
+  communityEntriesConverter,
   errorCheck,
-  getKwargs,
   type InitOverridesType,
   instructionConverter,
-  instructionToEntry,
+  notificationEntriesConverter,
+  timelineRequest,
+  trendEntriesConverter,
   tweetEntriesConverter,
+  userEntriesConverter,
+  userResultConverter,
 } from '@/utils';
 
 type GetTweetDetailParam = {
@@ -99,7 +103,68 @@ type GetCommunityMediaTimelineParam = {
   extraParam?: { [key: string]: any };
 };
 
+type GetUserHighlightsTweetsParam = {
+  userId: string;
+  cursor?: string;
+  count?: number;
+  extraParam?: { [key: string]: any };
+};
+
+type GetUserRepostsTimelineParam = {
+  userId: string;
+  cursor?: string;
+  count?: number;
+  extraParam?: { [key: string]: any };
+};
+
+type GetUserSuperFollowTweetsParam = {
+  userId: string;
+  cursor?: string;
+  count?: number;
+  extraParam?: { [key: string]: any };
+};
+
+type GetExplorePageParam = {
+  cursor?: string;
+  extraParam?: { [key: string]: any };
+};
+
+type GetGenericTimelineByIdParam = {
+  timelineId: string;
+  cursor?: string;
+  count?: number;
+  extraParam?: { [key: string]: any };
+};
+
+type GetNotificationsTimelineParam = {
+  timelineType?: 'All' | 'Verified' | 'Mentions' | (string & {});
+  cursor?: string;
+  count?: number;
+  extraParam?: { [key: string]: any };
+};
+
+type GetCommunityDiscoveryTimelineParam = {
+  cursor?: string;
+  count?: number;
+  extraParam?: { [key: string]: any };
+};
+
+type GetCommunityAboutTimelineParam = {
+  communityId: string;
+  extraParam?: { [key: string]: any };
+};
+
+type GetConnectTabTimelineParam = {
+  cursor?: string;
+  count?: number;
+  extraParam?: { [key: string]: any };
+};
+
 type ResponseType = TwitterApiUtilsResponse<TimelineApiUtilsResponse<TweetApiUtilsData>>;
+type UserResponseType = TwitterApiUtilsResponse<TimelineApiUtilsResponse<UserApiUtilsData>>;
+type TrendResponseType = TwitterApiUtilsResponse<TimelineApiUtilsResponse<i.TimelineTrend>>;
+type NotificationResponseType = TwitterApiUtilsResponse<TimelineApiUtilsResponse<i.TimelineNotification>>;
+type CommunityResponseType = TwitterApiUtilsResponse<TimelineApiUtilsResponse<CommunityApiUtilsData>>;
 
 export class TweetApiUtils {
   api: i.TweetApi;
@@ -113,26 +178,15 @@ export class TweetApiUtils {
   }
 
   async request<T>(param: RequestParam<i.InstructionUnion[], T>): Promise<ResponseType> {
-    const apiFn: typeof param.apiFn = param.apiFn.bind(this.api);
-    const args = getKwargs(this.flag[param.key], param.param);
-    const response = await apiFn(args, this.initOverrides(this.flag[param.key]));
-    const instruction = param.convertFn(await response.value());
-    const entry = instructionToEntry(instruction);
-    const data = [...tweetEntriesConverter(entry), ...instructionConverter(instruction)];
-    return {
-      raw: {
-        response: response.raw,
-      },
-      header: buildHeader(response.raw.headers),
-      data: {
-        raw: {
-          instruction,
-          entry,
-        },
-        cursor: entriesCursor(entry),
-        data: data,
-      },
-    };
+    return timelineRequest({
+      api: this.api,
+      apiFn: param.apiFn,
+      flag: this.flag[param.key],
+      initOverrides: this.initOverrides,
+      convertFn: param.convertFn,
+      param: param.param,
+      itemsFn: (entry, instruction) => [...tweetEntriesConverter(entry), ...instructionConverter(instruction)],
+    });
   }
 
   async getTweetDetail(param: GetTweetDetailParam): Promise<ResponseType> {
@@ -162,7 +216,8 @@ export class TweetApiUtils {
 
     const response = await this.request({
       apiFn: this.api.getSearchTimelineRaw,
-      convertFn: (e) => errorCheck(e.data.searchByRawQuery, e.errors).searchTimeline.timeline.instructions,
+      convertFn: (e) =>
+        errorCheck(errorCheck(e.data.searchByRawQuery, e.errors).searchTimeline.timeline, e.errors).instructions,
       key: 'SearchTimeline',
       param: args,
     });
@@ -386,5 +441,162 @@ export class TweetApiUtils {
       param: args,
     });
     return response;
+  }
+
+  async getUserHighlightsTweets(param: GetUserHighlightsTweetsParam): Promise<ResponseType> {
+    const args = {
+      userId: param.userId,
+      ...(param.cursor == undefined ? {} : { cursor: param.cursor }),
+      ...(param.count == undefined ? {} : { count: param.count }),
+      ...param.extraParam,
+    };
+    const response = await this.request({
+      apiFn: this.api.getUserHighlightsTweetsRaw,
+      convertFn: (e) => errorCheck(e.data.user, e.errors).result.timeline.timeline.instructions,
+      key: 'UserHighlightsTweets',
+      param: args,
+    });
+    return response;
+  }
+
+  async getUserRepostsTimeline(param: GetUserRepostsTimelineParam): Promise<ResponseType> {
+    const args = {
+      userId: param.userId,
+      ...(param.cursor == undefined ? {} : { cursor: param.cursor }),
+      ...(param.count == undefined ? {} : { count: param.count }),
+      ...param.extraParam,
+    };
+    const response = await this.request({
+      apiFn: this.api.getUserRepostsTimelineRaw,
+      convertFn: (e) => errorCheck(e.data.user?.result.timeline.timeline, e.errors).instructions,
+      key: 'UserRepostsTimeline',
+      param: args,
+    });
+    return response;
+  }
+
+  // Subscriber-only posts; without a subscription the timeline only carries a TimelineMessagePrompt.
+  async getUserSuperFollowTweets(param: GetUserSuperFollowTweetsParam): Promise<ResponseType> {
+    const args = {
+      userId: param.userId,
+      ...(param.cursor == undefined ? {} : { cursor: param.cursor }),
+      ...(param.count == undefined ? {} : { count: param.count }),
+      ...param.extraParam,
+    };
+    const response = await this.request({
+      apiFn: this.api.getUserSuperFollowTweetsRaw,
+      convertFn: (e) => errorCheck(e.data.user?.result.timeline.timeline, e.errors).instructions,
+      key: 'UserSuperFollowTweets',
+      param: args,
+    });
+    return response;
+  }
+
+  // Trends of the first explore tab; the other tabs are GenericTimelineById timelines.
+  async getExplorePage(param: GetExplorePageParam = {}): Promise<TrendResponseType> {
+    const args = {
+      ...(param.cursor == undefined ? {} : { cursor: param.cursor }),
+      ...param.extraParam,
+    };
+    return timelineRequest({
+      api: this.api,
+      apiFn: this.api.getExplorePageRaw,
+      flag: this.flag.ExplorePage,
+      initOverrides: this.initOverrides,
+      convertFn: (e) => errorCheck(e.data.explorePage.body.initialTimeline.timeline.timeline, e.errors).instructions,
+      param: args,
+      itemsFn: trendEntriesConverter,
+    });
+  }
+
+  // Explore tab timelines (trending, news, sports, ...).
+  async getGenericTimelineById(param: GetGenericTimelineByIdParam): Promise<TrendResponseType> {
+    const args = {
+      timelineId: param.timelineId,
+      ...(param.cursor == undefined ? {} : { cursor: param.cursor }),
+      ...(param.count == undefined ? {} : { count: param.count }),
+      ...param.extraParam,
+    };
+    return timelineRequest({
+      api: this.api,
+      apiFn: this.api.getGenericTimelineByIdRaw,
+      flag: this.flag.GenericTimelineById,
+      initOverrides: this.initOverrides,
+      convertFn: (e) => errorCheck(e.data.timeline.timeline, e.errors).instructions,
+      param: args,
+      itemsFn: trendEntriesConverter,
+    });
+  }
+
+  // Notification items only; the tweets of the Mentions tab are in data.raw.entry (tweetEntriesConverter).
+  async getNotificationsTimeline(param: GetNotificationsTimelineParam = {}): Promise<NotificationResponseType> {
+    const args = {
+      ...(param.timelineType == undefined ? {} : { timeline_type: param.timelineType }),
+      ...(param.cursor == undefined ? {} : { cursor: param.cursor }),
+      ...(param.count == undefined ? {} : { count: param.count }),
+      ...param.extraParam,
+    };
+    return timelineRequest({
+      api: this.api,
+      apiFn: this.api.getNotificationsTimelineRaw,
+      flag: this.flag.NotificationsTimeline,
+      initOverrides: this.initOverrides,
+      convertFn: (e) =>
+        errorCheck(e.data.viewerV2.userResults.result.notificationTimeline.timeline, e.errors).instructions,
+      param: args,
+      itemsFn: notificationEntriesConverter,
+    });
+  }
+
+  async getCommunityDiscoveryTimeline(param: GetCommunityDiscoveryTimelineParam = {}): Promise<CommunityResponseType> {
+    const args = {
+      ...(param.cursor == undefined ? {} : { cursor: param.cursor }),
+      ...(param.count == undefined ? {} : { count: param.count }),
+      ...param.extraParam,
+    };
+    return timelineRequest({
+      api: this.api,
+      apiFn: this.api.getCommunityDiscoveryTimelineRaw,
+      flag: this.flag.CommunityDiscoveryTimeline,
+      initOverrides: this.initOverrides,
+      convertFn: (e) => errorCheck(e.data.viewer.communityDiscoveryTimeline.timeline, e.errors).instructions,
+      param: args,
+      itemsFn: communityEntriesConverter,
+    });
+  }
+
+  // Moderators and members of a community.
+  async getCommunityAboutTimeline(param: GetCommunityAboutTimelineParam): Promise<UserResponseType> {
+    const args = {
+      communityId: param.communityId,
+      ...param.extraParam,
+    };
+    return timelineRequest({
+      api: this.api,
+      apiFn: this.api.getCommunityAboutTimelineRaw,
+      flag: this.flag.CommunityAboutTimeline,
+      initOverrides: this.initOverrides,
+      convertFn: (e) => errorCheck(e.data.communityResults.result.aboutTimeline.timeline, e.errors).instructions,
+      param: args,
+      itemsFn: (entry) => userResultConverter(userEntriesConverter(entry)),
+    });
+  }
+
+  // Who to follow.
+  async getConnectTabTimeline(param: GetConnectTabTimelineParam = {}): Promise<UserResponseType> {
+    const args = {
+      ...(param.cursor == undefined ? {} : { cursor: param.cursor }),
+      ...(param.count == undefined ? {} : { count: param.count }),
+      ...param.extraParam,
+    };
+    return timelineRequest({
+      api: this.api,
+      apiFn: this.api.getConnectTabTimelineRaw,
+      flag: this.flag.ConnectTabTimeline,
+      initOverrides: this.initOverrides,
+      convertFn: (e) => errorCheck(e.data.connectTabTimeline.timeline, e.errors).instructions,
+      param: args,
+      itemsFn: (entry) => userResultConverter(userEntriesConverter(entry)),
+    });
   }
 }

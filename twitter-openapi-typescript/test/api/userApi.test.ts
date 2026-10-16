@@ -33,3 +33,27 @@ test.skip('getUserByRestId', async () => {
   printUser(response.data);
   expect(response.raw.response.ok).toBe(true);
 });
+
+test('getViewerBadgeCounts', async () => {
+  logger.log('getViewerBadgeCounts');
+  const client = await getClient();
+  const response = await client.getUserApi().getViewerBadgeCounts();
+  logger.log(`unread: ${response.data.totalUnreadCount}`);
+  expect(response.raw.response.ok).toBe(true);
+});
+
+test('getFetchDraftTweets', async () => {
+  logger.log('getFetchDraftTweets');
+  const client = await getClient();
+  const response = await client.getUserApi().getFetchDraftTweets();
+  response.data.forEach((e) => logger.log(e.tweetCreateRequest.status));
+  expect(response.raw.response.ok).toBe(true);
+});
+
+test('getFetchScheduledTweets', async () => {
+  logger.log('getFetchScheduledTweets');
+  const client = await getClient();
+  const response = await client.getUserApi().getFetchScheduledTweets();
+  logger.log(`scheduled: ${response.data.length}`);
+  expect(response.raw.response.ok).toBe(true);
+});

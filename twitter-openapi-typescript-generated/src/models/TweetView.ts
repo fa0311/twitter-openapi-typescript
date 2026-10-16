@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface TweetView {
     /**
      * 
-     * @type {string}
-     * @memberof TweetView
      */
     count?: string;
     /**
      * 
-     * @type {TweetViewStateEnum}
-     * @memberof TweetView
      */
     state: TweetViewStateEnum;
 }
@@ -39,7 +35,7 @@ export interface TweetView {
  */
 export const TweetViewStateEnum = {
     Enabled: 'Enabled',
-    EnabledWithCount: 'EnabledWithCount'
+    EnabledWithCount: 'EnabledWithCount',
 } as const;
 export type TweetViewStateEnum = typeof TweetViewStateEnum[keyof typeof TweetViewStateEnum];
 

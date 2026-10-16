@@ -29,20 +29,14 @@ import {
 export interface GrokEntity {
     /**
      * 
-     * @type {string}
-     * @memberof GrokEntity
      */
     fromIndex: string;
     /**
      * 
-     * @type {GrokEntityRef}
-     * @memberof GrokEntity
      */
     ref: GrokEntityRef;
     /**
      * 
-     * @type {string}
-     * @memberof GrokEntity
      */
     toIndex: string;
 }
@@ -51,9 +45,9 @@ export interface GrokEntity {
  * Check if a given object implements the GrokEntity interface.
  */
 export function instanceOfGrokEntity(value: object): value is GrokEntity {
-    if (!('fromIndex' in value) || value['fromIndex'] === undefined) return false;
+    if ((!('fromIndex' in (value as Record<string, any>)) && !('from_index' in (value as Record<string, any>))) || ((value as Record<string, any>)['fromIndex'] === undefined && (value as Record<string, any>)['from_index'] === undefined)) return false;
     if (!('ref' in value) || value['ref'] === undefined) return false;
-    if (!('toIndex' in value) || value['toIndex'] === undefined) return false;
+    if ((!('toIndex' in (value as Record<string, any>)) && !('to_index' in (value as Record<string, any>))) || ((value as Record<string, any>)['toIndex'] === undefined && (value as Record<string, any>)['to_index'] === undefined)) return false;
     return true;
 }
 

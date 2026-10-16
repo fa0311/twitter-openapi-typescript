@@ -29,20 +29,14 @@ import {
 export interface TimelineAddEntry {
     /**
      * 
-     * @type {ContentUnion}
-     * @memberof TimelineAddEntry
      */
     content: ContentUnion;
     /**
      * 
-     * @type {string}
-     * @memberof TimelineAddEntry
      */
     entryId: string;
     /**
      * 
-     * @type {string}
-     * @memberof TimelineAddEntry
      */
     sortIndex: string;
 }

@@ -36,14 +36,10 @@ import {
 export interface FollowResponseResult {
     /**
      * 
-     * @type {TypeName}
-     * @memberof FollowResponseResult
      */
     typename: TypeName;
     /**
      * 
-     * @type {FollowTimeline}
-     * @memberof FollowResponseResult
      */
     timeline: FollowTimeline;
 }
@@ -54,7 +50,7 @@ export interface FollowResponseResult {
  * Check if a given object implements the FollowResponseResult interface.
  */
 export function instanceOfFollowResponseResult(value: object): value is FollowResponseResult {
-    if (!('typename' in value) || value['typename'] === undefined) return false;
+    if ((!('typename' in (value as Record<string, any>)) && !('__typename' in (value as Record<string, any>))) || ((value as Record<string, any>)['typename'] === undefined && (value as Record<string, any>)['__typename'] === undefined)) return false;
     if (!('timeline' in value) || value['timeline'] === undefined) return false;
     return true;
 }

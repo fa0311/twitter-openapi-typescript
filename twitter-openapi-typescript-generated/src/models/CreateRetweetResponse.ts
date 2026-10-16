@@ -36,14 +36,10 @@ import {
 export interface CreateRetweetResponse {
     /**
      * 
-     * @type {CreateRetweetResponseData}
-     * @memberof CreateRetweetResponse
      */
     data: CreateRetweetResponseData;
     /**
      * 
-     * @type {Array<ErrorResponse>}
-     * @memberof CreateRetweetResponse
      */
     errors?: Array<ErrorResponse>;
 }

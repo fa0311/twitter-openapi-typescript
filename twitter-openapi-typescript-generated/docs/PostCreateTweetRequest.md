@@ -18,7 +18,7 @@ import type { PostCreateTweetRequest } from 'twitter-openapi-typescript-generate
 // TODO: Update the object below with actual values
 const example = {
   "features": null,
-  "queryId": 5CdvsV_zjv4L64XFifAglw,
+  "queryId": wR5Z_lEibLvkew3tF9w-Sg,
   "variables": null,
 } satisfies PostCreateTweetRequest
 

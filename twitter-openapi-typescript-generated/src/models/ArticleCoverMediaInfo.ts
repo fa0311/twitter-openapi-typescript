@@ -36,32 +36,22 @@ import {
 export interface ArticleCoverMediaInfo {
     /**
      * 
-     * @type {TypeName}
-     * @memberof ArticleCoverMediaInfo
      */
     typename?: TypeName;
     /**
      * 
-     * @type {ArticleCoverMediaColorInfo}
-     * @memberof ArticleCoverMediaInfo
      */
     colorInfo: ArticleCoverMediaColorInfo;
     /**
      * 
-     * @type {number}
-     * @memberof ArticleCoverMediaInfo
      */
     originalImgHeight: number;
     /**
      * 
-     * @type {string}
-     * @memberof ArticleCoverMediaInfo
      */
     originalImgUrl: string;
     /**
      * 
-     * @type {number}
-     * @memberof ArticleCoverMediaInfo
      */
     originalImgWidth: number;
 }
@@ -72,10 +62,10 @@ export interface ArticleCoverMediaInfo {
  * Check if a given object implements the ArticleCoverMediaInfo interface.
  */
 export function instanceOfArticleCoverMediaInfo(value: object): value is ArticleCoverMediaInfo {
-    if (!('colorInfo' in value) || value['colorInfo'] === undefined) return false;
-    if (!('originalImgHeight' in value) || value['originalImgHeight'] === undefined) return false;
-    if (!('originalImgUrl' in value) || value['originalImgUrl'] === undefined) return false;
-    if (!('originalImgWidth' in value) || value['originalImgWidth'] === undefined) return false;
+    if ((!('colorInfo' in (value as Record<string, any>)) && !('color_info' in (value as Record<string, any>))) || ((value as Record<string, any>)['colorInfo'] === undefined && (value as Record<string, any>)['color_info'] === undefined)) return false;
+    if ((!('originalImgHeight' in (value as Record<string, any>)) && !('original_img_height' in (value as Record<string, any>))) || ((value as Record<string, any>)['originalImgHeight'] === undefined && (value as Record<string, any>)['original_img_height'] === undefined)) return false;
+    if ((!('originalImgUrl' in (value as Record<string, any>)) && !('original_img_url' in (value as Record<string, any>))) || ((value as Record<string, any>)['originalImgUrl'] === undefined && (value as Record<string, any>)['original_img_url'] === undefined)) return false;
+    if ((!('originalImgWidth' in (value as Record<string, any>)) && !('original_img_width' in (value as Record<string, any>))) || ((value as Record<string, any>)['originalImgWidth'] === undefined && (value as Record<string, any>)['original_img_width'] === undefined)) return false;
     return true;
 }
 

@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface SuperFollowUserProfile {
     /**
      * 
-     * @type {boolean}
-     * @memberof SuperFollowUserProfile
      */
     isActive: boolean;
 }
@@ -31,7 +29,7 @@ export interface SuperFollowUserProfile {
  * Check if a given object implements the SuperFollowUserProfile interface.
  */
 export function instanceOfSuperFollowUserProfile(value: object): value is SuperFollowUserProfile {
-    if (!('isActive' in value) || value['isActive'] === undefined) return false;
+    if ((!('isActive' in (value as Record<string, any>)) && !('is_active' in (value as Record<string, any>))) || ((value as Record<string, any>)['isActive'] === undefined && (value as Record<string, any>)['is_active'] === undefined)) return false;
     return true;
 }
 

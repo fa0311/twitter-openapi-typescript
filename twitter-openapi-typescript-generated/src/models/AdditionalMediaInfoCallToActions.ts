@@ -29,14 +29,10 @@ import {
 export interface AdditionalMediaInfoCallToActions {
     /**
      * 
-     * @type {AdditionalMediaInfoCallToActionsUrl}
-     * @memberof AdditionalMediaInfoCallToActions
      */
     visitSite?: AdditionalMediaInfoCallToActionsUrl;
     /**
      * 
-     * @type {AdditionalMediaInfoCallToActionsUrl}
-     * @memberof AdditionalMediaInfoCallToActions
      */
     watchNow?: AdditionalMediaInfoCallToActionsUrl;
 }

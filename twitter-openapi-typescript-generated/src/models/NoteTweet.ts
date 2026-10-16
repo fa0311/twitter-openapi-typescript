@@ -29,14 +29,10 @@ import {
 export interface NoteTweet {
     /**
      * 
-     * @type {boolean}
-     * @memberof NoteTweet
      */
     isExpandable?: boolean;
     /**
      * 
-     * @type {NoteTweetResult}
-     * @memberof NoteTweet
      */
     noteTweetResults: NoteTweetResult;
 }
@@ -45,7 +41,7 @@ export interface NoteTweet {
  * Check if a given object implements the NoteTweet interface.
  */
 export function instanceOfNoteTweet(value: object): value is NoteTweet {
-    if (!('noteTweetResults' in value) || value['noteTweetResults'] === undefined) return false;
+    if ((!('noteTweetResults' in (value as Record<string, any>)) && !('note_tweet_results' in (value as Record<string, any>))) || ((value as Record<string, any>)['noteTweetResults'] === undefined && (value as Record<string, any>)['note_tweet_results'] === undefined)) return false;
     return true;
 }
 

@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface Timestamp {
     /**
      * 
-     * @type {Array<number>}
-     * @memberof Timestamp
      */
     indices: Array<number>;
     /**
      * 
-     * @type {number}
-     * @memberof Timestamp
      */
     seconds: number;
     /**
      * 
-     * @type {string}
-     * @memberof Timestamp
      */
     text: string;
 }

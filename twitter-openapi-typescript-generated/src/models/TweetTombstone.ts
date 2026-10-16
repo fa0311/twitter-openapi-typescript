@@ -30,8 +30,6 @@ export interface TweetTombstone {
     [key: string]: any | any;
     /**
      * 
-     * @type {TypeName}
-     * @memberof TweetTombstone
      */
     typename?: TypeName;
 }

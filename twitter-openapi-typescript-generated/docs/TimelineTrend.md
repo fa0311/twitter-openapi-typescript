@@ -11,6 +11,7 @@ Name | Type
 `isAiTrend` | boolean
 `itemType` | [ContentItemType](ContentItemType.md)
 `name` | string
+`rank` | string
 `socialContext` | [SocialContextUnion](SocialContextUnion.md)
 `thumbnailImage` | [ThumbnailImage](ThumbnailImage.md)
 `trendMetadata` | [TrendMetadata](TrendMetadata.md)
@@ -28,6 +29,7 @@ const example = {
   "isAiTrend": null,
   "itemType": null,
   "name": null,
+  "rank": null,
   "socialContext": null,
   "thumbnailImage": null,
   "trendMetadata": null,

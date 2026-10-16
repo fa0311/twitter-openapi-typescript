@@ -29,20 +29,14 @@ import {
 export interface TombstoneEntity {
     /**
      * 
-     * @type {number}
-     * @memberof TombstoneEntity
      */
     fromIndex?: number;
     /**
      * 
-     * @type {TombstoneRef}
-     * @memberof TombstoneEntity
      */
     ref?: TombstoneRef;
     /**
      * 
-     * @type {number}
-     * @memberof TombstoneEntity
      */
     toIndex?: number;
 }

@@ -43,26 +43,18 @@ import {
 export interface TweetInterstitial {
     /**
      * 
-     * @type {TypeName}
-     * @memberof TweetInterstitial
      */
     typename: TypeName;
     /**
      * 
-     * @type {TweetInterstitialDisplayTypeEnum}
-     * @memberof TweetInterstitial
      */
     displayType: TweetInterstitialDisplayTypeEnum;
     /**
      * 
-     * @type {TweetInterstitialRevealText}
-     * @memberof TweetInterstitial
      */
     revealText: TweetInterstitialRevealText;
     /**
      * 
-     * @type {TweetInterstitialText}
-     * @memberof TweetInterstitial
      */
     text: TweetInterstitialText;
 }
@@ -73,7 +65,7 @@ export interface TweetInterstitial {
  */
 export const TweetInterstitialDisplayTypeEnum = {
     NonCompliant: 'NonCompliant',
-    EntireTweet: 'EntireTweet'
+    EntireTweet: 'EntireTweet',
 } as const;
 export type TweetInterstitialDisplayTypeEnum = typeof TweetInterstitialDisplayTypeEnum[keyof typeof TweetInterstitialDisplayTypeEnum];
 
@@ -82,7 +74,7 @@ export type TweetInterstitialDisplayTypeEnum = typeof TweetInterstitialDisplayTy
  * Check if a given object implements the TweetInterstitial interface.
  */
 export function instanceOfTweetInterstitial(value: object): value is TweetInterstitial {
-    if (!('typename' in value) || value['typename'] === undefined) return false;
+    if ((!('typename' in (value as Record<string, any>)) && !('__typename' in (value as Record<string, any>))) || ((value as Record<string, any>)['typename'] === undefined && (value as Record<string, any>)['__typename'] === undefined)) return false;
     if (!('displayType' in value) || value['displayType'] === undefined) return false;
     if (!('revealText' in value) || value['revealText'] === undefined) return false;
     if (!('text' in value) || value['text'] === undefined) return false;

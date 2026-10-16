@@ -21,32 +21,22 @@ import { mapValues } from '../runtime';
 export interface TweetPreviousCounts {
     /**
      * 
-     * @type {number}
-     * @memberof TweetPreviousCounts
      */
     bookmarkCount: number;
     /**
      * 
-     * @type {number}
-     * @memberof TweetPreviousCounts
      */
     favoriteCount: number;
     /**
      * 
-     * @type {number}
-     * @memberof TweetPreviousCounts
      */
     quoteCount: number;
     /**
      * 
-     * @type {number}
-     * @memberof TweetPreviousCounts
      */
     replyCount: number;
     /**
      * 
-     * @type {number}
-     * @memberof TweetPreviousCounts
      */
     retweetCount: number;
 }
@@ -55,11 +45,11 @@ export interface TweetPreviousCounts {
  * Check if a given object implements the TweetPreviousCounts interface.
  */
 export function instanceOfTweetPreviousCounts(value: object): value is TweetPreviousCounts {
-    if (!('bookmarkCount' in value) || value['bookmarkCount'] === undefined) return false;
-    if (!('favoriteCount' in value) || value['favoriteCount'] === undefined) return false;
-    if (!('quoteCount' in value) || value['quoteCount'] === undefined) return false;
-    if (!('replyCount' in value) || value['replyCount'] === undefined) return false;
-    if (!('retweetCount' in value) || value['retweetCount'] === undefined) return false;
+    if ((!('bookmarkCount' in (value as Record<string, any>)) && !('bookmark_count' in (value as Record<string, any>))) || ((value as Record<string, any>)['bookmarkCount'] === undefined && (value as Record<string, any>)['bookmark_count'] === undefined)) return false;
+    if ((!('favoriteCount' in (value as Record<string, any>)) && !('favorite_count' in (value as Record<string, any>))) || ((value as Record<string, any>)['favoriteCount'] === undefined && (value as Record<string, any>)['favorite_count'] === undefined)) return false;
+    if ((!('quoteCount' in (value as Record<string, any>)) && !('quote_count' in (value as Record<string, any>))) || ((value as Record<string, any>)['quoteCount'] === undefined && (value as Record<string, any>)['quote_count'] === undefined)) return false;
+    if ((!('replyCount' in (value as Record<string, any>)) && !('reply_count' in (value as Record<string, any>))) || ((value as Record<string, any>)['replyCount'] === undefined && (value as Record<string, any>)['reply_count'] === undefined)) return false;
+    if ((!('retweetCount' in (value as Record<string, any>)) && !('retweet_count' in (value as Record<string, any>))) || ((value as Record<string, any>)['retweetCount'] === undefined && (value as Record<string, any>)['retweet_count'] === undefined)) return false;
     return true;
 }
 

@@ -21,7 +21,7 @@ export const DisplayType = {
     Vertical: 'Vertical',
     VerticalConversation: 'VerticalConversation',
     VerticalGrid: 'VerticalGrid',
-    Carousel: 'Carousel'
+    Carousel: 'Carousel',
 } as const;
 export type DisplayType = typeof DisplayType[keyof typeof DisplayType];
 

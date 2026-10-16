@@ -29,8 +29,6 @@ import {
 export interface UsersResponseData {
     /**
      * 
-     * @type {Array<UserResults>}
-     * @memberof UsersResponseData
      */
     users?: Array<UserResults>;
 }

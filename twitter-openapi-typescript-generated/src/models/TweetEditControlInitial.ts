@@ -21,26 +21,18 @@ import { mapValues } from '../runtime';
 export interface TweetEditControlInitial {
     /**
      * 
-     * @type {Array<string>}
-     * @memberof TweetEditControlInitial
      */
     editTweetIds: Array<string>;
     /**
      * 
-     * @type {string}
-     * @memberof TweetEditControlInitial
      */
     editableUntilMsecs: string;
     /**
      * 
-     * @type {string}
-     * @memberof TweetEditControlInitial
      */
     editsRemaining: string;
     /**
      * 
-     * @type {boolean}
-     * @memberof TweetEditControlInitial
      */
     isEditEligible: boolean;
 }
@@ -49,10 +41,10 @@ export interface TweetEditControlInitial {
  * Check if a given object implements the TweetEditControlInitial interface.
  */
 export function instanceOfTweetEditControlInitial(value: object): value is TweetEditControlInitial {
-    if (!('editTweetIds' in value) || value['editTweetIds'] === undefined) return false;
-    if (!('editableUntilMsecs' in value) || value['editableUntilMsecs'] === undefined) return false;
-    if (!('editsRemaining' in value) || value['editsRemaining'] === undefined) return false;
-    if (!('isEditEligible' in value) || value['isEditEligible'] === undefined) return false;
+    if ((!('editTweetIds' in (value as Record<string, any>)) && !('edit_tweet_ids' in (value as Record<string, any>))) || ((value as Record<string, any>)['editTweetIds'] === undefined && (value as Record<string, any>)['edit_tweet_ids'] === undefined)) return false;
+    if ((!('editableUntilMsecs' in (value as Record<string, any>)) && !('editable_until_msecs' in (value as Record<string, any>))) || ((value as Record<string, any>)['editableUntilMsecs'] === undefined && (value as Record<string, any>)['editable_until_msecs'] === undefined)) return false;
+    if ((!('editsRemaining' in (value as Record<string, any>)) && !('edits_remaining' in (value as Record<string, any>))) || ((value as Record<string, any>)['editsRemaining'] === undefined && (value as Record<string, any>)['edits_remaining'] === undefined)) return false;
+    if ((!('isEditEligible' in (value as Record<string, any>)) && !('is_edit_eligible' in (value as Record<string, any>))) || ((value as Record<string, any>)['isEditEligible'] === undefined && (value as Record<string, any>)['is_edit_eligible'] === undefined)) return false;
     return true;
 }
 

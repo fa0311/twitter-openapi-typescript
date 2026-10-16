@@ -29,14 +29,10 @@ import {
 export interface PostCreateTweetRequestVariablesMedia {
     /**
      * 
-     * @type {Array<PostCreateTweetRequestVariablesMediaMediaEntitiesInner>}
-     * @memberof PostCreateTweetRequestVariablesMedia
      */
     mediaEntities?: Array<PostCreateTweetRequestVariablesMediaMediaEntitiesInner>;
     /**
      * 
-     * @type {boolean}
-     * @memberof PostCreateTweetRequestVariablesMedia
      */
     possiblySensitive: boolean;
 }
@@ -45,7 +41,7 @@ export interface PostCreateTweetRequestVariablesMedia {
  * Check if a given object implements the PostCreateTweetRequestVariablesMedia interface.
  */
 export function instanceOfPostCreateTweetRequestVariablesMedia(value: object): value is PostCreateTweetRequestVariablesMedia {
-    if (!('possiblySensitive' in value) || value['possiblySensitive'] === undefined) return false;
+    if ((!('possiblySensitive' in (value as Record<string, any>)) && !('possibly_sensitive' in (value as Record<string, any>))) || ((value as Record<string, any>)['possiblySensitive'] === undefined && (value as Record<string, any>)['possibly_sensitive'] === undefined)) return false;
     return true;
 }
 

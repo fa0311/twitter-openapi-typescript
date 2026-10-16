@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface NoteTweetResultRichTextTag {
     /**
      * 
-     * @type {number}
-     * @memberof NoteTweetResultRichTextTag
      */
     fromIndex: number;
     /**
      * 
-     * @type {Array<NoteTweetResultRichTextTagRichtextTypesEnum>}
-     * @memberof NoteTweetResultRichTextTag
      */
     richtextTypes: Array<NoteTweetResultRichTextTagRichtextTypesEnum>;
     /**
      * 
-     * @type {number}
-     * @memberof NoteTweetResultRichTextTag
      */
     toIndex: number;
 }
@@ -45,7 +39,7 @@ export interface NoteTweetResultRichTextTag {
  */
 export const NoteTweetResultRichTextTagRichtextTypesEnum = {
     Bold: 'Bold',
-    Italic: 'Italic'
+    Italic: 'Italic',
 } as const;
 export type NoteTweetResultRichTextTagRichtextTypesEnum = typeof NoteTweetResultRichTextTagRichtextTypesEnum[keyof typeof NoteTweetResultRichTextTagRichtextTypesEnum];
 
@@ -54,9 +48,9 @@ export type NoteTweetResultRichTextTagRichtextTypesEnum = typeof NoteTweetResult
  * Check if a given object implements the NoteTweetResultRichTextTag interface.
  */
 export function instanceOfNoteTweetResultRichTextTag(value: object): value is NoteTweetResultRichTextTag {
-    if (!('fromIndex' in value) || value['fromIndex'] === undefined) return false;
-    if (!('richtextTypes' in value) || value['richtextTypes'] === undefined) return false;
-    if (!('toIndex' in value) || value['toIndex'] === undefined) return false;
+    if ((!('fromIndex' in (value as Record<string, any>)) && !('from_index' in (value as Record<string, any>))) || ((value as Record<string, any>)['fromIndex'] === undefined && (value as Record<string, any>)['from_index'] === undefined)) return false;
+    if ((!('richtextTypes' in (value as Record<string, any>)) && !('richtext_types' in (value as Record<string, any>))) || ((value as Record<string, any>)['richtextTypes'] === undefined && (value as Record<string, any>)['richtext_types'] === undefined)) return false;
+    if ((!('toIndex' in (value as Record<string, any>)) && !('to_index' in (value as Record<string, any>))) || ((value as Record<string, any>)['toIndex'] === undefined && (value as Record<string, any>)['to_index'] === undefined)) return false;
     return true;
 }
 

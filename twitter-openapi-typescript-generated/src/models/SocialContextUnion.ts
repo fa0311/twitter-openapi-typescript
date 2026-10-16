@@ -12,6 +12,7 @@
  * Do not edit the class manually.
  */
 
+import { parseDate, parseDateTime, serializeDate, serializeDateTime } from '../runtime';
 import type { TimelineGeneralContext } from './TimelineGeneralContext';
 import {
     instanceOfTimelineGeneralContext,
@@ -62,9 +63,9 @@ export function SocialContextUnionToJSONTyped(value?: SocialContextUnion | null,
     }
     switch (value['type']) {
         case 'TimelineGeneralContext':
-            return Object.assign({}, TimelineGeneralContextToJSON(value), { type: 'TimelineGeneralContext' } as const);
+            return Object.assign({}, TimelineGeneralContextToJSON(value), { 'type': 'TimelineGeneralContext' } as const);
         case 'TimelineTopicContext':
-            return Object.assign({}, TimelineTopicContextToJSON(value), { type: 'TimelineTopicContext' } as const);
+            return Object.assign({}, TimelineTopicContextToJSON(value), { 'type': 'TimelineTopicContext' } as const);
         default:
             return value;
     }

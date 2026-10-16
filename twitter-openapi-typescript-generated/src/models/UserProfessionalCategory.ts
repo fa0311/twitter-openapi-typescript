@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface UserProfessionalCategory {
     /**
      * 
-     * @type {string}
-     * @memberof UserProfessionalCategory
      */
     iconName: string;
     /**
      * 
-     * @type {number}
-     * @memberof UserProfessionalCategory
      */
     id: number;
     /**
      * 
-     * @type {string}
-     * @memberof UserProfessionalCategory
      */
     name: string;
 }
@@ -43,7 +37,7 @@ export interface UserProfessionalCategory {
  * Check if a given object implements the UserProfessionalCategory interface.
  */
 export function instanceOfUserProfessionalCategory(value: object): value is UserProfessionalCategory {
-    if (!('iconName' in value) || value['iconName'] === undefined) return false;
+    if ((!('iconName' in (value as Record<string, any>)) && !('icon_name' in (value as Record<string, any>))) || ((value as Record<string, any>)['iconName'] === undefined && (value as Record<string, any>)['icon_name'] === undefined)) return false;
     if (!('id' in value) || value['id'] === undefined) return false;
     if (!('name' in value) || value['name'] === undefined) return false;
     return true;

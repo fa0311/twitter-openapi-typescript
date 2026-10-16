@@ -64,188 +64,126 @@ import {
 export interface TweetLegacy {
     /**
      * 
-     * @type {number}
-     * @memberof TweetLegacy
      */
     bookmarkCount: number;
     /**
      * 
-     * @type {boolean}
-     * @memberof TweetLegacy
      */
     bookmarked: boolean;
     /**
      * 
-     * @type {{ [key: string]: any; }}
-     * @memberof TweetLegacy
      */
     conversationControl?: { [key: string]: any; };
     /**
      * 
-     * @type {string}
-     * @memberof TweetLegacy
      */
     conversationIdStr: string;
     /**
      * 
-     * @type {string}
-     * @memberof TweetLegacy
      */
     createdAt: string;
     /**
      * 
-     * @type {Array<number>}
-     * @memberof TweetLegacy
      */
     displayTextRange: Array<number>;
     /**
      * 
-     * @type {Entities}
-     * @memberof TweetLegacy
      */
     entities?: Entities;
     /**
      * 
-     * @type {ExtendedEntities}
-     * @memberof TweetLegacy
      */
     extendedEntities?: ExtendedEntities;
     /**
      * 
-     * @type {number}
-     * @memberof TweetLegacy
      */
     favoriteCount: number;
     /**
      * 
-     * @type {boolean}
-     * @memberof TweetLegacy
      */
     favorited: boolean;
     /**
      * 
-     * @type {string}
-     * @memberof TweetLegacy
      */
     fullText: string;
     /**
      * 
-     * @type {string}
-     * @memberof TweetLegacy
      */
     idStr: string;
     /**
      * 
-     * @type {string}
-     * @memberof TweetLegacy
      */
     inReplyToScreenName?: string;
     /**
      * 
-     * @type {string}
-     * @memberof TweetLegacy
      */
     inReplyToStatusIdStr?: string;
     /**
      * 
-     * @type {string}
-     * @memberof TweetLegacy
      */
     inReplyToUserIdStr?: string;
     /**
      * 
-     * @type {boolean}
-     * @memberof TweetLegacy
      */
     isQuoteStatus: boolean;
     /**
      * 
-     * @type {string}
-     * @memberof TweetLegacy
      */
     lang: string;
     /**
      * 
-     * @type {TweetLegacyLimitedActionsEnum}
-     * @memberof TweetLegacy
      */
     limitedActions?: TweetLegacyLimitedActionsEnum;
     /**
      * 
-     * @type {{ [key: string]: any; }}
-     * @memberof TweetLegacy
      */
     place?: { [key: string]: any; };
     /**
      * 
-     * @type {boolean}
-     * @memberof TweetLegacy
      */
     possiblySensitive?: boolean;
     /**
      * 
-     * @type {boolean}
-     * @memberof TweetLegacy
      */
     possiblySensitiveEditable?: boolean;
     /**
      * 
-     * @type {number}
-     * @memberof TweetLegacy
      */
     quoteCount: number;
     /**
      * 
-     * @type {string}
-     * @memberof TweetLegacy
      */
     quotedStatusIdStr?: string;
     /**
      * 
-     * @type {QuotedStatusPermalink}
-     * @memberof TweetLegacy
      */
     quotedStatusPermalink?: QuotedStatusPermalink;
     /**
      * 
-     * @type {number}
-     * @memberof TweetLegacy
      */
     replyCount: number;
     /**
      * 
-     * @type {number}
-     * @memberof TweetLegacy
      */
     retweetCount: number;
     /**
      * 
-     * @type {boolean}
-     * @memberof TweetLegacy
      */
     retweeted: boolean;
     /**
      * 
-     * @type {ItemResult}
-     * @memberof TweetLegacy
      */
     retweetedStatusResult?: ItemResult;
     /**
      * 
-     * @type {TweetLegacyScopes}
-     * @memberof TweetLegacy
      */
     scopes?: TweetLegacyScopes;
     /**
      * 
-     * @type {SelfThread}
-     * @memberof TweetLegacy
      */
     selfThread?: SelfThread;
     /**
      * 
-     * @type {string}
-     * @memberof TweetLegacy
      */
     userIdStr: string;
 }
@@ -261,7 +199,7 @@ export const TweetLegacyLimitedActionsEnum = {
     StaleTweet: 'stale_tweet',
     CommunityTweetNonMemberPublicCommunity: 'community_tweet_non_member_public_community',
     CommunityTweetNonMemberClosedCommunity: 'community_tweet_non_member_closed_community',
-    BlockedViewer: 'blocked_viewer'
+    BlockedViewer: 'blocked_viewer',
 } as const;
 export type TweetLegacyLimitedActionsEnum = typeof TweetLegacyLimitedActionsEnum[keyof typeof TweetLegacyLimitedActionsEnum];
 
@@ -270,22 +208,22 @@ export type TweetLegacyLimitedActionsEnum = typeof TweetLegacyLimitedActionsEnum
  * Check if a given object implements the TweetLegacy interface.
  */
 export function instanceOfTweetLegacy(value: object): value is TweetLegacy {
-    if (!('bookmarkCount' in value) || value['bookmarkCount'] === undefined) return false;
+    if ((!('bookmarkCount' in (value as Record<string, any>)) && !('bookmark_count' in (value as Record<string, any>))) || ((value as Record<string, any>)['bookmarkCount'] === undefined && (value as Record<string, any>)['bookmark_count'] === undefined)) return false;
     if (!('bookmarked' in value) || value['bookmarked'] === undefined) return false;
-    if (!('conversationIdStr' in value) || value['conversationIdStr'] === undefined) return false;
-    if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
-    if (!('displayTextRange' in value) || value['displayTextRange'] === undefined) return false;
-    if (!('favoriteCount' in value) || value['favoriteCount'] === undefined) return false;
+    if ((!('conversationIdStr' in (value as Record<string, any>)) && !('conversation_id_str' in (value as Record<string, any>))) || ((value as Record<string, any>)['conversationIdStr'] === undefined && (value as Record<string, any>)['conversation_id_str'] === undefined)) return false;
+    if ((!('createdAt' in (value as Record<string, any>)) && !('created_at' in (value as Record<string, any>))) || ((value as Record<string, any>)['createdAt'] === undefined && (value as Record<string, any>)['created_at'] === undefined)) return false;
+    if ((!('displayTextRange' in (value as Record<string, any>)) && !('display_text_range' in (value as Record<string, any>))) || ((value as Record<string, any>)['displayTextRange'] === undefined && (value as Record<string, any>)['display_text_range'] === undefined)) return false;
+    if ((!('favoriteCount' in (value as Record<string, any>)) && !('favorite_count' in (value as Record<string, any>))) || ((value as Record<string, any>)['favoriteCount'] === undefined && (value as Record<string, any>)['favorite_count'] === undefined)) return false;
     if (!('favorited' in value) || value['favorited'] === undefined) return false;
-    if (!('fullText' in value) || value['fullText'] === undefined) return false;
-    if (!('idStr' in value) || value['idStr'] === undefined) return false;
-    if (!('isQuoteStatus' in value) || value['isQuoteStatus'] === undefined) return false;
+    if ((!('fullText' in (value as Record<string, any>)) && !('full_text' in (value as Record<string, any>))) || ((value as Record<string, any>)['fullText'] === undefined && (value as Record<string, any>)['full_text'] === undefined)) return false;
+    if ((!('idStr' in (value as Record<string, any>)) && !('id_str' in (value as Record<string, any>))) || ((value as Record<string, any>)['idStr'] === undefined && (value as Record<string, any>)['id_str'] === undefined)) return false;
+    if ((!('isQuoteStatus' in (value as Record<string, any>)) && !('is_quote_status' in (value as Record<string, any>))) || ((value as Record<string, any>)['isQuoteStatus'] === undefined && (value as Record<string, any>)['is_quote_status'] === undefined)) return false;
     if (!('lang' in value) || value['lang'] === undefined) return false;
-    if (!('quoteCount' in value) || value['quoteCount'] === undefined) return false;
-    if (!('replyCount' in value) || value['replyCount'] === undefined) return false;
-    if (!('retweetCount' in value) || value['retweetCount'] === undefined) return false;
+    if ((!('quoteCount' in (value as Record<string, any>)) && !('quote_count' in (value as Record<string, any>))) || ((value as Record<string, any>)['quoteCount'] === undefined && (value as Record<string, any>)['quote_count'] === undefined)) return false;
+    if ((!('replyCount' in (value as Record<string, any>)) && !('reply_count' in (value as Record<string, any>))) || ((value as Record<string, any>)['replyCount'] === undefined && (value as Record<string, any>)['reply_count'] === undefined)) return false;
+    if ((!('retweetCount' in (value as Record<string, any>)) && !('retweet_count' in (value as Record<string, any>))) || ((value as Record<string, any>)['retweetCount'] === undefined && (value as Record<string, any>)['retweet_count'] === undefined)) return false;
     if (!('retweeted' in value) || value['retweeted'] === undefined) return false;
-    if (!('userIdStr' in value) || value['userIdStr'] === undefined) return false;
+    if ((!('userIdStr' in (value as Record<string, any>)) && !('user_id_str' in (value as Record<string, any>))) || ((value as Record<string, any>)['userIdStr'] === undefined && (value as Record<string, any>)['user_id_str'] === undefined)) return false;
     return true;
 }
 

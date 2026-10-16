@@ -36,14 +36,10 @@ import {
 export interface UnfavoriteTweetResponse {
     /**
      * 
-     * @type {UnfavoriteTweet}
-     * @memberof UnfavoriteTweetResponse
      */
     data: UnfavoriteTweet;
     /**
      * 
-     * @type {Array<ErrorResponse>}
-     * @memberof UnfavoriteTweetResponse
      */
     errors?: Array<ErrorResponse>;
 }

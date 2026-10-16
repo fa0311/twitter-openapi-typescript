@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface UserDmPermissions {
     /**
      * 
-     * @type {boolean}
-     * @memberof UserDmPermissions
      */
     canDm: boolean;
 }
@@ -31,7 +29,7 @@ export interface UserDmPermissions {
  * Check if a given object implements the UserDmPermissions interface.
  */
 export function instanceOfUserDmPermissions(value: object): value is UserDmPermissions {
-    if (!('canDm' in value) || value['canDm'] === undefined) return false;
+    if ((!('canDm' in (value as Record<string, any>)) && !('can_dm' in (value as Record<string, any>))) || ((value as Record<string, any>)['canDm'] === undefined && (value as Record<string, any>)['can_dm'] === undefined)) return false;
     return true;
 }
 

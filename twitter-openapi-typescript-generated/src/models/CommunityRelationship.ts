@@ -29,26 +29,18 @@ import {
 export interface CommunityRelationship {
     /**
      * 
-     * @type {CommunityActions}
-     * @memberof CommunityRelationship
      */
     actions: CommunityActions;
     /**
      * 
-     * @type {string}
-     * @memberof CommunityRelationship
      */
     id: string;
     /**
      * 
-     * @type {{ [key: string]: any; }}
-     * @memberof CommunityRelationship
      */
     moderationState: { [key: string]: any; };
     /**
      * 
-     * @type {string}
-     * @memberof CommunityRelationship
      */
     restId: string;
 }
@@ -59,8 +51,8 @@ export interface CommunityRelationship {
 export function instanceOfCommunityRelationship(value: object): value is CommunityRelationship {
     if (!('actions' in value) || value['actions'] === undefined) return false;
     if (!('id' in value) || value['id'] === undefined) return false;
-    if (!('moderationState' in value) || value['moderationState'] === undefined) return false;
-    if (!('restId' in value) || value['restId'] === undefined) return false;
+    if ((!('moderationState' in (value as Record<string, any>)) && !('moderation_state' in (value as Record<string, any>))) || ((value as Record<string, any>)['moderationState'] === undefined && (value as Record<string, any>)['moderation_state'] === undefined)) return false;
+    if ((!('restId' in (value as Record<string, any>)) && !('rest_id' in (value as Record<string, any>))) || ((value as Record<string, any>)['restId'] === undefined && (value as Record<string, any>)['rest_id'] === undefined)) return false;
     return true;
 }
 

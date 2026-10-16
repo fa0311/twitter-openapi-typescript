@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface TextEntityRef {
     /**
      * 
-     * @type {TextEntityRefTypeEnum}
-     * @memberof TextEntityRef
      */
     type: TextEntityRefTypeEnum;
     /**
      * 
-     * @type {string}
-     * @memberof TextEntityRef
      */
     url: string;
     /**
      * 
-     * @type {TextEntityRefUrlTypeEnum}
-     * @memberof TextEntityRef
      */
     urlType: TextEntityRefUrlTypeEnum;
 }
@@ -44,7 +38,7 @@ export interface TextEntityRef {
  * @export
  */
 export const TextEntityRefTypeEnum = {
-    TimelineUrl: 'TimelineUrl'
+    TimelineUrl: 'TimelineUrl',
 } as const;
 export type TextEntityRefTypeEnum = typeof TextEntityRefTypeEnum[keyof typeof TextEntityRefTypeEnum];
 
@@ -52,7 +46,7 @@ export type TextEntityRefTypeEnum = typeof TextEntityRefTypeEnum[keyof typeof Te
  * @export
  */
 export const TextEntityRefUrlTypeEnum = {
-    ExternalUrl: 'ExternalUrl'
+    ExternalUrl: 'ExternalUrl',
 } as const;
 export type TextEntityRefUrlTypeEnum = typeof TextEntityRefUrlTypeEnum[keyof typeof TextEntityRefUrlTypeEnum];
 
@@ -62,8 +56,12 @@ export type TextEntityRefUrlTypeEnum = typeof TextEntityRefUrlTypeEnum[keyof typ
  */
 export function instanceOfTextEntityRef(value: object): value is TextEntityRef {
     if (!('type' in value) || value['type'] === undefined) return false;
+    if (value['type'] !== 'TimelineUrl') return false;
+    
     if (!('url' in value) || value['url'] === undefined) return false;
     if (!('urlType' in value) || value['urlType'] === undefined) return false;
+    if (value['urlType'] !== 'ExternalUrl') return false;
+    
     return true;
 }
 

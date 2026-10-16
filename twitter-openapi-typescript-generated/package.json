@@ -1,25 +1,21 @@
 {
   "name": "twitter-openapi-typescript-generated",
-  "version": "0.0.40",
+  "version": "0.0.41",
   "description": "OpenAPI client for twitter-openapi-typescript-generated",
-  "author": "fa0311",
+  "author": "OpenAPI-Generator",
   "repository": {
     "type": "git",
-    "url": "https://github.com/fa0311/twitter-openapi-typescript.git"
+    "url": "https://github.com/GIT_USER_ID/GIT_REPO_ID.git"
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
+  "module": "./dist/esm/index.js",
+  "sideEffects": false,
   "scripts": {
-    "build": "tsc"
+    "build": "tsc && tsc -p tsconfig.esm.json",
+    "prepare": "npm run build"
   },
   "devDependencies": {
     "typescript": "^4.0 || ^5.0"
-  },
-  "license": "custom license or AGPL-3.0-or-later",
-  "keywords": [
-    "twitter",
-    "api",
-    "typescript",
-    "scraper"
-  ]
+  }
 }

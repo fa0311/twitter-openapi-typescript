@@ -29,8 +29,6 @@ import {
 export interface NotificationsViewerV2 {
     /**
      * 
-     * @type {NotificationsUserResults}
-     * @memberof NotificationsViewerV2
      */
     userResults: NotificationsUserResults;
 }
@@ -39,7 +37,7 @@ export interface NotificationsViewerV2 {
  * Check if a given object implements the NotificationsViewerV2 interface.
  */
 export function instanceOfNotificationsViewerV2(value: object): value is NotificationsViewerV2 {
-    if (!('userResults' in value) || value['userResults'] === undefined) return false;
+    if ((!('userResults' in (value as Record<string, any>)) && !('user_results' in (value as Record<string, any>))) || ((value as Record<string, any>)['userResults'] === undefined && (value as Record<string, any>)['user_results'] === undefined)) return false;
     return true;
 }
 

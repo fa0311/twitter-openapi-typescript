@@ -50,32 +50,22 @@ import {
 export interface TimelineUser {
     /**
      * 
-     * @type {TypeName}
-     * @memberof TimelineUser
      */
     typename: TypeName;
     /**
      * 
-     * @type {ContentItemType}
-     * @memberof TimelineUser
      */
     itemType: ContentItemType;
     /**
      * 
-     * @type {SocialContextUnion}
-     * @memberof TimelineUser
      */
     socialContext?: SocialContextUnion;
     /**
      * 
-     * @type {TimelineUserUserDisplayTypeEnum}
-     * @memberof TimelineUser
      */
     userDisplayType: TimelineUserUserDisplayTypeEnum;
     /**
      * 
-     * @type {UserResults}
-     * @memberof TimelineUser
      */
     userResults: UserResults;
 }
@@ -88,7 +78,7 @@ export const TimelineUserUserDisplayTypeEnum = {
     User: 'User',
     UserDetailed: 'UserDetailed',
     SubscribableUser: 'SubscribableUser',
-    UserConcise: 'UserConcise'
+    UserConcise: 'UserConcise',
 } as const;
 export type TimelineUserUserDisplayTypeEnum = typeof TimelineUserUserDisplayTypeEnum[keyof typeof TimelineUserUserDisplayTypeEnum];
 
@@ -97,10 +87,10 @@ export type TimelineUserUserDisplayTypeEnum = typeof TimelineUserUserDisplayType
  * Check if a given object implements the TimelineUser interface.
  */
 export function instanceOfTimelineUser(value: object): value is TimelineUser {
-    if (!('typename' in value) || value['typename'] === undefined) return false;
+    if ((!('typename' in (value as Record<string, any>)) && !('__typename' in (value as Record<string, any>))) || ((value as Record<string, any>)['typename'] === undefined && (value as Record<string, any>)['__typename'] === undefined)) return false;
     if (!('itemType' in value) || value['itemType'] === undefined) return false;
     if (!('userDisplayType' in value) || value['userDisplayType'] === undefined) return false;
-    if (!('userResults' in value) || value['userResults'] === undefined) return false;
+    if ((!('userResults' in (value as Record<string, any>)) && !('user_results' in (value as Record<string, any>))) || ((value as Record<string, any>)['userResults'] === undefined && (value as Record<string, any>)['user_results'] === undefined)) return false;
     return true;
 }
 

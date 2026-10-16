@@ -9,6 +9,7 @@ Name | Type
 `typename` | [TypeName](TypeName.md)
 `core` | [UserResultByScreenNameCore](UserResultByScreenNameCore.md)
 `id` | string
+`isVerifiedOrganization` | boolean
 `legacy` | [UserResultByScreenNameLegacy](UserResultByScreenNameLegacy.md)
 `privacy` | [UserResultPrivacy](UserResultPrivacy.md)
 `profilemodules` | { [key: string]: any; }
@@ -25,6 +26,7 @@ const example = {
   "typename": null,
   "core": null,
   "id": null,
+  "isVerifiedOrganization": null,
   "legacy": null,
   "privacy": null,
   "profilemodules": null,

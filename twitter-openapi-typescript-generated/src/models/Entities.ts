@@ -50,44 +50,30 @@ import {
 export interface Entities {
     /**
      * 
-     * @type {Array<{ [key: string]: any; }>}
-     * @memberof Entities
      */
     hashtags?: Array<{ [key: string]: any; }>;
     /**
      * 
-     * @type {Array<Media>}
-     * @memberof Entities
      */
     media?: Array<Media>;
     /**
      * 
-     * @type {Array<Smarttag>}
-     * @memberof Entities
      */
     smarttags?: Array<Smarttag>;
     /**
      * 
-     * @type {Array<{ [key: string]: any; }>}
-     * @memberof Entities
      */
     symbols?: Array<{ [key: string]: any; }>;
     /**
      * 
-     * @type {Array<Timestamp>}
-     * @memberof Entities
      */
     timestamps?: Array<Timestamp>;
     /**
      * 
-     * @type {Array<Url>}
-     * @memberof Entities
      */
     urls?: Array<Url>;
     /**
      * 
-     * @type {Array<{ [key: string]: any; }>}
-     * @memberof Entities
      */
     userMentions?: Array<{ [key: string]: any; }>;
 }

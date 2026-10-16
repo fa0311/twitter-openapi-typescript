@@ -43,62 +43,42 @@ import {
 export interface ArticleResult {
     /**
      * 
-     * @type {{ [key: string]: any; }}
-     * @memberof ArticleResult
      */
     contentState?: { [key: string]: any; };
     /**
      * 
-     * @type {ArticleCoverMedia}
-     * @memberof ArticleResult
      */
     coverMedia?: ArticleCoverMedia;
     /**
      * 
-     * @type {string}
-     * @memberof ArticleResult
      */
     id: string;
     /**
      * 
-     * @type {boolean}
-     * @memberof ArticleResult
      */
     isGrokSummaryEligible?: boolean;
     /**
      * 
-     * @type {ArticleLifecycleState}
-     * @memberof ArticleResult
      */
     lifecycleState?: ArticleLifecycleState;
     /**
      * 
-     * @type {Array<ArticleCoverMedia>}
-     * @memberof ArticleResult
      */
     mediaEntities?: Array<ArticleCoverMedia>;
     /**
      * 
-     * @type {ArticleMetadata}
-     * @memberof ArticleResult
      */
     metadata: ArticleMetadata;
     /**
      * 
-     * @type {string}
-     * @memberof ArticleResult
      */
     previewText: string;
     /**
      * 
-     * @type {string}
-     * @memberof ArticleResult
      */
     restId: string;
     /**
      * 
-     * @type {string}
-     * @memberof ArticleResult
      */
     title: string;
 }
@@ -109,8 +89,8 @@ export interface ArticleResult {
 export function instanceOfArticleResult(value: object): value is ArticleResult {
     if (!('id' in value) || value['id'] === undefined) return false;
     if (!('metadata' in value) || value['metadata'] === undefined) return false;
-    if (!('previewText' in value) || value['previewText'] === undefined) return false;
-    if (!('restId' in value) || value['restId'] === undefined) return false;
+    if ((!('previewText' in (value as Record<string, any>)) && !('preview_text' in (value as Record<string, any>))) || ((value as Record<string, any>)['previewText'] === undefined && (value as Record<string, any>)['preview_text'] === undefined)) return false;
+    if ((!('restId' in (value as Record<string, any>)) && !('rest_id' in (value as Record<string, any>))) || ((value as Record<string, any>)['restId'] === undefined && (value as Record<string, any>)['rest_id'] === undefined)) return false;
     if (!('title' in value) || value['title'] === undefined) return false;
     return true;
 }

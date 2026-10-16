@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface SensitiveMediaWarning {
     /**
      * 
-     * @type {boolean}
-     * @memberof SensitiveMediaWarning
      */
     adultContent?: boolean;
     /**
      * 
-     * @type {boolean}
-     * @memberof SensitiveMediaWarning
      */
     graphicViolence?: boolean;
     /**
      * 
-     * @type {boolean}
-     * @memberof SensitiveMediaWarning
      */
     other?: boolean;
 }

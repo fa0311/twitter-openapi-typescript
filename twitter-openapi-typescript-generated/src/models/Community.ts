@@ -78,158 +78,106 @@ import {
 export interface Community {
     /**
      * 
-     * @type {TypeName}
-     * @memberof Community
      */
     typename: TypeName;
     /**
      * 
-     * @type {CommunityActions}
-     * @memberof Community
      */
     actions?: CommunityActions;
     /**
      * 
-     * @type {UserResults}
-     * @memberof Community
      */
     adminResults?: UserResults;
     /**
      * 
-     * @type {number}
-     * @memberof Community
      */
     createdAt?: number;
     /**
      * 
-     * @type {UserResults}
-     * @memberof Community
      */
     creatorResults?: UserResults;
     /**
      * 
-     * @type {{ [key: string]: any; }}
-     * @memberof Community
      */
     customBannerMedia?: { [key: string]: any; };
     /**
      * 
-     * @type {{ [key: string]: any; }}
-     * @memberof Community
      */
     defaultBannerMedia?: { [key: string]: any; };
     /**
      * 
-     * @type {string}
-     * @memberof Community
      */
     description?: string;
     /**
      * 
-     * @type {string}
-     * @memberof Community
      */
     idStr?: string;
     /**
      * 
-     * @type {CommunityInvitesPolicyEnum}
-     * @memberof Community
      */
     invitesPolicy?: CommunityInvitesPolicyEnum;
     /**
      * 
-     * @type {CommunityInvitesResult}
-     * @memberof Community
      */
     invitesResult?: CommunityInvitesResult;
     /**
      * 
-     * @type {boolean}
-     * @memberof Community
      */
     isPinned?: boolean;
     /**
      * 
-     * @type {CommunityJoinPolicyEnum}
-     * @memberof Community
      */
     joinPolicy?: CommunityJoinPolicyEnum;
     /**
      * 
-     * @type {CommunityJoinRequestsResult}
-     * @memberof Community
      */
     joinRequestsResult?: CommunityJoinRequestsResult;
     /**
      * 
-     * @type {number}
-     * @memberof Community
      */
     memberCount?: number;
     /**
      * 
-     * @type {Array<UserResults>}
-     * @memberof Community
      */
     membersFacepileResults?: Array<UserResults>;
     /**
      * 
-     * @type {number}
-     * @memberof Community
      */
     moderatorCount?: number;
     /**
      * 
-     * @type {string}
-     * @memberof Community
      */
     name?: string;
     /**
      * 
-     * @type {PrimaryCommunityTopic}
-     * @memberof Community
      */
     primaryCommunityTopic?: PrimaryCommunityTopic;
     /**
      * 
-     * @type {string}
-     * @memberof Community
      */
     question?: string;
     /**
      * 
-     * @type {CommunityRoleEnum}
-     * @memberof Community
      */
     role?: CommunityRoleEnum;
     /**
      * 
-     * @type {Array<CommunityRule>}
-     * @memberof Community
      */
     rules?: Array<CommunityRule>;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof Community
      */
     searchTags?: Array<string>;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof Community
      */
     showOnlyUsersToDisplay?: Array<string>;
     /**
      * 
-     * @type {CommunityUrls}
-     * @memberof Community
      */
     urls?: CommunityUrls;
     /**
      * 
-     * @type {{ [key: string]: any; }}
-     * @memberof Community
      */
     viewerRelationship?: { [key: string]: any; };
 }
@@ -240,7 +188,7 @@ export interface Community {
  */
 export const CommunityInvitesPolicyEnum = {
     MemberInvitesAllowed: 'MemberInvitesAllowed',
-    ModeratorInvitesAllowed: 'ModeratorInvitesAllowed'
+    ModeratorInvitesAllowed: 'ModeratorInvitesAllowed',
 } as const;
 export type CommunityInvitesPolicyEnum = typeof CommunityInvitesPolicyEnum[keyof typeof CommunityInvitesPolicyEnum];
 
@@ -249,7 +197,7 @@ export type CommunityInvitesPolicyEnum = typeof CommunityInvitesPolicyEnum[keyof
  */
 export const CommunityJoinPolicyEnum = {
     Open: 'Open',
-    RestrictedJoinRequestsRequireModeratorApproval: 'RestrictedJoinRequestsRequireModeratorApproval'
+    RestrictedJoinRequestsRequireModeratorApproval: 'RestrictedJoinRequestsRequireModeratorApproval',
 } as const;
 export type CommunityJoinPolicyEnum = typeof CommunityJoinPolicyEnum[keyof typeof CommunityJoinPolicyEnum];
 
@@ -257,7 +205,7 @@ export type CommunityJoinPolicyEnum = typeof CommunityJoinPolicyEnum[keyof typeo
  * @export
  */
 export const CommunityRoleEnum = {
-    NonMember: 'NonMember'
+    NonMember: 'NonMember',
 } as const;
 export type CommunityRoleEnum = typeof CommunityRoleEnum[keyof typeof CommunityRoleEnum];
 
@@ -266,7 +214,7 @@ export type CommunityRoleEnum = typeof CommunityRoleEnum[keyof typeof CommunityR
  * Check if a given object implements the Community interface.
  */
 export function instanceOfCommunity(value: object): value is Community {
-    if (!('typename' in value) || value['typename'] === undefined) return false;
+    if ((!('typename' in (value as Record<string, any>)) && !('__typename' in (value as Record<string, any>))) || ((value as Record<string, any>)['typename'] === undefined && (value as Record<string, any>)['__typename'] === undefined)) return false;
     return true;
 }
 

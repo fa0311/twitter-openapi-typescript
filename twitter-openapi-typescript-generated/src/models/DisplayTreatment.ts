@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface DisplayTreatment {
     /**
      * 
-     * @type {string}
-     * @memberof DisplayTreatment
      */
     actionText: string;
     /**
      * 
-     * @type {string}
-     * @memberof DisplayTreatment
      */
     labelText?: string;
 }

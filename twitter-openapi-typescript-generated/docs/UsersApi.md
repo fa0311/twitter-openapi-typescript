@@ -79,11 +79,11 @@ async function example() {
 
   const body = {
     // string
-    pathQueryId: _8egOzcbgeLIhP0TbTStGw,
+    pathQueryId: ubfbnAM4qTlMTOYleYhXSg,
     // string
     variables: {"userIds": ["44196397"]},
     // string
-    features: {"payments_enabled": false, "profile_label_improvements_pcf_label_in_post_enabled": true, "responsive_web_profile_redirect_enabled": false, "rweb_tipjar_consumption_enabled": true, "verified_phone_label_enabled": false, "responsive_web_graphql_skip_user_profile_image_extensions_enabled": false, "responsive_web_graphql_timeline_navigation_enabled": true},
+    features: {"profile_label_improvements_pcf_label_in_post_enabled": true, "responsive_web_profile_redirect_enabled": true, "rweb_tipjar_consumption_enabled": false, "verified_phone_label_enabled": false, "responsive_web_graphql_timeline_navigation_enabled": true},
   } satisfies GetUsersByRestIdsRequest;
 
   try {
@@ -103,9 +103,9 @@ example().catch(console.error);
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pathQueryId** | `string` |  | [Defaults to `&#39;_8egOzcbgeLIhP0TbTStGw&#39;`] |
+| **pathQueryId** | `string` |  | [Defaults to `&#39;ubfbnAM4qTlMTOYleYhXSg&#39;`] |
 | **variables** | `string` |  | [Defaults to `&#39;{\&quot;userIds\&quot;: [\&quot;44196397\&quot;]}&#39;`] |
-| **features** | `string` |  | [Defaults to `&#39;{\&quot;payments_enabled\&quot;: false, \&quot;profile_label_improvements_pcf_label_in_post_enabled\&quot;: true, \&quot;responsive_web_profile_redirect_enabled\&quot;: false, \&quot;rweb_tipjar_consumption_enabled\&quot;: true, \&quot;verified_phone_label_enabled\&quot;: false, \&quot;responsive_web_graphql_skip_user_profile_image_extensions_enabled\&quot;: false, \&quot;responsive_web_graphql_timeline_navigation_enabled\&quot;: true}&#39;`] |
+| **features** | `string` |  | [Defaults to `&#39;{\&quot;profile_label_improvements_pcf_label_in_post_enabled\&quot;: true, \&quot;responsive_web_profile_redirect_enabled\&quot;: true, \&quot;rweb_tipjar_consumption_enabled\&quot;: false, \&quot;verified_phone_label_enabled\&quot;: false, \&quot;responsive_web_graphql_timeline_navigation_enabled\&quot;: true}&#39;`] |
 
 ### Return type
 

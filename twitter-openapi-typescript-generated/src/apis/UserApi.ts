@@ -14,28 +14,377 @@
 
 import * as runtime from '../runtime';
 import {
+    type FetchDraftTweetsResponse,
+    FetchDraftTweetsResponseFromJSON,
+    FetchDraftTweetsResponseToJSON,
+} from '../models/FetchDraftTweetsResponse';
+import {
+    type FetchScheduledTweetsResponse,
+    FetchScheduledTweetsResponseFromJSON,
+    FetchScheduledTweetsResponseToJSON,
+} from '../models/FetchScheduledTweetsResponse';
+import {
     type UserResponse,
     UserResponseFromJSON,
     UserResponseToJSON,
 } from '../models/UserResponse';
+import {
+    type ViewerBadgeCountsResponse,
+    ViewerBadgeCountsResponseFromJSON,
+    ViewerBadgeCountsResponseToJSON,
+} from '../models/ViewerBadgeCountsResponse';
+
+export interface GetFetchDraftTweetsRequest {
+    /**
+     * 
+     */
+    pathQueryId: string;
+    /**
+     * 
+     */
+    variables: string;
+}
+
+export interface GetFetchScheduledTweetsRequest {
+    /**
+     * 
+     */
+    pathQueryId: string;
+    /**
+     * 
+     */
+    variables: string;
+}
 
 export interface GetUserByRestIdRequest {
+    /**
+     * 
+     */
     pathQueryId: string;
+    /**
+     * 
+     */
     variables: string;
+    /**
+     * 
+     */
     features: string;
 }
 
 export interface GetUserByScreenNameRequest {
+    /**
+     * 
+     */
     pathQueryId: string;
+    /**
+     * 
+     */
     variables: string;
+    /**
+     * 
+     */
     features: string;
+    /**
+     * 
+     */
     fieldToggles: string;
+}
+
+export interface GetViewerBadgeCountsRequest {
+    /**
+     * 
+     */
+    pathQueryId: string;
+    /**
+     * 
+     */
+    variables: string;
 }
 
 /**
  * 
  */
 export class UserApi extends runtime.BaseAPI {
+
+    /**
+     * Creates request options for getFetchDraftTweets without sending the request
+     */
+    async getFetchDraftTweetsRequestOpts(requestParameters: GetFetchDraftTweetsRequest): Promise<runtime.RequestOpts> {
+        if (requestParameters['pathQueryId'] == null) {
+            throw new runtime.RequiredError(
+                'pathQueryId',
+                'Required parameter "pathQueryId" was null or undefined when calling getFetchDraftTweets().'
+            );
+        }
+
+        if (requestParameters['variables'] == null) {
+            throw new runtime.RequiredError(
+                'variables',
+                'Required parameter "variables" was null or undefined when calling getFetchDraftTweets().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['variables'] != null) {
+            queryParameters['variables'] = requestParameters['variables'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Accept"] = await this.configuration.apiKey("Accept"); // Accept authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-client-language"] = await this.configuration.apiKey("x-twitter-client-language"); // ClientLanguage authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Priority"] = await this.configuration.apiKey("Priority"); // Priority authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Referer"] = await this.configuration.apiKey("Referer"); // Referer authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Fetch-Dest"] = await this.configuration.apiKey("Sec-Fetch-Dest"); // SecFetchDest authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Ch-Ua-Platform"] = await this.configuration.apiKey("Sec-Ch-Ua-Platform"); // SecChUaPlatform authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Fetch-Mode"] = await this.configuration.apiKey("Sec-Fetch-Mode"); // SecFetchMode authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-csrf-token"] = await this.configuration.apiKey("x-csrf-token"); // CsrfToken authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-client-uuid"] = await this.configuration.apiKey("x-client-uuid"); // ClientUuid authentication
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BearerAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-guest-token"] = await this.configuration.apiKey("x-guest-token"); // GuestToken authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Ch-Ua"] = await this.configuration.apiKey("Sec-Ch-Ua"); // SecChUa authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-client-transaction-id"] = await this.configuration.apiKey("x-client-transaction-id"); // ClientTransactionId authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-active-user"] = await this.configuration.apiKey("x-twitter-active-user"); // ActiveUser authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["user-agent"] = await this.configuration.apiKey("user-agent"); // UserAgent authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Accept-Language"] = await this.configuration.apiKey("Accept-Language"); // AcceptLanguage authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Fetch-Site"] = await this.configuration.apiKey("Sec-Fetch-Site"); // SecFetchSite authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-auth-type"] = await this.configuration.apiKey("x-twitter-auth-type"); // AuthType authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Ch-Ua-Mobile"] = await this.configuration.apiKey("Sec-Ch-Ua-Mobile"); // SecChUaMobile authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Accept-Encoding"] = await this.configuration.apiKey("Accept-Encoding"); // AcceptEncoding authentication
+        }
+
+
+        let urlPath = `/graphql/{pathQueryId}/FetchDraftTweets`;
+        urlPath = urlPath.replace('{pathQueryId}', encodeURIComponent(String(requestParameters['pathQueryId'])));
+
+        return {
+            path: urlPath,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        };
+    }
+
+    /**
+     * get drafts (unsent posts)
+     */
+    async getFetchDraftTweetsRaw(requestParameters: GetFetchDraftTweetsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FetchDraftTweetsResponse>> {
+        const requestOptions = await this.getFetchDraftTweetsRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => FetchDraftTweetsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * get drafts (unsent posts)
+     */
+    async getFetchDraftTweets(requestParameters: GetFetchDraftTweetsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FetchDraftTweetsResponse> {
+        const response = await this.getFetchDraftTweetsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Creates request options for getFetchScheduledTweets without sending the request
+     */
+    async getFetchScheduledTweetsRequestOpts(requestParameters: GetFetchScheduledTweetsRequest): Promise<runtime.RequestOpts> {
+        if (requestParameters['pathQueryId'] == null) {
+            throw new runtime.RequiredError(
+                'pathQueryId',
+                'Required parameter "pathQueryId" was null or undefined when calling getFetchScheduledTweets().'
+            );
+        }
+
+        if (requestParameters['variables'] == null) {
+            throw new runtime.RequiredError(
+                'variables',
+                'Required parameter "variables" was null or undefined when calling getFetchScheduledTweets().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['variables'] != null) {
+            queryParameters['variables'] = requestParameters['variables'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Accept"] = await this.configuration.apiKey("Accept"); // Accept authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-client-language"] = await this.configuration.apiKey("x-twitter-client-language"); // ClientLanguage authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Priority"] = await this.configuration.apiKey("Priority"); // Priority authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Referer"] = await this.configuration.apiKey("Referer"); // Referer authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Fetch-Dest"] = await this.configuration.apiKey("Sec-Fetch-Dest"); // SecFetchDest authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Ch-Ua-Platform"] = await this.configuration.apiKey("Sec-Ch-Ua-Platform"); // SecChUaPlatform authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Fetch-Mode"] = await this.configuration.apiKey("Sec-Fetch-Mode"); // SecFetchMode authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-csrf-token"] = await this.configuration.apiKey("x-csrf-token"); // CsrfToken authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-client-uuid"] = await this.configuration.apiKey("x-client-uuid"); // ClientUuid authentication
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BearerAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-guest-token"] = await this.configuration.apiKey("x-guest-token"); // GuestToken authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Ch-Ua"] = await this.configuration.apiKey("Sec-Ch-Ua"); // SecChUa authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-client-transaction-id"] = await this.configuration.apiKey("x-client-transaction-id"); // ClientTransactionId authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-active-user"] = await this.configuration.apiKey("x-twitter-active-user"); // ActiveUser authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["user-agent"] = await this.configuration.apiKey("user-agent"); // UserAgent authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Accept-Language"] = await this.configuration.apiKey("Accept-Language"); // AcceptLanguage authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Fetch-Site"] = await this.configuration.apiKey("Sec-Fetch-Site"); // SecFetchSite authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-auth-type"] = await this.configuration.apiKey("x-twitter-auth-type"); // AuthType authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Ch-Ua-Mobile"] = await this.configuration.apiKey("Sec-Ch-Ua-Mobile"); // SecChUaMobile authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Accept-Encoding"] = await this.configuration.apiKey("Accept-Encoding"); // AcceptEncoding authentication
+        }
+
+
+        let urlPath = `/graphql/{pathQueryId}/FetchScheduledTweets`;
+        urlPath = urlPath.replace('{pathQueryId}', encodeURIComponent(String(requestParameters['pathQueryId'])));
+
+        return {
+            path: urlPath,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        };
+    }
+
+    /**
+     * get scheduled posts
+     */
+    async getFetchScheduledTweetsRaw(requestParameters: GetFetchScheduledTweetsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<FetchScheduledTweetsResponse>> {
+        const requestOptions = await this.getFetchScheduledTweetsRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => FetchScheduledTweetsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * get scheduled posts
+     */
+    async getFetchScheduledTweets(requestParameters: GetFetchScheduledTweetsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<FetchScheduledTweetsResponse> {
+        const response = await this.getFetchScheduledTweetsRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
 
     /**
      * Creates request options for getUserByRestId without sending the request
@@ -347,6 +696,146 @@ export class UserApi extends runtime.BaseAPI {
      */
     async getUserByScreenName(requestParameters: GetUserByScreenNameRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UserResponse> {
         const response = await this.getUserByScreenNameRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * Creates request options for getViewerBadgeCounts without sending the request
+     */
+    async getViewerBadgeCountsRequestOpts(requestParameters: GetViewerBadgeCountsRequest): Promise<runtime.RequestOpts> {
+        if (requestParameters['pathQueryId'] == null) {
+            throw new runtime.RequiredError(
+                'pathQueryId',
+                'Required parameter "pathQueryId" was null or undefined when calling getViewerBadgeCounts().'
+            );
+        }
+
+        if (requestParameters['variables'] == null) {
+            throw new runtime.RequiredError(
+                'variables',
+                'Required parameter "variables" was null or undefined when calling getViewerBadgeCounts().'
+            );
+        }
+
+        const queryParameters: any = {};
+
+        if (requestParameters['variables'] != null) {
+            queryParameters['variables'] = requestParameters['variables'];
+        }
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Accept"] = await this.configuration.apiKey("Accept"); // Accept authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-client-language"] = await this.configuration.apiKey("x-twitter-client-language"); // ClientLanguage authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Priority"] = await this.configuration.apiKey("Priority"); // Priority authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Referer"] = await this.configuration.apiKey("Referer"); // Referer authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Fetch-Dest"] = await this.configuration.apiKey("Sec-Fetch-Dest"); // SecFetchDest authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Ch-Ua-Platform"] = await this.configuration.apiKey("Sec-Ch-Ua-Platform"); // SecChUaPlatform authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Fetch-Mode"] = await this.configuration.apiKey("Sec-Fetch-Mode"); // SecFetchMode authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-csrf-token"] = await this.configuration.apiKey("x-csrf-token"); // CsrfToken authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-client-uuid"] = await this.configuration.apiKey("x-client-uuid"); // ClientUuid authentication
+        }
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("BearerAuth", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-guest-token"] = await this.configuration.apiKey("x-guest-token"); // GuestToken authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Ch-Ua"] = await this.configuration.apiKey("Sec-Ch-Ua"); // SecChUa authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-client-transaction-id"] = await this.configuration.apiKey("x-client-transaction-id"); // ClientTransactionId authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-active-user"] = await this.configuration.apiKey("x-twitter-active-user"); // ActiveUser authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["user-agent"] = await this.configuration.apiKey("user-agent"); // UserAgent authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Accept-Language"] = await this.configuration.apiKey("Accept-Language"); // AcceptLanguage authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Fetch-Site"] = await this.configuration.apiKey("Sec-Fetch-Site"); // SecFetchSite authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["x-twitter-auth-type"] = await this.configuration.apiKey("x-twitter-auth-type"); // AuthType authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Sec-Ch-Ua-Mobile"] = await this.configuration.apiKey("Sec-Ch-Ua-Mobile"); // SecChUaMobile authentication
+        }
+
+        if (this.configuration && this.configuration.apiKey) {
+            headerParameters["Accept-Encoding"] = await this.configuration.apiKey("Accept-Encoding"); // AcceptEncoding authentication
+        }
+
+
+        let urlPath = `/graphql/{pathQueryId}/ViewerBadgeCounts`;
+        urlPath = urlPath.replace('{pathQueryId}', encodeURIComponent(String(requestParameters['pathQueryId'])));
+
+        return {
+            path: urlPath,
+            method: 'GET',
+            headers: headerParameters,
+            query: queryParameters,
+        };
+    }
+
+    /**
+     * get the unread badge counts of the viewer
+     */
+    async getViewerBadgeCountsRaw(requestParameters: GetViewerBadgeCountsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<ViewerBadgeCountsResponse>> {
+        const requestOptions = await this.getViewerBadgeCountsRequestOpts(requestParameters);
+        const response = await this.request(requestOptions, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => ViewerBadgeCountsResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * get the unread badge counts of the viewer
+     */
+    async getViewerBadgeCounts(requestParameters: GetViewerBadgeCountsRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<ViewerBadgeCountsResponse> {
+        const response = await this.getViewerBadgeCountsRaw(requestParameters, initOverrides);
         return await response.value();
     }
 

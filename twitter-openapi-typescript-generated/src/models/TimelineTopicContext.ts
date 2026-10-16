@@ -36,20 +36,14 @@ import {
 export interface TimelineTopicContext {
     /**
      * 
-     * @type {TimelineTopicContextFunctionalityTypeEnum}
-     * @memberof TimelineTopicContext
      */
     functionalityType?: TimelineTopicContextFunctionalityTypeEnum;
     /**
      * 
-     * @type {TopicContext}
-     * @memberof TimelineTopicContext
      */
     topic?: TopicContext;
     /**
      * 
-     * @type {SocialContextUnionType}
-     * @memberof TimelineTopicContext
      */
     type?: SocialContextUnionType;
 }
@@ -59,7 +53,7 @@ export interface TimelineTopicContext {
  * @export
  */
 export const TimelineTopicContextFunctionalityTypeEnum = {
-    Basic: 'Basic'
+    Basic: 'Basic',
 } as const;
 export type TimelineTopicContextFunctionalityTypeEnum = typeof TimelineTopicContextFunctionalityTypeEnum[keyof typeof TimelineTopicContextFunctionalityTypeEnum];
 

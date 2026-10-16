@@ -43,74 +43,50 @@ import {
 export interface TweetPreviewDisplayTweet {
     /**
      * 
-     * @type {ArticlePreview}
-     * @memberof TweetPreviewDisplayTweet
      */
     articlePreview?: ArticlePreview;
     /**
      * 
-     * @type {number}
-     * @memberof TweetPreviewDisplayTweet
      */
     bookmarkCount: number;
     /**
      * 
-     * @type {UserResultCore}
-     * @memberof TweetPreviewDisplayTweet
      */
     core: UserResultCore;
     /**
      * 
-     * @type {string}
-     * @memberof TweetPreviewDisplayTweet
      */
     createdAt: string;
     /**
      * 
-     * @type {object}
-     * @memberof TweetPreviewDisplayTweet
      */
     entities: object;
     /**
      * 
-     * @type {number}
-     * @memberof TweetPreviewDisplayTweet
      */
     favoriteCount: number;
     /**
      * 
-     * @type {number}
-     * @memberof TweetPreviewDisplayTweet
      */
     quoteCount: number;
     /**
      * 
-     * @type {number}
-     * @memberof TweetPreviewDisplayTweet
      */
     replyCount: number;
     /**
      * 
-     * @type {string}
-     * @memberof TweetPreviewDisplayTweet
      */
     restId: string;
     /**
      * 
-     * @type {number}
-     * @memberof TweetPreviewDisplayTweet
      */
     retweetCount: number;
     /**
      * 
-     * @type {string}
-     * @memberof TweetPreviewDisplayTweet
      */
     text: string;
     /**
      * 
-     * @type {TweetPreviewDisplayTweetViewCount}
-     * @memberof TweetPreviewDisplayTweet
      */
     viewCount: TweetPreviewDisplayTweetViewCount;
 }
@@ -119,17 +95,17 @@ export interface TweetPreviewDisplayTweet {
  * Check if a given object implements the TweetPreviewDisplayTweet interface.
  */
 export function instanceOfTweetPreviewDisplayTweet(value: object): value is TweetPreviewDisplayTweet {
-    if (!('bookmarkCount' in value) || value['bookmarkCount'] === undefined) return false;
+    if ((!('bookmarkCount' in (value as Record<string, any>)) && !('bookmark_count' in (value as Record<string, any>))) || ((value as Record<string, any>)['bookmarkCount'] === undefined && (value as Record<string, any>)['bookmark_count'] === undefined)) return false;
     if (!('core' in value) || value['core'] === undefined) return false;
-    if (!('createdAt' in value) || value['createdAt'] === undefined) return false;
+    if ((!('createdAt' in (value as Record<string, any>)) && !('created_at' in (value as Record<string, any>))) || ((value as Record<string, any>)['createdAt'] === undefined && (value as Record<string, any>)['created_at'] === undefined)) return false;
     if (!('entities' in value) || value['entities'] === undefined) return false;
-    if (!('favoriteCount' in value) || value['favoriteCount'] === undefined) return false;
-    if (!('quoteCount' in value) || value['quoteCount'] === undefined) return false;
-    if (!('replyCount' in value) || value['replyCount'] === undefined) return false;
-    if (!('restId' in value) || value['restId'] === undefined) return false;
-    if (!('retweetCount' in value) || value['retweetCount'] === undefined) return false;
+    if ((!('favoriteCount' in (value as Record<string, any>)) && !('favorite_count' in (value as Record<string, any>))) || ((value as Record<string, any>)['favoriteCount'] === undefined && (value as Record<string, any>)['favorite_count'] === undefined)) return false;
+    if ((!('quoteCount' in (value as Record<string, any>)) && !('quote_count' in (value as Record<string, any>))) || ((value as Record<string, any>)['quoteCount'] === undefined && (value as Record<string, any>)['quote_count'] === undefined)) return false;
+    if ((!('replyCount' in (value as Record<string, any>)) && !('reply_count' in (value as Record<string, any>))) || ((value as Record<string, any>)['replyCount'] === undefined && (value as Record<string, any>)['reply_count'] === undefined)) return false;
+    if ((!('restId' in (value as Record<string, any>)) && !('rest_id' in (value as Record<string, any>))) || ((value as Record<string, any>)['restId'] === undefined && (value as Record<string, any>)['rest_id'] === undefined)) return false;
+    if ((!('retweetCount' in (value as Record<string, any>)) && !('retweet_count' in (value as Record<string, any>))) || ((value as Record<string, any>)['retweetCount'] === undefined && (value as Record<string, any>)['retweet_count'] === undefined)) return false;
     if (!('text' in value) || value['text'] === undefined) return false;
-    if (!('viewCount' in value) || value['viewCount'] === undefined) return false;
+    if ((!('viewCount' in (value as Record<string, any>)) && !('view_count' in (value as Record<string, any>))) || ((value as Record<string, any>)['viewCount'] === undefined && (value as Record<string, any>)['view_count'] === undefined)) return false;
     return true;
 }
 

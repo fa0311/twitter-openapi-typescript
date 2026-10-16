@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface TweetCardPlatformAudience {
     /**
      * 
-     * @type {TweetCardPlatformAudienceNameEnum}
-     * @memberof TweetCardPlatformAudience
      */
     name: TweetCardPlatformAudienceNameEnum;
 }
@@ -32,7 +30,7 @@ export interface TweetCardPlatformAudience {
  * @export
  */
 export const TweetCardPlatformAudienceNameEnum = {
-    Production: 'production'
+    Production: 'production',
 } as const;
 export type TweetCardPlatformAudienceNameEnum = typeof TweetCardPlatformAudienceNameEnum[keyof typeof TweetCardPlatformAudienceNameEnum];
 
@@ -42,6 +40,8 @@ export type TweetCardPlatformAudienceNameEnum = typeof TweetCardPlatformAudience
  */
 export function instanceOfTweetCardPlatformAudience(value: object): value is TweetCardPlatformAudience {
     if (!('name' in value) || value['name'] === undefined) return false;
+    if (value['name'] !== 'production') return false;
+    
     return true;
 }
 

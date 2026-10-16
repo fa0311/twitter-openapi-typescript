@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface NoteTweetResultMediaInlineMedia {
     /**
      * 
-     * @type {number}
-     * @memberof NoteTweetResultMediaInlineMedia
      */
     index: number;
     /**
      * 
-     * @type {string}
-     * @memberof NoteTweetResultMediaInlineMedia
      */
     mediaId: string;
 }
@@ -38,7 +34,7 @@ export interface NoteTweetResultMediaInlineMedia {
  */
 export function instanceOfNoteTweetResultMediaInlineMedia(value: object): value is NoteTweetResultMediaInlineMedia {
     if (!('index' in value) || value['index'] === undefined) return false;
-    if (!('mediaId' in value) || value['mediaId'] === undefined) return false;
+    if ((!('mediaId' in (value as Record<string, any>)) && !('media_id' in (value as Record<string, any>))) || ((value as Record<string, any>)['mediaId'] === undefined && (value as Record<string, any>)['media_id'] === undefined)) return false;
     return true;
 }
 

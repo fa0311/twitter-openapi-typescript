@@ -43,86 +43,58 @@ import {
 export interface Session {
     /**
      * 
-     * @type {object}
-     * @memberof Session
      */
     ssoInitTokens?: object;
     /**
      * 
-     * @type {CommunitiesActions}
-     * @memberof Session
      */
     communitiesActions: CommunitiesActions;
     /**
      * 
-     * @type {string}
-     * @memberof Session
      */
     country: string;
     /**
      * 
-     * @type {string}
-     * @memberof Session
      */
     guestId: string;
     /**
      * 
-     * @type {boolean}
-     * @memberof Session
      */
     hasCommunityMemberships: boolean;
     /**
      * 
-     * @type {boolean}
-     * @memberof Session
      */
     isActiveCreator: boolean;
     /**
      * 
-     * @type {boolean}
-     * @memberof Session
      */
     isRestrictedSession: boolean;
     /**
      * 
-     * @type {boolean}
-     * @memberof Session
      */
     isSuperFollowSubscriber: boolean;
     /**
      * 
-     * @type {string}
-     * @memberof Session
      */
     language: string;
     /**
      * 
-     * @type {OneFactorLoginEligibility}
-     * @memberof Session
      */
     oneFactorLoginEligibility: OneFactorLoginEligibility;
     /**
      * 
-     * @type {number}
-     * @memberof Session
      */
     superFollowersCount: number;
     /**
      * 
-     * @type {SessionSuperFollowsApplicationStatusEnum}
-     * @memberof Session
      */
     superFollowsApplicationStatus: SessionSuperFollowsApplicationStatusEnum;
     /**
      * 
-     * @type {UserFeatures}
-     * @memberof Session
      */
     userFeatures: UserFeatures;
     /**
      * 
-     * @type {string}
-     * @memberof Session
      */
     userId: string;
 }
@@ -132,7 +104,7 @@ export interface Session {
  * @export
  */
 export const SessionSuperFollowsApplicationStatusEnum = {
-    NotStarted: 'NotStarted'
+    NotStarted: 'NotStarted',
 } as const;
 export type SessionSuperFollowsApplicationStatusEnum = typeof SessionSuperFollowsApplicationStatusEnum[keyof typeof SessionSuperFollowsApplicationStatusEnum];
 
@@ -152,8 +124,10 @@ export function instanceOfSession(value: object): value is Session {
     if (!('oneFactorLoginEligibility' in value) || value['oneFactorLoginEligibility'] === undefined) return false;
     if (!('superFollowersCount' in value) || value['superFollowersCount'] === undefined) return false;
     if (!('superFollowsApplicationStatus' in value) || value['superFollowsApplicationStatus'] === undefined) return false;
+    if (value['superFollowsApplicationStatus'] !== 'NotStarted') return false;
+    
     if (!('userFeatures' in value) || value['userFeatures'] === undefined) return false;
-    if (!('userId' in value) || value['userId'] === undefined) return false;
+    if ((!('userId' in (value as Record<string, any>)) && !('user_id' in (value as Record<string, any>))) || ((value as Record<string, any>)['userId'] === undefined && (value as Record<string, any>)['user_id'] === undefined)) return false;
     return true;
 }
 

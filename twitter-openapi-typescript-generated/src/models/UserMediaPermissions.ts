@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface UserMediaPermissions {
     /**
      * 
-     * @type {boolean}
-     * @memberof UserMediaPermissions
      */
     canMediaTag: boolean;
 }
@@ -31,7 +29,7 @@ export interface UserMediaPermissions {
  * Check if a given object implements the UserMediaPermissions interface.
  */
 export function instanceOfUserMediaPermissions(value: object): value is UserMediaPermissions {
-    if (!('canMediaTag' in value) || value['canMediaTag'] === undefined) return false;
+    if ((!('canMediaTag' in (value as Record<string, any>)) && !('can_media_tag' in (value as Record<string, any>))) || ((value as Record<string, any>)['canMediaTag'] === undefined && (value as Record<string, any>)['can_media_tag'] === undefined)) return false;
     return true;
 }
 

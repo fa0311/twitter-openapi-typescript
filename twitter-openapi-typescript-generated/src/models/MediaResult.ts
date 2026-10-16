@@ -29,14 +29,10 @@ import {
 export interface MediaResult {
     /**
      * 
-     * @type {GrokImageAnnotation}
-     * @memberof MediaResult
      */
     grokImageAnnotation?: GrokImageAnnotation;
     /**
      * 
-     * @type {string}
-     * @memberof MediaResult
      */
     mediaKey: string;
 }
@@ -45,7 +41,7 @@ export interface MediaResult {
  * Check if a given object implements the MediaResult interface.
  */
 export function instanceOfMediaResult(value: object): value is MediaResult {
-    if (!('mediaKey' in value) || value['mediaKey'] === undefined) return false;
+    if ((!('mediaKey' in (value as Record<string, any>)) && !('media_key' in (value as Record<string, any>))) || ((value as Record<string, any>)['mediaKey'] === undefined && (value as Record<string, any>)['media_key'] === undefined)) return false;
     return true;
 }
 

@@ -7,6 +7,8 @@
 Name | Type
 ------------ | -------------
 `description` | string
+`entities` | [ProfileBioEntities](ProfileBioEntities.md)
+`withheldInCountries` | Array&lt;string&gt;
 
 ## Example
 
@@ -16,6 +18,8 @@ import type { ProfileBio } from 'twitter-openapi-typescript-generated'
 // TODO: Update the object below with actual values
 const example = {
   "description": null,
+  "entities": null,
+  "withheldInCountries": null,
 } satisfies ProfileBio
 
 console.log(example)

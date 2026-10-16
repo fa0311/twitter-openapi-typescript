@@ -29,20 +29,14 @@ import {
 export interface UserProfessional {
     /**
      * 
-     * @type {Array<UserProfessionalCategory>}
-     * @memberof UserProfessional
      */
     category?: Array<UserProfessionalCategory>;
     /**
      * 
-     * @type {UserProfessionalProfessionalTypeEnum}
-     * @memberof UserProfessional
      */
     professionalType: UserProfessionalProfessionalTypeEnum;
     /**
      * 
-     * @type {string}
-     * @memberof UserProfessional
      */
     restId: string;
 }
@@ -53,7 +47,7 @@ export interface UserProfessional {
  */
 export const UserProfessionalProfessionalTypeEnum = {
     Business: 'Business',
-    Creator: 'Creator'
+    Creator: 'Creator',
 } as const;
 export type UserProfessionalProfessionalTypeEnum = typeof UserProfessionalProfessionalTypeEnum[keyof typeof UserProfessionalProfessionalTypeEnum];
 
@@ -62,8 +56,8 @@ export type UserProfessionalProfessionalTypeEnum = typeof UserProfessionalProfes
  * Check if a given object implements the UserProfessional interface.
  */
 export function instanceOfUserProfessional(value: object): value is UserProfessional {
-    if (!('professionalType' in value) || value['professionalType'] === undefined) return false;
-    if (!('restId' in value) || value['restId'] === undefined) return false;
+    if ((!('professionalType' in (value as Record<string, any>)) && !('professional_type' in (value as Record<string, any>))) || ((value as Record<string, any>)['professionalType'] === undefined && (value as Record<string, any>)['professional_type'] === undefined)) return false;
+    if ((!('restId' in (value as Record<string, any>)) && !('rest_id' in (value as Record<string, any>))) || ((value as Record<string, any>)['restId'] === undefined && (value as Record<string, any>)['rest_id'] === undefined)) return false;
     return true;
 }
 

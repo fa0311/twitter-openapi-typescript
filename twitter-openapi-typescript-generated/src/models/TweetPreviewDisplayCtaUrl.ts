@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface TweetPreviewDisplayCtaUrl {
     /**
      * 
-     * @type {string}
-     * @memberof TweetPreviewDisplayCtaUrl
      */
     url: string;
     /**
      * 
-     * @type {TweetPreviewDisplayCtaUrlUrlTypeEnum}
-     * @memberof TweetPreviewDisplayCtaUrl
      */
     urlType: TweetPreviewDisplayCtaUrlUrlTypeEnum;
 }
@@ -40,7 +36,7 @@ export interface TweetPreviewDisplayCtaUrl {
 export const TweetPreviewDisplayCtaUrlUrlTypeEnum = {
     DeepLink: 'DeepLink',
     UrtEndpoint: 'UrtEndpoint',
-    ExternalUrl: 'ExternalUrl'
+    ExternalUrl: 'ExternalUrl',
 } as const;
 export type TweetPreviewDisplayCtaUrlUrlTypeEnum = typeof TweetPreviewDisplayCtaUrlUrlTypeEnum[keyof typeof TweetPreviewDisplayCtaUrlUrlTypeEnum];
 

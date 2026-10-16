@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface CommunityRule {
     /**
      * 
-     * @type {string}
-     * @memberof CommunityRule
      */
     description?: string;
     /**
      * 
-     * @type {string}
-     * @memberof CommunityRule
      */
     name: string;
     /**
      * 
-     * @type {string}
-     * @memberof CommunityRule
      */
     restId: string;
 }
@@ -44,7 +38,7 @@ export interface CommunityRule {
  */
 export function instanceOfCommunityRule(value: object): value is CommunityRule {
     if (!('name' in value) || value['name'] === undefined) return false;
-    if (!('restId' in value) || value['restId'] === undefined) return false;
+    if ((!('restId' in (value as Record<string, any>)) && !('rest_id' in (value as Record<string, any>))) || ((value as Record<string, any>)['restId'] === undefined && (value as Record<string, any>)['rest_id'] === undefined)) return false;
     return true;
 }
 

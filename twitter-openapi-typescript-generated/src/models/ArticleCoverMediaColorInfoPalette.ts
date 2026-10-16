@@ -29,14 +29,10 @@ import {
 export interface ArticleCoverMediaColorInfoPalette {
     /**
      * 
-     * @type {number}
-     * @memberof ArticleCoverMediaColorInfoPalette
      */
     percentage: number;
     /**
      * 
-     * @type {ArticleCoverMediaColorInfoPaletteRGB}
-     * @memberof ArticleCoverMediaColorInfoPalette
      */
     rgb: ArticleCoverMediaColorInfoPaletteRGB;
 }

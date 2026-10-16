@@ -10,6 +10,8 @@ Name | Type
 `blocking` | boolean
 `followedBy` | boolean
 `following` | boolean
+`liveFollowing` | boolean
+`muting` | boolean
 
 ## Example
 
@@ -22,6 +24,8 @@ const example = {
   "blocking": null,
   "followedBy": null,
   "following": null,
+  "liveFollowing": null,
+  "muting": null,
 } satisfies UserRelationshipPerspectives
 
 console.log(example)

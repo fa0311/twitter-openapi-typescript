@@ -36,14 +36,10 @@ import {
 export interface TweetCardPlatform {
     /**
      * 
-     * @type {TweetCardPlatformAudience}
-     * @memberof TweetCardPlatform
      */
     audience: TweetCardPlatformAudience;
     /**
      * 
-     * @type {TweetCardPlatformDevice}
-     * @memberof TweetCardPlatform
      */
     device: TweetCardPlatformDevice;
 }

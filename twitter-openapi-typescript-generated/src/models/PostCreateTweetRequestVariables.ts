@@ -43,50 +43,34 @@ import {
 export interface PostCreateTweetRequestVariables {
     /**
      * 
-     * @type {string}
-     * @memberof PostCreateTweetRequestVariables
      */
     attachmentUrl?: string;
     /**
      * 
-     * @type {PostCreateTweetRequestVariablesConversationControl}
-     * @memberof PostCreateTweetRequestVariables
      */
     conversationControl?: PostCreateTweetRequestVariablesConversationControl;
     /**
      * 
-     * @type {boolean}
-     * @memberof PostCreateTweetRequestVariables
      */
     darkRequest: boolean;
     /**
      * 
-     * @type {object}
-     * @memberof PostCreateTweetRequestVariables
      */
     disallowedReplyOptions?: object;
     /**
      * 
-     * @type {PostCreateTweetRequestVariablesMedia}
-     * @memberof PostCreateTweetRequestVariables
      */
     media: PostCreateTweetRequestVariablesMedia;
     /**
      * 
-     * @type {PostCreateTweetRequestVariablesReply}
-     * @memberof PostCreateTweetRequestVariables
      */
     reply?: PostCreateTweetRequestVariablesReply;
     /**
      * 
-     * @type {Array<object>}
-     * @memberof PostCreateTweetRequestVariables
      */
     semanticAnnotationIds: Array<object>;
     /**
      * 
-     * @type {string}
-     * @memberof PostCreateTweetRequestVariables
      */
     tweetText: string;
 }
@@ -95,10 +79,10 @@ export interface PostCreateTweetRequestVariables {
  * Check if a given object implements the PostCreateTweetRequestVariables interface.
  */
 export function instanceOfPostCreateTweetRequestVariables(value: object): value is PostCreateTweetRequestVariables {
-    if (!('darkRequest' in value) || value['darkRequest'] === undefined) return false;
+    if ((!('darkRequest' in (value as Record<string, any>)) && !('dark_request' in (value as Record<string, any>))) || ((value as Record<string, any>)['darkRequest'] === undefined && (value as Record<string, any>)['dark_request'] === undefined)) return false;
     if (!('media' in value) || value['media'] === undefined) return false;
-    if (!('semanticAnnotationIds' in value) || value['semanticAnnotationIds'] === undefined) return false;
-    if (!('tweetText' in value) || value['tweetText'] === undefined) return false;
+    if ((!('semanticAnnotationIds' in (value as Record<string, any>)) && !('semantic_annotation_ids' in (value as Record<string, any>))) || ((value as Record<string, any>)['semanticAnnotationIds'] === undefined && (value as Record<string, any>)['semantic_annotation_ids'] === undefined)) return false;
+    if ((!('tweetText' in (value as Record<string, any>)) && !('tweet_text' in (value as Record<string, any>))) || ((value as Record<string, any>)['tweetText'] === undefined && (value as Record<string, any>)['tweet_text'] === undefined)) return false;
     return true;
 }
 

@@ -36,14 +36,10 @@ import {
 export interface TweetResultByRestIdResponse {
     /**
      * 
-     * @type {TweetResultByRestIdData}
-     * @memberof TweetResultByRestIdResponse
      */
     data: TweetResultByRestIdData;
     /**
      * 
-     * @type {Array<ErrorResponse>}
-     * @memberof TweetResultByRestIdResponse
      */
     errors?: Array<ErrorResponse>;
 }

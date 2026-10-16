@@ -57,50 +57,34 @@ import {
 export interface TimelineTweet {
     /**
      * 
-     * @type {TypeName}
-     * @memberof TimelineTweet
      */
     typename: TypeName;
     /**
      * 
-     * @type {boolean}
-     * @memberof TimelineTweet
      */
     hasModeratedReplies?: boolean;
     /**
      * 
-     * @type {Highlight}
-     * @memberof TimelineTweet
      */
     highlights?: Highlight;
     /**
      * 
-     * @type {ContentItemType}
-     * @memberof TimelineTweet
      */
     itemType: ContentItemType;
     /**
      * 
-     * @type {{ [key: string]: any; }}
-     * @memberof TimelineTweet
      */
     promotedMetadata?: { [key: string]: any; };
     /**
      * 
-     * @type {SocialContextUnion}
-     * @memberof TimelineTweet
      */
     socialContext?: SocialContextUnion;
     /**
      * 
-     * @type {TimelineTweetTweetDisplayTypeEnum}
-     * @memberof TimelineTweet
      */
     tweetDisplayType: TimelineTweetTweetDisplayTypeEnum;
     /**
      * 
-     * @type {ItemResult}
-     * @memberof TimelineTweet
      */
     tweetResults: ItemResult;
 }
@@ -113,7 +97,7 @@ export const TimelineTweetTweetDisplayTypeEnum = {
     Tweet: 'Tweet',
     SelfThread: 'SelfThread',
     MediaGrid: 'MediaGrid',
-    CondensedTweet: 'CondensedTweet'
+    CondensedTweet: 'CondensedTweet',
 } as const;
 export type TimelineTweetTweetDisplayTypeEnum = typeof TimelineTweetTweetDisplayTypeEnum[keyof typeof TimelineTweetTweetDisplayTypeEnum];
 
@@ -122,10 +106,10 @@ export type TimelineTweetTweetDisplayTypeEnum = typeof TimelineTweetTweetDisplay
  * Check if a given object implements the TimelineTweet interface.
  */
 export function instanceOfTimelineTweet(value: object): value is TimelineTweet {
-    if (!('typename' in value) || value['typename'] === undefined) return false;
+    if ((!('typename' in (value as Record<string, any>)) && !('__typename' in (value as Record<string, any>))) || ((value as Record<string, any>)['typename'] === undefined && (value as Record<string, any>)['__typename'] === undefined)) return false;
     if (!('itemType' in value) || value['itemType'] === undefined) return false;
     if (!('tweetDisplayType' in value) || value['tweetDisplayType'] === undefined) return false;
-    if (!('tweetResults' in value) || value['tweetResults'] === undefined) return false;
+    if ((!('tweetResults' in (value as Record<string, any>)) && !('tweet_results' in (value as Record<string, any>))) || ((value as Record<string, any>)['tweetResults'] === undefined && (value as Record<string, any>)['tweet_results'] === undefined)) return false;
     return true;
 }
 

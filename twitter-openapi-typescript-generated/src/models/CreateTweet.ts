@@ -29,8 +29,6 @@ import {
 export interface CreateTweet {
     /**
      * 
-     * @type {Tweet}
-     * @memberof CreateTweet
      */
     result: Tweet;
 }

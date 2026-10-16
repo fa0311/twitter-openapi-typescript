@@ -29,8 +29,6 @@ import {
 export interface Highlight {
     /**
      * 
-     * @type {Array<TextHighlight>}
-     * @memberof Highlight
      */
     textHighlights: Array<TextHighlight>;
 }

@@ -21,44 +21,30 @@ import { mapValues } from '../runtime';
 export interface UserResultByScreenNameLegacy {
     /**
      * 
-     * @type {boolean}
-     * @memberof UserResultByScreenNameLegacy
      */
     blockedBy?: boolean;
     /**
      * 
-     * @type {boolean}
-     * @memberof UserResultByScreenNameLegacy
      */
     blocking?: boolean;
     /**
      * 
-     * @type {boolean}
-     * @memberof UserResultByScreenNameLegacy
      */
     followedBy?: boolean;
     /**
      * 
-     * @type {boolean}
-     * @memberof UserResultByScreenNameLegacy
      */
     following?: boolean;
     /**
      * 
-     * @type {string}
-     * @memberof UserResultByScreenNameLegacy
      */
     name?: string;
     /**
      * 
-     * @type {boolean}
-     * @memberof UserResultByScreenNameLegacy
      */
     _protected?: boolean;
     /**
      * 
-     * @type {string}
-     * @memberof UserResultByScreenNameLegacy
      */
     screenName?: string;
 }

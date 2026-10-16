@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface SmarttagTag {
     /**
      * 
-     * @type {{ [key: string]: any; }}
-     * @memberof SmarttagTag
      */
     info: { [key: string]: any; };
 }

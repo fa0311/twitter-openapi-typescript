@@ -29,8 +29,6 @@ import {
 export interface BookmarksTimeline {
     /**
      * 
-     * @type {Timeline}
-     * @memberof BookmarksTimeline
      */
     timeline: Timeline;
 }

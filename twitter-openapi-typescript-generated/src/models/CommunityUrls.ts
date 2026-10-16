@@ -29,8 +29,6 @@ import {
 export interface CommunityUrls {
     /**
      * 
-     * @type {CommunityUrlsPermalink}
-     * @memberof CommunityUrls
      */
     permalink: CommunityUrlsPermalink;
 }

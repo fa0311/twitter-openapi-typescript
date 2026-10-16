@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface Location {
     /**
      * 
-     * @type {number}
-     * @memberof Location
      */
     column: number;
     /**
      * 
-     * @type {number}
-     * @memberof Location
      */
     line: number;
 }

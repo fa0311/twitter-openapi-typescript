@@ -29,8 +29,6 @@ import {
 export interface UserHighlightsTweetsData {
     /**
      * 
-     * @type {UserHighlightsTweetsUser}
-     * @memberof UserHighlightsTweetsData
      */
     user?: UserHighlightsTweetsUser;
 }

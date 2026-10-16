@@ -36,14 +36,10 @@ import {
 export interface ListLatestTweetsTimelineResponse {
     /**
      * 
-     * @type {ListTweetsTimelineData}
-     * @memberof ListLatestTweetsTimelineResponse
      */
     data: ListTweetsTimelineData;
     /**
      * 
-     * @type {Array<ErrorResponse>}
-     * @memberof ListLatestTweetsTimelineResponse
      */
     errors?: Array<ErrorResponse>;
 }

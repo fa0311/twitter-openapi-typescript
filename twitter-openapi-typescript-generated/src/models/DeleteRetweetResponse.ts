@@ -36,14 +36,10 @@ import {
 export interface DeleteRetweetResponse {
     /**
      * 
-     * @type {DeleteRetweetResponseData}
-     * @memberof DeleteRetweetResponse
      */
     data: DeleteRetweetResponseData;
     /**
      * 
-     * @type {Array<ErrorResponse>}
-     * @memberof DeleteRetweetResponse
      */
     errors?: Array<ErrorResponse>;
 }

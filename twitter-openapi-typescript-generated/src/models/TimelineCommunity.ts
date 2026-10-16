@@ -30,8 +30,6 @@ export interface TimelineCommunity {
     [key: string]: any | any;
     /**
      * 
-     * @type {TypeName}
-     * @memberof TimelineCommunity
      */
     typename?: TypeName;
 }

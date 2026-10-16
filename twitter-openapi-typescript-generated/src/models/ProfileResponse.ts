@@ -36,14 +36,10 @@ import {
 export interface ProfileResponse {
     /**
      * 
-     * @type {ProfileResponseData}
-     * @memberof ProfileResponse
      */
     data: ProfileResponseData;
     /**
      * 
-     * @type {Array<ErrorResponse>}
-     * @memberof ProfileResponse
      */
     errors?: Array<ErrorResponse>;
 }

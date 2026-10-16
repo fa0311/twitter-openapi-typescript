@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface UnifiedCard {
     /**
      * 
-     * @type {UnifiedCardCardFetchStateEnum}
-     * @memberof UnifiedCard
      */
     cardFetchState: UnifiedCardCardFetchStateEnum;
 }
@@ -32,7 +30,7 @@ export interface UnifiedCard {
  * @export
  */
 export const UnifiedCardCardFetchStateEnum = {
-    NoCard: 'NoCard'
+    NoCard: 'NoCard',
 } as const;
 export type UnifiedCardCardFetchStateEnum = typeof UnifiedCardCardFetchStateEnum[keyof typeof UnifiedCardCardFetchStateEnum];
 
@@ -41,7 +39,9 @@ export type UnifiedCardCardFetchStateEnum = typeof UnifiedCardCardFetchStateEnum
  * Check if a given object implements the UnifiedCard interface.
  */
 export function instanceOfUnifiedCard(value: object): value is UnifiedCard {
-    if (!('cardFetchState' in value) || value['cardFetchState'] === undefined) return false;
+    if ((!('cardFetchState' in (value as Record<string, any>)) && !('card_fetch_state' in (value as Record<string, any>))) || ((value as Record<string, any>)['cardFetchState'] === undefined && (value as Record<string, any>)['card_fetch_state'] === undefined)) return false;
+    if ((value as Record<string, any>)['cardFetchState'] !== 'NoCard' && (value as Record<string, any>)['card_fetch_state'] !== 'NoCard') return false;
+    
     return true;
 }
 

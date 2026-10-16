@@ -26,6 +26,7 @@ Name | Type
 `images` | [Array&lt;TrendImage&gt;](TrendImage.md)
 `isAiTrend` | boolean
 `name` | string
+`rank` | string
 `socialContext` | [SocialContextUnion](SocialContextUnion.md)
 `thumbnailImage` | [ThumbnailImage](ThumbnailImage.md)
 `trendMetadata` | [TrendMetadata](TrendMetadata.md)
@@ -36,6 +37,12 @@ Name | Type
 `richMessage` | [RichMessage](RichMessage.md)
 `template` | [NotificationTemplate](NotificationTemplate.md)
 `timestampMs` | string
+`height` | number
+`payload` | string
+`displayType` | string
+`list` | [TwitterList](TwitterList.md)
+`text` | string
+`url` | [SocialContextLandingUrl](SocialContextLandingUrl.md)
 
 ## Example
 
@@ -64,6 +71,7 @@ const example = {
   "images": null,
   "isAiTrend": null,
   "name": null,
+  "rank": null,
   "socialContext": null,
   "thumbnailImage": null,
   "trendMetadata": null,
@@ -74,6 +82,12 @@ const example = {
   "richMessage": null,
   "template": null,
   "timestampMs": null,
+  "height": null,
+  "payload": null,
+  "displayType": null,
+  "list": null,
+  "text": null,
+  "url": null,
 } satisfies ItemContentUnion
 
 console.log(example)

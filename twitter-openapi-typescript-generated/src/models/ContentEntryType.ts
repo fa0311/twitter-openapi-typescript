@@ -20,7 +20,7 @@
 export const ContentEntryType = {
     TimelineTimelineItem: 'TimelineTimelineItem',
     TimelineTimelineCursor: 'TimelineTimelineCursor',
-    TimelineTimelineModule: 'TimelineTimelineModule'
+    TimelineTimelineModule: 'TimelineTimelineModule',
 } as const;
 export type ContentEntryType = typeof ContentEntryType[keyof typeof ContentEntryType];
 

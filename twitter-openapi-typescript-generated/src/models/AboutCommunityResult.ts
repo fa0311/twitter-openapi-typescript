@@ -36,14 +36,10 @@ import {
 export interface AboutCommunityResult {
     /**
      * 
-     * @type {TypeName}
-     * @memberof AboutCommunityResult
      */
     typename: TypeName;
     /**
      * 
-     * @type {TimelineResult}
-     * @memberof AboutCommunityResult
      */
     aboutTimeline: TimelineResult;
 }
@@ -54,8 +50,8 @@ export interface AboutCommunityResult {
  * Check if a given object implements the AboutCommunityResult interface.
  */
 export function instanceOfAboutCommunityResult(value: object): value is AboutCommunityResult {
-    if (!('typename' in value) || value['typename'] === undefined) return false;
-    if (!('aboutTimeline' in value) || value['aboutTimeline'] === undefined) return false;
+    if ((!('typename' in (value as Record<string, any>)) && !('__typename' in (value as Record<string, any>))) || ((value as Record<string, any>)['typename'] === undefined && (value as Record<string, any>)['__typename'] === undefined)) return false;
+    if ((!('aboutTimeline' in (value as Record<string, any>)) && !('about_timeline' in (value as Record<string, any>))) || ((value as Record<string, any>)['aboutTimeline'] === undefined && (value as Record<string, any>)['about_timeline'] === undefined)) return false;
     return true;
 }
 

@@ -29,8 +29,6 @@ import {
 export interface TweetLimitedActionResults {
     /**
      * 
-     * @type {Array<LimitedActionResultsData>}
-     * @memberof TweetLimitedActionResults
      */
     limitedActions: Array<LimitedActionResultsData>;
 }
@@ -39,7 +37,7 @@ export interface TweetLimitedActionResults {
  * Check if a given object implements the TweetLimitedActionResults interface.
  */
 export function instanceOfTweetLimitedActionResults(value: object): value is TweetLimitedActionResults {
-    if (!('limitedActions' in value) || value['limitedActions'] === undefined) return false;
+    if ((!('limitedActions' in (value as Record<string, any>)) && !('limited_actions' in (value as Record<string, any>))) || ((value as Record<string, any>)['limitedActions'] === undefined && (value as Record<string, any>)['limited_actions'] === undefined)) return false;
     return true;
 }
 

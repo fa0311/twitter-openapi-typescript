@@ -6,6 +6,7 @@
 
 Name | Type
 ------------ | -------------
+`domainContext` | string
 `url` | [SocialContextLandingUrl](SocialContextLandingUrl.md)
 
 ## Example
@@ -15,6 +16,7 @@ import type { TrendMetadata } from 'twitter-openapi-typescript-generated'
 
 // TODO: Update the object below with actual values
 const example = {
+  "domainContext": null,
   "url": null,
 } satisfies TrendMetadata
 

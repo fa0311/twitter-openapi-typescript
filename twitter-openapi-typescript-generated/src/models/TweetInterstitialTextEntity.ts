@@ -29,20 +29,14 @@ import {
 export interface TweetInterstitialTextEntity {
     /**
      * 
-     * @type {number}
-     * @memberof TweetInterstitialTextEntity
      */
     fromIndex: number;
     /**
      * 
-     * @type {TweetInterstitialTextEntityRef}
-     * @memberof TweetInterstitialTextEntity
      */
     ref: TweetInterstitialTextEntityRef;
     /**
      * 
-     * @type {number}
-     * @memberof TweetInterstitialTextEntity
      */
     toIndex: number;
 }

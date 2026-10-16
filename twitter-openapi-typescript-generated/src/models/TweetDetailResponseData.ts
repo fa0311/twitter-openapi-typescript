@@ -29,8 +29,6 @@ import {
 export interface TweetDetailResponseData {
     /**
      * 
-     * @type {Timeline}
-     * @memberof TweetDetailResponseData
      */
     threadedConversationWithInjectionsV2?: Timeline;
 }

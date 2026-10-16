@@ -29,16 +29,12 @@ import {
 export interface UrtEndpointOptions {
     /**
      * 
-     * @type {Array<UrtEndpointRequestParams>}
-     * @memberof UrtEndpointOptions
      */
     requestParams: Array<UrtEndpointRequestParams>;
     /**
      * 
-     * @type {string}
-     * @memberof UrtEndpointOptions
      */
-    title: string;
+    title?: string;
 }
 
 /**
@@ -46,7 +42,6 @@ export interface UrtEndpointOptions {
  */
 export function instanceOfUrtEndpointOptions(value: object): value is UrtEndpointOptions {
     if (!('requestParams' in value) || value['requestParams'] === undefined) return false;
-    if (!('title' in value) || value['title'] === undefined) return false;
     return true;
 }
 
@@ -61,7 +56,7 @@ export function UrtEndpointOptionsFromJSONTyped(json: any, ignoreDiscriminator: 
     return {
         
         'requestParams': ((json['requestParams'] as Array<any>).map(UrtEndpointRequestParamsFromJSON)),
-        'title': json['title'],
+        'title': json['title'] == null ? undefined : json['title'],
     };
 }
 

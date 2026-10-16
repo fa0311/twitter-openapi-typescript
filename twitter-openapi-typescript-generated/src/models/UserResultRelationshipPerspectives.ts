@@ -21,26 +21,18 @@ import { mapValues } from '../runtime';
 export interface UserResultRelationshipPerspectives {
     /**
      * 
-     * @type {boolean}
-     * @memberof UserResultRelationshipPerspectives
      */
     blockedBy?: boolean;
     /**
      * 
-     * @type {boolean}
-     * @memberof UserResultRelationshipPerspectives
      */
     blocking?: boolean;
     /**
      * 
-     * @type {boolean}
-     * @memberof UserResultRelationshipPerspectives
      */
     followedBy?: boolean;
     /**
      * 
-     * @type {boolean}
-     * @memberof UserResultRelationshipPerspectives
      */
     following?: boolean;
 }

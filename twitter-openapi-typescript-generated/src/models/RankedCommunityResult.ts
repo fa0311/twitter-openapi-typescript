@@ -36,14 +36,10 @@ import {
 export interface RankedCommunityResult {
     /**
      * 
-     * @type {TypeName}
-     * @memberof RankedCommunityResult
      */
     typename: TypeName;
     /**
      * 
-     * @type {TimelineResult}
-     * @memberof RankedCommunityResult
      */
     rankedCommunityTimeline: TimelineResult;
 }
@@ -54,8 +50,8 @@ export interface RankedCommunityResult {
  * Check if a given object implements the RankedCommunityResult interface.
  */
 export function instanceOfRankedCommunityResult(value: object): value is RankedCommunityResult {
-    if (!('typename' in value) || value['typename'] === undefined) return false;
-    if (!('rankedCommunityTimeline' in value) || value['rankedCommunityTimeline'] === undefined) return false;
+    if ((!('typename' in (value as Record<string, any>)) && !('__typename' in (value as Record<string, any>))) || ((value as Record<string, any>)['typename'] === undefined && (value as Record<string, any>)['__typename'] === undefined)) return false;
+    if ((!('rankedCommunityTimeline' in (value as Record<string, any>)) && !('ranked_community_timeline' in (value as Record<string, any>))) || ((value as Record<string, any>)['rankedCommunityTimeline'] === undefined && (value as Record<string, any>)['ranked_community_timeline'] === undefined)) return false;
     return true;
 }
 

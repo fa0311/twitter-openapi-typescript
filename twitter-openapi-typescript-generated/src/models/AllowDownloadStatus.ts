@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface AllowDownloadStatus {
     /**
      * 
-     * @type {boolean}
-     * @memberof AllowDownloadStatus
      */
     allowDownload?: boolean;
 }

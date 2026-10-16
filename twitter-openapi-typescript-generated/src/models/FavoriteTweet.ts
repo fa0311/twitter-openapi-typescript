@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface FavoriteTweet {
     /**
      * 
-     * @type {string}
-     * @memberof FavoriteTweet
      */
     favoriteTweet?: string;
 }

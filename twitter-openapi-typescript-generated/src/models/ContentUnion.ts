@@ -12,6 +12,7 @@
  * Do not edit the class manually.
  */
 
+import { parseDate, parseDateTime, serializeDate, serializeDateTime } from '../runtime';
 import type { TimelineTimelineCursor } from './TimelineTimelineCursor';
 import {
     instanceOfTimelineTimelineCursor,
@@ -71,11 +72,11 @@ export function ContentUnionToJSONTyped(value?: ContentUnion | null, ignoreDiscr
     }
     switch (value['entryType']) {
         case 'TimelineTimelineCursor':
-            return Object.assign({}, TimelineTimelineCursorToJSON(value), { entryType: 'TimelineTimelineCursor' } as const);
+            return Object.assign({}, TimelineTimelineCursorToJSON(value), { 'entryType': 'TimelineTimelineCursor' } as const);
         case 'TimelineTimelineItem':
-            return Object.assign({}, TimelineTimelineItemToJSON(value), { entryType: 'TimelineTimelineItem' } as const);
+            return Object.assign({}, TimelineTimelineItemToJSON(value), { 'entryType': 'TimelineTimelineItem' } as const);
         case 'TimelineTimelineModule':
-            return Object.assign({}, TimelineTimelineModuleToJSON(value), { entryType: 'TimelineTimelineModule' } as const);
+            return Object.assign({}, TimelineTimelineModuleToJSON(value), { 'entryType': 'TimelineTimelineModule' } as const);
         default:
             return value;
     }

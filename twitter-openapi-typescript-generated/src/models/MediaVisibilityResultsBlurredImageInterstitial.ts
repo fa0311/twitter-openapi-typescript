@@ -29,20 +29,14 @@ import {
 export interface MediaVisibilityResultsBlurredImageInterstitial {
     /**
      * 
-     * @type {number}
-     * @memberof MediaVisibilityResultsBlurredImageInterstitial
      */
     opacity: number;
     /**
      * 
-     * @type {TweetInterstitialText}
-     * @memberof MediaVisibilityResultsBlurredImageInterstitial
      */
     text: TweetInterstitialText;
     /**
      * 
-     * @type {TweetInterstitialText}
-     * @memberof MediaVisibilityResultsBlurredImageInterstitial
      */
     title: TweetInterstitialText;
 }

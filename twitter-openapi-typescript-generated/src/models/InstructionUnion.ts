@@ -12,6 +12,7 @@
  * Do not edit the class manually.
  */
 
+import { parseDate, parseDateTime, serializeDate, serializeDateTime } from '../runtime';
 import type { TimelineAddEntries } from './TimelineAddEntries';
 import {
     instanceOfTimelineAddEntries,
@@ -134,25 +135,25 @@ export function InstructionUnionToJSONTyped(value?: InstructionUnion | null, ign
     }
     switch (value['type']) {
         case 'TimelineAddEntries':
-            return Object.assign({}, TimelineAddEntriesToJSON(value), { type: 'TimelineAddEntries' } as const);
+            return Object.assign({}, TimelineAddEntriesToJSON(value), { 'type': 'TimelineAddEntries' } as const);
         case 'TimelineAddToModule':
-            return Object.assign({}, TimelineAddToModuleToJSON(value), { type: 'TimelineAddToModule' } as const);
+            return Object.assign({}, TimelineAddToModuleToJSON(value), { 'type': 'TimelineAddToModule' } as const);
         case 'TimelineClearCache':
-            return Object.assign({}, TimelineClearCacheToJSON(value), { type: 'TimelineClearCache' } as const);
+            return Object.assign({}, TimelineClearCacheToJSON(value), { 'type': 'TimelineClearCache' } as const);
         case 'TimelineClearEntriesUnreadState':
-            return Object.assign({}, TimelineClearEntriesUnreadStateToJSON(value), { type: 'TimelineClearEntriesUnreadState' } as const);
+            return Object.assign({}, TimelineClearEntriesUnreadStateToJSON(value), { 'type': 'TimelineClearEntriesUnreadState' } as const);
         case 'TimelineMarkEntriesUnreadGreaterThanSortIndex':
-            return Object.assign({}, TimelineMarkEntriesUnreadGreaterThanSortIndexToJSON(value), { type: 'TimelineMarkEntriesUnreadGreaterThanSortIndex' } as const);
+            return Object.assign({}, TimelineMarkEntriesUnreadGreaterThanSortIndexToJSON(value), { 'type': 'TimelineMarkEntriesUnreadGreaterThanSortIndex' } as const);
         case 'TimelinePinEntry':
-            return Object.assign({}, TimelinePinEntryToJSON(value), { type: 'TimelinePinEntry' } as const);
+            return Object.assign({}, TimelinePinEntryToJSON(value), { 'type': 'TimelinePinEntry' } as const);
         case 'TimelineReplaceEntry':
-            return Object.assign({}, TimelineReplaceEntryToJSON(value), { type: 'TimelineReplaceEntry' } as const);
+            return Object.assign({}, TimelineReplaceEntryToJSON(value), { 'type': 'TimelineReplaceEntry' } as const);
         case 'TimelineShowAlert':
-            return Object.assign({}, TimelineShowAlertToJSON(value), { type: 'TimelineShowAlert' } as const);
+            return Object.assign({}, TimelineShowAlertToJSON(value), { 'type': 'TimelineShowAlert' } as const);
         case 'TimelineShowCover':
-            return Object.assign({}, TimelineShowCoverToJSON(value), { type: 'TimelineShowCover' } as const);
+            return Object.assign({}, TimelineShowCoverToJSON(value), { 'type': 'TimelineShowCover' } as const);
         case 'TimelineTerminateTimeline':
-            return Object.assign({}, TimelineTerminateTimelineToJSON(value), { type: 'TimelineTerminateTimeline' } as const);
+            return Object.assign({}, TimelineTerminateTimelineToJSON(value), { 'type': 'TimelineTerminateTimeline' } as const);
         default:
             return value;
     }

@@ -29,8 +29,6 @@ import {
 export interface FollowResponseData {
     /**
      * 
-     * @type {FollowResponseUser}
-     * @memberof FollowResponseData
      */
     user?: FollowResponseUser;
 }

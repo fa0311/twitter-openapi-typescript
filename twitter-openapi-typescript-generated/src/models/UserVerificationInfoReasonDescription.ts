@@ -29,14 +29,10 @@ import {
 export interface UserVerificationInfoReasonDescription {
     /**
      * 
-     * @type {Array<UserVerificationInfoReasonDescriptionEntities>}
-     * @memberof UserVerificationInfoReasonDescription
      */
     entities: Array<UserVerificationInfoReasonDescriptionEntities>;
     /**
      * 
-     * @type {string}
-     * @memberof UserVerificationInfoReasonDescription
      */
     text: string;
 }

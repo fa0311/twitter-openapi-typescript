@@ -29,8 +29,6 @@ import {
 export interface TweetResultByRestIdData {
     /**
      * 
-     * @type {ItemResult}
-     * @memberof TweetResultByRestIdData
      */
     tweetResult?: ItemResult;
 }

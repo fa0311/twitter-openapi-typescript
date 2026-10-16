@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface QuotedStatusPermalink {
     /**
      * 
-     * @type {string}
-     * @memberof QuotedStatusPermalink
      */
     display: string;
     /**
      * 
-     * @type {string}
-     * @memberof QuotedStatusPermalink
      */
     expanded: string;
     /**
      * 
-     * @type {string}
-     * @memberof QuotedStatusPermalink
      */
     url: string;
 }

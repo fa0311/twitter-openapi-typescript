@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface ContentDisclosureAdvertisingDisclosure {
     /**
      * 
-     * @type {boolean}
-     * @memberof ContentDisclosureAdvertisingDisclosure
      */
     isPaidPromotion: boolean;
 }
@@ -31,7 +29,7 @@ export interface ContentDisclosureAdvertisingDisclosure {
  * Check if a given object implements the ContentDisclosureAdvertisingDisclosure interface.
  */
 export function instanceOfContentDisclosureAdvertisingDisclosure(value: object): value is ContentDisclosureAdvertisingDisclosure {
-    if (!('isPaidPromotion' in value) || value['isPaidPromotion'] === undefined) return false;
+    if ((!('isPaidPromotion' in (value as Record<string, any>)) && !('is_paid_promotion' in (value as Record<string, any>))) || ((value as Record<string, any>)['isPaidPromotion'] === undefined && (value as Record<string, any>)['is_paid_promotion'] === undefined)) return false;
     return true;
 }
 

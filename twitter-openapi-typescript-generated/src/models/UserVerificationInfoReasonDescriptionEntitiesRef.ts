@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface UserVerificationInfoReasonDescriptionEntitiesRef {
     /**
      * 
-     * @type {string}
-     * @memberof UserVerificationInfoReasonDescriptionEntitiesRef
      */
     url: string;
     /**
      * 
-     * @type {UserVerificationInfoReasonDescriptionEntitiesRefUrlTypeEnum}
-     * @memberof UserVerificationInfoReasonDescriptionEntitiesRef
      */
     urlType: UserVerificationInfoReasonDescriptionEntitiesRefUrlTypeEnum;
 }
@@ -38,7 +34,7 @@ export interface UserVerificationInfoReasonDescriptionEntitiesRef {
  * @export
  */
 export const UserVerificationInfoReasonDescriptionEntitiesRefUrlTypeEnum = {
-    ExternalUrl: 'ExternalUrl'
+    ExternalUrl: 'ExternalUrl',
 } as const;
 export type UserVerificationInfoReasonDescriptionEntitiesRefUrlTypeEnum = typeof UserVerificationInfoReasonDescriptionEntitiesRefUrlTypeEnum[keyof typeof UserVerificationInfoReasonDescriptionEntitiesRefUrlTypeEnum];
 
@@ -48,7 +44,9 @@ export type UserVerificationInfoReasonDescriptionEntitiesRefUrlTypeEnum = typeof
  */
 export function instanceOfUserVerificationInfoReasonDescriptionEntitiesRef(value: object): value is UserVerificationInfoReasonDescriptionEntitiesRef {
     if (!('url' in value) || value['url'] === undefined) return false;
-    if (!('urlType' in value) || value['urlType'] === undefined) return false;
+    if ((!('urlType' in (value as Record<string, any>)) && !('url_type' in (value as Record<string, any>))) || ((value as Record<string, any>)['urlType'] === undefined && (value as Record<string, any>)['url_type'] === undefined)) return false;
+    if ((value as Record<string, any>)['urlType'] !== 'ExternalUrl' && (value as Record<string, any>)['url_type'] !== 'ExternalUrl') return false;
+    
     return true;
 }
 

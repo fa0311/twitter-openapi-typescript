@@ -29,8 +29,6 @@ import {
 export interface UserHighlightsTweetsTimeline {
     /**
      * 
-     * @type {Timeline}
-     * @memberof UserHighlightsTweetsTimeline
      */
     timeline: Timeline;
 }

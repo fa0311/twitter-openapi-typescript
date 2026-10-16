@@ -29,14 +29,10 @@ import {
 export interface PostUnfavoriteTweetRequest {
     /**
      * 
-     * @type {string}
-     * @memberof PostUnfavoriteTweetRequest
      */
     queryId: string;
     /**
      * 
-     * @type {PostCreateRetweetRequestVariables}
-     * @memberof PostUnfavoriteTweetRequest
      */
     variables: PostCreateRetweetRequestVariables;
 }

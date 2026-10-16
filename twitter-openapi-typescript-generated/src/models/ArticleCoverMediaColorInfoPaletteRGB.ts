@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface ArticleCoverMediaColorInfoPaletteRGB {
     /**
      * 
-     * @type {number}
-     * @memberof ArticleCoverMediaColorInfoPaletteRGB
      */
     blue: number;
     /**
      * 
-     * @type {number}
-     * @memberof ArticleCoverMediaColorInfoPaletteRGB
      */
     green: number;
     /**
      * 
-     * @type {number}
-     * @memberof ArticleCoverMediaColorInfoPaletteRGB
      */
     red: number;
 }

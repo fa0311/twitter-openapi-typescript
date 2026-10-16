@@ -36,14 +36,10 @@ import {
 export interface SuperFollowsReplyUserResultData {
     /**
      * 
-     * @type {TypeName}
-     * @memberof SuperFollowsReplyUserResultData
      */
     typename: TypeName;
     /**
      * 
-     * @type {SuperFollowsReplyUserResultCore}
-     * @memberof SuperFollowsReplyUserResultData
      */
     core?: SuperFollowsReplyUserResultCore;
 }
@@ -54,7 +50,7 @@ export interface SuperFollowsReplyUserResultData {
  * Check if a given object implements the SuperFollowsReplyUserResultData interface.
  */
 export function instanceOfSuperFollowsReplyUserResultData(value: object): value is SuperFollowsReplyUserResultData {
-    if (!('typename' in value) || value['typename'] === undefined) return false;
+    if ((!('typename' in (value as Record<string, any>)) && !('__typename' in (value as Record<string, any>))) || ((value as Record<string, any>)['typename'] === undefined && (value as Record<string, any>)['__typename'] === undefined)) return false;
     return true;
 }
 

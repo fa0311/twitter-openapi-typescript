@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface DeleteBookmarkResponseData {
     /**
      * 
-     * @type {string}
-     * @memberof DeleteBookmarkResponseData
      */
     tweetBookmarkDelete?: string;
 }

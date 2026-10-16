@@ -29,8 +29,6 @@ import {
 export interface UserLegacyExtendedProfile {
     /**
      * 
-     * @type {UserLegacyExtendedProfileBirthdate}
-     * @memberof UserLegacyExtendedProfile
      */
     birthdate?: UserLegacyExtendedProfileBirthdate;
 }

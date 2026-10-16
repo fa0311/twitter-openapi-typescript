@@ -23,7 +23,7 @@ export const CursorType = {
     ShowMore: 'ShowMore',
     ShowMoreThreads: 'ShowMoreThreads',
     Gap: 'Gap',
-    ShowMoreThreadsPrompt: 'ShowMoreThreadsPrompt'
+    ShowMoreThreadsPrompt: 'ShowMoreThreadsPrompt',
 } as const;
 export type CursorType = typeof CursorType[keyof typeof CursorType];
 

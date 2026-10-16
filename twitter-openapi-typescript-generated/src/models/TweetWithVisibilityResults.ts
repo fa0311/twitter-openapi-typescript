@@ -50,32 +50,22 @@ import {
 export interface TweetWithVisibilityResults {
     /**
      * 
-     * @type {TypeName}
-     * @memberof TweetWithVisibilityResults
      */
     typename: TypeName;
     /**
      * 
-     * @type {{ [key: string]: any; }}
-     * @memberof TweetWithVisibilityResults
      */
     limitedActionResults?: { [key: string]: any; };
     /**
      * 
-     * @type {MediaVisibilityResults}
-     * @memberof TweetWithVisibilityResults
      */
     mediaVisibilityResults?: MediaVisibilityResults;
     /**
      * 
-     * @type {Tweet}
-     * @memberof TweetWithVisibilityResults
      */
     tweet: Tweet;
     /**
      * 
-     * @type {TweetInterstitial}
-     * @memberof TweetWithVisibilityResults
      */
     tweetInterstitial?: TweetInterstitial;
 }
@@ -86,7 +76,7 @@ export interface TweetWithVisibilityResults {
  * Check if a given object implements the TweetWithVisibilityResults interface.
  */
 export function instanceOfTweetWithVisibilityResults(value: object): value is TweetWithVisibilityResults {
-    if (!('typename' in value) || value['typename'] === undefined) return false;
+    if ((!('typename' in (value as Record<string, any>)) && !('__typename' in (value as Record<string, any>))) || ((value as Record<string, any>)['typename'] === undefined && (value as Record<string, any>)['__typename'] === undefined)) return false;
     if (!('tweet' in value) || value['tweet'] === undefined) return false;
     return true;
 }

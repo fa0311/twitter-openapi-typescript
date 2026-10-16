@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface PostCtaUserResultsAvatar {
     /**
      * 
-     * @type {string}
-     * @memberof PostCtaUserResultsAvatar
      */
     imageUrl: string;
 }
@@ -31,7 +29,7 @@ export interface PostCtaUserResultsAvatar {
  * Check if a given object implements the PostCtaUserResultsAvatar interface.
  */
 export function instanceOfPostCtaUserResultsAvatar(value: object): value is PostCtaUserResultsAvatar {
-    if (!('imageUrl' in value) || value['imageUrl'] === undefined) return false;
+    if ((!('imageUrl' in (value as Record<string, any>)) && !('image_url' in (value as Record<string, any>))) || ((value as Record<string, any>)['imageUrl'] === undefined && (value as Record<string, any>)['image_url'] === undefined)) return false;
     return true;
 }
 

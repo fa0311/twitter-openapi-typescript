@@ -43,32 +43,22 @@ import {
 export interface NoteTweetResultData {
     /**
      * 
-     * @type {Entities}
-     * @memberof NoteTweetResultData
      */
     entitySet: Entities;
     /**
      * 
-     * @type {string}
-     * @memberof NoteTweetResultData
      */
     id: string;
     /**
      * 
-     * @type {NoteTweetResultMedia}
-     * @memberof NoteTweetResultData
      */
     media?: NoteTweetResultMedia;
     /**
      * 
-     * @type {NoteTweetResultRichText}
-     * @memberof NoteTweetResultData
      */
     richtext?: NoteTweetResultRichText;
     /**
      * 
-     * @type {string}
-     * @memberof NoteTweetResultData
      */
     text: string;
 }
@@ -77,7 +67,7 @@ export interface NoteTweetResultData {
  * Check if a given object implements the NoteTweetResultData interface.
  */
 export function instanceOfNoteTweetResultData(value: object): value is NoteTweetResultData {
-    if (!('entitySet' in value) || value['entitySet'] === undefined) return false;
+    if ((!('entitySet' in (value as Record<string, any>)) && !('entity_set' in (value as Record<string, any>))) || ((value as Record<string, any>)['entitySet'] === undefined && (value as Record<string, any>)['entity_set'] === undefined)) return false;
     if (!('id' in value) || value['id'] === undefined) return false;
     if (!('text' in value) || value['text'] === undefined) return false;
     return true;

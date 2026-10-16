@@ -57,50 +57,38 @@ import {
 export interface UserResultByScreenNameResult {
     /**
      * 
-     * @type {TypeName}
-     * @memberof UserResultByScreenNameResult
      */
     typename: TypeName;
     /**
      * 
-     * @type {UserResultByScreenNameCore}
-     * @memberof UserResultByScreenNameResult
      */
     core: UserResultByScreenNameCore;
     /**
      * 
-     * @type {string}
-     * @memberof UserResultByScreenNameResult
      */
     id: string;
     /**
      * 
-     * @type {UserResultByScreenNameLegacy}
-     * @memberof UserResultByScreenNameResult
+     */
+    isVerifiedOrganization?: boolean;
+    /**
+     * 
      */
     legacy?: UserResultByScreenNameLegacy;
     /**
      * 
-     * @type {UserResultPrivacy}
-     * @memberof UserResultByScreenNameResult
      */
     privacy: UserResultPrivacy;
     /**
      * 
-     * @type {{ [key: string]: any; }}
-     * @memberof UserResultByScreenNameResult
      */
     profilemodules: { [key: string]: any; };
     /**
      * 
-     * @type {UserResultRelationshipPerspectives}
-     * @memberof UserResultByScreenNameResult
      */
     relationshipPerspectives: UserResultRelationshipPerspectives;
     /**
      * 
-     * @type {string}
-     * @memberof UserResultByScreenNameResult
      */
     restId: string;
 }
@@ -111,13 +99,13 @@ export interface UserResultByScreenNameResult {
  * Check if a given object implements the UserResultByScreenNameResult interface.
  */
 export function instanceOfUserResultByScreenNameResult(value: object): value is UserResultByScreenNameResult {
-    if (!('typename' in value) || value['typename'] === undefined) return false;
+    if ((!('typename' in (value as Record<string, any>)) && !('__typename' in (value as Record<string, any>))) || ((value as Record<string, any>)['typename'] === undefined && (value as Record<string, any>)['__typename'] === undefined)) return false;
     if (!('core' in value) || value['core'] === undefined) return false;
     if (!('id' in value) || value['id'] === undefined) return false;
     if (!('privacy' in value) || value['privacy'] === undefined) return false;
     if (!('profilemodules' in value) || value['profilemodules'] === undefined) return false;
-    if (!('relationshipPerspectives' in value) || value['relationshipPerspectives'] === undefined) return false;
-    if (!('restId' in value) || value['restId'] === undefined) return false;
+    if ((!('relationshipPerspectives' in (value as Record<string, any>)) && !('relationship_perspectives' in (value as Record<string, any>))) || ((value as Record<string, any>)['relationshipPerspectives'] === undefined && (value as Record<string, any>)['relationship_perspectives'] === undefined)) return false;
+    if ((!('restId' in (value as Record<string, any>)) && !('rest_id' in (value as Record<string, any>))) || ((value as Record<string, any>)['restId'] === undefined && (value as Record<string, any>)['rest_id'] === undefined)) return false;
     return true;
 }
 
@@ -134,6 +122,7 @@ export function UserResultByScreenNameResultFromJSONTyped(json: any, ignoreDiscr
         'typename': TypeNameFromJSON(json['__typename']),
         'core': UserResultByScreenNameCoreFromJSON(json['core']),
         'id': json['id'],
+        'isVerifiedOrganization': json['is_verified_organization'] == null ? undefined : json['is_verified_organization'],
         'legacy': json['legacy'] == null ? undefined : UserResultByScreenNameLegacyFromJSON(json['legacy']),
         'privacy': UserResultPrivacyFromJSON(json['privacy']),
         'profilemodules': json['profilemodules'],
@@ -156,6 +145,7 @@ export function UserResultByScreenNameResultToJSONTyped(value?: UserResultByScre
         '__typename': TypeNameToJSON(value['typename']),
         'core': UserResultByScreenNameCoreToJSON(value['core']),
         'id': value['id'],
+        'is_verified_organization': value['isVerifiedOrganization'],
         'legacy': UserResultByScreenNameLegacyToJSON(value['legacy']),
         'privacy': UserResultPrivacyToJSON(value['privacy']),
         'profilemodules': value['profilemodules'],

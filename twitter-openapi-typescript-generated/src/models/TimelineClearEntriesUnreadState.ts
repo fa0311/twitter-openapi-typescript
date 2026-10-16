@@ -29,8 +29,6 @@ import {
 export interface TimelineClearEntriesUnreadState {
     /**
      * 
-     * @type {InstructionType}
-     * @memberof TimelineClearEntriesUnreadState
      */
     type: InstructionType;
 }

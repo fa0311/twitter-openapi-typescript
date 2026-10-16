@@ -29,8 +29,6 @@ import {
 export interface SearchTimeline {
     /**
      * 
-     * @type {Timeline}
-     * @memberof SearchTimeline
      */
     timeline: Timeline;
 }

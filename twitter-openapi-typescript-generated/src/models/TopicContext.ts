@@ -21,44 +21,30 @@ import { mapValues } from '../runtime';
 export interface TopicContext {
     /**
      * 
-     * @type {string}
-     * @memberof TopicContext
      */
     description?: string;
     /**
      * 
-     * @type {boolean}
-     * @memberof TopicContext
      */
     following?: boolean;
     /**
      * 
-     * @type {string}
-     * @memberof TopicContext
      */
     iconUrl?: string;
     /**
      * 
-     * @type {string}
-     * @memberof TopicContext
      */
     id?: string;
     /**
      * 
-     * @type {string}
-     * @memberof TopicContext
      */
     name?: string;
     /**
      * 
-     * @type {boolean}
-     * @memberof TopicContext
      */
     notInterested?: boolean;
     /**
      * 
-     * @type {string}
-     * @memberof TopicContext
      */
     topicId?: string;
 }

@@ -36,14 +36,10 @@ import {
 export interface PostCtaTitleTextEntityRef {
     /**
      * 
-     * @type {TypeName}
-     * @memberof PostCtaTitleTextEntityRef
      */
     typename: TypeName;
     /**
      * 
-     * @type {PostCtaUserResults}
-     * @memberof PostCtaTitleTextEntityRef
      */
     userResults?: PostCtaUserResults;
 }
@@ -54,7 +50,7 @@ export interface PostCtaTitleTextEntityRef {
  * Check if a given object implements the PostCtaTitleTextEntityRef interface.
  */
 export function instanceOfPostCtaTitleTextEntityRef(value: object): value is PostCtaTitleTextEntityRef {
-    if (!('typename' in value) || value['typename'] === undefined) return false;
+    if ((!('typename' in (value as Record<string, any>)) && !('__typename' in (value as Record<string, any>))) || ((value as Record<string, any>)['typename'] === undefined && (value as Record<string, any>)['__typename'] === undefined)) return false;
     return true;
 }
 

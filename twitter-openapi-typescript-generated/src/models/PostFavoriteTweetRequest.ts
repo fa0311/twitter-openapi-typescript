@@ -29,14 +29,10 @@ import {
 export interface PostFavoriteTweetRequest {
     /**
      * 
-     * @type {string}
-     * @memberof PostFavoriteTweetRequest
      */
     queryId: string;
     /**
      * 
-     * @type {PostCreateBookmarkRequestVariables}
-     * @memberof PostFavoriteTweetRequest
      */
     variables: PostCreateBookmarkRequestVariables;
 }

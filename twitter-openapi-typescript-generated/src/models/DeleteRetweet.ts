@@ -29,8 +29,6 @@ import {
 export interface DeleteRetweet {
     /**
      * 
-     * @type {Array<Retweet>}
-     * @memberof DeleteRetweet
      */
     result: Array<Retweet>;
 }

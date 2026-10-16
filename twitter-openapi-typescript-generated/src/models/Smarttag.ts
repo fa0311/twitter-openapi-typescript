@@ -29,20 +29,14 @@ import {
 export interface Smarttag {
     /**
      * 
-     * @type {Array<number>}
-     * @memberof Smarttag
      */
     indices: Array<number>;
     /**
      * 
-     * @type {SmarttagTag}
-     * @memberof Smarttag
      */
     tag: SmarttagTag;
     /**
      * 
-     * @type {string}
-     * @memberof Smarttag
      */
     text: string;
 }

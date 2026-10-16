@@ -29,8 +29,6 @@ import {
 export interface NoteTweetResultMedia {
     /**
      * 
-     * @type {Array<NoteTweetResultMediaInlineMedia>}
-     * @memberof NoteTweetResultMedia
      */
     inlineMedia: Array<NoteTweetResultMediaInlineMedia>;
 }
@@ -39,7 +37,7 @@ export interface NoteTweetResultMedia {
  * Check if a given object implements the NoteTweetResultMedia interface.
  */
 export function instanceOfNoteTweetResultMedia(value: object): value is NoteTweetResultMedia {
-    if (!('inlineMedia' in value) || value['inlineMedia'] === undefined) return false;
+    if ((!('inlineMedia' in (value as Record<string, any>)) && !('inline_media' in (value as Record<string, any>))) || ((value as Record<string, any>)['inlineMedia'] === undefined && (value as Record<string, any>)['inline_media'] === undefined)) return false;
     return true;
 }
 

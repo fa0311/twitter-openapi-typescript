@@ -29,26 +29,18 @@ import {
 export interface ArticleCoverMedia {
     /**
      * 
-     * @type {string}
-     * @memberof ArticleCoverMedia
      */
     id: string;
     /**
      * 
-     * @type {string}
-     * @memberof ArticleCoverMedia
      */
     mediaId: string;
     /**
      * 
-     * @type {ArticleCoverMediaInfo}
-     * @memberof ArticleCoverMedia
      */
     mediaInfo: ArticleCoverMediaInfo;
     /**
      * 
-     * @type {string}
-     * @memberof ArticleCoverMedia
      */
     mediaKey: string;
 }
@@ -58,9 +50,9 @@ export interface ArticleCoverMedia {
  */
 export function instanceOfArticleCoverMedia(value: object): value is ArticleCoverMedia {
     if (!('id' in value) || value['id'] === undefined) return false;
-    if (!('mediaId' in value) || value['mediaId'] === undefined) return false;
-    if (!('mediaInfo' in value) || value['mediaInfo'] === undefined) return false;
-    if (!('mediaKey' in value) || value['mediaKey'] === undefined) return false;
+    if ((!('mediaId' in (value as Record<string, any>)) && !('media_id' in (value as Record<string, any>))) || ((value as Record<string, any>)['mediaId'] === undefined && (value as Record<string, any>)['media_id'] === undefined)) return false;
+    if ((!('mediaInfo' in (value as Record<string, any>)) && !('media_info' in (value as Record<string, any>))) || ((value as Record<string, any>)['mediaInfo'] === undefined && (value as Record<string, any>)['media_info'] === undefined)) return false;
+    if ((!('mediaKey' in (value as Record<string, any>)) && !('media_key' in (value as Record<string, any>))) || ((value as Record<string, any>)['mediaKey'] === undefined && (value as Record<string, any>)['media_key'] === undefined)) return false;
     return true;
 }
 

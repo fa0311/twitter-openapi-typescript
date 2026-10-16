@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface ContentDisclosureAiGeneratedDisclosure {
     /**
      * 
-     * @type {ContentDisclosureAiGeneratedDisclosureAiGeneratedDetectionSourceEnum}
-     * @memberof ContentDisclosureAiGeneratedDisclosure
      */
     aiGeneratedDetectionSource?: ContentDisclosureAiGeneratedDisclosureAiGeneratedDetectionSourceEnum;
     /**
      * 
-     * @type {boolean}
-     * @memberof ContentDisclosureAiGeneratedDisclosure
      */
     canEdit: boolean;
     /**
      * 
-     * @type {boolean}
-     * @memberof ContentDisclosureAiGeneratedDisclosure
      */
     hasAiGeneratedMedia: boolean;
 }
@@ -46,7 +40,8 @@ export interface ContentDisclosureAiGeneratedDisclosure {
 export const ContentDisclosureAiGeneratedDisclosureAiGeneratedDetectionSourceEnum = {
     C2paClient: 'C2paClient',
     ContentDisclosureAiGeneratedDisclosure: 'ContentDisclosureAiGeneratedDisclosure',
-    UserDeclared: 'UserDeclared'
+    UserDeclared: 'UserDeclared',
+    GrokSignature: 'GrokSignature',
 } as const;
 export type ContentDisclosureAiGeneratedDisclosureAiGeneratedDetectionSourceEnum = typeof ContentDisclosureAiGeneratedDisclosureAiGeneratedDetectionSourceEnum[keyof typeof ContentDisclosureAiGeneratedDisclosureAiGeneratedDetectionSourceEnum];
 
@@ -55,8 +50,8 @@ export type ContentDisclosureAiGeneratedDisclosureAiGeneratedDetectionSourceEnum
  * Check if a given object implements the ContentDisclosureAiGeneratedDisclosure interface.
  */
 export function instanceOfContentDisclosureAiGeneratedDisclosure(value: object): value is ContentDisclosureAiGeneratedDisclosure {
-    if (!('canEdit' in value) || value['canEdit'] === undefined) return false;
-    if (!('hasAiGeneratedMedia' in value) || value['hasAiGeneratedMedia'] === undefined) return false;
+    if ((!('canEdit' in (value as Record<string, any>)) && !('can_edit' in (value as Record<string, any>))) || ((value as Record<string, any>)['canEdit'] === undefined && (value as Record<string, any>)['can_edit'] === undefined)) return false;
+    if ((!('hasAiGeneratedMedia' in (value as Record<string, any>)) && !('has_ai_generated_media' in (value as Record<string, any>))) || ((value as Record<string, any>)['hasAiGeneratedMedia'] === undefined && (value as Record<string, any>)['has_ai_generated_media'] === undefined)) return false;
     return true;
 }
 

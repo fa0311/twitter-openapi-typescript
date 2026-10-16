@@ -36,14 +36,10 @@ import {
 export interface TimelinePinEntry {
     /**
      * 
-     * @type {TimelineAddEntry}
-     * @memberof TimelinePinEntry
      */
     entry: TimelineAddEntry;
     /**
      * 
-     * @type {InstructionType}
-     * @memberof TimelinePinEntry
      */
     type: InstructionType;
 }

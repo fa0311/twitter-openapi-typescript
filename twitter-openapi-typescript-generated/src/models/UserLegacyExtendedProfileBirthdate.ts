@@ -21,32 +21,22 @@ import { mapValues } from '../runtime';
 export interface UserLegacyExtendedProfileBirthdate {
     /**
      * 
-     * @type {number}
-     * @memberof UserLegacyExtendedProfileBirthdate
      */
     day: number;
     /**
      * 
-     * @type {number}
-     * @memberof UserLegacyExtendedProfileBirthdate
      */
     month: number;
     /**
      * 
-     * @type {UserLegacyExtendedProfileBirthdateVisibilityEnum}
-     * @memberof UserLegacyExtendedProfileBirthdate
      */
     visibility: UserLegacyExtendedProfileBirthdateVisibilityEnum;
     /**
      * 
-     * @type {number}
-     * @memberof UserLegacyExtendedProfileBirthdate
      */
     year?: number;
     /**
      * 
-     * @type {UserLegacyExtendedProfileBirthdateYearVisibilityEnum}
-     * @memberof UserLegacyExtendedProfileBirthdate
      */
     yearVisibility: UserLegacyExtendedProfileBirthdateYearVisibilityEnum;
 }
@@ -60,7 +50,7 @@ export const UserLegacyExtendedProfileBirthdateVisibilityEnum = {
     Public: 'Public',
     MutualFollow: 'MutualFollow',
     Followers: 'Followers',
-    Following: 'Following'
+    Following: 'Following',
 } as const;
 export type UserLegacyExtendedProfileBirthdateVisibilityEnum = typeof UserLegacyExtendedProfileBirthdateVisibilityEnum[keyof typeof UserLegacyExtendedProfileBirthdateVisibilityEnum];
 
@@ -72,7 +62,7 @@ export const UserLegacyExtendedProfileBirthdateYearVisibilityEnum = {
     Public: 'Public',
     MutualFollow: 'MutualFollow',
     Followers: 'Followers',
-    Following: 'Following'
+    Following: 'Following',
 } as const;
 export type UserLegacyExtendedProfileBirthdateYearVisibilityEnum = typeof UserLegacyExtendedProfileBirthdateYearVisibilityEnum[keyof typeof UserLegacyExtendedProfileBirthdateYearVisibilityEnum];
 
@@ -84,7 +74,7 @@ export function instanceOfUserLegacyExtendedProfileBirthdate(value: object): val
     if (!('day' in value) || value['day'] === undefined) return false;
     if (!('month' in value) || value['month'] === undefined) return false;
     if (!('visibility' in value) || value['visibility'] === undefined) return false;
-    if (!('yearVisibility' in value) || value['yearVisibility'] === undefined) return false;
+    if ((!('yearVisibility' in (value as Record<string, any>)) && !('year_visibility' in (value as Record<string, any>))) || ((value as Record<string, any>)['yearVisibility'] === undefined && (value as Record<string, any>)['year_visibility'] === undefined)) return false;
     return true;
 }
 

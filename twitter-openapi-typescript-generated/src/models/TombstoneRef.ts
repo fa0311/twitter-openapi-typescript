@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface TombstoneRef {
     /**
      * 
-     * @type {TombstoneRefTypeEnum}
-     * @memberof TombstoneRef
      */
     type?: TombstoneRefTypeEnum;
     /**
      * 
-     * @type {string}
-     * @memberof TombstoneRef
      */
     url?: string;
     /**
      * 
-     * @type {TombstoneRefUrlTypeEnum}
-     * @memberof TombstoneRef
      */
     urlType?: TombstoneRefUrlTypeEnum;
 }
@@ -44,7 +38,7 @@ export interface TombstoneRef {
  * @export
  */
 export const TombstoneRefTypeEnum = {
-    TimelineUrl: 'TimelineUrl'
+    TimelineUrl: 'TimelineUrl',
 } as const;
 export type TombstoneRefTypeEnum = typeof TombstoneRefTypeEnum[keyof typeof TombstoneRefTypeEnum];
 
@@ -52,7 +46,7 @@ export type TombstoneRefTypeEnum = typeof TombstoneRefTypeEnum[keyof typeof Tomb
  * @export
  */
 export const TombstoneRefUrlTypeEnum = {
-    ExternalUrl: 'ExternalUrl'
+    ExternalUrl: 'ExternalUrl',
 } as const;
 export type TombstoneRefUrlTypeEnum = typeof TombstoneRefUrlTypeEnum[keyof typeof TombstoneRefUrlTypeEnum];
 

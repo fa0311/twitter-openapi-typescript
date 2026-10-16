@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface PostCreateBookmarkRequestVariables {
     /**
      * 
-     * @type {string}
-     * @memberof PostCreateBookmarkRequestVariables
      */
     tweetId: string;
 }
@@ -31,7 +29,7 @@ export interface PostCreateBookmarkRequestVariables {
  * Check if a given object implements the PostCreateBookmarkRequestVariables interface.
  */
 export function instanceOfPostCreateBookmarkRequestVariables(value: object): value is PostCreateBookmarkRequestVariables {
-    if (!('tweetId' in value) || value['tweetId'] === undefined) return false;
+    if ((!('tweetId' in (value as Record<string, any>)) && !('tweet_id' in (value as Record<string, any>))) || ((value as Record<string, any>)['tweetId'] === undefined && (value as Record<string, any>)['tweet_id'] === undefined)) return false;
     return true;
 }
 

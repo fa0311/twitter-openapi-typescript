@@ -29,8 +29,6 @@ import {
 export interface CommunityJoinRequestsResult {
     /**
      * 
-     * @type {TypeName}
-     * @memberof CommunityJoinRequestsResult
      */
     typename: TypeName;
 }
@@ -41,7 +39,7 @@ export interface CommunityJoinRequestsResult {
  * Check if a given object implements the CommunityJoinRequestsResult interface.
  */
 export function instanceOfCommunityJoinRequestsResult(value: object): value is CommunityJoinRequestsResult {
-    if (!('typename' in value) || value['typename'] === undefined) return false;
+    if ((!('typename' in (value as Record<string, any>)) && !('__typename' in (value as Record<string, any>))) || ((value as Record<string, any>)['typename'] === undefined && (value as Record<string, any>)['__typename'] === undefined)) return false;
     return true;
 }
 

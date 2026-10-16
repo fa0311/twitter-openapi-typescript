@@ -36,20 +36,14 @@ import {
 export interface AuthorCommunityRelationship {
     /**
      * 
-     * @type {CommunityResult}
-     * @memberof AuthorCommunityRelationship
      */
     communityResults: CommunityResult;
     /**
      * 
-     * @type {AuthorCommunityRelationshipRoleEnum}
-     * @memberof AuthorCommunityRelationship
      */
     role?: AuthorCommunityRelationshipRoleEnum;
     /**
      * 
-     * @type {UserResults}
-     * @memberof AuthorCommunityRelationship
      */
     userResults?: UserResults;
 }
@@ -62,7 +56,7 @@ export const AuthorCommunityRelationshipRoleEnum = {
     Member: 'Member',
     Moderator: 'Moderator',
     Admin: 'Admin',
-    NonMember: 'NonMember'
+    NonMember: 'NonMember',
 } as const;
 export type AuthorCommunityRelationshipRoleEnum = typeof AuthorCommunityRelationshipRoleEnum[keyof typeof AuthorCommunityRelationshipRoleEnum];
 
@@ -71,7 +65,7 @@ export type AuthorCommunityRelationshipRoleEnum = typeof AuthorCommunityRelation
  * Check if a given object implements the AuthorCommunityRelationship interface.
  */
 export function instanceOfAuthorCommunityRelationship(value: object): value is AuthorCommunityRelationship {
-    if (!('communityResults' in value) || value['communityResults'] === undefined) return false;
+    if ((!('communityResults' in (value as Record<string, any>)) && !('community_results' in (value as Record<string, any>))) || ((value as Record<string, any>)['communityResults'] === undefined && (value as Record<string, any>)['community_results'] === undefined)) return false;
     return true;
 }
 

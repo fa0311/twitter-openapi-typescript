@@ -36,14 +36,10 @@ import {
 export interface UserHighlightsTweetsResponse {
     /**
      * 
-     * @type {UserHighlightsTweetsData}
-     * @memberof UserHighlightsTweetsResponse
      */
     data: UserHighlightsTweetsData;
     /**
      * 
-     * @type {Array<ErrorResponse>}
-     * @memberof UserHighlightsTweetsResponse
      */
     errors?: Array<ErrorResponse>;
 }

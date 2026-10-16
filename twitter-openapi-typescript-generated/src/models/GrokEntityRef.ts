@@ -21,38 +21,26 @@ import { mapValues } from '../runtime';
 export interface GrokEntityRef {
     /**
      * 
-     * @type {string}
-     * @memberof GrokEntityRef
      */
     displayUrl?: string;
     /**
      * 
-     * @type {string}
-     * @memberof GrokEntityRef
      */
     expandedUrl?: string;
     /**
      * 
-     * @type {string}
-     * @memberof GrokEntityRef
      */
     text?: string;
     /**
      * 
-     * @type {GrokEntityRefTypeEnum}
-     * @memberof GrokEntityRef
      */
     type: GrokEntityRefTypeEnum;
     /**
      * 
-     * @type {string}
-     * @memberof GrokEntityRef
      */
     url?: string;
     /**
      * 
-     * @type {GrokEntityRefUrlTypeEnum}
-     * @memberof GrokEntityRef
      */
     urlType?: GrokEntityRefUrlTypeEnum;
 }
@@ -63,7 +51,7 @@ export interface GrokEntityRef {
  */
 export const GrokEntityRefTypeEnum = {
     TimelineUrl: 'TimelineUrl',
-    TimelineRichTextHashtag: 'TimelineRichTextHashtag'
+    TimelineRichTextHashtag: 'TimelineRichTextHashtag',
 } as const;
 export type GrokEntityRefTypeEnum = typeof GrokEntityRefTypeEnum[keyof typeof GrokEntityRefTypeEnum];
 
@@ -71,7 +59,7 @@ export type GrokEntityRefTypeEnum = typeof GrokEntityRefTypeEnum[keyof typeof Gr
  * @export
  */
 export const GrokEntityRefUrlTypeEnum = {
-    ExternalUrl: 'ExternalUrl'
+    ExternalUrl: 'ExternalUrl',
 } as const;
 export type GrokEntityRefUrlTypeEnum = typeof GrokEntityRefUrlTypeEnum[keyof typeof GrokEntityRefUrlTypeEnum];
 

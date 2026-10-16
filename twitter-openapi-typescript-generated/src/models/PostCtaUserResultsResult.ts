@@ -36,14 +36,10 @@ import {
 export interface PostCtaUserResultsResult {
     /**
      * 
-     * @type {TypeName}
-     * @memberof PostCtaUserResultsResult
      */
     typename: TypeName;
     /**
      * 
-     * @type {PostCtaUserResultsAvatar}
-     * @memberof PostCtaUserResultsResult
      */
     avatar: PostCtaUserResultsAvatar;
 }
@@ -54,7 +50,7 @@ export interface PostCtaUserResultsResult {
  * Check if a given object implements the PostCtaUserResultsResult interface.
  */
 export function instanceOfPostCtaUserResultsResult(value: object): value is PostCtaUserResultsResult {
-    if (!('typename' in value) || value['typename'] === undefined) return false;
+    if ((!('typename' in (value as Record<string, any>)) && !('__typename' in (value as Record<string, any>))) || ((value as Record<string, any>)['typename'] === undefined && (value as Record<string, any>)['__typename'] === undefined)) return false;
     if (!('avatar' in value) || value['avatar'] === undefined) return false;
     return true;
 }

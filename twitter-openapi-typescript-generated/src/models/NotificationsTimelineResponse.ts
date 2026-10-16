@@ -36,14 +36,10 @@ import {
 export interface NotificationsTimelineResponse {
     /**
      * 
-     * @type {NotificationsTimelineData}
-     * @memberof NotificationsTimelineResponse
      */
     data: NotificationsTimelineData;
     /**
      * 
-     * @type {Array<ErrorResponse>}
-     * @memberof NotificationsTimelineResponse
      */
     errors?: Array<ErrorResponse>;
 }

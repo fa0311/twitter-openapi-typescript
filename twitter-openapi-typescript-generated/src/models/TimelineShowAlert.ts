@@ -50,64 +50,44 @@ import {
 export interface TimelineShowAlert {
     /**
      * 
-     * @type {TimelineShowAlertAlertTypeEnum}
-     * @memberof TimelineShowAlert
      */
     alertType?: TimelineShowAlertAlertTypeEnum;
     /**
      * 
-     * @type {ClientEventInfo}
-     * @memberof TimelineShowAlert
      */
     clientEventInfo?: ClientEventInfo;
     /**
      * 
-     * @type {{ [key: string]: any; }}
-     * @memberof TimelineShowAlert
      */
     colorConfig?: { [key: string]: any; };
     /**
      * 
-     * @type {number}
-     * @memberof TimelineShowAlert
      */
     displayDurationMs?: number;
     /**
      * 
-     * @type {TimelineShowAlertDisplayLocationEnum}
-     * @memberof TimelineShowAlert
      */
     displayLocation?: TimelineShowAlertDisplayLocationEnum;
     /**
      * 
-     * @type {{ [key: string]: any; }}
-     * @memberof TimelineShowAlert
      */
     iconDisplayInfo?: { [key: string]: any; };
     /**
      * 
-     * @type {TimelineShowAlertRichText}
-     * @memberof TimelineShowAlert
      */
     richText: TimelineShowAlertRichText;
     /**
      * 
-     * @type {number}
-     * @memberof TimelineShowAlert
      */
     triggerDelayMs?: number;
     /**
      * 
-     * @type {InstructionType}
-     * @memberof TimelineShowAlert
      */
     type: InstructionType;
     /**
      * 
-     * @type {Array<UserResults>}
-     * @memberof TimelineShowAlert
      */
-    usersResults: Array<UserResults>;
+    usersResults: Array<UserResults> | null;
 }
 
 
@@ -115,7 +95,7 @@ export interface TimelineShowAlert {
  * @export
  */
 export const TimelineShowAlertAlertTypeEnum = {
-    NewTweets: 'NewTweets'
+    NewTweets: 'NewTweets',
 } as const;
 export type TimelineShowAlertAlertTypeEnum = typeof TimelineShowAlertAlertTypeEnum[keyof typeof TimelineShowAlertAlertTypeEnum];
 
@@ -123,7 +103,7 @@ export type TimelineShowAlertAlertTypeEnum = typeof TimelineShowAlertAlertTypeEn
  * @export
  */
 export const TimelineShowAlertDisplayLocationEnum = {
-    Top: 'Top'
+    Top: 'Top',
 } as const;
 export type TimelineShowAlertDisplayLocationEnum = typeof TimelineShowAlertDisplayLocationEnum[keyof typeof TimelineShowAlertDisplayLocationEnum];
 
@@ -157,7 +137,7 @@ export function TimelineShowAlertFromJSONTyped(json: any, ignoreDiscriminator: b
         'richText': TimelineShowAlertRichTextFromJSON(json['richText']),
         'triggerDelayMs': json['triggerDelayMs'] == null ? undefined : json['triggerDelayMs'],
         'type': InstructionTypeFromJSON(json['type']),
-        'usersResults': ((json['usersResults'] as Array<any>).map(UserResultsFromJSON)),
+        'usersResults': (json['usersResults'] == null ? null : (json['usersResults'] as Array<any>).map(UserResultsFromJSON)),
     };
 }
 
@@ -181,7 +161,7 @@ export function TimelineShowAlertToJSONTyped(value?: TimelineShowAlert | null, i
         'richText': TimelineShowAlertRichTextToJSON(value['richText']),
         'triggerDelayMs': value['triggerDelayMs'],
         'type': InstructionTypeToJSON(value['type']),
-        'usersResults': ((value['usersResults'] as Array<any>).map(UserResultsToJSON)),
+        'usersResults': (value['usersResults'] == null ? null : (value['usersResults'] as Array<any>).map(UserResultsToJSON)),
     };
 }
 

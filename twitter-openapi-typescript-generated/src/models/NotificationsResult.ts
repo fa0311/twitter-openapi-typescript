@@ -36,20 +36,14 @@ import {
 export interface NotificationsResult {
     /**
      * 
-     * @type {TypeName}
-     * @memberof NotificationsResult
      */
     typename: TypeName;
     /**
      * 
-     * @type {TimelineResult}
-     * @memberof NotificationsResult
      */
     notificationTimeline: TimelineResult;
     /**
      * 
-     * @type {string}
-     * @memberof NotificationsResult
      */
     restId: string;
 }
@@ -60,9 +54,9 @@ export interface NotificationsResult {
  * Check if a given object implements the NotificationsResult interface.
  */
 export function instanceOfNotificationsResult(value: object): value is NotificationsResult {
-    if (!('typename' in value) || value['typename'] === undefined) return false;
-    if (!('notificationTimeline' in value) || value['notificationTimeline'] === undefined) return false;
-    if (!('restId' in value) || value['restId'] === undefined) return false;
+    if ((!('typename' in (value as Record<string, any>)) && !('__typename' in (value as Record<string, any>))) || ((value as Record<string, any>)['typename'] === undefined && (value as Record<string, any>)['__typename'] === undefined)) return false;
+    if ((!('notificationTimeline' in (value as Record<string, any>)) && !('notification_timeline' in (value as Record<string, any>))) || ((value as Record<string, any>)['notificationTimeline'] === undefined && (value as Record<string, any>)['notification_timeline'] === undefined)) return false;
+    if ((!('restId' in (value as Record<string, any>)) && !('rest_id' in (value as Record<string, any>))) || ((value as Record<string, any>)['restId'] === undefined && (value as Record<string, any>)['rest_id'] === undefined)) return false;
     return true;
 }
 

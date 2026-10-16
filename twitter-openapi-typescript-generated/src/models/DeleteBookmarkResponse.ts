@@ -36,14 +36,10 @@ import {
 export interface DeleteBookmarkResponse {
     /**
      * 
-     * @type {DeleteBookmarkResponseData}
-     * @memberof DeleteBookmarkResponse
      */
     data: DeleteBookmarkResponseData;
     /**
      * 
-     * @type {Array<ErrorResponse>}
-     * @memberof DeleteBookmarkResponse
      */
     errors?: Array<ErrorResponse>;
 }

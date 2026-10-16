@@ -29,14 +29,10 @@ import {
 export interface GrokTranslatedPostWithAvailability {
     /**
      * 
-     * @type {GrokTranslatedPost}
-     * @memberof GrokTranslatedPostWithAvailability
      */
     data?: GrokTranslatedPost;
     /**
      * 
-     * @type {boolean}
-     * @memberof GrokTranslatedPostWithAvailability
      */
     isAvailable: boolean;
 }
@@ -45,7 +41,7 @@ export interface GrokTranslatedPostWithAvailability {
  * Check if a given object implements the GrokTranslatedPostWithAvailability interface.
  */
 export function instanceOfGrokTranslatedPostWithAvailability(value: object): value is GrokTranslatedPostWithAvailability {
-    if (!('isAvailable' in value) || value['isAvailable'] === undefined) return false;
+    if ((!('isAvailable' in (value as Record<string, any>)) && !('is_available' in (value as Record<string, any>))) || ((value as Record<string, any>)['isAvailable'] === undefined && (value as Record<string, any>)['is_available'] === undefined)) return false;
     return true;
 }
 

@@ -29,8 +29,6 @@ import {
 export interface UserResultCore {
     /**
      * 
-     * @type {UserResults}
-     * @memberof UserResultCore
      */
     userResults: UserResults;
 }
@@ -39,7 +37,7 @@ export interface UserResultCore {
  * Check if a given object implements the UserResultCore interface.
  */
 export function instanceOfUserResultCore(value: object): value is UserResultCore {
-    if (!('userResults' in value) || value['userResults'] === undefined) return false;
+    if ((!('userResults' in (value as Record<string, any>)) && !('user_results' in (value as Record<string, any>))) || ((value as Record<string, any>)['userResults'] === undefined && (value as Record<string, any>)['user_results'] === undefined)) return false;
     return true;
 }
 

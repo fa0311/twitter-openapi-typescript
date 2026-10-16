@@ -36,20 +36,14 @@ import {
 export interface TimelineReplaceEntry {
     /**
      * 
-     * @type {TimelineAddEntry}
-     * @memberof TimelineReplaceEntry
      */
     entry: TimelineAddEntry;
     /**
      * 
-     * @type {string}
-     * @memberof TimelineReplaceEntry
      */
     entryIdToReplace: string;
     /**
      * 
-     * @type {InstructionType}
-     * @memberof TimelineReplaceEntry
      */
     type: InstructionType;
 }
@@ -61,7 +55,7 @@ export interface TimelineReplaceEntry {
  */
 export function instanceOfTimelineReplaceEntry(value: object): value is TimelineReplaceEntry {
     if (!('entry' in value) || value['entry'] === undefined) return false;
-    if (!('entryIdToReplace' in value) || value['entryIdToReplace'] === undefined) return false;
+    if ((!('entryIdToReplace' in (value as Record<string, any>)) && !('entry_id_to_replace' in (value as Record<string, any>))) || ((value as Record<string, any>)['entryIdToReplace'] === undefined && (value as Record<string, any>)['entry_id_to_replace'] === undefined)) return false;
     if (!('type' in value) || value['type'] === undefined) return false;
     return true;
 }

@@ -29,14 +29,10 @@ import {
 export interface TweetCardLegacyBindingValue {
     /**
      * 
-     * @type {string}
-     * @memberof TweetCardLegacyBindingValue
      */
     key: string;
     /**
      * 
-     * @type {TweetCardLegacyBindingValueData}
-     * @memberof TweetCardLegacyBindingValue
      */
     value: TweetCardLegacyBindingValueData;
 }

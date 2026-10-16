@@ -29,8 +29,6 @@ import {
 export interface AnalysisResults {
     /**
      * 
-     * @type {Tweet}
-     * @memberof AnalysisResults
      */
     result: Tweet;
 }

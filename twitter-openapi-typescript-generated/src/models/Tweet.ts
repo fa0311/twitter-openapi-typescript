@@ -20,13 +20,6 @@ import {
     NoteTweetToJSON,
     NoteTweetToJSONTyped,
 } from './NoteTweet';
-import type { ContentDisclosure } from './ContentDisclosure';
-import {
-    ContentDisclosureFromJSON,
-    ContentDisclosureFromJSONTyped,
-    ContentDisclosureToJSON,
-    ContentDisclosureToJSONTyped,
-} from './ContentDisclosure';
 import type { TypeName } from './TypeName';
 import {
     TypeNameFromJSON,
@@ -34,13 +27,6 @@ import {
     TypeNameToJSON,
     TypeNameToJSONTyped,
 } from './TypeName';
-import type { GrokShareAttachment } from './GrokShareAttachment';
-import {
-    GrokShareAttachmentFromJSON,
-    GrokShareAttachmentFromJSONTyped,
-    GrokShareAttachmentToJSON,
-    GrokShareAttachmentToJSONTyped,
-} from './GrokShareAttachment';
 import type { SuperFollowsReplyUserResult } from './SuperFollowsReplyUserResult';
 import {
     SuperFollowsReplyUserResultFromJSON,
@@ -48,13 +34,6 @@ import {
     SuperFollowsReplyUserResultToJSON,
     SuperFollowsReplyUserResultToJSONTyped,
 } from './SuperFollowsReplyUserResult';
-import type { TrendResults } from './TrendResults';
-import {
-    TrendResultsFromJSON,
-    TrendResultsFromJSONTyped,
-    TrendResultsToJSON,
-    TrendResultsToJSONTyped,
-} from './TrendResults';
 import type { UserResultCore } from './UserResultCore';
 import {
     UserResultCoreFromJSON,
@@ -76,13 +55,13 @@ import {
     TweetEditControlToJSON,
     TweetEditControlToJSONTyped,
 } from './TweetEditControl';
-import type { CommunityRelationship } from './CommunityRelationship';
+import type { CashtagAttachment } from './CashtagAttachment';
 import {
-    CommunityRelationshipFromJSON,
-    CommunityRelationshipFromJSONTyped,
-    CommunityRelationshipToJSON,
-    CommunityRelationshipToJSONTyped,
-} from './CommunityRelationship';
+    CashtagAttachmentFromJSON,
+    CashtagAttachmentFromJSONTyped,
+    CashtagAttachmentToJSON,
+    CashtagAttachmentToJSONTyped,
+} from './CashtagAttachment';
 import type { TweetEditPrespective } from './TweetEditPrespective';
 import {
     TweetEditPrespectiveFromJSON,
@@ -90,13 +69,6 @@ import {
     TweetEditPrespectiveToJSON,
     TweetEditPrespectiveToJSONTyped,
 } from './TweetEditPrespective';
-import type { TweetPreviousCounts } from './TweetPreviousCounts';
-import {
-    TweetPreviousCountsFromJSON,
-    TweetPreviousCountsFromJSONTyped,
-    TweetPreviousCountsToJSON,
-    TweetPreviousCountsToJSONTyped,
-} from './TweetPreviousCounts';
 import type { TweetView } from './TweetView';
 import {
     TweetViewFromJSON,
@@ -104,13 +76,6 @@ import {
     TweetViewToJSON,
     TweetViewToJSONTyped,
 } from './TweetView';
-import type { GrokAnnotation } from './GrokAnnotation';
-import {
-    GrokAnnotationFromJSON,
-    GrokAnnotationFromJSONTyped,
-    GrokAnnotationToJSON,
-    GrokAnnotationToJSONTyped,
-} from './GrokAnnotation';
 import type { TweetCard } from './TweetCard';
 import {
     TweetCardFromJSON,
@@ -118,13 +83,6 @@ import {
     TweetCardToJSON,
     TweetCardToJSONTyped,
 } from './TweetCard';
-import type { CommunityResult } from './CommunityResult';
-import {
-    CommunityResultFromJSON,
-    CommunityResultFromJSONTyped,
-    CommunityResultToJSON,
-    CommunityResultToJSONTyped,
-} from './CommunityResult';
 import type { AuthorCommunityRelationship } from './AuthorCommunityRelationship';
 import {
     AuthorCommunityRelationshipFromJSON,
@@ -132,13 +90,6 @@ import {
     AuthorCommunityRelationshipToJSON,
     AuthorCommunityRelationshipToJSONTyped,
 } from './AuthorCommunityRelationship';
-import type { GrokTranslatedPostWithAvailability } from './GrokTranslatedPostWithAvailability';
-import {
-    GrokTranslatedPostWithAvailabilityFromJSON,
-    GrokTranslatedPostWithAvailabilityFromJSONTyped,
-    GrokTranslatedPostWithAvailabilityToJSON,
-    GrokTranslatedPostWithAvailabilityToJSONTyped,
-} from './GrokTranslatedPostWithAvailability';
 import type { UnifiedCard } from './UnifiedCard';
 import {
     UnifiedCardFromJSON,
@@ -146,13 +97,6 @@ import {
     UnifiedCardToJSON,
     UnifiedCardToJSONTyped,
 } from './UnifiedCard';
-import type { ItemResult } from './ItemResult';
-import {
-    ItemResultFromJSON,
-    ItemResultFromJSONTyped,
-    ItemResultToJSON,
-    ItemResultToJSONTyped,
-} from './ItemResult';
 import type { QuotedRefResult } from './QuotedRefResult';
 import {
     QuotedRefResultFromJSON,
@@ -167,6 +111,69 @@ import {
     BirdwatchPivotToJSON,
     BirdwatchPivotToJSONTyped,
 } from './BirdwatchPivot';
+import type { ContentDisclosure } from './ContentDisclosure';
+import {
+    ContentDisclosureFromJSON,
+    ContentDisclosureFromJSONTyped,
+    ContentDisclosureToJSON,
+    ContentDisclosureToJSONTyped,
+} from './ContentDisclosure';
+import type { GrokShareAttachment } from './GrokShareAttachment';
+import {
+    GrokShareAttachmentFromJSON,
+    GrokShareAttachmentFromJSONTyped,
+    GrokShareAttachmentToJSON,
+    GrokShareAttachmentToJSONTyped,
+} from './GrokShareAttachment';
+import type { TrendResults } from './TrendResults';
+import {
+    TrendResultsFromJSON,
+    TrendResultsFromJSONTyped,
+    TrendResultsToJSON,
+    TrendResultsToJSONTyped,
+} from './TrendResults';
+import type { CommunityRelationship } from './CommunityRelationship';
+import {
+    CommunityRelationshipFromJSON,
+    CommunityRelationshipFromJSONTyped,
+    CommunityRelationshipToJSON,
+    CommunityRelationshipToJSONTyped,
+} from './CommunityRelationship';
+import type { TweetPreviousCounts } from './TweetPreviousCounts';
+import {
+    TweetPreviousCountsFromJSON,
+    TweetPreviousCountsFromJSONTyped,
+    TweetPreviousCountsToJSON,
+    TweetPreviousCountsToJSONTyped,
+} from './TweetPreviousCounts';
+import type { GrokAnnotation } from './GrokAnnotation';
+import {
+    GrokAnnotationFromJSON,
+    GrokAnnotationFromJSONTyped,
+    GrokAnnotationToJSON,
+    GrokAnnotationToJSONTyped,
+} from './GrokAnnotation';
+import type { CommunityResult } from './CommunityResult';
+import {
+    CommunityResultFromJSON,
+    CommunityResultFromJSONTyped,
+    CommunityResultToJSON,
+    CommunityResultToJSONTyped,
+} from './CommunityResult';
+import type { GrokTranslatedPostWithAvailability } from './GrokTranslatedPostWithAvailability';
+import {
+    GrokTranslatedPostWithAvailabilityFromJSON,
+    GrokTranslatedPostWithAvailabilityFromJSONTyped,
+    GrokTranslatedPostWithAvailabilityToJSON,
+    GrokTranslatedPostWithAvailabilityToJSONTyped,
+} from './GrokTranslatedPostWithAvailability';
+import type { ItemResult } from './ItemResult';
+import {
+    ItemResultFromJSON,
+    ItemResultFromJSONTyped,
+    ItemResultToJSON,
+    ItemResultToJSONTyped,
+} from './ItemResult';
 import type { TweetLegacy } from './TweetLegacy';
 import {
     TweetLegacyFromJSON,
@@ -190,206 +197,146 @@ import {
 export interface Tweet {
     /**
      * 
-     * @type {TypeName}
-     * @memberof Tweet
      */
     typename?: TypeName;
     /**
      * 
-     * @type {Article}
-     * @memberof Tweet
      */
     article?: Article;
     /**
      * 
-     * @type {AuthorCommunityRelationship}
-     * @memberof Tweet
      */
     authorCommunityRelationship?: AuthorCommunityRelationship;
     /**
      * 
-     * @type {BirdwatchPivot}
-     * @memberof Tweet
      */
     birdwatchPivot?: BirdwatchPivot;
     /**
      * 
-     * @type {TweetCard}
-     * @memberof Tweet
      */
     card?: TweetCard;
     /**
      * 
-     * @type {CommunityRelationship}
-     * @memberof Tweet
+     */
+    cashtagAttachments?: Array<CashtagAttachment>;
+    /**
+     * 
      */
     communityRelationship?: CommunityRelationship;
     /**
      * 
-     * @type {CommunityResult}
-     * @memberof Tweet
      */
     communityResults?: CommunityResult;
     /**
      * 
-     * @type {ContentDisclosure}
-     * @memberof Tweet
      */
     contentDisclosure?: ContentDisclosure;
     /**
      * 
-     * @type {UserResultCore}
-     * @memberof Tweet
      */
     core?: UserResultCore;
     /**
      * 
-     * @type {TweetEditControl}
-     * @memberof Tweet
      */
     editControl?: TweetEditControl;
     /**
      * 
-     * @type {TweetEditPrespective}
-     * @memberof Tweet
      */
     editPrespective?: TweetEditPrespective;
     /**
      * 
-     * @type {boolean}
-     * @memberof Tweet
      */
     grokAnalysisButton?: boolean;
     /**
      * 
-     * @type {Array<string>}
-     * @memberof Tweet
      */
     grokAnalysisFollowups?: Array<string>;
     /**
      * 
-     * @type {GrokAnnotation}
-     * @memberof Tweet
      */
     grokAnnotations?: GrokAnnotation;
     /**
      * 
-     * @type {GrokShareAttachment}
-     * @memberof Tweet
      */
     grokShareAttachment?: GrokShareAttachment;
     /**
      * 
-     * @type {GrokTranslatedPostWithAvailability}
-     * @memberof Tweet
      */
     grokTranslatedPostWithAvailability?: GrokTranslatedPostWithAvailability;
     /**
      * 
-     * @type {boolean}
-     * @memberof Tweet
      */
     hasBirdwatchNotes?: boolean;
     /**
      * 
-     * @type {boolean}
-     * @memberof Tweet
      */
     isTranslatable?: boolean;
     /**
      * 
-     * @type {TweetLegacy}
-     * @memberof Tweet
      */
     legacy?: TweetLegacy;
     /**
      * 
-     * @type {NoteTweet}
-     * @memberof Tweet
+     */
+    nestedQuotedTweetResults?: ItemResult;
+    /**
+     * 
      */
     noteTweet?: NoteTweet;
     /**
      * 
-     * @type {TweetPostCta}
-     * @memberof Tweet
      */
     postCta?: TweetPostCta;
     /**
      * 
-     * @type {string}
-     * @memberof Tweet
      */
     postImageDescription?: string;
     /**
      * 
-     * @type {string}
-     * @memberof Tweet
      */
     postVideoDescription?: string;
     /**
      * 
-     * @type {TweetPreviousCounts}
-     * @memberof Tweet
      */
     previousCounts?: TweetPreviousCounts;
     /**
      * 
-     * @type {object}
-     * @memberof Tweet
      */
     quickPromoteEligibility?: object;
     /**
      * 
-     * @type {QuotedRefResult}
-     * @memberof Tweet
      */
     quotedRefResult?: QuotedRefResult;
     /**
      * 
-     * @type {ItemResult}
-     * @memberof Tweet
      */
     quotedStatusResult?: ItemResult;
     /**
      * 
-     * @type {string}
-     * @memberof Tweet
      */
     restId: string;
     /**
      * 
-     * @type {string}
-     * @memberof Tweet
      */
     source?: string;
     /**
      * 
-     * @type {SuperFollowsReplyUserResult}
-     * @memberof Tweet
      */
     superFollowsReplyUserResult?: SuperFollowsReplyUserResult;
     /**
      * 
-     * @type {TrendResults}
-     * @memberof Tweet
      */
     trendResults?: TrendResults;
     /**
      * 
-     * @type {UnifiedCard}
-     * @memberof Tweet
      */
     unifiedCard?: UnifiedCard;
     /**
      * 
-     * @type {{ [key: string]: any; }}
-     * @memberof Tweet
      */
     unmentionData?: { [key: string]: any; };
     /**
      * 
-     * @type {TweetView}
-     * @memberof Tweet
      */
     views?: TweetView;
 }
@@ -400,7 +347,7 @@ export interface Tweet {
  * Check if a given object implements the Tweet interface.
  */
 export function instanceOfTweet(value: object): value is Tweet {
-    if (!('restId' in value) || value['restId'] === undefined) return false;
+    if ((!('restId' in (value as Record<string, any>)) && !('rest_id' in (value as Record<string, any>))) || ((value as Record<string, any>)['restId'] === undefined && (value as Record<string, any>)['rest_id'] === undefined)) return false;
     return true;
 }
 
@@ -419,6 +366,7 @@ export function TweetFromJSONTyped(json: any, ignoreDiscriminator: boolean): Twe
         'authorCommunityRelationship': json['author_community_relationship'] == null ? undefined : AuthorCommunityRelationshipFromJSON(json['author_community_relationship']),
         'birdwatchPivot': json['birdwatch_pivot'] == null ? undefined : BirdwatchPivotFromJSON(json['birdwatch_pivot']),
         'card': json['card'] == null ? undefined : TweetCardFromJSON(json['card']),
+        'cashtagAttachments': json['cashtag_attachments'] == null ? undefined : ((json['cashtag_attachments'] as Array<any>).map(CashtagAttachmentFromJSON)),
         'communityRelationship': json['community_relationship'] == null ? undefined : CommunityRelationshipFromJSON(json['community_relationship']),
         'communityResults': json['community_results'] == null ? undefined : CommunityResultFromJSON(json['community_results']),
         'contentDisclosure': json['content_disclosure'] == null ? undefined : ContentDisclosureFromJSON(json['content_disclosure']),
@@ -433,6 +381,7 @@ export function TweetFromJSONTyped(json: any, ignoreDiscriminator: boolean): Twe
         'hasBirdwatchNotes': json['has_birdwatch_notes'] == null ? undefined : json['has_birdwatch_notes'],
         'isTranslatable': json['is_translatable'] == null ? undefined : json['is_translatable'],
         'legacy': json['legacy'] == null ? undefined : TweetLegacyFromJSON(json['legacy']),
+        'nestedQuotedTweetResults': json['nested_quoted_tweet_results'] == null ? undefined : ItemResultFromJSON(json['nested_quoted_tweet_results']),
         'noteTweet': json['note_tweet'] == null ? undefined : NoteTweetFromJSON(json['note_tweet']),
         'postCta': json['postCta'] == null ? undefined : TweetPostCtaFromJSON(json['postCta']),
         'postImageDescription': json['post_image_description'] == null ? undefined : json['post_image_description'],
@@ -467,6 +416,7 @@ export function TweetToJSONTyped(value?: Tweet | null, ignoreDiscriminator: bool
         'author_community_relationship': AuthorCommunityRelationshipToJSON(value['authorCommunityRelationship']),
         'birdwatch_pivot': BirdwatchPivotToJSON(value['birdwatchPivot']),
         'card': TweetCardToJSON(value['card']),
+        'cashtag_attachments': value['cashtagAttachments'] == null ? undefined : ((value['cashtagAttachments'] as Array<any>).map(CashtagAttachmentToJSON)),
         'community_relationship': CommunityRelationshipToJSON(value['communityRelationship']),
         'community_results': CommunityResultToJSON(value['communityResults']),
         'content_disclosure': ContentDisclosureToJSON(value['contentDisclosure']),
@@ -481,6 +431,7 @@ export function TweetToJSONTyped(value?: Tweet | null, ignoreDiscriminator: bool
         'has_birdwatch_notes': value['hasBirdwatchNotes'],
         'is_translatable': value['isTranslatable'],
         'legacy': TweetLegacyToJSON(value['legacy']),
+        'nested_quoted_tweet_results': ItemResultToJSON(value['nestedQuotedTweetResults']),
         'note_tweet': NoteTweetToJSON(value['noteTweet']),
         'postCta': TweetPostCtaToJSON(value['postCta']),
         'post_image_description': value['postImageDescription'],

@@ -29,14 +29,10 @@ import {
 export interface UserVerificationInfo {
     /**
      * 
-     * @type {boolean}
-     * @memberof UserVerificationInfo
      */
     isIdentityVerified: boolean;
     /**
      * 
-     * @type {UserVerificationInfoReason}
-     * @memberof UserVerificationInfo
      */
     reason?: UserVerificationInfoReason;
 }
@@ -45,7 +41,7 @@ export interface UserVerificationInfo {
  * Check if a given object implements the UserVerificationInfo interface.
  */
 export function instanceOfUserVerificationInfo(value: object): value is UserVerificationInfo {
-    if (!('isIdentityVerified' in value) || value['isIdentityVerified'] === undefined) return false;
+    if ((!('isIdentityVerified' in (value as Record<string, any>)) && !('is_identity_verified' in (value as Record<string, any>))) || ((value as Record<string, any>)['isIdentityVerified'] === undefined && (value as Record<string, any>)['is_identity_verified'] === undefined)) return false;
     return true;
 }
 

@@ -21,26 +21,22 @@ import { mapValues } from '../runtime';
 export interface BirdwatchEntityRef {
     /**
      * 
-     * @type {string}
-     * @memberof BirdwatchEntityRef
+     */
+    expandedUrl?: string;
+    /**
+     * 
      */
     text?: string;
     /**
      * 
-     * @type {BirdwatchEntityRefTypeEnum}
-     * @memberof BirdwatchEntityRef
      */
     type: BirdwatchEntityRefTypeEnum;
     /**
      * 
-     * @type {string}
-     * @memberof BirdwatchEntityRef
      */
     url?: string;
     /**
      * 
-     * @type {BirdwatchEntityRefUrlTypeEnum}
-     * @memberof BirdwatchEntityRef
      */
     urlType?: BirdwatchEntityRefUrlTypeEnum;
 }
@@ -51,7 +47,7 @@ export interface BirdwatchEntityRef {
  */
 export const BirdwatchEntityRefTypeEnum = {
     TimelineUrl: 'TimelineUrl',
-    TimelineRichTextHashtag: 'TimelineRichTextHashtag'
+    TimelineRichTextHashtag: 'TimelineRichTextHashtag',
 } as const;
 export type BirdwatchEntityRefTypeEnum = typeof BirdwatchEntityRefTypeEnum[keyof typeof BirdwatchEntityRefTypeEnum];
 
@@ -59,7 +55,7 @@ export type BirdwatchEntityRefTypeEnum = typeof BirdwatchEntityRefTypeEnum[keyof
  * @export
  */
 export const BirdwatchEntityRefUrlTypeEnum = {
-    ExternalUrl: 'ExternalUrl'
+    ExternalUrl: 'ExternalUrl',
 } as const;
 export type BirdwatchEntityRefUrlTypeEnum = typeof BirdwatchEntityRefUrlTypeEnum[keyof typeof BirdwatchEntityRefUrlTypeEnum];
 
@@ -82,6 +78,7 @@ export function BirdwatchEntityRefFromJSONTyped(json: any, ignoreDiscriminator: 
     }
     return {
         
+        'expandedUrl': json['expandedUrl'] == null ? undefined : json['expandedUrl'],
         'text': json['text'] == null ? undefined : json['text'],
         'type': json['type'],
         'url': json['url'] == null ? undefined : json['url'],
@@ -100,6 +97,7 @@ export function BirdwatchEntityRefToJSONTyped(value?: BirdwatchEntityRef | null,
 
     return {
         
+        'expandedUrl': value['expandedUrl'],
         'text': value['text'],
         'type': value['type'],
         'url': value['url'],

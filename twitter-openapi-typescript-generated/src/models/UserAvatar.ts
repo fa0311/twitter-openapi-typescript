@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface UserAvatar {
     /**
      * 
-     * @type {string}
-     * @memberof UserAvatar
      */
     imageUrl: string;
 }
@@ -31,7 +29,7 @@ export interface UserAvatar {
  * Check if a given object implements the UserAvatar interface.
  */
 export function instanceOfUserAvatar(value: object): value is UserAvatar {
-    if (!('imageUrl' in value) || value['imageUrl'] === undefined) return false;
+    if ((!('imageUrl' in (value as Record<string, any>)) && !('image_url' in (value as Record<string, any>))) || ((value as Record<string, any>)['imageUrl'] === undefined && (value as Record<string, any>)['image_url'] === undefined)) return false;
     return true;
 }
 

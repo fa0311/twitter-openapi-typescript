@@ -29,14 +29,10 @@ import {
 export interface Retweet {
     /**
      * 
-     * @type {RetweetLegacy}
-     * @memberof Retweet
      */
-    legacy: RetweetLegacy;
+    legacy?: RetweetLegacy;
     /**
      * 
-     * @type {string}
-     * @memberof Retweet
      */
     restId: string;
 }
@@ -45,8 +41,7 @@ export interface Retweet {
  * Check if a given object implements the Retweet interface.
  */
 export function instanceOfRetweet(value: object): value is Retweet {
-    if (!('legacy' in value) || value['legacy'] === undefined) return false;
-    if (!('restId' in value) || value['restId'] === undefined) return false;
+    if ((!('restId' in (value as Record<string, any>)) && !('rest_id' in (value as Record<string, any>))) || ((value as Record<string, any>)['restId'] === undefined && (value as Record<string, any>)['rest_id'] === undefined)) return false;
     return true;
 }
 
@@ -60,7 +55,7 @@ export function RetweetFromJSONTyped(json: any, ignoreDiscriminator: boolean): R
     }
     return {
         
-        'legacy': RetweetLegacyFromJSON(json['legacy']),
+        'legacy': json['legacy'] == null ? undefined : RetweetLegacyFromJSON(json['legacy']),
         'restId': json['rest_id'],
     };
 }

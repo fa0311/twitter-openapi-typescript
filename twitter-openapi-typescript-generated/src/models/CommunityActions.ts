@@ -57,32 +57,22 @@ import {
 export interface CommunityActions {
     /**
      * 
-     * @type {CommunityDeleteActionResult}
-     * @memberof CommunityActions
      */
     deleteActionResult?: CommunityDeleteActionResult;
     /**
      * 
-     * @type {CommunityJoinActionResultUnion}
-     * @memberof CommunityActions
      */
     joinActionResult?: CommunityJoinActionResultUnion;
     /**
      * 
-     * @type {CommunityLeaveActionResult}
-     * @memberof CommunityActions
      */
     leaveActionResult?: CommunityLeaveActionResult;
     /**
      * 
-     * @type {CommunityPinActionResult}
-     * @memberof CommunityActions
      */
     pinActionResult?: CommunityPinActionResult;
     /**
      * 
-     * @type {CommunityUnpinActionResult}
-     * @memberof CommunityActions
      */
     unpinActionResult?: CommunityUnpinActionResult;
 }

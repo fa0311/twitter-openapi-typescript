@@ -50,64 +50,44 @@ import {
 export interface ErrorResponse {
     /**
      * 
-     * @type {number}
-     * @memberof ErrorResponse
      */
     code: number;
     /**
      * 
-     * @type {ErrorExtensions}
-     * @memberof ErrorResponse
      */
     extensions: ErrorExtensions;
     /**
      * 
-     * @type {string}
-     * @memberof ErrorResponse
      */
     kind: string;
     /**
      * 
-     * @type {Array<Location>}
-     * @memberof ErrorResponse
      */
     locations: Array<Location>;
     /**
      * 
-     * @type {string}
-     * @memberof ErrorResponse
      */
     message: string;
     /**
      * 
-     * @type {string}
-     * @memberof ErrorResponse
      */
     name: string;
     /**
      * 
-     * @type {Array<ErrorResponsePathInner>}
-     * @memberof ErrorResponse
      */
     path: Array<ErrorResponsePathInner>;
     /**
      * 
-     * @type {number}
-     * @memberof ErrorResponse
      */
     retryAfter?: number;
     /**
      * 
-     * @type {string}
-     * @memberof ErrorResponse
      */
     source: string;
     /**
      * 
-     * @type {Tracing}
-     * @memberof ErrorResponse
      */
-    tracing: Tracing;
+    tracing?: Tracing;
 }
 
 /**
@@ -122,7 +102,6 @@ export function instanceOfErrorResponse(value: object): value is ErrorResponse {
     if (!('name' in value) || value['name'] === undefined) return false;
     if (!('path' in value) || value['path'] === undefined) return false;
     if (!('source' in value) || value['source'] === undefined) return false;
-    if (!('tracing' in value) || value['tracing'] === undefined) return false;
     return true;
 }
 
@@ -145,7 +124,7 @@ export function ErrorResponseFromJSONTyped(json: any, ignoreDiscriminator: boole
         'path': ((json['path'] as Array<any>).map(ErrorResponsePathInnerFromJSON)),
         'retryAfter': json['retry_after'] == null ? undefined : json['retry_after'],
         'source': json['source'],
-        'tracing': TracingFromJSON(json['tracing']),
+        'tracing': json['tracing'] == null ? undefined : TracingFromJSON(json['tracing']),
     };
 }
 

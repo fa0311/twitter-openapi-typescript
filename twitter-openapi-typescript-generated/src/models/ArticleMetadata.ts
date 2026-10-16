@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface ArticleMetadata {
     /**
      * 
-     * @type {number}
-     * @memberof ArticleMetadata
      */
     firstPublishedAtSecs: number;
 }
@@ -31,7 +29,7 @@ export interface ArticleMetadata {
  * Check if a given object implements the ArticleMetadata interface.
  */
 export function instanceOfArticleMetadata(value: object): value is ArticleMetadata {
-    if (!('firstPublishedAtSecs' in value) || value['firstPublishedAtSecs'] === undefined) return false;
+    if ((!('firstPublishedAtSecs' in (value as Record<string, any>)) && !('first_published_at_secs' in (value as Record<string, any>))) || ((value as Record<string, any>)['firstPublishedAtSecs'] === undefined && (value as Record<string, any>)['first_published_at_secs'] === undefined)) return false;
     return true;
 }
 

@@ -29,20 +29,14 @@ import {
 export interface MediaVideoInfo {
     /**
      * 
-     * @type {Array<number>}
-     * @memberof MediaVideoInfo
      */
     aspectRatio: Array<number>;
     /**
      * 
-     * @type {number}
-     * @memberof MediaVideoInfo
      */
     durationMillis?: number;
     /**
      * 
-     * @type {Array<MediaVideoInfoVariant>}
-     * @memberof MediaVideoInfo
      */
     variants: Array<MediaVideoInfoVariant>;
 }
@@ -51,7 +45,7 @@ export interface MediaVideoInfo {
  * Check if a given object implements the MediaVideoInfo interface.
  */
 export function instanceOfMediaVideoInfo(value: object): value is MediaVideoInfo {
-    if (!('aspectRatio' in value) || value['aspectRatio'] === undefined) return false;
+    if ((!('aspectRatio' in (value as Record<string, any>)) && !('aspect_ratio' in (value as Record<string, any>))) || ((value as Record<string, any>)['aspectRatio'] === undefined && (value as Record<string, any>)['aspect_ratio'] === undefined)) return false;
     if (!('variants' in value) || value['variants'] === undefined) return false;
     return true;
 }

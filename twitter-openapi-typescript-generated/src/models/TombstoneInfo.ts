@@ -29,14 +29,10 @@ import {
 export interface TombstoneInfo {
     /**
      * 
-     * @type {TombstoneRichText}
-     * @memberof TombstoneInfo
      */
     richText?: TombstoneRichText;
     /**
      * 
-     * @type {string}
-     * @memberof TombstoneInfo
      */
     text?: string;
 }

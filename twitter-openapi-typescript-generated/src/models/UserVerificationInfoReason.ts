@@ -29,20 +29,14 @@ import {
 export interface UserVerificationInfoReason {
     /**
      * 
-     * @type {UserVerificationInfoReasonDescription}
-     * @memberof UserVerificationInfoReason
      */
     description: UserVerificationInfoReasonDescription;
     /**
      * 
-     * @type {number}
-     * @memberof UserVerificationInfoReason
      */
     overrideVerifiedYear?: number;
     /**
      * 
-     * @type {string}
-     * @memberof UserVerificationInfoReason
      */
     verifiedSinceMsec: string;
 }
@@ -52,7 +46,7 @@ export interface UserVerificationInfoReason {
  */
 export function instanceOfUserVerificationInfoReason(value: object): value is UserVerificationInfoReason {
     if (!('description' in value) || value['description'] === undefined) return false;
-    if (!('verifiedSinceMsec' in value) || value['verifiedSinceMsec'] === undefined) return false;
+    if ((!('verifiedSinceMsec' in (value as Record<string, any>)) && !('verified_since_msec' in (value as Record<string, any>))) || ((value as Record<string, any>)['verifiedSinceMsec'] === undefined && (value as Record<string, any>)['verified_since_msec'] === undefined)) return false;
     return true;
 }
 

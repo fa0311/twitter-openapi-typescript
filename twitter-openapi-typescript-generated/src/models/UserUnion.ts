@@ -12,6 +12,7 @@
  * Do not edit the class manually.
  */
 
+import { parseDate, parseDateTime, serializeDate, serializeDateTime } from '../runtime';
 import type { User } from './User';
 import {
     instanceOfUser,
@@ -62,9 +63,9 @@ export function UserUnionToJSONTyped(value?: UserUnion | null, ignoreDiscriminat
     }
     switch (value['typename']) {
         case 'User':
-            return Object.assign({}, UserToJSON(value), { typename: 'User' } as const);
+            return Object.assign({}, UserToJSON(value), { '__typename': 'User' } as const);
         case 'UserUnavailable':
-            return Object.assign({}, UserUnavailableToJSON(value), { typename: 'UserUnavailable' } as const);
+            return Object.assign({}, UserUnavailableToJSON(value), { '__typename': 'UserUnavailable' } as const);
         default:
             return value;
     }

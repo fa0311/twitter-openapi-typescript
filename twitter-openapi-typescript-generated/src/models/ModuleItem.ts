@@ -29,20 +29,14 @@ import {
 export interface ModuleItem {
     /**
      * 
-     * @type {boolean}
-     * @memberof ModuleItem
      */
     dispensable?: boolean;
     /**
      * 
-     * @type {string}
-     * @memberof ModuleItem
      */
     entryId: string;
     /**
      * 
-     * @type {ModuleEntry}
-     * @memberof ModuleItem
      */
     item: ModuleEntry;
 }

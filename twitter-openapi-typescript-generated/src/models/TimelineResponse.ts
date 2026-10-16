@@ -36,14 +36,10 @@ import {
 export interface TimelineResponse {
     /**
      * 
-     * @type {HomeTimelineResponseData}
-     * @memberof TimelineResponse
      */
     data: HomeTimelineResponseData;
     /**
      * 
-     * @type {Array<ErrorResponse>}
-     * @memberof TimelineResponse
      */
     errors?: Array<ErrorResponse>;
 }

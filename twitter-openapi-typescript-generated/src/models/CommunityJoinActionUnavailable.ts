@@ -29,20 +29,14 @@ import {
 export interface CommunityJoinActionUnavailable {
     /**
      * 
-     * @type {TypeName}
-     * @memberof CommunityJoinActionUnavailable
      */
     typename: TypeName;
     /**
      * 
-     * @type {string}
-     * @memberof CommunityJoinActionUnavailable
      */
     message: string;
     /**
      * 
-     * @type {CommunityJoinActionUnavailableReasonEnum}
-     * @memberof CommunityJoinActionUnavailable
      */
     reason: CommunityJoinActionUnavailableReasonEnum;
 }
@@ -52,7 +46,7 @@ export interface CommunityJoinActionUnavailable {
  * @export
  */
 export const CommunityJoinActionUnavailableReasonEnum = {
-    ViewerRequestRequired: 'ViewerRequestRequired'
+    ViewerRequestRequired: 'ViewerRequestRequired',
 } as const;
 export type CommunityJoinActionUnavailableReasonEnum = typeof CommunityJoinActionUnavailableReasonEnum[keyof typeof CommunityJoinActionUnavailableReasonEnum];
 
@@ -61,9 +55,11 @@ export type CommunityJoinActionUnavailableReasonEnum = typeof CommunityJoinActio
  * Check if a given object implements the CommunityJoinActionUnavailable interface.
  */
 export function instanceOfCommunityJoinActionUnavailable(value: object): value is CommunityJoinActionUnavailable {
-    if (!('typename' in value) || value['typename'] === undefined) return false;
+    if ((!('typename' in (value as Record<string, any>)) && !('__typename' in (value as Record<string, any>))) || ((value as Record<string, any>)['typename'] === undefined && (value as Record<string, any>)['__typename'] === undefined)) return false;
     if (!('message' in value) || value['message'] === undefined) return false;
     if (!('reason' in value) || value['reason'] === undefined) return false;
+    if (value['reason'] !== 'ViewerRequestRequired') return false;
+    
     return true;
 }
 

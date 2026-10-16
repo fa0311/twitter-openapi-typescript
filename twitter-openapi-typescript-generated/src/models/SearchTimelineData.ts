@@ -29,8 +29,6 @@ import {
 export interface SearchTimelineData {
     /**
      * 
-     * @type {SearchByRawQuery}
-     * @memberof SearchTimelineData
      */
     searchByRawQuery: SearchByRawQuery;
 }
@@ -39,7 +37,7 @@ export interface SearchTimelineData {
  * Check if a given object implements the SearchTimelineData interface.
  */
 export function instanceOfSearchTimelineData(value: object): value is SearchTimelineData {
-    if (!('searchByRawQuery' in value) || value['searchByRawQuery'] === undefined) return false;
+    if ((!('searchByRawQuery' in (value as Record<string, any>)) && !('search_by_raw_query' in (value as Record<string, any>))) || ((value as Record<string, any>)['searchByRawQuery'] === undefined && (value as Record<string, any>)['search_by_raw_query'] === undefined)) return false;
     return true;
 }
 

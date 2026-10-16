@@ -3,7 +3,7 @@ import type * as i from 'twitter-openapi-typescript-generated';
 import type { TweetApiUtilsData, UserApiUtilsData } from '@/models';
 
 export const printTweet = (tweet: TweetApiUtilsData) => {
-  logger.log(`${tweet.user.legacy.screenName}: ${tweet.tweet.legacy?.fullText}`.replace(/\n/g, ' '));
+  logger.log(`${tweet.user.core?.screenName}: ${tweet.tweet.legacy?.fullText}`.replace(/\n/g, ' '));
   tweet.replies.forEach((reply) => {
     reply.tweet.legacy && printLegacyTweet(reply.user, reply.tweet.legacy);
   });
@@ -20,9 +20,8 @@ export const printUser = (user: UserApiUtilsData) => {
 
 export const printLegacyUser = (user: i.User) => {
   logger.log(user.core!.screenName);
-  logger.log(`listedCount: ${user.legacy.listedCount}`);
-  logger.log(`followedBy: ${user.legacy.followedBy} following: ${user.legacy.following}`);
-  const text = `friendsCount: ${user.legacy.friendsCount} followersCount: ${user.legacy.followersCount}`;
+    logger.log(`followedBy: ${user.relationshipPerspectives?.followedBy} following: ${user.relationshipPerspectives?.following}`);
+  const text = `following: ${user.relationshipCounts?.following} followers: ${user.relationshipCounts?.followers}`;
   logger.log(text);
   logger.log('┄'.repeat(50));
 };

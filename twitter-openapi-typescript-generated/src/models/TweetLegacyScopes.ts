@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface TweetLegacyScopes {
     /**
      * 
-     * @type {boolean}
-     * @memberof TweetLegacyScopes
      */
     followers: boolean;
 }

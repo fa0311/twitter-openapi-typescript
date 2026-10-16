@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface SuperFollowsReplyUserResultCore {
     /**
      * 
-     * @type {string}
-     * @memberof SuperFollowsReplyUserResultCore
      */
     screenName: string;
 }
@@ -31,7 +29,7 @@ export interface SuperFollowsReplyUserResultCore {
  * Check if a given object implements the SuperFollowsReplyUserResultCore interface.
  */
 export function instanceOfSuperFollowsReplyUserResultCore(value: object): value is SuperFollowsReplyUserResultCore {
-    if (!('screenName' in value) || value['screenName'] === undefined) return false;
+    if ((!('screenName' in (value as Record<string, any>)) && !('screen_name' in (value as Record<string, any>))) || ((value as Record<string, any>)['screenName'] === undefined && (value as Record<string, any>)['screen_name'] === undefined)) return false;
     return true;
 }
 

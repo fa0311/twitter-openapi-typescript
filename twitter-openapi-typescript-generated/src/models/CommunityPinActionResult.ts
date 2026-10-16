@@ -29,8 +29,6 @@ import {
 export interface CommunityPinActionResult {
     /**
      * 
-     * @type {TypeName}
-     * @memberof CommunityPinActionResult
      */
     typename: TypeName;
 }
@@ -41,7 +39,7 @@ export interface CommunityPinActionResult {
  * Check if a given object implements the CommunityPinActionResult interface.
  */
 export function instanceOfCommunityPinActionResult(value: object): value is CommunityPinActionResult {
-    if (!('typename' in value) || value['typename'] === undefined) return false;
+    if ((!('typename' in (value as Record<string, any>)) && !('__typename' in (value as Record<string, any>))) || ((value as Record<string, any>)['typename'] === undefined && (value as Record<string, any>)['__typename'] === undefined)) return false;
     return true;
 }
 

@@ -29,14 +29,10 @@ import {
 export interface TweetCard {
     /**
      * 
-     * @type {TweetCardLegacy}
-     * @memberof TweetCard
      */
     legacy?: TweetCardLegacy;
     /**
      * 
-     * @type {string}
-     * @memberof TweetCard
      */
     restId?: string;
 }

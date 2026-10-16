@@ -36,14 +36,10 @@ import {
 export interface ItemResult {
     /**
      * 
-     * @type {TypeName}
-     * @memberof ItemResult
      */
     typename?: TypeName;
     /**
      * 
-     * @type {TweetUnion}
-     * @memberof ItemResult
      */
     result?: TweetUnion;
 }

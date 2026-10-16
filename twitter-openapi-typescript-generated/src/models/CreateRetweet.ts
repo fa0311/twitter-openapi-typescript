@@ -29,8 +29,6 @@ import {
 export interface CreateRetweet {
     /**
      * 
-     * @type {Retweet}
-     * @memberof CreateRetweet
      */
     result: Retweet;
 }

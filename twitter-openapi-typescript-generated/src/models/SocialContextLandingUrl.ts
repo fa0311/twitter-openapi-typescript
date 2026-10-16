@@ -29,20 +29,14 @@ import {
 export interface SocialContextLandingUrl {
     /**
      * 
-     * @type {string}
-     * @memberof SocialContextLandingUrl
      */
     url?: string;
     /**
      * 
-     * @type {SocialContextLandingUrlUrlTypeEnum}
-     * @memberof SocialContextLandingUrl
      */
     urlType?: SocialContextLandingUrlUrlTypeEnum;
     /**
      * 
-     * @type {UrtEndpointOptions}
-     * @memberof SocialContextLandingUrl
      */
     urtEndpointOptions?: UrtEndpointOptions;
 }
@@ -54,7 +48,7 @@ export interface SocialContextLandingUrl {
 export const SocialContextLandingUrlUrlTypeEnum = {
     DeepLink: 'DeepLink',
     UrtEndpoint: 'UrtEndpoint',
-    ExternalUrl: 'ExternalUrl'
+    ExternalUrl: 'ExternalUrl',
 } as const;
 export type SocialContextLandingUrlUrlTypeEnum = typeof SocialContextLandingUrlUrlTypeEnum[keyof typeof SocialContextLandingUrlUrlTypeEnum];
 

@@ -29,8 +29,6 @@ import {
 export interface MediaResults {
     /**
      * 
-     * @type {MediaResult}
-     * @memberof MediaResults
      */
     result: MediaResult;
 }

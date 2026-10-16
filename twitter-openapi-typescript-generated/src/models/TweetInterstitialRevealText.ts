@@ -29,20 +29,14 @@ import {
 export interface TweetInterstitialRevealText {
     /**
      * 
-     * @type {Array<TweetInterstitialTextEntity>}
-     * @memberof TweetInterstitialRevealText
      */
     entities: Array<TweetInterstitialTextEntity>;
     /**
      * 
-     * @type {boolean}
-     * @memberof TweetInterstitialRevealText
      */
     rtl: boolean;
     /**
      * 
-     * @type {string}
-     * @memberof TweetInterstitialRevealText
      */
     text: string;
 }

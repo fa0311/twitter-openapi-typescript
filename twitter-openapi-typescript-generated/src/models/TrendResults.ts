@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface TrendResults {
     /**
      * 
-     * @type {string}
-     * @memberof TrendResults
      */
     restId: string;
 }
@@ -31,7 +29,7 @@ export interface TrendResults {
  * Check if a given object implements the TrendResults interface.
  */
 export function instanceOfTrendResults(value: object): value is TrendResults {
-    if (!('restId' in value) || value['restId'] === undefined) return false;
+    if ((!('restId' in (value as Record<string, any>)) && !('rest_id' in (value as Record<string, any>))) || ((value as Record<string, any>)['restId'] === undefined && (value as Record<string, any>)['rest_id'] === undefined)) return false;
     return true;
 }
 

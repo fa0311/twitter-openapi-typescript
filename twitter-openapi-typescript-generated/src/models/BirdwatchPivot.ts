@@ -50,68 +50,46 @@ import {
 export interface BirdwatchPivot {
     /**
      * 
-     * @type {BirdwatchPivotCallToAction}
-     * @memberof BirdwatchPivot
      */
     callToAction?: BirdwatchPivotCallToAction;
     /**
      * 
-     * @type {string}
-     * @memberof BirdwatchPivot
      */
     destinationUrl: string;
     /**
      * 
-     * @type {BirdwatchPivotFooter}
-     * @memberof BirdwatchPivot
      */
     footer?: BirdwatchPivotFooter;
     /**
      * 
-     * @type {BirdwatchPivotFooterIconTypeEnum}
-     * @memberof BirdwatchPivot
      */
     footerIconType?: BirdwatchPivotFooterIconTypeEnum;
     /**
      * 
-     * @type {BirdwatchPivotIconTypeEnum}
-     * @memberof BirdwatchPivot
      */
     iconType: BirdwatchPivotIconTypeEnum;
     /**
      * 
-     * @type {BirdwatchPivotNote}
-     * @memberof BirdwatchPivot
      */
     note?: BirdwatchPivotNote;
     /**
      * 
-     * @type {string}
-     * @memberof BirdwatchPivot
      */
     shorttitle?: string;
     /**
      * 
-     * @type {BirdwatchPivotSubtitle}
-     * @memberof BirdwatchPivot
      */
     subtitle?: BirdwatchPivotSubtitle;
     /**
      * 
-     * @type {string}
-     * @memberof BirdwatchPivot
      */
     title: string;
     /**
      * 
-     * @type {string}
-     * @memberof BirdwatchPivot
      */
     titleDetail?: string;
     /**
      * 
-     * @type {BirdwatchPivotVisualStyleEnum}
-     * @memberof BirdwatchPivot
      */
     visualStyle?: BirdwatchPivotVisualStyleEnum;
 }
@@ -121,7 +99,7 @@ export interface BirdwatchPivot {
  * @export
  */
 export const BirdwatchPivotFooterIconTypeEnum = {
-    BirdwatchEyeOff: 'BirdwatchEyeOff'
+    BirdwatchEyeOff: 'BirdwatchEyeOff',
 } as const;
 export type BirdwatchPivotFooterIconTypeEnum = typeof BirdwatchPivotFooterIconTypeEnum[keyof typeof BirdwatchPivotFooterIconTypeEnum];
 
@@ -130,7 +108,7 @@ export type BirdwatchPivotFooterIconTypeEnum = typeof BirdwatchPivotFooterIconTy
  */
 export const BirdwatchPivotIconTypeEnum = {
     BirdwatchV1Icon: 'BirdwatchV1Icon',
-    BirdwatchCameraVideo: 'BirdwatchCameraVideo'
+    BirdwatchCameraVideo: 'BirdwatchCameraVideo',
 } as const;
 export type BirdwatchPivotIconTypeEnum = typeof BirdwatchPivotIconTypeEnum[keyof typeof BirdwatchPivotIconTypeEnum];
 
@@ -139,7 +117,7 @@ export type BirdwatchPivotIconTypeEnum = typeof BirdwatchPivotIconTypeEnum[keyof
  */
 export const BirdwatchPivotVisualStyleEnum = {
     Default: 'Default',
-    Tentative: 'Tentative'
+    Tentative: 'Tentative',
 } as const;
 export type BirdwatchPivotVisualStyleEnum = typeof BirdwatchPivotVisualStyleEnum[keyof typeof BirdwatchPivotVisualStyleEnum];
 

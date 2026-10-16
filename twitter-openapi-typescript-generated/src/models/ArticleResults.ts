@@ -29,8 +29,6 @@ import {
 export interface ArticleResults {
     /**
      * 
-     * @type {ArticleResult}
-     * @memberof ArticleResults
      */
     result: ArticleResult;
 }

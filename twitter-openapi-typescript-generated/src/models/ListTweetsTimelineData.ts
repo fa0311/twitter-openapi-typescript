@@ -29,8 +29,6 @@ import {
 export interface ListTweetsTimelineData {
     /**
      * 
-     * @type {ListTweetsTimelineList}
-     * @memberof ListTweetsTimelineData
      */
     list: ListTweetsTimelineList;
 }

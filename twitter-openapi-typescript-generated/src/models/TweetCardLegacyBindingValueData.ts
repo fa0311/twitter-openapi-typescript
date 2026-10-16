@@ -36,44 +36,30 @@ import {
 export interface TweetCardLegacyBindingValueData {
     /**
      * 
-     * @type {boolean}
-     * @memberof TweetCardLegacyBindingValueData
      */
     booleanValue?: boolean;
     /**
      * 
-     * @type {{ [key: string]: any; }}
-     * @memberof TweetCardLegacyBindingValueData
      */
     imageColorValue?: { [key: string]: any; };
     /**
      * 
-     * @type {TweetCardLegacyBindingValueDataImage}
-     * @memberof TweetCardLegacyBindingValueData
      */
     imageValue?: TweetCardLegacyBindingValueDataImage;
     /**
      * 
-     * @type {string}
-     * @memberof TweetCardLegacyBindingValueData
      */
     scribeKey?: string;
     /**
      * 
-     * @type {string}
-     * @memberof TweetCardLegacyBindingValueData
      */
     stringValue?: string;
     /**
      * 
-     * @type {string}
-     * @memberof TweetCardLegacyBindingValueData
      */
     type: string;
     /**
      * 
-     * @type {UserValue}
-     * @memberof TweetCardLegacyBindingValueData
      */
     userValue?: UserValue;
 }

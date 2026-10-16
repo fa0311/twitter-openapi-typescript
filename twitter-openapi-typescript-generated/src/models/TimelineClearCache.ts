@@ -29,8 +29,6 @@ import {
 export interface TimelineClearCache {
     /**
      * 
-     * @type {InstructionType}
-     * @memberof TimelineClearCache
      */
     type: InstructionType;
 }

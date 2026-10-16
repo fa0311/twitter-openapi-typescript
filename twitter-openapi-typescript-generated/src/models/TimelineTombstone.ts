@@ -43,26 +43,18 @@ import {
 export interface TimelineTombstone {
     /**
      * 
-     * @type {TypeName}
-     * @memberof TimelineTombstone
      */
     typename?: TypeName;
     /**
      * 
-     * @type {ContentItemType}
-     * @memberof TimelineTombstone
      */
     itemType?: ContentItemType;
     /**
      * 
-     * @type {TimelineTombstoneTombstoneDisplayTypeEnum}
-     * @memberof TimelineTombstone
      */
     tombstoneDisplayType?: TimelineTombstoneTombstoneDisplayTypeEnum;
     /**
      * 
-     * @type {TombstoneInfo}
-     * @memberof TimelineTombstone
      */
     tombstoneInfo?: TombstoneInfo;
 }
@@ -72,7 +64,7 @@ export interface TimelineTombstone {
  * @export
  */
 export const TimelineTombstoneTombstoneDisplayTypeEnum = {
-    Inline: 'Inline'
+    Inline: 'Inline',
 } as const;
 export type TimelineTombstoneTombstoneDisplayTypeEnum = typeof TimelineTombstoneTombstoneDisplayTypeEnum[keyof typeof TimelineTombstoneTombstoneDisplayTypeEnum];
 

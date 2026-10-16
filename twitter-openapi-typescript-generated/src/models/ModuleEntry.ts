@@ -43,20 +43,14 @@ import {
 export interface ModuleEntry {
     /**
      * 
-     * @type {ClientEventInfo}
-     * @memberof ModuleEntry
      */
     clientEventInfo?: ClientEventInfo;
     /**
      * 
-     * @type {FeedbackInfo}
-     * @memberof ModuleEntry
      */
     feedbackInfo?: FeedbackInfo;
     /**
      * 
-     * @type {ItemContentUnion}
-     * @memberof ModuleEntry
      */
     itemContent: ItemContentUnion;
 }

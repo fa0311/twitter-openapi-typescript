@@ -36,14 +36,10 @@ import {
 export interface ContentDisclosure {
     /**
      * 
-     * @type {ContentDisclosureAdvertisingDisclosure}
-     * @memberof ContentDisclosure
      */
     advertisingDisclosure?: ContentDisclosureAdvertisingDisclosure;
     /**
      * 
-     * @type {ContentDisclosureAiGeneratedDisclosure}
-     * @memberof ContentDisclosure
      */
     aiGeneratedDisclosure?: ContentDisclosureAiGeneratedDisclosure;
 }

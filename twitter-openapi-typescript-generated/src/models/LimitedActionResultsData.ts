@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface LimitedActionResultsData {
     /**
      * 
-     * @type {LimitedActionResultsDataActionEnum}
-     * @memberof LimitedActionResultsData
      */
     action: LimitedActionResultsDataActionEnum;
 }
@@ -45,7 +43,7 @@ export const LimitedActionResultsDataActionEnum = {
     ShowRetweetActionMenu: 'ShowRetweetActionMenu',
     ReplyDownVote: 'ReplyDownVote',
     SendViaDm: 'SendViaDm',
-    ViewPostEngagements: 'ViewPostEngagements'
+    ViewPostEngagements: 'ViewPostEngagements',
 } as const;
 export type LimitedActionResultsDataActionEnum = typeof LimitedActionResultsDataActionEnum[keyof typeof LimitedActionResultsDataActionEnum];
 

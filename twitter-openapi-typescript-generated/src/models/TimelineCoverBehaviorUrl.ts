@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface TimelineCoverBehaviorUrl {
     /**
      * 
-     * @type {string}
-     * @memberof TimelineCoverBehaviorUrl
      */
     url: string;
     /**
      * 
-     * @type {TimelineCoverBehaviorUrlUrlTypeEnum}
-     * @memberof TimelineCoverBehaviorUrl
      */
     urlType: TimelineCoverBehaviorUrlUrlTypeEnum;
 }
@@ -38,7 +34,7 @@ export interface TimelineCoverBehaviorUrl {
  * @export
  */
 export const TimelineCoverBehaviorUrlUrlTypeEnum = {
-    ExternalUrl: 'ExternalUrl'
+    ExternalUrl: 'ExternalUrl',
 } as const;
 export type TimelineCoverBehaviorUrlUrlTypeEnum = typeof TimelineCoverBehaviorUrlUrlTypeEnum[keyof typeof TimelineCoverBehaviorUrlUrlTypeEnum];
 
@@ -48,7 +44,9 @@ export type TimelineCoverBehaviorUrlUrlTypeEnum = typeof TimelineCoverBehaviorUr
  */
 export function instanceOfTimelineCoverBehaviorUrl(value: object): value is TimelineCoverBehaviorUrl {
     if (!('url' in value) || value['url'] === undefined) return false;
-    if (!('urlType' in value) || value['urlType'] === undefined) return false;
+    if ((!('urlType' in (value as Record<string, any>)) && !('url_type' in (value as Record<string, any>))) || ((value as Record<string, any>)['urlType'] === undefined && (value as Record<string, any>)['url_type'] === undefined)) return false;
+    if ((value as Record<string, any>)['urlType'] !== 'ExternalUrl' && (value as Record<string, any>)['url_type'] !== 'ExternalUrl') return false;
+    
     return true;
 }
 

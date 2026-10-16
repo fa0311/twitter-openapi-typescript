@@ -50,32 +50,22 @@ import {
 export interface TimelineTimelineItem {
     /**
      * 
-     * @type {TypeName}
-     * @memberof TimelineTimelineItem
      */
     typename: TypeName;
     /**
      * 
-     * @type {ClientEventInfo}
-     * @memberof TimelineTimelineItem
      */
     clientEventInfo?: ClientEventInfo;
     /**
      * 
-     * @type {ContentEntryType}
-     * @memberof TimelineTimelineItem
      */
     entryType: ContentEntryType;
     /**
      * 
-     * @type {{ [key: string]: any; }}
-     * @memberof TimelineTimelineItem
      */
     feedbackInfo?: { [key: string]: any; };
     /**
      * 
-     * @type {ItemContentUnion}
-     * @memberof TimelineTimelineItem
      */
     itemContent: ItemContentUnion;
 }
@@ -86,7 +76,7 @@ export interface TimelineTimelineItem {
  * Check if a given object implements the TimelineTimelineItem interface.
  */
 export function instanceOfTimelineTimelineItem(value: object): value is TimelineTimelineItem {
-    if (!('typename' in value) || value['typename'] === undefined) return false;
+    if ((!('typename' in (value as Record<string, any>)) && !('__typename' in (value as Record<string, any>))) || ((value as Record<string, any>)['typename'] === undefined && (value as Record<string, any>)['__typename'] === undefined)) return false;
     if (!('entryType' in value) || value['entryType'] === undefined) return false;
     if (!('itemContent' in value) || value['itemContent'] === undefined) return false;
     return true;

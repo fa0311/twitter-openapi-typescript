@@ -36,26 +36,18 @@ import {
 export interface TimelineAddToModule {
     /**
      * 
-     * @type {string}
-     * @memberof TimelineAddToModule
      */
     moduleEntryId: string;
     /**
      * 
-     * @type {Array<ModuleItem>}
-     * @memberof TimelineAddToModule
      */
     moduleItems: Array<ModuleItem>;
     /**
      * 
-     * @type {boolean}
-     * @memberof TimelineAddToModule
      */
     prepend?: boolean;
     /**
      * 
-     * @type {InstructionType}
-     * @memberof TimelineAddToModule
      */
     type: InstructionType;
 }

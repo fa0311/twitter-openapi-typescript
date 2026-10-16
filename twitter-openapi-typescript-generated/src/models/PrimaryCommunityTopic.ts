@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface PrimaryCommunityTopic {
     /**
      * 
-     * @type {string}
-     * @memberof PrimaryCommunityTopic
      */
     topicId: string;
     /**
      * 
-     * @type {string}
-     * @memberof PrimaryCommunityTopic
      */
     topicName: string;
 }
@@ -37,8 +33,8 @@ export interface PrimaryCommunityTopic {
  * Check if a given object implements the PrimaryCommunityTopic interface.
  */
 export function instanceOfPrimaryCommunityTopic(value: object): value is PrimaryCommunityTopic {
-    if (!('topicId' in value) || value['topicId'] === undefined) return false;
-    if (!('topicName' in value) || value['topicName'] === undefined) return false;
+    if ((!('topicId' in (value as Record<string, any>)) && !('topic_id' in (value as Record<string, any>))) || ((value as Record<string, any>)['topicId'] === undefined && (value as Record<string, any>)['topic_id'] === undefined)) return false;
+    if ((!('topicName' in (value as Record<string, any>)) && !('topic_name' in (value as Record<string, any>))) || ((value as Record<string, any>)['topicName'] === undefined && (value as Record<string, any>)['topic_name'] === undefined)) return false;
     return true;
 }
 

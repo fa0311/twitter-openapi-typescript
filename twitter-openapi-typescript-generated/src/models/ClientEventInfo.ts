@@ -21,20 +21,14 @@ import { mapValues } from '../runtime';
 export interface ClientEventInfo {
     /**
      * 
-     * @type {string}
-     * @memberof ClientEventInfo
      */
     component?: string;
     /**
      * 
-     * @type {{ [key: string]: any; }}
-     * @memberof ClientEventInfo
      */
     details?: { [key: string]: any; };
     /**
      * 
-     * @type {string}
-     * @memberof ClientEventInfo
      */
     element?: string;
 }

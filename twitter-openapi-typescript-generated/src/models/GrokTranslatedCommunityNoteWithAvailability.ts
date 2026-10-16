@@ -29,14 +29,10 @@ import {
 export interface GrokTranslatedCommunityNoteWithAvailability {
     /**
      * 
-     * @type {GrokTranslatedCommunityNote}
-     * @memberof GrokTranslatedCommunityNoteWithAvailability
      */
     data?: GrokTranslatedCommunityNote;
     /**
      * 
-     * @type {boolean}
-     * @memberof GrokTranslatedCommunityNoteWithAvailability
      */
     isAvailable: boolean;
 }
@@ -45,7 +41,7 @@ export interface GrokTranslatedCommunityNoteWithAvailability {
  * Check if a given object implements the GrokTranslatedCommunityNoteWithAvailability interface.
  */
 export function instanceOfGrokTranslatedCommunityNoteWithAvailability(value: object): value is GrokTranslatedCommunityNoteWithAvailability {
-    if (!('isAvailable' in value) || value['isAvailable'] === undefined) return false;
+    if ((!('isAvailable' in (value as Record<string, any>)) && !('is_available' in (value as Record<string, any>))) || ((value as Record<string, any>)['isAvailable'] === undefined && (value as Record<string, any>)['is_available'] === undefined)) return false;
     return true;
 }
 

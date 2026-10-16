@@ -21,8 +21,6 @@ import { mapValues } from '../runtime';
 export interface TrendImage {
     /**
      * 
-     * @type {string}
-     * @memberof TrendImage
      */
     url?: string;
 }

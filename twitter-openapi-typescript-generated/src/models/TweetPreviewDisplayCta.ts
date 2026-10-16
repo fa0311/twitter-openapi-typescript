@@ -29,14 +29,10 @@ import {
 export interface TweetPreviewDisplayCta {
     /**
      * 
-     * @type {string}
-     * @memberof TweetPreviewDisplayCta
      */
     title: string;
     /**
      * 
-     * @type {TweetPreviewDisplayCtaUrl}
-     * @memberof TweetPreviewDisplayCta
      */
     url: TweetPreviewDisplayCtaUrl;
 }

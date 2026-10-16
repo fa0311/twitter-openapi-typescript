@@ -21,14 +21,10 @@ import { mapValues } from '../runtime';
 export interface UserHighlightsInfo {
     /**
      * 
-     * @type {boolean}
-     * @memberof UserHighlightsInfo
      */
     canHighlightTweets: boolean;
     /**
      * 
-     * @type {string}
-     * @memberof UserHighlightsInfo
      */
     highlightedTweets: string;
 }
@@ -37,8 +33,8 @@ export interface UserHighlightsInfo {
  * Check if a given object implements the UserHighlightsInfo interface.
  */
 export function instanceOfUserHighlightsInfo(value: object): value is UserHighlightsInfo {
-    if (!('canHighlightTweets' in value) || value['canHighlightTweets'] === undefined) return false;
-    if (!('highlightedTweets' in value) || value['highlightedTweets'] === undefined) return false;
+    if ((!('canHighlightTweets' in (value as Record<string, any>)) && !('can_highlight_tweets' in (value as Record<string, any>))) || ((value as Record<string, any>)['canHighlightTweets'] === undefined && (value as Record<string, any>)['can_highlight_tweets'] === undefined)) return false;
+    if ((!('highlightedTweets' in (value as Record<string, any>)) && !('highlighted_tweets' in (value as Record<string, any>))) || ((value as Record<string, any>)['highlightedTweets'] === undefined && (value as Record<string, any>)['highlighted_tweets'] === undefined)) return false;
     return true;
 }
 

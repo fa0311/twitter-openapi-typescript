@@ -26,7 +26,10 @@ export const ContentItemType = {
     TimelineCommunity: 'TimelineCommunity',
     TimelineTombstone: 'TimelineTombstone',
     TimelineTrend: 'TimelineTrend',
-    TimelineNotification: 'TimelineNotification'
+    TimelineNotification: 'TimelineNotification',
+    TimelineFrame: 'TimelineFrame',
+    TimelineTwitterList: 'TimelineTwitterList',
+    TimelineLabel: 'TimelineLabel',
 } as const;
 export type ContentItemType = typeof ContentItemType[keyof typeof ContentItemType];
 

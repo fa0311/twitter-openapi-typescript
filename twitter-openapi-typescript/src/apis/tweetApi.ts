@@ -294,7 +294,7 @@ export class TweetApiUtils {
 
     const response = await this.request({
       apiFn: this.api.getUserTweetsRaw,
-      convertFn: (e) => errorCheck(e.data.user?.result.timeline.timeline, e.errors).instructions,
+      convertFn: (e) => errorCheck(e.data.user?.result.timeline?.timeline, e.errors).instructions,
       key: 'UserTweets',
       param: args,
     });
@@ -311,7 +311,7 @@ export class TweetApiUtils {
 
     const response = await this.request({
       apiFn: this.api.getUserOriginalsTimelineRaw,
-      convertFn: (e) => errorCheck(e.data.user?.result.timeline.timeline, e.errors).instructions,
+      convertFn: (e) => errorCheck(e.data.user?.result.timeline?.timeline, e.errors).instructions,
       key: 'UserOriginalsTimeline',
       param: args,
     });
@@ -328,7 +328,7 @@ export class TweetApiUtils {
 
     const response = await this.request({
       apiFn: this.api.getUserRepliesTimelineRaw,
-      convertFn: (e) => errorCheck(e.data.user?.result.timeline.timeline, e.errors).instructions,
+      convertFn: (e) => errorCheck(e.data.user?.result.timeline?.timeline, e.errors).instructions,
       key: 'UserRepliesTimeline',
       param: args,
     });
@@ -345,7 +345,7 @@ export class TweetApiUtils {
 
     const response = await this.request({
       apiFn: this.api.getUserVideoTimelineRaw,
-      convertFn: (e) => errorCheck(e.data.user?.result.timeline.timeline, e.errors).instructions,
+      convertFn: (e) => errorCheck(e.data.user?.result.timeline?.timeline, e.errors).instructions,
       key: 'UserVideoTimeline',
       param: args,
     });
@@ -362,7 +362,7 @@ export class TweetApiUtils {
 
     const response = await this.request({
       apiFn: this.api.getUserTweetsAndRepliesRaw,
-      convertFn: (e) => errorCheck(e.data.user?.result.timeline.timeline, e.errors).instructions,
+      convertFn: (e) => errorCheck(e.data.user?.result.timeline?.timeline, e.errors).instructions,
       key: 'UserTweetsAndReplies',
       param: args,
     });
@@ -379,7 +379,7 @@ export class TweetApiUtils {
 
     const response = await this.request({
       apiFn: this.api.getUserMediaRaw,
-      convertFn: (e) => errorCheck(e.data.user?.result.timeline.timeline, e.errors).instructions,
+      convertFn: (e) => errorCheck(e.data.user?.result.timeline?.timeline, e.errors).instructions,
       key: 'UserMedia',
       param: args,
     });
@@ -395,7 +395,7 @@ export class TweetApiUtils {
 
     const response = await this.request({
       apiFn: this.api.getLikesRaw,
-      convertFn: (e) => errorCheck(e.data.user?.result.timeline.timeline, e.errors).instructions,
+      convertFn: (e) => errorCheck(e.data.user?.result.timeline?.timeline, e.errors).instructions,
       key: 'Likes',
       param: args,
     });
@@ -463,7 +463,7 @@ export class TweetApiUtils {
     };
     const response = await this.request({
       apiFn: this.api.getUserHighlightsTweetsRaw,
-      convertFn: (e) => errorCheck(e.data.user, e.errors).result.timeline.timeline.instructions,
+      convertFn: (e) => errorCheck(errorCheck(e.data.user, e.errors).result.timeline, e.errors).timeline.instructions,
       key: 'UserHighlightsTweets',
       param: args,
     });
@@ -479,7 +479,7 @@ export class TweetApiUtils {
     };
     const response = await this.request({
       apiFn: this.api.getUserRepostsTimelineRaw,
-      convertFn: (e) => errorCheck(e.data.user?.result.timeline.timeline, e.errors).instructions,
+      convertFn: (e) => errorCheck(e.data.user?.result.timeline?.timeline, e.errors).instructions,
       key: 'UserRepostsTimeline',
       param: args,
     });
@@ -496,7 +496,7 @@ export class TweetApiUtils {
     };
     const response = await this.request({
       apiFn: this.api.getUserSuperFollowTweetsRaw,
-      convertFn: (e) => errorCheck(e.data.user?.result.timeline.timeline, e.errors).instructions,
+      convertFn: (e) => errorCheck(e.data.user?.result.timeline?.timeline, e.errors).instructions,
       key: 'UserSuperFollowTweets',
       param: args,
     });

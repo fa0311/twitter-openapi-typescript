@@ -12,6 +12,22 @@ export type TweetResultByRestIdParam = {
   extraParam?: { [key: string]: any };
 };
 
+export type BroadcastQueryParam = {
+  id: string;
+  extraParam?: { [key: string]: any };
+};
+
+export type AudioSpaceByIdParam = {
+  id: string;
+  extraParam?: { [key: string]: any };
+};
+
+export type UseStoryTopicQueryParam = {
+  restId?: string;
+  limit?: number;
+  extraParam?: { [key: string]: any };
+};
+
 export type ExtraParam = {
   extraParam?: { [key: string]: any };
 };
@@ -141,6 +157,62 @@ export class DefaultApiUtils {
       key: 'PinnedTimelines',
       apiFn: this.api.getPinnedTimelinesRaw,
       convertFn: (e) => e.data.pinnedTimelines,
+      param: args,
+    });
+  }
+
+  // A live video broadcast by id.
+  async getBroadcastQuery(param: BroadcastQueryParam): Promise<TwitterApiUtilsResponse<i.Broadcast>> {
+    const args = {
+      id: param.id,
+      ...param.extraParam,
+    };
+    return this.request({
+      key: 'BroadcastQuery',
+      apiFn: this.api.getBroadcastQueryRaw,
+      convertFn: (e) => e.data.broadcast,
+      param: args,
+    });
+  }
+
+  // A Space by id: metadata, participants and the announcing post.
+  async getAudioSpaceById(param: AudioSpaceByIdParam): Promise<TwitterApiUtilsResponse<i.AudioSpace>> {
+    const args = {
+      id: param.id,
+      ...param.extraParam,
+    };
+    return this.request({
+      key: 'AudioSpaceById',
+      apiFn: this.api.getAudioSpaceByIdRaw,
+      convertFn: (e) => e.data.audioSpace,
+      param: args,
+    });
+  }
+
+  // AI-written stories of an explore topic.
+  async getUseStoryTopicQuery(param: UseStoryTopicQueryParam = {}): Promise<TwitterApiUtilsResponse<i.StoryTopic>> {
+    const args = {
+      rest_id: param.restId ?? 'For You',
+      ...(param.limit === undefined ? {} : { limit: param.limit }),
+      ...param.extraParam,
+    };
+    return this.request({
+      key: 'useStoryTopicQuery',
+      apiFn: this.api.getUseStoryTopicQueryRaw,
+      convertFn: (e) => e.data.storyTopic,
+      param: args,
+    });
+  }
+
+  // Whether the account is linked to a Grok account.
+  async getGrokAccountJwtQuery(param: ExtraParam = {}): Promise<TwitterApiUtilsResponse<i.GrokAccountJwt>> {
+    const args = {
+      ...param.extraParam,
+    };
+    return this.request({
+      key: 'grokAccountJwtQuery',
+      apiFn: this.api.getGrokAccountJwtQueryRaw,
+      convertFn: (e) => e.data.grokAccountJwt,
       param: args,
     });
   }

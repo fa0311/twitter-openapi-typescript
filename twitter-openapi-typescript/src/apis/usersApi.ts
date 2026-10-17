@@ -12,6 +12,11 @@ type getUsersVerifiedAvatarsParam = {
   extraParam?: { [key: string]: any };
 };
 
+type getSidebarUserRecommendationsParam = {
+  profileUserId: string;
+  extraParam?: { [key: string]: any };
+};
+
 type ResponseType = TwitterApiUtilsResponse<UserApiUtilsData[]>;
 
 export class UsersApiUtils {
@@ -66,6 +71,24 @@ export class UsersApiUtils {
       flag: this.flag.UsersVerifiedAvatars,
       initOverrides: this.initOverrides,
       convertFn: (e) => e.data.usersResults.map((x) => x.result),
+      param: args,
+    });
+  }
+
+  // Who to follow, shown in the sidebar of a profile, each with its recommendation token.
+  async getSidebarUserRecommendations(
+    param: getSidebarUserRecommendationsParam,
+  ): Promise<TwitterApiUtilsResponse<i.SidebarUserRecommendation[]>> {
+    const args = {
+      profileUserId: param.profileUserId,
+      ...param.extraParam,
+    };
+    return dataRequest({
+      api: this.api,
+      apiFn: this.api.getSidebarUserRecommendationsRaw,
+      flag: this.flag.SidebarUserRecommendations,
+      initOverrides: this.initOverrides,
+      convertFn: (e) => e.data.sidebarUserRecommendations,
       param: args,
     });
   }

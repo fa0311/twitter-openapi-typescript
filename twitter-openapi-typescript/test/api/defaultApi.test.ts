@@ -59,3 +59,38 @@ test('getPinnedTimelines', async () => {
   logger.log(`pinned: ${response.data.pinnedTimelines.length}`);
   expect(response.raw.response.ok).toBe(true);
 });
+
+test('getBroadcastQuery', async () => {
+  logger.log('getBroadcastQuery');
+  const client = await getClient();
+  const response = await client.getDefaultApi().getBroadcastQuery({ id: '1BRKjmPYymWxw' });
+  logger.log(`${response.data.status} (${response.data.state}, ${response.data.totalWatched} watched)`);
+  expect(response.raw.response.ok).toBe(true);
+});
+
+test('getAudioSpaceById', async () => {
+  logger.log('getAudioSpaceById');
+  const client = await getClient();
+  const response = await client.getDefaultApi().getAudioSpaceById({ id: '1qxoNYAlYMXJv' });
+  const { metadata, participants } = response.data;
+  logger.log(`${metadata.title} (${metadata.state}, ${participants.total} participants)`);
+  expect(response.raw.response.ok).toBe(true);
+});
+
+test('getUseStoryTopicQuery', async () => {
+  logger.log('getUseStoryTopicQuery');
+  const client = await getClient();
+  const response = await client.getDefaultApi().getUseStoryTopicQuery();
+  response.data.stories.items.forEach((item) => {
+    logger.log(`${item.trendResults.result.core.category}: ${item.trendResults.result.core.name}`);
+  });
+  expect(response.raw.response.ok).toBe(true);
+});
+
+test('getGrokAccountJwtQuery', async () => {
+  logger.log('getGrokAccountJwtQuery');
+  const client = await getClient();
+  const response = await client.getDefaultApi().getGrokAccountJwtQuery();
+  logger.log(response.data.status);
+  expect(response.raw.response.ok).toBe(true);
+});

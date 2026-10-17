@@ -30,7 +30,7 @@ export interface TweetPostCta {
     /**
      * 
      */
-    displayLocations: Array<TweetPostCtaDisplayLocationsEnum>;
+    displayLocations: Array<string>;
     /**
      * 
      */
@@ -40,18 +40,6 @@ export interface TweetPostCta {
      */
     scribeId?: string;
 }
-
-
-/**
- * @export
- */
-export const TweetPostCtaDisplayLocationsEnum = {
-    TweetDetails: 'TweetDetails',
-    ForYouTimeline: 'ForYouTimeline',
-    RepliesTimeline: 'RepliesTimeline',
-} as const;
-export type TweetPostCtaDisplayLocationsEnum = typeof TweetPostCtaDisplayLocationsEnum[keyof typeof TweetPostCtaDisplayLocationsEnum];
-
 
 /**
  * Check if a given object implements the TweetPostCta interface.

@@ -20,6 +20,13 @@ import {
     ArticleLifecycleStateToJSON,
     ArticleLifecycleStateToJSONTyped,
 } from './ArticleLifecycleState';
+import type { ArticleContentState } from './ArticleContentState';
+import {
+    ArticleContentStateFromJSON,
+    ArticleContentStateFromJSONTyped,
+    ArticleContentStateToJSON,
+    ArticleContentStateToJSONTyped,
+} from './ArticleContentState';
 import type { ArticleCoverMedia } from './ArticleCoverMedia';
 import {
     ArticleCoverMediaFromJSON,
@@ -44,7 +51,7 @@ export interface ArticleResult {
     /**
      * 
      */
-    contentState?: { [key: string]: any; };
+    contentState?: ArticleContentState;
     /**
      * 
      */
@@ -80,6 +87,10 @@ export interface ArticleResult {
     /**
      * 
      */
+    summaryText?: string;
+    /**
+     * 
+     */
     title: string;
 }
 
@@ -105,7 +116,7 @@ export function ArticleResultFromJSONTyped(json: any, ignoreDiscriminator: boole
     }
     return {
         
-        'contentState': json['content_state'] == null ? undefined : json['content_state'],
+        'contentState': json['content_state'] == null ? undefined : ArticleContentStateFromJSON(json['content_state']),
         'coverMedia': json['cover_media'] == null ? undefined : ArticleCoverMediaFromJSON(json['cover_media']),
         'id': json['id'],
         'isGrokSummaryEligible': json['is_grok_summary_eligible'] == null ? undefined : json['is_grok_summary_eligible'],
@@ -114,6 +125,7 @@ export function ArticleResultFromJSONTyped(json: any, ignoreDiscriminator: boole
         'metadata': ArticleMetadataFromJSON(json['metadata']),
         'previewText': json['preview_text'],
         'restId': json['rest_id'],
+        'summaryText': json['summary_text'] == null ? undefined : json['summary_text'],
         'title': json['title'],
     };
 }
@@ -129,7 +141,7 @@ export function ArticleResultToJSONTyped(value?: ArticleResult | null, ignoreDis
 
     return {
         
-        'content_state': value['contentState'],
+        'content_state': ArticleContentStateToJSON(value['contentState']),
         'cover_media': ArticleCoverMediaToJSON(value['coverMedia']),
         'id': value['id'],
         'is_grok_summary_eligible': value['isGrokSummaryEligible'],
@@ -138,6 +150,7 @@ export function ArticleResultToJSONTyped(value?: ArticleResult | null, ignoreDis
         'metadata': ArticleMetadataToJSON(value['metadata']),
         'preview_text': value['previewText'],
         'rest_id': value['restId'],
+        'summary_text': value['summaryText'],
         'title': value['title'],
     };
 }

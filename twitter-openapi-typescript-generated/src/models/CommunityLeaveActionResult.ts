@@ -38,17 +38,9 @@ export interface CommunityLeaveActionResult {
     /**
      * 
      */
-    reason: CommunityLeaveActionResultReasonEnum;
+    reason: string;
 }
 
-
-/**
- * @export
- */
-export const CommunityLeaveActionResultReasonEnum = {
-    ViewerNotMember: 'ViewerNotMember',
-} as const;
-export type CommunityLeaveActionResultReasonEnum = typeof CommunityLeaveActionResultReasonEnum[keyof typeof CommunityLeaveActionResultReasonEnum];
 
 
 /**
@@ -58,8 +50,6 @@ export function instanceOfCommunityLeaveActionResult(value: object): value is Co
     if ((!('typename' in (value as Record<string, any>)) && !('__typename' in (value as Record<string, any>))) || ((value as Record<string, any>)['typename'] === undefined && (value as Record<string, any>)['__typename'] === undefined)) return false;
     if (!('message' in value) || value['message'] === undefined) return false;
     if (!('reason' in value) || value['reason'] === undefined) return false;
-    if (value['reason'] !== 'ViewerNotMember') return false;
-    
     return true;
 }
 

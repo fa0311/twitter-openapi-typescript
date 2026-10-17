@@ -48,7 +48,7 @@ export interface TimelineHalfCover {
     /**
      * 
      */
-    halfCoverDisplayType: TimelineHalfCoverHalfCoverDisplayTypeEnum;
+    halfCoverDisplayType: string;
     /**
      * 
      */
@@ -75,14 +75,6 @@ export interface TimelineHalfCover {
 /**
  * @export
  */
-export const TimelineHalfCoverHalfCoverDisplayTypeEnum = {
-    Cover: 'Cover',
-} as const;
-export type TimelineHalfCoverHalfCoverDisplayTypeEnum = typeof TimelineHalfCoverHalfCoverDisplayTypeEnum[keyof typeof TimelineHalfCoverHalfCoverDisplayTypeEnum];
-
-/**
- * @export
- */
 export const TimelineHalfCoverTypeEnum = {
     TimelineHalfCover: 'TimelineHalfCover',
 } as const;
@@ -95,8 +87,6 @@ export type TimelineHalfCoverTypeEnum = typeof TimelineHalfCoverTypeEnum[keyof t
 export function instanceOfTimelineHalfCover(value: object): value is TimelineHalfCover {
     if (!('dismissible' in value) || value['dismissible'] === undefined) return false;
     if (!('halfCoverDisplayType' in value) || value['halfCoverDisplayType'] === undefined) return false;
-    if (value['halfCoverDisplayType'] !== 'Cover') return false;
-    
     if (!('impressionCallbacks' in value) || value['impressionCallbacks'] === undefined) return false;
     if (!('primaryCoverCta' in value) || value['primaryCoverCta'] === undefined) return false;
     if (!('primaryText' in value) || value['primaryText'] === undefined) return false;

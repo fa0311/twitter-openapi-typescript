@@ -22,26 +22,14 @@ export interface CtaClientEventInfo {
     /**
      * 
      */
-    action: CtaClientEventInfoActionEnum;
+    action: string;
 }
-
-
-/**
- * @export
- */
-export const CtaClientEventInfoActionEnum = {
-    PrimaryCta: 'primary_cta',
-} as const;
-export type CtaClientEventInfoActionEnum = typeof CtaClientEventInfoActionEnum[keyof typeof CtaClientEventInfoActionEnum];
-
 
 /**
  * Check if a given object implements the CtaClientEventInfo interface.
  */
 export function instanceOfCtaClientEventInfo(value: object): value is CtaClientEventInfo {
     if (!('action' in value) || value['action'] === undefined) return false;
-    if (value['action'] !== 'primary_cta') return false;
-    
     return true;
 }
 

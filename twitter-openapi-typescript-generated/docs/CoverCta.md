@@ -6,11 +6,11 @@
 
 Name | Type
 ------------ | -------------
-`text` | string
 `buttonStyle` | string
 `callbacks` | [Array&lt;Callback&gt;](Callback.md)
 `clientEventInfo` | [CtaClientEventInfo](CtaClientEventInfo.md)
 `ctaBehavior` | [TimelineCoverBehavior](TimelineCoverBehavior.md)
+`text` | string
 
 ## Example
 
@@ -19,11 +19,11 @@ import type { CoverCta } from 'twitter-openapi-typescript-generated'
 
 // TODO: Update the object below with actual values
 const example = {
-  "text": null,
   "buttonStyle": null,
   "callbacks": null,
   "clientEventInfo": null,
   "ctaBehavior": null,
+  "text": null,
 } satisfies CoverCta
 
 console.log(example)

@@ -30,12 +30,40 @@ export interface LimitedAction {
     /**
      * 
      */
-    action: string;
+    action: LimitedActionActionEnum;
     /**
      * 
      */
     prompt?: CtaLimitedActionPrompt;
 }
+
+
+/**
+ * @export
+ */
+export const LimitedActionActionEnum = {
+    Reply: 'Reply',
+    Retweet: 'Retweet',
+    QuoteTweet: 'QuoteTweet',
+    Like: 'Like',
+    React: 'React',
+    AddToBookmarks: 'AddToBookmarks',
+    AddToMoment: 'AddToMoment',
+    PinToProfile: 'PinToProfile',
+    ViewHiddenReplies: 'ViewHiddenReplies',
+    VoteOnPoll: 'VoteOnPoll',
+    ShowRetweetActionMenu: 'ShowRetweetActionMenu',
+    ReplyDownVote: 'ReplyDownVote',
+    SendViaDm: 'SendViaDm',
+    ViewPostEngagements: 'ViewPostEngagements',
+    CopyLink: 'CopyLink',
+    ShareTweetVia: 'ShareTweetVia',
+    Embed: 'Embed',
+    HideCommunityTweet: 'HideCommunityTweet',
+    ViewTweetActivity: 'ViewTweetActivity',
+} as const;
+export type LimitedActionActionEnum = typeof LimitedActionActionEnum[keyof typeof LimitedActionActionEnum];
+
 
 /**
  * Check if a given object implements the LimitedAction interface.

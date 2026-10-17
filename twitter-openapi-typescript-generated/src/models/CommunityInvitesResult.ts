@@ -38,17 +38,9 @@ export interface CommunityInvitesResult {
     /**
      * 
      */
-    reason: CommunityInvitesResultReasonEnum;
+    reason: string;
 }
 
-
-/**
- * @export
- */
-export const CommunityInvitesResultReasonEnum = {
-    Unavailable: 'Unavailable',
-} as const;
-export type CommunityInvitesResultReasonEnum = typeof CommunityInvitesResultReasonEnum[keyof typeof CommunityInvitesResultReasonEnum];
 
 
 /**
@@ -58,8 +50,6 @@ export function instanceOfCommunityInvitesResult(value: object): value is Commun
     if ((!('typename' in (value as Record<string, any>)) && !('__typename' in (value as Record<string, any>))) || ((value as Record<string, any>)['typename'] === undefined && (value as Record<string, any>)['__typename'] === undefined)) return false;
     if (!('message' in value) || value['message'] === undefined) return false;
     if (!('reason' in value) || value['reason'] === undefined) return false;
-    if (value['reason'] !== 'Unavailable') return false;
-    
     return true;
 }
 

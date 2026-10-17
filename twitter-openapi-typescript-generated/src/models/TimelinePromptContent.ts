@@ -34,11 +34,11 @@ export interface TimelinePromptContent {
     /**
      * 
      */
-    contentType: TimelinePromptContentContentTypeEnum;
+    contentType: string;
     /**
      * 
      */
-    displayType: TimelinePromptContentDisplayTypeEnum;
+    displayType: string;
     /**
      * 
      */
@@ -61,35 +61,13 @@ export interface TimelinePromptContent {
     title: string;
 }
 
-
-/**
- * @export
- */
-export const TimelinePromptContentContentTypeEnum = {
-    TimelineRelevancePrompt: 'TimelineRelevancePrompt',
-} as const;
-export type TimelinePromptContentContentTypeEnum = typeof TimelinePromptContentContentTypeEnum[keyof typeof TimelinePromptContentContentTypeEnum];
-
-/**
- * @export
- */
-export const TimelinePromptContentDisplayTypeEnum = {
-    Compact: 'Compact',
-} as const;
-export type TimelinePromptContentDisplayTypeEnum = typeof TimelinePromptContentDisplayTypeEnum[keyof typeof TimelinePromptContentDisplayTypeEnum];
-
-
 /**
  * Check if a given object implements the TimelinePromptContent interface.
  */
 export function instanceOfTimelinePromptContent(value: object): value is TimelinePromptContent {
     if (!('confirmation' in value) || value['confirmation'] === undefined) return false;
     if (!('contentType' in value) || value['contentType'] === undefined) return false;
-    if (value['contentType'] !== 'TimelineRelevancePrompt') return false;
-    
     if (!('displayType' in value) || value['displayType'] === undefined) return false;
-    if (value['displayType'] !== 'Compact') return false;
-    
     if (!('isRelevantCallback' in value) || value['isRelevantCallback'] === undefined) return false;
     if (!('isRelevantText' in value) || value['isRelevantText'] === undefined) return false;
     if (!('notRelevantCallback' in value) || value['notRelevantCallback'] === undefined) return false;

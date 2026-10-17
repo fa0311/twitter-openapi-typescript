@@ -23,6 +23,10 @@ export interface CashtagAttachment {
      * 
      */
     restId: string;
+    /**
+     * 
+     */
+    sizeVariant?: number;
 }
 
 /**
@@ -44,6 +48,7 @@ export function CashtagAttachmentFromJSONTyped(json: any, ignoreDiscriminator: b
     return {
         
         'restId': json['rest_id'],
+        'sizeVariant': json['size_variant'] == null ? undefined : json['size_variant'],
     };
 }
 
@@ -59,6 +64,7 @@ export function CashtagAttachmentToJSONTyped(value?: CashtagAttachment | null, i
     return {
         
         'rest_id': value['restId'],
+        'size_variant': value['sizeVariant'],
     };
 }
 

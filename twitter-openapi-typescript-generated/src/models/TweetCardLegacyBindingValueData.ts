@@ -64,12 +64,26 @@ export interface TweetCardLegacyBindingValueData {
     /**
      * 
      */
-    type: string;
+    type: TweetCardLegacyBindingValueDataTypeEnum;
     /**
      * 
      */
     userValue?: UserValue;
 }
+
+
+/**
+ * @export
+ */
+export const TweetCardLegacyBindingValueDataTypeEnum = {
+    String: 'STRING',
+    Image: 'IMAGE',
+    User: 'USER',
+    Boolean: 'BOOLEAN',
+    ImageColor: 'IMAGE_COLOR',
+} as const;
+export type TweetCardLegacyBindingValueDataTypeEnum = typeof TweetCardLegacyBindingValueDataTypeEnum[keyof typeof TweetCardLegacyBindingValueDataTypeEnum];
+
 
 /**
  * Check if a given object implements the TweetCardLegacyBindingValueData interface.

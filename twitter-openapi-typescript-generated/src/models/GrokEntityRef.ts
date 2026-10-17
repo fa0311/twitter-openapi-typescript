@@ -30,6 +30,14 @@ export interface GrokEntityRef {
     /**
      * 
      */
+    id?: string;
+    /**
+     * 
+     */
+    screenName?: string;
+    /**
+     * 
+     */
     text?: string;
     /**
      * 
@@ -52,6 +60,7 @@ export interface GrokEntityRef {
 export const GrokEntityRefTypeEnum = {
     TimelineUrl: 'TimelineUrl',
     TimelineRichTextHashtag: 'TimelineRichTextHashtag',
+    TimelineRichTextMention: 'TimelineRichTextMention',
 } as const;
 export type GrokEntityRefTypeEnum = typeof GrokEntityRefTypeEnum[keyof typeof GrokEntityRefTypeEnum];
 
@@ -84,6 +93,8 @@ export function GrokEntityRefFromJSONTyped(json: any, ignoreDiscriminator: boole
         
         'displayUrl': json['display_url'] == null ? undefined : json['display_url'],
         'expandedUrl': json['expanded_url'] == null ? undefined : json['expanded_url'],
+        'id': json['id'] == null ? undefined : json['id'],
+        'screenName': json['screen_name'] == null ? undefined : json['screen_name'],
         'text': json['text'] == null ? undefined : json['text'],
         'type': json['type'],
         'url': json['url'] == null ? undefined : json['url'],
@@ -104,6 +115,8 @@ export function GrokEntityRefToJSONTyped(value?: GrokEntityRef | null, ignoreDis
         
         'display_url': value['displayUrl'],
         'expanded_url': value['expandedUrl'],
+        'id': value['id'],
+        'screen_name': value['screenName'],
         'text': value['text'],
         'type': value['type'],
         'url': value['url'],

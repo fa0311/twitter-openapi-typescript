@@ -10,6 +10,7 @@ Name | Type
 `bookmarked` | boolean
 `conversationControl` | [ConversationControl](ConversationControl.md)
 `conversationIdStr` | string
+`coordinates` | [TweetLegacyPoint](TweetLegacyPoint.md)
 `createdAt` | string
 `displayTextRange` | Array&lt;number&gt;
 `entities` | [Entities](Entities.md)
@@ -17,6 +18,7 @@ Name | Type
 `favoriteCount` | number
 `favorited` | boolean
 `fullText` | string
+`geo` | [TweetLegacyPoint](TweetLegacyPoint.md)
 `idStr` | string
 `inReplyToScreenName` | string
 `inReplyToStatusIdStr` | string
@@ -24,7 +26,7 @@ Name | Type
 `isQuoteStatus` | boolean
 `lang` | string
 `limitedActions` | string
-`place` | { [key: string]: any; }
+`place` | [TweetLegacyPlace](TweetLegacyPlace.md)
 `possiblySensitive` | boolean
 `possiblySensitiveEditable` | boolean
 `quoteCount` | number
@@ -49,6 +51,7 @@ const example = {
   "bookmarked": null,
   "conversationControl": null,
   "conversationIdStr": null,
+  "coordinates": null,
   "createdAt": Sat Dec 31 23:59:59 +0000 2023,
   "displayTextRange": null,
   "entities": null,
@@ -56,6 +59,7 @@ const example = {
   "favoriteCount": null,
   "favorited": null,
   "fullText": null,
+  "geo": null,
   "idStr": null,
   "inReplyToScreenName": null,
   "inReplyToStatusIdStr": null,

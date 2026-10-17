@@ -20,6 +20,13 @@ import {
     ExtendedEntitiesToJSON,
     ExtendedEntitiesToJSONTyped,
 } from './ExtendedEntities';
+import type { TweetLegacyPoint } from './TweetLegacyPoint';
+import {
+    TweetLegacyPointFromJSON,
+    TweetLegacyPointFromJSONTyped,
+    TweetLegacyPointToJSON,
+    TweetLegacyPointToJSONTyped,
+} from './TweetLegacyPoint';
 import type { ItemResult } from './ItemResult';
 import {
     ItemResultFromJSON,
@@ -62,6 +69,13 @@ import {
     EntitiesToJSON,
     EntitiesToJSONTyped,
 } from './Entities';
+import type { TweetLegacyPlace } from './TweetLegacyPlace';
+import {
+    TweetLegacyPlaceFromJSON,
+    TweetLegacyPlaceFromJSONTyped,
+    TweetLegacyPlaceToJSON,
+    TweetLegacyPlaceToJSONTyped,
+} from './TweetLegacyPlace';
 
 /**
  * 
@@ -85,6 +99,10 @@ export interface TweetLegacy {
      * 
      */
     conversationIdStr: string;
+    /**
+     * 
+     */
+    coordinates?: TweetLegacyPoint;
     /**
      * 
      */
@@ -116,6 +134,10 @@ export interface TweetLegacy {
     /**
      * 
      */
+    geo?: TweetLegacyPoint;
+    /**
+     * 
+     */
     idStr: string;
     /**
      * 
@@ -144,7 +166,7 @@ export interface TweetLegacy {
     /**
      * 
      */
-    place?: { [key: string]: any; };
+    place?: TweetLegacyPlace;
     /**
      * 
      */
@@ -248,6 +270,7 @@ export function TweetLegacyFromJSONTyped(json: any, ignoreDiscriminator: boolean
         'bookmarked': json['bookmarked'],
         'conversationControl': json['conversation_control'] == null ? undefined : ConversationControlFromJSON(json['conversation_control']),
         'conversationIdStr': json['conversation_id_str'],
+        'coordinates': json['coordinates'] == null ? undefined : TweetLegacyPointFromJSON(json['coordinates']),
         'createdAt': json['created_at'],
         'displayTextRange': json['display_text_range'],
         'entities': json['entities'] == null ? undefined : EntitiesFromJSON(json['entities']),
@@ -255,6 +278,7 @@ export function TweetLegacyFromJSONTyped(json: any, ignoreDiscriminator: boolean
         'favoriteCount': json['favorite_count'],
         'favorited': json['favorited'],
         'fullText': json['full_text'],
+        'geo': json['geo'] == null ? undefined : TweetLegacyPointFromJSON(json['geo']),
         'idStr': json['id_str'],
         'inReplyToScreenName': json['in_reply_to_screen_name'] == null ? undefined : json['in_reply_to_screen_name'],
         'inReplyToStatusIdStr': json['in_reply_to_status_id_str'] == null ? undefined : json['in_reply_to_status_id_str'],
@@ -262,7 +286,7 @@ export function TweetLegacyFromJSONTyped(json: any, ignoreDiscriminator: boolean
         'isQuoteStatus': json['is_quote_status'],
         'lang': json['lang'],
         'limitedActions': json['limited_actions'] == null ? undefined : json['limited_actions'],
-        'place': json['place'] == null ? undefined : json['place'],
+        'place': json['place'] == null ? undefined : TweetLegacyPlaceFromJSON(json['place']),
         'possiblySensitive': json['possibly_sensitive'] == null ? undefined : json['possibly_sensitive'],
         'possiblySensitiveEditable': json['possibly_sensitive_editable'] == null ? undefined : json['possibly_sensitive_editable'],
         'quoteCount': json['quote_count'],
@@ -293,6 +317,7 @@ export function TweetLegacyToJSONTyped(value?: TweetLegacy | null, ignoreDiscrim
         'bookmarked': value['bookmarked'],
         'conversation_control': ConversationControlToJSON(value['conversationControl']),
         'conversation_id_str': value['conversationIdStr'],
+        'coordinates': TweetLegacyPointToJSON(value['coordinates']),
         'created_at': value['createdAt'],
         'display_text_range': value['displayTextRange'],
         'entities': EntitiesToJSON(value['entities']),
@@ -300,6 +325,7 @@ export function TweetLegacyToJSONTyped(value?: TweetLegacy | null, ignoreDiscrim
         'favorite_count': value['favoriteCount'],
         'favorited': value['favorited'],
         'full_text': value['fullText'],
+        'geo': TweetLegacyPointToJSON(value['geo']),
         'id_str': value['idStr'],
         'in_reply_to_screen_name': value['inReplyToScreenName'],
         'in_reply_to_status_id_str': value['inReplyToStatusIdStr'],
@@ -307,7 +333,7 @@ export function TweetLegacyToJSONTyped(value?: TweetLegacy | null, ignoreDiscrim
         'is_quote_status': value['isQuoteStatus'],
         'lang': value['lang'],
         'limited_actions': value['limitedActions'],
-        'place': value['place'],
+        'place': TweetLegacyPlaceToJSON(value['place']),
         'possibly_sensitive': value['possiblySensitive'],
         'possibly_sensitive_editable': value['possiblySensitiveEditable'],
         'quote_count': value['quoteCount'],

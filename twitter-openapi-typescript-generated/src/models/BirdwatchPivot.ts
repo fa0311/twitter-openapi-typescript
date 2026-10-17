@@ -63,11 +63,11 @@ export interface BirdwatchPivot {
     /**
      * 
      */
-    footerIconType?: BirdwatchPivotFooterIconTypeEnum;
+    footerIconType?: string;
     /**
      * 
      */
-    iconType: BirdwatchPivotIconTypeEnum;
+    iconType: string;
     /**
      * 
      */
@@ -94,24 +94,6 @@ export interface BirdwatchPivot {
     visualStyle?: BirdwatchPivotVisualStyleEnum;
 }
 
-
-/**
- * @export
- */
-export const BirdwatchPivotFooterIconTypeEnum = {
-    BirdwatchEyeOff: 'BirdwatchEyeOff',
-    BirdwatchLevelLow: 'BirdwatchLevelLow',
-} as const;
-export type BirdwatchPivotFooterIconTypeEnum = typeof BirdwatchPivotFooterIconTypeEnum[keyof typeof BirdwatchPivotFooterIconTypeEnum];
-
-/**
- * @export
- */
-export const BirdwatchPivotIconTypeEnum = {
-    BirdwatchV1Icon: 'BirdwatchV1Icon',
-    BirdwatchCameraVideo: 'BirdwatchCameraVideo',
-} as const;
-export type BirdwatchPivotIconTypeEnum = typeof BirdwatchPivotIconTypeEnum[keyof typeof BirdwatchPivotIconTypeEnum];
 
 /**
  * @export

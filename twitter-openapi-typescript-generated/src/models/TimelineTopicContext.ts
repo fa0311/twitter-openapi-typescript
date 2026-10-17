@@ -37,7 +37,7 @@ export interface TimelineTopicContext {
     /**
      * 
      */
-    functionalityType?: TimelineTopicContextFunctionalityTypeEnum;
+    functionalityType?: string;
     /**
      * 
      */
@@ -48,14 +48,6 @@ export interface TimelineTopicContext {
     type?: SocialContextUnionType;
 }
 
-
-/**
- * @export
- */
-export const TimelineTopicContextFunctionalityTypeEnum = {
-    Basic: 'Basic',
-} as const;
-export type TimelineTopicContextFunctionalityTypeEnum = typeof TimelineTopicContextFunctionalityTypeEnum[keyof typeof TimelineTopicContextFunctionalityTypeEnum];
 
 
 /**

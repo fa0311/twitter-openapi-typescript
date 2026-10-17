@@ -65,7 +65,7 @@ export interface TimelineShowAlert {
     /**
      * 
      */
-    alertType: TimelineShowAlertAlertTypeEnum;
+    alertType: string;
     /**
      * 
      */
@@ -81,7 +81,7 @@ export interface TimelineShowAlert {
     /**
      * 
      */
-    displayLocation: TimelineShowAlertDisplayLocationEnum;
+    displayLocation: string;
     /**
      * 
      */
@@ -105,36 +105,16 @@ export interface TimelineShowAlert {
 }
 
 
-/**
- * @export
- */
-export const TimelineShowAlertAlertTypeEnum = {
-    NewTweets: 'NewTweets',
-} as const;
-export type TimelineShowAlertAlertTypeEnum = typeof TimelineShowAlertAlertTypeEnum[keyof typeof TimelineShowAlertAlertTypeEnum];
-
-/**
- * @export
- */
-export const TimelineShowAlertDisplayLocationEnum = {
-    Top: 'Top',
-} as const;
-export type TimelineShowAlertDisplayLocationEnum = typeof TimelineShowAlertDisplayLocationEnum[keyof typeof TimelineShowAlertDisplayLocationEnum];
-
 
 /**
  * Check if a given object implements the TimelineShowAlert interface.
  */
 export function instanceOfTimelineShowAlert(value: object): value is TimelineShowAlert {
     if (!('alertType' in value) || value['alertType'] === undefined) return false;
-    if (value['alertType'] !== 'NewTweets') return false;
-    
     if (!('clientEventInfo' in value) || value['clientEventInfo'] === undefined) return false;
     if (!('colorConfig' in value) || value['colorConfig'] === undefined) return false;
     if (!('displayDurationMs' in value) || value['displayDurationMs'] === undefined) return false;
     if (!('displayLocation' in value) || value['displayLocation'] === undefined) return false;
-    if (value['displayLocation'] !== 'Top') return false;
-    
     if (!('iconDisplayInfo' in value) || value['iconDisplayInfo'] === undefined) return false;
     if (!('richText' in value) || value['richText'] === undefined) return false;
     if (!('triggerDelayMs' in value) || value['triggerDelayMs'] === undefined) return false;

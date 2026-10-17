@@ -34,14 +34,13 @@ export interface MediaResult {
     /**
      * 
      */
-    mediaKey: string;
+    mediaKey?: string;
 }
 
 /**
  * Check if a given object implements the MediaResult interface.
  */
 export function instanceOfMediaResult(value: object): value is MediaResult {
-    if ((!('mediaKey' in (value as Record<string, any>)) && !('media_key' in (value as Record<string, any>))) || ((value as Record<string, any>)['mediaKey'] === undefined && (value as Record<string, any>)['media_key'] === undefined)) return false;
     return true;
 }
 
@@ -56,7 +55,7 @@ export function MediaResultFromJSONTyped(json: any, ignoreDiscriminator: boolean
     return {
         
         'grokImageAnnotation': json['grok_image_annotation'] == null ? undefined : GrokImageAnnotationFromJSON(json['grok_image_annotation']),
-        'mediaKey': json['media_key'],
+        'mediaKey': json['media_key'] == null ? undefined : json['media_key'],
     };
 }
 

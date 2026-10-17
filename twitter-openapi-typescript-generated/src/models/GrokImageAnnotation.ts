@@ -26,7 +26,7 @@ export interface GrokImageAnnotation {
     /**
      * 
      */
-    upsampledPrompt: string;
+    upsampledPrompt?: string;
 }
 
 /**
@@ -34,7 +34,6 @@ export interface GrokImageAnnotation {
  */
 export function instanceOfGrokImageAnnotation(value: object): value is GrokImageAnnotation {
     if (!('prompt' in value) || value['prompt'] === undefined) return false;
-    if ((!('upsampledPrompt' in (value as Record<string, any>)) && !('upsampled_prompt' in (value as Record<string, any>))) || ((value as Record<string, any>)['upsampledPrompt'] === undefined && (value as Record<string, any>)['upsampled_prompt'] === undefined)) return false;
     return true;
 }
 
@@ -49,7 +48,7 @@ export function GrokImageAnnotationFromJSONTyped(json: any, ignoreDiscriminator:
     return {
         
         'prompt': json['prompt'],
-        'upsampledPrompt': json['upsampled_prompt'],
+        'upsampledPrompt': json['upsampled_prompt'] == null ? undefined : json['upsampled_prompt'],
     };
 }
 

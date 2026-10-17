@@ -44,11 +44,7 @@ export interface CoverCta {
     /**
      * 
      */
-    text?: string;
-    /**
-     * 
-     */
-    buttonStyle?: CoverCtaButtonStyleEnum;
+    buttonStyle?: string;
     /**
      * 
      */
@@ -61,17 +57,11 @@ export interface CoverCta {
      * 
      */
     ctaBehavior: TimelineCoverBehavior;
+    /**
+     * 
+     */
+    text: string;
 }
-
-
-/**
- * @export
- */
-export const CoverCtaButtonStyleEnum = {
-    Primary: 'Primary',
-} as const;
-export type CoverCtaButtonStyleEnum = typeof CoverCtaButtonStyleEnum[keyof typeof CoverCtaButtonStyleEnum];
-
 
 /**
  * Check if a given object implements the CoverCta interface.
@@ -80,6 +70,7 @@ export function instanceOfCoverCta(value: object): value is CoverCta {
     if (!('callbacks' in value) || value['callbacks'] === undefined) return false;
     if (!('clientEventInfo' in value) || value['clientEventInfo'] === undefined) return false;
     if (!('ctaBehavior' in value) || value['ctaBehavior'] === undefined) return false;
+    if (!('text' in value) || value['text'] === undefined) return false;
     return true;
 }
 
@@ -93,11 +84,11 @@ export function CoverCtaFromJSONTyped(json: any, ignoreDiscriminator: boolean): 
     }
     return {
         
-        'text': json['Text'] == null ? undefined : json['Text'],
         'buttonStyle': json['buttonStyle'] == null ? undefined : json['buttonStyle'],
         'callbacks': ((json['callbacks'] as Array<any>).map(CallbackFromJSON)),
         'clientEventInfo': CtaClientEventInfoFromJSON(json['clientEventInfo']),
         'ctaBehavior': TimelineCoverBehaviorFromJSON(json['ctaBehavior']),
+        'text': json['text'],
     };
 }
 
@@ -112,11 +103,11 @@ export function CoverCtaToJSONTyped(value?: CoverCta | null, ignoreDiscriminator
 
     return {
         
-        'Text': value['text'],
         'buttonStyle': value['buttonStyle'],
         'callbacks': ((value['callbacks'] as Array<any>).map(CallbackToJSON)),
         'clientEventInfo': CtaClientEventInfoToJSON(value['clientEventInfo']),
         'ctaBehavior': TimelineCoverBehaviorToJSON(value['ctaBehavior']),
+        'text': value['text'],
     };
 }
 

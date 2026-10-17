@@ -350,6 +350,10 @@ export interface Tweet {
      * 
      */
     views?: TweetView;
+    /**
+     * 
+     */
+    voiceInfo?: object;
 }
 
 
@@ -409,6 +413,7 @@ export function TweetFromJSONTyped(json: any, ignoreDiscriminator: boolean): Twe
         'unifiedCard': json['unified_card'] == null ? undefined : UnifiedCardFromJSON(json['unified_card']),
         'unmentionData': json['unmention_data'] == null ? undefined : json['unmention_data'],
         'views': json['views'] == null ? undefined : TweetViewFromJSON(json['views']),
+        'voiceInfo': json['voiceInfo'] == null ? undefined : json['voiceInfo'],
     };
 }
 
@@ -460,6 +465,7 @@ export function TweetToJSONTyped(value?: Tweet | null, ignoreDiscriminator: bool
         'unified_card': UnifiedCardToJSON(value['unifiedCard']),
         'unmention_data': value['unmentionData'],
         'views': TweetViewToJSON(value['views']),
+        'voiceInfo': value['voiceInfo'],
     };
 }
 

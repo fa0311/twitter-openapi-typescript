@@ -34,8 +34,23 @@ export interface ConversationControl {
     /**
      * 
      */
-    policy: string;
+    policy: ConversationControlPolicyEnum;
 }
+
+
+/**
+ * @export
+ */
+export const ConversationControlPolicyEnum = {
+    ByInvitation: 'ByInvitation',
+    Community: 'Community',
+    Co: 'Co',
+    Subscribers: 'Subscribers',
+    Verified: 'Verified',
+    MyNetwork: 'MyNetwork',
+} as const;
+export type ConversationControlPolicyEnum = typeof ConversationControlPolicyEnum[keyof typeof ConversationControlPolicyEnum];
+
 
 /**
  * Check if a given object implements the ConversationControl interface.

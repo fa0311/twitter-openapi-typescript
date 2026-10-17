@@ -52,21 +52,13 @@ export interface TimelineTombstone {
     /**
      * 
      */
-    tombstoneDisplayType?: TimelineTombstoneTombstoneDisplayTypeEnum;
+    tombstoneDisplayType?: string;
     /**
      * 
      */
     tombstoneInfo?: TombstoneInfo;
 }
 
-
-/**
- * @export
- */
-export const TimelineTombstoneTombstoneDisplayTypeEnum = {
-    Inline: 'Inline',
-} as const;
-export type TimelineTombstoneTombstoneDisplayTypeEnum = typeof TimelineTombstoneTombstoneDisplayTypeEnum[keyof typeof TimelineTombstoneTombstoneDisplayTypeEnum];
 
 
 /**

@@ -1,4 +1,4 @@
-# twitter-openapi-typescript-generated@0.1.2
+# twitter-openapi-typescript-generated@0.1.3
 
 A TypeScript SDK client for the x.com API.
 
@@ -111,13 +111,17 @@ All URIs are relative to *https://x.com/i/api*
 *CommunityApi* | [**getGlobalCommunitiesLatestPostSearchTimeline**](docs/CommunityApi.md#getglobalcommunitieslatestpostsearchtimeline) | **GET** /graphql/{pathQueryId}/GlobalCommunitiesLatestPostSearchTimeline | 
 *CommunityApi* | [**getGlobalCommunitiesPostSearchTimeline**](docs/CommunityApi.md#getglobalcommunitiespostsearchtimeline) | **GET** /graphql/{pathQueryId}/GlobalCommunitiesPostSearchTimeline | 
 *CommunityApi* | [**getTopicCarouselQuery**](docs/CommunityApi.md#gettopiccarouselquery) | **GET** /graphql/{pathQueryId}/TopicCarouselQuery | 
+*DefaultApi* | [**getAudioSpaceById**](docs/DefaultApi.md#getaudiospacebyid) | **GET** /graphql/{pathQueryId}/AudioSpaceById | 
 *DefaultApi* | [**getAuthenticatePeriscope**](docs/DefaultApi.md#getauthenticateperiscope) | **GET** /graphql/{pathQueryId}/AuthenticatePeriscope | 
+*DefaultApi* | [**getBroadcastQuery**](docs/DefaultApi.md#getbroadcastquery) | **GET** /graphql/{pathQueryId}/BroadcastQuery | 
 *DefaultApi* | [**getCreatorStudioTabBarItemQuery**](docs/DefaultApi.md#getcreatorstudiotabbaritemquery) | **GET** /graphql/{pathQueryId}/CreatorStudioTabBarItemQuery | 
 *DefaultApi* | [**getDataSaverMode**](docs/DefaultApi.md#getdatasavermode) | **GET** /graphql/{pathQueryId}/DataSaverMode | 
+*DefaultApi* | [**getGrokAccountJwtQuery**](docs/DefaultApi.md#getgrokaccountjwtquery) | **GET** /graphql/{pathQueryId}/grokAccountJwtQuery | 
 *DefaultApi* | [**getGrokHome**](docs/DefaultApi.md#getgrokhome) | **GET** /graphql/{pathQueryId}/GrokHome | 
 *DefaultApi* | [**getPinnedTimelines**](docs/DefaultApi.md#getpinnedtimelines) | **GET** /graphql/{pathQueryId}/PinnedTimelines | 
 *DefaultApi* | [**getProfileSpotlightsQuery**](docs/DefaultApi.md#getprofilespotlightsquery) | **GET** /graphql/{pathQueryId}/ProfileSpotlightsQuery | 
 *DefaultApi* | [**getTweetResultByRestId**](docs/DefaultApi.md#gettweetresultbyrestid) | **GET** /graphql/{pathQueryId}/TweetResultByRestId | 
+*DefaultApi* | [**getUseStoryTopicQuery**](docs/DefaultApi.md#getusestorytopicquery) | **GET** /graphql/{pathQueryId}/useStoryTopicQuery | 
 *OtherApi* | [**other**](docs/OtherApi.md#other) | **GET** /other | 
 *PostApi* | [**postCreateBookmark**](docs/PostApi.md#postcreatebookmarkoperation) | **POST** /graphql/{pathQueryId}/CreateBookmark | 
 *PostApi* | [**postCreateDraftTweet**](docs/PostApi.md#postcreatedrafttweetoperation) | **POST** /graphql/{pathQueryId}/CreateDraftTweet | 
@@ -159,6 +163,7 @@ All URIs are relative to *https://x.com/i/api*
 *TweetApi* | [**getUserTweets**](docs/TweetApi.md#getusertweets) | **GET** /graphql/{pathQueryId}/UserTweets | 
 *TweetApi* | [**getUserTweetsAndReplies**](docs/TweetApi.md#getusertweetsandreplies) | **GET** /graphql/{pathQueryId}/UserTweetsAndReplies | 
 *TweetApi* | [**getUserVideoTimeline**](docs/TweetApi.md#getuservideotimeline) | **GET** /graphql/{pathQueryId}/UserVideoTimeline | 
+*UserApi* | [**getAboutAccountQuery**](docs/UserApi.md#getaboutaccountquery) | **GET** /graphql/{pathQueryId}/AboutAccountQuery | 
 *UserApi* | [**getFetchDraftTweets**](docs/UserApi.md#getfetchdrafttweets) | **GET** /graphql/{pathQueryId}/FetchDraftTweets | 
 *UserApi* | [**getFetchScheduledTweets**](docs/UserApi.md#getfetchscheduledtweets) | **GET** /graphql/{pathQueryId}/FetchScheduledTweets | 
 *UserApi* | [**getUserByRestId**](docs/UserApi.md#getuserbyrestid) | **GET** /graphql/{pathQueryId}/UserByRestId | 
@@ -179,6 +184,7 @@ All URIs are relative to *https://x.com/i/api*
 *UserListApi* | [**getListSubscribers**](docs/UserListApi.md#getlistsubscribers) | **GET** /graphql/{pathQueryId}/ListSubscribers | 
 *UserListApi* | [**getListsManagementPageTimeline**](docs/UserListApi.md#getlistsmanagementpagetimeline) | **GET** /graphql/{pathQueryId}/ListsManagementPageTimeline | 
 *UserListApi* | [**getRetweeters**](docs/UserListApi.md#getretweeters) | **GET** /graphql/{pathQueryId}/Retweeters | 
+*UsersApi* | [**getSidebarUserRecommendations**](docs/UsersApi.md#getsidebaruserrecommendations) | **GET** /graphql/{pathQueryId}/SidebarUserRecommendations | 
 *UsersApi* | [**getUsersByRestIds**](docs/UsersApi.md#getusersbyrestids) | **GET** /graphql/{pathQueryId}/UsersByRestIds | 
 *UsersApi* | [**getUsersVerifiedAvatars**](docs/UsersApi.md#getusersverifiedavatars) | **GET** /graphql/{pathQueryId}/UsersVerifiedAvatars | 
 *V11GetApi* | [**getFriendsFollowingList**](docs/V11GetApi.md#getfriendsfollowinglist) | **GET** /1.1/friends/following/list.json | 
@@ -190,19 +196,41 @@ All URIs are relative to *https://x.com/i/api*
 
 ### Models
 
+- [AboutAccountData](docs/AboutAccountData.md)
+- [AboutAccountResponse](docs/AboutAccountResponse.md)
+- [AboutAccountUser](docs/AboutAccountUser.md)
+- [AboutAccountUserResult](docs/AboutAccountUserResult.md)
+- [AboutAccountVerificationInfo](docs/AboutAccountVerificationInfo.md)
+- [AboutAccountVerificationInfoReason](docs/AboutAccountVerificationInfoReason.md)
 - [AboutCommunityResult](docs/AboutCommunityResult.md)
 - [AboutCommunityResults](docs/AboutCommunityResults.md)
 - [AboutCommunityTweetData](docs/AboutCommunityTweetData.md)
+- [AboutProfile](docs/AboutProfile.md)
+- [AboutProfileUsernameChanges](docs/AboutProfileUsernameChanges.md)
 - [AdMetadataContainer](docs/AdMetadataContainer.md)
 - [AdditionalMediaInfo](docs/AdditionalMediaInfo.md)
 - [AdditionalMediaInfoCallToActions](docs/AdditionalMediaInfoCallToActions.md)
 - [AdditionalMediaInfoCallToActionsUrl](docs/AdditionalMediaInfoCallToActionsUrl.md)
 - [AffiliatesHighlightedLabel](docs/AffiliatesHighlightedLabel.md)
+- [AiTrend](docs/AiTrend.md)
+- [AiTrendCore](docs/AiTrendCore.md)
+- [AiTrendResults](docs/AiTrendResults.md)
+- [AiTrendSocialProof](docs/AiTrendSocialProof.md)
 - [AllowDownloadStatus](docs/AllowDownloadStatus.md)
 - [AnalysisResults](docs/AnalysisResults.md)
 - [ApiImage](docs/ApiImage.md)
 - [ApiMedia](docs/ApiMedia.md)
 - [Article](docs/Article.md)
+- [ArticleContentBlock](docs/ArticleContentBlock.md)
+- [ArticleContentBlockData](docs/ArticleContentBlockData.md)
+- [ArticleContentEntity](docs/ArticleContentEntity.md)
+- [ArticleContentEntityData](docs/ArticleContentEntityData.md)
+- [ArticleContentEntityRange](docs/ArticleContentEntityRange.md)
+- [ArticleContentEntityValue](docs/ArticleContentEntityValue.md)
+- [ArticleContentInlineStyleRange](docs/ArticleContentInlineStyleRange.md)
+- [ArticleContentMediaItem](docs/ArticleContentMediaItem.md)
+- [ArticleContentState](docs/ArticleContentState.md)
+- [ArticleContentTextRange](docs/ArticleContentTextRange.md)
 - [ArticleCoverMedia](docs/ArticleCoverMedia.md)
 - [ArticleCoverMediaInfo](docs/ArticleCoverMediaInfo.md)
 - [ArticleLifecycleState](docs/ArticleLifecycleState.md)
@@ -210,6 +238,17 @@ All URIs are relative to *https://x.com/i/api*
 - [ArticlePreview](docs/ArticlePreview.md)
 - [ArticleResult](docs/ArticleResult.md)
 - [ArticleResults](docs/ArticleResults.md)
+- [AudioSpace](docs/AudioSpace.md)
+- [AudioSpaceData](docs/AudioSpaceData.md)
+- [AudioSpaceMentionedUser](docs/AudioSpaceMentionedUser.md)
+- [AudioSpaceMetadata](docs/AudioSpaceMetadata.md)
+- [AudioSpaceParticipant](docs/AudioSpaceParticipant.md)
+- [AudioSpaceParticipantUser](docs/AudioSpaceParticipantUser.md)
+- [AudioSpaceParticipantUserResults](docs/AudioSpaceParticipantUserResults.md)
+- [AudioSpaceParticipantVerification](docs/AudioSpaceParticipantVerification.md)
+- [AudioSpaceParticipants](docs/AudioSpaceParticipants.md)
+- [AudioSpaceResponse](docs/AudioSpaceResponse.md)
+- [AudioSpaceSharings](docs/AudioSpaceSharings.md)
 - [AuthenticatePeriscopeResponse](docs/AuthenticatePeriscopeResponse.md)
 - [AuthenticatePeriscopeResponseData](docs/AuthenticatePeriscopeResponseData.md)
 - [AuthorCommunityRelationship](docs/AuthorCommunityRelationship.md)
@@ -245,6 +284,11 @@ All URIs are relative to *https://x.com/i/api*
 - [BookmarksResponse](docs/BookmarksResponse.md)
 - [BookmarksResponseData](docs/BookmarksResponseData.md)
 - [BookmarksTimeline](docs/BookmarksTimeline.md)
+- [Broadcast](docs/Broadcast.md)
+- [BroadcastData](docs/BroadcastData.md)
+- [BroadcastEditedReplay](docs/BroadcastEditedReplay.md)
+- [BroadcastPeriscopeUser](docs/BroadcastPeriscopeUser.md)
+- [BroadcastResponse](docs/BroadcastResponse.md)
 - [Callback](docs/Callback.md)
 - [CashtagAttachment](docs/CashtagAttachment.md)
 - [CashtagInfo](docs/CashtagInfo.md)
@@ -419,6 +463,9 @@ All URIs are relative to *https://x.com/i/api*
 - [GlobalCommunitiesPostSearch](docs/GlobalCommunitiesPostSearch.md)
 - [GlobalCommunitiesPostSearchTimelineResponse](docs/GlobalCommunitiesPostSearchTimelineResponse.md)
 - [GlobalCommunitiesPostSearchTimelineResponseData](docs/GlobalCommunitiesPostSearchTimelineResponseData.md)
+- [GrokAccountJwt](docs/GrokAccountJwt.md)
+- [GrokAccountJwtData](docs/GrokAccountJwtData.md)
+- [GrokAccountJwtResponse](docs/GrokAccountJwtResponse.md)
 - [GrokAnnotation](docs/GrokAnnotation.md)
 - [GrokEntity](docs/GrokEntity.md)
 - [GrokEntityRef](docs/GrokEntityRef.md)
@@ -443,6 +490,7 @@ All URIs are relative to *https://x.com/i/api*
 - [Highlight](docs/Highlight.md)
 - [HomeTimelineHome](docs/HomeTimelineHome.md)
 - [HomeTimelineResponseData](docs/HomeTimelineResponseData.md)
+- [IdentityProfileLabelsHighlightedLabel](docs/IdentityProfileLabelsHighlightedLabel.md)
 - [InstructionType](docs/InstructionType.md)
 - [InstructionUnion](docs/InstructionUnion.md)
 - [ItemContentUnion](docs/ItemContentUnion.md)
@@ -586,6 +634,9 @@ All URIs are relative to *https://x.com/i/api*
 - [SelfThread](docs/SelfThread.md)
 - [SensitiveMediaWarning](docs/SensitiveMediaWarning.md)
 - [Session](docs/Session.md)
+- [SidebarUserRecommendation](docs/SidebarUserRecommendation.md)
+- [SidebarUserRecommendationsData](docs/SidebarUserRecommendationsData.md)
+- [SidebarUserRecommendationsResponse](docs/SidebarUserRecommendationsResponse.md)
 - [SliceInfo](docs/SliceInfo.md)
 - [Smarttag](docs/Smarttag.md)
 - [SmarttagTag](docs/SmarttagTag.md)
@@ -593,6 +644,11 @@ All URIs are relative to *https://x.com/i/api*
 - [SocialContextLandingUrl](docs/SocialContextLandingUrl.md)
 - [SocialContextUnion](docs/SocialContextUnion.md)
 - [SocialContextUnionType](docs/SocialContextUnionType.md)
+- [StoryTopic](docs/StoryTopic.md)
+- [StoryTopicData](docs/StoryTopicData.md)
+- [StoryTopicItem](docs/StoryTopicItem.md)
+- [StoryTopicResponse](docs/StoryTopicResponse.md)
+- [StoryTopicStories](docs/StoryTopicStories.md)
 - [SuperFollowUserProfile](docs/SuperFollowUserProfile.md)
 - [SuperFollowsReplyUserResult](docs/SuperFollowsReplyUserResult.md)
 - [SuperFollowsReplyUserResultCore](docs/SuperFollowsReplyUserResultCore.md)
@@ -688,6 +744,9 @@ All URIs are relative to *https://x.com/i/api*
 - [TweetInterstitialTextEntity](docs/TweetInterstitialTextEntity.md)
 - [TweetInterstitialTextEntityRef](docs/TweetInterstitialTextEntityRef.md)
 - [TweetLegacy](docs/TweetLegacy.md)
+- [TweetLegacyPlace](docs/TweetLegacyPlace.md)
+- [TweetLegacyPlaceBoundingBox](docs/TweetLegacyPlaceBoundingBox.md)
+- [TweetLegacyPoint](docs/TweetLegacyPoint.md)
 - [TweetLegacyScopes](docs/TweetLegacyScopes.md)
 - [TweetLimitedActionResults](docs/TweetLimitedActionResults.md)
 - [TweetPostCta](docs/TweetPostCta.md)
@@ -962,7 +1021,7 @@ and is automatically generated by the
 [OpenAPI Generator](https://openapi-generator.tech) project:
 
 - API version: `0.0.1`
-- Package version: `0.1.2`
+- Package version: `0.1.3`
 - Generator version: `7.26.0`
 - Build package: `org.openapitools.codegen.languages.TypeScriptFetchClientCodegen`
 

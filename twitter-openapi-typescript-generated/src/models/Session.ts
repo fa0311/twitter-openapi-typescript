@@ -88,7 +88,7 @@ export interface Session {
     /**
      * 
      */
-    superFollowsApplicationStatus: SessionSuperFollowsApplicationStatusEnum;
+    superFollowsApplicationStatus: string;
     /**
      * 
      */
@@ -98,16 +98,6 @@ export interface Session {
      */
     userId: string;
 }
-
-
-/**
- * @export
- */
-export const SessionSuperFollowsApplicationStatusEnum = {
-    NotStarted: 'NotStarted',
-} as const;
-export type SessionSuperFollowsApplicationStatusEnum = typeof SessionSuperFollowsApplicationStatusEnum[keyof typeof SessionSuperFollowsApplicationStatusEnum];
-
 
 /**
  * Check if a given object implements the Session interface.
@@ -124,8 +114,6 @@ export function instanceOfSession(value: object): value is Session {
     if (!('oneFactorLoginEligibility' in value) || value['oneFactorLoginEligibility'] === undefined) return false;
     if (!('superFollowersCount' in value) || value['superFollowersCount'] === undefined) return false;
     if (!('superFollowsApplicationStatus' in value) || value['superFollowsApplicationStatus'] === undefined) return false;
-    if (value['superFollowsApplicationStatus'] !== 'NotStarted') return false;
-    
     if (!('userFeatures' in value) || value['userFeatures'] === undefined) return false;
     if ((!('userId' in (value as Record<string, any>)) && !('user_id' in (value as Record<string, any>))) || ((value as Record<string, any>)['userId'] === undefined && (value as Record<string, any>)['user_id'] === undefined)) return false;
     return true;

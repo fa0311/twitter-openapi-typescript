@@ -24,6 +24,7 @@ export const TypeName = {
     TimelineTwitterList: 'TimelineTwitterList',
     TimelineLabel: 'TimelineLabel',
     TimelineEventSummary: 'TimelineEventSummary',
+    AiTrend: 'AiTrend',
     TimelineTimelineItem: 'TimelineTimelineItem',
     TimelineUser: 'TimelineUser',
     TimelineTimelineCursor: 'TimelineTimelineCursor',

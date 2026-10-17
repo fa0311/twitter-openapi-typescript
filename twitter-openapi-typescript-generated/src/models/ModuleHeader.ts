@@ -13,6 +13,14 @@
  */
 
 import { mapValues } from '../runtime';
+import type { SocialContextUnion } from './SocialContextUnion';
+import {
+    SocialContextUnionFromJSON,
+    SocialContextUnionFromJSONTyped,
+    SocialContextUnionToJSON,
+    SocialContextUnionToJSONTyped,
+} from './SocialContextUnion';
+
 /**
  * 
  * @export
@@ -22,7 +30,11 @@ export interface ModuleHeader {
     /**
      * 
      */
-    displayType: ModuleHeaderDisplayTypeEnum;
+    displayType: string;
+    /**
+     * 
+     */
+    socialContext?: SocialContextUnion;
     /**
      * 
      */
@@ -33,23 +45,11 @@ export interface ModuleHeader {
     text: string;
 }
 
-
-/**
- * @export
- */
-export const ModuleHeaderDisplayTypeEnum = {
-    Classic: 'Classic',
-} as const;
-export type ModuleHeaderDisplayTypeEnum = typeof ModuleHeaderDisplayTypeEnum[keyof typeof ModuleHeaderDisplayTypeEnum];
-
-
 /**
  * Check if a given object implements the ModuleHeader interface.
  */
 export function instanceOfModuleHeader(value: object): value is ModuleHeader {
     if (!('displayType' in value) || value['displayType'] === undefined) return false;
-    if (value['displayType'] !== 'Classic') return false;
-    
     if (!('text' in value) || value['text'] === undefined) return false;
     return true;
 }
@@ -65,6 +65,7 @@ export function ModuleHeaderFromJSONTyped(json: any, ignoreDiscriminator: boolea
     return {
         
         'displayType': json['displayType'],
+        'socialContext': json['socialContext'] == null ? undefined : SocialContextUnionFromJSON(json['socialContext']),
         'sticky': json['sticky'] == null ? undefined : json['sticky'],
         'text': json['text'],
     };
@@ -82,6 +83,7 @@ export function ModuleHeaderToJSONTyped(value?: ModuleHeader | null, ignoreDiscr
     return {
         
         'displayType': value['displayType'],
+        'socialContext': SocialContextUnionToJSON(value['socialContext']),
         'sticky': value['sticky'],
         'text': value['text'],
     };

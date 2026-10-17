@@ -7,6 +7,7 @@
 Name | Type
 ------------ | -------------
 `displayType` | string
+`socialContext` | [SocialContextUnion](SocialContextUnion.md)
 `sticky` | boolean
 `text` | string
 
@@ -18,6 +19,7 @@ import type { ModuleHeader } from 'twitter-openapi-typescript-generated'
 // TODO: Update the object below with actual values
 const example = {
   "displayType": null,
+  "socialContext": null,
   "sticky": null,
   "text": null,
 } satisfies ModuleHeader

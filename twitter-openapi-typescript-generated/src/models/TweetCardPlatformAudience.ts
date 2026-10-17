@@ -22,26 +22,14 @@ export interface TweetCardPlatformAudience {
     /**
      * 
      */
-    name: TweetCardPlatformAudienceNameEnum;
+    name: string;
 }
-
-
-/**
- * @export
- */
-export const TweetCardPlatformAudienceNameEnum = {
-    Production: 'production',
-} as const;
-export type TweetCardPlatformAudienceNameEnum = typeof TweetCardPlatformAudienceNameEnum[keyof typeof TweetCardPlatformAudienceNameEnum];
-
 
 /**
  * Check if a given object implements the TweetCardPlatformAudience interface.
  */
 export function instanceOfTweetCardPlatformAudience(value: object): value is TweetCardPlatformAudience {
     if (!('name' in value) || value['name'] === undefined) return false;
-    if (value['name'] !== 'production') return false;
-    
     return true;
 }
 

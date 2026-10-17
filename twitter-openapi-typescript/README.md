@@ -47,6 +47,19 @@ api.setAdditionalApiHeaders({
 });
 ```
 
+### Endpoint
+
+The generated client accepts any base URL that keeps X's path shape (`/graphql/{queryId}/{operationName}`, `/1.1/...`, `/2/...` under `https://x.com/i/api`). Build the `Configuration` yourself and hand it to `getClient`; the login helpers are not involved, so cookies and headers are then up to you (or to whatever answers at that URL).
+
+```typescript
+import { TwitterOpenApi } from 'twitter-openapi-typescript';
+import { Configuration } from 'twitter-openapi-typescript-generated';
+
+const api = new TwitterOpenApi();
+const client = await api.getClient(new Configuration({ basePath: 'http://localhost:3000/i/api' }));
+const response = await client.getUserApi().getUserByScreenName({ screenName: 'elonmusk' });
+```
+
 ### List of APIs
 
 You should read the Test case.

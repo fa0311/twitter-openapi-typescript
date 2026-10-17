@@ -33,6 +33,12 @@ Learn more about the automatically generated TypeScript package here.
 
 - [twitter-snap](https://github.com/fa0311/twitter-snap)
 
+## Related projects
+
+- [twitter-openapi](https://github.com/fa0311/twitter-openapi) the OpenAPI specification both packages are generated from
+- [twitter_api_safe_relay](https://github.com/fa0311/twitter_api_safe_relay) an HTTP relay that runs requests through a logged-in browser; point the client's endpoint at it
+- [twitter_openapi_python](https://github.com/fa0311/twitter_openapi_python) the same client for Python
+
 ## License
 
 This project is dual licensed. You can choose one of the following licenses:

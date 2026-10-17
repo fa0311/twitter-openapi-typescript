@@ -43,6 +43,7 @@ Name | Type
 `unifiedCard` | [UnifiedCard](UnifiedCard.md)
 `unmentionData` | object
 `views` | [TweetView](TweetView.md)
+`voiceInfo` | object
 `limitedActionResults` | [LimitedActionResults](LimitedActionResults.md)
 `mediaVisibilityResults` | [MediaVisibilityResults](MediaVisibilityResults.md)
 `tweet` | [TweetPreviewDisplayTweet](TweetPreviewDisplayTweet.md)
@@ -95,6 +96,7 @@ const example = {
   "unifiedCard": null,
   "unmentionData": null,
   "views": null,
+  "voiceInfo": null,
   "limitedActionResults": null,
   "mediaVisibilityResults": null,
   "tweet": null,

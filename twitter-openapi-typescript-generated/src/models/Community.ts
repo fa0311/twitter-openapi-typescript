@@ -223,6 +223,9 @@ export type CommunityJoinPolicyEnum = typeof CommunityJoinPolicyEnum[keyof typeo
  * @export
  */
 export const CommunityRoleEnum = {
+    Member: 'Member',
+    Moderator: 'Moderator',
+    Admin: 'Admin',
     NonMember: 'NonMember',
 } as const;
 export type CommunityRoleEnum = typeof CommunityRoleEnum[keyof typeof CommunityRoleEnum];

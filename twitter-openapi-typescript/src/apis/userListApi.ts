@@ -146,7 +146,7 @@ export class UserListApiUtils {
     };
     const response = await this.request({
       apiFn: this.api.getFollowersRaw,
-      convertFn: (e) => errorCheck(e.data.user, e.errors).result.timeline.timeline.instructions,
+      convertFn: (e) => errorCheck(errorCheck(e.data.user, e.errors).result.timeline, e.errors).timeline.instructions,
       key: 'Followers',
       param: args,
     });
@@ -161,7 +161,7 @@ export class UserListApiUtils {
     };
     const response = await this.request({
       apiFn: this.api.getFollowingRaw,
-      convertFn: (e) => errorCheck(e.data.user, e.errors).result.timeline.timeline.instructions,
+      convertFn: (e) => errorCheck(errorCheck(e.data.user, e.errors).result.timeline, e.errors).timeline.instructions,
       key: 'Following',
       param: args,
     });
@@ -177,7 +177,7 @@ export class UserListApiUtils {
     };
     const response = await this.request({
       apiFn: this.api.getFollowersYouKnowRaw,
-      convertFn: (e) => errorCheck(e.data.user, e.errors).result.timeline.timeline.instructions,
+      convertFn: (e) => errorCheck(errorCheck(e.data.user, e.errors).result.timeline, e.errors).timeline.instructions,
       key: 'FollowersYouKnow',
       param: args,
     });
@@ -225,7 +225,7 @@ export class UserListApiUtils {
     };
     const response = await this.request({
       apiFn: this.api.getBlueVerifiedFollowersRaw,
-      convertFn: (e) => errorCheck(e.data.user, e.errors).result.timeline.timeline.instructions,
+      convertFn: (e) => errorCheck(errorCheck(e.data.user, e.errors).result.timeline, e.errors).timeline.instructions,
       key: 'BlueVerifiedFollowers',
       param: args,
     });
@@ -312,7 +312,7 @@ export class UserListApiUtils {
       apiFn: this.api.getListOwnershipsRaw,
       flag: this.flag.ListOwnerships,
       initOverrides: this.initOverrides,
-      convertFn: (e) => errorCheck(e.data.user?.result.timeline.timeline, e.errors).instructions,
+      convertFn: (e) => errorCheck(e.data.user?.result.timeline?.timeline, e.errors).instructions,
       param: args,
       itemsFn: listEntriesConverter,
     });
@@ -364,7 +364,7 @@ export class UserListApiUtils {
       apiFn: this.api.getCombinedListsRaw,
       flag: this.flag.CombinedLists,
       initOverrides: this.initOverrides,
-      convertFn: (e) => errorCheck(e.data.user?.result.timeline.timeline, e.errors).instructions,
+      convertFn: (e) => errorCheck(e.data.user?.result.timeline?.timeline, e.errors).instructions,
       param: args,
       itemsFn: listEntriesConverter,
     });

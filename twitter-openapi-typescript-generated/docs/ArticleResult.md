@@ -6,7 +6,7 @@
 
 Name | Type
 ------------ | -------------
-`contentState` | { [key: string]: any; }
+`contentState` | [ArticleContentState](ArticleContentState.md)
 `coverMedia` | [ArticleCoverMedia](ArticleCoverMedia.md)
 `id` | string
 `isGrokSummaryEligible` | boolean
@@ -15,6 +15,7 @@ Name | Type
 `metadata` | [ArticleMetadata](ArticleMetadata.md)
 `previewText` | string
 `restId` | string
+`summaryText` | string
 `title` | string
 
 ## Example
@@ -33,6 +34,7 @@ const example = {
   "metadata": null,
   "previewText": null,
   "restId": null,
+  "summaryText": null,
   "title": null,
 } satisfies ArticleResult
 

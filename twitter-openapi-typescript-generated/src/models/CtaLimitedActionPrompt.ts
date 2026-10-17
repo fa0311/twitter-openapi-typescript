@@ -41,7 +41,7 @@ export interface CtaLimitedActionPrompt {
     /**
      * 
      */
-    ctaType: CtaLimitedActionPromptCtaTypeEnum;
+    ctaType: string;
     /**
      * 
      */
@@ -53,14 +53,6 @@ export interface CtaLimitedActionPrompt {
 }
 
 
-/**
- * @export
- */
-export const CtaLimitedActionPromptCtaTypeEnum = {
-    SeeConversation: 'SeeConversation',
-} as const;
-export type CtaLimitedActionPromptCtaTypeEnum = typeof CtaLimitedActionPromptCtaTypeEnum[keyof typeof CtaLimitedActionPromptCtaTypeEnum];
-
 
 /**
  * Check if a given object implements the CtaLimitedActionPrompt interface.
@@ -68,8 +60,6 @@ export type CtaLimitedActionPromptCtaTypeEnum = typeof CtaLimitedActionPromptCta
 export function instanceOfCtaLimitedActionPrompt(value: object): value is CtaLimitedActionPrompt {
     if ((!('typename' in (value as Record<string, any>)) && !('__typename' in (value as Record<string, any>))) || ((value as Record<string, any>)['typename'] === undefined && (value as Record<string, any>)['__typename'] === undefined)) return false;
     if ((!('ctaType' in (value as Record<string, any>)) && !('cta_type' in (value as Record<string, any>))) || ((value as Record<string, any>)['ctaType'] === undefined && (value as Record<string, any>)['cta_type'] === undefined)) return false;
-    if ((value as Record<string, any>)['ctaType'] !== 'SeeConversation' && (value as Record<string, any>)['cta_type'] !== 'SeeConversation') return false;
-    
     if (!('headline' in value) || value['headline'] === undefined) return false;
     if (!('subtext' in value) || value['subtext'] === undefined) return false;
     return true;

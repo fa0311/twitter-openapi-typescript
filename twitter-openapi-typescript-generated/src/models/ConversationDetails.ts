@@ -22,26 +22,14 @@ export interface ConversationDetails {
     /**
      * 
      */
-    conversationSection: ConversationDetailsConversationSectionEnum;
+    conversationSection: string;
 }
-
-
-/**
- * @export
- */
-export const ConversationDetailsConversationSectionEnum = {
-    HighQuality: 'HighQuality',
-} as const;
-export type ConversationDetailsConversationSectionEnum = typeof ConversationDetailsConversationSectionEnum[keyof typeof ConversationDetailsConversationSectionEnum];
-
 
 /**
  * Check if a given object implements the ConversationDetails interface.
  */
 export function instanceOfConversationDetails(value: object): value is ConversationDetails {
     if (!('conversationSection' in value) || value['conversationSection'] === undefined) return false;
-    if (value['conversationSection'] !== 'HighQuality') return false;
-    
     return true;
 }
 

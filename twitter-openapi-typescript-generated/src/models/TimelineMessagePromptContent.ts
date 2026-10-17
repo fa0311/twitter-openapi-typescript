@@ -45,7 +45,7 @@ export interface TimelineMessagePromptContent {
     /**
      * 
      */
-    contentType: TimelineMessagePromptContentContentTypeEnum;
+    contentType: string;
     /**
      * 
      */
@@ -55,17 +55,6 @@ export interface TimelineMessagePromptContent {
      */
     primaryButtonAction?: TimelineMessagePromptButton;
 }
-
-
-/**
- * @export
- */
-export const TimelineMessagePromptContentContentTypeEnum = {
-    TimelineInlinePrompt: 'TimelineInlinePrompt',
-    TimelineCompactPrompt: 'TimelineCompactPrompt',
-} as const;
-export type TimelineMessagePromptContentContentTypeEnum = typeof TimelineMessagePromptContentContentTypeEnum[keyof typeof TimelineMessagePromptContentContentTypeEnum];
-
 
 /**
  * Check if a given object implements the TimelineMessagePromptContent interface.

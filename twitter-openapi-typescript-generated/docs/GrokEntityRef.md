@@ -8,6 +8,8 @@ Name | Type
 ------------ | -------------
 `displayUrl` | string
 `expandedUrl` | string
+`id` | string
+`screenName` | string
 `text` | string
 `type` | string
 `url` | string
@@ -22,6 +24,8 @@ import type { GrokEntityRef } from 'twitter-openapi-typescript-generated'
 const example = {
   "displayUrl": null,
   "expandedUrl": null,
+  "id": null,
+  "screenName": null,
   "text": null,
   "type": null,
   "url": null,

@@ -42,7 +42,7 @@ export interface FeedbackAction {
     /**
      * 
      */
-    confirmationDisplayType?: FeedbackActionConfirmationDisplayTypeEnum;
+    confirmationDisplayType?: string;
     /**
      * 
      */
@@ -58,31 +58,12 @@ export interface FeedbackAction {
     /**
      * 
      */
-    icon?: FeedbackActionIconEnum;
+    icon?: string;
     /**
      * 
      */
     prompt: string;
 }
-
-
-/**
- * @export
- */
-export const FeedbackActionConfirmationDisplayTypeEnum = {
-    BottomSheet: 'BottomSheet',
-    Inline: 'Inline',
-} as const;
-export type FeedbackActionConfirmationDisplayTypeEnum = typeof FeedbackActionConfirmationDisplayTypeEnum[keyof typeof FeedbackActionConfirmationDisplayTypeEnum];
-
-/**
- * @export
- */
-export const FeedbackActionIconEnum = {
-    Frown: 'Frown',
-} as const;
-export type FeedbackActionIconEnum = typeof FeedbackActionIconEnum[keyof typeof FeedbackActionIconEnum];
-
 
 /**
  * Check if a given object implements the FeedbackAction interface.

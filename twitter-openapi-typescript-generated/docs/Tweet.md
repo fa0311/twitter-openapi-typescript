@@ -43,6 +43,7 @@ Name | Type
 `unifiedCard` | [UnifiedCard](UnifiedCard.md)
 `unmentionData` | object
 `views` | [TweetView](TweetView.md)
+`voiceInfo` | object
 
 ## Example
 
@@ -88,6 +89,7 @@ const example = {
   "unifiedCard": null,
   "unmentionData": null,
   "views": null,
+  "voiceInfo": null,
 } satisfies Tweet
 
 console.log(example)

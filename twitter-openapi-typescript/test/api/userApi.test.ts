@@ -57,3 +57,14 @@ test('getFetchScheduledTweets', async () => {
   logger.log(`scheduled: ${response.data.length}`);
   expect(response.raw.response.ok).toBe(true);
 });
+
+test('getAboutAccountQuery', async () => {
+  logger.log('getAboutAccountQuery');
+  const client = await getClient();
+  const response = await client.getUserApi().getAboutAccountQuery({ screenName: 'elonmusk' });
+  const about = response.data.aboutProfile;
+  logger.log(
+    `${response.data.core.screenName}: joined ${response.data.core.createdAt}, based in ${about.accountBasedIn}`,
+  );
+  expect(response.raw.response.ok).toBe(true);
+});

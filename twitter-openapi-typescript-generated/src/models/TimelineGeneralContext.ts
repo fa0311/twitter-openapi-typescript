@@ -68,6 +68,7 @@ export const TimelineGeneralContextContextTypeEnum = {
     Sparkle: 'Sparkle',
     Conversation: 'Conversation',
     List: 'List',
+    TextOnly: 'TextOnly',
     Community: 'Community',
     Facepile: 'Facepile',
 } as const;

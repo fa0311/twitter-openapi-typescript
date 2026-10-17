@@ -34,17 +34,9 @@ export interface CommunityDeleteActionResult {
     /**
      * 
      */
-    reason: CommunityDeleteActionResultReasonEnum;
+    reason: string;
 }
 
-
-/**
- * @export
- */
-export const CommunityDeleteActionResultReasonEnum = {
-    Unavailable: 'Unavailable',
-} as const;
-export type CommunityDeleteActionResultReasonEnum = typeof CommunityDeleteActionResultReasonEnum[keyof typeof CommunityDeleteActionResultReasonEnum];
 
 
 /**
@@ -53,8 +45,6 @@ export type CommunityDeleteActionResultReasonEnum = typeof CommunityDeleteAction
 export function instanceOfCommunityDeleteActionResult(value: object): value is CommunityDeleteActionResult {
     if ((!('typename' in (value as Record<string, any>)) && !('__typename' in (value as Record<string, any>))) || ((value as Record<string, any>)['typename'] === undefined && (value as Record<string, any>)['__typename'] === undefined)) return false;
     if (!('reason' in value) || value['reason'] === undefined) return false;
-    if (value['reason'] !== 'Unavailable') return false;
-    
     return true;
 }
 

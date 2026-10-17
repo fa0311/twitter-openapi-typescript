@@ -7,6 +7,7 @@
 Name | Type
 ------------ | -------------
 `restId` | string
+`sizeVariant` | number
 
 ## Example
 
@@ -16,6 +17,7 @@ import type { CashtagAttachment } from 'twitter-openapi-typescript-generated'
 // TODO: Update the object below with actual values
 const example = {
   "restId": null,
+  "sizeVariant": null,
 } satisfies CashtagAttachment
 
 console.log(example)

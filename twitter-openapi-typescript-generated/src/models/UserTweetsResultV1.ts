@@ -41,7 +41,7 @@ export interface UserTweetsResultV1 {
     /**
      * 
      */
-    timeline: TimelineResult;
+    timeline?: TimelineResult;
 }
 
 
@@ -51,7 +51,6 @@ export interface UserTweetsResultV1 {
  */
 export function instanceOfUserTweetsResultV1(value: object): value is UserTweetsResultV1 {
     if ((!('typename' in (value as Record<string, any>)) && !('__typename' in (value as Record<string, any>))) || ((value as Record<string, any>)['typename'] === undefined && (value as Record<string, any>)['__typename'] === undefined)) return false;
-    if (!('timeline' in value) || value['timeline'] === undefined) return false;
     return true;
 }
 
@@ -66,7 +65,7 @@ export function UserTweetsResultV1FromJSONTyped(json: any, ignoreDiscriminator: 
     return {
         
         'typename': TypeNameFromJSON(json['__typename']),
-        'timeline': TimelineResultFromJSON(json['timeline']),
+        'timeline': json['timeline'] == null ? undefined : TimelineResultFromJSON(json['timeline']),
     };
 }
 

@@ -44,7 +44,7 @@ export interface NoteTweetResultData {
     /**
      * 
      */
-    entitySet: Entities;
+    entitySet?: Entities;
     /**
      * 
      */
@@ -60,16 +60,14 @@ export interface NoteTweetResultData {
     /**
      * 
      */
-    text: string;
+    text?: string;
 }
 
 /**
  * Check if a given object implements the NoteTweetResultData interface.
  */
 export function instanceOfNoteTweetResultData(value: object): value is NoteTweetResultData {
-    if ((!('entitySet' in (value as Record<string, any>)) && !('entity_set' in (value as Record<string, any>))) || ((value as Record<string, any>)['entitySet'] === undefined && (value as Record<string, any>)['entity_set'] === undefined)) return false;
     if (!('id' in value) || value['id'] === undefined) return false;
-    if (!('text' in value) || value['text'] === undefined) return false;
     return true;
 }
 
@@ -83,11 +81,11 @@ export function NoteTweetResultDataFromJSONTyped(json: any, ignoreDiscriminator:
     }
     return {
         
-        'entitySet': EntitiesFromJSON(json['entity_set']),
+        'entitySet': json['entity_set'] == null ? undefined : EntitiesFromJSON(json['entity_set']),
         'id': json['id'],
         'media': json['media'] == null ? undefined : NoteTweetResultMediaFromJSON(json['media']),
         'richtext': json['richtext'] == null ? undefined : NoteTweetResultRichTextFromJSON(json['richtext']),
-        'text': json['text'],
+        'text': json['text'] == null ? undefined : json['text'],
     };
 }
 

@@ -38,17 +38,9 @@ export interface CommunityJoinActionUnavailable {
     /**
      * 
      */
-    reason: CommunityJoinActionUnavailableReasonEnum;
+    reason: string;
 }
 
-
-/**
- * @export
- */
-export const CommunityJoinActionUnavailableReasonEnum = {
-    ViewerRequestRequired: 'ViewerRequestRequired',
-} as const;
-export type CommunityJoinActionUnavailableReasonEnum = typeof CommunityJoinActionUnavailableReasonEnum[keyof typeof CommunityJoinActionUnavailableReasonEnum];
 
 
 /**
@@ -58,8 +50,6 @@ export function instanceOfCommunityJoinActionUnavailable(value: object): value i
     if ((!('typename' in (value as Record<string, any>)) && !('__typename' in (value as Record<string, any>))) || ((value as Record<string, any>)['typename'] === undefined && (value as Record<string, any>)['__typename'] === undefined)) return false;
     if (!('message' in value) || value['message'] === undefined) return false;
     if (!('reason' in value) || value['reason'] === undefined) return false;
-    if (value['reason'] !== 'ViewerRequestRequired') return false;
-    
     return true;
 }
 

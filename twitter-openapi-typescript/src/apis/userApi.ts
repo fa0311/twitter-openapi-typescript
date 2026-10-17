@@ -12,6 +12,11 @@ type getUserByRestIdParam = {
   extraParam?: { [key: string]: any };
 };
 
+type getAboutAccountQueryParam = {
+  screenName: string;
+  extraParam?: { [key: string]: any };
+};
+
 type getViewerBadgeCountsParam = {
   extraParam?: { [key: string]: any };
 };
@@ -127,6 +132,22 @@ export class UserApiUtils {
       flag: this.flag.FetchScheduledTweets,
       initOverrides: this.initOverrides,
       convertFn: (e) => errorCheck(e.data, e.errors).viewer.scheduledTweetList,
+      param: args,
+    });
+  }
+
+  // The "About this account" panel: join date, where the account is based, username changes, verification.
+  async getAboutAccountQuery(param: getAboutAccountQueryParam): Promise<TwitterApiUtilsResponse<i.AboutAccountUser>> {
+    const args = {
+      screenName: param.screenName,
+      ...param.extraParam,
+    };
+    return dataRequest({
+      api: this.api,
+      apiFn: this.api.getAboutAccountQueryRaw,
+      flag: this.flag.AboutAccountQuery,
+      initOverrides: this.initOverrides,
+      convertFn: (e) => e.data.userResultByScreenName.result,
       param: args,
     });
   }

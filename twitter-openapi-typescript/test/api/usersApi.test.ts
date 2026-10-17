@@ -19,3 +19,17 @@ test('getUsersVerifiedAvatars', async () => {
   response.data.forEach((e) => logger.log(`${e.restId}: blue=${e.isBlueVerified} shape=${e.profileImageShape}`));
   expect(response.raw.response.ok).toBe(true);
 });
+
+test('getSidebarUserRecommendations', async () => {
+  logger.log('getSidebarUserRecommendations');
+  const client = await getClient();
+  const response = await client.getUsersApi().getSidebarUserRecommendations({ profileUserId: '44196397' });
+  response.data.forEach((rec) => {
+    logger.log(
+      rec.userResults.result?.__typename === 'User'
+        ? rec.userResults.result.core?.screenName
+        : rec.userResults.result?.__typename,
+    );
+  });
+  expect(response.raw.response.ok).toBe(true);
+});

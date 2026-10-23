@@ -31,7 +31,7 @@
     "@types/node": "^26.0.0",
     "log4js": "^6.9.1",
     "tsc-alias": "^1.8.16",
-    "typescript": "^5.9.3",
+    "typescript": "^7.0.2",
     "vitest": "^5.0.4"
   }
 }

@@ -364,8 +364,11 @@ docs/NoteTweetResultMedia.md
 docs/NoteTweetResultMediaInlineMedia.md
 docs/NoteTweetResultRichText.md
 docs/NoteTweetResultRichTextTag.md
+docs/NotificationAdditionalContext.md
 docs/NotificationDetails.md
 docs/NotificationTemplate.md
+docs/NotificationUrl.md
+docs/NotificationUrtEndpointOptions.md
 docs/NotificationsResult.md
 docs/NotificationsTimelineData.md
 docs/NotificationsTimelineResponse.md
@@ -415,6 +418,11 @@ docs/PostListAddMemberRequest.md
 docs/PostListAddMemberRequestVariables.md
 docs/PostListRemoveMemberRequest.md
 docs/PostUnfavoriteTweetRequest.md
+docs/Preroll.md
+docs/PrerollCallToAction.md
+docs/PrerollMediaInfo.md
+docs/PrerollMetadata.md
+docs/PrerollVideoVariant.md
 docs/PrimaryCommunityTopic.md
 docs/ProfileBio.md
 docs/ProfileBioEntities.md
@@ -570,6 +578,9 @@ docs/TweetResultByRestIdData.md
 docs/TweetResultByRestIdResponse.md
 docs/TweetRetweetersResponse.md
 docs/TweetRetweetersResponseData.md
+docs/TweetSportsCompetitor.md
+docs/TweetSportsPostContext.md
+docs/TweetSportsRestId.md
 docs/TweetTombstone.md
 docs/TweetUnavailable.md
 docs/TweetUnion.md
@@ -1041,8 +1052,11 @@ src/models/NoteTweetResultMedia.ts
 src/models/NoteTweetResultMediaInlineMedia.ts
 src/models/NoteTweetResultRichText.ts
 src/models/NoteTweetResultRichTextTag.ts
+src/models/NotificationAdditionalContext.ts
 src/models/NotificationDetails.ts
 src/models/NotificationTemplate.ts
+src/models/NotificationUrl.ts
+src/models/NotificationUrtEndpointOptions.ts
 src/models/NotificationsResult.ts
 src/models/NotificationsTimelineData.ts
 src/models/NotificationsTimelineResponse.ts
@@ -1090,6 +1104,11 @@ src/models/PostListAddMemberRequest.ts
 src/models/PostListAddMemberRequestVariables.ts
 src/models/PostListRemoveMemberRequest.ts
 src/models/PostUnfavoriteTweetRequest.ts
+src/models/Preroll.ts
+src/models/PrerollCallToAction.ts
+src/models/PrerollMediaInfo.ts
+src/models/PrerollMetadata.ts
+src/models/PrerollVideoVariant.ts
 src/models/PrimaryCommunityTopic.ts
 src/models/ProfileBio.ts
 src/models/ProfileBioEntities.ts
@@ -1244,6 +1263,9 @@ src/models/TweetResultByRestIdData.ts
 src/models/TweetResultByRestIdResponse.ts
 src/models/TweetRetweetersResponse.ts
 src/models/TweetRetweetersResponseData.ts
+src/models/TweetSportsCompetitor.ts
+src/models/TweetSportsPostContext.ts
+src/models/TweetSportsRestId.ts
 src/models/TweetTombstone.ts
 src/models/TweetUnavailable.ts
 src/models/TweetUnion.ts

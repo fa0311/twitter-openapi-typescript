@@ -10,7 +10,7 @@ Name | Type
 `id` | string
 `itemType` | [ContentItemType](ContentItemType.md)
 `notificationIcon` | string
-`notificationUrl` | [SocialContextLandingUrl](SocialContextLandingUrl.md)
+`notificationUrl` | [NotificationUrl](NotificationUrl.md)
 `richMessage` | [RichMessage](RichMessage.md)
 `template` | [NotificationTemplate](NotificationTemplate.md)
 `timestampMs` | string

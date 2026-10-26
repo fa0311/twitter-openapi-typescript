@@ -20,13 +20,13 @@ import {
     TypeNameToJSON,
     TypeNameToJSONTyped,
 } from './TypeName';
-import type { SocialContextLandingUrl } from './SocialContextLandingUrl';
+import type { NotificationUrl } from './NotificationUrl';
 import {
-    SocialContextLandingUrlFromJSON,
-    SocialContextLandingUrlFromJSONTyped,
-    SocialContextLandingUrlToJSON,
-    SocialContextLandingUrlToJSONTyped,
-} from './SocialContextLandingUrl';
+    NotificationUrlFromJSON,
+    NotificationUrlFromJSONTyped,
+    NotificationUrlToJSON,
+    NotificationUrlToJSONTyped,
+} from './NotificationUrl';
 import type { NotificationTemplate } from './NotificationTemplate';
 import {
     NotificationTemplateFromJSON,
@@ -74,7 +74,7 @@ export interface TimelineNotification {
     /**
      * 
      */
-    notificationUrl: SocialContextLandingUrl;
+    notificationUrl: NotificationUrl;
     /**
      * 
      */
@@ -120,7 +120,7 @@ export function TimelineNotificationFromJSONTyped(json: any, ignoreDiscriminator
         'id': json['id'],
         'itemType': ContentItemTypeFromJSON(json['itemType']),
         'notificationIcon': json['notification_icon'],
-        'notificationUrl': SocialContextLandingUrlFromJSON(json['notification_url']),
+        'notificationUrl': NotificationUrlFromJSON(json['notification_url']),
         'richMessage': RichMessageFromJSON(json['rich_message']),
         'template': NotificationTemplateFromJSON(json['template']),
         'timestampMs': json['timestamp_ms'],
@@ -142,7 +142,7 @@ export function TimelineNotificationToJSONTyped(value?: TimelineNotification | n
         'id': value['id'],
         'itemType': ContentItemTypeToJSON(value['itemType']),
         'notification_icon': value['notificationIcon'],
-        'notification_url': SocialContextLandingUrlToJSON(value['notificationUrl']),
+        'notification_url': NotificationUrlToJSON(value['notificationUrl']),
         'rich_message': RichMessageToJSON(value['richMessage']),
         'template': NotificationTemplateToJSON(value['template']),
         'timestamp_ms': value['timestampMs'],

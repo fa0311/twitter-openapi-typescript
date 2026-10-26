@@ -38,6 +38,7 @@ Name | Type
 `quotedStatusResult` | [ItemResult](ItemResult.md)
 `restId` | string
 `source` | string
+`sportsPostContext` | [TweetSportsPostContext](TweetSportsPostContext.md)
 `superFollowsReplyUserResult` | [SuperFollowsReplyUserResult](SuperFollowsReplyUserResult.md)
 `trendResults` | [TrendResults](TrendResults.md)
 `unifiedCard` | [UnifiedCard](UnifiedCard.md)
@@ -91,6 +92,7 @@ const example = {
   "quotedStatusResult": null,
   "restId": null,
   "source": null,
+  "sportsPostContext": null,
   "superFollowsReplyUserResult": null,
   "trendResults": null,
   "unifiedCard": null,

@@ -10,6 +10,7 @@ Name | Type
 `hasModeratedReplies` | boolean
 `highlights` | [Highlight](Highlight.md)
 `itemType` | [ContentItemType](ContentItemType.md)
+`prerollMetadata` | [PrerollMetadata](PrerollMetadata.md)
 `promotedMetadata` | [EventSummaryPromotedMetadata](EventSummaryPromotedMetadata.md)
 `socialContext` | [SocialContextUnion](SocialContextUnion.md)
 `tweetDisplayType` | string
@@ -39,7 +40,7 @@ Name | Type
 `trendUrl` | [SocialContextLandingUrl](SocialContextLandingUrl.md)
 `id` | string
 `notificationIcon` | string
-`notificationUrl` | [SocialContextLandingUrl](SocialContextLandingUrl.md)
+`notificationUrl` | [NotificationUrl](NotificationUrl.md)
 `richMessage` | [RichMessage](RichMessage.md)
 `template` | [NotificationTemplate](NotificationTemplate.md)
 `timestampMs` | string
@@ -66,6 +67,7 @@ const example = {
   "hasModeratedReplies": null,
   "highlights": null,
   "itemType": null,
+  "prerollMetadata": null,
   "promotedMetadata": null,
   "socialContext": null,
   "tweetDisplayType": null,

@@ -544,6 +544,7 @@ export class UserApi extends runtime.BaseAPI {
 
     /**
      * Creates request options for getUserByRestId without sending the request
+     * @deprecated
      */
     async getUserByRestIdRequestOpts(requestParameters: GetUserByRestIdRequest): Promise<runtime.RequestOpts> {
         if (requestParameters['pathQueryId'] == null) {
@@ -676,7 +677,8 @@ export class UserApi extends runtime.BaseAPI {
     }
 
     /**
-     * get user by rest id
+     * get user by rest id. Deprecated: X answers 403 outside a browser since 2026-10
+     * @deprecated
      */
     async getUserByRestIdRaw(requestParameters: GetUserByRestIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<UserResponse>> {
         const requestOptions = await this.getUserByRestIdRequestOpts(requestParameters);
@@ -686,7 +688,8 @@ export class UserApi extends runtime.BaseAPI {
     }
 
     /**
-     * get user by rest id
+     * get user by rest id. Deprecated: X answers 403 outside a browser since 2026-10
+     * @deprecated
      */
     async getUserByRestId(requestParameters: GetUserByRestIdRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<UserResponse> {
         const response = await this.getUserByRestIdRaw(requestParameters, initOverrides);

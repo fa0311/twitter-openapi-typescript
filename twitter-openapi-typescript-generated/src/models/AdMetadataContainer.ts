@@ -38,6 +38,10 @@ export interface AdMetadataContainer {
     /**
      * 
      */
+    removePromotedAttributionForPreroll?: boolean;
+    /**
+     * 
+     */
     renderLegacyWebsiteCard: boolean;
     /**
      * 
@@ -75,6 +79,7 @@ export function AdMetadataContainerFromJSONTyped(json: any, ignoreDiscriminator:
         
         'destinationUrlParams': json['destinationUrlParams'] == null ? undefined : ((json['destinationUrlParams'] as Array<any>).map(KeyValueFromJSON)),
         'isQuickPromote': json['isQuickPromote'],
+        'removePromotedAttributionForPreroll': json['remove_promoted_attribution_for_preroll'] == null ? undefined : json['remove_promoted_attribution_for_preroll'],
         'renderLegacyWebsiteCard': json['renderLegacyWebsiteCard'],
         'renderSalesCtaWebsiteCard': json['renderSalesCtaWebsiteCard'],
         'showOverlayOnFirstCard': json['showOverlayOnFirstCard'] == null ? undefined : json['showOverlayOnFirstCard'],
@@ -95,6 +100,7 @@ export function AdMetadataContainerToJSONTyped(value?: AdMetadataContainer | nul
         
         'destinationUrlParams': value['destinationUrlParams'] == null ? undefined : ((value['destinationUrlParams'] as Array<any>).map(KeyValueToJSON)),
         'isQuickPromote': value['isQuickPromote'],
+        'remove_promoted_attribution_for_preroll': value['removePromotedAttributionForPreroll'],
         'renderLegacyWebsiteCard': value['renderLegacyWebsiteCard'],
         'renderSalesCtaWebsiteCard': value['renderSalesCtaWebsiteCard'],
         'showOverlayOnFirstCard': value['showOverlayOnFirstCard'],

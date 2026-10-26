@@ -8,6 +8,7 @@ Name | Type
 ------------ | -------------
 `destinationUrlParams` | [Array&lt;KeyValue&gt;](KeyValue.md)
 `isQuickPromote` | boolean
+`removePromotedAttributionForPreroll` | boolean
 `renderLegacyWebsiteCard` | boolean
 `renderSalesCtaWebsiteCard` | boolean
 `showOverlayOnFirstCard` | boolean
@@ -22,6 +23,7 @@ import type { AdMetadataContainer } from 'twitter-openapi-typescript-generated'
 const example = {
   "destinationUrlParams": null,
   "isQuickPromote": null,
+  "removePromotedAttributionForPreroll": null,
   "renderLegacyWebsiteCard": null,
   "renderSalesCtaWebsiteCard": null,
   "showOverlayOnFirstCard": null,

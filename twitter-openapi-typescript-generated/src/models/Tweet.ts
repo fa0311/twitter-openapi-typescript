@@ -181,6 +181,13 @@ import {
     ItemResultToJSON,
     ItemResultToJSONTyped,
 } from './ItemResult';
+import type { TweetSportsPostContext } from './TweetSportsPostContext';
+import {
+    TweetSportsPostContextFromJSON,
+    TweetSportsPostContextFromJSONTyped,
+    TweetSportsPostContextToJSON,
+    TweetSportsPostContextToJSONTyped,
+} from './TweetSportsPostContext';
 import type { TweetLegacy } from './TweetLegacy';
 import {
     TweetLegacyFromJSON,
@@ -333,6 +340,10 @@ export interface Tweet {
     /**
      * 
      */
+    sportsPostContext?: TweetSportsPostContext;
+    /**
+     * 
+     */
     superFollowsReplyUserResult?: SuperFollowsReplyUserResult;
     /**
      * 
@@ -408,6 +419,7 @@ export function TweetFromJSONTyped(json: any, ignoreDiscriminator: boolean): Twe
         'quotedStatusResult': json['quoted_status_result'] == null ? undefined : ItemResultFromJSON(json['quoted_status_result']),
         'restId': json['rest_id'],
         'source': json['source'] == null ? undefined : json['source'],
+        'sportsPostContext': json['sports_post_context'] == null ? undefined : TweetSportsPostContextFromJSON(json['sports_post_context']),
         'superFollowsReplyUserResult': json['superFollowsReplyUserResult'] == null ? undefined : SuperFollowsReplyUserResultFromJSON(json['superFollowsReplyUserResult']),
         'trendResults': json['trend_results'] == null ? undefined : TrendResultsFromJSON(json['trend_results']),
         'unifiedCard': json['unified_card'] == null ? undefined : UnifiedCardFromJSON(json['unified_card']),
@@ -460,6 +472,7 @@ export function TweetToJSONTyped(value?: Tweet | null, ignoreDiscriminator: bool
         'quoted_status_result': ItemResultToJSON(value['quotedStatusResult']),
         'rest_id': value['restId'],
         'source': value['source'],
+        'sports_post_context': TweetSportsPostContextToJSON(value['sportsPostContext']),
         'superFollowsReplyUserResult': SuperFollowsReplyUserResultToJSON(value['superFollowsReplyUserResult']),
         'trend_results': TrendResultsToJSON(value['trendResults']),
         'unified_card': UnifiedCardToJSON(value['unifiedCard']),

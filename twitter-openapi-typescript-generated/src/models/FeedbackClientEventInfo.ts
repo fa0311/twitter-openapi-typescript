@@ -22,7 +22,7 @@ export interface FeedbackClientEventInfo {
     /**
      * 
      */
-    action: string;
+    action?: string;
     /**
      * 
      */
@@ -30,15 +30,13 @@ export interface FeedbackClientEventInfo {
     /**
      * 
      */
-    element: string;
+    element?: string;
 }
 
 /**
  * Check if a given object implements the FeedbackClientEventInfo interface.
  */
 export function instanceOfFeedbackClientEventInfo(value: object): value is FeedbackClientEventInfo {
-    if (!('action' in value) || value['action'] === undefined) return false;
-    if (!('element' in value) || value['element'] === undefined) return false;
     return true;
 }
 
@@ -52,9 +50,9 @@ export function FeedbackClientEventInfoFromJSONTyped(json: any, ignoreDiscrimina
     }
     return {
         
-        'action': json['action'],
+        'action': json['action'] == null ? undefined : json['action'],
         'component': json['component'] == null ? undefined : json['component'],
-        'element': json['element'],
+        'element': json['element'] == null ? undefined : json['element'],
     };
 }
 

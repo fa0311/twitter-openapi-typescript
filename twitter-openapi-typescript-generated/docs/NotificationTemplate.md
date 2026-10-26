@@ -7,7 +7,9 @@
 Name | Type
 ------------ | -------------
 `typename` | [TypeName](TypeName.md)
+`additionalContext` | [NotificationAdditionalContext](NotificationAdditionalContext.md)
 `fromUsers` | Array&lt;object&gt;
+`showAllLinkText` | string
 `targetObjects` | Array&lt;object&gt;
 
 ## Example
@@ -18,7 +20,9 @@ import type { NotificationTemplate } from 'twitter-openapi-typescript-generated'
 // TODO: Update the object below with actual values
 const example = {
   "typename": null,
+  "additionalContext": null,
   "fromUsers": null,
+  "showAllLinkText": null,
   "targetObjects": null,
 } satisfies NotificationTemplate
 

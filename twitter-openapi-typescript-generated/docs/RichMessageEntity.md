@@ -6,6 +6,7 @@
 
 Name | Type
 ------------ | -------------
+`format` | string
 `fromIndex` | number
 `ref` | [RichMessageEntityRef](RichMessageEntityRef.md)
 `toIndex` | number
@@ -17,6 +18,7 @@ import type { RichMessageEntity } from 'twitter-openapi-typescript-generated'
 
 // TODO: Update the object below with actual values
 const example = {
+  "format": null,
   "fromIndex": null,
   "ref": null,
   "toIndex": null,

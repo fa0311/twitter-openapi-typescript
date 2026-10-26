@@ -43,6 +43,7 @@ export class UsersApiUtils {
       data: user,
     };
   }
+  /** @deprecated X answers 403 outside a browser since 2026-10. */
   async getUsersByRestIds(param: getUsersByRestIdsParam): Promise<ResponseType> {
     const args = {
       userIds: param.userIds,

@@ -20,6 +20,13 @@ import {
     PromotedMetadataToJSON,
     PromotedMetadataToJSONTyped,
 } from './PromotedMetadata';
+import type { PrerollMetadata } from './PrerollMetadata';
+import {
+    PrerollMetadataFromJSON,
+    PrerollMetadataFromJSONTyped,
+    PrerollMetadataToJSON,
+    PrerollMetadataToJSONTyped,
+} from './PrerollMetadata';
 import type { TypeName } from './TypeName';
 import {
     TypeNameFromJSON,
@@ -81,6 +88,10 @@ export interface TimelineTweet {
     /**
      * 
      */
+    prerollMetadata?: PrerollMetadata;
+    /**
+     * 
+     */
     promotedMetadata?: PromotedMetadata;
     /**
      * 
@@ -134,6 +145,7 @@ export function TimelineTweetFromJSONTyped(json: any, ignoreDiscriminator: boole
         'hasModeratedReplies': json['hasModeratedReplies'] == null ? undefined : json['hasModeratedReplies'],
         'highlights': json['highlights'] == null ? undefined : HighlightFromJSON(json['highlights']),
         'itemType': ContentItemTypeFromJSON(json['itemType']),
+        'prerollMetadata': json['prerollMetadata'] == null ? undefined : PrerollMetadataFromJSON(json['prerollMetadata']),
         'promotedMetadata': json['promotedMetadata'] == null ? undefined : PromotedMetadataFromJSON(json['promotedMetadata']),
         'socialContext': json['socialContext'] == null ? undefined : SocialContextUnionFromJSON(json['socialContext']),
         'tweetDisplayType': json['tweetDisplayType'],
@@ -156,6 +168,7 @@ export function TimelineTweetToJSONTyped(value?: TimelineTweet | null, ignoreDis
         'hasModeratedReplies': value['hasModeratedReplies'],
         'highlights': HighlightToJSON(value['highlights']),
         'itemType': ContentItemTypeToJSON(value['itemType']),
+        'prerollMetadata': PrerollMetadataToJSON(value['prerollMetadata']),
         'promotedMetadata': PromotedMetadataToJSON(value['promotedMetadata']),
         'socialContext': SocialContextUnionToJSON(value['socialContext']),
         'tweetDisplayType': value['tweetDisplayType'],

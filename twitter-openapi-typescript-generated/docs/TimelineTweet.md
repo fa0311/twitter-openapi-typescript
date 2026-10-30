@@ -10,6 +10,7 @@ Name | Type
 `hasModeratedReplies` | boolean
 `highlights` | [Highlight](Highlight.md)
 `itemType` | [ContentItemType](ContentItemType.md)
+`prerollMetadata` | [PrerollMetadata](PrerollMetadata.md)
 `promotedMetadata` | [PromotedMetadata](PromotedMetadata.md)
 `socialContext` | [SocialContextUnion](SocialContextUnion.md)
 `tweetDisplayType` | string
@@ -26,6 +27,7 @@ const example = {
   "hasModeratedReplies": null,
   "highlights": null,
   "itemType": null,
+  "prerollMetadata": null,
   "promotedMetadata": null,
   "socialContext": null,
   "tweetDisplayType": null,

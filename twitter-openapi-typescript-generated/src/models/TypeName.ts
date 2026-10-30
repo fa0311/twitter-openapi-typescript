@@ -25,6 +25,7 @@ export const TypeName = {
     TimelineLabel: 'TimelineLabel',
     TimelineEventSummary: 'TimelineEventSummary',
     AiTrend: 'AiTrend',
+    TimelineRichText: 'TimelineRichText',
     TimelineTimelineItem: 'TimelineTimelineItem',
     TimelineUser: 'TimelineUser',
     TimelineTimelineCursor: 'TimelineTimelineCursor',

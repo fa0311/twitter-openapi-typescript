@@ -137,7 +137,7 @@ example().catch(console.error);
 
 
 
-get users by rest ids
+get users by rest ids. Deprecated: X answers 403 outside a browser since 2026-10
 
 ### Example
 

@@ -30,11 +30,15 @@ export interface RichMessageEntity {
     /**
      * 
      */
+    format?: string;
+    /**
+     * 
+     */
     fromIndex: number;
     /**
      * 
      */
-    ref: RichMessageEntityRef;
+    ref?: RichMessageEntityRef;
     /**
      * 
      */
@@ -46,7 +50,6 @@ export interface RichMessageEntity {
  */
 export function instanceOfRichMessageEntity(value: object): value is RichMessageEntity {
     if (!('fromIndex' in value) || value['fromIndex'] === undefined) return false;
-    if (!('ref' in value) || value['ref'] === undefined) return false;
     if (!('toIndex' in value) || value['toIndex'] === undefined) return false;
     return true;
 }
@@ -61,8 +64,9 @@ export function RichMessageEntityFromJSONTyped(json: any, ignoreDiscriminator: b
     }
     return {
         
+        'format': json['format'] == null ? undefined : json['format'],
         'fromIndex': json['fromIndex'],
-        'ref': RichMessageEntityRefFromJSON(json['ref']),
+        'ref': json['ref'] == null ? undefined : RichMessageEntityRefFromJSON(json['ref']),
         'toIndex': json['toIndex'],
     };
 }
@@ -78,6 +82,7 @@ export function RichMessageEntityToJSONTyped(value?: RichMessageEntity | null, i
 
     return {
         
+        'format': value['format'],
         'fromIndex': value['fromIndex'],
         'ref': RichMessageEntityRefToJSON(value['ref']),
         'toIndex': value['toIndex'],

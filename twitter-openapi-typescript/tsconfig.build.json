@@ -2,14 +2,11 @@
   "compilerOptions": {
     "declaration": true,
     "target": "es2020",
-    "module": "commonjs",
-    "moduleResolution": "node",
+    "module": "node16",
     "outDir": "dist",
     "lib": ["es2020", "dom"],
-    "typeRoots": ["node_modules/@types"],
     "allowSyntheticDefaultImports": true,
     "rootDir": "./",
-    "baseUrl": "./",
     "paths": {
       "@/*": ["./src/*"],
       "@test/*": ["./test/*"]

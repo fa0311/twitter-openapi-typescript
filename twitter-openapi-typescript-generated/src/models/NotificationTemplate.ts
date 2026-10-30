@@ -20,6 +20,13 @@ import {
     TypeNameToJSON,
     TypeNameToJSONTyped,
 } from './TypeName';
+import type { NotificationAdditionalContext } from './NotificationAdditionalContext';
+import {
+    NotificationAdditionalContextFromJSON,
+    NotificationAdditionalContextFromJSONTyped,
+    NotificationAdditionalContextToJSON,
+    NotificationAdditionalContextToJSONTyped,
+} from './NotificationAdditionalContext';
 
 /**
  * 
@@ -34,7 +41,15 @@ export interface NotificationTemplate {
     /**
      * 
      */
+    additionalContext?: NotificationAdditionalContext;
+    /**
+     * 
+     */
     fromUsers?: Array<object>;
+    /**
+     * 
+     */
+    showAllLinkText?: string;
     /**
      * 
      */
@@ -61,7 +76,9 @@ export function NotificationTemplateFromJSONTyped(json: any, ignoreDiscriminator
     return {
         
         'typename': json['__typename'] == null ? undefined : TypeNameFromJSON(json['__typename']),
+        'additionalContext': json['additional_context'] == null ? undefined : NotificationAdditionalContextFromJSON(json['additional_context']),
         'fromUsers': json['from_users'] == null ? undefined : json['from_users'],
+        'showAllLinkText': json['show_all_link_text'] == null ? undefined : json['show_all_link_text'],
         'targetObjects': json['target_objects'] == null ? undefined : json['target_objects'],
     };
 }
@@ -78,7 +95,9 @@ export function NotificationTemplateToJSONTyped(value?: NotificationTemplate | n
     return {
         
         '__typename': TypeNameToJSON(value['typename']),
+        'additional_context': NotificationAdditionalContextToJSON(value['additionalContext']),
         'from_users': value['fromUsers'],
+        'show_all_link_text': value['showAllLinkText'],
         'target_objects': value['targetObjects'],
     };
 }

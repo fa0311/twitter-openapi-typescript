@@ -47,6 +47,19 @@ api.setAdditionalApiHeaders({
 });
 ```
 
+### Pagination
+
+`paginate` walks any timeline call through its bottom cursor and yields the items: it stops at the end of the timeline or after `limit` items, and waits for the rate-limit window to reset when it is used up.
+
+```typescript
+import { paginate } from 'twitter-openapi-typescript';
+
+const tweets = paginate((cursor) => client.getTweetApi().getUserTweets({ userId: '44196397', cursor }), { limit: 100 });
+for await (const tweet of tweets) {
+  console.log(tweet.tweet.legacy?.fullText);
+}
+```
+
 ### Endpoint
 
 The generated client accepts any base URL that keeps X's path shape (`/graphql/{queryId}/{operationName}`, `/1.1/...`, `/2/...` under `https://x.com/i/api`). Build the `Configuration` yourself and hand it to `getClient`; the login helpers are not involved, so cookies and headers are then up to you (or to whatever answers at that URL). For example, [twitter_api_safe_relay](https://github.com/fa0311/twitter_api_safe_relay) answers at `http://localhost:3000/i/api` with a logged-in browser session.

@@ -49,14 +49,13 @@ api.setAdditionalApiHeaders({
 
 ### Endpoint
 
-The generated client accepts any base URL that keeps X's path shape (`/graphql/{queryId}/{operationName}`, `/1.1/...`, `/2/...` under `https://x.com/i/api`). Build the `Configuration` yourself and hand it to `getClient`; the login helpers are not involved, so cookies and headers are then up to you (or to whatever answers at that URL). For example, [twitter_api_safe_relay](https://github.com/fa0311/twitter_api_safe_relay) answers at `http://localhost:3000/i/api` with a logged-in browser session.
+The generated client accepts any base URL that keeps X's path shape (`/graphql/{queryId}/{operationName}`, `/1.1/...`, `/2/...` under `https://x.com/i/api`). `getClientFromEndpoint` is for a host that already holds the session: it sends no cookie, no bearer, no browser headers and no transaction id, only the query and the headers you pass (the second argument is added to every request, for whatever the host defines). For example, [twitter_api_safe_relay](https://github.com/fa0311/twitter_api_safe_relay) answers at `http://localhost:3000/i/api` with a logged-in browser session.
 
 ```typescript
 import { TwitterOpenApi } from 'twitter-openapi-typescript';
-import { Configuration } from 'twitter-openapi-typescript-generated';
 
 const api = new TwitterOpenApi();
-const client = await api.getClient(new Configuration({ basePath: 'http://localhost:3000/i/api' }));
+const client = await api.getClientFromEndpoint('http://localhost:3000/i/api');
 const response = await client.getUserApi().getUserByScreenName({ screenName: 'elonmusk' });
 ```
 

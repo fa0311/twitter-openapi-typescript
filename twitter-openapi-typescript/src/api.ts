@@ -187,6 +187,27 @@ export class TwitterOpenApi {
 
     return new TwitterOpenApiClient(api, flag, initOverrides);
   }
+
+  async getClientFromEndpoint(
+    basePath: string,
+    headers: { [key: string]: string } = {},
+  ): Promise<TwitterOpenApiClient> {
+    const flag = (await TwitterOpenApi.fetchApi(TwitterOpenApi.url, {
+      method: 'GET',
+    }).then((res) => res.json())) as DefaultFlag;
+
+    const config: i.ConfigurationParameters = {
+      basePath: basePath,
+      fetchApi: TwitterOpenApi.fetchApi,
+      headers: headers,
+    };
+
+    const initOverrides: InitOverridesType = () => {
+      return async ({ init }) => init;
+    };
+
+    return new TwitterOpenApiClient(new i.Configuration(config), flag, initOverrides);
+  }
 }
 
 export class TwitterOpenApiClient {

@@ -30,6 +30,14 @@ export interface ClickTrackingInfo {
     /**
      * 
      */
+    urlOverride?: string;
+    /**
+     * 
+     */
+    urlOverrideType?: string;
+    /**
+     * 
+     */
     urlParams: Array<KeyValue>;
 }
 
@@ -51,6 +59,8 @@ export function ClickTrackingInfoFromJSONTyped(json: any, ignoreDiscriminator: b
     }
     return {
         
+        'urlOverride': json['urlOverride'] == null ? undefined : json['urlOverride'],
+        'urlOverrideType': json['urlOverrideType'] == null ? undefined : json['urlOverrideType'],
         'urlParams': ((json['urlParams'] as Array<any>).map(KeyValueFromJSON)),
     };
 }
@@ -66,6 +76,8 @@ export function ClickTrackingInfoToJSONTyped(value?: ClickTrackingInfo | null, i
 
     return {
         
+        'urlOverride': value['urlOverride'],
+        'urlOverrideType': value['urlOverrideType'],
         'urlParams': ((value['urlParams'] as Array<any>).map(KeyValueToJSON)),
     };
 }

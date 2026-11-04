@@ -41,11 +41,11 @@ export interface UserLabelMentionUser {
     /**
      * 
      */
-    core: UserLabelMentionUserCore;
+    core?: UserLabelMentionUserCore;
     /**
      * 
      */
-    restId: string;
+    restId?: string;
 }
 
 
@@ -55,8 +55,6 @@ export interface UserLabelMentionUser {
  */
 export function instanceOfUserLabelMentionUser(value: object): value is UserLabelMentionUser {
     if ((!('typename' in (value as Record<string, any>)) && !('__typename' in (value as Record<string, any>))) || ((value as Record<string, any>)['typename'] === undefined && (value as Record<string, any>)['__typename'] === undefined)) return false;
-    if (!('core' in value) || value['core'] === undefined) return false;
-    if ((!('restId' in (value as Record<string, any>)) && !('rest_id' in (value as Record<string, any>))) || ((value as Record<string, any>)['restId'] === undefined && (value as Record<string, any>)['rest_id'] === undefined)) return false;
     return true;
 }
 
@@ -71,8 +69,8 @@ export function UserLabelMentionUserFromJSONTyped(json: any, ignoreDiscriminator
     return {
         
         'typename': TypeNameFromJSON(json['__typename']),
-        'core': UserLabelMentionUserCoreFromJSON(json['core']),
-        'restId': json['rest_id'],
+        'core': json['core'] == null ? undefined : UserLabelMentionUserCoreFromJSON(json['core']),
+        'restId': json['rest_id'] == null ? undefined : json['rest_id'],
     };
 }
 

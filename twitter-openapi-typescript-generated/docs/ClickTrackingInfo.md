@@ -6,6 +6,8 @@
 
 Name | Type
 ------------ | -------------
+`urlOverride` | string
+`urlOverrideType` | string
 `urlParams` | [Array&lt;KeyValue&gt;](KeyValue.md)
 
 ## Example
@@ -15,6 +17,8 @@ import type { ClickTrackingInfo } from 'twitter-openapi-typescript-generated'
 
 // TODO: Update the object below with actual values
 const example = {
+  "urlOverride": null,
+  "urlOverrideType": null,
   "urlParams": null,
 } satisfies ClickTrackingInfo
 

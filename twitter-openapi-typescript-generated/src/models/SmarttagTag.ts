@@ -31,6 +31,10 @@ export interface SmarttagTag {
      * 
      */
     info: SmarttagTagInfo;
+    /**
+     * 
+     */
+    restId?: string;
 }
 
 /**
@@ -52,6 +56,7 @@ export function SmarttagTagFromJSONTyped(json: any, ignoreDiscriminator: boolean
     return {
         
         'info': SmarttagTagInfoFromJSON(json['info']),
+        'restId': json['rest_id'] == null ? undefined : json['rest_id'],
     };
 }
 
@@ -67,6 +72,7 @@ export function SmarttagTagToJSONTyped(value?: SmarttagTag | null, ignoreDiscrim
     return {
         
         'info': SmarttagTagInfoToJSON(value['info']),
+        'rest_id': value['restId'],
     };
 }
 

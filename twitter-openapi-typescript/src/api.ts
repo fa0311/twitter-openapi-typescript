@@ -12,13 +12,14 @@ import {
   V11GetApiUtils,
   V11PostApiUtils,
   V20GetApiUtils,
+  V20PostApiUtils,
 } from '@/apis';
 import type { DefaultFlag } from '@/models';
 import { UsersApiUtils } from './apis/usersApi';
 import type { InitOverridesType } from './utils';
 
 export class TwitterOpenApi {
-  static hash = '975196678177a65210cff715a1b93ddfc83584eb';
+  static hash = '45a5fb4bd086cd6f74dd52a4461501bceaaa6058';
   static url = `https://raw.githubusercontent.com/fa0311/twitter-openapi/${this.hash}/src/config/placeholder.json`;
   static header = 'https://raw.githubusercontent.com/fa0311/latest-user-agent/refs/heads/main/header.json';
   static twitter = 'https://x.com/home';
@@ -263,6 +264,10 @@ export class TwitterOpenApiClient {
 
   getV20GetApi(): V20GetApiUtils {
     return new V20GetApiUtils(new i.V20GetApi(this.config), this.flag, this.initOverrides);
+  }
+
+  getV20PostApi(): V20PostApiUtils {
+    return new V20PostApiUtils(new i.V20PostApi(this.config), this.flag, this.initOverrides);
   }
 
   getInitialStateApi(): InitialStateApiUtils {

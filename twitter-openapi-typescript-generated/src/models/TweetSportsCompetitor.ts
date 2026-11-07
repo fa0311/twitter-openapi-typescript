@@ -54,7 +54,7 @@ export interface TweetSportsCompetitor {
     /**
      * 
      */
-    score: string;
+    score: string | null;
     /**
      * 
      */

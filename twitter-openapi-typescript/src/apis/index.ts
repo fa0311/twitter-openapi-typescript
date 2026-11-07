@@ -10,3 +10,4 @@ export { UsersApiUtils } from './usersApi';
 export { V11GetApiUtils } from './v11GetApi';
 export { V11PostApiUtils } from './v11PostApi';
 export { V20GetApiUtils } from './v20GetApi';
+export { V20PostApiUtils } from './v20PostApi';

@@ -669,6 +669,7 @@ docs/UsersVerifiedAvatarsResponseData.md
 docs/V11GetApi.md
 docs/V11PostApi.md
 docs/V20GetApi.md
+docs/V20PostApi.md
 docs/VerifiedAvatarUser.md
 docs/VerifiedAvatarUserResults.md
 docs/ViewerBadgeCountsResponse.md
@@ -689,6 +690,7 @@ src/apis/UsersApi.ts
 src/apis/V11GetApi.ts
 src/apis/V11PostApi.ts
 src/apis/V20GetApi.ts
+src/apis/V20PostApi.ts
 src/apis/index.ts
 src/index.ts
 src/models/AboutAccountData.ts

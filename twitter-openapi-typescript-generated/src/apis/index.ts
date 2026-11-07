@@ -12,3 +12,4 @@ export * from './UsersApi';
 export * from './V11GetApi';
 export * from './V11PostApi';
 export * from './V20GetApi';
+export * from './V20PostApi';

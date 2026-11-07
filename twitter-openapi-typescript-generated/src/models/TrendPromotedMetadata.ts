@@ -57,7 +57,7 @@ export interface TrendPromotedMetadata {
     /**
      * 
      */
-    promotedTrendDescription: string;
+    promotedTrendDescription: string | null;
     /**
      * 
      */

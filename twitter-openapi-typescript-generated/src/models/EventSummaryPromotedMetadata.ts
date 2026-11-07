@@ -68,7 +68,7 @@ export interface EventSummaryPromotedMetadata {
     /**
      * 
      */
-    promotedTrendDescription: string;
+    promotedTrendDescription: string | null;
     /**
      * 
      */

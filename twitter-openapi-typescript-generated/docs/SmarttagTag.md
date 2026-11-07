@@ -7,6 +7,7 @@
 Name | Type
 ------------ | -------------
 `info` | [SmarttagTagInfo](SmarttagTagInfo.md)
+`restId` | string
 
 ## Example
 
@@ -16,6 +17,7 @@ import type { SmarttagTag } from 'twitter-openapi-typescript-generated'
 // TODO: Update the object below with actual values
 const example = {
   "info": null,
+  "restId": null,
 } satisfies SmarttagTag
 
 console.log(example)

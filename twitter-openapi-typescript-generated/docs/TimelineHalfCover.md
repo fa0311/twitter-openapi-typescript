@@ -11,6 +11,7 @@ Name | Type
 `impressionCallbacks` | [Array&lt;Callback&gt;](Callback.md)
 `primaryCoverCta` | [CoverCta](CoverCta.md)
 `primaryText` | [Text](Text.md)
+`secondaryCoverCta` | [CoverCta](CoverCta.md)
 `secondaryText` | [Text](Text.md)
 `type` | string
 
@@ -26,6 +27,7 @@ const example = {
   "impressionCallbacks": null,
   "primaryCoverCta": null,
   "primaryText": null,
+  "secondaryCoverCta": null,
   "secondaryText": null,
   "type": null,
 } satisfies TimelineHalfCover

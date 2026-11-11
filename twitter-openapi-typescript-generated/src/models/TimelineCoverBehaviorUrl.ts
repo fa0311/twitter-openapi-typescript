@@ -44,8 +44,8 @@ export type TimelineCoverBehaviorUrlUrlTypeEnum = typeof TimelineCoverBehaviorUr
  */
 export function instanceOfTimelineCoverBehaviorUrl(value: object): value is TimelineCoverBehaviorUrl {
     if (!('url' in value) || value['url'] === undefined) return false;
-    if ((!('urlType' in (value as Record<string, any>)) && !('url_type' in (value as Record<string, any>))) || ((value as Record<string, any>)['urlType'] === undefined && (value as Record<string, any>)['url_type'] === undefined)) return false;
-    if ((value as Record<string, any>)['urlType'] !== 'ExternalUrl' && (value as Record<string, any>)['url_type'] !== 'ExternalUrl') return false;
+    if (!('urlType' in value) || value['urlType'] === undefined) return false;
+    if (value['urlType'] !== 'ExternalUrl') return false;
     
     return true;
 }
@@ -61,7 +61,7 @@ export function TimelineCoverBehaviorUrlFromJSONTyped(json: any, ignoreDiscrimin
     return {
         
         'url': json['url'],
-        'urlType': json['url_type'],
+        'urlType': json['urlType'],
     };
 }
 
@@ -77,7 +77,7 @@ export function TimelineCoverBehaviorUrlToJSONTyped(value?: TimelineCoverBehavio
     return {
         
         'url': value['url'],
-        'url_type': value['urlType'],
+        'urlType': value['urlType'],
     };
 }
 

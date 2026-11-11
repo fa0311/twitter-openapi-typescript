@@ -44,7 +44,7 @@ export interface TimelineHalfCover {
     /**
      * 
      */
-    dismissible: boolean;
+    dismissible?: boolean;
     /**
      * 
      */
@@ -61,6 +61,10 @@ export interface TimelineHalfCover {
      * 
      */
     primaryText: Text;
+    /**
+     * 
+     */
+    secondaryCoverCta?: CoverCta;
     /**
      * 
      */
@@ -85,7 +89,6 @@ export type TimelineHalfCoverTypeEnum = typeof TimelineHalfCoverTypeEnum[keyof t
  * Check if a given object implements the TimelineHalfCover interface.
  */
 export function instanceOfTimelineHalfCover(value: object): value is TimelineHalfCover {
-    if (!('dismissible' in value) || value['dismissible'] === undefined) return false;
     if (!('halfCoverDisplayType' in value) || value['halfCoverDisplayType'] === undefined) return false;
     if (!('impressionCallbacks' in value) || value['impressionCallbacks'] === undefined) return false;
     if (!('primaryCoverCta' in value) || value['primaryCoverCta'] === undefined) return false;
@@ -107,11 +110,12 @@ export function TimelineHalfCoverFromJSONTyped(json: any, ignoreDiscriminator: b
     }
     return {
         
-        'dismissible': json['dismissible'],
+        'dismissible': json['dismissible'] == null ? undefined : json['dismissible'],
         'halfCoverDisplayType': json['halfCoverDisplayType'],
         'impressionCallbacks': ((json['impressionCallbacks'] as Array<any>).map(CallbackFromJSON)),
         'primaryCoverCta': CoverCtaFromJSON(json['primaryCoverCta']),
         'primaryText': TextFromJSON(json['primaryText']),
+        'secondaryCoverCta': json['secondaryCoverCta'] == null ? undefined : CoverCtaFromJSON(json['secondaryCoverCta']),
         'secondaryText': TextFromJSON(json['secondaryText']),
         'type': json['type'],
     };
@@ -133,6 +137,7 @@ export function TimelineHalfCoverToJSONTyped(value?: TimelineHalfCover | null, i
         'impressionCallbacks': ((value['impressionCallbacks'] as Array<any>).map(CallbackToJSON)),
         'primaryCoverCta': CoverCtaToJSON(value['primaryCoverCta']),
         'primaryText': TextToJSON(value['primaryText']),
+        'secondaryCoverCta': CoverCtaToJSON(value['secondaryCoverCta']),
         'secondaryText': TextToJSON(value['secondaryText']),
         'type': value['type'],
     };

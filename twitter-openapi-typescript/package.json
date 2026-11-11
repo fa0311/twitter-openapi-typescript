@@ -23,7 +23,7 @@
   "main": "./dist/src/index.js",
   "typings": "./dist/src/index.d.ts",
   "dependencies": {
-    "twitter-openapi-typescript-generated": "^0.1.7",
+    "twitter-openapi-typescript-generated": "^0.1.8",
     "x-client-transaction-id-generater": "^0.0.7"
   },
   "devDependencies": {

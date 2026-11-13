@@ -4,6 +4,12 @@ updates:
     directory: /twitter-openapi-typescript
     schedule:
       interval: weekly
+    groups:
+      all:
+        patterns: ['*']
+      security:
+        applies-to: security-updates
+        patterns: ['*']
 
   - package-ecosystem: npm
     directory: /twitter-openapi-typescript-generated

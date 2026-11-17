@@ -128,7 +128,7 @@ export interface AudioSpaceMetadata {
     /**
      * 
      */
-    title: string;
+    title?: string;
     /**
      * 
      */
@@ -140,7 +140,7 @@ export interface AudioSpaceMetadata {
     /**
      * 
      */
-    tweetResults: ItemResult;
+    tweetResults?: ItemResult;
     /**
      * 
      */
@@ -168,10 +168,8 @@ export function instanceOfAudioSpaceMetadata(value: object): value is AudioSpace
     if ((!('restId' in (value as Record<string, any>)) && !('rest_id' in (value as Record<string, any>))) || ((value as Record<string, any>)['restId'] === undefined && (value as Record<string, any>)['rest_id'] === undefined)) return false;
     if ((!('startedAt' in (value as Record<string, any>)) && !('started_at' in (value as Record<string, any>))) || ((value as Record<string, any>)['startedAt'] === undefined && (value as Record<string, any>)['started_at'] === undefined)) return false;
     if (!('state' in value) || value['state'] === undefined) return false;
-    if (!('title' in value) || value['title'] === undefined) return false;
     if ((!('totalLiveListeners' in (value as Record<string, any>)) && !('total_live_listeners' in (value as Record<string, any>))) || ((value as Record<string, any>)['totalLiveListeners'] === undefined && (value as Record<string, any>)['total_live_listeners'] === undefined)) return false;
     if ((!('totalReplayWatched' in (value as Record<string, any>)) && !('total_replay_watched' in (value as Record<string, any>))) || ((value as Record<string, any>)['totalReplayWatched'] === undefined && (value as Record<string, any>)['total_replay_watched'] === undefined)) return false;
-    if ((!('tweetResults' in (value as Record<string, any>)) && !('tweet_results' in (value as Record<string, any>))) || ((value as Record<string, any>)['tweetResults'] === undefined && (value as Record<string, any>)['tweet_results'] === undefined)) return false;
     if ((!('updatedAt' in (value as Record<string, any>)) && !('updated_at' in (value as Record<string, any>))) || ((value as Record<string, any>)['updatedAt'] === undefined && (value as Record<string, any>)['updated_at'] === undefined)) return false;
     return true;
 }
@@ -207,10 +205,10 @@ export function AudioSpaceMetadataFromJSONTyped(json: any, ignoreDiscriminator: 
         'scheduledStart': json['scheduled_start'] == null ? undefined : json['scheduled_start'],
         'startedAt': json['started_at'],
         'state': json['state'],
-        'title': json['title'],
+        'title': json['title'] == null ? undefined : json['title'],
         'totalLiveListeners': json['total_live_listeners'],
         'totalReplayWatched': json['total_replay_watched'],
-        'tweetResults': ItemResultFromJSON(json['tweet_results']),
+        'tweetResults': json['tweet_results'] == null ? undefined : ItemResultFromJSON(json['tweet_results']),
         'updatedAt': json['updated_at'],
     };
 }

@@ -19,7 +19,7 @@ import { UsersApiUtils } from './apis/usersApi';
 import type { InitOverridesType } from './utils';
 
 export class TwitterOpenApi {
-  static hash = '6c4914f799402a927ec02727686032443fe6ffe9';
+  static hash = 'd31ab31b5ddce12cb2175f8c5eaefbabca312143';
   static url = `https://raw.githubusercontent.com/fa0311/twitter-openapi/${this.hash}/src/config/placeholder.json`;
   static header = 'https://raw.githubusercontent.com/fa0311/latest-user-agent/refs/heads/main/header.json';
   static twitter = 'https://x.com/home';

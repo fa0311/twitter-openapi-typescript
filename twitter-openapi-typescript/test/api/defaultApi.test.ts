@@ -71,7 +71,7 @@ test('getBroadcastQuery', async () => {
 test('getAudioSpaceById', async () => {
   logger.log('getAudioSpaceById');
   const client = await getClient();
-  const response = await client.getDefaultApi().getAudioSpaceById({ id: '1qxoNYAlYMXJv' });
+  const response = await client.getDefaultApi().getAudioSpaceById({ id: '1yNGabwXqXnJj' });
   const { metadata, participants } = response.data;
   logger.log(`${metadata.title} (${metadata.state}, ${participants.total} participants)`);
   expect(response.raw.response.ok).toBe(true);

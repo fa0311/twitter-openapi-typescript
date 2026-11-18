@@ -48,6 +48,7 @@ export interface BirdwatchEntityRef {
 export const BirdwatchEntityRefTypeEnum = {
     TimelineUrl: 'TimelineUrl',
     TimelineRichTextHashtag: 'TimelineRichTextHashtag',
+    TimelineRichTextCashtag: 'TimelineRichTextCashtag',
 } as const;
 export type BirdwatchEntityRefTypeEnum = typeof BirdwatchEntityRefTypeEnum[keyof typeof BirdwatchEntityRefTypeEnum];
 

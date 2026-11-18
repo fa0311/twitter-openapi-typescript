@@ -54,7 +54,7 @@ export interface TweetSportsCompetitor {
     /**
      * 
      */
-    score: string | null;
+    score?: string;
     /**
      * 
      */
@@ -71,7 +71,6 @@ export function instanceOfTweetSportsCompetitor(value: object): value is TweetSp
     if ((!('isWinner' in (value as Record<string, any>)) && !('is_winner' in (value as Record<string, any>))) || ((value as Record<string, any>)['isWinner'] === undefined && (value as Record<string, any>)['is_winner'] === undefined)) return false;
     if ((!('logoUrl' in (value as Record<string, any>)) && !('logo_url' in (value as Record<string, any>))) || ((value as Record<string, any>)['logoUrl'] === undefined && (value as Record<string, any>)['logo_url'] === undefined)) return false;
     if (!('name' in value) || value['name'] === undefined) return false;
-    if (!('score' in value) || value['score'] === undefined) return false;
     if ((!('teamRestId' in (value as Record<string, any>)) && !('team_rest_id' in (value as Record<string, any>))) || ((value as Record<string, any>)['teamRestId'] === undefined && (value as Record<string, any>)['team_rest_id'] === undefined)) return false;
     return true;
 }
@@ -92,7 +91,7 @@ export function TweetSportsCompetitorFromJSONTyped(json: any, ignoreDiscriminato
         'isWinner': json['is_winner'],
         'logoUrl': json['logo_url'],
         'name': json['name'],
-        'score': json['score'],
+        'score': json['score'] == null ? undefined : json['score'],
         'teamRestId': TweetSportsRestIdFromJSON(json['team_rest_id']),
     };
 }

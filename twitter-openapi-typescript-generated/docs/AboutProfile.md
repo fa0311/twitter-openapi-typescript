@@ -8,6 +8,7 @@ Name | Type
 ------------ | -------------
 `accountBasedIn` | string
 `affiliateUsername` | string
+`createdCountryAccurate` | boolean
 `learnMoreUrl` | string
 `locationAccurate` | boolean
 `source` | string
@@ -22,6 +23,7 @@ import type { AboutProfile } from 'twitter-openapi-typescript-generated'
 const example = {
   "accountBasedIn": null,
   "affiliateUsername": null,
+  "createdCountryAccurate": null,
   "learnMoreUrl": null,
   "locationAccurate": null,
   "source": null,

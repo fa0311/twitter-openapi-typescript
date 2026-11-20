@@ -30,6 +30,10 @@ export interface AdMetadataContainer {
     /**
      * 
      */
+    allowSpineClicks?: boolean;
+    /**
+     * 
+     */
     destinationUrlParams?: Array<KeyValue>;
     /**
      * 
@@ -77,6 +81,7 @@ export function AdMetadataContainerFromJSONTyped(json: any, ignoreDiscriminator:
     }
     return {
         
+        'allowSpineClicks': json['allowSpineClicks'] == null ? undefined : json['allowSpineClicks'],
         'destinationUrlParams': json['destinationUrlParams'] == null ? undefined : ((json['destinationUrlParams'] as Array<any>).map(KeyValueFromJSON)),
         'isQuickPromote': json['isQuickPromote'],
         'removePromotedAttributionForPreroll': json['remove_promoted_attribution_for_preroll'] == null ? undefined : json['remove_promoted_attribution_for_preroll'],
@@ -98,6 +103,7 @@ export function AdMetadataContainerToJSONTyped(value?: AdMetadataContainer | nul
 
     return {
         
+        'allowSpineClicks': value['allowSpineClicks'],
         'destinationUrlParams': value['destinationUrlParams'] == null ? undefined : ((value['destinationUrlParams'] as Array<any>).map(KeyValueToJSON)),
         'isQuickPromote': value['isQuickPromote'],
         'remove_promoted_attribution_for_preroll': value['removePromotedAttributionForPreroll'],

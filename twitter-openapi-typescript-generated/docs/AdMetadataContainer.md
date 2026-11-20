@@ -6,6 +6,7 @@
 
 Name | Type
 ------------ | -------------
+`allowSpineClicks` | boolean
 `destinationUrlParams` | [Array&lt;KeyValue&gt;](KeyValue.md)
 `isQuickPromote` | boolean
 `removePromotedAttributionForPreroll` | boolean
@@ -21,6 +22,7 @@ import type { AdMetadataContainer } from 'twitter-openapi-typescript-generated'
 
 // TODO: Update the object below with actual values
 const example = {
+  "allowSpineClicks": null,
   "destinationUrlParams": null,
   "isQuickPromote": null,
   "removePromotedAttributionForPreroll": null,

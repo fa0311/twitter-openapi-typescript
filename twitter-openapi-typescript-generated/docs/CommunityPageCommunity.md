@@ -26,6 +26,8 @@ Name | Type
 `membersFacepileResults` | [Array&lt;CommunityIdUserResults&gt;](CommunityIdUserResults.md)
 `moderatorCount` | number
 `name` | string
+`primaryCommunityTopic` | [PrimaryCommunityTopic](PrimaryCommunityTopic.md)
+`question` | string
 `role` | string
 `rules` | [Array&lt;CommunityRelayRule&gt;](CommunityRelayRule.md)
 `searchTags` | Array&lt;string&gt;
@@ -58,6 +60,8 @@ const example = {
   "membersFacepileResults": null,
   "moderatorCount": null,
   "name": null,
+  "primaryCommunityTopic": null,
+  "question": null,
   "role": null,
   "rules": null,
   "searchTags": null,

@@ -173,6 +173,7 @@ export * from './ContentEntryType';
 export * from './ContentItemType';
 export * from './ContentUnion';
 export * from './ConversationControl';
+export * from './ConversationControlDetails';
 export * from './ConversationDetails';
 export * from './ConversationMetadata';
 export * from './ConversationOwner';

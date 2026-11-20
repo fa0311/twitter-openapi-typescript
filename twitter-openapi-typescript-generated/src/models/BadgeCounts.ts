@@ -26,6 +26,14 @@ export interface BadgeCounts {
     /**
      * 
      */
+    grokBotPrimaryUnreadCount?: number;
+    /**
+     * 
+     */
+    grokBotUnreadConversations?: number;
+    /**
+     * 
+     */
     isFromUrt: boolean;
     /**
      * 
@@ -64,6 +72,8 @@ export function BadgeCountsFromJSONTyped(json: any, ignoreDiscriminator: boolean
     return {
         
         'dmUnreadCount': json['dm_unread_count'],
+        'grokBotPrimaryUnreadCount': json['grok_bot_primary_unread_count'] == null ? undefined : json['grok_bot_primary_unread_count'],
+        'grokBotUnreadConversations': json['grok_bot_unread_conversations'] == null ? undefined : json['grok_bot_unread_conversations'],
         'isFromUrt': json['is_from_urt'],
         'ntabUnreadCount': json['ntab_unread_count'],
         'totalUnreadCount': json['total_unread_count'],
@@ -83,6 +93,8 @@ export function BadgeCountsToJSONTyped(value?: BadgeCounts | null, ignoreDiscrim
     return {
         
         'dm_unread_count': value['dmUnreadCount'],
+        'grok_bot_primary_unread_count': value['grokBotPrimaryUnreadCount'],
+        'grok_bot_unread_conversations': value['grokBotUnreadConversations'],
         'is_from_urt': value['isFromUrt'],
         'ntab_unread_count': value['ntabUnreadCount'],
         'total_unread_count': value['totalUnreadCount'],

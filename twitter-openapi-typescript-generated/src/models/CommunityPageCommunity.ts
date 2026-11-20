@@ -20,6 +20,13 @@ import {
     CommunityRelayRuleToJSON,
     CommunityRelayRuleToJSONTyped,
 } from './CommunityRelayRule';
+import type { PrimaryCommunityTopic } from './PrimaryCommunityTopic';
+import {
+    PrimaryCommunityTopicFromJSON,
+    PrimaryCommunityTopicFromJSONTyped,
+    PrimaryCommunityTopicToJSON,
+    PrimaryCommunityTopicToJSONTyped,
+} from './PrimaryCommunityTopic';
 import type { TypeName } from './TypeName';
 import {
     TypeNameFromJSON,
@@ -99,7 +106,7 @@ export interface CommunityPageCommunity {
     /**
      * 
      */
-    customBannerMedia: CommunityBannerMedia;
+    customBannerMedia?: CommunityBannerMedia;
     /**
      * 
      */
@@ -159,6 +166,14 @@ export interface CommunityPageCommunity {
     /**
      * 
      */
+    primaryCommunityTopic?: PrimaryCommunityTopic;
+    /**
+     * 
+     */
+    question?: string;
+    /**
+     * 
+     */
     role: string;
     /**
      * 
@@ -185,7 +200,6 @@ export function instanceOfCommunityPageCommunity(value: object): value is Commun
     if ((!('adminResults' in (value as Record<string, any>)) && !('admin_results' in (value as Record<string, any>))) || ((value as Record<string, any>)['adminResults'] === undefined && (value as Record<string, any>)['admin_results'] === undefined)) return false;
     if ((!('createdAt' in (value as Record<string, any>)) && !('created_at' in (value as Record<string, any>))) || ((value as Record<string, any>)['createdAt'] === undefined && (value as Record<string, any>)['created_at'] === undefined)) return false;
     if ((!('creatorResults' in (value as Record<string, any>)) && !('creator_results' in (value as Record<string, any>))) || ((value as Record<string, any>)['creatorResults'] === undefined && (value as Record<string, any>)['creator_results'] === undefined)) return false;
-    if ((!('customBannerMedia' in (value as Record<string, any>)) && !('custom_banner_media' in (value as Record<string, any>))) || ((value as Record<string, any>)['customBannerMedia'] === undefined && (value as Record<string, any>)['custom_banner_media'] === undefined)) return false;
     if ((!('defaultBannerMedia' in (value as Record<string, any>)) && !('default_banner_media' in (value as Record<string, any>))) || ((value as Record<string, any>)['defaultBannerMedia'] === undefined && (value as Record<string, any>)['default_banner_media'] === undefined)) return false;
     if (!('description' in value) || value['description'] === undefined) return false;
     if (!('id' in value) || value['id'] === undefined) return false;
@@ -222,7 +236,7 @@ export function CommunityPageCommunityFromJSONTyped(json: any, ignoreDiscriminat
         'adminResults': CommunityIdUserResultsFromJSON(json['admin_results']),
         'createdAt': json['created_at'],
         'creatorResults': CommunityIdUserResultsFromJSON(json['creator_results']),
-        'customBannerMedia': CommunityBannerMediaFromJSON(json['custom_banner_media']),
+        'customBannerMedia': json['custom_banner_media'] == null ? undefined : CommunityBannerMediaFromJSON(json['custom_banner_media']),
         'defaultBannerMedia': CommunityBannerMediaFromJSON(json['default_banner_media']),
         'description': json['description'],
         'id': json['id'],
@@ -237,6 +251,8 @@ export function CommunityPageCommunityFromJSONTyped(json: any, ignoreDiscriminat
         'membersFacepileResults': ((json['members_facepile_results'] as Array<any>).map(CommunityIdUserResultsFromJSON)),
         'moderatorCount': json['moderator_count'],
         'name': json['name'],
+        'primaryCommunityTopic': json['primary_community_topic'] == null ? undefined : PrimaryCommunityTopicFromJSON(json['primary_community_topic']),
+        'question': json['question'] == null ? undefined : json['question'],
         'role': json['role'],
         'rules': ((json['rules'] as Array<any>).map(CommunityRelayRuleFromJSON)),
         'searchTags': json['search_tags'],
@@ -275,6 +291,8 @@ export function CommunityPageCommunityToJSONTyped(value?: CommunityPageCommunity
         'members_facepile_results': ((value['membersFacepileResults'] as Array<any>).map(CommunityIdUserResultsToJSON)),
         'moderator_count': value['moderatorCount'],
         'name': value['name'],
+        'primary_community_topic': PrimaryCommunityTopicToJSON(value['primaryCommunityTopic']),
+        'question': value['question'],
         'role': value['role'],
         'rules': ((value['rules'] as Array<any>).map(CommunityRelayRuleToJSON)),
         'search_tags': value['searchTags'],

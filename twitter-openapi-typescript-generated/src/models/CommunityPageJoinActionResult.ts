@@ -35,6 +35,14 @@ export interface CommunityPageJoinActionResult {
      * 
      */
     typename: TypeName;
+    /**
+     * 
+     */
+    message?: string;
+    /**
+     * 
+     */
+    reason?: string;
 }
 
 
@@ -60,6 +68,8 @@ export function CommunityPageJoinActionResultFromJSONTyped(json: any, ignoreDisc
         
         'isCommunityJoinActionResult': json['__isCommunityJoinActionResult'],
         'typename': TypeNameFromJSON(json['__typename']),
+        'message': json['message'] == null ? undefined : json['message'],
+        'reason': json['reason'] == null ? undefined : json['reason'],
     };
 }
 
@@ -76,6 +86,8 @@ export function CommunityPageJoinActionResultToJSONTyped(value?: CommunityPageJo
         
         '__isCommunityJoinActionResult': value['isCommunityJoinActionResult'],
         '__typename': TypeNameToJSON(value['typename']),
+        'message': value['message'],
+        'reason': value['reason'],
     };
 }
 

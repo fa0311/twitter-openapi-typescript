@@ -132,6 +132,13 @@ import {
     GrokShareAttachmentToJSON,
     GrokShareAttachmentToJSONTyped,
 } from './GrokShareAttachment';
+import type { ConversationControlDetails } from './ConversationControlDetails';
+import {
+    ConversationControlDetailsFromJSON,
+    ConversationControlDetailsFromJSONTyped,
+    ConversationControlDetailsToJSON,
+    ConversationControlDetailsToJSONTyped,
+} from './ConversationControlDetails';
 import type { TrendResults } from './TrendResults';
 import {
     TrendResultsFromJSON,
@@ -245,6 +252,10 @@ export interface Tweet {
      * 
      */
     contentDisclosure?: ContentDisclosure;
+    /**
+     * 
+     */
+    conversationControlDetails?: ConversationControlDetails;
     /**
      * 
      */
@@ -396,6 +407,7 @@ export function TweetFromJSONTyped(json: any, ignoreDiscriminator: boolean): Twe
         'communityRelationship': json['community_relationship'] == null ? undefined : CommunityRelationshipFromJSON(json['community_relationship']),
         'communityResults': json['community_results'] == null ? undefined : CommunityResultFromJSON(json['community_results']),
         'contentDisclosure': json['content_disclosure'] == null ? undefined : ContentDisclosureFromJSON(json['content_disclosure']),
+        'conversationControlDetails': json['conversation_control_details'] == null ? undefined : ConversationControlDetailsFromJSON(json['conversation_control_details']),
         'core': json['core'] == null ? undefined : UserResultCoreFromJSON(json['core']),
         'editControl': json['edit_control'] == null ? undefined : TweetEditControlFromJSON(json['edit_control']),
         'editPrespective': json['edit_prespective'] == null ? undefined : TweetEditPrespectiveFromJSON(json['edit_prespective']),
@@ -449,6 +461,7 @@ export function TweetToJSONTyped(value?: Tweet | null, ignoreDiscriminator: bool
         'community_relationship': CommunityRelationshipToJSON(value['communityRelationship']),
         'community_results': CommunityResultToJSON(value['communityResults']),
         'content_disclosure': ContentDisclosureToJSON(value['contentDisclosure']),
+        'conversation_control_details': ConversationControlDetailsToJSON(value['conversationControlDetails']),
         'core': UserResultCoreToJSON(value['core']),
         'edit_control': TweetEditControlToJSON(value['editControl']),
         'edit_prespective': TweetEditPrespectiveToJSON(value['editPrespective']),

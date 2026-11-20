@@ -30,11 +30,15 @@ export interface AboutProfile {
     /**
      * 
      */
-    accountBasedIn: string;
+    accountBasedIn?: string;
     /**
      * 
      */
-    affiliateUsername: string;
+    affiliateUsername?: string;
+    /**
+     * 
+     */
+    createdCountryAccurate?: boolean;
     /**
      * 
      */
@@ -46,7 +50,7 @@ export interface AboutProfile {
     /**
      * 
      */
-    source: string;
+    source?: string;
     /**
      * 
      */
@@ -57,11 +61,8 @@ export interface AboutProfile {
  * Check if a given object implements the AboutProfile interface.
  */
 export function instanceOfAboutProfile(value: object): value is AboutProfile {
-    if ((!('accountBasedIn' in (value as Record<string, any>)) && !('account_based_in' in (value as Record<string, any>))) || ((value as Record<string, any>)['accountBasedIn'] === undefined && (value as Record<string, any>)['account_based_in'] === undefined)) return false;
-    if ((!('affiliateUsername' in (value as Record<string, any>)) && !('affiliate_username' in (value as Record<string, any>))) || ((value as Record<string, any>)['affiliateUsername'] === undefined && (value as Record<string, any>)['affiliate_username'] === undefined)) return false;
     if ((!('learnMoreUrl' in (value as Record<string, any>)) && !('learn_more_url' in (value as Record<string, any>))) || ((value as Record<string, any>)['learnMoreUrl'] === undefined && (value as Record<string, any>)['learn_more_url'] === undefined)) return false;
     if ((!('locationAccurate' in (value as Record<string, any>)) && !('location_accurate' in (value as Record<string, any>))) || ((value as Record<string, any>)['locationAccurate'] === undefined && (value as Record<string, any>)['location_accurate'] === undefined)) return false;
-    if (!('source' in value) || value['source'] === undefined) return false;
     if ((!('usernameChanges' in (value as Record<string, any>)) && !('username_changes' in (value as Record<string, any>))) || ((value as Record<string, any>)['usernameChanges'] === undefined && (value as Record<string, any>)['username_changes'] === undefined)) return false;
     return true;
 }
@@ -76,11 +77,12 @@ export function AboutProfileFromJSONTyped(json: any, ignoreDiscriminator: boolea
     }
     return {
         
-        'accountBasedIn': json['account_based_in'],
-        'affiliateUsername': json['affiliate_username'],
+        'accountBasedIn': json['account_based_in'] == null ? undefined : json['account_based_in'],
+        'affiliateUsername': json['affiliate_username'] == null ? undefined : json['affiliate_username'],
+        'createdCountryAccurate': json['created_country_accurate'] == null ? undefined : json['created_country_accurate'],
         'learnMoreUrl': json['learn_more_url'],
         'locationAccurate': json['location_accurate'],
-        'source': json['source'],
+        'source': json['source'] == null ? undefined : json['source'],
         'usernameChanges': AboutProfileUsernameChangesFromJSON(json['username_changes']),
     };
 }
@@ -98,6 +100,7 @@ export function AboutProfileToJSONTyped(value?: AboutProfile | null, ignoreDiscr
         
         'account_based_in': value['accountBasedIn'],
         'affiliate_username': value['affiliateUsername'],
+        'created_country_accurate': value['createdCountryAccurate'],
         'learn_more_url': value['learnMoreUrl'],
         'location_accurate': value['locationAccurate'],
         'source': value['source'],

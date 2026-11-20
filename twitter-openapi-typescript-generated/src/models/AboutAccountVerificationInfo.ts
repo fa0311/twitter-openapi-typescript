@@ -34,6 +34,10 @@ export interface AboutAccountVerificationInfo {
     /**
      * 
      */
+    isIdentityVerified?: boolean;
+    /**
+     * 
+     */
     reason: AboutAccountVerificationInfoReason;
 }
 
@@ -57,6 +61,7 @@ export function AboutAccountVerificationInfoFromJSONTyped(json: any, ignoreDiscr
     return {
         
         'id': json['id'],
+        'isIdentityVerified': json['is_identity_verified'] == null ? undefined : json['is_identity_verified'],
         'reason': AboutAccountVerificationInfoReasonFromJSON(json['reason']),
     };
 }
@@ -73,6 +78,7 @@ export function AboutAccountVerificationInfoToJSONTyped(value?: AboutAccountVeri
     return {
         
         'id': value['id'],
+        'is_identity_verified': value['isIdentityVerified'],
         'reason': AboutAccountVerificationInfoReasonToJSON(value['reason']),
     };
 }

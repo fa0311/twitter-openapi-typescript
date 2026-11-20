@@ -175,6 +175,7 @@ docs/ContentEntryType.md
 docs/ContentItemType.md
 docs/ContentUnion.md
 docs/ConversationControl.md
+docs/ConversationControlDetails.md
 docs/ConversationDetails.md
 docs/ConversationMetadata.md
 docs/ConversationOwner.md
@@ -866,6 +867,7 @@ src/models/ContentEntryType.ts
 src/models/ContentItemType.ts
 src/models/ContentUnion.ts
 src/models/ConversationControl.ts
+src/models/ConversationControlDetails.ts
 src/models/ConversationDetails.ts
 src/models/ConversationMetadata.ts
 src/models/ConversationOwner.ts

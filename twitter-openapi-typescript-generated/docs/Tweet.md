@@ -15,6 +15,7 @@ Name | Type
 `communityRelationship` | [CommunityRelationship](CommunityRelationship.md)
 `communityResults` | [CommunityResult](CommunityResult.md)
 `contentDisclosure` | [ContentDisclosure](ContentDisclosure.md)
+`conversationControlDetails` | [ConversationControlDetails](ConversationControlDetails.md)
 `core` | [UserResultCore](UserResultCore.md)
 `editControl` | [TweetEditControl](TweetEditControl.md)
 `editPrespective` | [TweetEditPrespective](TweetEditPrespective.md)
@@ -62,6 +63,7 @@ const example = {
   "communityRelationship": null,
   "communityResults": null,
   "contentDisclosure": null,
+  "conversationControlDetails": null,
   "core": null,
   "editControl": null,
   "editPrespective": null,

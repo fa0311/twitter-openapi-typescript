@@ -84,7 +84,7 @@ async function example() {
 
   const body = {
     // string
-    pathQueryId: XRqGa7EeokUU5kppkh13EA,
+    pathQueryId: TzOG2twZEfhr9KmClvVVqA,
     // string
     variables: {"screenName": "elonmusk"},
   } satisfies GetAboutAccountQueryRequest;
@@ -106,7 +106,7 @@ example().catch(console.error);
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pathQueryId** | `string` |  | [Defaults to `&#39;XRqGa7EeokUU5kppkh13EA&#39;`] |
+| **pathQueryId** | `string` |  | [Defaults to `&#39;TzOG2twZEfhr9KmClvVVqA&#39;`] |
 | **variables** | `string` |  | [Defaults to `&#39;{\&quot;screenName\&quot;: \&quot;elonmusk\&quot;}&#39;`] |
 
 ### Return type
@@ -683,7 +683,7 @@ async function example() {
 
   const body = {
     // string
-    pathQueryId: q4Npr1-FYRWyXsRzPckwEA,
+    pathQueryId: I7FbT7Bfw_If9nT5q6PUQQ,
     // string
     variables: {},
   } satisfies GetViewerBadgeCountsRequest;
@@ -705,7 +705,7 @@ example().catch(console.error);
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **pathQueryId** | `string` |  | [Defaults to `&#39;q4Npr1-FYRWyXsRzPckwEA&#39;`] |
+| **pathQueryId** | `string` |  | [Defaults to `&#39;I7FbT7Bfw_If9nT5q6PUQQ&#39;`] |
 | **variables** | `string` |  | [Defaults to `&#39;{}&#39;`] |
 
 ### Return type

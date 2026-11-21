@@ -8,6 +8,7 @@ Name | Type
 ------------ | -------------
 `description` | string
 `entities` | [ProfileBioEntities](ProfileBioEntities.md)
+`withHeldScope` | string
 `withheldInCountries` | Array&lt;string&gt;
 
 ## Example
@@ -19,6 +20,7 @@ import type { ProfileBio } from 'twitter-openapi-typescript-generated'
 const example = {
   "description": null,
   "entities": null,
+  "withHeldScope": null,
   "withheldInCountries": null,
 } satisfies ProfileBio
 

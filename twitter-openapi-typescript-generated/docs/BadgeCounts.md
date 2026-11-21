@@ -7,6 +7,8 @@
 Name | Type
 ------------ | -------------
 `dmUnreadCount` | number
+`grokBotPrimaryUnreadCount` | number
+`grokBotUnreadConversations` | number
 `isFromUrt` | boolean
 `ntabUnreadCount` | number
 `totalUnreadCount` | number
@@ -20,6 +22,8 @@ import type { BadgeCounts } from 'twitter-openapi-typescript-generated'
 // TODO: Update the object below with actual values
 const example = {
   "dmUnreadCount": null,
+  "grokBotPrimaryUnreadCount": null,
+  "grokBotUnreadConversations": null,
   "isFromUrt": null,
   "ntabUnreadCount": null,
   "totalUnreadCount": null,

@@ -8,6 +8,8 @@ Name | Type
 ------------ | -------------
 `isCommunityJoinActionResult` | string
 `typename` | [TypeName](TypeName.md)
+`message` | string
+`reason` | string
 
 ## Example
 
@@ -18,6 +20,8 @@ import type { CommunityPageJoinActionResult } from 'twitter-openapi-typescript-g
 const example = {
   "isCommunityJoinActionResult": null,
   "typename": null,
+  "message": null,
+  "reason": null,
 } satisfies CommunityPageJoinActionResult
 
 console.log(example)

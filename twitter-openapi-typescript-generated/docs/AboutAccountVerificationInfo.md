@@ -7,6 +7,7 @@
 Name | Type
 ------------ | -------------
 `id` | string
+`isIdentityVerified` | boolean
 `reason` | [AboutAccountVerificationInfoReason](AboutAccountVerificationInfoReason.md)
 
 ## Example
@@ -17,6 +18,7 @@ import type { AboutAccountVerificationInfo } from 'twitter-openapi-typescript-ge
 // TODO: Update the object below with actual values
 const example = {
   "id": null,
+  "isIdentityVerified": null,
   "reason": null,
 } satisfies AboutAccountVerificationInfo
 

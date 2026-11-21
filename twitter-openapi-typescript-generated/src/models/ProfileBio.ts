@@ -38,6 +38,10 @@ export interface ProfileBio {
     /**
      * 
      */
+    withHeldScope?: string;
+    /**
+     * 
+     */
     withheldInCountries?: Array<string>;
 }
 
@@ -61,6 +65,7 @@ export function ProfileBioFromJSONTyped(json: any, ignoreDiscriminator: boolean)
         
         'description': json['description'],
         'entities': json['entities'] == null ? undefined : ProfileBioEntitiesFromJSON(json['entities']),
+        'withHeldScope': json['with_held_scope'] == null ? undefined : json['with_held_scope'],
         'withheldInCountries': json['withheld_in_countries'] == null ? undefined : json['withheld_in_countries'],
     };
 }
@@ -78,6 +83,7 @@ export function ProfileBioToJSONTyped(value?: ProfileBio | null, ignoreDiscrimin
         
         'description': value['description'],
         'entities': ProfileBioEntitiesToJSON(value['entities']),
+        'with_held_scope': value['withHeldScope'],
         'withheld_in_countries': value['withheldInCountries'],
     };
 }
